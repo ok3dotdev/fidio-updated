@@ -18,7 +18,9 @@ export default function Home() {
 			<main className={`${styles.main} ${inter.className}`}>
 				<div className={styles.center} style={{ display: 'flex', flexDirection: 'column' }}>
 					<h1 className={`${styles.text10}`}>{credentials.platform.title}</h1>
-					<div className={styles.description}>{credentials.platform.description}</div>
+					<div className={`${styles.maxWidth600}`} style={{ textAlign: 'center' }}>
+						<div className={`${styles.description}`}>{credentials.platform.description}</div>
+					</div>
 				</div>
 				<div className={`${styles.textp75}`}>{credentials.platform.contact.admin}</div>
 			</main>

@@ -228,6 +228,10 @@
   }
 }
 
+.maxWidth600 {
+	max-width: 600px;
+}
+
 .text10 {
   	font-size: 10rem;
 }
