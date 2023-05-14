@@ -6,7 +6,8 @@ import credentials from '../../credentials'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home(props: any) {
+	
 	return (
 		<>
 			<Head>
@@ -15,7 +16,7 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main className={`${styles.main} ${inter.className}`}>
+			<main className={`${styles.main} ${inter.className} ${props.hiddenDev === false ? `${styles.hidden}` : null}`}>
 				<div className={styles.center} style={{ display: 'flex', flexDirection: 'column' }}>
 					<h1 className={`${styles.text10}`}>{credentials.platform.title}</h1>
 					<div className={`${styles.maxWidth600}`} style={{ textAlign: 'center' }}>

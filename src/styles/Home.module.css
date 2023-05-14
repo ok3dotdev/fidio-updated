@@ -251,3 +251,7 @@
 		font-size: 6rem;
 	}
 }
+
+.hidden {
+  display: none;
+}
