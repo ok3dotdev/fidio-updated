@@ -1,3 +1,8 @@
+# Setup
+If you see a bunch of errors in VS Code while developing try:
+1. Ctrl+Shift+P -or- ⌘+shift+P
+2. Then type: Developer: Reload Window
+
 # video-streaming-client
 Video Streaming Client leveraged for Official Tycoon Network and B2B Customers
 
