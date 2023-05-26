@@ -87,12 +87,12 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 a {
@@ -105,3 +105,16 @@ html {
   	color-scheme: dark;
 }
 /* } */
+
+body {
+  height: 100vh;
+  color: white;
+}
+
+.google-sign-in-btn, #credential_picker_container {
+  color-scheme: auto;
+}
+
+.display-none {
+  display: none;
+}

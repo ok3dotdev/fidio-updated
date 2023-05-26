@@ -1,22 +1,21 @@
 import React from 'react'
 import resolveConfig, { resolveVariables } from '/app.config'
-import { generateComponent, resolvePage } from '/utility.js'
+import { generateComponent, resolvePage } from '@modules/utility.js'
 
 const config = resolveConfig(resolveVariables())
 const resolvedPage = resolvePage(config)
 let resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
 
 export const page = props => {
-
+    const config = resolveConfig(resolveVariables(), props)
+    const resolvedPage = resolvePage(config, props.path)
+    resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
     if (!resolvedDefinition) {
-        const resolvedPage = resolvePage(config, props.path)
-        resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
-        if (!resolvedDefinition) {
-            return null // Handle the case when the resolvedDefinition is not available
-        }
+        return null // Handle the case when the resolvedDefinition is not available
     }
     
-    const components = generateComponent(resolvedDefinition);
+    console.log(resolvedDefinition)
+    const components = generateComponent(resolvedDefinition)  	
   	
 	return (
 		<div>

@@ -1,3 +1,5 @@
+Ctrl+Shift+P -or- ⌘+shift+P
+
 # video-streaming-client
 Video Streaming Client leveraged for Official Tycoon Network and B2B Customers
 

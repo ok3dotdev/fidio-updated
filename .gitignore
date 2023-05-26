@@ -39,3 +39,10 @@ credentials.js
 makebuild
 daemonclient
 app.config.js
+tycoon-client-modules-dist
+tycoon-client-modules-dist/*
+modules
+modules/
+public/font
+public/img
+src/styles/MyStyles.module.css
