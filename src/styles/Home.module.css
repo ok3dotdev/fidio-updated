@@ -357,6 +357,9 @@
 	.text10 {
 		font-size: 7.5rem;
 	}
+  .text3Adj {
+    font-size: 2rem;
+  }
 }
 
 @media(max-width: 400px) {
