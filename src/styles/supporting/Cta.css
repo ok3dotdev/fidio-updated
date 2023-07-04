@@ -1,0 +1,129 @@
+.IndexCta_Container {
+    padding: 0 1rem;
+    background-color: black;
+    box-shadow: 0 10px 100px 100px black;
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    place-content: space-around;
+}
+
+.IndexCta_Lead, .IndexCta_Lead2 {
+    font-size: 9rem;
+    margin: 4rem 0 0rem 0;
+}
+
+.IndexCta_Lead2 {
+    margin: 0;
+}
+
+.IndexCta_Description {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0rem;
+    max-width: 600px;
+}
+
+.IndexCta_DetailContainer {
+    margin: 5rem 0 0 0;
+}
+
+.IndexCta_Detail {
+    font-size: 10px;
+}
+
+.IndexCta_AfterSignIn,
+.IndexCta_Lead2 {
+    height: 0;
+    overflow: hidden;
+    transition: 200ms;
+}
+
+.IndexCta_AfterSignIn {
+    margin: .5rem 0 0 0;
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.IndexCta_AfterSignInTrans {
+    height: 30px;
+}
+
+.IndexCta_Lead2Trans {
+    height: 150px;
+}
+
+.IndexCta_ButtonStyle {
+    opacity: 0;
+}
+
+.IndexCta_ButtonStyleTrans {
+    opacity: 100;
+}
+
+.IndexCta_RecordingCircle,
+.RecordingCircle {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background-color: red;
+    border-radius: 50%;
+    animation: record_blinking 2s infinite;
+    transition: 0ms;
+    box-shadow: 0 0 10px 0 red;
+}
+
+.RecordingCircle_Small {
+    width: 11px;
+    height: 11px;
+}
+
+@media (max-width: 1200px) {
+    .IndexCta_Lead, .IndexCta_Lead2 {
+        font-size: 6rem;
+    }
+    .IndexCta_Lead2Trans {
+        height: 100px;
+    }
+    .IndexCta_RecordingCircle {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+@media (max-width: 700px) {
+    .IndexCta_Lead, .IndexCta_Lead2 {
+        font-size: 4rem;
+        margin: 2rem 0 0rem 0;
+    }
+
+    .IndexCta_Lead2 {
+        margin: 0;
+    }
+
+    .IndexCta_Lead2Trans {
+        height: 75px;
+    }
+    .IndexCta_RecordingCircle {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@keyframes record_blinking {
+    0% {
+        opacity: 100;
+    }
+    50% {
+        opacity: 100;
+    }
+    51% {
+        opacity: 0
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}

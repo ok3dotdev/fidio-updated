@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.53.0",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
@@ -17,10 +18,14 @@
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "jwt-decode": "^3.1.2",
+    "mux.js": "^6.3.0",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.62.1",
+    "socket.io-client": "^2.4.0",
     "typescript": "5.0.4",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "video.js": "^8.3.0"
   }
 }

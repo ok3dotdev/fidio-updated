@@ -35,6 +35,7 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+env.local
 credentials.js
 makebuild
 daemonclient
@@ -44,5 +45,5 @@ tycoon-client-modules-dist/*
 modules
 modules/
 public/font
-public/img
+public/img/internal
 src/styles/MyStyles.module.css

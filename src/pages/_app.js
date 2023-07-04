@@ -1,71 +1,44 @@
 import React from 'react'
-import '@/styles/globals.css'
-import credentials from '../../credentials'
+import '../styles/globals.css'
+import '../styles/tycoon.scss'
+import '../styles/video/videoPlayer.css'
+// import 'shaka-player/dist/controls.css'
+import '../styles/video/videojs.css'
+import '../styles/video/videoPlayerTycoon.css'
 import Head from 'next/head'
 import Script from 'next/script'
+import io from 'socket.io-client'
+import { SocketContainer } from '/modules/socket'
+import { resolveVariables } from '/app.config'
+import { checkSignedIn } from '/modules/utility/onboarding/SignIn'
+import { LocalEventEmitter } from '/modules/events/LocalEventEmitter'
 
-const resolveDefaultDevAuth = () => {
-	if (credentials && credentials.config && credentials.config.development && Object.prototype.hasOwnProperty.call(credentials.config, 'password')) {
-		return false
-	}
-	return true
-}
 
 function MyApp({ Component, pageProps }) {
 	const [ _loggedIn, _setLoggedIn ] = React.useState(false)
 	const [ _stripeSecret, _setStripeSecret ] = React.useState(false)
 	const [ _loginError, _setLoginError ] = React.useState(false)
 	const [ _pageError, _setPageError ] = React.useState(null)
-	const [ devAuth, setDevAuth ] = React.useState(resolveDefaultDevAuth())
 
 	React.useEffect(() => {
         const muteLoginErr = () => {
-            _setLoginError(false)
+            _setLoginError(null)
         }
-		console.log(_loggedIn)
-        document.addEventListener("mute-login-error", muteLoginErr, { once: true });
+        document.addEventListener("mute-login-error", muteLoginErr, { once: true })
     }, [])
 
-	console.log(pageProps)
-
-  	const resolveDev = () => {
-		try {
-			if (credentials && credentials.config && credentials.config.development && credentials.config.password) {
-				if (!localStorage.getItem('dev_auth')) {
-					return false
-				} else if (localStorage.getItem('dev_auth')) {
-					const auth = localStorage.getItem('dev_auth')
-					if (auth !== credentials.config.password) {
-						return false
-					}
-				}
-			}
-			return true
-		} catch (err) {
-			return false // silent
-		}
-	}
-
-	const setDevPw = e => {
-		try {
-			if (e.code == 'Enter') {
-				if (e.target.value == credentials.config.password) {
-					localStorage.setItem('dev_auth', e.target.value)
-					setDevAuth(true)
-				}
-			}
-		} catch (err) {
-			// silent
-		}
-	}
-	
 	React.useEffect(() => {
-		const d = resolveDev()
-		if (d !== devAuth) {
-			setDevAuth(d)
+		if (pageProps._loggedIn) {
+			_setLoggedIn(pageProps._loggedIn)
+		} else {
+			const signedIn = checkSignedIn()
+			if (signedIn) {
+				_setLoggedIn(signedIn)
+			}
 		}
-	}, [ devAuth ])
-  
+	}, [ _loggedIn, pageProps._loggedIn ])
+
+	pageProps._LocalEventEmitter = LocalEventEmitter
 	pageProps._loggedIn = _loggedIn
 	pageProps._setLoggedIn = _setLoggedIn
 	pageProps._stripeSecret = _stripeSecret
@@ -74,13 +47,24 @@ function MyApp({ Component, pageProps }) {
 	pageProps._setLoginError = _setLoginError
 	pageProps._pageError = _pageError
 	pageProps._setPageError = _setPageError
-	return (<React.Fragment>
+	pageProps = Object.assign(resolveVariables(), pageProps)
+
+	const [ socket ] = React.useState(() =>
+    	io(pageProps.apiUrl, {
+			transports: ["websocket"],
+			upgrade: false,
+			reconnectAttempts: 1
+		})
+	)
+
+  	return (
 		<div>
 			<Head>
 				<meta name="google-signin-client_id" content="169701902623-9a74mqcbqr38uj87qm8tm3190cicaa7m.apps.googleusercontent.com"/>
 				<title>Tycoon Systems</title>
 			</Head>
 			<>
+				<Script defer src="module/mux.js/dist/mux.min.js"></Script>
 				<Script src="https://accounts.google.com/gsi/client" async defer></Script>
 				<Script strategy="lazyOnload" id='script_one_tap_sign_in' className="lazyOnload">
 				{
@@ -122,19 +106,10 @@ function MyApp({ Component, pageProps }) {
 				}
 				</Script>
 			</>
+			<SocketContainer socket={socket} {...pageProps}></SocketContainer>
+    		<Component socket={socket} {...pageProps} />
 		</div>
-		{
-			!devAuth
-			? <main style={{ height: '100vh', margin: '0 auto', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-				<div>
-					<div>You are not authorized</div>
-					<input type='text' onKeyDown={setDevPw}></input>
-				</div>
-			</main>
-			: null
-		}
-		<Component {...pageProps} hiddenDev={devAuth} />
-	</React.Fragment>)
+  	)
 }
 
 export default MyApp

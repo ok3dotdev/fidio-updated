@@ -1,0 +1,94 @@
+@import "supporting/SignInPage.css";
+@import "supporting/Cta.css";
+@import "supporting/Username.css";
+@import "supporting/ProfilePage.css";
+@import "supporting/Item.css";
+@import "supporting/AdminPanel.css";
+
+html {
+    background: black;
+}
+
+body {
+    color: white;
+}
+
+.display-none {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: white;
+    font-weight: 600;
+    position: relative;
+    bottom: 0px;
+    transition: 200ms;
+}
+
+button.simpleBtn:hover {
+    background: rgb(239, 239, 239);
+    box-shadow: 0px 0px 15px 0px grey;
+}
+
+button:active {
+    background: black;
+    color: white;
+    box-shadow: 0px 0px 15px 0px black;
+}
+
+@keyframes glowing {
+    0% {
+      box-shadow: 0 0 2px 0px #fff;
+    }
+    50% {
+      box-shadow: 0 0 2.5px 0px #fff, 0 0 20px 0px #fff, 0 0 2.5px 0px #fff;
+    }
+    100% {
+      box-shadow: 0 0 2px 0px #fff;
+    }
+}
+
+.ButtonGlowing {
+    animation: glowing 3.5s infinite;
+}
+
+.flex {
+    display: flex;
+}
+
+.gap-p5 {
+    gap: .5rem;
+}
+
+.gap-p2 {
+    gap: .2rem;
+}
+
+.simpleTextInput {
+    border: none;
+    height: 20px;
+}
+
+.simpleTextInput~button {
+    height: 20px;
+    padding: .0rem 1rem;
+}
+
+.LiveTag {
+    position: absolute;
+    padding: 0.25rem .25rem .125rem .25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.25rem;
+    background: grey;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+}
