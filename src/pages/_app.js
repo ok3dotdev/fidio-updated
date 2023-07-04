@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import React from 'react'
 import '../styles/globals.css'
 import '../styles/tycoon.scss'
@@ -64,7 +66,6 @@ function MyApp({ Component, pageProps }) {
 				<title>Tycoon Systems</title>
 			</Head>
 			<>
-				<Script defer src="module/mux.js/dist/mux.min.js"></Script>
 				<Script src="https://accounts.google.com/gsi/client" async defer></Script>
 				<Script strategy="lazyOnload" id='script_one_tap_sign_in' className="lazyOnload">
 				{

@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
+
 import React from 'react'
 import { useRouter } from 'next/router'
 import { fetchPost } from '/modules/utility/fetch'
@@ -5,7 +8,7 @@ import resolveConfig, { resolveVariables } from '/app.config'
 import { basicError, generateComponent, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 
-export const page = props => {
+export const Page = props => {
     const router = useRouter()
     const { query, asPath } = router
     const [ fetching, setFetching ] = React.useState(false)
@@ -43,4 +46,4 @@ export const getServerSideProps = async (context) => {
 	return await getServerSidePropsDefault(context)
 }
 
-export default page
+export default Page
