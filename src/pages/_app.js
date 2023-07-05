@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import React from 'react'
 import '../styles/globals.css'
 import '../styles/tycoon.scss'
@@ -51,13 +49,26 @@ function MyApp({ Component, pageProps }) {
 	pageProps._setPageError = _setPageError
 	pageProps = Object.assign(resolveVariables(), pageProps)
 
-	const [ socket ] = React.useState(() =>
-    	io(pageProps.apiUrl, {
-			transports: ["websocket"],
-			upgrade: false,
-			reconnectAttempts: 1
-		})
-	)
+	const socketIoConfig = {
+		transports: ["websocket"],
+		upgrade: false,
+		reconnectAttempts: 1,
+		reconnectionDelay: 5000
+	}
+	if (pageProps.socketpath) {
+		socketIoConfig.path = pageProps.socketpath
+	}
+	const [ socket, setSocket ] = React.useState(null)
+	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
+	React.useEffect(() => {
+		if (!socket && !socketTimeout) {
+			setSocket(io(pageProps.apiUrl, socketIoConfig))
+			const r = setTimeout(() => {
+				setSocketTimeout(null)
+			}, 20000)
+			setSocketTimeout(r)
+		}
+	}, [ socket, socketTimeout ])
 
   	return (
 		<div>
