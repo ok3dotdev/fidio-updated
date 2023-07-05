@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
 	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
 	React.useEffect(() => {
 		if (!socket && !socketTimeout) {
-			setSocket(io(pageProps.apiUrl, socketIoConfig))
+			setSocket(io(pageProps.socketUrl, socketIoConfig))
 			const r = setTimeout(() => {
 				setSocketTimeout(null)
 			}, 20000)
