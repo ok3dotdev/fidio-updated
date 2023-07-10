@@ -92,3 +92,67 @@ button:active {
     margin: 0.25rem;
     border-radius: 0.25rem;
 }
+
+.darkMode, .darkMode .darkModeEnforce {
+    background: black;
+    color: white;
+}
+  
+.darkMode .darkModeEnforce .itemName {
+    color: white !important;
+}
+  
+.darkMode .darkModeHoverEnforce:hover,
+.darkMode .darkModeHoverEnforce:hover div {
+    color: lightgrey !important;
+}
+  
+.darkMode .darkMenuLink {
+    background: rgba(0,0,0,0) !important;
+    border: 1px solid grey;
+}
+  
+.darkMode .darkMenuLink:hover {
+    background: rgb(35, 35, 35, 1) !important;
+    border: 1px solid white;
+}
+
+.margin1600 {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.menuContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+}
+
+.leadMenuContainer~div {
+    position: relative;
+    top: 35px;
+}
+
+.dropMenu {
+    position: absolute;
+    right: 0;
+    top: 33px;
+    width: 200px;
+}
+
+.dropMenu ul {
+    list-style: none;
+    padding-left: 0;
+    background: #313131;
+}
+
+.dropMenu ul li {
+    text-align: right;
+    padding: 0rem .5rem;
+    font-size: .85rem;
+    cursor: pointer;
+}
+
+.dropMenu ul li:hover {
+    background: #363636;
+}

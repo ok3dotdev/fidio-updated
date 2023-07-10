@@ -5,6 +5,7 @@
     overflow: auto;
     height: 0px;
     transition: 200ms;
+    margin-top: 0rem;
 }
 
 .AdminPanel_ContainerOpen {
