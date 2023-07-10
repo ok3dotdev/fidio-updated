@@ -4,8 +4,9 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { fetchPost } from '/modules/utility/fetch'
 import resolveConfig, { resolveVariables } from '/app.config'
-import { basicError, generateComponent, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
+import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
+import { Menu } from '/modules/menu/'
 
 
 export const page = props => {
@@ -38,13 +39,16 @@ export const page = props => {
         }
     }, [ fetching, mergeProps, resolvedPage ])
 
-    const useProps = isObjectEmpty(mergeProps) ? props : mergeProps
+    const useProps = handlePropsPriority(mergeProps, props)
     config = resolveConfig(variables, useProps)
     resolvedPage = resolvePage(config, useProps.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
     const components = generateComponent(resolvedDefinition)
 	return (
-        <div>{components}</div>
+        <React.Fragment>
+            <Menu {...useProps}></Menu>
+            <div>{components}</div>
+        </React.Fragment>
 	)
 }
 

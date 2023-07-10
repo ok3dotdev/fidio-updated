@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }) {
 	const [ _stripeSecret, _setStripeSecret ] = React.useState(false)
 	const [ _loginError, _setLoginError ] = React.useState(false)
 	const [ _pageError, _setPageError ] = React.useState(null)
+	const [ _openMenu, _setOpenMenu ] = React.useState({})
 
 	React.useEffect(() => {
         const muteLoginErr = () => {
@@ -38,6 +39,23 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [ _loggedIn, pageProps._loggedIn ])
 
+	const toggleSingleOpenMenu = (e, menu) => {
+		console.log(menu, _openMenu)
+		if (_openMenu && _openMenu.currentMenu) {
+			console.log('oi')
+			if (_openMenu.currentMenu == menu) {
+				_setOpenMenu({})
+			} else {
+				_setOpenMenu({ currentMenu: menu })
+			}
+		} else {
+			console.log(_openMenu, menu)
+			_setOpenMenu({ currentMenu: menu })
+			console.log(_openMenu)
+		}
+	}
+	console.log(_openMenu)
+
 	pageProps._LocalEventEmitter = LocalEventEmitter
 	pageProps._loggedIn = _loggedIn
 	pageProps._setLoggedIn = _setLoggedIn
@@ -47,13 +65,12 @@ function MyApp({ Component, pageProps }) {
 	pageProps._setLoginError = _setLoginError
 	pageProps._pageError = _pageError
 	pageProps._setPageError = _setPageError
+	pageProps._toggleSingleOpenMenu = toggleSingleOpenMenu
+	pageProps._openMenu = _openMenu
 	pageProps = Object.assign(resolveVariables(), pageProps)
 
 	const socketIoConfig = {
-		transports: ["websocket"],
-		upgrade: false,
-		reconnectAttempts: 1,
-		reconnectionDelay: 5000
+		reconnectAttempts: 1
 	}
 	if (pageProps.socketpath) {
 		socketIoConfig.path = pageProps.socketpath
@@ -74,7 +91,7 @@ function MyApp({ Component, pageProps }) {
 		<div>
 			<Head>
 				<meta name="google-signin-client_id" content="169701902623-9a74mqcbqr38uj87qm8tm3190cicaa7m.apps.googleusercontent.com"/>
-				<title>Tycoon Systems</title>
+				<title>{pageProps.siteTitle}</title>
 			</Head>
 			<>
 				<Script src="https://accounts.google.com/gsi/client" async defer></Script>
