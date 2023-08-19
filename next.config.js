@@ -6,6 +6,7 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')
     config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js')
+    config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles')
     
     if (!isServer) {
       config.module.rules.push({
