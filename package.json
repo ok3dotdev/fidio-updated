@@ -30,6 +30,7 @@
     "socket.io-client": "^2.4.0",
     "typescript": "5.0.4",
     "universal-cookie": "^4.0.4",
+    "uuid": "^8.3.2",
     "video.js": "^8.3.0"
   }
 }
