@@ -43,7 +43,9 @@ button.simpleBtn:not(:disabled):hover {
 button:not(:disabled):hover {
     color: lightgrey;
     background: rgb(35, 35, 35, 1) !important;
-    border: 1px solid white;
+    // border: 1px solid white;
+    outline-offset: -2px;
+    outline: 1px solid white;
 }
 
 button:not(:disabled):active {
@@ -76,6 +78,15 @@ button:not(:disabled):active {
 
 .ButtonGlowing {
     animation: glowing 3.5s infinite;
+}
+
+.importantPrompt {
+    text-align: center;
+    background: black;
+    border: 2px solid grey;
+    box-shadow: 0px 0px 15px 0px grey;
+    font-weight: 600;
+    padding: .25rem;
 }
 
 .flex {

@@ -3,6 +3,7 @@
     background-color: black;
     box-shadow: 0 10px 100px 100px black;
     height: -webkit-fill-available;
+    height: 100%;
     display: flex;
     flex-direction: column;
     place-content: space-around;
