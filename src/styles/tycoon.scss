@@ -286,3 +286,14 @@ button:not(:disabled):active {
 .slide_hide_visible {
     height: 100%;
 }
+
+.marquee {
+    animation: marquee 15s linear infinite;
+}
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    70% { transform: translate(-85%, 0); }
+    71%   { transform: translate(0%, 0); }
+}
