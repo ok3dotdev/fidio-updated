@@ -3,11 +3,12 @@
 
 import React from 'react'
 import { useRouter } from 'next/router'
-import { fetchPost } from '/modules/utility/fetch'
-import resolveConfig, { resolveVariables } from '/app.config'
+import resolveConfig, { resolveVariables, pageDefaults } from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 import { Menu } from '/modules/menu/'
+
+const pageName = 'Index'
 
 export const Page = props => {
     const router = useRouter()
@@ -33,6 +34,8 @@ export const Page = props => {
         }
     }, [ fetching, mergeProps, resolvedPage ])
 
+    console.log(props, mergeProps)
+
     const useProps = handlePropsPriority(mergeProps, props)
     config = resolveConfig(variables, useProps)
     resolvedPage = resolvePage(config, useProps.path)
@@ -47,7 +50,7 @@ export const Page = props => {
 }
 
 export const getServerSideProps = async (context) => {
-	return await getServerSidePropsDefault(context)
+	return await getServerSidePropsDefault(context, pageDefaults[pageName])
 }
 
 export default Page

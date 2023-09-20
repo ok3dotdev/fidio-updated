@@ -12,6 +12,7 @@ import { SocketContainer } from '/modules/socket'
 import { resolveVariables } from '/app.config'
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn'
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter'
+import { isObjectEmpty } from '/modules/util'
 
 
 function MyApp({ Component, pageProps }) {
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
 	const [ _loginError, _setLoginError ] = React.useState(false)
 	const [ _pageError, _setPageError ] = React.useState(null)
 	const [ _openMenu, _setOpenMenu ] = React.useState({})
+	const [ _cart, _setCart ] = React.useState({})
 
 	React.useEffect(() => {
         const muteLoginErr = () => {
@@ -33,6 +35,7 @@ function MyApp({ Component, pageProps }) {
 			_setLoggedIn(pageProps._loggedIn)
 		} else {
 			const signedIn = checkSignedIn()
+			console.log(signedIn)
 			if (signedIn) {
 				_setLoggedIn(signedIn)
 			}
@@ -42,7 +45,6 @@ function MyApp({ Component, pageProps }) {
 	const toggleSingleOpenMenu = (e, menu) => {
 		console.log(menu, _openMenu)
 		if (_openMenu && _openMenu.currentMenu) {
-			console.log('oi')
 			if (_openMenu.currentMenu == menu) {
 				_setOpenMenu({})
 			} else {
@@ -54,7 +56,26 @@ function MyApp({ Component, pageProps }) {
 			console.log(_openMenu)
 		}
 	}
-	console.log(_openMenu)
+
+	React.useEffect(() => {
+		const cart = JSON.parse(localStorage.getItem('cart'))
+		if (cart) {
+			console.log(cart)
+			if (!cart.user) {
+				const temp = cart
+				temp.user = _loggedIn
+				localStorage.setItem('cart', JSON.stringify(temp))
+				_setCart(temp)
+			}
+		} else {
+			if (_loggedIn) {
+				const def = { user: _loggedIn, cart: [] }
+				localStorage.setItem('cart', JSON.stringify(def))
+				_setCart(def)
+			}
+		}
+	}, [ _loggedIn ])
+	console.log(_openMenu, _loggedIn)
 
 	pageProps._LocalEventEmitter = LocalEventEmitter
 	pageProps._loggedIn = _loggedIn
@@ -67,13 +88,26 @@ function MyApp({ Component, pageProps }) {
 	pageProps._setPageError = _setPageError
 	pageProps._toggleSingleOpenMenu = toggleSingleOpenMenu
 	pageProps._openMenu = _openMenu
+	pageProps._cart = _cart
 	pageProps = Object.assign(resolveVariables(), pageProps)
+
+	LocalEventEmitter.unsubscribe('forceUpdateProps')
+    LocalEventEmitter.subscribe('forceUpdateProps', e => {
+		console.log(e)
+        if (e) {
+			if (e.dispatch === '_cart') {
+				console.log('updating')
+				_setCart(JSON.parse(window.localStorage.getItem('cart'))) // Should force reload of cart props
+			}
+		}
+    })
 
 	const socketIoConfig = {
 		reconnectAttempts: 1
 	}
 	if (pageProps.socketpath) {
 		socketIoConfig.path = pageProps.socketpath
+		socketIoConfig.port = pageProps.socketPort
 	}
 	const [ socket, setSocket ] = React.useState(null)
 	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
@@ -86,6 +120,8 @@ function MyApp({ Component, pageProps }) {
 			setSocketTimeout(r)
 		}
 	}, [ socket, socketTimeout ])
+
+	console.log(socket)
 
   	return (
 		<div>
