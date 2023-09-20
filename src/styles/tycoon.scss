@@ -298,10 +298,49 @@ button:not(:disabled):active {
     71%   { transform: translate(0%, 0); }
 }
 
+.IndexCta_LeadContainer {
+    // transition: 200ms;
+}
+
 .FeatureContainerOpen ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
     margin-top: 2rem;
 }
 
 .FeatureContainerOpenMedium ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
     margin-top: 7rem;
+}
+
+.WideFeatureContainer {
+    z-index: 200;
+    height: auto;
+    place-content: center;
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+    height: 165px;
+}
+
+.FeatureContainerOpen ~ .WideFeatureContainer {
+    top: 4rem;
+}
+
+.FeatureContainerOpenMedium ~ .WideFeatureContainer {
+    top: 9.5rem;
+}
+
+.WideFeatureContainer > div {
+    max-width: 33vw;
+}
+
+@media(max-width: 700px) {
+    .WideFeatureContainer > div {
+        max-width: 92.5vw;
+    }
+
+}
+
+.WideFeatureInnerContainer {
+    overflow: hidden;
+    border-radius: 1rem;
+    width: max-content;
 }

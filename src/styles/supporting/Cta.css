@@ -1,7 +1,10 @@
-.IndexCta_Container {
-    padding: 0 1rem;
+.IndexCta_ExternalContainer {
     background-color: black;
     box-shadow: 0 10px 100px 100px black;
+}
+
+.IndexCta_Container {
+    padding: 0 1rem;
     height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
