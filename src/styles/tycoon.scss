@@ -297,3 +297,11 @@ button:not(:disabled):active {
     70% { transform: translate(-85%, 0); }
     71%   { transform: translate(0%, 0); }
 }
+
+.FeatureContainerOpen ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
+    margin-top: 2rem;
+}
+
+.FeatureContainerOpenMedium ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
+    margin-top: 7rem;
+}
