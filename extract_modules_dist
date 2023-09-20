@@ -1,0 +1,3 @@
+rm -rf modules
+mkdir modules 
+tar -xzvf tycoon-client-modules-dist.tar.gz -C modules --strip-components=1
