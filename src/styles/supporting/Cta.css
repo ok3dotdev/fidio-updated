@@ -3,15 +3,18 @@
     background-color: black;
     box-shadow: 0 10px 100px 100px black;
     height: -webkit-fill-available;
-    height: 100%;
     display: flex;
     flex-direction: column;
     place-content: space-around;
 }
 
-.IndexCta_Lead, .IndexCta_Lead2 {
+.IndexCta_Lead, .IndexCta_Lead2, .IndexCta_Lead1_5 {
     font-size: 9rem;
     margin: 4rem 0 0rem 0;
+}
+
+.IndexCta_Lead1_5 {
+    font-size: 7.5rem;
 }
 
 .IndexCta_Lead2 {
