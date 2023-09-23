@@ -160,6 +160,7 @@ button:not(:disabled):active {
     display: flex;
     justify-content: space-between;
     padding: .5rem;
+    height: 100%;
 }
 
 .leadMenuContainer~div {
@@ -311,7 +312,6 @@ button:not(:disabled):active {
 }
 
 .WideFeatureContainer {
-    z-index: 200;
     height: auto;
     place-content: center;
     width: 100%;
@@ -343,4 +343,8 @@ button:not(:disabled):active {
     overflow: hidden;
     border-radius: 1rem;
     width: max-content;
+}
+
+.img_control img {
+    height: inherit;
 }
