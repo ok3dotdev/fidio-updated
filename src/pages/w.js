@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
 import React from 'react'
 import { useRouter } from 'next/router'
-import { fetchPost } from '/modules/utility/fetch'
-import resolveConfig, { resolveVariables } from '/app.config'
+import resolveConfig, { resolveVariables, pageDefaults } from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 import { Menu } from '/modules/menu/'
+
+const pageName = 'w'
 
 export const page = props => {
     const router = useRouter()
@@ -19,14 +21,20 @@ export const page = props => {
     let resolvedPage = resolvePage(config, props.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
 
-    React.useEffect(() => {
-        const getDefaults = async () => {
-            const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching)
-            if (!isObjectEmpty(defaults)) {
-                const newProps = Object.assign({...props}, defaults)
-                setMergeProps(newProps)
-            }
+    const getDefaults = async force => {
+        const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching, force)
+        if (!isObjectEmpty(defaults)) {
+            const newProps = Object.assign({...props}, defaults)
+            setMergeProps(newProps)
         }
+    }
+    
+    props._LocalEventEmitter.unsubscribe('refetchDefaults')
+    props._LocalEventEmitter.subscribe('refetchDefaults', e => {
+        getDefaults(true)
+    })
+
+    React.useEffect(() => {
         if (resolvedPage && resolvedPage.url && !fetching && isObjectEmpty(mergeProps)) {
             getDefaults()
         }
@@ -40,13 +48,13 @@ export const page = props => {
 	return (
         <React.Fragment>
             <Menu {...useProps}></Menu>
-            <div>{components}</div>
+            <div className={`${pageName}_Body`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
         </React.Fragment>
 	)
 }
 
 export const getServerSideProps = async (context) => {
-	return await getServerSidePropsDefault(context)
+	return await getServerSidePropsDefault(context, pageDefaults[pageName])
 }
 
 export default page
