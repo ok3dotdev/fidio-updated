@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
+// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
 import React from 'react'
 import { useRouter } from 'next/router'
@@ -21,20 +21,24 @@ export const Page = props => {
     let resolvedPage = resolvePage(config, props.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
 
-    React.useEffect(() => {
-        const getDefaults = async () => {
-            const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching)
-            if (!isObjectEmpty(defaults)) {
-                const newProps = Object.assign({...props}, defaults)
-                setMergeProps(newProps)
-            }
+    const getDefaults = async force => {
+        const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching, force)
+        if (!isObjectEmpty(defaults)) {
+            const newProps = Object.assign({...props}, defaults)
+            setMergeProps(newProps)
         }
+    }
+    
+    props._LocalEventEmitter.unsubscribe('refetchDefaults')
+    props._LocalEventEmitter.subscribe('refetchDefaults', e => {
+        getDefaults(true)
+    })
+
+    React.useEffect(() => {
         if (resolvedPage && resolvedPage.url && !fetching && isObjectEmpty(mergeProps)) {
             getDefaults()
         }
     }, [ fetching, mergeProps, resolvedPage ])
-
-    console.log(props, mergeProps)
 
     const useProps = handlePropsPriority(mergeProps, props)
     config = resolveConfig(variables, useProps)
@@ -44,7 +48,7 @@ export const Page = props => {
 	return (
         <React.Fragment>
             <Menu {...useProps}></Menu>
-            <div>{components}</div>
+            <div className={`${pageName}_Body`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
         </React.Fragment>
 	)
 }
