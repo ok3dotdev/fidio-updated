@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
 import React from 'react'
 import { useRouter } from 'next/router'
@@ -8,7 +7,7 @@ import { basicError, generateComponent, handlePropsPriority, resolvePage, getSer
 import { isObjectEmpty } from '/modules/util'
 import { Menu } from '/modules/menu/'
 
-const pageName = 'p'
+const pageName = 'Live'
 
 export const page = props => {
     const router = useRouter()
