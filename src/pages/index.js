@@ -15,22 +15,8 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Hero from '../../customModules/features/Hero';
-import React from 'react';
-import { useRouter } from 'next/router';
-import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
-import {
-  basicError,
-  generateComponent,
-  handlePropsPriority,
-  resolvePage,
-  getServerSidePropsDefault,
-  resolveDefaults,
-} from '/modules/utility.js';
-import { isObjectEmpty } from '/modules/util';
-// import { Menu } from '/modules/menu/'
-import Hero from '../../customModules/features/Hero';
 import Footer from '../../customModules/features/Footer';
-import Menu from '../../customModules/features/MenuSplash';
+// import Menu from '../../customModules/features/MenuSplash';
 
 const pageName = 'Index';
 
@@ -83,14 +69,21 @@ export const Page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
-    <React.Fragment>
-      <Menu {...useProps} classname='bg-red-900'></Menu>
-      <main className={`${pageName}_main`}>
+    <div className='bg-gray-900'>
+      <Menu {...useProps} classname=''></Menu>
+      <div
+        style={{
+          top: useProps.menuConfig.height
+            ? useProps.menuConfig.height + 'px'
+            : '',
+        }}
+        className={`${pageName}_Body h-full `}
+      >
         <Hero {...props} />
-      </main>
+      </div>
       <Footer />
       {/* <div>{components}</div> */}
-    </React.Fragment>
+    </div>
   );
 };
 
