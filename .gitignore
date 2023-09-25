@@ -48,3 +48,6 @@ public/font
 public/img/internal
 src/styles/MyStyles.module.css
 /customModules
+!*/customModules/features/FeatureModule1.js
+!*/customModules/index.js
+!*/customModules/index_backup.js
