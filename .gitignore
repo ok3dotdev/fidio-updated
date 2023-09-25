@@ -51,3 +51,4 @@ src/styles/MyStyles.module.css
 !*/customModules/features/FeatureModule1.js
 !*/customModules/index.js
 !*/customModules/index_backup.js
+/public/doc/internal/*
