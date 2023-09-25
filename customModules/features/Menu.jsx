@@ -3,7 +3,7 @@ import React from 'react'
 const Menu = () => {
   return (
     <div className='bg-gray-900 z-40'>
-        <div className='max-w-8xl mx-auto flex justify-between p-4 items-center'>
+        <div className='max-w-4xl mx-auto flex justify-between p-4 items-center'>
             <div>
                 <img src="/img/features/logo.png" alt="" width=""/>
             </div>
