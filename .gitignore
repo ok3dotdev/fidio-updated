@@ -47,3 +47,4 @@ modules/
 public/font
 public/img/internal
 src/styles/MyStyles.module.css
+/customModules
