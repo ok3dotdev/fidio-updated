@@ -15,6 +15,22 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Hero from '../../customModules/features/Hero';
+import React from 'react';
+import { useRouter } from 'next/router';
+import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
+import {
+  basicError,
+  generateComponent,
+  handlePropsPriority,
+  resolvePage,
+  getServerSidePropsDefault,
+  resolveDefaults,
+} from '/modules/utility.js';
+import { isObjectEmpty } from '/modules/util';
+// import { Menu } from '/modules/menu/'
+import Hero from '../../customModules/features/Hero';
+import Footer from '../../customModules/features/Footer';
+import Menu from '../../customModules/features/MenuSplash';
 
 const pageName = 'Index';
 
@@ -68,18 +84,11 @@ export const Page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <React.Fragment>
-      <Menu {...useProps}></Menu>
-      <div
-        className={`${pageName}_Body`}
-        style={{
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
-        }}
-      >
-        {components}
-      </div>
-      <Hero {...props} />
+      <Menu {...useProps} classname='bg-red-900'></Menu>
+      <main className={`${pageName}_main`}>
+        <Hero {...props} />
+      </main>
+      <Footer />
       {/* <div>{components}</div> */}
     </React.Fragment>
   );

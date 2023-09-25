@@ -6,9 +6,16 @@
 @import "supporting/AdminPanel.css";
 @import "supporting/Product.css";
 @import "supporting/Ecommerce.scss";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 html {
     // background: black;
+
+    height: 100%;
 }
 
 body {
