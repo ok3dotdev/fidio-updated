@@ -1,8 +1,13 @@
 import React from 'react';
-import { GridList } from '../../modules/video/player/gridList';
+import { Feature } from '../../modules/search/feature';
 
 const HomeDash = (props) => {
-  return <div className='pt-[74px] px-8'>dash</div>;
+  return (
+    <div className='pt-[45px] px-8 w-full'>
+      <Feature {...props} />
+      dash
+    </div>
+  );
 };
 
 export default HomeDash;

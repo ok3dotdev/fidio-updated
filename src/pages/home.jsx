@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { fetchPost } from '/modules/utility/fetch';
-import resolveConfig, { resolveVariables } from '/app.config';
+import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
 import {
   basicError,
   generateComponent,
@@ -15,6 +15,8 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Layout from '../../customModules/features/Layout';
+
+const pageName = 'home';
 
 export const page = (props) => {
   const router = useRouter();
@@ -64,16 +66,29 @@ export const page = (props) => {
   resolvedPage = resolvePage(config, useProps.path);
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
+
+  console.log({ useProps });
   return (
     <Layout props={useProps}>
       {/* <Menu {...useProps}></Menu> */}
-      <div>{components}</div>
+      <div
+        className={`${pageName}_Body`}
+        style={{
+          width: '100%',
+          height: '100%',
+          top: useProps.menuConfig.height
+            ? useProps.menuConfig.height + 'px'
+            : '',
+        }}
+      >
+        {components}
+      </div>
     </Layout>
   );
 };
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default page;

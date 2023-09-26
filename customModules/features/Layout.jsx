@@ -1,6 +1,6 @@
 import React from 'react';
-// import Menu from '../../modules/menu/Menu';
-import Menu from '../features/Menu';
+import Menu from '../../modules/menu/Menu';
+// import Menu from '../features/Menu';
 
 const Layout = ({ props, children }) => {
   return (
