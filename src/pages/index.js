@@ -13,10 +13,9 @@ import {
   resolveDefaults,
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
-import { Menu } from '/modules/menu/';
 import Hero from '../../customModules/features/Hero';
-import Footer from '../../customModules/features/Footer';
-// import Menu from '../../customModules/features/MenuSplash';
+import HomeLayout from '../../customModules/features/HomeLayout';
+import { homePageData } from '../../customModules/features/seo-data';
 
 const pageName = 'Index';
 
@@ -69,20 +68,14 @@ export const Page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
-    <div className='bg-gray-900'>
-      <Menu {...useProps} classname=''></Menu>
-      <div
-        style={{
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
-        }}
-        className={`${pageName}_Body h-full `}
+    <div className=''>
+      <HomeLayout
+        useProps={useProps}
+        pageName={pageName}
+        pageData={homePageData}
       >
         <Hero {...props} />
-      </div>
-      <Footer />
-      {/* <div>{components}</div> */}
+      </HomeLayout>
     </div>
   );
 };

@@ -67,7 +67,7 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
 
-  console.log({ useProps });
+  // console.log({ useProps });
   return (
     <Layout props={useProps}>
       {/* <Menu {...useProps}></Menu> */}

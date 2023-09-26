@@ -17,7 +17,7 @@ const Footer = () => {
               <a href='/privacy'>Privacy Policy</a>
             </li>
             <li>
-              <a href='#'>Faq</a>
+              <a href='#'>FAQ</a>
             </li>
           </ul>
         </div>
@@ -25,16 +25,16 @@ const Footer = () => {
           <p className='mb-4 text-gray-400'>COMPANY</p>
           <ul className='flex flex-col gap-4 text-white'>
             <li>
-              <a href=''>Artist & Managers</a>
+              <a href='mailto:admin@fidio.ca'>Artist & Managers</a>
             </li>
             <li>
-              <a href=''>Clubs & Venues</a>
+              <a href='mailto:admin@fidio.ca'>Clubs & Venues</a>
             </li>
             <li>
-              <a href=''>Partners</a>
+              <a href='mailto:admin@fidio.ca'>Partners</a>
             </li>
             <li>
-              <a href=''>Sponsors</a>
+              <a href='mailto:admin@fidio.ca'>Sponsors</a>
             </li>
           </ul>
         </div>
@@ -42,16 +42,30 @@ const Footer = () => {
           <p className='mb-4 text-gray-400'>FOLLOW US</p>
           <ul className='flex flex-col gap-4 text-white'>
             <li>
-              <a href=''>Instagram</a>
+              <a
+                target='_blank'
+                href='https://www.instagram.com/fidio_official/?igshid=MWZjMTM2ODFkZg%3D%3D'
+              >
+                Instagram
+              </a>
             </li>
             <li>
-              <a href=''>Facebook</a>
+              <a target='_blank' href='https://www.facebook.com/Fidioafrica'>
+                Facebook
+              </a>
             </li>
             <li>
-              <a href=''>Twitter</a>
+              <a target='_blank' href='#'>
+                Twitter
+              </a>
             </li>
             <li>
-              <a href=''>LinedIn</a>
+              <a
+                target='_blank'
+                href='https://www.linkedin.com/company/fidio-inc/'
+              >
+                LinkedIn
+              </a>
             </li>
           </ul>
         </div>
