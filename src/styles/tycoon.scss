@@ -161,9 +161,10 @@ button:not(:disabled):active {
     justify-content: space-between;
     padding: .5rem;
     height: 100%;
+    align-items: center;
 }
 
-.leadMenuContainer~div {
+.leadMenuContainer + div {
     position: relative;
     top: 35px;
 }
