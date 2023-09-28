@@ -566,12 +566,12 @@ video {
   top: 0px;
 }
 
-.z-40 {
-  z-index: 40;
-}
-
 .z-20 {
   z-index: 20;
+}
+
+.z-40 {
+  z-index: 40;
 }
 
 .col-span-1 {
@@ -1069,18 +1069,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.opacity-50 {
-  opacity: 0.5;
-}
-
-.opacity-30 {
-  opacity: 0.3;
-}
-
-.opacity-60 {
-  opacity: 0.6;
 }
 
 .opacity-70 {

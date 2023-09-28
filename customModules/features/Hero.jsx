@@ -15,7 +15,7 @@ const Hero = (props) => {
             Your Gateway to Live <span className='text '>Afrobeats</span>{' '}
             Concerts
           </p>
-          <SignIn {...props} />
+          <SignIn redirectOnAuth={'/home'} {...props} />
         </div>
         <div className='w-full flex justify-center lg:basis-1/3 pb-32 pt-16 lg:pt-0 '>
           <div className='bg-black p-4 inline-flex flex-col rounded-lg lg:w-[590px] lg:max-w-[400px] max-w-[300px] max-h-[600px] shadow-xl'>
