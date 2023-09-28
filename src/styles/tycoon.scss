@@ -167,11 +167,12 @@ button:not(:disabled):active {
   justify-content: space-between;
   padding: 0.5rem;
   height: 100%;
+  align-items: center;
 }
 
 .leadMenuContainer + div {
   position: relative;
-  top: 45px;
+  top: 35px;
 }
 
 .dropMenu {
