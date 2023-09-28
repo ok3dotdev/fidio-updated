@@ -10,6 +10,13 @@
 .Terms_Body {
   top: 0 !important;
 }
+.Feature_featureExternalContainer__HMUAB {
+  position: relative !important;
+  margin-bottom: 32px;
+}
+.hero {
+  background-image: url('/img/features/bg.jpeg');
+}
 
 .hero-bg {
   background-image: linear-gradient(

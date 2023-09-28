@@ -72,7 +72,7 @@ export const page = (props) => {
     <Layout props={useProps}>
       {/* <Menu {...useProps}></Menu> */}
       <div
-        className={`${pageName}_Body`}
+        className={`${pageName}_Body overflow-scroll`}
         style={{
           width: '100%',
           height: '100%',

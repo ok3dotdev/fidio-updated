@@ -4,14 +4,16 @@ import { SignIn } from '../../modules/onboarding/signin';
 const Hero = (props) => {
   console.log({ props });
   return (
-    <div className='min-h-screen hero-bg'>
-      <div className='max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[150px] flex flex-col lg:flex-row gap-4 h-full lg:h-auto'>
+    <div className='min-h-screen hero'>
+      <div className='absolute inset-0 bg-black opacity-70'></div>
+      <div className='max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[150px] flex flex-col lg:flex-row gap-4 h-full lg:h-auto relative z-20'>
         <div className='flex flex-col items-center lg:items-start basis-2/3 justify-center lg:justify-start'>
-          <h1 className='font-black text-3xl lg:text-6xl mb-1 text-white text-center lg:text-left'>
-            ENJOY YOUR BEST AFRICAN MUSICAL CONCERTS
+          <h1 className='font-black text-3xl lg:text-6xl mb-1 text-white text-center lg:text-left max-w-[600px]'>
+            Unlock the Rhythm of Africa
           </h1>
           <p className='mb-8 text-white text-lg'>
-            At The Comfort Of Your Own Home
+            Your Gateway to Live <span className='text '>Afrobeats</span>{' '}
+            Concerts
           </p>
           <SignIn {...props} />
         </div>
@@ -24,7 +26,7 @@ const Hero = (props) => {
                 className='w-full h-auto'
               />
             </div>
-            <div className='flex mt-4 justify-between shadow-lg'>
+            <div className='flex mt-4 justify-between shadow-xl'>
               <div className='text-left'>
                 <p className='font-black text-xl text-white'>BURLIN B</p>
                 <p className='text-sm text-gray-600'>BORN THIS WAY TOUR</p>
