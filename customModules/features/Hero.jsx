@@ -21,7 +21,7 @@ const Hero = (props) => {
           <div className='bg-black p-4 inline-flex flex-col rounded-lg lg:w-[590px] lg:max-w-[400px] max-w-[300px] max-h-[600px] shadow-xl'>
             <div className='h-[300px] lg:h-[400px] overflow-hidden bg-gray-400 overflow-'>
               <img
-                src='/img/features/hero-live.png'
+                src='/img/internal/hero-live.png'
                 alt=''
                 className='w-full h-auto'
               />

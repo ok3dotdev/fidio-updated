@@ -15,7 +15,9 @@
   margin-bottom: 32px;
 }
 .hero {
-  background-image: url('/img/features/bg.jpeg');
+  background-image: url('/img/internal/bg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero-bg {

@@ -8,7 +8,7 @@ const Layout = ({ props, children }) => {
     <div className='bg-red-200 relative h-screen overflow-hidden'>
       <Menu {...props} page={'home'} />
       <div className='bg-black  h-full flex'>
-        <Sidebar />
+        <Sidebar {...props} />
         {children}
       </div>
     </div>

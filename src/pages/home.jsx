@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { fetchPost } from '/modules/utility/fetch';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
@@ -23,6 +23,8 @@ export const page = (props) => {
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
   const [mergeProps, setMergeProps] = React.useState({});
+  const [profileLoaded, setProfileLoaded] = React.useState(false);
+  const [lastCheckedProfile, setLastCheckedProfile] = useState(null);
   let resolvedDefinition = props.resolvedDefinition;
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
@@ -60,6 +62,59 @@ export const page = (props) => {
       getDefaults();
     }
   }, [fetching, mergeProps, resolvedPage]);
+
+  const getUserProfileData = async (props) => {
+    try {
+      setFetching(true);
+      setLastCheckedProfile(new Date().getTime());
+      setTimeout(() => {
+        setFetching(false);
+      }, 30000);
+      let fetchBody = {
+        domainKey: props.domainKey,
+        params: {
+          u: props._loggedIn.username,
+        },
+        hash: props._loggedIn.hash,
+        identifier: props._loggedIn.identifier,
+      };
+      let res = await fetchPost(
+        props.apiUrl + '/m/pagedefaults',
+        null,
+        null,
+        fetchBody
+      );
+      if (!res) {
+        return false;
+      } else if (res.hasOwnProperty('status')) {
+        if (res.status == 'disauthenticated') {
+          setFetching(false);
+          logout();
+          return 'disauthenticated';
+        } else if (res.status == 'failed') {
+          setFetching(false);
+          return false;
+        } else if (res.status == 'success') {
+          setFetching(false);
+          setProfileLoaded(true);
+          console.log('res', res);
+          return res;
+        }
+      }
+      setFetching(false);
+    } catch (err) {
+      setFetching(false); // fail silently
+    }
+  };
+  if (
+    !profileLoaded &&
+    !fetching &&
+    props._loggedIn &&
+    props._loggedIn.username
+  ) {
+    const threshold = 2000;
+    getUserProfileData(props);
+  }
 
   const useProps = handlePropsPriority(mergeProps, props);
   config = resolveConfig(variables, useProps);
