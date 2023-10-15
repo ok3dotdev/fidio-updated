@@ -2,8 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: Archivo Black, helvetica, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+}
+.amin-heading {
+  font-family: Archivo Black;
+}
+
+.Username_ContainerBg {
+  background: none !important;
+}
+
+.Username_PromptContainer {
+  align-items: start;
+  gap: 20px;
+}
+.Username_PromptContainer > span {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Username_PromptContainer > span > button {
+  @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin;
+}
+.simpleTextInput {
+  height: 48px;
+  padding: 20px;
+  color: black;
+  border-radius: 6px;
+}
+
+.marquee1,
+.marquee2 {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .glider_heading {
+    margin-top: 0.25rem !important;
+    text-wrap: wrap !important;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* .hover\:blur:hover {
+  filter: blur(1px);
+} */
+
 .menuContainer > ul {
   height: 100% !important;
+}
+.glide__slides {
+  gap: 1rem !important;
 }
 .Index_Body,
 .Privacy_Body,

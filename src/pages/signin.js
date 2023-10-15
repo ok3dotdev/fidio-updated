@@ -16,6 +16,7 @@ import { isObjectEmpty } from '/modules/util';
 import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '../../customModules/features/seo-data';
+import Signin from '../../customModules/features/Signin';
 
 const pageName = 'Index';
 
@@ -69,14 +70,7 @@ export const Page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <div className=''>
-      <HomeLayout
-        useProps={useProps}
-        pageName={pageName}
-        pageData={homePageData}
-        props={props}
-      >
-        <Hero {...props} />
-      </HomeLayout>
+      <Signin {...props} />
     </div>
   );
 };

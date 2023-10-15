@@ -2,10 +2,14 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='w-full'>
-      <div className='flex flex-wrap justify-between pt-8 w-full pb-6 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-[110rem] mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
-        <div className='text-center col-span-1 lg:col-span-2 w-full'>
-          <img src='/img/internal/logo.png' alt='' className='h-auto' />
+    <div className='w-full bg-black'>
+      <div className='flex flex-wrap justify-between pt-8 w-full pb-1 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-[110rem] mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
+        <div className='text-center col-span-1 lg:col-span-2 w-full flex justify-center lg:block'>
+          <img
+            src='/img/internal/frame2.png'
+            alt=''
+            className='h-auto w-[260px]'
+          />
         </div>
         <div className='col-span-1'>
           <p className='mb-4 text-gray-400'>LEGAL</p>

@@ -14,6 +14,7 @@ import { resolveVariables } from '/app.config';
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
 import { isObjectEmpty } from '/modules/util';
+import { Archivo_Black } from 'next/font/google';
 
 function MyApp({ Component, pageProps }) {
   const [_loggedIn, _setLoggedIn] = React.useState(false);
@@ -123,6 +124,13 @@ function MyApp({ Component, pageProps }) {
 
   // console.log(socket);
 
+  // const archivoBlack = Archivo_Black({
+  //   weight: '400',
+  //   subsets: ['latin'],
+  //   variable: '--font-archivo',
+  //   style: 'normal',
+  // });
+
   return (
     <div>
       <Head>
@@ -181,7 +189,9 @@ function MyApp({ Component, pageProps }) {
         </Script>
       </>
       <SocketContainer socket={socket} {...pageProps}></SocketContainer>
-      <Component socket={socket} {...pageProps} />
+      <main>
+        <Component socket={socket} {...pageProps} />
+      </main>
     </div>
   );
 }

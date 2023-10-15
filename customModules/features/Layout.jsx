@@ -1,14 +1,15 @@
 import React from 'react';
-import Menu from '../../modules/menu/Menu';
+// import Menu from '../../modules/menu/Menu';
 import Sidebar from './Sidebar';
-// import Menu from '../features/Menu';
+import Menu from '../features/Menu';
+import Footer from './Footer';
 
-const Layout = ({ props, children }) => {
+const Layout = ({ props, children, userData }) => {
   return (
-    <div className='bg-red-200 relative h-screen overflow-hidden'>
-      <Menu {...props} page={'home'} />
+    <div className=' relative h-screen'>
+      <Menu page={'home'} {...props} />
       <div className='bg-black  h-full flex'>
-        <Sidebar {...props} />
+        {/* <Sidebar {...props} userData={userData} /> */}
         {children}
       </div>
     </div>

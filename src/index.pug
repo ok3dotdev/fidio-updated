@@ -1,0 +1,9 @@
+- if (
+  index === 0 &&
+  relatedArticles &&
+  relatedArticles.length &&
+  fourthParagraph &&
+  fourthParagraph.nextElementSibling &&
+  fourthParagraph.nextElementSibling.nodeName === "P" &&
+  (!fourthParagraph.nextElementSibling.firstElementChild || fourthParagraph.nextElementSibling.firstElementChild.className !== "social-disclaimer-para")
+)

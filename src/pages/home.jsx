@@ -15,6 +15,7 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Layout from '../../customModules/features/Layout';
+import HomeLayout from '../../customModules/features/HomeLayout';
 
 const pageName = 'home';
 
@@ -23,8 +24,6 @@ export const page = (props) => {
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
   const [mergeProps, setMergeProps] = React.useState({});
-  const [profileLoaded, setProfileLoaded] = React.useState(false);
-  const [lastCheckedProfile, setLastCheckedProfile] = useState(null);
   let resolvedDefinition = props.resolvedDefinition;
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
@@ -52,24 +51,50 @@ export const page = (props) => {
     getDefaults(true);
   });
 
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [fetchingProfile, setFetchingProfile] = React.useState(false);
+  const [profileLoaded, setProfileLoaded] = React.useState(false);
+  const r = React.useRef();
+  const profileEvent = 'fetchProfileData';
   React.useEffect(() => {
-    if (
-      resolvedPage &&
-      resolvedPage.url &&
-      !fetching &&
-      isObjectEmpty(mergeProps)
-    ) {
-      getDefaults();
+    if (!componentDidMount && props._LocalEventEmitter) {
+      r.current = setInterval(() => {
+        props._LocalEventEmitter.dispatch(profileEvent, {
+          dispatch: 'fetch',
+        });
+      }, 5000);
+      setComponentDidMount(true);
     }
-  }, [fetching, mergeProps, resolvedPage]);
+  }, [props._LocalEventEmitter, componentDidMount]);
+
+  props._LocalEventEmitter.unsubscribe(profileEvent);
+  props._LocalEventEmitter.subscribe(profileEvent, (e) => {
+    console.log(
+      e,
+      profileLoaded,
+      fetchingProfile,
+      props._loggedIn,
+      e.dispatch == 'fetch'
+    );
+    if (e.dispatch && e.dispatch == 'fetch') {
+      if (
+        !profileLoaded &&
+        !fetchingProfile &&
+        props._loggedIn &&
+        props._loggedIn.username
+      ) {
+        console.log('Running!');
+        getUserProfileData(props);
+      }
+    }
+  });
 
   const getUserProfileData = async (props) => {
     try {
-      setFetching(true);
-      setLastCheckedProfile(new Date().getTime());
+      setFetchingProfile(true);
       setTimeout(() => {
-        setFetching(false);
-      }, 30000);
+        setFetchingProfile(false);
+      }, 1000);
       let fetchBody = {
         domainKey: props.domainKey,
         params: {
@@ -77,7 +102,9 @@ export const page = (props) => {
         },
         hash: props._loggedIn.hash,
         identifier: props._loggedIn.identifier,
+        profileReq: true,
       };
+      console.log('Running req', fetchBody, props.apiUrl + '/m/pagedefaults');
       let res = await fetchPost(
         props.apiUrl + '/m/pagedefaults',
         null,
@@ -85,36 +112,28 @@ export const page = (props) => {
         fetchBody
       );
       if (!res) {
+        setFetchingProfile(false);
         return false;
       } else if (res.hasOwnProperty('status')) {
         if (res.status == 'disauthenticated') {
-          setFetching(false);
+          setFetchingProfile(false);
           logout();
           return 'disauthenticated';
         } else if (res.status == 'failed') {
-          setFetching(false);
+          setFetchingProfile(false);
           return false;
         } else if (res.status == 'success') {
-          setFetching(false);
-          setProfileLoaded(true);
+          setFetchingProfile(false);
+          setProfileLoaded(res);
           console.log('res', res);
           return res;
         }
       }
-      setFetching(false);
+      setFetchingProfile(false);
     } catch (err) {
-      setFetching(false); // fail silently
+      setFetchingProfile(false); // fail silently
     }
   };
-  if (
-    !profileLoaded &&
-    !fetching &&
-    props._loggedIn &&
-    props._loggedIn.username
-  ) {
-    const threshold = 2000;
-    getUserProfileData(props);
-  }
 
   const useProps = handlePropsPriority(mergeProps, props);
   config = resolveConfig(variables, useProps);
@@ -123,22 +142,16 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
 
   // console.log({ useProps });
+  console.log('home', profileLoaded.data);
   return (
-    <Layout props={useProps}>
-      {/* <Menu {...useProps}></Menu> */}
-      <div
-        className={`${pageName}_Body overflow-scroll`}
-        style={{
-          width: '100%',
-          height: '100%',
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
-        }}
-      >
-        {components}
-      </div>
-    </Layout>
+    <HomeLayout
+      useProps={useProps}
+      pageName={pageName}
+      pageData={''}
+      props={useProps}
+    >
+      {components}
+    </HomeLayout>
   );
 };
 
