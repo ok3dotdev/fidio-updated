@@ -258,8 +258,9 @@ button:not(:disabled):active {
     height: -webkit-fill-available;
     background: grey;
     width: -webkit-fill-available;
-    position: absolute;
+    position: fixed;
     opacity: .5;
+    top: 0;
 }
 
 .fetchBusy100 {
@@ -306,23 +307,19 @@ button:not(:disabled):active {
     display: flex;
 }
 
-.marquee1 {
+.marquee1, .marquee2 {
     display: inline-block;
     animation: marquee1 10s linear infinite;
     padding: 0 .25rem;
     background: #792c38;
     display: flex;
     gap: .25rem;
+    align-items: center;
   }
   
 .marquee2 {
-    display: inline-block;
     animation: marquee2 10s linear infinite;
     animation-delay: 5s;
-    padding: 0 .25rem;
-    background: #792c38;
-    display: flex;
-    gap: .25rem;
 }
 
 @keyframes marquee1 {
