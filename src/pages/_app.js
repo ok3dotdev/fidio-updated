@@ -15,6 +15,12 @@ import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
 import { isObjectEmpty } from '/modules/util';
 import { Archivo_Black } from 'next/font/google';
+import {
+  addToCartGlobal,
+  calculateTotal,
+  updateCart,
+  performPurchase,
+} from '/modules/utility/ecommerce';
 
 function MyApp({ Component, pageProps }) {
   const [_loggedIn, _setLoggedIn] = React.useState(false);
@@ -23,6 +29,7 @@ function MyApp({ Component, pageProps }) {
   const [_pageError, _setPageError] = React.useState(null);
   const [_openMenu, _setOpenMenu] = React.useState({});
   const [_cart, _setCart] = React.useState({});
+  const [fetchBusy, setFetchBusy] = React.useState(false);
 
   React.useEffect(() => {
     const muteLoginErr = () => {
@@ -99,6 +106,102 @@ function MyApp({ Component, pageProps }) {
       if (e.dispatch === '_cart') {
         // console.log('updating');
         _setCart(JSON.parse(window.localStorage.getItem('cart'))); // Should force reload of cart props
+      }
+    }
+  });
+
+  LocalEventEmitter.unsubscribe('global_event');
+  LocalEventEmitter.subscribe('global_event', async (e) => {
+    console.log(e);
+    if (e) {
+      if (e.action === 'buy') {
+        _setPageError(null);
+        if (!fetchBusy && e.item && e.style && e.option) {
+          let cart = JSON.parse(localStorage.getItem('cart'));
+          const res = await addToCartGlobal(
+            pageProps.apiUrl,
+            pageProps.domainKey,
+            pageProps._loggedIn,
+            cart,
+            e.item,
+            {
+              style: e.style,
+              option: e.option,
+            },
+            setFetchBusy
+          );
+          if (res) {
+            if (res.status === 'success') {
+              updateCart(cart, res.cart);
+              // Successfully added to cart, must perform purchase
+              cart = JSON.parse(localStorage.getItem('cart'));
+              const snapshot = calculateTotal(cart, null, { object: true });
+              console.log('snapshot', snapshot);
+              const res2 = await performPurchase(
+                pageProps.apiUrl,
+                pageProps.domainKey,
+                pageProps._loggedIn,
+                cart,
+                setFetchBusy,
+                {
+                  snapshot: snapshot,
+                }
+              );
+              if (res2) {
+                if (res2.status === 'success') {
+                  if (res2.data && res2.data.cart) {
+                    updateCart(cart, res2.data.cart);
+                  }
+                  if (res2?.data?.order?.id) {
+                    pageProps._LocalEventEmitter.dispatch('cart_update', {
+                      dispatch: 'purchase',
+                      id: res2.data.order.id,
+                    });
+                    console.log('Purchase Success', res2);
+                  }
+                } else {
+                  _setPageError({
+                    message: 'Purchase failed',
+                    placement: 'purchase',
+                  });
+                }
+              } else {
+                _setPageError({
+                  message: 'Purchase failed',
+                  placement: 'purchase',
+                });
+              }
+              setFetchBusy(false);
+            }
+          }
+        }
+      } else if (e.action === 'add_to_cart') {
+        _setPageError(null);
+        if (!fetchBusy && e.item && e.style && e.option) {
+          const cart = JSON.parse(localStorage.getItem('cart'));
+          const res = await addToCartGlobal(
+            pageProps.apiUrl,
+            pageProps.domainKey,
+            pageProps._loggedIn,
+            cart,
+            e.item,
+            {
+              style: e.style,
+              option: e.option,
+            },
+            setFetchBusy
+          );
+          if (res) {
+            if (res.status === 'success') {
+              updateCart(cart, res.cart);
+            }
+          } else {
+            _setPageError({
+              message: 'Add to cart failed',
+              placement: 'add_to_cart',
+            });
+          }
+        }
       }
     }
   });
@@ -189,9 +292,10 @@ function MyApp({ Component, pageProps }) {
         </Script>
       </>
       <SocketContainer socket={socket} {...pageProps}></SocketContainer>
-      <main>
-        <Component socket={socket} {...pageProps} />
-      </main>
+      <div
+        className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
+      ></div>
+      <Component socket={socket} {...pageProps} />
     </div>
   );
 }
