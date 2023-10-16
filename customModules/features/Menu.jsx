@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const Menu = (props) => {
+  console.log('menu', props);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -17,18 +18,25 @@ const Menu = (props) => {
           </Link>
         </div>
         <div className='lg:flex gap-4 hidden'>
-          <Link
-            className='px-6 py-2 rounded-md flex justify-center items-center'
-            href='/signin'
-          >
-            Login
-          </Link>
-          <Link
-            className='bg-white text-black px-6 py-2 rounded-md flex justify-center items-center'
-            href='/signin'
-          >
-            Sign Up
-          </Link>
+          {!props._loggedIn ? (
+            <>
+              <Link
+                className='px-6 py-2 rounded-md flex justify-center items-center'
+                href='/signin'
+              >
+                Login
+              </Link>
+              <Link
+                className='bg-white text-black px-6 py-2 rounded-md flex justify-center items-center'
+                href='/signin'
+              >
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <div></div>
+          )}
+
           <div className='w-12 h-12 rounded-full'>
             <a href='/p'>
               <img
