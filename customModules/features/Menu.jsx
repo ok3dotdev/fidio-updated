@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const Menu = (props) => {
-  console.log('menu', props);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -73,7 +72,7 @@ const Menu = (props) => {
         <div className='lg:hidden fixed inset-0 bg-black p-4 transition-transform transform-gpu translate-y-0 ease-out duration-300 flex flex-col justify-between'>
           <div>
             <div className='flex justify-between items-center mb-8'>
-              <Link href='/'>
+              <Link href='/home'>
                 <img
                   src='/img/internal/frame2.png'
                   alt=''

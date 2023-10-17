@@ -7,6 +7,7 @@ import resolveConfig, { resolveVariables, pageDefaults } from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 import { Menu } from '/modules/menu/'
+import AltMenu from '../../customModules/features/AltMenu'
 
 const pageName = 'w'
 
@@ -47,7 +48,7 @@ export const page = props => {
     const components = generateComponent(resolvedDefinition)
 	return (
         <React.Fragment>
-            <Menu {...useProps}></Menu>
+            <AltMenu {...useProps}></AltMenu>
             <div className={`${pageName}_Body`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
         </React.Fragment>
 	)

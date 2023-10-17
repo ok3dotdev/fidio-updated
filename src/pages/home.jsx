@@ -125,7 +125,7 @@ export const page = (props) => {
         } else if (res.status == 'success') {
           setFetchingProfile(false);
           setProfileLoaded(res);
-          console.log('res', res);
+          console.log('res11', res);
           return res;
         }
       }
@@ -142,7 +142,7 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
 
   // console.log({ useProps });
-  console.log('home', profileLoaded.data);
+  console.log('home', profileLoaded);
   return (
     <HomeLayout
       useProps={useProps}

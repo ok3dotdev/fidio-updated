@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Hero = (props) => {
-  // console.log({ props });
+  console.log({ props });
   return (
     <div className='min-h-screen h-full absolute top-0 w-full'>
       <video
@@ -18,10 +18,7 @@ const Hero = (props) => {
           <h1 className='font-black text-4xl md:text-6xl lg:text-7xl mb-1 text-white text-center lg:text-left max-w-[800px] main-heading'>
             Your Premiere Home for Live Afrobeats
           </h1>
-          {/* <p className='mb-8 text-white text-lg'>
-            Your Gateway to Live <span className='text '>Afrobeats</span>{' '}
-            Concerts
-          </p> */}
+          {props._loggedIn ? <Link href={'/home'} className='mt-8 px-8 py-4 bg-orange-800 text-white rounded-md'>Get Started</Link> : ''}
         </div>
         <div className='w-full flex flex-col lg:flex-row lg:justify-center items-center lg:basis-1/3 pb-32 lg:pt-0 mt-[180px] lg:mt-[0]'>
           <div className='bg-black p-4 inline-flex flex-col rounded-lg lg:w-[590px] w-[280px] lg:max-w-[400px] max-w-[500px] max-h-[600px] shadow-xl'>
