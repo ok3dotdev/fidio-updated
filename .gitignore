@@ -46,7 +46,9 @@ modules
 modules/
 public/font
 public/img/internal
-src/styles/MyStyles.module.css
+src/styles/styles.scss
+src/styles/custom
+src/styles/custom/*
 /customModules
 !*/customModules/features/FeatureModule1.js
 !*/customModules/index.js

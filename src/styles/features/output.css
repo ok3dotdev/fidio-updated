@@ -713,6 +713,7 @@ video {
   height: 3rem;
 }
 
+<<<<<<< HEAD
 .h-6 {
   height: 1.5rem;
 }
@@ -721,6 +722,8 @@ video {
   height: 100px;
 }
 
+=======
+>>>>>>> pull-branch
 .h-\[100vh\] {
   height: 100vh;
 }
@@ -785,10 +788,13 @@ video {
   width: 12rem;
 }
 
+<<<<<<< HEAD
 .w-8 {
   width: 2rem;
 }
 
+=======
+>>>>>>> pull-branch
 .w-\[100px\] {
   width: 100px;
 }
@@ -843,6 +849,7 @@ video {
 
 .max-w-\[200px\] {
   max-width: 200px;
+<<<<<<< HEAD
 }
 
 .max-w-\[300px\] {
@@ -851,6 +858,12 @@ video {
 
 .max-w-\[500px\] {
   max-width: 500px;
+=======
+}
+
+.max-w-\[300px\] {
+  max-width: 300px;
+>>>>>>> pull-branch
 }
 
 .max-w-\[600px\] {
@@ -980,12 +993,15 @@ video {
   row-gap: 2rem;
 }
 
+<<<<<<< HEAD
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
+=======
+>>>>>>> pull-branch
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1239,6 +1255,13 @@ video {
 
 .pb-4 {
   padding-bottom: 1rem;
+<<<<<<< HEAD
+=======
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+>>>>>>> pull-branch
 }
 
 .pb-8 {
@@ -1376,6 +1399,11 @@ video {
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .text-gray-700 {
@@ -1601,11 +1629,14 @@ video {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+<<<<<<< HEAD
 .hover\:bg-slate-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
+=======
+>>>>>>> pull-branch
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
