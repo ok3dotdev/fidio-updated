@@ -98,7 +98,7 @@ import { CreditCard } from 'modules/payment'
 ## Cart
 # You can use the Cart on any page but it will default to move to the right. By default it functions with the Menu. The Menu component is a useful component that only allows submenus of a specific type to open one at a time. For example, if a user wants to open the settings drop down it will close the cart and vice versa. If you want to override that functionality you can use the cart simply
 import { Cart } from 'modules/ecommerce/cart'
-<Cart open={true} />
+<Cart {...props} open={true} />
 
 ## Video poster
 # The video page allows for a default poster. This will show in standby stages when the video player is not playing anything. Ensure you have set it by putting a 'videoposter.png' file under public/img/internal/
@@ -154,5 +154,5 @@ Title: enter shibuya backstage 1tbsp | Author: xxKmothManSk8Day
 Title: test stream tokyo yeah! | Author: 1tbsp
 
 ## Terms and Conditions
-# You can save your terms and conditions under public/doc/internal as js files with a default export and then pull this in your custom modules
+# You can save your terms and conditions under public/doc/internal as js files with a default export and then pull this in your custom modules. See what an example privacy.js file under /public/doc/internal/ would contain
 export default `OUR PRIVACY POLICY...`
