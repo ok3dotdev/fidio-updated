@@ -99,12 +99,17 @@ const Menu = (props) => {
                 </svg>
               </button>
             </div>
-            <Link
+            {!props._loggedIn ? <Link
+              className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
+              href='/signin'
+            >
+              Home
+            </Link> : <Link
               className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
               href='/home'
             >
               Home
-            </Link>
+            </Link>}
           </div>
           <div className='space-y-4'>
             <Link

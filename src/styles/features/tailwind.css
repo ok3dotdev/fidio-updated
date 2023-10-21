@@ -19,26 +19,46 @@
   align-items: start;
   gap: 20px;
 }
+
+.Username_PromptContainer > h4{
+  @apply pl-4
+}
 .Username_PromptContainer > span {
-  min-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  @apply w-screen lg:w-full flex flex-col px-4 gap-5 mx-auto
 }
 
 .Username_PromptContainer > span > button {
-  @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin;
+  @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin w-full;
 }
 .simpleTextInput {
   height: 48px;
   padding: 20px;
   color: black;
   border-radius: 6px;
+  width: 100%;
+}
+
+@media (min-width: 900px){
+  .simpleTextInput{
+    width: 400px;
+  }
 }
 
 .marquee1,
 .marquee2 {
   align-items: center;
+}
+
+.Ecommerce_Cart_Container{
+  top: 69px !important;
+}
+
+.Ecommerce_Cart_Container > input{
+  color: black !important;
+}
+
+.Ecommerce_Cart_Container  input{
+  color: black !important;
 }
 
 @media (max-width: 768px) {

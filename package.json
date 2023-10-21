@@ -14,12 +14,14 @@
     "@glidejs/glide": "^3.6.0",
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
+    "@sendgrid/mail": "^7.7.0",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.53.0",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
     "babel-loader": "^9.1.2",
+    "emailjs": "^4.0.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "jwt-decode": "^3.1.2",
@@ -34,7 +36,8 @@
     "typescript": "5.0.4",
     "universal-cookie": "^4.0.4",
     "uuid": "^8.3.2",
-    "video.js": "^8.3.0"
+    "video.js": "^8.3.0",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"

@@ -1,8 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 
-const Footer = () => {
+
+const Footer = (props) => {
+  const {pageName} = props;
   return (
-    <div className='w-full bg-black'>
+    <div className={`w-full bg-black relative ${pageName === 'Index' ? 'mt-[100vh]' : ''}`}>
       <div className='flex flex-wrap justify-between pt-8 w-full pb-1 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-[110rem] mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
         <div className='text-center col-span-1 lg:col-span-2 w-full flex justify-center lg:block'>
           <img
@@ -15,13 +18,13 @@ const Footer = () => {
           <p className='mb-4 text-gray-400'>LEGAL</p>
           <ul className='flex flex-col gap-4 text-white'>
             <li>
-              <a href='/terms'>Terms of Service</a>
+              <Link href='/terms'>Terms of Service</Link>
             </li>
             <li>
-              <a href='/privacy'>Privacy Policy</a>
+              <Link href='/privacy'>Privacy Policy</Link>
             </li>
             <li>
-              <a href='#'>FAQ</a>
+              <Link href='#'>FAQ</Link>
             </li>
           </ul>
         </div>
@@ -29,16 +32,16 @@ const Footer = () => {
           <p className='mb-4 text-gray-400'>COMPANY</p>
           <ul className='flex flex-col gap-4 text-white'>
             <li>
-              <a href='mailto:admin@fidio.ca'>Artist & Managers</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>Artist & Managers</a>
             </li>
             <li>
-              <a href='mailto:admin@fidio.ca'>Clubs & Venues</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>Clubs & Venues</a>
             </li>
             <li>
-              <a href='mailto:admin@fidio.ca'>Partners</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>Partners</a>
             </li>
             <li>
-              <a href='mailto:admin@fidio.ca'>Sponsors</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>Sponsors</a>
             </li>
           </ul>
         </div>
@@ -48,7 +51,7 @@ const Footer = () => {
             <li>
               <a
                 target='_blank'
-                href='https://www.instagram.com/fidio_official/?igshid=MWZjMTM2ODFkZg%3D%3D'
+                href='https://www.instagram.com/fidio_official/?igshid=MWZjMTM2ODFkZg%3D%3D/'
               >
                 Instagram
               </a>
@@ -59,9 +62,9 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a target='_blank' href='#'>
+              <Link target='_blank' href='#'>
                 Twitter
-              </a>
+              </Link>
             </li>
             <li>
               <a

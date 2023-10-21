@@ -56,16 +56,7 @@ export const page = (props) => {
   const [profileLoaded, setProfileLoaded] = React.useState(false);
   const r = React.useRef();
   const profileEvent = 'fetchProfileData';
-  React.useEffect(() => {
-    if (!componentDidMount && props._LocalEventEmitter) {
-      r.current = setInterval(() => {
-        props._LocalEventEmitter.dispatch(profileEvent, {
-          dispatch: 'fetch',
-        });
-      }, 5000);
-      setComponentDidMount(true);
-    }
-  }, [props._LocalEventEmitter, componentDidMount]);
+
 
   props._LocalEventEmitter.unsubscribe(profileEvent);
   props._LocalEventEmitter.subscribe(profileEvent, (e) => {
@@ -84,7 +75,7 @@ export const page = (props) => {
         props._loggedIn.username
       ) {
         console.log('Running!');
-        getUserProfileData(props);
+        // getUserProfileData(props);
       }
     }
   });
@@ -95,6 +86,7 @@ export const page = (props) => {
       setTimeout(() => {
         setFetchingProfile(false);
       }, 1000);
+
       let fetchBody = {
         domainKey: props.domainKey,
         params: {
@@ -142,9 +134,10 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
 
   // console.log({ useProps });
-  console.log('home', profileLoaded);
+  console.log('home', useProps);
   return (
-    <HomeLayout
+    <div className='relative'>
+      <HomeLayout
       useProps={useProps}
       pageName={pageName}
       pageData={''}
@@ -152,6 +145,7 @@ export const page = (props) => {
     >
       {components}
     </HomeLayout>
+    </div>
   );
 };
 

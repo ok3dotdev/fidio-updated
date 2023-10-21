@@ -48,11 +48,13 @@ const HomeDash = (props) => {
   return (
     <div className='w-full h-full pb-8 '>
       <Feature {...props} />
-      <FeaturedEvent />
+      <FeaturedEvent {...props}/>
       <div className='relative'>
         <Upcoming />
       </div>
       <EventsGrid />
+      {/* <button onClick={handleFireGlobalEvent} item={props.product.id} selectedstyle={selectedStyle} currentoption={currentOption} action='buy'>Buy Now</button>  */}
+
       <FetchHandler
         {...props}
         handlerName='my_handler'
@@ -84,9 +86,7 @@ const HomeDash = (props) => {
 
 export default HomeDash;
 
-{
-  /* <button onClick={handleFireGlobalEvent} item={props.product.id} selectedstyle={selectedStyle} currentoption={currentOption} action='buy'>Buy Now</button> */
-}
+
 
 
 
