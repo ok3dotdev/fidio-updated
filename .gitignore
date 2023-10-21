@@ -39,6 +39,7 @@ env.local
 credentials.js
 makebuild
 daemonclient
+pulls3buildpublic
 app.config.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
