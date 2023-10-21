@@ -1,4 +1,5 @@
-Please Read the following for documentation on all TYCOON SYSTEMS Livestreaming Plaform Modules & Functionality
+#####
+## Please Read the following for documentation on all TYCOON SYSTEMS Livestreaming Plaform Modules & Functionality
 
 ## Initialization
 # Before using this application it is best to fork it to your own repo. We will not maintain any branches on the official TYCOON SYSTEMS repos. Access is provided such that you may take ownership and leverage the platform within your own unique development environment and repo branching.
@@ -86,6 +87,18 @@ export default Modules
 # Allow users to sign in on any page using the following
 import { SignIn, Username } from 'modules/onboarding/signin'
 (<div><SignIn {...props} /><Username {...props} /></div>)
+
+# Logout
+import { logout } from '/modules/utility/onboarding/SignIn.js'
+
+const handleLogout = React.useCallback(e => {
+    if (props._setLoggedIn && props._LocalEventEmitter) {
+        logout(props._setLoggedIn)
+        setTimeout(() => {
+            props._LocalEventEmitter.dispatch('showSignIn', {})
+        }, 4000) // Give time to logout before firing event
+    }
+})
 
 # You can use custom prompts for Username registration like so:
 <Username {...props} prompt='Select your Username' confirm='Confirm' />
