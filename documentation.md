@@ -126,8 +126,8 @@ import { FetchHandler } from 'modules/utility/fetch'
 
 const Module = props => {
     const [ serverData, setServerData ] = React.useState(null)
-    const handlerArgs = [ 
-        { 
+    const handlerArgs = [
+        {
             productReq: [ '856c144a-b588-4abf-9b93-dc9c2de3b1c0', '29f0c7f1-07c8-46cf-a41b-e3b386e06c64' ] // Product id's in array for request from server
         }
     ]
