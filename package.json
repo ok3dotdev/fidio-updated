@@ -30,7 +30,7 @@
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-fast-marquee": "^1.6.1",
+    "react-fast-marquee": "^1.6.2",
     "react-responsive-carousel": "^3.2.23",
     "sass": "^1.62.1",
     "socket.io-client": "^2.4.0",
