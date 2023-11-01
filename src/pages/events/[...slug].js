@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
 import {
@@ -13,11 +12,12 @@ import {
   resolveDefaults,
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
-import { Menu } from '/modules/menu/';
-import AltMenu from '../../customModules/features/AltMenu';
-// import LiveChat from '../../customModules/features/LiveChat';
+import HomeLayout from '../../../customModules/features/HomeLayout';
+import FeaturedEvent from '../../../customModules/features/FeaturedEvent';
+import EventsDetails from '../../../customModules/features/EventsDetails';
+import Countdown from '../../../customModules/features/CountDown';
 
-const pageName = 'w';
+const pageName = 'event';
 
 export const page = (props) => {
   const router = useRouter();
@@ -51,53 +51,54 @@ export const page = (props) => {
     getDefaults(true);
   });
 
-  React.useEffect(() => {
-    if (
-      resolvedPage &&
-      resolvedPage.url &&
-      !fetching &&
-      isObjectEmpty(mergeProps)
-    ) {
-      getDefaults();
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [fetchingProfile, setFetchingProfile] = React.useState(false);
+  const [profileLoaded, setProfileLoaded] = React.useState(false);
+  const r = React.useRef();
+  const profileEvent = 'fetchProfileData';
+
+  props._LocalEventEmitter.unsubscribe(profileEvent);
+  props._LocalEventEmitter.subscribe(profileEvent, (e) => {
+    console.log(
+      e,
+      profileLoaded,
+      fetchingProfile,
+      props._loggedIn,
+      e.dispatch == 'fetch'
+    );
+    if (e.dispatch && e.dispatch == 'fetch') {
+      if (
+        !profileLoaded &&
+        !fetchingProfile &&
+        props._loggedIn &&
+        props._loggedIn.username
+      ) {
+        console.log('Running!');
+        // getUserProfileData(props);
+      }
     }
-  }, [fetching, mergeProps, resolvedPage]);
+  });
 
   const useProps = handlePropsPriority(mergeProps, props);
   config = resolveConfig(variables, useProps);
   resolvedPage = resolvePage(config, useProps.path);
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
+
+  // console.log({ useProps });
+  console.log('home', useProps);
   return (
-    <React.Fragment>
-      <AltMenu {...useProps}></AltMenu>
-      <div
-        className={`${pageName}_Body`}
-        style={{
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
-        }}
+    <div className='relative'>
+      <HomeLayout
+        useProps={useProps}
+        pageName={pageName}
+        pageData={''}
+        props={useProps}
       >
-        <div className='flex'>
-          <div className='flex-shrink-0 flex-grow w-[9.5/10]'>
-            {components} {/* Assuming this is your "watch" component */}
-          </div>
-          <div className='flex-shrink-0 flex-grow w-[0.5/10]'>
-            <iframe
-              src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
-              width='100%'
-              height='450'
-              allowtransparency='yes'
-              allow='autoplay'
-              frameborder='0'
-              marginheight='0'
-              marginwidth='0'
-              scrolling='auto'
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
+        <FeaturedEvent {...props} showTimer={true} />
+        <EventsDetails />
+      </HomeLayout>
+    </div>
   );
 };
 
