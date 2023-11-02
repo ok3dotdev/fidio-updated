@@ -111,7 +111,15 @@ import { CreditCard } from 'modules/payment'
 ## Cart
 # You can use the Cart on any page but it will default to move to the right. By default it functions with the Menu. The Menu component is a useful component that only allows submenus of a specific type to open one at a time. For example, if a user wants to open the settings drop down it will close the cart and vice versa. If you want to override that functionality you can use the cart simply
 import { Cart } from 'modules/ecommerce/cart'
-<Cart {...props} open={true} />
+<Cart {...props} open={true} passOveride={myOverideFunction} />
+
+# passOveride
+# {function}
+# You can use the prop 'passOveride' on Cart as a function to fire a function when the Cart is advised to "flash". The cart "flashes" anytime a product is added to cart or the user attempts to Checkout their cart. You should use this if you want to keep the Cart open based on this event as the cart "flash" will only keep cart open for 5-15 seconds. For example, if you had state paired to the open prop you can set that to true if the passOveride function fires to keep the cart
+
+# ccChildren
+# {JSX}
+# Children that are passed to Credit Card within Cart
 
 ## Video poster
 # The video page allows for a default poster. This will show in standby stages when the video player is not playing anything. Ensure you have set it by putting a 'videoposter.png' file under public/img/internal/
@@ -159,7 +167,15 @@ const handleFireGlobalEvent = React.useCallback(async e => {
 
 ## Feature
 # The feature module is a great way to show the current streams happening on the platform. It will run a fuzzy search against the database for the 's' prop that you use for it. If you just want to trust the server aglorithm to retrieve the most relevant then do not pass s prop. This can be used to allow users to see what is currently streaming on the platform quickly. It can be minimized or expanded by the user.
-<Feature {...props} s='2tbsp sumalkic set 1 hour' defaultSize='medium' stagger={2000}>
+<Feature {...props} s='2tbsp sumalkic set 1 hour' defaultSize='large' stagger={2000}>
+
+# defaultSize
+# {String} thin, medium, large
+
+# Stagger
+# {Number}
+
+# If you want to hide the toggle button that allows for the user to toggle the size of the Feature Bar you can pass prop hideToggle as true to the Feature component
 
 # The above would run the search against the database with the appropriate records and return the following:
 Title: 1tbsp sumoclick 1 hour stream | Author: sumoclick
