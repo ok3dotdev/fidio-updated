@@ -355,17 +355,15 @@ button:not(:disabled):active {
   margin-top: 2rem;
 }
 
-<<<<<<< HEAD
 .FeatureContainerOpenMedium
+  ~ .sign-in-page-container
+  .IndexCta_Container
+  .IndexCta_LeadContainer,
+.FeatureContainerOpenLarge
   ~ .sign-in-page-container
   .IndexCta_Container
   .IndexCta_LeadContainer {
   margin-top: 7rem;
-=======
-.FeatureContainerOpenMedium ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer,
-.FeatureContainerOpenLarge ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
-    margin-top: 7rem;
->>>>>>> 080b8f1031f95dd472d22e09deed544def61bf0a
 }
 
 .WideFeatureContainer {
@@ -383,7 +381,7 @@ button:not(:disabled):active {
 
 .FeatureContainerOpenMedium ~ .WideFeatureContainer,
 .FeatureContainerOpenLarge ~ .WideFeatureContainer {
-    top: 9.5rem;
+  top: 9.5rem;
 }
 
 .WideFeatureContainer > div {
