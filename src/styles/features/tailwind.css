@@ -126,3 +126,13 @@ input {
     );
   }
 }
+
+.Ecommerce_Cart_Container {
+  background: rgba(128, 128, 128, 0.5);
+  border: none;
+}
+
+.Ecommerce_Item_Container,
+.Ecommerce_CreditCard_Container {
+  background: none;
+}

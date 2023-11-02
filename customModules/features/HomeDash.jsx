@@ -7,7 +7,6 @@ import Upcoming from './Upcoming';
 import MarqueeComponent from './Marquee';
 import Footer from './Footer';
 import { FetchHandler } from '../../modules/utility/fetch';
-import { fireGlobalEvent } from '../../modules/utility/utility';
 
 const items = [
   {
@@ -47,11 +46,10 @@ const HomeDash = (props) => {
   const handleFireGlobalEvent = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter);
   });
-  useEffect;
 
   return (
     <div className='w-full h-full pb-8 '>
-      <Feature {...props} />
+      <Feature {...props} hideToggle={true} />
       <FeaturedEvent {...props} data={eventsData} />
       <div className='relative'>
         <Upcoming />
