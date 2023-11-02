@@ -358,6 +358,10 @@ button:not(:disabled):active {
 .FeatureContainerOpenMedium
   ~ .sign-in-page-container
   .IndexCta_Container
+  .IndexCta_LeadContainer,
+.FeatureContainerOpenLarge
+  ~ .sign-in-page-container
+  .IndexCta_Container
   .IndexCta_LeadContainer {
   margin-top: 7rem;
 }
@@ -375,7 +379,8 @@ button:not(:disabled):active {
   top: 4rem;
 }
 
-.FeatureContainerOpenMedium ~ .WideFeatureContainer {
+.FeatureContainerOpenMedium ~ .WideFeatureContainer,
+.FeatureContainerOpenLarge ~ .WideFeatureContainer {
   top: 9.5rem;
 }
 
