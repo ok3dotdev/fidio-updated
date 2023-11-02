@@ -5,6 +5,7 @@ import '../styles/video/videoPlayer.css'
 // import 'shaka-player/dist/controls.css'
 import '../styles/video/videojs.css'
 import '../styles/video/videoPlayerTycoon.css'
+import '../styles/styles.scss'
 import Head from 'next/head'
 import Script from 'next/script'
 import io from 'socket.io-client'
@@ -45,7 +46,6 @@ function MyApp({ Component, pageProps }) {
 	}, [ _loggedIn, pageProps._loggedIn ])
 
 	const toggleSingleOpenMenu = (e, menu) => {
-		console.log(menu, _openMenu)
 		if (_openMenu && _openMenu.currentMenu) {
 			if (_openMenu.currentMenu == menu) {
 				_setOpenMenu({})
@@ -53,16 +53,13 @@ function MyApp({ Component, pageProps }) {
 				_setOpenMenu({ currentMenu: menu })
 			}
 		} else {
-			console.log(_openMenu, menu)
 			_setOpenMenu({ currentMenu: menu })
-			console.log(_openMenu)
 		}
 	}
 
 	React.useEffect(() => {
 		const cart = JSON.parse(localStorage.getItem('cart'))
 		if (cart) {
-			console.log(cart)
 			if (!cart.user) {
 				const temp = cart
 				temp.user = _loggedIn
@@ -77,7 +74,6 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 	}, [ _loggedIn ])
-	console.log(_openMenu, _loggedIn)
 
 	pageProps._LocalEventEmitter = LocalEventEmitter
 	pageProps._loggedIn = _loggedIn
@@ -116,6 +112,9 @@ function MyApp({ Component, pageProps }) {
 						style: e.style,
 						option: e.option
 					}, setFetchBusy)
+					LocalEventEmitter.dispatch('cart_update', {
+						dispatch: 'flashCart'
+					})
 					if (res) {
 						if (res.status === 'success') {
 							updateCart(cart, res.cart)
@@ -162,6 +161,9 @@ function MyApp({ Component, pageProps }) {
 						style: e.style,
 						option: e.option
 					}, setFetchBusy)
+					LocalEventEmitter.dispatch('cart_update', {
+						dispatch: 'flashCart'
+					})
 					if (res) {
 						if (res.status === 'success') {
 							updateCart(cart, res.cart)
