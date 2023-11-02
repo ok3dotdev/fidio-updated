@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/globals.css';
 import '../styles/tycoon.scss';
 import '../styles/video/videoPlayer.css';
+import '../styles/features/output.css';
 // import 'shaka-player/dist/controls.css'
 import '../styles/video/videojs.css';
 import '../styles/video/videoPlayerTycoon.css';
@@ -127,6 +128,7 @@ function MyApp({ Component, pageProps }) {
           LocalEventEmitter.dispatch('cart_update', {
             dispatch: 'flashCart',
           });
+          console.log('flashCart');
           if (res) {
             if (res.status === 'success') {
               updateCart(cart, res.cart);

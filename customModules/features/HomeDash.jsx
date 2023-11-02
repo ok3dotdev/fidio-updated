@@ -7,6 +7,7 @@ import Upcoming from './Upcoming';
 import MarqueeComponent from './Marquee';
 import Footer from './Footer';
 import { FetchHandler } from '../../modules/utility/fetch';
+import { fireGlobalEvent } from '../../modules/utility/utility';
 
 const items = [
   {

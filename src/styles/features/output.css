@@ -825,10 +825,6 @@ video {
   width: 2rem;
 }
 
-.w-\[0\.5\/10\] {
-  width: 0.5/10;
-}
-
 .w-\[100px\] {
   width: 100px;
 }
@@ -837,8 +833,8 @@ video {
   width: 150px;
 }
 
-.w-\[180px\] {
-  width: 180px;
+.w-\[2\.5\/10\] {
+  width: 2.5/10;
 }
 
 .w-\[260px\] {
@@ -853,8 +849,8 @@ video {
   width: 300px;
 }
 
-.w-\[9\.5\/10\] {
-  width: 9.5/10;
+.w-\[7\.5\/10\] {
+  width: 7.5/10;
 }
 
 .w-\[90px\] {
@@ -995,10 +991,6 @@ video {
 
 .gap-1 {
   gap: 0.25rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .gap-4 {
@@ -1345,10 +1337,6 @@ video {
   text-align: center;
 }
 
-.font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1395,10 +1383,6 @@ video {
 
 .font-bold {
   font-weight: 700;
-}
-
-.font-light {
-  font-weight: 300;
 }
 
 .font-medium {
@@ -1681,6 +1665,11 @@ input {
   background: none;
 }
 
+.Ecommerce_Item_Image_Container {
+  max-height: 40px !important;
+  background-position: center !important;
+}
+
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1831,10 +1820,6 @@ input {
 
   .lg\:min-w-\[339px\] {
     min-width: 339px;
-  }
-
-  .lg\:max-w-4xl {
-    max-width: 56rem;
   }
 
   .lg\:max-w-\[400px\] {
