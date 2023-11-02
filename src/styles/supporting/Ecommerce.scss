@@ -23,9 +23,11 @@
 }
 
 .Ecommerce_Item_Image_Container {
-    background-size: cover;
-    width: 50px;
+    background-size: contain;
+    width: 100px;
     height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .Ecommerce_Cart_Internal_Container {
