@@ -604,6 +604,10 @@ video {
   right: 0px;
 }
 
+.right-10 {
+  right: 2.5rem;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -616,28 +620,8 @@ video {
   top: 2.75rem;
 }
 
-.top-\[50\%\] {
-  top: 50%;
-}
-
-.top-\[20\%\] {
-  top: 20%;
-}
-
-.top-5 {
-  top: 1.25rem;
-}
-
-.top-20 {
-  top: 5rem;
-}
-
 .top-24 {
   top: 6rem;
-}
-
-.right-10 {
-  right: 2.5rem;
 }
 
 .z-10 {
@@ -701,6 +685,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-24 {
+  margin-top: 6rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -723,10 +711,6 @@ video {
 
 .mt-\[180px\] {
   margin-top: 180px;
-}
-
-.mt-24 {
-  margin-top: 6rem;
 }
 
 .block {
@@ -1525,6 +1509,10 @@ video {
     Helvetica Neue, sans-serif;
 }
 
+input {
+  color: black;
+}
+
 .amin-heading {
   font-family: Archivo Black;
 }
@@ -1584,8 +1572,8 @@ video {
   width: 100%;
 }
 
-@media (min-width: 900px){
-  .simpleTextInput{
+@media (min-width: 900px) {
+  .simpleTextInput {
     width: 400px;
   }
 }
@@ -1595,15 +1583,15 @@ video {
   align-items: center;
 }
 
-.Ecommerce_Cart_Container{
+.Ecommerce_Cart_Container {
   top: 69px !important;
 }
 
-.Ecommerce_Cart_Container > input{
+.Ecommerce_Cart_Container > input {
   color: black !important;
 }
 
-.Ecommerce_Cart_Container  input{
+.Ecommerce_Cart_Container input {
   color: black !important;
 }
 
@@ -1794,16 +1782,12 @@ video {
     height: 400px;
   }
 
-  .lg\:h-\[42px\] {
-    height: 42px;
+  .lg\:h-\[80px\] {
+    height: 80px;
   }
 
   .lg\:h-auto {
     height: auto;
-  }
-
-  .lg\:h-\[80px\] {
-    height: 80px;
   }
 
   .lg\:min-h-\[480px\] {

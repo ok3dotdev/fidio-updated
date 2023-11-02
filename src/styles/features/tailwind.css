@@ -7,6 +7,9 @@
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
 }
+input {
+  color: black;
+}
 .amin-heading {
   font-family: Archivo Black;
 }
@@ -20,11 +23,11 @@
   gap: 20px;
 }
 
-.Username_PromptContainer > h4{
-  @apply pl-4
+.Username_PromptContainer > h4 {
+  @apply pl-4;
 }
 .Username_PromptContainer > span {
-  @apply w-screen lg:w-full flex flex-col px-4 gap-5 mx-auto
+  @apply w-screen lg:w-full flex flex-col px-4 gap-5 mx-auto;
 }
 
 .Username_PromptContainer > span > button {
@@ -38,8 +41,8 @@
   width: 100%;
 }
 
-@media (min-width: 900px){
-  .simpleTextInput{
+@media (min-width: 900px) {
+  .simpleTextInput {
     width: 400px;
   }
 }
@@ -49,15 +52,15 @@
   align-items: center;
 }
 
-.Ecommerce_Cart_Container{
+.Ecommerce_Cart_Container {
   top: 69px !important;
 }
 
-.Ecommerce_Cart_Container > input{
+.Ecommerce_Cart_Container > input {
   color: black !important;
 }
 
-.Ecommerce_Cart_Container  input{
+.Ecommerce_Cart_Container input {
   color: black !important;
 }
 

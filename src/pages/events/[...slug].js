@@ -13,9 +13,10 @@ import {
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
 import HomeLayout from '../../../customModules/features/HomeLayout';
-import FeaturedEvent from '../../../customModules/features/FeaturedEvent';
+import FeaturedEventPage from '../../../customModules/features/FeaturedEventPage';
 import EventsDetails from '../../../customModules/features/EventsDetails';
 import Countdown from '../../../customModules/features/CountDown';
+import { FetchHandler } from '../../../modules/utility/fetch';
 
 const pageName = 'event';
 
@@ -23,6 +24,7 @@ export const page = (props) => {
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
+  const [eventsData, setEventsData] = React.useState([]);
   const [mergeProps, setMergeProps] = React.useState({});
   let resolvedDefinition = props.resolvedDefinition;
   const variables = resolveVariables();
@@ -50,6 +52,11 @@ export const page = (props) => {
   props._LocalEventEmitter.subscribe('refetchDefaults', (e) => {
     getDefaults(true);
   });
+
+  const receiveData = (data) => {
+    setEventsData(data.data.fetchedData[0].productReq);
+    console.log('datas', eventsData);
+  };
 
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [fetchingProfile, setFetchingProfile] = React.useState(false);
@@ -85,8 +92,6 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
 
-  // console.log({ useProps });
-  console.log('home', useProps);
   return (
     <div className='relative'>
       <HomeLayout
@@ -95,8 +100,18 @@ export const page = (props) => {
         pageData={''}
         props={useProps}
       >
-        <FeaturedEvent {...props} showTimer={true} />
-        <EventsDetails />
+        <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
+        <EventsDetails data={eventsData[0]} />
+        <FetchHandler
+          {...props}
+          handlerName='my_handler'
+          handlerArgs={[
+            {
+              productReq: [`${router.query.slug}`],
+            },
+          ]}
+          receiveData={receiveData}
+        />
       </HomeLayout>
     </div>
   );

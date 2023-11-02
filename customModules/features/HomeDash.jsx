@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Feature } from '../../modules/search/feature';
 import EventsGrid from './EventsGrid';
 import { SliderBasic } from '../../modules/indexing/';
@@ -37,59 +37,41 @@ const items = [
 ];
 
 const HomeDash = (props) => {
+  const [eventsData, setEventsData] = React.useState([]);
+
   const receiveData = (data) => {
-    console.log('data1111', data.data.fetchedData[0].productReq);
+    console.log('data', data);
+    setEventsData(data.data.fetchedData[0].productReq);
   };
 
   const handleFireGlobalEvent = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter);
   });
+  useEffect;
 
   return (
     <div className='w-full h-full pb-8 '>
       <Feature {...props} />
-      <FeaturedEvent {...props}/>
+      <FeaturedEvent {...props} data={eventsData} />
       <div className='relative'>
         <Upcoming />
       </div>
       <EventsGrid />
-      {/* <button onClick={handleFireGlobalEvent} item={props.product.id} selectedstyle={selectedStyle} currentoption={currentOption} action='buy'>Buy Now</button>  */}
-
       <FetchHandler
         {...props}
         handlerName='my_handler'
         handlerArgs={[
           {
-            productReq: [
-              'b208c40c-6503-491a-a0ca-f1ce85d02d17',
-              'bed6d9f6-7760-4d70-82fc-badd7d43635a',
-            ],
+            productReq: ['1da050fa-6be1-4926-9e10-cf0a9ee575a8'],
           },
         ]}
         receiveData={receiveData}
       />
-      {/* <MarqueeComponent /> */}
-      {/* <Footer /> */}
-      {/* <SliderBasic items={items} /> */}
-      {/* <button
-        onClick={handleFireGlobalEvent}
-        item={'b208c40c-6503-491a-a0ca-f1ce85d02d17'}
-        selectedstyle={'0441f2a2-4f6c-47b6-bb42-831708287de7'}
-        currentoption={'70756244-2924-48b1-898f-eb7e4228b5cb'}
-        action='add_to_cart'
-      >
-        Add To Cart
-      </button> */}
     </div>
   );
 };
 
 export default HomeDash;
-
-
-
-
-
 
 // {
 //     "productReq": [
@@ -208,3 +190,24 @@ export default HomeDash;
 //         }
 //     ]
 // }
+
+{
+  /* <MarqueeComponent /> */
+}
+{
+  /* <Footer /> */
+}
+{
+  /* <SliderBasic items={items} /> */
+}
+{
+  /* <button
+        onClick={handleFireGlobalEvent}
+        item={'b208c40c-6503-491a-a0ca-f1ce85d02d17'}
+        selectedstyle={'0441f2a2-4f6c-47b6-bb42-831708287de7'}
+        currentoption={'70756244-2924-48b1-898f-eb7e4228b5cb'}
+        action='add_to_cart'
+      >
+        Add To Cart
+      </button> */
+}
