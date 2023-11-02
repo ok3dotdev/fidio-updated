@@ -74,3 +74,15 @@ a {
   padding-top: .125rem;
   border-top: 1px dashed rgb(94, 94, 94);
 }
+
+.featureContainerOverflown::-webkit-scrollbar {
+  height: .45rem;
+}
+
+.FeatureContainerOpen .featureContainerOverflown_medium {
+  height: 111px;
+}
+
+.FeatureContainerOpen .featureContainerOverflown_large {
+  height: 246px;
+}
