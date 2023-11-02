@@ -1,0 +1,58 @@
+export const upcomingEvents = [
+  {
+    img: 'img/internal/lagosparty.jpg',
+    title: 'Kris Hans & Top Striker',
+    artist: 'Kris Hans & Top Striker',
+    date: 'SEP 30, 2023',
+    price: 'FREE',
+  },
+  {
+    img: 'img/internal/sewa.jpg',
+    title: 'A Night With Sewa',
+    artist: 'Sewa',
+    date: '0ct 22, 2023',
+    price: 'FREE',
+  },
+  {
+    img: 'img/internal/sharon4.png',
+    title: 'Rock Concert Extravaganza',
+    artist: 'Rock Band X',
+    date: 'Sep 07, 2023',
+    price: 15,
+  },
+  {
+    img: 'img/internal/sharon2.png',
+    title: 'Jazz Night under the Stars',
+    artist: 'Smooth Jazz Trio',
+    date: 'JAN 04, 2024',
+    price: 40,
+  },
+  {
+    img: 'img/internal/SharonRose14.png',
+    title: 'Country Music Jamboree',
+    artist: 'Country Stars',
+    date: 'Jul 09, 2023',
+    price: 10,
+  },
+  {
+    img: 'img/internal/sharon9.png',
+    title: 'Electronic Dance Party',
+    artist: 'DJ Electronica',
+    date: 'Aug 09, 2023',
+    price: 20,
+  },
+  {
+    img: 'img/internal/sharonx.png',
+    title: 'Classical Music Gala',
+    artist: 'Symphony Orchestra',
+    date: 'Jul 09, 2023',
+    price: 15,
+  },
+  {
+    img: 'img/internal/SharonRose15.png',
+    title: 'Rap Battle Showdown',
+    artist: 'Hip-Hop Crew',
+    date: 'Sep 07, 2023',
+    price: 25,
+  },
+];
