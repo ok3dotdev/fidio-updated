@@ -144,6 +144,7 @@ function MyApp({ Component, pageProps }) {
 									})
 								}
 							} else {
+								console.log(res2)
 								_setPageError({
 									message: 'Purchase failed',
 									placement: 'purchase'
