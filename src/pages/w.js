@@ -79,10 +79,10 @@ export const page = (props) => {
         }}
       >
         <div className='flex'>
-          <div className='flex-shrink-0 flex-grow w-[9.5/10]'>
+          <div className='flex-shrink-0 flex-grow w-[7.5/10]'>
             {components} {/* Assuming this is your "watch" component */}
           </div>
-          <div className='flex-shrink-0 flex-grow w-[0.5/10]'>
+          <div className='flex-shrink-0 w-[2.5/10]'>
             <iframe
               src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
               width='100%'
