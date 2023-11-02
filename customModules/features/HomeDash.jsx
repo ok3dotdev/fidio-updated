@@ -50,7 +50,7 @@ const HomeDash = (props) => {
 
   return (
     <div className='w-full h-full pb-8 '>
-      <Feature {...props} hideToggle={true} />
+      <Feature {...props} hideToggle={true} defaultSize={'large'} />
       <FeaturedEvent {...props} data={eventsData} />
       <div className='relative'>
         <Upcoming />
