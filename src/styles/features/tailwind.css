@@ -136,3 +136,8 @@ input {
 .Ecommerce_CreditCard_Container {
   background: none;
 }
+
+.Ecommerce_Item_Image_Container {
+  max-height: 40px !important;
+  background-position: center !important;
+}
