@@ -50,7 +50,6 @@ public/img/internal
 src/styles/styles.scss
 src/styles/custom
 src/styles/custom/*
-/customModules
 !*/customModules/features/FeatureModule1.js
 !*/customModules/index.js
 !*/customModules/index_backup.js
