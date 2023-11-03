@@ -2,64 +2,44 @@ import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import TicketClaimedPopup from './TicketPopup';
+import FreePopUp from './FreePopUp';
 import Countdown from './CountDown';
 import { FetchHandler } from '../../modules/utility/fetch';
 import { fireGlobalEvent } from '../../modules/utility/utility';
 
 const FeaturedEvent = (props, showTimer, data) => {
-  console.log('le props', props);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [showPop, setShowPop] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleTicketClaim = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter);
-    setIsPopupVisible(true);
   });
 
+  const handleFreeTicketClaim = (e) => {
+    setShowPop(true);
+  };
+
   function convertTimestamp(timestamp) {
-    // Parse the original timestamp
-    const [date, time] = timestamp.split('-');
-    const [day, month, year] = date.split('-');
-    const [hour, minute] = time.split(':');
+    const dateObj = new Date(timestamp);
 
-    // Create a Date object from the parsed values
-    const dateObj = new Date(year, month - 1, day, hour, minute);
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short',
+    };
 
-    // Format the date
-    const monthNames = [
-      'JAN',
-      'FEB',
-      'MAR',
-      'APR',
-      'MAY',
-      'JUN',
-      'JUL',
-      'AUG',
-      'SEP',
-      'OCT',
-      'NOV',
-      'DEC',
-    ];
-    const formattedDate = `${
-      monthNames[dateObj.getMonth()]
-    } ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
-
-    // Format the time
-    const formattedTime =
-      dateObj.getHours() > 12
-        ? `${dateObj.getHours() - 12}:${
-            dateObj.getMinutes() < 10 ? '0' : ''
-          }${dateObj.getMinutes()} PM`
-        : `${dateObj.getHours()}:${
-            dateObj.getMinutes() < 10 ? '0' : ''
-          }${dateObj.getMinutes()} AM`;
-
-    // Combine the formatted date and time with the timezone
-    return `${formattedDate} | ${formattedTime} EST`;
+    const formattedDateTime = dateObj.toLocaleString('en-US', options);
+    return formattedDateTime;
   }
 
   const handlePopupClose = () => {
     setIsPopupVisible(false);
+    setShowPop(false);
   };
 
   const handleCarouselChange = (index) => {
@@ -78,12 +58,12 @@ const FeaturedEvent = (props, showTimer, data) => {
       title: 'Alternate Sound',
       date: 'NOV 04, 2023 | 06:00 PM EST',
     },
-    // {
-    //   backgroundImageDesktop: 'url(/img/internal/2_desktop.png)',
-    //   backgroundImageMobile: 'url(/img/internal/2_mobile.png)',
-    //   title: 'A NIGHT WITH SEWA 2',
-    //   date: 'OCT 23, 2023 | 08:00 PM EST',
-    // },
+    {
+      backgroundImageDesktop: 'url(/img/internal/tinycafe.jpeg)',
+      backgroundImageMobile: 'url(/img/internal/tinycafe.jpeg)',
+      title: 'A NIGHT WITH SEWA 2',
+      date: 'OCT 23, 2023 | 08:00 PM EST',
+    },
   ];
 
   const receiveData = (data) => {
@@ -97,7 +77,7 @@ const FeaturedEvent = (props, showTimer, data) => {
       {
         productReq: [
           '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
-          'bed6d9f6-7760-4d70-82fc-badd7d43635a',
+          '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
         ],
       },
     ]}
@@ -135,12 +115,13 @@ const FeaturedEvent = (props, showTimer, data) => {
         showThumbs={false}
         showArrows={true}
         showStatus={false}
+        interval={3000}
       >
         {props.data.map((item, index) => (
           <div
             id={`carousel-item-${index}`}
             key={index}
-            className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full'
+            className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full carousel-image'
             style={{
               backgroundSize: 'cover',
               objectFit: 'cover',
@@ -149,20 +130,29 @@ const FeaturedEvent = (props, showTimer, data) => {
               backgroundImage: item.backgroundImageDesktop, // Set initial desktop image
             }}
           >
-            <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div>
+            <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div>
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
               <div className='flex gap-4 mt-4 items-center'>
-                <button
-                  onClick={handleTicketClaim}
-                  item={item.id}
-                  selectedstyle={item?.styles[0]?.sid}
-                  currentoption={item?.styles[0]?.option[0]?.sid}
-                  action='buy'
-                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                >
-                  Buy Livestream ${item.styles[0].price}
-                </button>
+                {item.styles[0].price <= 0 ? (
+                  <button
+                    onClick={handleFreeTicketClaim}
+                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  >
+                    Claim free ticket
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleTicketClaim}
+                    item={item.id}
+                    selectedstyle={item?.styles[0]?.sid}
+                    currentoption={item?.styles[0]?.option[0]?.sid}
+                    action='buy'
+                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  >
+                    Buy Livestream ${item.styles[0].price}
+                  </button>
+                )}
                 <a
                   className='bg-gray-600 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
                   href={`/events/${item.id}`}
@@ -170,16 +160,15 @@ const FeaturedEvent = (props, showTimer, data) => {
                   View event
                 </a>
                 <p className='lg:text-xl text-white'>
-                  {item.detailmeta?.eventDateDef?.input}
+                  {convertTimestamp(item.detailmeta?.eventDateDef?.dates[0])}
                 </p>
               </div>
             </div>
-            {isPopupVisible && (
-              <TicketClaimedPopup onClose={handlePopupClose} />
-            )}
           </div>
         ))}
       </Carousel>
+      {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
+      {showPop && <FreePopUp onClose={handlePopupClose} />}
       {props.showTimer ? <Countdown eventDate='2023-11-04T16:00:00Z' /> : ''}
     </div>
   );

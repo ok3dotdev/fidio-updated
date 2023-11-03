@@ -14,6 +14,10 @@ const AltMenu = (props) => {
     setIsCartOpen(!isCartOpen);
   };
 
+  function passOveride() {
+    setIsCartOpen(true);
+  }
+
   const handleDocumentClick = (event) => {
     const isclickIcon = event.target.classList.contains('MuiSvgIcon-root');
     if (
@@ -29,7 +33,7 @@ const AltMenu = (props) => {
   console.log('menu', props);
 
   return (
-    <div className='bg-transparent z-40 relative h-[36px] lg:h-[80px]'>
+    <div className='bg-transparent z-40 relative h-[66px] lg:h-[80px]'>
       <div className='max-w-8xl mx-auto flex justify-between pt-4 pb-4 items-center px-3 lg:px-5'>
         <div>
           <Link className='w-[150px] h-auto' href='/home'>
@@ -49,14 +53,16 @@ const AltMenu = (props) => {
                 className='cursor-pointer'
               />
             </div>
-            {isCartOpen && (
-              <div ref={cartRef} className='absolute top-0 cursor-pointer'>
-                <Cart {...props} className='text-white' open={isCartOpen} />
-              </div>
-            )}
+            <div ref={cartRef} className='absolute top-0 cursor-pointer'>
+              <Cart
+                {...props}
+                className='text-white'
+                open={isCartOpen}
+                passOveride={passOveride}
+              />
+            </div>
             <UserMenu {...props} />
           </div>
-          test
         </div>
       </div>
     </div>

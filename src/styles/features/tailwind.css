@@ -53,7 +53,13 @@ input {
 }
 
 .Ecommerce_Cart_Container {
-  top: 69px !important;
+  top: 79px !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    background-position: center;
+  }
 }
 
 .Ecommerce_Cart_Container > input {
@@ -86,6 +92,10 @@ input {
   filter: blur(1px);
 } */
 
+.glow-text span {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
 .menuContainer > ul {
   height: 100% !important;
 }
@@ -99,7 +109,7 @@ input {
 }
 .Feature_featureExternalContainer__HMUAB {
   position: relative !important;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
 }
 .hero {
   background-image: url('/img/internal/bg.jpeg');

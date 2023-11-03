@@ -17,6 +17,7 @@ import FeaturedEventPage from '../../../customModules/features/FeaturedEventPage
 import EventsDetails from '../../../customModules/features/EventsDetails';
 import Countdown from '../../../customModules/features/CountDown';
 import { FetchHandler } from '../../../modules/utility/fetch';
+import LoadingSkeleton from '../../../customModules/features/Skeleton';
 
 const pageName = 'event';
 
@@ -26,6 +27,7 @@ export const page = (props) => {
   const [fetching, setFetching] = React.useState(false);
   const [eventsData, setEventsData] = React.useState([]);
   const [mergeProps, setMergeProps] = React.useState({});
+  const [loading, setIsLoading] = React.useState(true);
   let resolvedDefinition = props.resolvedDefinition;
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
@@ -55,9 +57,9 @@ export const page = (props) => {
 
   const receiveData = (data) => {
     setEventsData(data.data.fetchedData[0].productReq);
+    setIsLoading(false);
     console.log('datas', eventsData);
   };
-
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [fetchingProfile, setFetchingProfile] = React.useState(false);
   const [profileLoaded, setProfileLoaded] = React.useState(false);
@@ -100,7 +102,11 @@ export const page = (props) => {
         pageData={''}
         props={useProps}
       >
-        <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
+        {loading ? (
+          <LoadingSkeleton />
+        ) : (
+          <FeaturedEventPage {...props} showTimer={true} data={eventsData[0]} />
+        )}
         <EventsDetails data={eventsData[0]} />
         <FetchHandler
           {...props}

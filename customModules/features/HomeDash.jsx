@@ -8,40 +8,17 @@ import MarqueeComponent from './Marquee';
 import Footer from './Footer';
 import { FetchHandler } from '../../modules/utility/fetch';
 import { fireGlobalEvent } from '../../modules/utility/utility';
-
-const items = [
-  {
-    img: '/img/internal/sharon.png',
-    width: '100%',
-    heading: 'Teriya Live in Concert',
-    description: 'Nov 24 2023',
-    buttonLink: '....',
-    status: 'UPCOMING',
-  },
-  {
-    img: '/img/internal/sharon3.png',
-    width: '100%',
-    heading: ' Lokay Live from Monaco Theatre',
-    description: 'Oct 25 2023',
-    buttonLink: '....',
-    status: 'UPCOMING',
-  },
-  {
-    img: '/img/internal/sharon5.png',
-    width: '100%',
-    heading: 'SummerTop Band Live from SoftRock Hall',
-    description: 'Oct 31 2023',
-    buttonLink: '....',
-    status: 'UPCOMING',
-  },
-];
+import LoadingSkeleton from './Skeleton';
 
 const HomeDash = (props) => {
   const [eventsData, setEventsData] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const receiveData = (data) => {
     console.log('data', data);
     setEventsData(data.data.fetchedData[0].productReq);
+    setIsLoading(false);
+    console.log('events', eventsData);
   };
 
   const handleFireGlobalEvent = React.useCallback(async (e) => {
@@ -51,7 +28,11 @@ const HomeDash = (props) => {
   return (
     <div className='w-full h-full pb-8 '>
       <Feature {...props} hideToggle={true} defaultSize={'large'} />
-      <FeaturedEvent {...props} data={eventsData} />
+      {isLoading ? (
+        <LoadingSkeleton />
+      ) : (
+        <FeaturedEvent {...props} data={eventsData} />
+      )}
       <div className='relative'>
         <Upcoming />
       </div>
@@ -61,7 +42,10 @@ const HomeDash = (props) => {
         handlerName='my_handler'
         handlerArgs={[
           {
-            productReq: ['1da050fa-6be1-4926-9e10-cf0a9ee575a8'],
+            productReq: [
+              '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
+              '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
+            ],
           },
         ]}
         receiveData={receiveData}

@@ -6,9 +6,12 @@ import { fireGlobalEvent } from '../../modules/utility/utility';
 import Countdown from './CountDown';
 import { FetchHandler } from '../../modules/utility/fetch';
 import { useRouter } from 'next/router';
+import FreePopUp from './FreePopUp';
 
 const FeaturedEvent = (props, showTimer, data) => {
+  console.log('leee', props?.data[0]?.detailmeta?.eventDateDef?.dates[0]);
   const router = useRouter();
+  const [showPop, setShowPop] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [event, setEvent] = useState([]);
@@ -19,10 +22,15 @@ const FeaturedEvent = (props, showTimer, data) => {
 
   const handlePopupClose = () => {
     setIsPopupVisible(false);
+    setShowPop(false);
   };
 
   const handleCarouselChange = (index) => {
     setCurrentIndex(index);
+  };
+
+  const handleFreeTicketClaim = (e) => {
+    setShowPop(true);
   };
 
   const handleFireGlobalEvent = React.useCallback(async (e) => {
@@ -37,12 +45,6 @@ const FeaturedEvent = (props, showTimer, data) => {
       title: 'Alternate Sound',
       date: 'NOV 04, 2023 | 06:00 PM EST',
     },
-    // {
-    //   backgroundImageDesktop: 'url(/img/internal/2_desktop.png)',
-    //   backgroundImageMobile: 'url(/img/internal/2_mobile.png)',
-    //   title: 'A NIGHT WITH SEWA 2',
-    //   date: 'OCT 23, 2023 | 08:00 PM EST',
-    // },
   ];
 
   const receiveData = (data) => {
@@ -91,34 +93,44 @@ const FeaturedEvent = (props, showTimer, data) => {
               backgroundSize: 'cover',
               objectFit: 'cover',
               backgroundRepeat: 'no-repeat',
-              textAlign: 'left', // Align title to the left
-              backgroundImage: item.backgroundImageDesktop, // Set initial desktop image
+              textAlign: 'left',
+              backgroundImage: `url('/img/internal/tinycafe.jpeg')`,
             }}
           >
             <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div>
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
               <div className='flex gap-4 mt-4 items-center'>
-                <button
-                  onClick={handleTicketClaim}
-                  item={item.id}
-                  selectedstyle={item?.styles[0]?.sid}
-                  currentoption={item?.styles[0]?.option[0]?.sid}
-                  action='add_to_cart'
-                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                >
-                  Buy Livestream
-                </button>
+                {item.styles[0].price <= 0 ? (
+                  <button
+                    onClick={handleFreeTicketClaim}
+                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  >
+                    Claim free ticket
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleTicketClaim}
+                    item={item.id}
+                    selectedstyle={item?.styles[0]?.sid}
+                    currentoption={item?.styles[0]?.option[0]?.sid}
+                    action='buy'
+                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  >
+                    Buy Livestream ${item.styles[0].price}
+                  </button>
+                )}
                 <p className='lg:text-xl text-white'>{item.date}</p>
               </div>
             </div>
             {isPopupVisible && (
               <TicketClaimedPopup onClose={handlePopupClose} />
             )}
+            {showPop && <FreePopUp onClose={handlePopupClose} />}
           </div>
         ))}
       </Carousel>
-      {props.showTimer ? (
+      {props?.data[0]?.detailmeta?.eventDateDef?.dates[0] ? (
         <Countdown
           eventDate={props?.data[0]?.detailmeta?.eventDateDef?.dates[0]}
         />

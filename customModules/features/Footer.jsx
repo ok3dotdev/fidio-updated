@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 
-
 const Footer = (props) => {
-  const {pageName} = props;
+  const { pageName } = props;
   return (
-    <div className={`w-full bg-black relative ${pageName === 'Index' ? 'mt-[100vh]' : ''}`}>
+    <div
+      className={`w-full bg-black relative ${
+        pageName === 'Index' ? 'mt-[100vh]' : ''
+      }`}
+    >
       <div className='flex flex-wrap justify-between pt-8 w-full pb-1 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-[110rem] mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
         <div className='text-center col-span-1 lg:col-span-2 w-full flex justify-center lg:block'>
           <img
@@ -24,7 +27,7 @@ const Footer = (props) => {
               <Link href='/privacy'>Privacy Policy</Link>
             </li>
             <li>
-              <Link href='#'>FAQ</Link>
+              <Link href='/faq'>FAQ</Link>
             </li>
           </ul>
         </div>
@@ -32,16 +35,24 @@ const Footer = (props) => {
           <p className='mb-4 text-gray-400'>COMPANY</p>
           <ul className='flex flex-col gap-4 text-white'>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>Artist & Managers</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>
+                Artist & Managers
+              </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>Clubs & Venues</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>
+                Clubs & Venues
+              </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>Partners</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>
+                Partners
+              </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>Sponsors</a>
+              <a target='_blank' href='mailto:admin@fidio.ca'>
+                Sponsors
+              </a>
             </li>
           </ul>
         </div>
@@ -81,7 +92,6 @@ const Footer = (props) => {
         <hr className='border-gray-400 mb-4' />
         <div className='flex justify-between text-gray-400 text-xs'>
           <p>©2023 Fidio.</p>
-          <p> CA(CAD)</p>
         </div>
       </div>
     </div>

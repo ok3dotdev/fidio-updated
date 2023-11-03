@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Countdown({ eventDate }) {
+  console.log('eventdate', eventDate);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -42,7 +43,7 @@ function Countdown({ eventDate }) {
   return !timeLeft ? (
     ''
   ) : (
-    <div className='absolute top-24 right-10 mt-24 flex gap-4 text-2xl'>
+    <div className='absolute top-24 right-10 mt-24 flex gap-4 text-2xl glow-text'>
       <div className='flex flex-col'>
         <span>{timeLeft.days}</span> <span>Days</span>
       </div>

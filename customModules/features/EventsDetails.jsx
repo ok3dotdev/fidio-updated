@@ -3,10 +3,10 @@ import React from 'react';
 const EventsDetails = (props) => {
   const data = props?.data?.detailmeta?.lineup;
   return (
-    <div className=' pt-[20px] pb-[20px] text-2xl lg:px-8 px-4 '>
+    <div className=' pt-[20px] pb-[20px] text-2xl lg:px-8 px-4 max-w-3xl mx-auto'>
       <h2 className='text-center lg:text-left mt-8 mb-4'>Line Up</h2>
       <div className='flex flex-col gap-8 lg:flex-row justify-between '>
-        {data?.map((item, index) => {
+        {data?.slice(0, 5).map((item, index) => {
           return (
             <div key={index} className='flex flex-col items-center'>
               <div className='h-24 w-24 rounded-full bg-green-600'></div>

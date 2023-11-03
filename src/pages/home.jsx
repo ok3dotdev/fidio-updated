@@ -57,7 +57,6 @@ export const page = (props) => {
   const r = React.useRef();
   const profileEvent = 'fetchProfileData';
 
-
   props._LocalEventEmitter.unsubscribe(profileEvent);
   props._LocalEventEmitter.subscribe(profileEvent, (e) => {
     console.log(
@@ -137,14 +136,9 @@ export const page = (props) => {
   console.log('home', useProps);
   return (
     <div className='relative'>
-      <HomeLayout
-      useProps={useProps}
-      pageName={pageName}
-      pageData={''}
-      props={useProps}
-    >
-      {components}
-    </HomeLayout>
+      <HomeLayout pageName={pageName} pageData={''} props={useProps}>
+        {components}
+      </HomeLayout>
     </div>
   );
 };

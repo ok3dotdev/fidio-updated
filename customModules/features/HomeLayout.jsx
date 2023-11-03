@@ -14,16 +14,10 @@ const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
     <div>
       {' '}
       <HeadSEO site={siteData} page={pageData} />
-      {showMainMenu ? (
-        <Menu {...useProps} classname='' />
-      ) : (
-        <AltMenu {...useProps} {...props} />
-      )}
+      {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
       <div
         style={{
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
+          top: props.menuConfig.height ? props.menuConfig.height + 'px' : '',
         }}
       >
         {children}
