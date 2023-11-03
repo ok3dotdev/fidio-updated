@@ -58,7 +58,9 @@ export const page = (props) => {
   const receiveData = (data) => {
     setEventsData(data.data.fetchedData[0].productReq);
     setIsLoading(false);
-    console.log('datas', eventsData);
+    console.log('datas', data);
+    console.log('prospsss', props);
+    console.log('slug', router.query.slug[0]);
   };
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [fetchingProfile, setFetchingProfile] = React.useState(false);
@@ -105,7 +107,7 @@ export const page = (props) => {
         {loading ? (
           <LoadingSkeleton />
         ) : (
-          <FeaturedEventPage {...props} showTimer={true} data={eventsData[0]} />
+          <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
         )}
         <EventsDetails data={eventsData[0]} />
         <FetchHandler
@@ -113,7 +115,7 @@ export const page = (props) => {
           handlerName='my_handler'
           handlerArgs={[
             {
-              productReq: [`${router.query.slug}`],
+              productReq: [`${router.query.slug[0]}`],
             },
           ]}
           receiveData={receiveData}

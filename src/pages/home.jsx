@@ -133,7 +133,7 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
 
   // console.log({ useProps });
-  console.log('home', useProps);
+  console.log('home', props);
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={useProps}>

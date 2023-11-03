@@ -7,7 +7,7 @@ import Countdown from './CountDown';
 import { FetchHandler } from '../../modules/utility/fetch';
 import { fireGlobalEvent } from '../../modules/utility/utility';
 
-const FeaturedEvent = (props, showTimer, data) => {
+const FeaturedEvent = (props) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [showPop, setShowPop] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
