@@ -20,6 +20,7 @@ import { homePageData } from '../../customModules/features/seo-data';
 const pageName = 'Index';
 
 export const Page = (props) => {
+  console.log('index', props);
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);

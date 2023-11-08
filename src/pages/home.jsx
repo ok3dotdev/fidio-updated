@@ -59,13 +59,7 @@ export const page = (props) => {
 
   props._LocalEventEmitter.unsubscribe(profileEvent);
   props._LocalEventEmitter.subscribe(profileEvent, (e) => {
-    console.log(
-      e,
-      profileLoaded,
-      fetchingProfile,
-      props._loggedIn,
-      e.dispatch == 'fetch'
-    );
+    e, profileLoaded, fetchingProfile, props._loggedIn, e.dispatch == 'fetch';
     if (e.dispatch && e.dispatch == 'fetch') {
       if (
         !profileLoaded &&
@@ -73,7 +67,7 @@ export const page = (props) => {
         props._loggedIn &&
         props._loggedIn.username
       ) {
-        console.log('Running!');
+        // ('Running!');
         // getUserProfileData(props);
       }
     }
@@ -95,7 +89,7 @@ export const page = (props) => {
         identifier: props._loggedIn.identifier,
         profileReq: true,
       };
-      console.log('Running req', fetchBody, props.apiUrl + '/m/pagedefaults');
+      // ('Running req', fetchBody, props.apiUrl + '/m/pagedefaults');
       let res = await fetchPost(
         props.apiUrl + '/m/pagedefaults',
         null,
@@ -116,7 +110,7 @@ export const page = (props) => {
         } else if (res.status == 'success') {
           setFetchingProfile(false);
           setProfileLoaded(res);
-          console.log('res11', res);
+          // ('res11', res);
           return res;
         }
       }
@@ -132,8 +126,8 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
 
-  // console.log({ useProps });
-  console.log('home', props);
+  // // ({ useProps });
+  // ('home', props);
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={useProps}>

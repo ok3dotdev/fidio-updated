@@ -2,7 +2,7 @@ import React from 'react';
 import { SignIn, Username } from '../../modules/onboarding/signin';
 
 const Signin = (props) => {
-  //   console.log('signin', props);
+  //   // ('signin', props);
   return (
     <div>
       <div className='w-full h-[100vh] fixed'>
@@ -17,12 +17,12 @@ const Signin = (props) => {
           </div>
           <div className='flex flex-col gap-y-2 justify-start lg:justify-center items-center lg:mt-0'>
             <div className='w-full lg:hidden block'>
-            <img
-              src='/img/internal/frame2.png'
-              alt=''
-              width={'250px'}
-              className='w-[100px] lg:w-[250px]'
-            />
+              <img
+                src='/img/internal/frame2.png'
+                alt=''
+                width={'250px'}
+                className='w-[100px] lg:w-[250px]'
+              />
             </div>
             <p className='text-2xl mb-8 font-bold'>Log In or Sign Up</p>
             <Username

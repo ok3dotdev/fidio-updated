@@ -20,6 +20,7 @@ import AltMenu from '../../customModules/features/AltMenu';
 const pageName = 'w';
 
 export const page = (props) => {
+  console.log('leprops', props);
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
@@ -76,13 +77,14 @@ export const page = (props) => {
           top: useProps.menuConfig.height
             ? useProps.menuConfig.height + 'px'
             : '',
+          paddingTop: '20px', // Add top padding on desktop
         }}
       >
-        <div className='flex'>
-          <div className='flex-shrink-0 flex-grow w-[7.5/10]'>
-            {components} {/* Assuming this is your "watch" component */}
-          </div>
-          <div className='flex-shrink-0 w-[2.5/10]'>
+        <div
+          className={`flex ${pageName} flex-col md:flex-row py-[10px] px-[5px]`}
+        >
+          <div className='flex-shrink-0 flex-grow md:w-[75%] w-full'></div>
+          <div className='flex-shrink-0 md:w-[25%] w-full md:pl-2 pl-0'>
             <iframe
               src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
               width='100%'
@@ -93,6 +95,7 @@ export const page = (props) => {
               marginheight='0'
               marginwidth='0'
               scrolling='auto'
+              className='lg:h-[100vh]'
             ></iframe>
           </div>
         </div>

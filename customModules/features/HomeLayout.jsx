@@ -7,7 +7,6 @@ import { siteData } from './seo-data';
 import AltMenu from './AltMenu';
 
 const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
-  console.log('layout', props);
   const showMainMenu = pageName === 'Index';
   const heroHeight = '80vh';
   return (

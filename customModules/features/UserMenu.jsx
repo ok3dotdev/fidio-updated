@@ -33,9 +33,9 @@ const UserMenu = (props) => {
   };
 
   const toggleMenu = React.useCallback(() => {
-    console.log('Toggling menu...');
+    // ('Toggling menu...');
     setIsMenuOpen(!isMenuOpen);
-    console.log('isMenuOpen after toggle:', isMenuOpen);
+    // ('isMenuOpen after toggle:', isMenuOpen);
   });
 
   const handleCart = () => {
@@ -100,9 +100,9 @@ const UserIconSkeleton = (props) => {
   const router = useRouter();
 
   const toggleMenu = React.useCallback(() => {
-    console.log('Toggling menu...');
+    // ('Toggling menu...');
     setIsMenuOpen(!isMenuOpen);
-    console.log('isMenuOpen after toggle:', isMenuOpen);
+    // ('isMenuOpen after toggle:', isMenuOpen);
   });
 
   const handleLogout = (e) => {

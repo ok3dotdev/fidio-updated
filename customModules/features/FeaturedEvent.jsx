@@ -67,7 +67,7 @@ const FeaturedEvent = (props) => {
   ];
 
   const receiveData = (data) => {
-    console.log('data', data);
+    // ('data', data);
     setEvetsData(data.data.fetchedData[0].productReq);
   };
   <FetchHandler
@@ -130,29 +130,16 @@ const FeaturedEvent = (props) => {
               backgroundImage: item.backgroundImageDesktop, // Set initial desktop image
             }}
           >
-            <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div>
+            {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div> */}
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
-              <div className='flex gap-4 mt-4 items-center'>
-                {item.styles[0].price <= 0 ? (
-                  <button
-                    onClick={handleFreeTicketClaim}
-                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                  >
-                    Claim free ticket
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleTicketClaim}
-                    item={item.id}
-                    selectedstyle={item?.styles[0]?.sid}
-                    currentoption={item?.styles[0]?.option[0]?.sid}
-                    action='buy'
-                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                  >
-                    Buy Livestream ${item.styles[0].price}
-                  </button>
-                )}
+              <div className='flex gap-4 mt-4 items-center flex-w'>
+                <button
+                  onClick={handleFreeTicketClaim}
+                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                >
+                  Claim free ticket
+                </button>
                 <a
                   className='bg-gray-600 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
                   href={`/events/${item.id}`}
@@ -167,8 +154,8 @@ const FeaturedEvent = (props) => {
           </div>
         ))}
       </Carousel>
-      {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
       {showPop && <FreePopUp onClose={handlePopupClose} />}
+      {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
       {props.showTimer ? <Countdown eventDate='2023-11-04T16:00:00Z' /> : ''}
     </div>
   );

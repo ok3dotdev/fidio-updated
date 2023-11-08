@@ -41,7 +41,7 @@ const Hero = (props) => {
                   href='/signin'
                   className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-orange-800 mt-2 font-bold'
                 >
-                  BUY $4.99
+                  Claim Free Ticket
                 </Link>
               </div>
             </div>

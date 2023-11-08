@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 const HeadSEO = ({ site = {}, page = {}, schema }) => {
-  console.log({ site, page, schema });
+  // ({ site, page, schema });
   // set <head> variables
   const siteTitle = site.title;
 

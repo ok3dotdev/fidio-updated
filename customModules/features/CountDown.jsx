@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Countdown({ eventDate }) {
-  console.log('eventdate', eventDate);
+  // ('eventdate', eventDate);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -43,19 +43,21 @@ function Countdown({ eventDate }) {
   return !timeLeft ? (
     ''
   ) : (
-    <div className='absolute top-24 right-10 mt-24 flex gap-4 text-2xl glow-text'>
-      <div className='flex flex-col'>
-        <span>{timeLeft.days}</span> <span>Days</span>
+    <div className='absolute top-24 right:0 lg:right-10 mt-24 lg:mt-[350px] flex gap-4 text-xl sm:text-2xl font-bold text-white p-6 rounded-lg bg-black bg-opacity-50'>
+      <div className='flex flex-col items-center'>
+        <span className='text-xl sm:text-4xl'>{timeLeft.days}</span>
+        <span>{timeLeft.days > 1 ? 'Days' : 'Day'}</span>
       </div>
-      <div className='flex flex-col'>
-        <span>{timeLeft.hours}</span> <span>Hours</span>
+      <div className='flex flex-col items-center'>
+        <span className='text-xl sm:text-4xl'>{timeLeft.hours}</span>
+        <span>Hours</span>
       </div>
-      <div className='flex flex-col'>
-        <span>{timeLeft.minutes}</span>
+      <div className='flex flex-col items-center'>
+        <span className='text-xl sm:text-4xl'>{timeLeft.minutes}</span>
         <span>Minutes </span>
       </div>
-      <div className='flex flex-col'>
-        <span>{timeLeft.seconds} </span>
+      <div className='flex flex-col items-center'>
+        <span className='text-xl sm:text-4xl'>{timeLeft.seconds} </span>
         <span>Seconds</span>
       </div>
     </div>

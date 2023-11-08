@@ -4,6 +4,9 @@ const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
+  },
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/');
     config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js');

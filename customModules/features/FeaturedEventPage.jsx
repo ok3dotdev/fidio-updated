@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import FreePopUp from './FreePopUp';
 
 const FeaturedEvent = (props, showTimer, data) => {
-  console.log('leee', props?.data[0]?.detailmeta?.eventDateDef?.dates[0]);
+  // ('leee', `${props.cdn.static}/${props?.data[0]?.images[0]?.name}`);
   const router = useRouter();
   const [showPop, setShowPop] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -35,7 +35,7 @@ const FeaturedEvent = (props, showTimer, data) => {
 
   const handleFireGlobalEvent = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter);
-    setIsPopupVisible(true);
+    // setIsPopupVisible(true);
   });
 
   const carouselItems = [
@@ -48,32 +48,9 @@ const FeaturedEvent = (props, showTimer, data) => {
   ];
 
   const receiveData = (data) => {
-    console.log('data', data);
+    // ('data', data);
     setEvent(data.data.fetchedData[0].productReq);
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth <= 768;
-      const backgroundImage = isMobile
-        ? carouselItems[currentIndex].backgroundImageMobile
-        : carouselItems[currentIndex].backgroundImageDesktop;
-      const carouselItem = document.querySelector(
-        `#carousel-item-${currentIndex}`
-      );
-      if (carouselItem) {
-        carouselItem.style.backgroundImage = backgroundImage;
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [currentIndex, carouselItems]);
 
   return (
     <div>
@@ -89,37 +66,22 @@ const FeaturedEvent = (props, showTimer, data) => {
             id={`carousel-item-${index}`}
             key={index}
             className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full'
-            style={{
-              backgroundSize: 'cover',
-              objectFit: 'cover',
-              backgroundRepeat: 'no-repeat',
-              textAlign: 'left',
-              backgroundImage: `url('/img/internal/tinycafe.jpeg')`,
-            }}
           >
-            <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div>
+            {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div> */}
+            <img
+              src={`${props.cdn.static}/${props?.data[0]?.images[0]?.name}`}
+              alt='Event Background'
+              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
+            />
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
-              <div className='flex gap-4 mt-4 items-center'>
-                {item.styles[0].price <= 0 ? (
-                  <button
-                    onClick={handleFreeTicketClaim}
-                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                  >
-                    Claim free ticket
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleTicketClaim}
-                    item={item.id}
-                    selectedstyle={item?.styles[0]?.sid}
-                    currentoption={item?.styles[0]?.option[0]?.sid}
-                    action='buy'
-                    className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
-                  >
-                    Buy Livestream ${item.styles[0].price}
-                  </button>
-                )}
+              <div className='flex gap-4 mt-4 items-center flex-wrap'>
+                <button
+                  onClick={handleFreeTicketClaim}
+                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                >
+                  Claim free ticket
+                </button>
                 <p className='lg:text-xl text-white'>{item.date}</p>
               </div>
             </div>

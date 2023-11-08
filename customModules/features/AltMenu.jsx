@@ -25,12 +25,12 @@ const AltMenu = (props) => {
       cartRef.current &&
       !cartRef.current.contains(event.target)
     ) {
-      console.log('worked');
+      // ('worked');
       setIsCartOpen(false);
     }
   };
 
-  console.log('menu', props);
+  // ('menu', props);
 
   return (
     <div className='bg-transparent z-40 relative h-[66px] lg:h-[80px]'>

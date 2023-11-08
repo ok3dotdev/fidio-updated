@@ -109,7 +109,7 @@ export const page = (props) => {
         ) : (
           <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
         )}
-        <EventsDetails data={eventsData[0]} />
+        <EventsDetails {...props} data={eventsData[0]} />
         <FetchHandler
           {...props}
           handlerName='my_handler'
@@ -126,7 +126,12 @@ export const page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
+  return await getServerSidePropsDefault(
+    context,
+    pageDefaults[pageName],
+    {},
+    true
+  );
 };
 
 export default page;

@@ -43,7 +43,6 @@ function MyApp({ Component, pageProps }) {
       _setLoggedIn(pageProps._loggedIn);
     } else {
       const signedIn = checkSignedIn();
-      console.log(signedIn);
       if (signedIn) {
         _setLoggedIn(signedIn);
       }

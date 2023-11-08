@@ -15,10 +15,10 @@ const HomeDash = (props) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const receiveData = (data) => {
-    console.log('data', data);
+    // ('data', data);
     setEventsData(data.data.fetchedData[0].productReq);
     setIsLoading(false);
-    console.log('events', eventsData);
+    // ('events', eventsData);
   };
 
   const handleFireGlobalEvent = React.useCallback(async (e) => {

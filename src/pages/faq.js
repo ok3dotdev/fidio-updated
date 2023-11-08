@@ -68,9 +68,9 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <HomeLayout
-      useProps={useProps}
       pageName={pageName}
       pageData={privacyPolicyPageData}
+      props={useProps}
     >
       {components}
     </HomeLayout>

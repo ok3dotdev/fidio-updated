@@ -36,7 +36,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             AGE OF MAJORITY, RIGHT TO ENTER INTO THIS AGREEMENT
           </h2>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You represent and warrant to Fidio that you are at least eighteen
             (18) years old and that you possess the legal right and ability to
             enter into this Agreement and to use the Site in accordance with
@@ -44,7 +44,7 @@ const TermsContent = () => {
           </p>
 
           <h2 class='text-xl font-semibold mt-6'>PRIVACY POLICY</h2>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Please review our
             <a
               href='https://www.fidio.ca/privacy'
@@ -61,7 +61,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             NOTICE REGARDING FUTURE CHANGES TO TERMS
           </h2>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             FIDIO reserves the right to change or modify these Terms of Service
             (including, without limitation, FIDIO’s privacy policy) at any time
             without notice to you. Please read these Terms of Service carefully,
@@ -71,7 +71,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             NOTICE REGARDING ARBITRATION AND CLASS ACTION WAIVER
           </h2>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             The Terms contain an arbitration agreement and class action waiver.
             Specifically, you and we agree that any dispute or claim relating in
             any way to the Terms, your use of the Site, or products or services
@@ -84,7 +84,7 @@ const TermsContent = () => {
           </p>
           <h2 class='text-xl font-semibold mt-6'>1. Services</h2>
           <h3 class='text-lg font-semibold mt-4'>1.1. General</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Fidio provides a marketplace for Afro-inspired artists, venues,
             festivals, and merchants (collectively, “Event Producers”) to offer
             live-streamed and pre-recorded entertainment events (“Events”) and
@@ -104,7 +104,7 @@ const TermsContent = () => {
           </h2>
 
           <h3 class='text-lg font-semibold mt-4'>1.2.1. Tickets:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             It is your duty as an Event Producer to accurately describe the
             experience in connection with any Tickets you offer and, by offering
             a Ticket, you agree that you will provide the experience described.
@@ -125,7 +125,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             1.2.2. Event Producer Content:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You are responsible for creating the images, words, graphics,
             recordings and other content that are featured on your Event
             Producer page, communicated to your Attendees through Event Producer
@@ -146,7 +146,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             1.2.3. Event Producer Communications:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You are responsible for all marketing/exclusive content text
             messages and/or emails featuring Event Producer Content in
             connection with Tickets (collectively, “Event Producer
@@ -162,7 +162,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>2. Account Registration</h2>
 
           <h3 class='text-lg font-semibold mt-4'>2.1. General:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You will not be required to register for an account in order to
             browse the Site as a general User. However, Users will be required
             to register for an Attendee account to use certain features of the
@@ -175,7 +175,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>2.2. Account Credentials:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             By registering for an account, you agree that all information
             provided is accurate and complete. Your account username may not
             include the name of another person with the intent to impersonate
@@ -200,7 +200,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             2.3. Event Producer Accounts:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             An Event Producer may establish and manage its own account or
             delegate permission to authorized individuals to do so on its
             behalf, resulting in multiple User accounts associated with one
@@ -221,7 +221,7 @@ const TermsContent = () => {
           </h2>
 
           <h3 class='text-lg font-semibold mt-4'>3.1. General:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Fidio is an events-based ticketing platform for Event Producers’
             streaming Events. We do not control the services advertised or
             provided by the Event Producer and do not manage or fulfil the
@@ -242,7 +242,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.2. Pricing:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             We sell livestream Tickets on behalf of Event Producers, which means
             that the price for each Ticket for an Event is determined by the
             applicable Event Producer. Tickets are sold individually, and we may
@@ -280,7 +280,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.3. Fees and Taxes:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             All prices are charged in U.S. Dollars (unless otherwise stated).
             Applicable taxes shall be separately assessed as required by law at
             the time of checkout. If applicable, currency exchange rates and
@@ -306,7 +306,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.4. Method of Payment:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You agree to pay all charges incurred by you at the amounts in
             effect when such charges are incurred and agree that we and any of
             our third-party payment processors are authorized to immediately
@@ -341,7 +341,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.4. Billing Information Verification:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             All information on accounts and orders must be valid and are subject
             to verification. Orders are subject to credit card approval and are
             processed only after the billing address associated with your credit
@@ -364,7 +364,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.5. No Resale, Transfer, and Promotions:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Purchases of all Tickets are personal to each Attendee, and the
             resale, transfer, or gifting of Tickets is expressly prohibited.
             Tickets may not be used for advertising, promotions, contests or
@@ -373,7 +373,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.6. Postponed or Rescheduled Events:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             If an Event is postponed or rescheduled, your Ticket is still valid
             for the rescheduled Event date and we will not issue a refund. If an
             Event Producer cancels an Event, we will issue you a refund to the
@@ -383,7 +383,7 @@ const TermsContent = () => {
             changes to Event times on behalf of the Event Producer.
           </p>
           <h3 class='text-lg font-semibold mt-4'>3.7. Refunds:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             All sales are final and Tickets are non-refundable except in the
             limited circumstances where an Event is canceled. In our sole
             discretion, we may issue you a refund for a non-subscription Ticket
@@ -410,7 +410,7 @@ const TermsContent = () => {
             this provision from using the Site.
           </p>
           <h3 class='text-lg font-semibold mt-4'>3.8. Ticket Orders:</h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Individual Tickets are sold on a first come first served basis and
             while quantities last. Your Ticket or subscription order is
             confirmed when we send you a confirmation, in the form of a
@@ -425,7 +425,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.9. Ability to View an Event:
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             The ability to view a streaming Event may be limited depending on
             your Internet provider, your device, and your browser type. You are
             responsible for determining whether your Internet speed, device, and
@@ -452,8 +452,8 @@ const TermsContent = () => {
 
           <h3 class='text-lg font-semibold mt-4'>3.10. Donations:</h3>
 
-          <p class='mt-2 font-sans'>3.10.1. General:</p>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>3.10.1. General:</p>
+          <p class='mt-2'>
             In partnership with a third-party, Fidio will offer Event Producers
             the option to implement a donation feature with regard to a specific
             Event, Ticket, or other service offering (the “Donation Services”).
@@ -467,7 +467,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             4. Site Code of Conduct & Acceptable Use Policy
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             You agree that you will comply with all applicable laws, rules and
             regulations, and that you will not:
           </p>
@@ -483,7 +483,7 @@ const TermsContent = () => {
               including any employee or representative of our company.
             </li>
           </ul>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             Fidio may refuse access to the Site or our Services if we believe a
             User has violated the Code of Conduct or any other provision of
             these Terms in our sole and absolute discretion.
@@ -493,7 +493,7 @@ const TermsContent = () => {
             5. Ownership of Content and Grant of Conditional License to use the
             Site
           </h3>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             The Site and all data, text, designs, pages, print screens, images,
             artwork, photographs, audio and video clips, and HTML code, source
             code, or software that reside or are viewable or otherwise
@@ -512,39 +512,37 @@ const TermsContent = () => {
             herein only if, as a condition precedent, you agree that you will
             not:
           </p>
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             a) Submit any software or other materials that contain any viruses,
             worms, Trojan horses, defects, date bombs, time bombs or other items
             of a destructive nature;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             b) Manipulate identifiers, including by forging headers, in order to
             disguise the origin of any posting that you submit;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             c) Link to any portion of the Site other than the URL assigned to
             the home page of the Site;
           </p>
 
-          <p class='mt-2 font-sans'>
-            d) "Frame" or "mirror" any part of the Site;
-          </p>
+          <p class='mt-2'>d) "Frame" or "mirror" any part of the Site;</p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             e) Modify, adapt, sub-license, translate, sell, reverse engineer,
             decompile or disassemble any portion of the Site or otherwise
             attempt to derive any source code or underlying ideas or algorithms
             of any part of the Content;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             f) Remove any copyright, trademark or other proprietary rights
             notices contained on the Site;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             g) Use any robot, spider, offline reader, site search/retrieval
             application or other manual or automatic device, tool, or process to
             retrieve, index, data mine or in any way reproduce or circumvent the
@@ -558,7 +556,7 @@ const TermsContent = () => {
             materials gathered in the past;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             h) Use any automated software or computer system to search for,
             reserve, buy or otherwise obtain Tickets, discount codes,
             promotional codes, vouchers, gift cards or any other items available
@@ -566,45 +564,45 @@ const TermsContent = () => {
             another computer where such software or system is active;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             i) Take any action that imposes or may impose (in our sole
             discretion) an unreasonable or disproportionately large load on our
             infrastructure;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             j) Access, reload or refresh transactional event pages, or make any
             other request to transactional servers, more than once during any
             three-second interval;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             k) Request more than 500 pages of the Site in any 24-hour period,
             whether alone or with a group of individuals;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             l) Make more than 600 reserve requests on the Site in any 24-hour
             period, whether alone or with a group of individuals;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             m) Reproduce, modify, display, publicly perform, distribute or
             create derivative works of the Site or the Content;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             n) Reproduce or scan Tickets in a format or medium different from
             that provided by the Site;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             o) Decode, decrypt, modify, or reverse engineer any Tickets or
             underlying algorithms or barcodes used on or in production of
             Tickets or the Site;
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             p) Use the Site or the Content in an attempt to, or in conjunction
             with, any device, program or service designed to circumvent any
             technological measure that effectively controls access to, or the
@@ -613,7 +611,7 @@ const TermsContent = () => {
             purpose.
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             This license is expressly conditioned on your pre-existing agreement
             to comply with, and your actual compliance with, each of the
             provisions described in this Ownership of Content and Grant of
@@ -629,7 +627,7 @@ const TermsContent = () => {
             rights by using the Site or the Content.
           </p>
 
-          <p class='mt-2 font-sans'>
+          <p class='mt-2'>
             The registered and unregistered trademarks, logos and service marks
             displayed on the Site are owned by us or our licensors. You may not
             use our trademarks, logos and service marks in any way without our
