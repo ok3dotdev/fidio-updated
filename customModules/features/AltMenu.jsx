@@ -6,6 +6,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserMenu from './UserMenu';
 import { Cart } from 'modules/ecommerce/cart';
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+
 const AltMenu = (props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
@@ -48,10 +57,19 @@ const AltMenu = (props) => {
         <div className='lg:flex gap-4'>
           <div className='flex justify-center items-center gap-4 cursor-pointer'>
             <div className='cursor-pointer'>
-              <ShoppingCartIcon
-                onClick={handleCartOpen}
-                className='cursor-pointer'
-              />
+              <Sheet>
+                <SheetTrigger>
+                  <ShoppingCartIcon />
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Your Cart is Empty</SheetTitle>
+                    <SheetDescription className='font-mono'>
+                      Please add something to cart to view items
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
             </div>
             <div ref={cartRef} className='absolute top-0 cursor-pointer'>
               <Cart

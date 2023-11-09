@@ -15,6 +15,7 @@ import { resolveVariables } from '/app.config';
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
 import { isObjectEmpty } from '/modules/util';
+import { ThemeProvider } from '../components/provider';
 import {
   addToCartGlobal,
   calculateTotal,
@@ -287,9 +288,17 @@ function MyApp({ Component, pageProps }) {
         </Script>
       </>
       <SocketContainer socket={socket} {...pageProps}></SocketContainer>
-      <div
-        className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
-      ></div>
+      <ThemeProvider
+        attribute='class'
+        defaultTheme='system'
+        enableSystem
+        disableTransitionOnChange
+      >
+        <div
+          className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
+        ></div>
+      </ThemeProvider>
+
       <Component socket={socket} {...pageProps} />
     </div>
   );
