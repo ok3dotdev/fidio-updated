@@ -4,6 +4,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
+import HomeLayout from '../../customModules/features/HomeLayout';
 import {
   basicError,
   generateComponent,
@@ -12,6 +13,7 @@ import {
   getServerSidePropsDefault,
   resolveDefaults,
 } from '/modules/utility.js';
+import { WatchPage } from '/modules/streaming/watch/WatchPage.js';
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import AltMenu from '../../customModules/features/AltMenu';
@@ -20,7 +22,6 @@ import AltMenu from '../../customModules/features/AltMenu';
 const pageName = 'w';
 
 export const page = (props) => {
-  console.log('leprops', props);
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
@@ -69,38 +70,28 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
-    <React.Fragment>
-      <AltMenu {...useProps}></AltMenu>
-      <div
-        className={`${pageName}_Body`}
-        style={{
-          top: useProps.menuConfig.height
-            ? useProps.menuConfig.height + 'px'
-            : '',
-          paddingTop: '20px', // Add top padding on desktop
-        }}
-      >
-        <div
-          className={`flex ${pageName} flex-col md:flex-row py-[10px] px-[5px]`}
-        >
-          <div className='flex-shrink-0 flex-grow md:w-[75%] w-full'></div>
-          <div className='flex-shrink-0 md:w-[25%] w-full md:pl-2 pl-0'>
-            <iframe
-              src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
-              width='100%'
-              height='450'
-              allowtransparency='yes'
-              allow='autoplay'
-              frameborder='0'
-              marginheight='0'
-              marginwidth='0'
-              scrolling='auto'
-              className='lg:h-[100vh]'
-            ></iframe>
-          </div>
+    <HomeLayout pageName={pageName} pageData={''} props={useProps}>
+      <div className='flex flex-col lg:flex-row p-1 lg:p-4 gap-1 lg:gap-4'>
+        <div className='flex-shrink-0 flex-grow lg:w-[75%] w-full'>
+          {/* <WatchPage {...props} /> */}
+          {components}
+        </div>
+        <div className='flex-shrink-0 lg:w-[25%] w-full md:pl-2 pl-0'>
+          <iframe
+            src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
+            width='100%'
+            height='450'
+            allowtransparency='yes'
+            allow='autoplay'
+            frameborder='0'
+            marginheight='0'
+            marginwidth='0'
+            scrolling='auto'
+            className='lg:h-[100vh]'
+          />
         </div>
       </div>
-    </React.Fragment>
+    </HomeLayout>
   );
 };
 

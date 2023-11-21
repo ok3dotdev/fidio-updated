@@ -7,7 +7,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 const events = [
   {
     name: 'Afro Fusion Night',
-    date: 'Nov 15th, 2023',
+    date: 'Nov 29th, 2023',
     venue: 'Lagos, Nigeria',
     img: '/img/internal/sharon5.png',
   },
@@ -19,13 +19,13 @@ const events = [
   },
   {
     name: 'Jungle Groove Party',
-    date: 'Oct 25th, 2023',
+    date: 'Jan 1st, 2023',
     venue: 'Cape Town, South Africa',
     img: '/img/internal/sharon7.png',
   },
   {
     name: 'Desert Rhythms Concert',
-    date: 'Nov 10th, 2023',
+    date: 'Nov 28th, 2023',
     venue: 'Marrakech, Morocco',
     img: '/img/internal/sharon8.png',
   },
@@ -55,7 +55,8 @@ const events = [
   // },
 ];
 
-{/* <FetchHandler
+{
+  /* <FetchHandler
   {...props}
   handlerName='my_handler'
   handlerArgs={[
@@ -67,8 +68,8 @@ const events = [
     },
   ]}
   receiveData={receiveData}
-/>  */}
-
+/>  */
+}
 
 const Upcoming = () => {
   const scrollRef = useRef(null);

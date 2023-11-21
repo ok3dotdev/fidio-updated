@@ -4,7 +4,7 @@ const FaqContent = () => {
   return (
     <div className='pt-[20px] px-4 h-full'>
       <div className='max-w-4xl mx-auto'>
-        <main class=' p-4 '>
+        <main class=' p-4 text-white'>
           <h1 class='text-2xl font-semibold mb-4'>
             Frequently Asked Questions
           </h1>

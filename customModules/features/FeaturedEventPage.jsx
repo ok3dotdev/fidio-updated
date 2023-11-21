@@ -40,10 +40,11 @@ const FeaturedEvent = (props, showTimer, data) => {
 
   const carouselItems = [
     {
-      backgroundImageDesktop: 'url(/img/internal/altsound.png)',
-      backgroundImageMobile: 'url(/img/internal/altsound.png)',
-      title: 'Alternate Sound',
-      date: 'NOV 04, 2023 | 06:00 PM EST',
+      backgroundImageDesktop: '/img/internal/ODUMO.jpg',
+      backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
+      title: 'Odumodu Blvck Live in Birmingham ',
+      date: 'NOV 24, 2023 | 02:00AM GMT',
+      id: 'odumodublvck-live-in-birmingham',
     },
   ];
 
@@ -61,20 +62,27 @@ const FeaturedEvent = (props, showTimer, data) => {
         showArrows={true}
         showStatus={false}
       >
-        {event.map((item, index) => (
+        {carouselItems.map((item, index) => (
           <div
             id={`carousel-item-${index}`}
             key={index}
             className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full'
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div> */}
-            <img
+            {/* <img
               src={`${props.cdn.static}/${props?.data[0]?.images[0]?.name}`}
+              alt='Event Background'
+              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
+            /> */}
+            <img
+              src={item.backgroundImageDesktop}
               alt='Event Background'
               className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
             />
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
+              <h2 className='text-4xl lg:text-8xl font-bold text-left'>
+                {item.title}
+              </h2>
               <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button
                   onClick={handleFreeTicketClaim}
@@ -92,10 +100,8 @@ const FeaturedEvent = (props, showTimer, data) => {
           </div>
         ))}
       </Carousel>
-      {props?.data[0]?.detailmeta?.eventDateDef?.dates[0] ? (
-        <Countdown
-          eventDate={props?.data[0]?.detailmeta?.eventDateDef?.dates[0]}
-        />
+      {carouselItems[0].date ? (
+        <Countdown eventDate={'2023-11-24T02:00:00.000Z'} />
       ) : (
         ''
       )}

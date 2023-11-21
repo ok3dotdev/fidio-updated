@@ -20,7 +20,6 @@ import { homePageData } from '../../customModules/features/seo-data';
 const pageName = 'Index';
 
 export const Page = (props) => {
-  console.log('index', props);
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
@@ -29,7 +28,7 @@ export const Page = (props) => {
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
   let resolvedPage = resolvePage(config, props.path);
-  resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
+  resolvedDefinition = resolvedPage && resolvedPage.data;
 
   const getDefaults = async (force) => {
     const defaults = await resolveDefaults(
@@ -69,16 +68,14 @@ export const Page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
-    <div className='relative'>
-      <HomeLayout
-        useProps={useProps}
-        pageName={pageName}
-        pageData={homePageData}
-        props={props}
-      >
-        <Hero {...props} />
-      </HomeLayout>
-    </div>
+    <HomeLayout
+      useProps={useProps}
+      pageName={pageName}
+      pageData={homePageData}
+      props={props}
+    >
+      <Hero {...props} />
+    </HomeLayout>
   );
 };
 

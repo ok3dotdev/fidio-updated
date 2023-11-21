@@ -14,11 +14,11 @@ export const upcomingEvents = [
     price: 'FREE',
   },
   {
-    img: 'img/internal/sharon4.png',
-    title: 'Rock Concert Extravaganza',
-    artist: 'Rock Band X',
-    date: 'Sep 07, 2023',
-    price: 15,
+    img: 'img/internal/altsound_comp.jpg',
+    title: 'Alternate Sound Live 6.0',
+    artist: 'Alternate sound Band',
+    date: 'Nov 04, 2023',
+    price: 'FREE',
   },
   {
     img: 'img/internal/sharon2.png',

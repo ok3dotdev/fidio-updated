@@ -8,19 +8,11 @@ import AltMenu from './AltMenu';
 
 const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
   const showMainMenu = pageName === 'Index';
-  const heroHeight = '80vh';
   return (
-    <div>
-      {' '}
+    <div className='relative h-full'>
       <HeadSEO site={siteData} page={pageData} />
       {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
-      <div
-        style={{
-          top: props.menuConfig.height ? props.menuConfig.height + 'px' : '',
-        }}
-      >
-        {children}
-      </div>
+      {children}
       <Footer pageName={pageName} />
     </div>
   );

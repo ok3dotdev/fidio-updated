@@ -53,36 +53,31 @@ const FeaturedEvent = (props) => {
 
   const carouselItems = [
     {
-      backgroundImageDesktop: 'url(/img/internal/altsound.png)',
-      backgroundImageMobile: 'url(/img/internal/altsound.png)',
-      title: 'Alternate Sound',
-      date: 'NOV 04, 2023 | 06:00 PM EST',
-    },
-    {
-      backgroundImageDesktop: 'url(/img/internal/tinycafe.jpeg)',
-      backgroundImageMobile: 'url(/img/internal/tinycafe.jpeg)',
-      title: 'A NIGHT WITH SEWA 2',
-      date: 'OCT 23, 2023 | 08:00 PM EST',
+      backgroundImageDesktop: 'url(/img/internal/ODUMO.jpg)',
+      backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
+      title: 'Odumodu Blvck Live in Birmingham ',
+      date: 'NOV 24, 2023 | 02:00AM GMT',
+      id: 'odumodublvck-live-in-birmingham',
     },
   ];
 
-  const receiveData = (data) => {
-    // ('data', data);
-    setEvetsData(data.data.fetchedData[0].productReq);
-  };
-  <FetchHandler
-    {...props}
-    handlerName='my_handler'
-    handlerArgs={[
-      {
-        productReq: [
-          '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
-          '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
-        ],
-      },
-    ]}
-    receiveData={receiveData}
-  />;
+  // const receiveData = (data) => {
+  //   // ('data', data);
+  //   setEvetsData(data.data.fetchedData[0].productReq);
+  // };
+  // <FetchHandler
+  //   {...props}
+  //   handlerName='my_handler'
+  //   handlerArgs={[
+  //     {
+  //       productReq: [
+  //         '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
+  //         '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
+  //       ],
+  //     },
+  //   ]}
+  //   receiveData={receiveData}
+  // />;
 
   useEffect(() => {
     const handleResize = () => {
@@ -108,7 +103,7 @@ const FeaturedEvent = (props) => {
   }, [currentIndex, carouselItems]);
 
   return (
-    <div>
+    <div className='relative'>
       <Carousel
         selectedItem={currentIndex}
         onChange={handleCarouselChange}
@@ -117,7 +112,7 @@ const FeaturedEvent = (props) => {
         showStatus={false}
         interval={3000}
       >
-        {props.data.map((item, index) => (
+        {carouselItems.map((item, index) => (
           <div
             id={`carousel-item-${index}`}
             key={index}
@@ -132,8 +127,8 @@ const FeaturedEvent = (props) => {
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div> */}
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-5xl lg:text-8xl font-bold'>{item.name}</h2>
-              <div className='flex gap-4 mt-4 items-center flex-w'>
+              <h2 className='text-4xl lg:text-8xl font-bold'>{item.title}</h2>
+              <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button
                   onClick={handleFreeTicketClaim}
                   className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
@@ -147,7 +142,8 @@ const FeaturedEvent = (props) => {
                   View event
                 </a>
                 <p className='lg:text-xl text-white'>
-                  {convertTimestamp(item.detailmeta?.eventDateDef?.dates[0])}
+                  {item.date}
+                  {/* {convertTimestamp(item.detailmeta?.eventDateDef?.dates[0])} */}
                 </p>
               </div>
             </div>
@@ -156,7 +152,11 @@ const FeaturedEvent = (props) => {
       </Carousel>
       {showPop && <FreePopUp onClose={handlePopupClose} />}
       {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
-      {props.showTimer ? <Countdown eventDate='2023-11-04T16:00:00Z' /> : ''}
+      {props.showTimer ? (
+        <Countdown eventDate='2023-11-24T02:00:00.000Z' />
+      ) : (
+        ''
+      )}
     </div>
   );
 };

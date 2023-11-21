@@ -2,10 +2,19 @@ import Link from 'next/link';
 
 const Hero = (props) => {
   return (
-    <div className='min-h-screen h-screen absolute top-0 w-full hero'>
-      <div className='absolute inset-0 bg-black opacity-70 min-h-screen'></div>
-      <div className='max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[140px] flex flex-col lg:flex-row gap-1 h-full lg:h-auto relative z-20'>
-        <div className='flex flex-col items-center lg:items-start basis-2/3 justify-center lg:justify-start'>
+    <div className='h-screen w-full'>
+      <video
+        playsInline={true}
+        autoPlay={true}
+        loop={true}
+        muted={true}
+        preload='auto'
+        src='https://fidiohero.s3.ca-central-1.amazonaws.com/hero-video.mp4'
+        className=' w-full h-full object-cover'
+      ></video>
+      <div className='absolute inset-0 bg-black opacity-50 h-screen'></div>
+      <div className='absolute inset-0 first-line:max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[140px] flex flex-col lg:justify-center lg:flex-row gap-1 h-full lg:h-auto z-20'>
+        <div className='flex flex-col lg:items-start lg:justify-start'>
           <h1 className='font-black text-4xl md:text-6xl lg:text-7xl mb-1 text-white text-center lg:text-left max-w-[800px] main-heading'>
             Your Premiere Home for Live Afrobeats
           </h1>
@@ -20,7 +29,7 @@ const Hero = (props) => {
             ''
           )}
         </div>
-        <div className='w-full flex flex-col lg:flex-row lg:justify-center items-center lg:basis-1/3 pb-32 lg:pt-0 mt-[40px] lg:mt-[0]'>
+        <div className='w-full flex flex-col lg:flex-row items-center lg:items-start lg:basis-1/3 pb-32 lg:pt-0 mt-[40px] lg:mt-[0]'>
           <div className='bg-black p-4 inline-flex flex-col rounded-lg lg:w-[590px] w-[280px] lg:max-w-[400px] max-w-[500px] max-h-[600px] shadow-xl'>
             <div className=' relative bg-gray-400 rounded-lg'>
               <img
@@ -30,16 +39,16 @@ const Hero = (props) => {
               />
             </div>
             <div className='flex flex-col lg:flex-row mt-4 justify-between shadow-xl '>
-              <div className='text-center lg:text-left'>
+              <div className='text-center lg:text-left w-full lg:w-[50%]'>
                 <p className='font-black text-xl text-white'>
-                  Alternate Sound Live 6.0
+                  Odumodu Blvck Live in Birmingham
                 </p>
-                <p className='text-sm text-white'>Nov 04 | 6:00PM GMT +1</p>
+                <p className='text-sm text-white'>Nov 24 | 2:00AM GMT</p>
               </div>
               <div className='basis-1/2 flex flex-col text-center text-white'>
                 <Link
                   href='/signin'
-                  className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-orange-800 mt-2 font-bold'
+                  className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-orange-800 mt-2 font-bold text-sm'
                 >
                   Claim Free Ticket
                 </Link>

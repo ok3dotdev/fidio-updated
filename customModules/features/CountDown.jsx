@@ -43,7 +43,7 @@ function Countdown({ eventDate }) {
   return !timeLeft ? (
     ''
   ) : (
-    <div className='absolute top-24 right:0 lg:right-10 mt-24 lg:mt-[350px] flex gap-4 text-xl sm:text-2xl font-bold text-white p-6 rounded-lg bg-black bg-opacity-50'>
+    <div className='absolute top-24 right:0 lg:right-10 mt-24 lg:mt-[150px] flex gap-4 text-xl sm:text-2xl font-bold text-white p-6 rounded-lg bg-black bg-opacity-50'>
       <div className='flex flex-col items-center'>
         <span className='text-xl sm:text-4xl'>{timeLeft.days}</span>
         <span>{timeLeft.days > 1 ? 'Days' : 'Day'}</span>

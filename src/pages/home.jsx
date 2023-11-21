@@ -16,6 +16,7 @@ import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Layout from '../../customModules/features/Layout';
 import HomeLayout from '../../customModules/features/HomeLayout';
+import HomeDash from '../../customModules/features/HomeDash';
 
 const pageName = 'home';
 
@@ -131,7 +132,7 @@ export const page = (props) => {
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={useProps}>
-        {components}
+        <HomeDash {...props} />
       </HomeLayout>
     </div>
   );

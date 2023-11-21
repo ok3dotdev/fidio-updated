@@ -5,8 +5,8 @@ const Footer = (props) => {
   const { pageName } = props;
   return (
     <div
-      className={`w-full bg-black relative ${
-        pageName === 'Index' ? 'mt-[100vh]' : ''
+      className={`w-full bg-black relative z-40 ${
+        pageName === 'Index' ? '' : ''
       }`}
     >
       <div className='flex flex-wrap justify-between pt-8 w-full pb-1 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-[110rem] mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
@@ -14,53 +14,76 @@ const Footer = (props) => {
           <img
             src='/img/internal/frame2.png'
             alt=''
-            className='h-auto w-[260px]'
+            className='h-auto w-[160px] lg:w-[260px]'
           />
         </div>
         <div className='col-span-1'>
-          <p className='mb-4 text-gray-400'>LEGAL</p>
-          <ul className='flex flex-col gap-4 text-white'>
+          <p className='mb-4 text-white'>LEGAL</p>
+          <ul className='flex flex-col gap-4 text-gray-400 font-sans'>
             <li>
-              <Link href='/terms'>Terms of Service</Link>
+              <Link className='font-sans' href='/terms'>
+                Terms of Service
+              </Link>
             </li>
             <li>
-              <Link href='/privacy'>Privacy Policy</Link>
+              <Link className='font-sans' href='/privacy'>
+                Privacy Policy
+              </Link>
             </li>
             <li>
-              <Link href='/faq'>FAQ</Link>
+              <Link className='font-sans' href='/faq'>
+                FAQ
+              </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className='mb-4 text-gray-400'>COMPANY</p>
-          <ul className='flex flex-col gap-4 text-white'>
+          <p className='mb-4 text-white'>COMPANY</p>
+          <ul className='flex flex-col gap-4 text-gray-400 font-sans'>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>
+              <a
+                className='font-sans'
+                target='_blank'
+                href='mailto:admin@fidio.ca'
+              >
                 Artist & Managers
               </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>
+              <a
+                className='cursor-pointer font-sans'
+                target='_blank'
+                href='mailto:admin@fidio.ca'
+              >
                 Clubs & Venues
               </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>
+              <a
+                className='font-sans'
+                target='_blank'
+                href='mailto:admin@fidio.ca'
+              >
                 Partners
               </a>
             </li>
             <li>
-              <a target='_blank' href='mailto:admin@fidio.ca'>
+              <a
+                className='font-sans'
+                target='_blank'
+                href='mailto:admin@fidio.ca'
+              >
                 Sponsors
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <p className='mb-4 text-gray-400'>FOLLOW US</p>
-          <ul className='flex flex-col gap-4 text-white'>
+          <p className='mb-4 text-white'>FOLLOW US</p>
+          <ul className='flex flex-col gap-4 text-gray-400 font-sans'>
             <li>
               <a
+                className='font-sans'
                 target='_blank'
                 href='https://www.instagram.com/fidio_official/?igshid=MWZjMTM2ODFkZg%3D%3D/'
               >
@@ -68,17 +91,22 @@ const Footer = (props) => {
               </a>
             </li>
             <li>
-              <a target='_blank' href='https://www.facebook.com/Fidioafrica'>
+              <a
+                className='font-sans'
+                target='_blank'
+                href='https://www.facebook.com/Fidioafrica'
+              >
                 Facebook
               </a>
             </li>
             <li>
-              <Link target='_blank' href='#'>
+              <Link className='font-sans' target='_blank' href='#'>
                 Twitter
               </Link>
             </li>
             <li>
               <a
+                className='font-sans'
                 target='_blank'
                 href='https://www.linkedin.com/company/fidio-inc/'
               >

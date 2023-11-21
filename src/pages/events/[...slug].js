@@ -58,9 +58,9 @@ export const page = (props) => {
   const receiveData = (data) => {
     setEventsData(data.data.fetchedData[0].productReq);
     setIsLoading(false);
-    console.log('datas', data);
-    console.log('prospsss', props);
-    console.log('slug', router.query.slug[0]);
+    // console.log('datas', data);
+    // console.log('prospsss', props);
+    // console.log('slug', router.query.slug[0]);
   };
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [fetchingProfile, setFetchingProfile] = React.useState(false);
@@ -98,13 +98,8 @@ export const page = (props) => {
 
   return (
     <div className='relative'>
-      <HomeLayout
-        useProps={useProps}
-        pageName={pageName}
-        pageData={''}
-        props={useProps}
-      >
-        {loading ? (
+      <HomeLayout pageName={pageName} pageData={''} props={useProps}>
+        {/* {loading ? (
           <LoadingSkeleton />
         ) : (
           <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
@@ -119,7 +114,9 @@ export const page = (props) => {
             },
           ]}
           receiveData={receiveData}
-        />
+        /> */}
+        <FeaturedEventPage {...props} data={[]} />
+        <EventsDetails {...props} data={[]} />
       </HomeLayout>
     </div>
   );

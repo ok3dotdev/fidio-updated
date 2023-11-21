@@ -5,14 +5,14 @@ const Menu = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className='bg-transparent z-40 relative flex justify-center'>
-      <div className='max-w-8xl mx-auto flex justify-between px-2 pr-4 pt-1 lg:p-4 items-center w-full'>
+    <div className='bg-transparent absolute top-0 z-40 flex justify-center w-full'>
+      <div className='max-w-8xl mx-auto flex justify-between p-2 pt-4 lg:p-4 items-center w-full'>
         <div>
-          <Link className='w-[150px] h-auto' href='/'>
+          <Link href='/'>
             <img
               src='/img/internal/frame2.png'
               alt=''
-              className='w-[150px] h-auto'
+              className='lg:w-[120px] w-[90px] h-auto'
             />
           </Link>
         </div>
@@ -20,7 +20,7 @@ const Menu = (props) => {
           {!props._loggedIn ? (
             <>
               <Link
-                className='px-6 py-2 rounded-md flex justify-center items-center'
+                className='px-6 py-2 rounded-md flex justify-center items-center text-white'
                 href='/signin'
               >
                 Login
@@ -35,16 +35,6 @@ const Menu = (props) => {
           ) : (
             <div></div>
           )}
-
-          <div className='w-12 h-12 rounded-full'>
-            <a href='/p'>
-              <img
-                className='rounded-full'
-                src={props?.userData?.profileData?.user?.icon}
-                alt=''
-              />
-            </a>
-          </div>
         </div>
         <div className='lg:hidden flex items-center'>
           <button
@@ -99,17 +89,21 @@ const Menu = (props) => {
                 </svg>
               </button>
             </div>
-            {!props._loggedIn ? <Link
-              className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
-              href='/signin'
-            >
-              Home
-            </Link> : <Link
-              className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
-              href='/home'
-            >
-              Home
-            </Link>}
+            {!props._loggedIn ? (
+              <Link
+                className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
+                href='/signin'
+              >
+                Home
+              </Link>
+            ) : (
+              <Link
+                className='hover:bg-slate-700 mb-4 px-6 py-2 rounded-md flex items-center'
+                href='/home'
+              >
+                Home
+              </Link>
+            )}
           </div>
           <div className='space-y-4'>
             <Link

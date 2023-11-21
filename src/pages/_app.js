@@ -297,9 +297,8 @@ function MyApp({ Component, pageProps }) {
         <div
           className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
         ></div>
+        <Component socket={socket} {...pageProps} />
       </ThemeProvider>
-
-      <Component socket={socket} {...pageProps} />
     </div>
   );
 }
