@@ -13,8 +13,9 @@ import { SocketContainer } from '/modules/socket'
 import { resolveVariables } from '/app.config'
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn'
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter'
-import { isObjectEmpty } from '/modules/util'
+import { isObjectEmpty, handleRouteChange, registerCheckLocalStorageSize } from '/modules/util'
 import { addToCartGlobal, calculateTotal, updateCart, performPurchase } from '/modules/utility/ecommerce'
+import { useRouter } from 'next/router'
 
 
 function MyApp({ Component, pageProps }) {
@@ -25,6 +26,14 @@ function MyApp({ Component, pageProps }) {
 	const [ _openMenu, _setOpenMenu ] = React.useState({})
 	const [ _cart, _setCart ] = React.useState({})
 	const [ fetchBusy, setFetchBusy ] = React.useState(false)
+	const [ _rooms, _setRooms ] = React.useState({})
+
+	const router = useRouter()
+	try {
+		registerCheckLocalStorageSize(window)
+	} catch (err) {
+		// fail silently
+	}
 
 	React.useEffect(() => {
         const muteLoginErr = () => {
@@ -87,6 +96,7 @@ function MyApp({ Component, pageProps }) {
 	pageProps._toggleSingleOpenMenu = toggleSingleOpenMenu
 	pageProps._openMenu = _openMenu
 	pageProps._cart = _cart
+	pageProps._rooms = _rooms
 	pageProps = Object.assign(resolveVariables(), pageProps)
 
 	LocalEventEmitter.unsubscribe('forceUpdateProps')
@@ -187,19 +197,32 @@ function MyApp({ Component, pageProps }) {
 		socketIoConfig.path = pageProps.socketpath
 		socketIoConfig.port = pageProps.socketPort
 	}
-	const [ socket, setSocket ] = React.useState(null)
+	const [ _socket, setSocket ] = React.useState(null)
 	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
 	React.useEffect(() => {
-		if (!socket && !socketTimeout) {
+		if (!_socket && !socketTimeout) {
 			setSocket(io(pageProps.socketUrl, socketIoConfig))
 			const r = setTimeout(() => {
 				setSocketTimeout(null)
 			}, 20000)
 			setSocketTimeout(r)
 		}
-	}, [ socket, socketTimeout ])
+	}, [ _socket, socketTimeout ])
 
-	console.log(socket)
+	/**
+	 * Tracks user Route change ***Analytics***
+	 */
+	 React.useEffect(() => {
+		const doHandleRouteChange = (route, context) => {
+			handleRouteChange(pageProps, route, context)
+		}
+		router.events.on('routeChangeComplete', doHandleRouteChange)
+		return () => {
+			router.events.off('routeChangeComplete', handleRouteChange)
+		}
+	}, [ router.events, pageProps._loggedIn, pageProps.apiUrl, pageProps.domainKey ])
+
+	console.log('Socket', _socket)
 
   	return (
 		<div>
@@ -249,9 +272,9 @@ function MyApp({ Component, pageProps }) {
 				}
 				</Script>
 			</>
-			<SocketContainer socket={socket} {...pageProps}></SocketContainer>
+			<SocketContainer _socket={_socket} setRooms={_setRooms} {...pageProps}></SocketContainer>
 			<div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-    		<Component socket={socket} {...pageProps} />
+    		<Component _socket={_socket} {...pageProps} />
 		</div>
   	)
 }
