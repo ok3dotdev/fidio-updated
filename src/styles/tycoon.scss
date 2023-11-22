@@ -284,23 +284,8 @@ button:not(:disabled):active {
   height: 0px;
   overflow: hidden;
 }
-
-<<<<<<< HEAD
 .slide_hide_do_full_show:hover {
   height: 100%;
-<<<<<<< HEAD
-=======
-=======
-.slide_hide .hover_show_Cc_force,
-.slide_hide:hover .hover_show_Cc_force {
-    height: 25px;
-}
-
-.slide_hide_do_full_show:hover,
-.slide_hide_do_force_show {
-    height: 100%;
->>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
->>>>>>> pull-branch
 }
 
 .slide_hide_visible {
@@ -324,10 +309,6 @@ button:not(:disabled):active {
   display: flex;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> pull-branch
 .marquee1,
 .marquee2 {
   display: inline-block;
@@ -360,56 +341,6 @@ button:not(:disabled):active {
   to {
     transform: translateX(-200%);
   }
-<<<<<<< HEAD
-=======
-=======
-.marquee1, .marquee2, .marquee3 {
-    display: inline-block;
-    animation: marquee1 20s linear infinite;
-    padding: 0 .25rem;
-    background: #792c38;
-    display: flex;
-    gap: .25rem;
-    align-items: center;
-  }
-  
-.marquee2 {
-    animation: marquee2 20s linear infinite;
-    animation-delay: 10s;
-}
-
-.marquee3 {
-    animation: marquee3 20s linear infinite;
-    animation-delay: 20s;
-}
-
-@keyframes marquee1 {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-200%);
-    }
-}
-  
-@keyframes marquee2 {
-    from {
-      transform: translateX(50%);
-    }
-    to {
-      transform: translateX(-250%);
-    }
-}
-  
-@keyframes marquee3 {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-300%);
-    }
->>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
->>>>>>> pull-branch
 }
 
 .IndexCta_LeadContainer {

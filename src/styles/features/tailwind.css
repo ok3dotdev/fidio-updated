@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
@@ -138,17 +137,11 @@ input {
 .glide__slides {
   gap: 1rem !important;
 }
-=======
-.menuContainer > ul {
-  height: 100% !important;
-}
->>>>>>> pull-branch
 .Index_Body,
 .Privacy_Body,
 .Terms_Body {
   top: 0 !important;
 }
-<<<<<<< HEAD
 @media (max-width: 678px) {
   .WatchPage_videoQuadrant__MgFxK {
     height: 177px !important;
@@ -161,14 +154,6 @@ input {
 }
 .hero {
   /* background-image: url('/img/internal/bg.jpeg'); */
-=======
-.Feature_featureExternalContainer__HMUAB {
-  position: relative !important;
-  margin-bottom: 32px;
-}
-.hero {
-  background-image: url('/img/internal/bg.jpeg');
->>>>>>> pull-branch
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -192,7 +177,6 @@ input {
     );
   }
 }
-<<<<<<< HEAD
 
 .Ecommerce_Cart_Container {
   background: rgba(128, 128, 128, 0.5);
@@ -279,5 +263,3 @@ input {
     @apply px-4;
   }
 } */
-=======
->>>>>>> pull-branch
