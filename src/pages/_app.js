@@ -290,8 +290,7 @@ function MyApp({ Component, pageProps }) {
       <SocketContainer socket={socket} {...pageProps}></SocketContainer>
       <ThemeProvider
         attribute='class'
-        defaultTheme='system'
-        enableSystem
+        defaultTheme='dark'
         disableTransitionOnChange
       >
         <div

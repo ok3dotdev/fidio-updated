@@ -9,7 +9,7 @@ const FreePopUp = ({ onClose, name }) => {
           <h2 className='text-2xl mb-4'>You're all set!</h2>
           <button
             onClick={onClose}
-            className='bg-orange-400 text-white px-4 py-2 rounded mt-2'
+            className='bg-orange-400 text-white px-4 py-2 rounded-[20px] mt-2'
           >
             Close
           </button>

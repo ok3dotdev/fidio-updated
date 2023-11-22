@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 * {
+  margin: 0;
+  padding: 0;
   font-family: Archivo Black, helvetica, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
@@ -28,6 +30,11 @@
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 240 4.9% 83.9%;
+}
+
+html,
+body {
+  width: 100%;
 }
 
 input {
@@ -234,7 +241,7 @@ input {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border m-0 p-0;
   }
   body {
     @apply bg-black text-foreground;

@@ -43,7 +43,7 @@ const FeaturedEvent = (props, showTimer, data) => {
       backgroundImageDesktop: '/img/internal/ODUMO.jpg',
       backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
       title: 'Odumodu Blvck Live in Birmingham ',
-      date: 'NOV 24, 2023 | 02:00AM GMT',
+      date: 'NOV 24, 2023 02:00AM GMT',
       id: 'odumodublvck-live-in-birmingham',
     },
   ];
@@ -79,18 +79,20 @@ const FeaturedEvent = (props, showTimer, data) => {
               alt='Event Background'
               className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
             />
-            <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-4xl lg:text-8xl font-bold text-left'>
+            <div className=' flex flex-col w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
+              <h2 className='text-4xl lg:text-8xl font-black text-left font-sans lg:max-w-[80%]'>
                 {item.title}
               </h2>
+              <p className='lg:text-xl text-white text-left font-sans font-bold mt-4'>
+                {item.date}
+              </p>
               <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button
                   onClick={handleFreeTicketClaim}
-                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'
                 >
-                  Claim free ticket
+                  Reserve my seat for Free
                 </button>
-                <p className='lg:text-xl text-white'>{item.date}</p>
               </div>
             </div>
             {isPopupVisible && (
@@ -100,11 +102,11 @@ const FeaturedEvent = (props, showTimer, data) => {
           </div>
         ))}
       </Carousel>
-      {carouselItems[0].date ? (
+      {/* {carouselItems[0].date ? (
         <Countdown eventDate={'2023-11-24T02:00:00.000Z'} />
       ) : (
         ''
-      )}
+      )} */}
       <FetchHandler
         {...props}
         handlerName='my_handler'

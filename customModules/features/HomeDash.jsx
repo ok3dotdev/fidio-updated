@@ -8,6 +8,39 @@ import { FetchHandler } from '../../modules/utility/fetch';
 import { fireGlobalEvent } from '../../modules/utility/utility';
 import LoadingSkeleton from './Skeleton';
 
+const events = [
+  {
+    name: 'Afro Fusion Night',
+    date: 'Nov 29th, 2023',
+    venue: 'Lagos, Nigeria',
+    img: '/img/internal/sharon5.png',
+  },
+  {
+    name: 'Safari Beats Live',
+    date: 'Dec 05th, 2023',
+    venue: 'Nairobi, Kenya',
+    img: '/img/internal/sharon6.png',
+  },
+  {
+    name: 'Jungle Groove Party',
+    date: 'Jan 1st, 2023',
+    venue: 'Cape Town, South Africa',
+    img: '/img/internal/sharon7.png',
+  },
+  {
+    name: 'Desert Rhythms Concert',
+    date: 'Nov 28th, 2023',
+    venue: 'Marrakech, Morocco',
+    img: '/img/internal/sharon8.png',
+  },
+  {
+    name: 'Savannah Soundscape Live',
+    date: 'Dec 20th, 2023',
+    venue: 'Nairobi, Kenya',
+    img: '/img/internal/sharon5.png',
+  },
+];
+
 const HomeDash = (props) => {
   const [eventsData, setEventsData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -29,10 +62,12 @@ const HomeDash = (props) => {
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        <FeaturedEvent {...props} data={eventsData} showTimer={true}/>
+        <FeaturedEvent {...props} data={eventsData} showTimer={true} />
       )}
       <div className='relative'>
-        <Upcoming />
+        <div className='px-8'>
+          <Upcoming events={events} title={'Coming Up'} />
+        </div>
       </div>
       <EventsGrid />
       <FetchHandler

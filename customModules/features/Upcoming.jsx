@@ -4,56 +4,25 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 // import { FetchHandler } from '../../modules/utility/fetch';
 // import { fireGlobalEvent } from '../../modules/utility/utility';
 
-const events = [
-  {
-    name: 'Afro Fusion Night',
-    date: 'Nov 29th, 2023',
-    venue: 'Lagos, Nigeria',
-    img: '/img/internal/sharon5.png',
-  },
-  {
-    name: 'Safari Beats Live',
-    date: 'Dec 05th, 2023',
-    venue: 'Nairobi, Kenya',
-    img: '/img/internal/sharon6.png',
-  },
-  {
-    name: 'Jungle Groove Party',
-    date: 'Jan 1st, 2023',
-    venue: 'Cape Town, South Africa',
-    img: '/img/internal/sharon7.png',
-  },
-  {
-    name: 'Desert Rhythms Concert',
-    date: 'Nov 28th, 2023',
-    venue: 'Marrakech, Morocco',
-    img: '/img/internal/sharon8.png',
-  },
-  {
-    name: 'Savannah Soundscape Live',
-    date: 'Dec 20th, 2023',
-    venue: 'Nairobi, Kenya',
-    img: '/img/internal/sharon5.png',
-  },
-  // {
-  //   name: 'Tropical Vibes Night',
-  //   date: 'Nov 5th, 2023',
-  //   venue: 'Accra, Ghana',
-  //   img: '/img/internal/sharon5.png',
-  // },
-  // {
-  //   name: 'Rainforest Groovers Live',
-  //   date: 'Oct 30th, 2023',
-  //   venue: 'Kinshasa, DR Congo',
-  //   img: '/img/internal/sharon5.png',
-  // },
-  // {
-  //   name: 'Saharan Dreams Orchestra',
-  //   date: 'Nov 12th, 2023',
-  //   venue: 'Timbuktu, Mali',
-  //   img: '/img/internal/sharon5.png',
-  // },
-];
+// {
+//   name: 'Tropical Vibes Night',
+//   date: 'Nov 5th, 2023',
+//   venue: 'Accra, Ghana',
+//   img: '/img/internal/sharon5.png',
+// },
+// {
+//   name: 'Rainforest Groovers Live',
+//   date: 'Oct 30th, 2023',
+//   venue: 'Kinshasa, DR Congo',
+//   img: '/img/internal/sharon5.png',
+// },
+// {
+//   name: 'Saharan Dreams Orchestra',
+//   date: 'Nov 12th, 2023',
+//   venue: 'Timbuktu, Mali',
+//   img: '/img/internal/sharon5.png',
+// },
+// ];
 
 {
   /* <FetchHandler
@@ -71,7 +40,8 @@ const events = [
 />  */
 }
 
-const Upcoming = () => {
+const Upcoming = (props) => {
+  // console.log('proppsssss', props);
   const scrollRef = useRef(null);
 
   const smoothScroll = (distance) => {
@@ -101,30 +71,32 @@ const Upcoming = () => {
   };
 
   return (
-    <div className='w-full mb-12 mt-12 relative px-2 lg:px-8'>
-      <h2 className='text-2xl font-bold'>Coming Up</h2>
+    <div className='w-full mb-12 mt-12 relative '>
+      <h2 className='text-2xl font-bold'>{props.title}</h2>
       <div
         className='flex gap-8 w-full overflow-x-auto relative no-scrollbar pt-8'
         ref={scrollRef}
       >
-        {events.map(({ img, date, venue, name }, id) => (
+        {props.events.map(({ img, date, venue, name }, id) => (
           <Event img={img} date={date} venue={venue} key={id} name={name} />
         ))}
       </div>
-      <div className='hidden lg:flex absolute top-1/2 transform -translate-y-1/2 left-0 right-0 justify-between px-4'>
-        <button
-          className='bg-gray-500 p-2 rounded-full opacity-70 hover:opacity-100'
-          onClick={() => scroll('left')}
-        >
-          <ChevronLeftIcon />
-        </button>
-        <button
-          className='bg-gray-500 p-2 rounded-full opacity-70 hover:opacity-100'
-          onClick={() => scroll('right')}
-        >
-          <ChevronRightIcon />
-        </button>
-      </div>
+      {props.events.length > 1 && (
+        <div className='hidden lg:flex absolute top-1/2 transform -translate-y-1/2 left-0 right-0 justify-between px-4'>
+          <button
+            className='bg-gray-500 p-2 rounded-full opacity-70 hover:opacity-100'
+            onClick={() => scroll('left')}
+          >
+            <ChevronLeftIcon />
+          </button>
+          <button
+            className='bg-gray-500 p-2 rounded-full opacity-70 hover:opacity-100'
+            onClick={() => scroll('right')}
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

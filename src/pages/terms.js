@@ -15,6 +15,7 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { termsOfServicePageData } from '../../customModules/features/seo-data';
+import Menu from '../../customModules/features/Menu';
 
 const pageName = 'Terms';
 

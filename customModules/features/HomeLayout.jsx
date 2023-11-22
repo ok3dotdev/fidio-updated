@@ -7,7 +7,7 @@ import { siteData } from './seo-data';
 import AltMenu from './AltMenu';
 
 const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
-  const showMainMenu = pageName === 'Index';
+  const showMainMenu = ['Index', 'Privacy', 'Faq', 'Terms'].includes(pageName);
   return (
     <div className='relative h-full'>
       <HeadSEO site={siteData} page={pageData} />

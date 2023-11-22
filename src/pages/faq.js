@@ -16,7 +16,7 @@ import { isObjectEmpty } from '/modules/util';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { privacyPolicyPageData } from '../../customModules/features/seo-data';
 
-const pageName = 'Privacy';
+const pageName = 'Faq';
 
 export const page = (props) => {
   const router = useRouter();
