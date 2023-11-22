@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu from '../../modules/menu/Menu';
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar';
 // import Menu from '../features/Menu';
 
 const Layout = ({ props, children }) => {
@@ -8,7 +8,7 @@ const Layout = ({ props, children }) => {
     <div className='bg-red-200 relative h-screen overflow-hidden'>
       <Menu {...props} page={'home'} />
       <div className='bg-black  h-full flex'>
-        <Sidebar {...props} />
+        {/* <Sidebar {...props} /> */}
         {children}
       </div>
     </div>

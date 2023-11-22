@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 
-import PrivacyContent from '../features/Privacy';
+// import PrivacyContent from '../features/Privacy';
 
-const Privacy = (props) => {
-  return (
-    <React.Fragment>
-      <PrivacyContent />
-    </React.Fragment>
-  );
-};
+// const Privacy = (props) => {
+//   return (
+//     <React.Fragment>
+//       <PrivacyContent />
+//     </React.Fragment>
+//   );
+// };
 
-export default Privacy;
+// export default Privacy;

@@ -14,8 +14,8 @@ import {
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
 import Hero from '../../customModules/features/Hero';
-import HomeLayout from '../../customModules/features/HomeLayout';
-import { homePageData } from '../../customModules/features/seo-data';
+// import HomeLayout from '../../customModules/features/HomeLayout';
+// import { homePageData } from '../../customModules/features/seo-data';
 
 const pageName = 'Index';
 
@@ -69,13 +69,13 @@ export const Page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <div className=''>
-      <HomeLayout
+      {/* <HomeLayout
         useProps={useProps}
         pageName={pageName}
         pageData={homePageData}
-      >
-        <Hero {...props} />
-      </HomeLayout>
+      > */}
+      <Hero {...props} />
+      {/* </HomeLayout> */}
     </div>
   );
 };
