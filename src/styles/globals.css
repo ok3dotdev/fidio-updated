@@ -80,9 +80,13 @@ a {
 }
 
 .FeatureContainerOpen .featureContainerOverflown_medium {
-  height: 111px;
+  height: 118px;
 }
 
 .FeatureContainerOpen .featureContainerOverflown_large {
-  height: 246px;
+  height: 252px;
+}
+
+.video-js button.chat-button {
+  font-size: 1.5rem;
 }

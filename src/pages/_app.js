@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import '../styles/tycoon.scss';
 import '../styles/video/videoPlayer.css';
 // import 'shaka-player/dist/controls.css'
+<<<<<<< HEAD
 import '../styles/video/videojs.css';
 import '../styles/video/videoPlayerTycoon.css';
 import '../styles/styles.scss';
@@ -29,6 +30,39 @@ function MyApp({ Component, pageProps }) {
   const [_openMenu, _setOpenMenu] = React.useState({});
   const [_cart, _setCart] = React.useState({});
   const [fetchBusy, setFetchBusy] = React.useState(false);
+=======
+import '../styles/video/videojs.css'
+import '../styles/video/videoPlayerTycoon.css'
+import '../styles/styles.scss'
+import Head from 'next/head'
+import Script from 'next/script'
+import io from 'socket.io-client'
+import { SocketContainer } from '/modules/socket'
+import { resolveVariables } from '/app.config'
+import { checkSignedIn } from '/modules/utility/onboarding/SignIn'
+import { LocalEventEmitter } from '/modules/events/LocalEventEmitter'
+import { isObjectEmpty, handleRouteChange, registerCheckLocalStorageSize } from '/modules/util'
+import { addToCartGlobal, calculateTotal, updateCart, performPurchase } from '/modules/utility/ecommerce'
+import { useRouter } from 'next/router'
+
+
+function MyApp({ Component, pageProps }) {
+	const [ _loggedIn, _setLoggedIn ] = React.useState(false)
+	const [ _stripeSecret, _setStripeSecret ] = React.useState(false)
+	const [ _loginError, _setLoginError ] = React.useState(false)
+	const [ _pageError, _setPageError ] = React.useState(null)
+	const [ _openMenu, _setOpenMenu ] = React.useState({})
+	const [ _cart, _setCart ] = React.useState({})
+	const [ fetchBusy, setFetchBusy ] = React.useState(false)
+	const [ _rooms, _setRooms ] = React.useState({})
+
+	const router = useRouter()
+	try {
+		registerCheckLocalStorageSize(window)
+	} catch (err) {
+		// fail silently
+	}
+>>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
 
   React.useEffect(() => {
     const muteLoginErr = () => {
@@ -245,6 +279,7 @@ function MyApp({ Component, pageProps }) {
     }
   }, [_loggedIn]);
 
+<<<<<<< HEAD
   pageProps._LocalEventEmitter = LocalEventEmitter;
   pageProps._loggedIn = _loggedIn;
   pageProps._setLoggedIn = _setLoggedIn;
@@ -258,6 +293,22 @@ function MyApp({ Component, pageProps }) {
   pageProps._openMenu = _openMenu;
   pageProps._cart = _cart;
   pageProps = Object.assign(resolveVariables(), pageProps);
+=======
+	pageProps._LocalEventEmitter = LocalEventEmitter
+	pageProps._loggedIn = _loggedIn
+	pageProps._setLoggedIn = _setLoggedIn
+	pageProps._stripeSecret = _stripeSecret
+	pageProps._setStripeSecret = _setStripeSecret
+	pageProps._loginError = _loginError
+	pageProps._setLoginError = _setLoginError
+	pageProps._pageError = _pageError
+	pageProps._setPageError = _setPageError
+	pageProps._toggleSingleOpenMenu = toggleSingleOpenMenu
+	pageProps._openMenu = _openMenu
+	pageProps._cart = _cart
+	pageProps._rooms = _rooms
+	pageProps = Object.assign(resolveVariables(), pageProps)
+>>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
 
   LocalEventEmitter.unsubscribe('forceUpdateProps');
   LocalEventEmitter.subscribe('forceUpdateProps', (e) => {
@@ -373,6 +424,7 @@ function MyApp({ Component, pageProps }) {
     }
   });
 
+<<<<<<< HEAD
   const socketIoConfig = {
     reconnectAttempts: 1,
   };
@@ -393,6 +445,41 @@ function MyApp({ Component, pageProps }) {
   }, [socket, socketTimeout]);
 
   console.log(socket);
+=======
+	const socketIoConfig = {
+		reconnectAttempts: 1
+	}
+	if (pageProps.socketpath) {
+		socketIoConfig.path = pageProps.socketpath
+		socketIoConfig.port = pageProps.socketPort
+	}
+	const [ _socket, setSocket ] = React.useState(null)
+	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
+	React.useEffect(() => {
+		if (!_socket && !socketTimeout) {
+			setSocket(io(pageProps.socketUrl, socketIoConfig))
+			const r = setTimeout(() => {
+				setSocketTimeout(null)
+			}, 20000)
+			setSocketTimeout(r)
+		}
+	}, [ _socket, socketTimeout ])
+
+	/**
+	 * Tracks user Route change ***Analytics***
+	 */
+	 React.useEffect(() => {
+		const doHandleRouteChange = (route, context) => {
+			handleRouteChange(pageProps, route, context)
+		}
+		router.events.on('routeChangeComplete', doHandleRouteChange)
+		return () => {
+			router.events.off('routeChangeComplete', handleRouteChange)
+		}
+	}, [ router.events, pageProps._loggedIn, pageProps.apiUrl, pageProps.domainKey ])
+
+	console.log('Socket', _socket)
+>>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
 
   return (
     <div>
@@ -448,6 +535,7 @@ function MyApp({ Component, pageProps }) {
 							doGoogleInit(500)
 						}, 250)
 					}
+<<<<<<< HEAD
 					`}
         </Script>
       </>
@@ -458,6 +546,17 @@ function MyApp({ Component, pageProps }) {
       <Component socket={socket} {...pageProps} />
     </div>
   );
+=======
+					`
+				}
+				</Script>
+			</>
+			<SocketContainer _socket={_socket} setRooms={_setRooms} {...pageProps}></SocketContainer>
+			<div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
+    		<Component _socket={_socket} {...pageProps} />
+		</div>
+  	)
+>>>>>>> 8b4929abbabb0a361d1823b44ad715b522d5c9ff
 }
 
 export default MyApp;
