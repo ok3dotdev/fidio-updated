@@ -28,7 +28,11 @@ export const Page = (props) => {
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
   let resolvedPage = resolvePage(config, props.path);
+<<<<<<< HEAD
   resolvedDefinition = resolvedPage && resolvedPage.data;
+=======
+  resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
+>>>>>>> pull-branch
 
   const getDefaults = async (force) => {
     const defaults = await resolveDefaults(
@@ -68,6 +72,7 @@ export const Page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
+<<<<<<< HEAD
     <HomeLayout
       useProps={useProps}
       pageName={pageName}
@@ -76,6 +81,17 @@ export const Page = (props) => {
     >
       <Hero {...props} />
     </HomeLayout>
+=======
+    <div className=''>
+      <HomeLayout
+        useProps={useProps}
+        pageName={pageName}
+        pageData={homePageData}
+      >
+        <Hero {...props} />
+      </HomeLayout>
+    </div>
+>>>>>>> pull-branch
   );
 };
 

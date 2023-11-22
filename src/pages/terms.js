@@ -15,7 +15,10 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { termsOfServicePageData } from '../../customModules/features/seo-data';
+<<<<<<< HEAD
 import Menu from '../../customModules/features/Menu';
+=======
+>>>>>>> pull-branch
 
 const pageName = 'Terms';
 
@@ -69,7 +72,11 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <HomeLayout
+<<<<<<< HEAD
       props={useProps}
+=======
+      useProps={useProps}
+>>>>>>> pull-branch
       pageName={pageName}
       pageData={termsOfServicePageData}
     >

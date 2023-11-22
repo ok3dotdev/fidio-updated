@@ -6,8 +6,12 @@ import { useRouter } from 'next/router'
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
+<<<<<<< HEAD
 // import { Menu } from '/modules/menu/'
 import Menu from '../../customModules/features/AltMenu'
+=======
+import { Menu } from '/modules/menu/'
+>>>>>>> pull-branch
 
 const pageName = 'r'
 

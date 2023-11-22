@@ -47,7 +47,11 @@ export const page = props => {
     const components = generateComponent(resolvedDefinition)
 	return (
         <React.Fragment>
+<<<<<<< HEAD
             <AltMenu {...useProps}></AltMenu>
+=======
+            <Menu {...useProps}></Menu>
+>>>>>>> pull-branch
             <div className={`${pageName}_Body`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
         </React.Fragment>
 	)

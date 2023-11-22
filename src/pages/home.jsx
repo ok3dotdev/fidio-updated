@@ -15,8 +15,11 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
 import Layout from '../../customModules/features/Layout';
+<<<<<<< HEAD
 import HomeLayout from '../../customModules/features/HomeLayout';
 import HomeDash from '../../customModules/features/HomeDash';
+=======
+>>>>>>> pull-branch
 
 const pageName = 'home';
 
@@ -25,6 +28,11 @@ export const page = (props) => {
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
   const [mergeProps, setMergeProps] = React.useState({});
+<<<<<<< HEAD
+=======
+  const [profileLoaded, setProfileLoaded] = React.useState(false);
+  const [lastCheckedProfile, setLastCheckedProfile] = useState(null);
+>>>>>>> pull-branch
   let resolvedDefinition = props.resolvedDefinition;
   const variables = resolveVariables();
   let config = resolveConfig(variables, props);
@@ -52,6 +60,7 @@ export const page = (props) => {
     getDefaults(true);
   });
 
+<<<<<<< HEAD
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [fetchingProfile, setFetchingProfile] = React.useState(false);
   const [profileLoaded, setProfileLoaded] = React.useState(false);
@@ -81,6 +90,26 @@ export const page = (props) => {
         setFetchingProfile(false);
       }, 1000);
 
+=======
+  React.useEffect(() => {
+    if (
+      resolvedPage &&
+      resolvedPage.url &&
+      !fetching &&
+      isObjectEmpty(mergeProps)
+    ) {
+      getDefaults();
+    }
+  }, [fetching, mergeProps, resolvedPage]);
+
+  const getUserProfileData = async (props) => {
+    try {
+      setFetching(true);
+      setLastCheckedProfile(new Date().getTime());
+      setTimeout(() => {
+        setFetching(false);
+      }, 30000);
+>>>>>>> pull-branch
       let fetchBody = {
         domainKey: props.domainKey,
         params: {
@@ -88,9 +117,13 @@ export const page = (props) => {
         },
         hash: props._loggedIn.hash,
         identifier: props._loggedIn.identifier,
+<<<<<<< HEAD
         profileReq: true,
       };
       // ('Running req', fetchBody, props.apiUrl + '/m/pagedefaults');
+=======
+      };
+>>>>>>> pull-branch
       let res = await fetchPost(
         props.apiUrl + '/m/pagedefaults',
         null,
@@ -98,6 +131,7 @@ export const page = (props) => {
         fetchBody
       );
       if (!res) {
+<<<<<<< HEAD
         setFetchingProfile(false);
         return false;
       } else if (res.hasOwnProperty('status')) {
@@ -120,6 +154,38 @@ export const page = (props) => {
       setFetchingProfile(false); // fail silently
     }
   };
+=======
+        return false;
+      } else if (res.hasOwnProperty('status')) {
+        if (res.status == 'disauthenticated') {
+          setFetching(false);
+          logout();
+          return 'disauthenticated';
+        } else if (res.status == 'failed') {
+          setFetching(false);
+          return false;
+        } else if (res.status == 'success') {
+          setFetching(false);
+          setProfileLoaded(true);
+          console.log('res', res);
+          return res;
+        }
+      }
+      setFetching(false);
+    } catch (err) {
+      setFetching(false); // fail silently
+    }
+  };
+  if (
+    !profileLoaded &&
+    !fetching &&
+    props._loggedIn &&
+    props._loggedIn.username
+  ) {
+    const threshold = 2000;
+    getUserProfileData(props);
+  }
+>>>>>>> pull-branch
 
   const useProps = handlePropsPriority(mergeProps, props);
   config = resolveConfig(variables, useProps);
@@ -127,6 +193,7 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
 
+<<<<<<< HEAD
   // // ({ useProps });
   // ('home', props);
   return (
@@ -135,6 +202,25 @@ export const page = (props) => {
         <HomeDash {...props} />
       </HomeLayout>
     </div>
+=======
+  // console.log({ useProps });
+  return (
+    <Layout props={useProps}>
+      {/* <Menu {...useProps}></Menu> */}
+      <div
+        className={`${pageName}_Body overflow-scroll`}
+        style={{
+          width: '100%',
+          height: '100%',
+          top: useProps.menuConfig.height
+            ? useProps.menuConfig.height + 'px'
+            : '',
+        }}
+      >
+        {components}
+      </div>
+    </Layout>
+>>>>>>> pull-branch
   );
 };
 

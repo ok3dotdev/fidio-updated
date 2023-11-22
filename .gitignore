@@ -55,3 +55,7 @@ src/styles/custom/*
 !*/customModules/index_backup.js
 /public/doc/internal/*
 styles/styles.scss
+/customModules/index.js
+!*/customModules/index_backup.js
+/public/doc/internal/*
+styles/styles.scss
