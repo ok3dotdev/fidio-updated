@@ -366,10 +366,6 @@ button:not(:disabled):active {
     }
 }
 
-.IndexCta_LeadContainer {
-    // transition: 200ms;
-}
-
 .FeatureContainerOpen ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
     margin-top: 2rem;
 }
