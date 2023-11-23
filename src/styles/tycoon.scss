@@ -118,6 +118,7 @@ button:not(:disabled):active {
 }
 
 .LiveTag {
+<<<<<<< HEAD
   position: absolute;
   padding: 0.25rem 0.25rem 0.125rem 0.25rem;
   font-weight: 600;
@@ -127,6 +128,21 @@ button:not(:disabled):active {
   background: grey;
   margin: 0.25rem;
   border-radius: 0.25rem;
+=======
+    position: absolute;
+    padding: 0.25rem .25rem .125rem .25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.25rem;
+    background: grey;
+    margin: 0.25rem;
+    border-radius: .5rem .25rem .25rem .25rem;
+}
+
+.LiveTag_Thin {
+    margin: 0;
+>>>>>>> 07d31d3da6cf383832d75133ed2c5be185165c18
 }
 
 .darkMode,
@@ -400,6 +416,7 @@ button:not(:disabled):active {
     }
   }
 
+<<<<<<< HEAD
   .IndexCta_LeadContainer {
     // transition: 200ms;
   }
@@ -408,6 +425,9 @@ button:not(:disabled):active {
     ~ .sign-in-page-container
     .IndexCta_Container
     .IndexCta_LeadContainer {
+=======
+.FeatureContainerOpen ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
+>>>>>>> 07d31d3da6cf383832d75133ed2c5be185165c18
     margin-top: 2rem;
   }
 
@@ -490,5 +510,13 @@ button:not(:disabled):active {
 
   .lineupItem_current {
     border: 1px solid red;
+<<<<<<< HEAD
   }
 }
+=======
+}
+
+@import "video/videoPlayer.css";
+@import "video/videojs.css";
+@import "video/videoPlayerTycoon.css";
+>>>>>>> 07d31d3da6cf383832d75133ed2c5be185165c18

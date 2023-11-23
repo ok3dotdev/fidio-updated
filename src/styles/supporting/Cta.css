@@ -81,8 +81,8 @@
 }
 
 .RecordingCircle_Small {
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
 }
 
 @media (max-width: 1200px) {

@@ -117,6 +117,14 @@ import { Cart } from 'modules/ecommerce/cart'
 # {function}
 # You can use the prop 'passOveride' on Cart as a function to fire a function when the Cart is advised to "flash". The cart "flashes" anytime a product is added to cart or the user attempts to Checkout their cart. You should use this if you want to keep the Cart open based on this event as the cart "flash" will only keep cart open for 5-15 seconds. For example, if you had state paired to the open prop you can set that to true if the passOveride function fires to keep the cart
 
+# A Cart implemented normally through the proprietary Menu will stay open after add_to_cart or buy event if property menuOpenAfterCartInteraction with value true is added to predefined.MenuConfig
+const predefined = {
+    ...
+    MenuConfig: {
+        menuOpenAfterCartInteraction: true
+    }
+}
+
 # ccChildren
 # {JSX}
 # Children that are passed to Credit Card within Cart
@@ -185,3 +193,32 @@ Title: test stream tokyo yeah! | Author: 1tbsp
 ## Terms and Conditions
 # You can save your terms and conditions under public/doc/internal as js files with a default export and then pull this in your custom modules. See what an example privacy.js file under /public/doc/internal/ would contain
 export default `OUR PRIVACY POLICY...`
+
+## Chat
+# If the chat is not successfully scrolling down on new items it may be because of the chat item height. If you have styled the chat records to appear higher or shorter using styles you will have to set the chatItemHeight such that the function for checking scroll threshold uses the appropriate configuration
+# In app.config.js ensure that ChatConfig is set under the predefined variable object like so
+
+const predefined = {
+    ...
+    ChatConfig: {
+        chatItemHeight: 17.5 // @param {Number} Set your Chat Item Height here as a number
+    }
+}
+
+# If the Reply Thread that appears when users click to attempt a reply seems too short or too high change the menuThreadOffset by setting the variable under ChatConfig under predefined
+const predefined = {
+    ...
+    ChatConfig: {
+        menuThreadOffset: 2.8 // @param {Number} Set your Menu Thread Offset here as a number
+    }
+}
+
+# Turn off Reply System by adding replyOff with value tue to ChatConfig under predefined variable object
+const predefined = {
+    ...
+    ChatConfig: {
+        replyOff: true // @param {Boolean} Set Reply System off here, on by default if undefined
+    }
+}
+
+# Under resolveVariables function in the return object add a record "chatConfig" with the value of predefined.ChatConfig
