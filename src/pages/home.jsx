@@ -127,8 +127,6 @@ export const page = (props) => {
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
 
-  // // ({ useProps });
-  // ('home', props);
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={useProps}>

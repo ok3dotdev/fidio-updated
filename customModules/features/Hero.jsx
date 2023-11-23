@@ -21,12 +21,17 @@ const Hero = (props) => {
           {props._loggedIn ? (
             <Link
               href={'/home'}
-              className='hidden mt-8 px-8 py-4 bg-orange-800 text-white rounded-md lg:block'
+              className='hidden mt-8 px-8 py-4 bg-[#FDB000] text-black rounded-md lg:block'
             >
               Get Started
             </Link>
           ) : (
-            ''
+            <Link
+              href={'/signin'}
+              className='hidden mt-8 px-8 py-4 bg-[#FDB000] text-black rounded-md lg:block'
+            >
+              Get Started
+            </Link>
           )}
         </div>
         <div className='w-full flex flex-col lg:flex-row items-center lg:items-start lg:basis-1/3 pb-32 lg:pt-0 mt-[40px] lg:mt-[0]'>
@@ -46,12 +51,21 @@ const Hero = (props) => {
                 <p className='text-sm text-white'>Nov 24 | 2:00AM GMT</p>
               </div>
               <div className='basis-1/2 flex flex-col text-center text-white'>
-                <Link
-                  href='/signin'
-                  className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-orange-800 mt-2 font-bold text-sm'
-                >
-                  Claim Free Ticket
-                </Link>
+                {props._loggedIn ? (
+                  <Link
+                    href='/home'
+                    className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-[#FDB000] mt-2 font-bold text-sm text-black'
+                  >
+                    Watch Live
+                  </Link>
+                ) : (
+                  <Link
+                    href='/signin'
+                    className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-[#FDB000] mt-2 font-bold text-sm text-black'
+                  >
+                    Claim Free Ticket
+                  </Link>
+                )}
               </div>
             </div>
           </div>

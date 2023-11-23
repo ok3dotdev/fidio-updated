@@ -38,7 +38,7 @@ const Events = ({ title, artist, date, price, img }) => {
         <img className='w-full object-cover' src={img} alt='' />
         <div className='absolute inset-0 bg-black opacity-30 transition-opacity hover:opacity-20'></div>
         <div className='absolute top-0 left-0 mt-4 ml-4 bg-orange-300 rounded-md p-2'>
-          <div className='absolute inset-0 bg-black opacity-40 transition-opacity hover:opacity-20'></div>
+          <div className='absolute inset-0 bg-black opacity-40 transition-opacity hover:opacity-20 rounded-md'></div>
           <p className='text-xs text-black z-20'>{date.slice(0, 6)}</p>
         </div>
         <div className='absolute bottom-0 left-0 mb-4 ml-4'>

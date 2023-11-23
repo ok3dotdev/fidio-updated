@@ -51,12 +51,18 @@ const FeaturedEvent = (props) => {
     setIsPopupVisible(true);
   });
 
+  // const getLocaLDate = (date)=>{
+  //   const date
+  //   return
+  // }
+
   const carouselItems = [
     {
       backgroundImageDesktop: 'url(/img/internal/ODUMO.jpg)',
       backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
-      title: 'Odumodu Blvck Live in Birmingham ',
-      date: 'NOV 24, 2023 | 02:00AM GMT',
+      artist: 'Odumodu Blvck',
+      event: 'Live in Birmingham',
+      date: 'NOV 24, 2023 02:00AM GMT',
       id: 'odumodublvck-live-in-birmingham',
     },
   ];
@@ -116,7 +122,7 @@ const FeaturedEvent = (props) => {
           <div
             id={`carousel-item-${index}`}
             key={index}
-            className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full carousel-image'
+            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[80vh] max-w-full carousel-image'
             style={{
               backgroundSize: 'cover',
               objectFit: 'cover',
@@ -127,24 +133,22 @@ const FeaturedEvent = (props) => {
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div> */}
             <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-4xl lg:text-8xl font-bold'>{item.title}</h2>
+              <h2 className='text-3xl lg:text-6xl font-bold'>{item.artist}</h2>
+              <h2 className='text-3xl lg:text-6xl font-bold'>{item.event}</h2>
+              <p className='lg:text-xl text-white mt-4'>{item.date}</p>
               <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button
                   onClick={handleFreeTicketClaim}
-                  className='bg-orange-800 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'
                 >
                   Claim free ticket
                 </button>
                 <a
-                  className='bg-gray-600 text-white rounded-md px-4 py-4 text-xs lg:text-xl'
+                  className='bg-gray-600 text-white rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'
                   href={`/events/${item.id}`}
                 >
                   View event
                 </a>
-                <p className='lg:text-xl text-white'>
-                  {item.date}
-                  {/* {convertTimestamp(item.detailmeta?.eventDateDef?.dates[0])} */}
-                </p>
               </div>
             </div>
           </div>
@@ -153,7 +157,7 @@ const FeaturedEvent = (props) => {
       {showPop && <FreePopUp onClose={handlePopupClose} />}
       {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
       {props.showTimer ? (
-        <Countdown eventDate='2023-11-24T02:00:00.000Z' />
+        <Countdown eventDate='2023-11-24T21:00:00-05:00' />
       ) : (
         ''
       )}

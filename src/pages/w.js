@@ -13,10 +13,10 @@ import {
   getServerSidePropsDefault,
   resolveDefaults,
 } from '/modules/utility.js';
-import { WatchPage } from '/modules/streaming/watch/WatchPage.js';
+// import { WatchPage } from '/modules/streaming/watch/WatchPage.js';
 import { isObjectEmpty } from '/modules/util';
-import { Menu } from '/modules/menu/';
-import AltMenu from '../../customModules/features/AltMenu';
+// import { Menu } from '/modules/menu/';
+// import AltMenu from '../../customModules/features/AltMenu';
 // import LiveChat from '../../customModules/features/LiveChat';
 
 const pageName = 'w';
@@ -71,26 +71,7 @@ export const page = (props) => {
   const components = generateComponent(resolvedDefinition);
   return (
     <HomeLayout pageName={pageName} pageData={''} props={useProps}>
-      <div className='flex flex-col lg:flex-row p-1 lg:p-4 gap-1 lg:gap-4'>
-        <div className='flex-shrink-0 flex-grow lg:w-[75%] w-full'>
-          {/* <WatchPage {...props} /> */}
-          {components}
-        </div>
-        <div className='flex-shrink-0 lg:w-[25%] w-full md:pl-2 pl-0'>
-          <iframe
-            src='https://www3.cbox.ws/box/?boxid=3532954&boxtag=WXIP9K'
-            width='100%'
-            height='450'
-            allowtransparency='yes'
-            allow='autoplay'
-            frameborder='0'
-            marginheight='0'
-            marginwidth='0'
-            scrolling='auto'
-            className='lg:h-[100vh]'
-          />
-        </div>
-      </div>
+      <div className='p-4'>{components}</div>
     </HomeLayout>
   );
 };

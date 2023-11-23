@@ -3,7 +3,7 @@ export const upcomingEvents = [
     img: 'img/internal/lagosparty.jpg',
     title: 'Kris Hans & Top Striker',
     artist: 'Kris Hans & Top Striker',
-    date: 'SEP 30, 2023',
+    date: 'Sep 30, 2023',
     price: 'FREE',
   },
   {
@@ -24,7 +24,7 @@ export const upcomingEvents = [
     img: 'img/internal/sharon2.png',
     title: 'Jazz Night under the Stars',
     artist: 'Smooth Jazz Trio',
-    date: 'JAN 04, 2024',
+    date: 'Jan 04, 2024',
     price: 40,
   },
   {

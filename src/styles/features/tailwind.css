@@ -43,6 +43,23 @@ input {
 .amin-heading {
   font-family: Archivo Black;
 }
+.Chat_Content {
+  @apply font-sans text-sm font-light !important;
+}
+.Chat_ChatUsername::after {
+  content: ':' !important;
+}
+.Chat_Content {
+}
+.Chat_chatLogExternalContainer__lxHAd {
+  @apply border p-4 pt-6 rounded-[20px]  mb-4 !important;
+}
+.Chat_ChatLogMain {
+  @apply mb-2 !important;
+}
+.Chat_send__9agSq {
+  @apply bg-[#FDB000] !important;
+}
 
 .Username_ContainerBg {
   background: none !important;

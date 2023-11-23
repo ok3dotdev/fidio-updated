@@ -8,12 +8,13 @@ import AltMenu from './AltMenu';
 
 const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
   const showMainMenu = ['Index', 'Privacy', 'Faq', 'Terms'].includes(pageName);
+  const showFooter = ['Index', 'Privacy', 'Faq', 'Terms'].includes(pageName);
   return (
     <div className='relative h-full'>
       <HeadSEO site={siteData} page={pageData} />
       {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
       {children}
-      <Footer pageName={pageName} />
+      {showFooter && <Footer pageName={pageName} />}
     </div>
   );
 };

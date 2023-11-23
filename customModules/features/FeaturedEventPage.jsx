@@ -42,7 +42,8 @@ const FeaturedEvent = (props, showTimer, data) => {
     {
       backgroundImageDesktop: '/img/internal/ODUMO.jpg',
       backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
-      title: 'Odumodu Blvck Live in Birmingham ',
+      artist: 'Odumodu Blvck',
+      event: 'Live in Birmingham',
       date: 'NOV 24, 2023 02:00AM GMT',
       id: 'odumodublvck-live-in-birmingham',
     },
@@ -66,7 +67,7 @@ const FeaturedEvent = (props, showTimer, data) => {
           <div
             id={`carousel-item-${index}`}
             key={index}
-            className='flex flex-col justify-end relative w-full min-h-[520px] lg:min-h-[700px] max-w-full'
+            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[80vh] max-w-full'
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div> */}
             {/* <img
@@ -77,11 +78,14 @@ const FeaturedEvent = (props, showTimer, data) => {
             <img
               src={item.backgroundImageDesktop}
               alt='Event Background'
-              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
+              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:h-[80vh]'
             />
             <div className=' flex flex-col w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-4xl lg:text-8xl font-black text-left font-sans lg:max-w-[80%]'>
-                {item.title}
+              <h2 className='text-3xl lg:text-6xl font-black text-left font-sans lg:max-w-[80%]'>
+                {item.artist}
+              </h2>
+              <h2 className='text-3xl lg:text-6xl font-black text-left font-sans lg:max-w-[80%]'>
+                {item.event}
               </h2>
               <p className='lg:text-xl text-white text-left font-sans font-bold mt-4'>
                 {item.date}

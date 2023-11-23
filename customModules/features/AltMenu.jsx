@@ -71,14 +71,6 @@ const AltMenu = (props) => {
                 </SheetContent>
               </Sheet>
             </div>
-            <div ref={cartRef} className='absolute top-0 cursor-pointer'>
-              <Cart
-                {...props}
-                className='text-white'
-                open={isCartOpen}
-                passOveride={passOveride}
-              />
-            </div>
             <UserMenu {...props} />
           </div>
         </div>

@@ -41,7 +41,7 @@ const EventsDetails = (props) => {
   const data = [
     {
       image: '/img/internal/odu-portrait.png',
-      title: 'ODUMODUBLVCK',
+      title: 'ODUMODU BLVCK',
       host: [
         {
           name: 'FRIDAES at Cave',
@@ -58,7 +58,7 @@ const EventsDetails = (props) => {
     <div className=' pt-[20px] pb-[20px] text-2xl lg:px-8 px-4 overflow-x-hidden'>
       <div className='flex flex-col lg:flex-row gap-4 w-full justify-between mb-8'>
         <div className='w-full '>
-          <h2 className='text-xl'>Event Details</h2>
+          <h2 className='text-xl'>About</h2>
           <p className='font-sans text-xl mb-4 lg:w-[70%]'>
             Join Odumodu Blvck in his first live performance in Birmingham,
             streamed exclusively on Fidio.
@@ -74,7 +74,7 @@ const EventsDetails = (props) => {
             </div>
             <div className=' border-t py-3 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Genre</h3>
-              <p className='font-sans text-sm'>Afrobeats, Okporo rythms</p>
+              <p className='font-sans text-sm'>Afrobeats, Okporoko rythms</p>
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Date</h3>
@@ -137,17 +137,16 @@ const EventsDetails = (props) => {
               </h3>
             </div>
             <p className='font-sans font-normal text-sm mt-4 mb-4 opacity-100'>
-              This event is free so everyone can enjoy some live Afrobeats this
-              Christmas season. However, if you love our mission of bringing
-              live Afrobeats entartainment to the world, consider supporting us
-              with a dontation.{' '}
+              This event is free so that everyone can enjoy live Afrobeats this
+              Christmas season. If you love our mission of bringing live African
+              performances to the world, consider supporting us. Thank you.{' '}
             </p>
             <a
               className='bg-white text-black rounded-xl px-4 py-2 text-sm mt-12 font-sans opacity-100 font-bold'
               href='https://donate.stripe.com/9AQfYZeX66lZ1yM28b'
               target='_blank'
             >
-              Donte
+              Donate
             </a>
           </div>
         </div>

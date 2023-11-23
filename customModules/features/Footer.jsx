@@ -5,7 +5,7 @@ const Footer = (props) => {
   const { pageName } = props;
   return (
     <div
-      className={`w-full bg-black relative z-40 ${
+      className={`w-full bg-black relative z-1 ${
         pageName === 'Index' ? '' : ''
       }`}
     >

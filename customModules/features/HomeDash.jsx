@@ -11,31 +11,31 @@ import LoadingSkeleton from './Skeleton';
 const events = [
   {
     name: 'Afro Fusion Night',
-    date: 'Nov 29th, 2023',
+    date: 'Nov 29, 2023',
     venue: 'Lagos, Nigeria',
     img: '/img/internal/sharon5.png',
   },
   {
     name: 'Safari Beats Live',
-    date: 'Dec 05th, 2023',
+    date: 'Dec 05, 2023',
     venue: 'Nairobi, Kenya',
     img: '/img/internal/sharon6.png',
   },
   {
     name: 'Jungle Groove Party',
-    date: 'Jan 1st, 2023',
+    date: 'Jan 01, 2023',
     venue: 'Cape Town, South Africa',
     img: '/img/internal/sharon7.png',
   },
   {
     name: 'Desert Rhythms Concert',
-    date: 'Nov 28th, 2023',
+    date: 'Nov 28, 2023',
     venue: 'Marrakech, Morocco',
     img: '/img/internal/sharon8.png',
   },
   {
     name: 'Savannah Soundscape Live',
-    date: 'Dec 20th, 2023',
+    date: 'Dec 20, 2023',
     venue: 'Nairobi, Kenya',
     img: '/img/internal/sharon5.png',
   },
@@ -65,7 +65,7 @@ const HomeDash = (props) => {
         <FeaturedEvent {...props} data={eventsData} showTimer={true} />
       )}
       <div className='relative'>
-        <div className='px-8'>
+        <div className='lg:px-8 px-4'>
           <Upcoming events={events} title={'Coming Up'} />
         </div>
       </div>
