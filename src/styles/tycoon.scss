@@ -126,7 +126,11 @@ button:not(:disabled):active {
     gap: 0.25rem;
     background: grey;
     margin: 0.25rem;
-    border-radius: 0.25rem;
+    border-radius: .5rem .25rem .25rem .25rem;
+}
+
+.LiveTag_Thin {
+    margin: 0;
 }
 
 .darkMode, .darkMode .darkModeEnforce {
@@ -445,3 +449,7 @@ button:not(:disabled):active {
 .lineupItem_current {
     border: 1px solid red;
 }
+
+@import "video/videoPlayer.css";
+@import "video/videojs.css";
+@import "video/videoPlayerTycoon.css";
