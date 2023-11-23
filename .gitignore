@@ -43,8 +43,6 @@ pulls3buildpublic
 app.config.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
-modules
-modules/
 public/font
 public/img/internal
 src/styles/styles.scss
