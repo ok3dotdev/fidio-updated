@@ -1,6 +1,6 @@
 .textChatInput {
     width: 100% !important;
-    min-height: 45px;
+    min-height: 25px;
     max-height: 45px;
     border-radius: .5rem;
 }
@@ -31,6 +31,7 @@
     overflow: auto;
     padding: 0 .25rem;
     height: calc(100% - 45px);
+    flex-grow: 1;
 }
 
 .chatLogContainer {
@@ -42,8 +43,10 @@
 .chatInputContainer {
     min-width: 350px;
     z-index: 5;
+    display: flex;
     .chatInputInternalContainer {
         position: relative;
+        width: 100%;
         .chatInputSendContainer {
             display: flex;
             gap: .25rem;
