@@ -479,7 +479,7 @@ var Module = function Module(props) {
     }
   };
   var checkMobileStyling = function checkMobileStyling() {
-    if (componentDidMount && props._isMobile) {
+    if (componentDidMount && props !== null && props !== void 0 && props._isMobile) {
       var _document, _document2;
       if (((_document = document) === null || _document === void 0 ? void 0 : _document.activeElement) === (chatInputRef === null || chatInputRef === void 0 ? void 0 : chatInputRef.current) && !mobileStyleConfigs) {
         setMobileStyleConfigs(true);
@@ -600,7 +600,7 @@ var Module = function Module(props) {
       author: m.author
     }))))) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null));
   }) : /*#__PURE__*/_react["default"].createElement("div", null))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatInputContainer, " Chat_ChatInputContainer")
+    className: "".concat(_ChatModule["default"].chatInputContainer, " ").concat(!props.chatState ? "".concat(_ChatModule["default"].forceHideChat) : null, " Chat_ChatInputContainer")
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ChatModule["default"].chatInputInternalContainer, " Chat_ChatInputInternalContainer")
   }, recentChatTimeout ? /*#__PURE__*/_react["default"].createElement("div", {
