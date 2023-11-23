@@ -330,7 +330,6 @@ var Module = function Module(props) {
     }
   }, [intent, authorized, props.watchData, videoPlayer.current, relevantTicket]);
   var handleSetMobileStyleConfigs = function handleSetMobileStyleConfigs(status) {
-    console.log(status, mobileStyleConfigs);
     if (mobileStyleConfigs !== status) {
       setMobileStyleConfigs(status);
     }
@@ -379,11 +378,12 @@ var Module = function Module(props) {
     href: "https://videojs.com/html5-video-support/",
     target: "_blank"
   }, "supports HTML5 video")))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].chatContainer, " ").concat(chatState ? "".concat(_WatchPageModule["default"].chatOpen) : "".concat(_WatchPageModule["default"].chatClosed), " WatchPage_ChatContainer")
+    className: "".concat(_WatchPageModule["default"].chatContainer, " ").concat(chatState ? "".concat(_WatchPageModule["default"].chatOpen) : "".concat(_WatchPageModule["default"].chatClosed), " ").concat(!chatState && props !== null && props !== void 0 && props._isMobile ? "".concat(_WatchPageModule["default"].chatClosedMobile) : null, " WatchPage_ChatContainer")
   }, /*#__PURE__*/_react["default"].createElement(_chat.Chat, _extends({}, props, {
     setMobileStyleConfigs: handleSetMobileStyleConfigs,
     chatFor: props === null || props === void 0 ? void 0 : (_props$watchData = props.watchData) === null || _props$watchData === void 0 ? void 0 : _props$watchData.id,
-    videoStatus: props === null || props === void 0 ? void 0 : (_props$watchData2 = props.watchData) === null || _props$watchData2 === void 0 ? void 0 : _props$watchData2.status
+    videoStatus: props === null || props === void 0 ? void 0 : (_props$watchData2 = props.watchData) === null || _props$watchData2 === void 0 ? void 0 : _props$watchData2.status,
+    chatState: chatState
   }))))));
 };
 var _default = Module;
