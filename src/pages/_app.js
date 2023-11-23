@@ -18,6 +18,8 @@ import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
 
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
 
+import { ThemeProvider } from '../components/provider';
+
 import {
   handleRouteChange,
   registerCheckLocalStorageSize,
@@ -223,12 +225,12 @@ function MyApp({ Component, pageProps }) {
         setRooms={_setRooms}
         {...pageProps}
       ></SocketContainer>
-
-      <div
-        className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
-      ></div>
-
-      <Component _socket={_socket} {...pageProps} />
+      <ThemeProvider attribute='class' defaultTheme='dark'>
+        <div
+          className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}
+        ></div>
+        <Component _socket={_socket} {...pageProps} />
+      </ThemeProvider>
     </div>
   );
 }
