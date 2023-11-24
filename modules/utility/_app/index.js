@@ -33,6 +33,12 @@ Object.defineProperty(exports, "registerGoogleSignIn", {
     return _app_tools.registerGoogleSignIn;
   }
 });
+Object.defineProperty(exports, "registerSocket", {
+  enumerable: true,
+  get: function get() {
+    return _app_tools.registerSocket;
+  }
+});
 Object.defineProperty(exports, "toggleSingleOpenMenu", {
   enumerable: true,
   get: function get() {

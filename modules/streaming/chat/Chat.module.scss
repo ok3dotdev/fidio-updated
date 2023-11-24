@@ -58,16 +58,15 @@
                 padding: 0 .75rem;
                 border-radius: .5rem;
             }
-            .chatWarningContainer {
-                position: absolute;
-                top: 0rem;
-                background: rgba(0, 0, 0, .5);
-                width: 100%;
-                height: 100%;
-                border-radius: .5rem;
-                z-index: 5;
-                padding: .5rem;
-            }
+        }
+        .chatWarningContainer {
+            position: absolute;
+            top: -3rem;
+            background: rgba(0, 0, 0, .75);
+            width: 100%;
+            border-radius: .5rem;
+            z-index: 5;
+            padding: .5rem;
         }
     }
 }
@@ -108,7 +107,7 @@
 
 @media(max-width: 700px) {
     .chatLogExternalContainer {
-        height: calc(100vh - 445px);
+        height: calc(100vh - 426px);
     }
     .userDisplayContainer {
         width: 99.9%;
@@ -252,4 +251,8 @@
 
 .mobileChatLogExternalContainer {
     height: 10vh;
+}
+
+.blockSend {
+    background: black;
 }
