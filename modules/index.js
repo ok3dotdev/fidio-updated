@@ -101,6 +101,7 @@ var _App = {
   handleSetCart: _app.handleSetCart,
   handleSetLoggedIn: _app.handleSetLoggedIn,
   registerGoogleSignIn: _app.registerGoogleSignIn,
+  registerSocket: _app.registerSocket,
   toggleSingleOpenMenu: _app.toggleSingleOpenMenu
 };
 var Modules = {
