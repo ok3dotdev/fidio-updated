@@ -1,18 +1,12 @@
 import React from 'react';
-<<<<<<< HEAD
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import '../styles/tycoon.scss';
 import '../styles/video/videoPlayer.css';
 import '../styles/features/output.css';
 // import 'shaka-player/dist/controls.css'
 import '../styles/video/videojs.css';
 import '../styles/video/videoPlayerTycoon.css';
-=======
-
-import '../styles/globals.scss';
-
->>>>>>> pull-branch
-import '../styles/styles.scss';
+// import '../styles/styles.scss';
 
 import Head from 'next/head';
 
@@ -27,13 +21,9 @@ import { resolveVariables } from '/app.config';
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
 
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
-<<<<<<< HEAD
-import { ThemeProvider } from '../components/provider';
-=======
 
 import { ThemeProvider } from '../components/provider';
 
->>>>>>> pull-branch
 import {
   handleRouteChange,
   registerCheckLocalStorageSize,

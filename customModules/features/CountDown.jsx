@@ -43,22 +43,38 @@ function Countdown({ eventDate }) {
   return !timeLeft ? (
     ''
   ) : (
-    <div className='absolute top-24 right-4 lg:right-10 mt-24 lg:mt-[150px] flex gap-4 text-xl sm:text-2xl font-bold text-white p-6 rounded-lg bg-black bg-opacity-50'>
+    <div className='absolute top-0 lg:top-24 right-0 lg:right-10 mt-0 lg:mt-[150px] flex flex-col lg:flex-row gap-4 text-xl sm:text-2xl font-bold text-white p-2 lg:p-6 rounded-lg bg-black bg-opacity-70'>
       <div className='flex flex-col items-center'>
-        <span className='text-xl sm:text-4xl'>{timeLeft.days}</span>
-        <span>{timeLeft.days > 1 ? 'Days' : 'Day'}</span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          {timeLeft.days}
+        </span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          {timeLeft.days > 1 ? 'Days' : 'Day'}
+        </span>
       </div>
       <div className='flex flex-col items-center'>
-        <span className='text-xl sm:text-4xl'>{timeLeft.hours}</span>
-        <span>Hours</span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          {timeLeft.hours}
+        </span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          Hours
+        </span>
       </div>
       <div className='flex flex-col items-center'>
-        <span className='text-xl sm:text-4xl'>{timeLeft.minutes}</span>
-        <span>Minutes </span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          {timeLeft.minutes}
+        </span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          Minutes{' '}
+        </span>
       </div>
       <div className='flex flex-col items-center'>
-        <span className='text-xl sm:text-4xl'>{timeLeft.seconds} </span>
-        <span>Seconds</span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          {timeLeft.seconds}{' '}
+        </span>
+        <span className='text-md sm:text-md text-gray-400 font-sans'>
+          Seconds
+        </span>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const Hero = (props) => {
                 <p className='font-black text-xl text-white'>
                   Odumodu Blvck Live in Birmingham
                 </p>
-                <p className='text-sm text-white'>Nov 24 | 2:00AM GMT</p>
+                <p className='text-sm text-white'>Nov 24 | 9:00PM GMT -5</p>
               </div>
               <div className='basis-1/2 flex flex-col text-center text-white'>
                 {props._loggedIn ? (

@@ -60,8 +60,17 @@ const EventsDetails = (props) => {
         <div className='w-full '>
           <h2 className='text-xl'>About</h2>
           <p className='font-sans text-xl mb-4 lg:w-[70%]'>
-            Join Odumodu Blvck in his first live performance in Birmingham,
-            streamed exclusively on Fidio.
+            Join ODUMODU BLVCK live from Birmingham, UK. Powered by FRIDAES at
+            Cave.
+          </p>
+          <p className='font-sans text-xl mb-4 lg:w-[70%]'>
+            ODUMODUBLVCK is one of the most exciting voices out of the Nigeria.
+            Whilst being a pioneering voice of Drill music in Nigeria, he
+            operates under a self-defined genre he calls Okporoko Rhythms: a
+            form of Hip-Hop that takes influences from Grime, Fela Kuti’s
+            Afrobeat, and Progressive R&B. Since the release of his first single
+            in 2017, ODUMODUBLVCK has been on a one-man-mission to be the author
+            of his own story.
           </p>
           <div className='lg:grid lg:grid-cols-2 gap-y-8 mt-8 flex flex-col'>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
@@ -78,7 +87,7 @@ const EventsDetails = (props) => {
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Date</h3>
-              <p className='font-sans text-sm'>Firday, November 24, 2023</p>
+              <p className='font-sans text-sm'>Friday, November 24, 2023</p>
             </div>
             <div className=' border-t pt-4  border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Location</h3>

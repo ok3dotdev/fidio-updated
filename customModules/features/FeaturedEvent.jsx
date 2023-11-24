@@ -62,7 +62,7 @@ const FeaturedEvent = (props) => {
       backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
       artist: 'Odumodu Blvck',
       event: 'Live in Birmingham',
-      date: 'NOV 24, 2023 02:00AM GMT',
+      date: 'NOV 24, 2023 09:00PM GMT -5',
       id: 'odumodublvck-live-in-birmingham',
     },
   ];
@@ -141,7 +141,7 @@ const FeaturedEvent = (props) => {
                   onClick={handleFreeTicketClaim}
                   className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'
                 >
-                  Claim free ticket
+                  Reserve my seat for free
                 </button>
                 <a
                   className='bg-gray-600 text-white rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'

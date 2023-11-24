@@ -67,7 +67,7 @@ const FeaturedEvent = (props, showTimer, data) => {
           <div
             id={`carousel-item-${index}`}
             key={index}
-            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[80vh] max-w-full'
+            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[90vh] max-w-full'
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div> */}
             {/* <img
@@ -78,7 +78,7 @@ const FeaturedEvent = (props, showTimer, data) => {
             <img
               src={item.backgroundImageDesktop}
               alt='Event Background'
-              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:h-[80vh]'
+              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:h-[90vh]'
             />
             <div className=' flex flex-col w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-3xl lg:text-6xl font-black text-left font-sans lg:max-w-[80%]'>
@@ -93,7 +93,7 @@ const FeaturedEvent = (props, showTimer, data) => {
               <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button
                   onClick={handleFreeTicketClaim}
-                  className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-xs lg:text-xl font-sans font-bold'
+                  className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-[16px] lg:text-xl font-sans font-bold'
                 >
                   Reserve my seat for Free
                 </button>
