@@ -95,7 +95,7 @@ const FeaturedEvent = (props, showTimer, data) => {
                   onClick={handleFreeTicketClaim}
                   className='bg-[#FDB000] text-black rounded-[28px] px-5 py-4 text-[16px] lg:text-xl font-sans font-bold'
                 >
-                  Reserve my seat for Free
+                  Reserve my seat for free
                 </button>
               </div>
             </div>
