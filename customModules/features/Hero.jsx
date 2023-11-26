@@ -48,7 +48,7 @@ const Hero = (props) => {
                 <p className='font-black text-xl text-white'>
                   Odumodu Blvck Live in Birmingham
                 </p>
-                <p className='text-sm text-white'>Nov 24 | 9:00PM GMT -5</p>
+                <p className='text-sm text-white'>Nov 24 9:00PM GMT -5</p>
               </div>
               <div className='basis-1/2 flex flex-col text-center text-white'>
                 {props._loggedIn ? (
@@ -63,7 +63,7 @@ const Hero = (props) => {
                     href='/signin'
                     className='rounded-md inline-flex justify-center items-center px-4 py-3 bg-[#FDB000] mt-2 font-bold text-sm text-black'
                   >
-                    Claim Free Ticket
+                    Watch Live
                   </Link>
                 )}
               </div>

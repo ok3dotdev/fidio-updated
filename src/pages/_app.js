@@ -9,19 +9,12 @@ import '../styles/video/videoPlayerTycoon.css';
 // import '../styles/styles.scss';
 
 import Head from 'next/head';
-
 import Script from 'next/script';
-
 import io from 'socket.io-client';
-
 import { SocketContainer } from '/modules/socket';
-
 import { resolveVariables } from '/app.config';
-
 import { checkSignedIn } from '/modules/utility/onboarding/SignIn';
-
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter';
-
 import { ThemeProvider } from '../components/provider';
 
 import {
@@ -43,15 +36,10 @@ import {
 
 function MyApp({ Component, pageProps }) {
   const [appDidMount, setAppDidMount] = React.useState(false);
-
   const [_loggedIn, _setLoggedIn] = React.useState(false);
-
   const [_stripeSecret, _setStripeSecret] = React.useState(false);
-
   const [_loginError, _setLoginError] = React.useState(false);
-
   const [_pageError, _setPageError] = React.useState(null);
-
   const [_openMenu, _setOpenMenu] = React.useState({});
 
   const [_cart, _setCart] = React.useState({});

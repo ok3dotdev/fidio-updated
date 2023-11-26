@@ -44,7 +44,7 @@ const FeaturedEvent = (props, showTimer, data) => {
       backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
       artist: 'Odumodu Blvck',
       event: 'Live in Birmingham',
-      date: 'NOV 24, 2023 02:00AM GMT',
+      date: 'NOV 24, 2023 09:00PM GMT -5',
       id: 'odumodublvck-live-in-birmingham',
     },
   ];

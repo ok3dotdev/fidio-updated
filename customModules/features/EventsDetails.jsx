@@ -95,7 +95,7 @@ const EventsDetails = (props) => {
             </div>
             <div className='border-b py-6 border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Time</h3>
-              <p className='font-sans text-sm'>2:00 AM GMT</p>
+              <p className='font-sans text-sm'>9:00 PM GMT -5</p>
             </div>
           </div>
           <div className='flex flex-col items-start mt-8'>

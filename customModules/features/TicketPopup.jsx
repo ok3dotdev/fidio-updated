@@ -8,12 +8,18 @@ const TicketClaimedPopup = ({ onClose }) => {
         <div className='z-20'>
           <h2 className='text-2xl mb-4'>You're all set!</h2>
           <p>Please check your cart to complete purchase</p>
-          <button
-            onClick={onClose}
-            className='bg-orange-400 text-white px-4 py-2 rounded mt-2'
-          >
-            Close
-          </button>
+          <div>
+            <button className='bg-black px-4 py-2 rounded-[20px]'>
+              Remin me
+              <AlarmIcon />{' '}
+            </button>
+            <button
+              onClick={onClose}
+              className='bg-orange-400 text-white px-4 py-2 rounded-[20px] mt-2'
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
