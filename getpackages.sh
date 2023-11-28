@@ -1,14 +1,11 @@
-@echo off
-setlocal enabledelayedexpansion
+#!/bin/bash
 
-set "PACKAGE_JSON_PATH=./package.json"
+PACKAGE_JSON_PATH="./package.json"
 
-set "result=<*T&*>"
+DELIMITER="<*T&*>"
 
-for /f %%i in ('powershell -command "(Get-Content '%PACKAGE_JSON_PATH%' | ConvertFrom-Json).dependencies | ForEach-Object { $_.Keys }"') do (
-  set "result=!result!%%i<*T&*>"
-)
+dependencies=$(node -e "console.log(Object.entries(require('$PACKAGE_JSON_PATH').dependencies))")
 
-echo %result%
+RESULT="${DELIMITER}${dependencies}${DELIMITER}"
 
-endlocal
+echo "$RESULT"
