@@ -107,6 +107,10 @@ button:not(:disabled):active {
     gap: .3rem;
 }
 
+.al-cen {
+    align-items: center;
+}
+
 .simpleTextInput {
     border: none;
     height: 20px;
@@ -366,6 +370,10 @@ button:not(:disabled):active {
     }
 }
 
+.IndexCta_LeadContainer {
+    // transition: 200ms;
+}
+
 .FeatureContainerOpen ~ .sign-in-page-container .IndexCta_Container .IndexCta_LeadContainer {
     margin-top: 2rem;
 }
@@ -444,6 +452,39 @@ button:not(:disabled):active {
 
 .lineupItem_current {
     border: 1px solid red;
+}
+
+.Admin_Container {
+    h4 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+    h3 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+}
+
+.admin_prompt {
+    color: #d6d6d6;
+}
+
+.admin_update {
+    color: yellow;
+}
+
+.admin_container {
+    border: 1px solid grey;
+}
+
+.admin_pair {
+    display: flex;
+    input {
+        border: 1px solid white;
+    }
+    button {
+        padding: .06rem 1.5rem;
+    }
 }
 
 @import "video/videoPlayer.css";
