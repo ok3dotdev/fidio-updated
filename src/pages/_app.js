@@ -12,7 +12,7 @@ import { checkSignedIn } from '/modules/utility/onboarding/SignIn'
 import { LocalEventEmitter } from '/modules/events/LocalEventEmitter'
 import { handleRouteChange, registerCheckLocalStorageSize, registerCheckMobile } from '/modules/util'
 import { useRouter } from 'next/router'
-import { forceUpdateProps, handleGlobalEvent, handleSetCart, handleSetLoggedIn, registerGoogleSignIn, toggleSingleOpenMenu } from '/modules/utility/_app'
+import { forceUpdateProps, handleGlobalEvent, handleSetCart, handleSetLoggedIn, registerGoogleSignIn, registerSocket, toggleSingleOpenMenu } from '/modules/utility/_app'
 
 
 function MyApp({ Component, pageProps }) {
@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
 	const [ fetchBusy, setFetchBusy ] = React.useState(false)
 	const [ _rooms, _setRooms ] = React.useState({})
 	const [ _isMobile, _setIsMobile ] = React.useState(false)
+	const [ _adminAuth, _setAdminAuth ] = React.useState(null)
 
 	const router = useRouter()
 	try {
@@ -77,6 +78,10 @@ function MyApp({ Component, pageProps }) {
 	pageProps._cart = _cart
 	pageProps._rooms = _rooms
 	pageProps._isMobile = _isMobile
+	pageProps._adminAuth = _adminAuth
+	pageProps._setAdminAuth = _setAdminAuth
+	pageProps.fetchBusy = fetchBusy
+	pageProps.setFetchBusy = setFetchBusy
 	pageProps = Object.assign(resolveVariables(), pageProps)
 
 	LocalEventEmitter.unsubscribe('forceUpdateProps')
@@ -90,23 +95,10 @@ function MyApp({ Component, pageProps }) {
 		handleGlobalEvent(e, pageProps, fetchBusy, setFetchBusy)
 	})
 
-	const socketIoConfig = {
-		reconnectAttempts: 1
-	}
-	if (pageProps.socketpath) {
-		socketIoConfig.path = pageProps.socketpath
-		socketIoConfig.port = pageProps.socketPort
-	}
 	const [ _socket, setSocket ] = React.useState(null)
 	const [ socketTimeout, setSocketTimeout ] = React.useState(null)
 	React.useEffect(() => {
-		if (!_socket && !socketTimeout) {
-			setSocket(io(pageProps.socketUrl, socketIoConfig))
-			const r = setTimeout(() => {
-				setSocketTimeout(null)
-			}, 20000)
-			setSocketTimeout(r)
-		}
+		registerSocket(io, _socket, setSocket, socketTimeout, pageProps, setSocketTimeout)
 	}, [ _socket, socketTimeout ])
 
 	/**
