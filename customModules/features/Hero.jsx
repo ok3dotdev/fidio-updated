@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Hero = (props) => {
   return (
-    <div className='h-screen w-full relative'>
+    <div className='h-screen w-full'>
       <video
         playsInline={true}
         autoPlay={true}
@@ -13,9 +13,9 @@ const Hero = (props) => {
         className=' w-full h-full object-cover'
       ></video>
       <div className='absolute top-0 w-full bg-black opacity-50 h-screen'></div>
-      <div className='absolute top-0 w-full first-line:max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[140px] flex flex-col lg:justify-center lg:flex-row gap-1 h-full lg:h-auto z-20'>
+      <div className='absolute top-0 w-full first-line:max-w-6xl mx-auto p-4 px-4 text-center lg:text-left lg:flex lg:pt-[200px] pt-[140px] flex flex-col lg:justify-center gap-1 h-full z-20'>
         <div className='flex flex-col lg:items-start lg:justify-start'>
-          <h1 className='font-black text-4xl md:text-6xl lg:text-7xl mb-1 text-white text-center lg:text-left max-w-[800px] main-heading'>
+          <h1 className='font-black text-4xl md:text-6xl lg:text-7xl mb-1 text-white text-center lg:text-left max-w-[800px]'>
             Find joy though Afro
           </h1>
           <p>Ready to stream? </p>

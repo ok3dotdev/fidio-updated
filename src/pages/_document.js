@@ -45,13 +45,14 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
-          <div version='0.2.10' style={{ display: 'none' }}></div> //TYCOON
+          {/* TYCOON SYSTEMS MODULES VERSIONING */}
+          <div version='0.2.10' style={{ display: 'none' }}></div>
+          {/* Fidio VERSIONING */}
           <div
             id='fidio-version'
             version='0.1.0'
             style={{ display: 'none' }}
-          ></div>{' '}
-          //Fidio
+          ></div>
           <Main />
           <NextScript />
         </body>

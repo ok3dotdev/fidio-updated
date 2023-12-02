@@ -109,6 +109,21 @@ export const Page = (props) => {
         </div>
       </div>
       <ShowGrid />
+      <div className='max-w-7xl mx-auto '>
+        <div className='flex gap-4 px-4 lg:px-6 items-center'>
+          <h3>Ready to stream?</h3>
+          <div className='relative'>
+            <img
+              className='absolute top-0'
+              src='/img/internal/swirls.png'
+              alt='swirls'
+            />
+            <button className='py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans  text-black'>
+              Sign up for free with Google
+            </button>
+          </div>
+        </div>
+      </div>
     </HomeLayout>
   );
 };
