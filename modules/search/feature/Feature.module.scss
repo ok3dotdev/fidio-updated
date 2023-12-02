@@ -125,8 +125,8 @@
 }
 
 .statusContainer {
-    top: .125rem;
-    left: .125rem;
+    top: .25rem;
+    left: .25rem;
     font-size: .75rem;
     border-radius: .5rem;
 }
@@ -180,6 +180,24 @@
             max-width: 100%;
             width: 375px !important;
             max-height: 400px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .itemContainer {
+        width: calc(100% - .35rem);
+    }
+    .featureContainerLarge {
+        .item {
+            width: 100%;
+            img {
+                width: 100% !important;
+                max-height: 215px;
+            }
+        }
+        .itemMetaContainer {
+            width: 100%;
         }
     }
 }

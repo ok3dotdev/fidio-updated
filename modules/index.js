@@ -40,6 +40,7 @@ var Onboarding = {
   attemptThirdPartySignIn: _index6.attemptThirdPartySignIn,
   checkSignedIn: _index6.checkSignedIn,
   checkSignedInAndPrompt: _index6.checkSignedInAndPrompt,
+  checkUserData: _index6.checkUserData,
   logout: _index6.logout,
   updateLocalLoginSession: _index6.updateLocalLoginSession
 };
@@ -84,7 +85,10 @@ var Util = {
   getFormattedDate: _util.getFormattedDate,
   handleInteractMedia: _util.handleInteractMedia,
   handleRouteChange: _util.handleRouteChange,
-  throttleFunctionCall: _util.throttleFunctionCall
+  throttleFunctionCall: _util.throttleFunctionCall,
+  registerProxyConsoleLog: _util.registerProxyConsoleLog,
+  registerCheckLocalStorageSize: _util.registerCheckLocalStorageSize,
+  registerCheckMobile: _util.registerCheckMobile
 };
 var Pages = {
   SignInPage: _index.SignInPage,
@@ -97,6 +101,7 @@ var Analytics = {
 };
 var _App = {
   forceUpdateProps: _app.forceUpdateProps,
+  handleCheckUserData: _app.handleCheckUserData,
   handleGlobalEvent: _app.handleGlobalEvent,
   handleSetCart: _app.handleSetCart,
   handleSetLoggedIn: _app.handleSetLoggedIn,

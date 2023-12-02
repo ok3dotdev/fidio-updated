@@ -21,6 +21,12 @@ Object.defineProperty(exports, "checkSignedInAndPrompt", {
     return _SignIn.checkSignedInAndPrompt;
   }
 });
+Object.defineProperty(exports, "checkUserData", {
+  enumerable: true,
+  get: function get() {
+    return _SignIn.checkUserData;
+  }
+});
 Object.defineProperty(exports, "grabUsername", {
   enumerable: true,
   get: function get() {

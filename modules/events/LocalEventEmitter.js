@@ -1,6 +1,6 @@
 "use strict";
 
-var LocalEventEmitter = {
+var _LocalEventEmitter = {
   _events: {},
   dispatch: function dispatch(event, data) {
     // console.log(event, data)
@@ -19,5 +19,5 @@ var LocalEventEmitter = {
   }
 };
 module.exports = {
-  LocalEventEmitter: LocalEventEmitter
+  _LocalEventEmitter: _LocalEventEmitter
 };

@@ -918,9 +918,10 @@ var Module = function Module(props) {
     style: {
       marginTop: '.25rem'
     }
-  }, editingOptionsMeta.livestreamDef.dates.map(function (d) {
+  }, editingOptionsMeta.livestreamDef.dates.map(function (d, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
+      className: "tagItem",
+      key: i
     }, d ? (0, _util.getFormattedDate)(d, {
       pretty: true
     }) : '');
@@ -929,9 +930,10 @@ var Module = function Module(props) {
     style: {
       marginTop: '.25rem'
     }
-  }, editingOptionsMeta.livestreamDef.tags.map(function (d) {
+  }, editingOptionsMeta.livestreamDef.tags.map(function (d, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
+      className: "tagItem",
+      key: i
     }, d);
   })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
@@ -960,9 +962,10 @@ var Module = function Module(props) {
     style: {
       marginTop: '.25rem'
     }
-  }, editingOptionsMeta.eventDateDef.dates.map(function (d) {
+  }, editingOptionsMeta.eventDateDef.dates.map(function (d, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
+      className: "tagItem",
+      key: i
     }, d ? (0, _util.getFormattedDate)(d, {
       pretty: true
     }) : '');

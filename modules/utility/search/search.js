@@ -27,13 +27,14 @@ var fetchSearchData = /*#__PURE__*/function () {
           for (i = 0; i < dataFetch.length; i++) {
             body[dataFetch[i] + 'Req'] = true;
           }
-          _context.next = 4;
+          body["function"] = 'fetchSearchData';
+          _context.next = 5;
           return (0, _fetch.fetchPost)(apiUrl + '/m/pagedefaults', null, null, body);
-        case 4:
+        case 5:
           defaults = _context.sent;
           console.log('Defaults', defaults);
           return _context.abrupt("return", defaults);
-        case 7:
+        case 8:
         case "end":
           return _context.stop();
       }

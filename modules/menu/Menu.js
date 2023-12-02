@@ -212,13 +212,16 @@ var Module = function Module(props) {
     className: "margin1600 menuContainer"
   }, /*#__PURE__*/_react["default"].createElement(_SubMenu["default"], props), /*#__PURE__*/_react["default"].createElement("ul", {
     className: !props._loggedIn ? "".concat(_MenuModule["default"].menu, " ").concat(_MenuModule["default"].menuClosed) : _MenuModule["default"].menu
-  }, props.menuConfig && props.menuConfig.right ? props.menuConfig.right.map(function (c) {
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, c.type ? c.type === 'user' ? props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
+  }, props.menuConfig && props.menuConfig.right ? props.menuConfig.right.map(function (c, i) {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
+      key: i
+    }, c.type ? c.type === 'user' ? props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/p",
       className: "menuLinkSelector ".concat(c.className),
       style: {
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("li", {
       className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink")
     }, /*#__PURE__*/_react["default"].createElement("span", {
@@ -233,7 +236,8 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("li", {
       className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink ").concat(_MenuModule["default"].stillShow)
     }, /*#__PURE__*/_react["default"].createElement("span", {
@@ -251,7 +255,8 @@ var Module = function Module(props) {
       onClick: toggleCart,
       style: {
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "".concat(_MenuModule["default"].menuLinkText)
     }, /*#__PURE__*/_react["default"].createElement("div", null, "Cart"), /*#__PURE__*/_react["default"].createElement("div", {
@@ -263,7 +268,8 @@ var Module = function Module(props) {
       className: "menuLinkSelector ".concat(c.className),
       style: {
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("li", {
       className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink menuLinkSelector ").concat(c.className),
       style: {

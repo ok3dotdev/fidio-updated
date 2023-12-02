@@ -559,10 +559,12 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ChatModule["default"].chatLogContainer, " Chat_ChatLogContainer"),
     ref: scrollChatInnerRef
-  }, chatLog && Array.isArray(chatLog) ? chatLog.map(function (m) {
+  }, chatLog && Array.isArray(chatLog) ? chatLog.map(function (m, i) {
     var _m$replyLogid;
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ChatLogItemContainer"
+      className: "Chat_ChatLogItemContainer",
+      key: i,
+      index: i
     }, m.id && m.content && m.author ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "Chat_ChatLogItemInternalContainer",
       logid: m.id,
@@ -633,7 +635,9 @@ var Module = function Module(props) {
       style: {
         display: 'flex',
         gap: '.25rem'
-      }
+      },
+      key: i,
+      index: i
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "Chat_ReplyToRepliesUsername"
     }, /*#__PURE__*/_react["default"].createElement("b", null, (_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : '')), /*#__PURE__*/_react["default"].createElement("div", {

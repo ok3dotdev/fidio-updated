@@ -9,6 +9,12 @@ Object.defineProperty(exports, "forceUpdateProps", {
     return _app_tools.forceUpdateProps;
   }
 });
+Object.defineProperty(exports, "handleCheckUserData", {
+  enumerable: true,
+  get: function get() {
+    return _app_tools.handleCheckUserData;
+  }
+});
 Object.defineProperty(exports, "handleGlobalEvent", {
   enumerable: true,
   get: function get() {

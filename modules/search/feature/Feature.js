@@ -245,23 +245,36 @@ var Module = function Module(props) {
     ref: featureContainerRef
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_FeatureModule["default"].itemContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemContainerThin : '')
-  }, combinedFeed.map(function (item) {
+  }, combinedFeed.map(function (item, i) {
+    var _featureState$size;
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].item, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemThin : '')
+      className: "".concat(_FeatureModule["default"].item, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemThin : "Item_ContainerMetaController Item_ContainerMetaControllerFeature", " Item_ContainerMetaControllerFeature_").concat((_featureState$size = featureState === null || featureState === void 0 ? void 0 : featureState.size) !== null && _featureState$size !== void 0 ? _featureState$size : '', " Feature_Item"),
+      key: i
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "w?v=".concat(item.id)
     }, item.status === 'live' && featureState.size !== 'thin' ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "LiveTag ".concat(_FeatureModule["default"].statusContainer)
     }, "LIVE", /*#__PURE__*/_react["default"].createElement("div", {
       className: "RecordingCircle RecordingCircle_Small"
-    })) : '', featureState.size !== 'thin' ? /*#__PURE__*/_react["default"].createElement(_image["default"], {
+    })) : '', featureState.size !== 'thin' ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_image["default"], {
       loader: myLoader,
       src: item.thumbnail && props.cdn && props.cdn["static"] ? item.thumbnail : 'img/default/greythumb.jpg',
       alt: item.title ? item.title : "",
       width: 60,
       height: 30,
-      layout: "responsive"
-    }) : null, /*#__PURE__*/_react["default"].createElement("div", {
+      layout: "responsive",
+      className: "Feature_Img Feature_Img_Border"
+    }), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "Item_GhostMeta Item_GhostMetaFeature"
+    }, item.creation && !isNaN(item.creation) && !isNaN(new Date(Number(item.creation))) ? /*#__PURE__*/_react["default"].createElement("div", {
+      className: "Item_TinyMetaText Item_TinyMetaTextFeature",
+      style: {
+        marginBottom: '.25rem',
+        textShadow: '1px 2px 6px rgb(0 0 0 / 75%)'
+      }
+    }, "Stream started ", new Date(Number(item.creation)).toTimeString()) : null, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "Item_GhostMetaContainerInternal"
+    }, /*#__PURE__*/_react["default"].createElement("div", null, item.description ? item.description : "Watch Livestream Now")))) : null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_FeatureModule["default"].itemMetaContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].thinMetaContainerSize : '')
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_FeatureModule["default"].itemMetaContainerPadding)

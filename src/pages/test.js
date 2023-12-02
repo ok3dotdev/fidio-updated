@@ -2,8 +2,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/router'
-import { fetchPost } from '/modules/utility/fetch'
-import resolveConfig, { resolveVariables } from '/app.config'
+import resolveConfig from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 
@@ -13,14 +12,12 @@ export const page = props => {
     const [ fetching, setFetching ] = React.useState(false)
     const [ mergeProps, setMergeProps ] = React.useState({})
     let resolvedDefinition = props.resolvedDefinition
-    const variables = resolveVariables()
-    let config = resolveConfig(variables, props)
-    let resolvedPage = resolvePage(config, props.path)
+    let resolvedPage = resolvePage(resolveConfig(props._configVariables, props), props.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
 
     React.useEffect(() => {
         const getDefaults = async () => {
-            const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching)
+            const defaults = await resolveDefaults(resolvedPage.url, props, props._configVariables, query, asPath, setFetching)
             if (!isObjectEmpty(defaults)) {
                 const newProps = Object.assign({...props}, defaults)
                 setMergeProps(newProps)
@@ -32,12 +29,17 @@ export const page = props => {
     }, [ fetching, mergeProps, resolvedPage ])
 
     const useProps = handlePropsPriority(mergeProps, props)
-    config = resolveConfig(variables, useProps)
-    resolvedPage = resolvePage(config, useProps.path)
+    resolvedPage = resolvePage(resolveConfig(props._configVariables, useProps), useProps.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
     const components = generateComponent(resolvedDefinition)
 	return (
-        <div>{components}</div>
+        <React.Fragment>
+            {
+                props.dev
+                    ? <div className={`${props.pageClass ?? ''}`}>{components}</div>
+                    : <div></div>
+            }
+        </React.Fragment>
 	)
 }
 

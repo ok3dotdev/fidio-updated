@@ -52,8 +52,14 @@ src/styles/custom/*
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
+customModules/*
+!*customModules/middleware
+customModules/middleware/*
+!*customModules/middleware/Middleware_backup.js
+!*customModules/middleware/index.js
 /public/doc/internal/*
 styles/styles.scss
+styles/appstyles/*
 .next.tar.gz
 public.tar.gz
 servebuild.bat
