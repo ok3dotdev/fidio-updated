@@ -28,58 +28,54 @@ function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefine
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var CHECK_HANDLE_USER_DATA_THRESHOLD = 1800000;
 var Internal = function Internal(usePageProps) {
-  var _React$useState = _react["default"].useState({}),
+  var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
-    passData = _React$useState2[0],
-    setPassData = _React$useState2[1];
+    appDidMount = _React$useState2[0],
+    setAppDidMount = _React$useState2[1];
   var _React$useState3 = _react["default"].useState(false),
     _React$useState4 = _slicedToArray(_React$useState3, 2),
-    appDidMount = _React$useState4[0],
-    setAppDidMount = _React$useState4[1];
+    _loggedIn = _React$useState4[0],
+    _setLoggedIn = _React$useState4[1];
   var _React$useState5 = _react["default"].useState(false),
     _React$useState6 = _slicedToArray(_React$useState5, 2),
-    _loggedIn = _React$useState6[0],
-    _setLoggedIn = _React$useState6[1];
+    _stripeSecret = _React$useState6[0],
+    _setStripeSecret = _React$useState6[1];
   var _React$useState7 = _react["default"].useState(false),
     _React$useState8 = _slicedToArray(_React$useState7, 2),
-    _stripeSecret = _React$useState8[0],
-    _setStripeSecret = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState(false),
+    _loginError = _React$useState8[0],
+    _setLoginError = _React$useState8[1];
+  var _React$useState9 = _react["default"].useState(null),
     _React$useState10 = _slicedToArray(_React$useState9, 2),
-    _loginError = _React$useState10[0],
-    _setLoginError = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState(null),
+    _pageError = _React$useState10[0],
+    _setPageError = _React$useState10[1];
+  var _React$useState11 = _react["default"].useState({}),
     _React$useState12 = _slicedToArray(_React$useState11, 2),
-    _pageError = _React$useState12[0],
-    _setPageError = _React$useState12[1];
+    _openMenu = _React$useState12[0],
+    _setOpenMenu = _React$useState12[1];
   var _React$useState13 = _react["default"].useState({}),
     _React$useState14 = _slicedToArray(_React$useState13, 2),
-    _openMenu = _React$useState14[0],
-    _setOpenMenu = _React$useState14[1];
-  var _React$useState15 = _react["default"].useState({}),
+    _cart = _React$useState14[0],
+    _setCart = _React$useState14[1];
+  var _React$useState15 = _react["default"].useState(false),
     _React$useState16 = _slicedToArray(_React$useState15, 2),
-    _cart = _React$useState16[0],
-    _setCart = _React$useState16[1];
-  var _React$useState17 = _react["default"].useState(false),
+    fetchBusy = _React$useState16[0],
+    setFetchBusy = _React$useState16[1];
+  var _React$useState17 = _react["default"].useState({}),
     _React$useState18 = _slicedToArray(_React$useState17, 2),
-    fetchBusy = _React$useState18[0],
-    setFetchBusy = _React$useState18[1];
-  var _React$useState19 = _react["default"].useState({}),
+    _rooms = _React$useState18[0],
+    _setRooms = _React$useState18[1];
+  var _React$useState19 = _react["default"].useState(false),
     _React$useState20 = _slicedToArray(_React$useState19, 2),
-    _rooms = _React$useState20[0],
-    _setRooms = _React$useState20[1];
-  var _React$useState21 = _react["default"].useState(false),
+    _isMobile = _React$useState20[0],
+    _setIsMobile = _React$useState20[1];
+  var _React$useState21 = _react["default"].useState(null),
     _React$useState22 = _slicedToArray(_React$useState21, 2),
-    _isMobile = _React$useState22[0],
-    _setIsMobile = _React$useState22[1];
-  var _React$useState23 = _react["default"].useState(null),
+    _adminAuth = _React$useState22[0],
+    _setAdminAuth = _React$useState22[1];
+  var _React$useState23 = _react["default"].useState(-1),
     _React$useState24 = _slicedToArray(_React$useState23, 2),
-    _adminAuth = _React$useState24[0],
-    _setAdminAuth = _React$useState24[1];
-  var _React$useState25 = _react["default"].useState(-1),
-    _React$useState26 = _slicedToArray(_React$useState25, 2),
-    lastCheckHandleUserData = _React$useState26[0],
-    setLastCheckHandleUserData = _React$useState26[1];
+    lastCheckHandleUserData = _React$useState24[0],
+    setLastCheckHandleUserData = _React$useState24[1];
 
   // Must assign usePageProps as it cannot be used directly
   var pageProps = Object.assign({}, usePageProps);
@@ -107,13 +103,75 @@ var Internal = function Internal(usePageProps) {
       once: true
     });
   }, []);
+  var resolveCheckUserData = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(pageProps, runCheckUserDataCheck) {
+      var res, user;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _SignIn.checkUserData)(pageProps, runCheckUserDataCheck);
+          case 2:
+            res = _context.sent;
+            if (!res) {
+              _context.next = 17;
+              break;
+            }
+            user = _loggedIn;
+            console.log(res, user);
+            if (!(res.identifier && res.username && res.hash)) {
+              _context.next = 17;
+              break;
+            }
+            user.username = res.username;
+            user.hash = res.hash;
+            user.identifier = res.identifier;
+            user.ip = res.ip;
+            user.location = res.location;
+            user.locationMeta = res.locationMeta;
+            console.log(user);
+            (0, _SignIn.updateLocalLoginSession)(user);
+            _setLoggedIn(user);
+            return _context.abrupt("return", true);
+          case 17:
+            return _context.abrupt("return", false);
+          case 18:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return function resolveCheckUserData(_x2, _x3) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleUserDependencies = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var runCheckUserDataCheck;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            (0, _app2.handleSetLoggedIn)(pageProps, _SignIn.checkSignedIn, _setLoggedIn);
+            _context2.next = 3;
+            return (0, _app2.handleCheckUserData)(pageProps, _loggedIn);
+          case 3:
+            runCheckUserDataCheck = _context2.sent;
+            if (pageProps && _loggedIn && lastCheckHandleUserData < new Date().getTime() - CHECK_HANDLE_USER_DATA_THRESHOLD && runCheckUserDataCheck) {
+              setLastCheckHandleUserData(new Date().getTime());
+              resolveCheckUserData(pageProps, runCheckUserDataCheck);
+            }
+          case 5:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2);
+    }));
+    return function handleUserDependencies() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   _react["default"].useEffect(function () {
-    (0, _app2.handleSetLoggedIn)(pageProps, _SignIn.checkSignedIn, _setLoggedIn);
-    var runCheckUserDataCheck = (0, _app2.handleCheckUserData)(pageProps, _loggedIn);
-    if (pageProps && _loggedIn && lastCheckHandleUserData < new Date().getTime() - CHECK_HANDLE_USER_DATA_THRESHOLD && runCheckUserDataCheck) {
-      setLastCheckHandleUserData(new Date().getTime());
-      (0, _SignIn.checkUserData)(pageProps, runCheckUserDataCheck);
-    }
+    handleUserDependencies();
   }, [_loggedIn, pageProps._loggedIn]);
   var handleToggleSingleOpenMenu = function handleToggleSingleOpenMenu(e, menu, force) {
     (0, _app2.toggleSingleOpenMenu)(e, menu, _openMenu, _setOpenMenu, force);
@@ -148,30 +206,30 @@ var Internal = function Internal(usePageProps) {
   });
   _LocalEventEmitter2._LocalEventEmitter.unsubscribe('global_event');
   _LocalEventEmitter2._LocalEventEmitter.subscribe('global_event', /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
             console.log(e);
             (0, _app2.handleGlobalEvent)(e, pageProps, fetchBusy, setFetchBusy);
           case 2:
           case "end":
-            return _context.stop();
+            return _context3.stop();
         }
-      }, _callee);
+      }, _callee3);
     }));
-    return function (_x2) {
-      return _ref.apply(this, arguments);
+    return function (_x4) {
+      return _ref3.apply(this, arguments);
     };
   }());
+  var _React$useState25 = _react["default"].useState(null),
+    _React$useState26 = _slicedToArray(_React$useState25, 2),
+    _socket = _React$useState26[0],
+    setSocket = _React$useState26[1];
   var _React$useState27 = _react["default"].useState(null),
     _React$useState28 = _slicedToArray(_React$useState27, 2),
-    _socket = _React$useState28[0],
-    setSocket = _React$useState28[1];
-  var _React$useState29 = _react["default"].useState(null),
-    _React$useState30 = _slicedToArray(_React$useState29, 2),
-    socketTimeout = _React$useState30[0],
-    setSocketTimeout = _React$useState30[1];
+    socketTimeout = _React$useState28[0],
+    setSocketTimeout = _React$useState28[1];
   _react["default"].useEffect(function () {
     (0, _app2.registerSocket)(_socket2["default"], _socket, setSocket, socketTimeout, pageProps, setSocketTimeout);
   }, [_socket, socketTimeout]);
@@ -194,12 +252,7 @@ var Internal = function Internal(usePageProps) {
     setRooms: _setRooms
   }, pageProps)), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement(_middleware.UseMiddleware, _extends({
-    passData: passData,
-    setPassData: setPassData
-  }, pageProps)), /*#__PURE__*/_react["default"].createElement(pageProps._MasterPageComponent, _extends({}, pageProps, {
-    passData: passData
-  })));
+  }), /*#__PURE__*/_react["default"].createElement(_middleware.UseMiddleware, pageProps));
 };
 var _default = Internal;
 exports["default"] = _default;

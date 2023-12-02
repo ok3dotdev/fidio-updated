@@ -1,28 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 
-if (fs.existsSync('customModules/middleware/Middleware.js')) {
+const f1 = 'customModules/middleware/Middleware.js'
+if (fs.existsSync(f1)) {
     // Add your commands here
-    console.log('File exists on', process.platform)
+    console.log(`${f1} File exists on`, process.platform, 'creating')
 } else {
-    fs.copyFileSync('customModules/middleware/Middleware_backup.js', 'customModules/middleware/Middleware.js')
-    console.log('File does not exist on', process.platform)
+    fs.copyFileSync('customModules/middleware/Middleware_backup.js', f1)
+    console.log(`${f1} File does not exist on`, process.platform)
 }
 
-if (fs.existsSync('customModules/index.js')) {
+const f2 = 'customModules/index.js'
+if (fs.existsSync(f2)) {
     // Add your commands here
-    console.log('File exists on', process.platform)
+    console.log(`${f2} File exists on`, process.platform)
 } else {
-    fs.copyFileSync('customModules/index_backup.js', 'customModules/index.js')
-    console.log('File does not exist on', process.platform)
+    fs.copyFileSync('customModules/index_backup.js', f2, 'creating')
+    console.log(`${f2} File does not exist on`, process.platform)
 }
 
-if (fs.existsSync('src/styles/styles.scss.js')) {
+const f3 = 'src/styles/styles.scss'
+if (fs.existsSync(f3)) {
     // Add your commands here
-    console.log('File exists on', process.platform)
+    console.log(`${f3} File exists on`, process.platform, 'creating')
 } else {
-    fs.writeFile('src/styles/styles.scss', '', err => {
+    fs.writeFile(f3, '', err => {
         console.log(err)
     })
-    console.log('File does not exist on', process.platform)
+    console.log(`${f3} File does not exist on`, process.platform)
 }
