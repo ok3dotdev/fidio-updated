@@ -28,7 +28,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var CONNECT_THRESHOLD = 12500;
-var ADHOC_BLOCK_CHAT = 2000;
+var ADHOC_BLOCK_CHAT = 1500;
 var RECENT_CHAT_THRESHOLD = 20000;
 var RECENT_CHAT_TIMEOUT = 10000;
 var MAX_RECENT_CHATS = 9;
@@ -70,58 +70,62 @@ var Module = function Module(props) {
     _React$useState18 = _slicedToArray(_React$useState17, 2),
     blockSend = _React$useState18[0],
     setBlockSend = _React$useState18[1];
-  var _React$useState19 = _react["default"].useState(-1),
+  var _React$useState19 = _react["default"].useState(false),
     _React$useState20 = _slicedToArray(_React$useState19, 2),
-    lastAdhocTimeout = _React$useState20[0],
-    setLastAdhocTimeout = _React$useState20[1];
-  var _React$useState21 = _react["default"].useState([]),
+    blockSendForce = _React$useState20[0],
+    setBlockSendForce = _React$useState20[1];
+  var _React$useState21 = _react["default"].useState(-1),
     _React$useState22 = _slicedToArray(_React$useState21, 2),
-    recentChats = _React$useState22[0],
-    setRecentChats = _React$useState22[1];
-  var _React$useState23 = _react["default"].useState(null),
+    lastAdhocTimeout = _React$useState22[0],
+    setLastAdhocTimeout = _React$useState22[1];
+  var _React$useState23 = _react["default"].useState([]),
     _React$useState24 = _slicedToArray(_React$useState23, 2),
-    recentChatTimeout = _React$useState24[0],
-    setRecentChatTimeout = _React$useState24[1];
-  var _React$useState25 = _react["default"].useState({}),
+    recentChats = _React$useState24[0],
+    setRecentChats = _React$useState24[1];
+  var _React$useState25 = _react["default"].useState(null),
     _React$useState26 = _slicedToArray(_React$useState25, 2),
-    modPower = _React$useState26[0],
-    setModPower = _React$useState26[1];
-  var _React$useState27 = _react["default"].useState(null),
+    recentChatTimeout = _React$useState26[0],
+    setRecentChatTimeout = _React$useState26[1];
+  var _React$useState27 = _react["default"].useState({}),
     _React$useState28 = _slicedToArray(_React$useState27, 2),
-    userDisplay = _React$useState28[0],
-    setUserDisplay = _React$useState28[1];
+    modPower = _React$useState28[0],
+    setModPower = _React$useState28[1];
   var _React$useState29 = _react["default"].useState(null),
     _React$useState30 = _slicedToArray(_React$useState29, 2),
-    currentBanTable = _React$useState30[0],
-    setCurrentBanTable = _React$useState30[1];
-  var _React$useState31 = _react["default"].useState(-1),
+    userDisplay = _React$useState30[0],
+    setUserDisplay = _React$useState30[1];
+  var _React$useState31 = _react["default"].useState(null),
     _React$useState32 = _slicedToArray(_React$useState31, 2),
-    lastBanTableCheck = _React$useState32[0],
-    setLastBanTableCheck = _React$useState32[1];
-  var _React$useState33 = _react["default"].useState(null),
+    currentBanTable = _React$useState32[0],
+    setCurrentBanTable = _React$useState32[1];
+  var _React$useState33 = _react["default"].useState(-1),
     _React$useState34 = _slicedToArray(_React$useState33, 2),
-    replyToId = _React$useState34[0],
-    setReplyToId = _React$useState34[1];
+    lastBanTableCheck = _React$useState34[0],
+    setLastBanTableCheck = _React$useState34[1];
   var _React$useState35 = _react["default"].useState(null),
     _React$useState36 = _slicedToArray(_React$useState35, 2),
-    replyToUsername = _React$useState36[0],
-    setReplyToUsername = _React$useState36[1];
-  var _React$useState37 = _react["default"].useState([]),
+    replyToId = _React$useState36[0],
+    setReplyToId = _React$useState36[1];
+  var _React$useState37 = _react["default"].useState(null),
     _React$useState38 = _slicedToArray(_React$useState37, 2),
-    replyToContent = _React$useState38[0],
-    setReplyToContent = _React$useState38[1];
-  var _React$useState39 = _react["default"].useState(null),
+    replyToUsername = _React$useState38[0],
+    setReplyToUsername = _React$useState38[1];
+  var _React$useState39 = _react["default"].useState([]),
     _React$useState40 = _slicedToArray(_React$useState39, 2),
-    highlightedChat = _React$useState40[0],
-    setHighlightedChat = _React$useState40[1];
-  var _React$useState41 = _react["default"].useState(-1),
+    replyToContent = _React$useState40[0],
+    setReplyToContent = _React$useState40[1];
+  var _React$useState41 = _react["default"].useState(null),
     _React$useState42 = _slicedToArray(_React$useState41, 2),
-    highlightedChatTimeout = _React$useState42[0],
-    setHighlightedChatTimeout = _React$useState42[1];
-  var _React$useState43 = _react["default"].useState(false),
+    highlightedChat = _React$useState42[0],
+    setHighlightedChat = _React$useState42[1];
+  var _React$useState43 = _react["default"].useState(-1),
     _React$useState44 = _slicedToArray(_React$useState43, 2),
-    mobileStyleConfigs = _React$useState44[0],
-    setMobileStyleConfigs = _React$useState44[1];
+    highlightedChatTimeout = _React$useState44[0],
+    setHighlightedChatTimeout = _React$useState44[1];
+  var _React$useState45 = _react["default"].useState(false),
+    _React$useState46 = _slicedToArray(_React$useState45, 2),
+    mobileStyleConfigs = _React$useState46[0],
+    setMobileStyleConfigs = _React$useState46[1];
   var chatInputRef = _react["default"].useRef();
   var scrollChatRef = _react["default"].useRef();
   var scrollChatInnerRef = _react["default"].useRef();
@@ -330,10 +334,10 @@ var Module = function Module(props) {
     var useChats = chats !== null && chats !== void 0 ? chats : recentChats;
     if (useChats.length > MAX_RECENT_CHATS && !recentChatTimeout) {
       setBlockChat(true);
-      setBlockSend(true);
+      setBlockSendForce(true);
       var r = setTimeout(function () {
         setBlockChat(false);
-        setBlockSend(false);
+        setBlockSendForce(false);
         setRecentChatTimeout(null);
       }, RECENT_CHAT_TIMEOUT);
       if (recentChatTimeout !== null && recentChatTimeout !== void 0 && recentChatTimeout.r) {
@@ -484,10 +488,13 @@ var Module = function Module(props) {
       if (((_document = document) === null || _document === void 0 ? void 0 : _document.activeElement) === (chatInputRef === null || chatInputRef === void 0 ? void 0 : chatInputRef.current) && !mobileStyleConfigs) {
         setMobileStyleConfigs(true);
         if (window) {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
+          // Scroll upwards to ensure video and chat is in view
+          setTimeout(function () {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }, 250);
         }
         if (props !== null && props !== void 0 && props.setMobileStyleConfigs) {
           props.setMobileStyleConfigs(true);
@@ -509,7 +516,7 @@ var Module = function Module(props) {
 
   // Chat should have 1000 last chats
 
-  console.log('Chat Log', chatLog, Array.isArray(chatLog), props.className, recentChats, props, userDisplay, currentBanTable, useThreadOffset);
+  console.log('Chat Log', chatLog, Array.isArray(chatLog), props.className, recentChats, props, userDisplay, currentBanTable, useThreadOffset, blockSend, blockChat);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " ").concat(_ChatModule["default"].chatContainer, " Chat_ChatContainer"),
     onClick: handleRunTasks
@@ -552,10 +559,12 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ChatModule["default"].chatLogContainer, " Chat_ChatLogContainer"),
     ref: scrollChatInnerRef
-  }, chatLog && Array.isArray(chatLog) ? chatLog.map(function (m) {
+  }, chatLog && Array.isArray(chatLog) ? chatLog.map(function (m, i) {
     var _m$replyLogid;
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ChatLogItemContainer"
+      className: "Chat_ChatLogItemContainer",
+      key: i,
+      index: i
     }, m.id && m.content && m.author ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "Chat_ChatLogItemInternalContainer",
       logid: m.id,
@@ -626,7 +635,9 @@ var Module = function Module(props) {
       style: {
         display: 'flex',
         gap: '.25rem'
-      }
+      },
+      key: i,
+      index: i
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "Chat_ReplyToRepliesUsername"
     }, /*#__PURE__*/_react["default"].createElement("b", null, (_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : '')), /*#__PURE__*/_react["default"].createElement("div", {
@@ -659,7 +670,7 @@ var Module = function Module(props) {
   }), /*#__PURE__*/_react["default"].createElement("button", {
     className: "".concat(_ChatModule["default"].send, " ").concat(_ChatModule["default"].highlightBorder, " Chat_Send"),
     onClick: handleSendChat,
-    disabled: blockSend
+    disabled: blockSend || blockSendForce
   }, "Send")))));
 };
 var _default = Module;

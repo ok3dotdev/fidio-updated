@@ -66,22 +66,23 @@ var Module = function Module(props) {
   // console.log(window.Glide)
 
   return /*#__PURE__*/_react["default"].createElement("div", {
-    "class": "glide_".concat(componentId, " ").concat(props.className)
+    className: "glide_".concat(componentId, " ").concat(props.className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     "data-glide-el": "track",
-    "class": "glide__track",
+    className: "glide__track",
     style: {
       height: (_props$height = props.height) !== null && _props$height !== void 0 ? _props$height : '240px'
     }
   }, /*#__PURE__*/_react["default"].createElement("ul", {
-    "class": "glide__slides",
+    className: "glide__slides",
     style: {
       height: 'inherit'
     }
-  }, props.items && props.items.map ? props.items.map(function (m) {
+  }, props.items && props.items.map ? props.items.map(function (m, i) {
     var _m$buttonLink, _m$width, _m$borderRadius;
     return /*#__PURE__*/_react["default"].createElement("li", {
-      "class": "glide_slide"
+      key: i,
+      className: "glide_slide"
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_SliderModule["default"].textContainer, " glider_text_container"),
       style: {

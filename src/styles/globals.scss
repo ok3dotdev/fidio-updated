@@ -75,20 +75,8 @@ a {
   border-top: 1px dashed rgb(94, 94, 94);
 }
 
-.featureContainerOverflown::-webkit-scrollbar {
-  height: .45rem;
-}
-
-.FeatureContainerOpen .featureContainerOverflown_medium {
-  height: 118px;
-}
-
-.FeatureContainerOpen .featureContainerOverflown_large {
-  height: 252px;
-}
-
 .video-js button.chat-button {
   font-size: 1.5rem;
 }
 
-@import "./tycoon.scss";
+@import "/modules/styles/tycoon.scss";

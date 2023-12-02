@@ -5,16 +5,18 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script
+          <Script
             src='https://unpkg.com/@glidejs/glide'
             crossorigin='anonymous'
-          ></script>
+            strategy='beforeInteractive'
+          ></Script>
           <link
             href='https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp'
             rel='stylesheet'
           ></link>
         </Head>
         <body>
+          <div version='0.2.10' style={{ display: 'none' }}></div>
           <Main />
           <NextScript />
         </body>

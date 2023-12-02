@@ -1,0 +1,13 @@
+.AdminPanel_Container {
+    background: #4b4b4b;
+    margin: .5rem;
+    border-radius: .25rem;
+    overflow: auto;
+    height: 0px;
+    transition: 200ms;
+    margin-top: 0rem;
+}
+
+.AdminPanel_ContainerOpen {
+    height: 150px;
+}
