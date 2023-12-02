@@ -69,6 +69,18 @@ var attemptThirdPartySignIn = /*#__PURE__*/function () {
               cart = JSON.parse(localStorage.getItem('cart'));
               (0, _ecommerce.updateCart)(cart, res.cart);
             }
+            console.log(res.meta);
+            if (res.meta) {
+              if (res.meta.ip) {
+                cookieObj.ip = res.meta.ip;
+              }
+              if (res.meta.location) {
+                cookieObj.location = res.meta.location;
+              }
+              if (res.meta.locationMeta) {
+                cookieObj.locationMeta = res.meta.locationMeta;
+              }
+            }
             updateLocalLoginSession(cookieObj);
             event = new CustomEvent("mute-login-error", {
               "detail": true
@@ -255,17 +267,20 @@ var grabUsername = /*#__PURE__*/function () {
 exports.grabUsername = grabUsername;
 var checkUserData = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(pageProps, checkItems) {
-    var _pageProps$_loggedIn, _pageProps$_loggedIn2, fetchBody, res;
+    var _pageProps$_loggedIn, _pageProps$_loggedIn2, fetchPending, fetchBody, res;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          console.log('Check user data', pageProps);
+          console.log('Check user data', pageProps, checkItems);
           if (!checkItems) {
-            _context3.next = 28;
+            _context3.next = 30;
             break;
           }
-          if (!(pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn = pageProps._loggedIn) !== null && _pageProps$_loggedIn !== void 0 && _pageProps$_loggedIn.identifier && pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn2 = pageProps._loggedIn) !== null && _pageProps$_loggedIn2 !== void 0 && _pageProps$_loggedIn2.hash && pageProps.domainKey && pageProps.apiUrl)) {
-            _context3.next = 27;
+          fetchPending = Object.entries(checkItems).find(function (m) {
+            return m[1] === true;
+          });
+          if (!(pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn = pageProps._loggedIn) !== null && _pageProps$_loggedIn !== void 0 && _pageProps$_loggedIn.identifier && pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn2 = pageProps._loggedIn) !== null && _pageProps$_loggedIn2 !== void 0 && _pageProps$_loggedIn2.hash && pageProps.domainKey && pageProps.apiUrl && fetchPending)) {
+            _context3.next = 29;
             break;
           }
           fetchBody = {
@@ -276,47 +291,48 @@ var checkUserData = /*#__PURE__*/function () {
             checkItems: checkItems
           };
           console.log(fetchBody);
-          _context3.next = 7;
+          _context3.next = 8;
           return (0, _fetch.fetchPost)(pageProps.apiUrl + '/m/checkuserdata', null, null, fetchBody);
-        case 7:
+        case 8:
           res = _context3.sent;
           if (res) {
-            _context3.next = 12;
+            _context3.next = 13;
             break;
           }
           return _context3.abrupt("return", false);
-        case 12:
+        case 13:
           if (!res.hasOwnProperty('status')) {
-            _context3.next = 25;
+            _context3.next = 27;
             break;
           }
           if (!(res.status == "disauthenticated")) {
-            _context3.next = 18;
+            _context3.next = 19;
             break;
           }
           logout();
           return _context3.abrupt("return", "disauthenticated");
-        case 18:
+        case 19:
           if (!(res.status == "failed")) {
-            _context3.next = 22;
+            _context3.next = 23;
             break;
           }
           return _context3.abrupt("return", false);
-        case 22:
+        case 23:
           if (!(res.status == "success")) {
-            _context3.next = 25;
+            _context3.next = 27;
             break;
           }
           console.log('Check user data', res);
+          console.log('must return res');
           return _context3.abrupt("return", res);
-        case 25:
-          _context3.next = 28;
-          break;
         case 27:
-          return _context3.abrupt("return", false);
-        case 28:
-          return _context3.abrupt("return", null);
+          _context3.next = 30;
+          break;
         case 29:
+          return _context3.abrupt("return", false);
+        case 30:
+          return _context3.abrupt("return", null);
+        case 31:
         case "end":
           return _context3.stop();
       }
