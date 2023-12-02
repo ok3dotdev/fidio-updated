@@ -51,12 +51,6 @@ var VideoItem = function VideoItem(props) {
       }
     };
   }, [index, videoItemImageRef, item, activeItem, previousActiveItemData]);
-  var handleEditVideoClick = function handleEditVideoClick(e, id) {
-    e.preventDefault();
-    if (id && _router["default"]) {
-      _router["default"].push("/upload?v=".concat(id));
-    }
-  };
   console.log(item, props);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_videoItemModule["default"].leadContainer, " Item_GhostMetaItemContainer"),
@@ -75,20 +69,16 @@ var VideoItem = function VideoItem(props) {
     className: "ghostVideoItem"
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "ghostVideoMeta"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, item.title, allowEditingFlag ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_videoItemModule["default"].editFlagContainer),
-    onClick: function onClick(e) {
-      return handleEditVideoClick(e, item.id);
-    }
-  }, "Edit Video", /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_videoItemModule["default"].editFlag, " material-icons edit")
-  }, "edit")) : null)))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, item.title)))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
     href: "w?v=".concat(item.id),
     style: {
       display: 'grid'
     }
   }, item && item.__typename == 'Live' && item.status == 'live' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "LiveTag"
+    className: "LiveTag",
+    style: {
+      borderRadius: '.25rem'
+    }
   }, "LIVE", /*#__PURE__*/_react["default"].createElement("div", {
     className: "RecordingCircle RecordingCircle_Small"
   })) : null, /*#__PURE__*/_react["default"].createElement("div", {

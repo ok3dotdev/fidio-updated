@@ -26,6 +26,7 @@ class MyDocument extends Document {
           ></script>
           <Script
             src='https://unpkg.com/@glidejs/glide'
+            crossorigin='anonymous'
             strategy='beforeInteractive'
           ></Script>
           <link
@@ -44,6 +45,13 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
+          <div version='0.2.10' style={{ display: 'none' }}></div> //TYCOON
+          <div
+            id='fidio-version'
+            version='0.1.0'
+            style={{ display: 'none' }}
+          ></div>{' '}
+          //Fidio
           <Main />
           <NextScript />
         </body>

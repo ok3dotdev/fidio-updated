@@ -27,16 +27,17 @@ export const page = (props) => {
   const [fetching, setFetching] = React.useState(false);
   const [mergeProps, setMergeProps] = React.useState({});
   let resolvedDefinition = props.resolvedDefinition;
-  const variables = resolveVariables();
-  let config = resolveConfig(variables, props);
-  let resolvedPage = resolvePage(config, props.path);
+  let resolvedPage = resolvePage(
+    resolveConfig(props._configVariables, props),
+    props.path
+  );
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
 
   const getDefaults = async (force) => {
     const defaults = await resolveDefaults(
       resolvedPage.url,
       props,
-      variables,
+      props._configVariables,
       query,
       asPath,
       setFetching,
