@@ -1,5 +1,5 @@
 npm run build
 rm -rf .next.tar.gz
 rm -rf public.tar.gz
-./tar_build
-./package_public
+tar -czvf .next.tar.gz .next
+tar -czvf public.tar.gz public

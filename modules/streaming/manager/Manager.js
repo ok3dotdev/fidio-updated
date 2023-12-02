@@ -752,9 +752,10 @@ var Module = function Module(props) {
     style: {
       marginTop: '.25rem'
     }
-  }, streamSettings.dates.map(function (d) {
+  }, streamSettings.dates.map(function (d, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
+      className: "tagItem",
+      key: i
     }, d && d.toLocaleString ? d.toLocaleString("en-US", {
       year: 'numeric',
       month: 'long',
@@ -765,9 +766,10 @@ var Module = function Module(props) {
     style: {
       marginTop: '.25rem'
     }
-  }, streamSettings.tags.map(function (d) {
+  }, streamSettings.tags.map(function (d, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
+      className: "tagItem",
+      key: i
     }, d);
   })) : /*#__PURE__*/_react["default"].createElement("div", null), currentlyStreaming ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {

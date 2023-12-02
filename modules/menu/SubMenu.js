@@ -26,14 +26,17 @@ var SubMenu = function SubMenu(props) {
   };
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props._loggedIn ? "".concat(_MenuModule["default"].subMenu) : "".concat(_MenuModule["default"].subMenu, " ").concat(_MenuModule["default"].subMenuBottomPadding, " subMenuContainer"), " ").concat(props.className)
-  }, props.menuConfig && props.menuConfig.left ? props.menuConfig.left.map(function (c) {
+  }, props.menuConfig && props.menuConfig.left ? props.menuConfig.left.map(function (c, i) {
     var _c$width, _c$height, _c$width2, _c$height2;
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, c.type ? c.type === 'home' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
+      key: i
+    }, c.type ? c.type === 'home' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/",
       style: {
         alignSelf: 'center'
       },
-      className: "menuLinkSelector ".concat(c.className)
+      className: "menuLinkSelector ".concat(c.className),
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: "/",
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
@@ -48,7 +51,8 @@ var SubMenu = function SubMenu(props) {
       className: "".concat(_MenuModule["default"].menuLink, " menuLinkSelector ").concat(c.className),
       style: {
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: "/w",
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
@@ -66,7 +70,8 @@ var SubMenu = function SubMenu(props) {
         width: c.width ? c.width + 'px' : '40px',
         height: c.height ? c.height + 'px' : '20px',
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, c.href ? /*#__PURE__*/_react["default"].createElement("a", {
       href: c.href
     }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
@@ -100,7 +105,8 @@ var SubMenu = function SubMenu(props) {
       className: "".concat(_MenuModule["default"].menuLink, " menuLinkSelector ").concat(c.className),
       style: {
         alignSelf: 'center'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: c.href,
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),

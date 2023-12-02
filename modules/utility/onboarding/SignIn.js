@@ -4,7 +4,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateLocalLoginSession = exports.logout = exports.grabUsername = exports.checkSignedInAndPrompt = exports.checkSignedIn = exports.attemptThirdPartySignIn = void 0;
+exports.updateLocalLoginSession = exports.logout = exports.grabUsername = exports.checkUserData = exports.checkSignedInAndPrompt = exports.checkSignedIn = exports.attemptThirdPartySignIn = void 0;
 var _universalCookie = _interopRequireDefault(require("universal-cookie"));
 var _fetch = require("/modules/utility/fetch/fetch.js");
 var _ecommerce = require("/modules/utility/ecommerce/ecommerce.js");
@@ -96,7 +96,6 @@ var checkSignedIn = function checkSignedIn() {
   if (!cookies.get('login')) {
     return false;
   }
-  console.log(cookies.get('login'));
   return cookies.get('login');
 };
 exports.checkSignedIn = checkSignedIn;
@@ -254,3 +253,77 @@ var grabUsername = /*#__PURE__*/function () {
   };
 }();
 exports.grabUsername = grabUsername;
+var checkUserData = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(pageProps, checkItems) {
+    var _pageProps$_loggedIn, _pageProps$_loggedIn2, fetchBody, res;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          console.log('Check user data', pageProps);
+          if (!checkItems) {
+            _context3.next = 28;
+            break;
+          }
+          if (!(pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn = pageProps._loggedIn) !== null && _pageProps$_loggedIn !== void 0 && _pageProps$_loggedIn.identifier && pageProps !== null && pageProps !== void 0 && (_pageProps$_loggedIn2 = pageProps._loggedIn) !== null && _pageProps$_loggedIn2 !== void 0 && _pageProps$_loggedIn2.hash && pageProps.domainKey && pageProps.apiUrl)) {
+            _context3.next = 27;
+            break;
+          }
+          fetchBody = {
+            domainKey: pageProps.domainKey,
+            identifier: pageProps._loggedIn.identifier,
+            hash: pageProps._loggedIn.hash,
+            ip: pageProps._loggedIn.ip,
+            checkItems: checkItems
+          };
+          console.log(fetchBody);
+          _context3.next = 7;
+          return (0, _fetch.fetchPost)(pageProps.apiUrl + '/m/checkuserdata', null, null, fetchBody);
+        case 7:
+          res = _context3.sent;
+          if (res) {
+            _context3.next = 12;
+            break;
+          }
+          return _context3.abrupt("return", false);
+        case 12:
+          if (!res.hasOwnProperty('status')) {
+            _context3.next = 25;
+            break;
+          }
+          if (!(res.status == "disauthenticated")) {
+            _context3.next = 18;
+            break;
+          }
+          logout();
+          return _context3.abrupt("return", "disauthenticated");
+        case 18:
+          if (!(res.status == "failed")) {
+            _context3.next = 22;
+            break;
+          }
+          return _context3.abrupt("return", false);
+        case 22:
+          if (!(res.status == "success")) {
+            _context3.next = 25;
+            break;
+          }
+          console.log('Check user data', res);
+          return _context3.abrupt("return", res);
+        case 25:
+          _context3.next = 28;
+          break;
+        case 27:
+          return _context3.abrupt("return", false);
+        case 28:
+          return _context3.abrupt("return", null);
+        case 29:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3);
+  }));
+  return function checkUserData(_x9, _x10) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+exports.checkUserData = checkUserData;

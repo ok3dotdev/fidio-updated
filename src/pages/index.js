@@ -3,7 +3,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/router'
-import resolveConfig, { resolveVariables, pageDefaults } from '/app.config'
+import resolveConfig, { pageDefaults } from '/app.config'
 import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
 import { isObjectEmpty } from '/modules/util'
 import { Menu } from '/modules/menu/'
@@ -16,13 +16,11 @@ export const Page = props => {
     const [ fetching, setFetching ] = React.useState(false)
     const [ mergeProps, setMergeProps ] = React.useState({})
     let resolvedDefinition = props.resolvedDefinition
-    const variables = resolveVariables()
-    let config = resolveConfig(variables, props)
-    let resolvedPage = resolvePage(config, props.path)
+    let resolvedPage = resolvePage(resolveConfig(props._configVariables, props), props.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
 
     const getDefaults = async force => {
-        const defaults = await resolveDefaults(resolvedPage.url, props, variables, query, asPath, setFetching, force)
+        const defaults = await resolveDefaults(resolvedPage.url, props, props._configVariables, query, asPath, setFetching, force)
         if (!isObjectEmpty(defaults)) {
             const newProps = Object.assign({...props}, defaults)
             setMergeProps(newProps)
@@ -41,14 +39,13 @@ export const Page = props => {
     }, [ fetching, mergeProps, resolvedPage ])
 
     const useProps = handlePropsPriority(mergeProps, props)
-    config = resolveConfig(variables, useProps)
-    resolvedPage = resolvePage(config, useProps.path)
+    resolvedPage = resolvePage(resolveConfig(props._configVariables, useProps), useProps.path)
     resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
     const components = generateComponent(resolvedDefinition)
 	return (
         <React.Fragment>
             <Menu {...useProps}></Menu>
-            <div className={`${pageName}_Body`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
+            <div className={`${pageName}_Body ${props.pageClass ?? ''}`} style={{ top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '' }}>{components}</div>
         </React.Fragment>
 	)
 }
