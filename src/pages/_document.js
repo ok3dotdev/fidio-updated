@@ -6,6 +6,24 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name='google-site-verification'
+            content='l53G0XsvnsA_mJv2edhC-90dcDQLE6UXn2IjcrJvXUU'
+          />
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: ` window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-B57K7JWE6J', {
+                  page_path: window.location.pathname
+                });`,
+            }}
+          ></script>
           <Script
             src='https://unpkg.com/@glidejs/glide'
             strategy='beforeInteractive'

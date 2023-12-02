@@ -58,12 +58,12 @@ const FeaturedEvent = (props) => {
 
   const carouselItems = [
     {
-      backgroundImageDesktop: 'url(/img/internal/ODUMO.jpg)',
-      backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
-      artist: 'Odumodu Blvck',
-      event: 'Live in Birmingham',
-      date: 'NOV 24, 2023 09:00PM GMT -5',
-      id: 'odumodublvck-live-in-birmingham',
+      backgroundImageDesktop: 'url(/img/internal/home-banner.png)',
+      backgroundImageMobile: 'url(/img/internal/home-banner-mobile.png)',
+      artist: 'STORIES UNTOLD',
+      event: '',
+      date: ' November 26, 2023 07:00PM WAT',
+      id: 'stories-untold-show',
     },
   ];
 
@@ -157,7 +157,7 @@ const FeaturedEvent = (props) => {
       {showPop && <FreePopUp onClose={handlePopupClose} />}
       {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
       {props.showTimer ? (
-        <Countdown eventDate='2023-11-24T21:00:00-05:00' />
+        <Countdown eventDate='2023-11-26T19:00:00.000Z' />
       ) : (
         ''
       )}

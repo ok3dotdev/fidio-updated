@@ -16,6 +16,7 @@ import { isObjectEmpty } from '/modules/util';
 import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '../../customModules/features/seo-data';
+import ShowGrid from '../components/ShowGrid';
 
 const pageName = 'Index';
 
@@ -75,6 +76,39 @@ export const Page = (props) => {
       props={props}
     >
       <Hero {...props} />
+      <div className='max-w-7xl mx-auto py-24'>
+        <div className='flex flex-col lg:flex-row'>
+          <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
+            <h2 className='text-[24px] lg:text-[48px]'>Concert-to-go</h2>
+            <p className='leading-8 font-sans text-[16px] lg:text-[20px] pt-6'>
+              Never miss a live performance. <br /> Buy tickets and watch your
+              show, wherever you are, however you like.
+            </p>
+          </div>
+          <img
+            className='lg:max-w-[50%]'
+            src='/img/internal/concert-to-go.png'
+            alt='concert to go image'
+          />
+        </div>
+        <div className='flex flex-col-reverse lg:flex-row mt-6 lg:mt-0'>
+          <img
+            className='lg:max-w-[50%] max-w-[90%] mx-auto'
+            src='/img/internal/engage.png'
+            alt='concert to go image'
+          />
+          <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
+            <h2 className='text-[24px] lg:text-[48px]'>
+              Engage with fellow fans
+            </h2>
+            <p className='leading-8 font-sans text-[16px] lg:text-[20px] pt-6'>
+              Chat with other concert-goers with our live chat feature.
+              <br /> You can finally say, “Where my people at?”
+            </p>
+          </div>
+        </div>
+      </div>
+      <ShowGrid />
     </HomeLayout>
   );
 };

@@ -9,30 +9,6 @@ const events = [
     venue: 'Lagos, Nigeria',
     img: '/img/internal/sharon5.png',
   },
-  // {
-  //   name: 'Safari Beats Live',
-  //   date: 'Dec 05th, 2023',
-  //   venue: 'Nairobi, Kenya',
-  //   img: '/img/internal/sharon6.png',
-  // },
-  // {
-  //   name: 'Jungle Groove Party',
-  //   date: 'Jan 01, 2023',
-  //   venue: 'Cape Town, South Africa',
-  //   img: '/img/internal/sharon7.png',
-  // },
-  // {
-  //   name: 'Desert Rhythms Concert',
-  //   date: 'Nov 28th, 2023',
-  //   venue: 'Marrakech, Morocco',
-  //   img: '/img/internal/sharon8.png',
-  // },
-  // {
-  //   name: 'Savannah Soundscape Live',
-  //   date: 'Dec 20th, 2023',
-  //   venue: 'Nairobi, Kenya',
-  //   img: '/img/internal/sharon5.png',
-  // },
 ];
 
 const EventsDetails = (props) => {
@@ -42,14 +18,17 @@ const EventsDetails = (props) => {
     {
       image: '/img/internal/odu-portrait.png',
       title: 'ODUMODU BLVCK',
+      lineUp: [
+        { title: 'Bandhitz', image: '/img/internal/home-banner-mobile.png' },
+        { title: 'Timi Dakolo', image: '/img/internal/timi-dakolo.png' },
+        { title: 'Raybekah', image: '/img/internal/raybekah.png' },
+        { title: 'Amaeya', image: '/img/internal/amaeya.png' },
+        { title: 'Lade', image: '/img/internal/lade.png' },
+        { title: 'Spyro', image: '/img/internal/spyro.png' },
+      ],
       host: [
         {
-          name: 'FRIDAES at Cave',
-        },
-      ],
-      sponsors: [
-        {
-          name: 'Grand Oak Ltd.',
+          name: 'Bandhitz',
         },
       ],
     },
@@ -60,10 +39,10 @@ const EventsDetails = (props) => {
         <div className='w-full '>
           <h2 className='text-xl'>About</h2>
           <p className='font-sans text-xl mb-4 lg:w-[70%]'>
-            Join ODUMODU BLVCK live from Birmingham, UK. Powered by FRIDAES at
-            Cave.
+            Nigeria's uprising premium band hosts their debut live concert in
+            Lagos Nigeria.
           </p>
-          <p className='font-sans text-xl mb-4 lg:w-[70%]'>
+          {/* <p className='font-sans text-xl mb-4 lg:w-[70%]'>
             ODUMODUBLVCK is one of the most exciting voices out of the Nigeria.
             Whilst being a pioneering voice of Drill music in Nigeria, he
             operates under a self-defined genre he calls Okporoko Rhythms: a
@@ -71,11 +50,11 @@ const EventsDetails = (props) => {
             Afrobeat, and Progressive R&B. Since the release of his first single
             in 2017, ODUMODUBLVCK has been on a one-man-mission to be the author
             of his own story.
-          </p>
+          </p> */}
           <div className='lg:grid lg:grid-cols-2 gap-y-8 mt-8 flex flex-col'>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Host</h3>
-              <p className='font-sans text-sm mb-1'>FRIDAES at Cave</p>
+              <p className='font-sans text-sm mb-1'>Bandhitz</p>
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Ticket price</h3>
@@ -83,32 +62,36 @@ const EventsDetails = (props) => {
             </div>
             <div className=' border-t py-3 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Genre</h3>
-              <p className='font-sans text-sm'>Afrobeats, Okporoko rythms</p>
+              <p className='font-sans text-sm'>Afrobeats, Afrolive</p>
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Date</h3>
-              <p className='font-sans text-sm'>Friday, November 24, 2023</p>
+              <p className='font-sans text-sm'>Sunday, November 26, 2023</p>
             </div>
             <div className=' border-t pt-4  border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Location</h3>
-              <p className='font-sans text-sm'>Birmingham, England</p>
+              <p className='font-sans text-sm'>Lagos, Nigeria</p>
             </div>
             <div className='border-b py-6 border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Time</h3>
-              <p className='font-sans text-sm'>9:00 PM GMT -5</p>
+              <p className='font-sans text-sm'>07:00PM WAT</p>
             </div>
           </div>
           <div className='flex flex-col items-start mt-8'>
             <div>
               <h2 className='text-center lg:text-left mb-4'>Line Up</h2>
               <div className='flex flex-col gap-8 lg:flex-row justify-between '>
-                {data?.slice(0, 5).map((item, index) => {
+                {data[0].lineUp.map((item, index) => {
+                  // Access data[0].lineUp here
                   return (
                     <div key={index} className='flex flex-col items-center'>
-                      <img
-                        src={item.image}
-                        className='lg:h-24 lg:w-24 h-24 w-24 rounded-full object-cover'
-                      ></img>
+                      {item.image && ( // Check if item.image exists
+                        <img
+                          src={item.image}
+                          className='lg:h-24 lg:w-24 h-24 w-24 rounded-full object-cover'
+                          alt={`Image ${index}`} // Include alt text for images
+                        />
+                      )}
                       <span className='text-sm mt-2 font-sans'>
                         {item.title}
                       </span>
@@ -121,15 +104,8 @@ const EventsDetails = (props) => {
               <h2 className='text-center lg:text-left mt-12 mb-4'>Host</h2>
               <div className='flex flex-col lg:flex-row'>
                 <div className='flex flex-col items-center'>
-                  <div className='lg:h-24 lg:w-24 h-24 w-24 rounded-full '>
-                    <img
-                      src='/img/internal/frideas.png'
-                      className='h-24 w-48 object-cover'
-                    ></img>{' '}
-                  </div>
-                  <span className='text-sm mt-2 font-sans'>
-                    FRIDAES at Cave
-                  </span>
+                  {/* <div className='lg:h-24 lg:w-24 h-24 w-24 rounded-full '></div> */}
+                  <span className='text-sm mt-2 font-sans'>Bandhitz</span>
                 </div>
               </div>
             </div>

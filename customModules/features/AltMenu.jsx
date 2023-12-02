@@ -1,10 +1,8 @@
 import Link from 'next/link';
 
 import React, { useState, useEffect, useRef } from 'react';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserMenu from './UserMenu';
-import { Cart } from 'modules/ecommerce/cart';
 
 import {
   Sheet,

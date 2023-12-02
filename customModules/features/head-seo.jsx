@@ -38,10 +38,6 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
   return (
     <Head>
       <meta charSet='utf-8' />
-      <meta
-        name='google-site-verification'
-        content='lHOono40MjI581OLKURuEXMPIAjq-zz9sYZ-xeeZeto'
-      />
       <meta httpEquiv='x-ua-compatible' content='ie=edge' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <meta name='format-detection' content='telephone=no' />

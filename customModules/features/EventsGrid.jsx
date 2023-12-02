@@ -8,8 +8,8 @@ const EventsGrid = () => {
       <h2 className='text-2xl font-bold'>Past Shows</h2>
       <div className='mt-8'>
         <Marquee
-          style={{ display: 'flex', gap: '1rem' }}
-          className='w-full flex  gap-x-2'
+          style={{ display: 'flex', gap: '0' }}
+          className='w-full flex '
           pauseOnClick={true}
           speed={20}
         >
@@ -35,7 +35,7 @@ const Events = ({ title, artist, date, price, img }) => {
   return (
     <div className='max-w-[200px] lg:max-w-[400px] mr-4 transition-transform duration-300 overflow-hidden'>
       <div className='h-[200px] rounded-md mb-2 min-h-[200px] overflow-hidden relative transform transition-transform duration-300'>
-        <img className='w-full object-cover' src={img} alt='' />
+        <img className='w-full object-cover h-full' src={img} alt='' />
         <div className='absolute inset-0 bg-black opacity-30 transition-opacity hover:opacity-20'></div>
         <div className='absolute top-0 left-0 mt-4 ml-4 bg-orange-300 rounded-md p-2'>
           <div className='absolute inset-0 bg-black opacity-40 transition-opacity hover:opacity-20 rounded-md'></div>

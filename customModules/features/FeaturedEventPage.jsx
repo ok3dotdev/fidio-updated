@@ -38,21 +38,73 @@ const FeaturedEvent = (props, showTimer, data) => {
     // setIsPopupVisible(true);
   });
 
-  const carouselItems = [
-    {
-      backgroundImageDesktop: '/img/internal/ODUMO.jpg',
-      backgroundImageMobile: 'url(/img/internal/odumo-mobile.png)',
-      artist: 'Odumodu Blvck',
-      event: 'Live in Birmingham',
-      date: 'NOV 24, 2023 09:00PM GMT -5',
-      id: 'odumodublvck-live-in-birmingham',
-    },
-  ];
+  // const carouselItems = [
+  //   {
+  //     backgroundImageDesktop: '/img/internal/home-banner.png',
+  //     backgroundImageMobile: '/img/internal/home-banner-mobile.png',
+  //     artist: 'Odumodu Blvck',
+  //     event: 'Live in Birmingham',
+  //     date: 'NOV 24, 2023 02:00AM GMT -5',
+  //     id: 'odumodublvck-live-in-birmingham',
+  //   },
+  // ];
 
   const receiveData = (data) => {
     // ('data', data);
     setEvent(data.data.fetchedData[0].productReq);
   };
+
+  const carouselItems = [
+    {
+      backgroundImageDesktop: 'url(/img/internal/home-banner.png)',
+      backgroundImageMobile: 'url(/img/internal/home-banner-mobile.png)',
+      artist: 'STORIES UNTOLD',
+      event: '',
+      date: ' November 26, 2023 07:00PM WAT',
+      id: 'stories-untold-show',
+    },
+  ];
+
+  // const receiveData = (data) => {
+  //   // ('data', data);
+  //   setEvetsData(data.data.fetchedData[0].productReq);
+  // };
+  // <FetchHandler
+  //   {...props}
+  //   handlerName='my_handler'
+  //   handlerArgs={[
+  //     {
+  //       productReq: [
+  //         '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
+  //         '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
+  //       ],
+  //     },
+  //   ]}
+  //   receiveData={receiveData}
+  // />;
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 768;
+      const backgroundImage = isMobile
+        ? carouselItems[currentIndex].backgroundImageMobile
+        : carouselItems[currentIndex].backgroundImageDesktop;
+      const carouselItem = document.querySelector(
+        `#carousel-item-${currentIndex}`
+      );
+      if (carouselItem) {
+        carouselItem.style.backgroundImage = backgroundImage;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [currentIndex, carouselItems]);
 
   return (
     <div>
@@ -67,19 +119,15 @@ const FeaturedEvent = (props, showTimer, data) => {
           <div
             id={`carousel-item-${index}`}
             key={index}
-            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[90vh] max-w-full'
+            className='flex flex-col justify-end relative w-full min-h-[520px] lg:h-[80vh] max-w-full carousel-image'
+            style={{
+              backgroundSize: 'cover',
+              objectFit: 'cover',
+              backgroundRepeat: 'no-repeat',
+              textAlign: 'left', // Align title to the left
+              backgroundImage: item.backgroundImageDesktop, // Set initial desktop image
+            }}
           >
-            {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-10'></div> */}
-            {/* <img
-              src={`${props.cdn.static}/${props?.data[0]?.images[0]?.name}`}
-              alt='Event Background'
-              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:min-h-[700px]'
-            /> */}
-            <img
-              src={item.backgroundImageDesktop}
-              alt='Event Background'
-              className='absolute inset-0 object-cover z-10 min-h-[520px] lg:h-[90vh]'
-            />
             <div className=' flex flex-col w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
               <h2 className='text-3xl lg:text-6xl font-black text-left font-sans lg:max-w-[80%]'>
                 {item.artist}
