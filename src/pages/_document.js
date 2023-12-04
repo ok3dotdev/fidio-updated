@@ -46,6 +46,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           {/* TYCOON SYSTEMS MODULES VERSIONING */}
+<<<<<<< HEAD
           <div version='0.2.10' style={{ display: 'none' }}></div>
           {/* Fidio VERSIONING */}
           <div
@@ -53,6 +54,9 @@ class MyDocument extends Document {
             version='0.1.0'
             style={{ display: 'none' }}
           ></div>
+=======
+          <div version='0.2.10' style={{ display: 'none' }} entity='TYCOON SYSTEMS CORP.'></div>
+>>>>>>> pull-branch
           <Main />
           <NextScript />
         </body>
