@@ -655,7 +655,7 @@ var Module = function Module(props) {
       maxHeight: '300px',
       overflow: 'auto'
     }
-  }, packages && Object.entries(packages) ? Object.entries(packages).map(function (m, i) {
+  }, packages !== null && packages !== void 0 && packages.dependencies && Object.entries(packages.dependencies) ? Object.entries(packages.dependencies).map(function (m, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       className: "flex gap-p5",
       key: i
