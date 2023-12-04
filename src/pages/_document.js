@@ -16,7 +16,8 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
-          <div version='0.2.10' style={{ display: 'none' }}></div>
+          {/* TYCOON SYSTEMS MODULES VERSIONING */}
+          <div version='0.2.10' style={{ display: 'none' }} entity='TYCOON SYSTEMS CORP.'></div>
           <Main />
           <NextScript />
         </body>
