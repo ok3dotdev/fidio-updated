@@ -651,6 +651,10 @@ body {
   bottom: 0px;
 }
 
+.-top-\[44px\] {
+  top: -44px;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -776,20 +780,12 @@ body {
   margin-top: 10%;
 }
 
-.mt-\[40px\] {
-  margin-top: 40px;
-}
-
 .block {
   display: block;
 }
 
 .flex {
   display: flex;
-}
-
-.inline-flex {
-  display: inline-flex;
 }
 
 .hidden {
@@ -866,10 +862,6 @@ body {
 
 .h-screen {
   height: 100vh;
-}
-
-.max-h-\[600px\] {
-  max-height: 600px;
 }
 
 .min-h-\[200px\] {
@@ -952,10 +944,6 @@ body {
   width: 100%;
 }
 
-.w-\[280px\] {
-  width: 280px;
-}
-
 .min-w-\[300px\] {
   min-width: 300px;
 }
@@ -1006,14 +994,6 @@ body {
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[500px\] {
-  max-width: 500px;
-}
-
-.max-w-6xl {
-  max-width: 72rem;
 }
 
 .basis-1\/2 {
@@ -1353,11 +1333,6 @@ body {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
-.bg-gray-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-70 {
   --tw-bg-opacity: 0.7;
 }
@@ -1548,10 +1523,6 @@ body {
   padding-top: 20px;
 }
 
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1731,12 +1702,6 @@ body {
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow-xl {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -2380,10 +2345,6 @@ input {
     margin-top: 150px;
   }
 
-  .lg\:mt-\[0\] {
-    margin-top: 0;
-  }
-
   .lg\:block {
     display: block;
   }
@@ -2456,14 +2417,6 @@ input {
     width: 90px;
   }
 
-  .lg\:w-\[50\%\] {
-    width: 50%;
-  }
-
-  .lg\:w-\[590px\] {
-    width: 590px;
-  }
-
   .lg\:min-w-\[339px\] {
     min-width: 339px;
   }
@@ -2478,10 +2431,6 @@ input {
 
   .lg\:max-w-\[80\%\] {
     max-width: 80%;
-  }
-
-  .lg\:basis-1\/3 {
-    flex-basis: 33.333333%;
   }
 
   .lg\:grid-cols-2 {
@@ -2541,10 +2490,6 @@ input {
 
   .lg\:pt-\[200px\] {
     padding-top: 200px;
-  }
-
-  .lg\:pt-0 {
-    padding-top: 0px;
   }
 
   .lg\:text-left {

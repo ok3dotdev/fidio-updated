@@ -114,11 +114,11 @@ export const Page = (props) => {
           <h3>Ready to stream?</h3>
           <div className='relative'>
             <img
-              className='absolute top-0'
+              className='absolute -top-[44px] z-10  w-full'
               src='/img/internal/swirls.png'
               alt='swirls'
             />
-            <button className='py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans  text-black'>
+            <button className='py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans  text-black z-20'>
               Sign up for free with Google
             </button>
           </div>
