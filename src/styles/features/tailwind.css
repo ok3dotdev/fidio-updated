@@ -256,6 +256,10 @@ input {
   }
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border m-0 p-0;

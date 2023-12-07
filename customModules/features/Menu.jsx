@@ -20,16 +20,10 @@ const Menu = (props) => {
           {!props._loggedIn ? (
             <>
               <Link
-                className='px-6 py-2 rounded-md flex justify-center items-center text-white'
+                className='bg-white text-black py-3 px-6 font-sans rounded-[20px] flex justify-center items-center text-sm font-medium'
                 href='/signin'
               >
-                Login
-              </Link>
-              <Link
-                className='bg-white text-black px-6 py-2 rounded-md flex justify-center items-center'
-                href='/signin'
-              >
-                Sign Up
+                Log in with Google
               </Link>
             </>
           ) : (

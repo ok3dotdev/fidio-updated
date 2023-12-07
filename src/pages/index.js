@@ -4,6 +4,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
+import Link from 'next/link';
+
 import {
   basicError,
   generateComponent,
@@ -109,18 +111,21 @@ export const Page = (props) => {
         </div>
       </div>
       <ShowGrid />
-      <div className='max-w-7xl mx-auto '>
-        <div className='flex gap-4 px-4 lg:px-6 items-center'>
-          <h3>Ready to stream?</h3>
+      <div className='max-w-7xl mx-auto py-24'>
+        <div className='flex gap-1 px-4 lg:px-6 items-center'>
+          <h3 className='text-sm font-sans'>Ready to stream?</h3>
           <div className='relative'>
             <img
-              className='absolute -top-[44px] z-10  w-full'
+              className='absolute -top-[32px] z-0 w-[90%] h-[100px]'
               src='/img/internal/swirls.png'
               alt='swirls'
             />
-            <button className='py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans  text-black z-20'>
+            <a
+              href='/signin'
+              className='relative py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans text-black z-10 text-sm'
+            >
               Sign up for free with Google
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ class MyDocument extends Document {
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
           ></script>
+          <script src='https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js'></script>
           <script
             dangerouslySetInnerHTML={{
               __html: ` window.dataLayer = window.dataLayer || [];
@@ -46,7 +47,6 @@ class MyDocument extends Document {
         </Head>
         <body>
           {/* TYCOON SYSTEMS MODULES VERSIONING */}
-<<<<<<< HEAD
           <div version='0.2.10' style={{ display: 'none' }}></div>
           {/* Fidio VERSIONING */}
           <div
@@ -54,9 +54,6 @@ class MyDocument extends Document {
             version='0.1.0'
             style={{ display: 'none' }}
           ></div>
-=======
-          <div version='0.2.10' style={{ display: 'none' }} entity='TYCOON SYSTEMS CORP.'></div>
->>>>>>> pull-branch
           <Main />
           <NextScript />
         </body>
