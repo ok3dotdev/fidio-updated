@@ -90,7 +90,7 @@ var Module = function Module(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             if (!(user.identifier && user.hash && domainKey)) {
-              _context.next = 26;
+              _context.next = 27;
               break;
             }
             body = {
@@ -109,7 +109,7 @@ var Module = function Module(props) {
             return _context.abrupt("return", false);
           case 9:
             if (!res.hasOwnProperty('status')) {
-              _context.next = 23;
+              _context.next = 24;
               break;
             }
             if (!(res.status == "disauthenticated")) {
@@ -126,19 +126,20 @@ var Module = function Module(props) {
             return _context.abrupt("return", false);
           case 19:
             if (!(res.status == "success" && res.data)) {
-              _context.next = 23;
+              _context.next = 24;
               break;
             }
+            console.log(res.data);
             stringified = res.data.toString();
             if (stringified && JSON.parse(stringified)) {
               setPackages(JSON.parse(stringified));
             }
             return _context.abrupt("return", res);
-          case 23:
-            return _context.abrupt("return", false);
-          case 26:
+          case 24:
             return _context.abrupt("return", false);
           case 27:
+            return _context.abrupt("return", false);
+          case 28:
           case "end":
             return _context.stop();
         }

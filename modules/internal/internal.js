@@ -247,6 +247,7 @@ var Internal = function Internal(usePageProps) {
     };
   }, [router.events, pageProps._loggedIn, pageProps.apiUrl, pageProps.domainKey]);
   console.log('Socket', _socket);
+  pageProps._socket = _socket;
   return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_socket3.SocketContainer, _extends({
     _socket: _socket,
     setRooms: _setRooms
