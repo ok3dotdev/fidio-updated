@@ -29,7 +29,6 @@ function ensureAutoPlay(p, player) {
         console.error("_checkAutoPlay: happened something else ", error);
         // throw error; // happened something else
       }
-
       return error;
     }).then(function (error) {
       console.log("_checkAutoPlay: then");

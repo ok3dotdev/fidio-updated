@@ -76,7 +76,9 @@ var Utility = {
   generateComponent: _utility.generateComponent,
   resolveComponent: _utility.resolveComponent,
   resolvePage: _utility.resolvePage,
-  normalizeText: _index11.normalizeText
+  normalizeText: _index11.normalizeText,
+  fireGlobalEvent: _index11.fireGlobalEvent,
+  getTimeRemaining: _index11.getTimeRemaining
 };
 var Util = {
   isObjectEmpty: _util.isObjectEmpty,
@@ -126,5 +128,4 @@ var Modules = {
   Util: Util,
   Socket: Socket
 };
-var _default = Modules;
-exports["default"] = _default;
+var _default = exports["default"] = Modules;

@@ -306,6 +306,13 @@ button:not(:disabled):active {
     height: 100%;
 }
 
+@media (max-width: 800px) {
+    .slide_hide {
+        height: auto;
+    }
+}
+
+
 // .marquee {
 //     animation: marquee 15s linear infinite;
 // }
@@ -506,6 +513,62 @@ button:not(:disabled):active {
     button {
         padding: .06rem 1.5rem;
     }
+}
+
+.Product_img_container_large .Product_img {
+    max-height: 75vh;
+}
+
+@media(max-width: 1050px) {
+    .Product_img_container_large .Product_img {
+        // max-height: 50vh;
+    }
+}
+  
+@media(max-width: 800px) {
+    .Product_img_container_large .Product_img {
+        max-height: 25vh;
+    }
+}
+
+.gradient_style_bg_1 {
+    background: rgb(238,82,82);
+    background: -moz-linear-gradient(50deg, rgba(238,82,82,1) 0%, rgba(154,116,255,1) 32%, rgba(57,230,98,1) 99%);
+    background: -webkit-linear-gradient(50deg, rgba(238,82,82,1) 0%, rgba(154,116,255,1) 32%, rgba(57,230,98,1) 99%);
+    background: linear-gradient(50deg, rgba(238,82,82,1) 0%, rgba(154,116,255,1) 32%, rgba(57,230,98,1) 99%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ee5252",endColorstr="#39e662",GradientType=1);
+}
+
+.gradient_style_bg_2 {
+    background: rgb(196,165,255);
+    background: -moz-linear-gradient(90deg, rgba(196,165,255,1) 14%, rgba(105,174,230,1) 40%, rgba(0,255,156,1) 72%, rgba(254,76,76,1) 92%);
+    background: -webkit-linear-gradient(90deg, rgba(196,165,255,1) 14%, rgba(105,174,230,1) 40%, rgba(0,255,156,1) 72%, rgba(254,76,76,1) 92%);
+    background: linear-gradient(90deg, rgba(196,165,255,1) 14%, rgba(105,174,230,1) 40%, rgba(0,255,156,1) 72%, rgba(254,76,76,1) 92%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c4a5ff",endColorstr="#fe4c4c",GradientType=1);
+}
+
+.gradient_style_bg_drop {
+    box-shadow: 3px 3px 0px 0px #b8ff00;
+}
+
+.gradient_style_bg_2_drop {
+    box-shadow: 3px 3px 0px 0px #fe4c4c;
+}
+
+.gradient_style_bg_drop:hover {
+    box-shadow: 3px 3px 0px 1px #b8ff00;
+}
+
+.gradient_style_bg_2_drop:hover {
+    box-shadow: 3px 3px 0px 1px #fe4c4c;
+}
+
+.Product_img_container {
+    border: 1px solid transparent;
+}
+
+.Product_img_container:hover {
+    border: 1px solid grey;
 }
 
 @import "./video/videoPlayer.scss";

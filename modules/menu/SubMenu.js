@@ -45,7 +45,7 @@ var SubMenu = function SubMenu(props) {
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_MenuModule["default"].itemName, " home.itemName")
     }, "Home"), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " home material-icons")
+      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " home material-icons")
     }, "home"))) : c.type === 'watch' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/w",
       className: "".concat(_MenuModule["default"].menuLink, " menuLinkSelector ").concat(c.className),
@@ -61,7 +61,7 @@ var SubMenu = function SubMenu(props) {
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_MenuModule["default"].itemName, " home.itemName")
     }, "Watch"), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " tv material-icons")
+      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " tv material-icons")
     }, "tv"))) : c.type === 'img'
     //     ? <img src={props.cdn.static ? `${props.cdn.static}/${c.src}` : ''} alt={c.name} style={{ width: c.width, height: c.height }} />
     ? /*#__PURE__*/_react["default"].createElement("div", {
@@ -115,9 +115,8 @@ var SubMenu = function SubMenu(props) {
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_MenuModule["default"].itemName, " home.itemName")
     }, c.name), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " material-icons")
+      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " material-icons")
     }, c.muiIcon))) : null : null);
   }) : null);
 };
-var _default = SubMenu;
-exports["default"] = _default;
+var _default = exports["default"] = SubMenu;

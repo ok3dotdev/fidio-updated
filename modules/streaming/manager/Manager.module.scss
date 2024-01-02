@@ -1,6 +1,13 @@
+.container {
+    height: -webkit-fill-available;
+    .innerContainer {
+        height: -webkit-fill-available;
+    }
+}
+
 .itemsContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: .25rem;
     .item {
         cursor: pointer;
@@ -14,5 +21,35 @@
 
     .activeItem {
         background: linear-gradient(to top right, #f371ff, #fd42d7,#ff0000, #ff0000);
+    }
+}
+
+.settingsSectionContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 50vh;
+    flex-wrap: wrap;
+    place-self: flex-start;
+    .settingContainer {
+        max-width: 300px;
+    }
+}
+
+.streamingInfoContainer {
+    background: #656565;
+    padding: .5rem;
+    border: 4px solid #fe2986;
+    transition: 10000ms;
+}
+
+.isStreamingContainer {
+    border: 4px solid red;
+}
+
+@media(max-width: 540px) {
+    .settingsSectionContainer {
+        .settingContainer {
+            max-width: 100%;
+        }
     }
 }
