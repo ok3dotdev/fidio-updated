@@ -124,6 +124,11 @@
     transition: 100ms;
 }
 
+.maxIconWidth {
+    max-width: 25px;
+    overflow: hidden;
+}
+
 .menuLinkIconNoText {
     padding-left: 0 !important;
     margin-right: 0 !important;
@@ -178,7 +183,6 @@
         transition: 100ms;
         cursor: pointer;
         color: grey;
-        height: 20px;
     }
 
     .subMenuItem:hover {

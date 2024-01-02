@@ -68,3 +68,89 @@
     display: flex;
     gap: .25rem;
 }
+
+.commandBar {
+    padding: .25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.currentlyEditingProductContainer {
+    position: fixed;
+    z-index: 10;
+    background: black;
+    max-width: 80vw;
+    left: 10vw;
+    top: 10vh;
+    width: 100%;
+    border: 1px solid grey;
+    .currentEditingProductInnerContainer {
+        .currentlyEditingProductContent {
+            display: flex;
+            
+            padding: .5rem;
+            gap: .25rem;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .currentlyEditingProductContainer {
+        position: relative;
+        max-width: 100vw;
+        left: 0;
+        top: 0;
+        order: 1;
+    }
+}
+
+.productImgContainer {
+    flex-grow: 1;
+}
+
+.productMetaContainer {
+    width: 100%;
+}
+
+@media(max-width: 540px) {
+    .productMetaContainer {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media(min-width: 801px) and (max-width: 1150px) {
+    .productMetaContainer {
+        max-width: 30vw;
+        min-width: 250px;
+    }
+}
+
+@media(min-width: 1151px) {
+    .productMetaContainer {
+        max-width: 35vw;
+        min-width: 300px;
+    }
+}
+
+@media(max-width: 800px) {
+    .currentlyEditingProductContainer {
+        .currentEditingProductInnerContainer {
+            .currentlyEditingProductContent {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.buttonSetAsBackground {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    button {
+        border-radius: 1rem;
+        font-size: .7rem;
+    }
+}

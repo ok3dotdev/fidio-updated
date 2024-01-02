@@ -70,5 +70,4 @@ var Module = function Module(props) {
     className: "IndexCta_Detail"
   }, props.definition.detail))) : null));
 };
-var _default = Module;
-exports["default"] = _default;
+var _default = exports["default"] = Module;

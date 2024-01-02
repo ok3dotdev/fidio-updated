@@ -1,7 +1,12 @@
 const path = require('path')
+const appConfig = require('./app.config')
+
+const website = appConfig.resolveVariables().domainUrl
+const protocol = 'https://'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  assetPrefix: protocol + website,
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')

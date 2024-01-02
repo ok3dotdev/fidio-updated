@@ -19,10 +19,6 @@
     overflow: auto;
 }
 
-.featureContainerMedium {
-    height: 111px;
-}
-
 .featureContainerLarge {
     height: 246px;
 }
@@ -78,6 +74,22 @@
                 text-wrap: nowrap;
                 padding: 0;
                 border-radius: 1rem;
+            }
+        }
+    }
+}
+
+.featureContainerMedium {
+    height: 160px;
+    .itemMetaContainer {
+        width: 225px;
+        max-width: 225px;
+    }
+    .item {
+        a {
+            img {
+                max-width: 225px;
+                max-height: 135px;
             }
         }
     }
