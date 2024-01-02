@@ -3,7 +3,7 @@ const path = require('path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // assetPrefix: 'https://www.tycoon.systems',
+  // assetPrefix: 'https://www.tv.tycoon.systems',
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')

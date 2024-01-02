@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Internal", {
+Object.defineProperty(exports, "internal", {
   enumerable: true,
   get: function get() {
     return _Internal["default"];
