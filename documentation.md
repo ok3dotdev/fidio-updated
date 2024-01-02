@@ -113,6 +113,20 @@ import { CreditCard } from 'modules/payment'
 import { Cart } from 'modules/ecommerce/cart'
 <Cart {...props} open={true} passOveride={myOverideFunction} />
 
+# Force show Cc
+# To force show credit card set forceShowCc to true on PaymentConfig on Menu loaded Cart
+
+const predefined = {
+    ...
+    PaymentConfig: {
+        forceShowCc: true
+    }
+}
+
+# or pass forceShowCc as true to directly loaded Cart 
+
+<Cart { ...props } passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
+
 # passOveride
 # {function}
 # You can use the prop 'passOveride' on Cart as a function to fire a function when the Cart is advised to "flash". The cart "flashes" anytime a product is added to cart or the user attempts to Checkout their cart. You should use this if you want to keep the Cart open based on this event as the cart "flash" will only keep cart open for 5-15 seconds. For example, if you had state paired to the open prop you can set that to true if the passOveride function fires to keep the cart
@@ -222,3 +236,11 @@ const predefined = {
 }
 
 # Under resolveVariables function in the return object add a record "chatConfig" with the value of predefined.ChatConfig
+
+## SignInPage
+
+<SignInPage {...props} children={(<MyModule></MyModule>)}>
+
+# Use redirectOnAuth to redirect platform on login
+
+<SignInPage {...props} redirectOnAuth={'/'}>
