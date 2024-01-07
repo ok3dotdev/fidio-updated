@@ -21,6 +21,12 @@ Object.defineProperty(exports, "endStream", {
     return _stream.endStream;
   }
 });
+Object.defineProperty(exports, "requestStreamingPermissions", {
+  enumerable: true,
+  get: function get() {
+    return _stream.requestStreamingPermissions;
+  }
+});
 Object.defineProperty(exports, "updateStreamConfigRequest", {
   enumerable: true,
   get: function get() {

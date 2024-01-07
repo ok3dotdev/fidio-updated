@@ -15,7 +15,6 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 // import popupStyles from '../../styles/Popup.module.scss';
 // import { handleGhostMetaClick } from '../../utility/video';
-
 var VideoItem = function VideoItem(props) {
   var item = props.item,
     index = props.index,
@@ -105,4 +104,5 @@ var VideoItem = function VideoItem(props) {
     className: "".concat(_videoItemModule["default"].metaContainer)
   }, /*#__PURE__*/_react["default"].createElement("div", null, item && item.title ? item.title : null)));
 };
-var _default = exports["default"] = VideoItem;
+var _default = VideoItem;
+exports["default"] = _default;

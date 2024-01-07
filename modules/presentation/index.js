@@ -10,4 +10,5 @@ var Modules = {
   IndexBgHello: _indexBgHello.IndexBgHello,
   IndexHello: _indexHello.IndexHello
 };
-var _default = exports["default"] = Modules;
+var _default = Modules;
+exports["default"] = _default;

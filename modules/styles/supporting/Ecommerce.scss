@@ -15,6 +15,8 @@
     background: rgba(0, 0, 0, .5);
     font-size: 1.25rem;
     backdrop-filter: blur(10px);
+    max-height: 90vh;
+    overflow: auto;
 }
 
 .Ecommerce_Cart_Container_Visible {

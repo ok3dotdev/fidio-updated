@@ -11,11 +11,11 @@ Video Streaming Client leveraged for Official Tycoon Network and B2B Customers
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Check node versions
-nvm ls
-
 # Use Node.js 16
 nvm use 16
+
+# Check node versions
+nvm ls
 
 # You must fork this and create your own repo
 # Pull new changes

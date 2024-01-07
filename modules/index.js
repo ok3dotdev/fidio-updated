@@ -128,4 +128,5 @@ var Modules = {
   Util: Util,
   Socket: Socket
 };
-var _default = exports["default"] = Modules;
+var _default = Modules;
+exports["default"] = _default;

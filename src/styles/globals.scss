@@ -78,4 +78,17 @@ a {
   font-size: 1.5rem;
 }
 
+body .opacity1 {
+  opacity: 1;
+}
+
+.googleSignInContainer iframe {
+  margin: 0 !important;
+}
+
+.MuiTooltip-tooltip {
+  font-size: .8rem !important;
+  line-height: 1rem;
+}
+
 @import "/modules/styles/tycoon.scss";

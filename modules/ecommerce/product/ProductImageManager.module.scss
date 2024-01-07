@@ -154,3 +154,46 @@
         font-size: .7rem;
     }
 }
+
+.setCurrencyExternalContainer {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    min-width: 35%;
+    .setCurrencyLabel {
+        font-size: .8rem;
+        font-weight: 600;
+    }
+    .setCurrencyContainer {
+        .setCurrencyOption {
+            display: flex;
+            gap: .5rem;
+            div {
+                padding: .5rem 0;
+            }
+        }
+    }
+}
+
+.currencyLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(150, 150, 150, 0.5);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 200ms;
+    height: min-content;
+}
+
+.currencyLabel:hover, .currencyLabelActive, .currencyOptionUsed {
+    background: #21a621;
+}
+
+.currencyOptionUsed {
+    color: white;
+}
+
+.currencyLabelActive:hover {
+    background: #35be35;
+}

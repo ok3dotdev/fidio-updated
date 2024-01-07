@@ -62,7 +62,7 @@ var Module = function Module(props) {
       alignItems: 'center'
     }
   }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "IndexCta_ButtonStyle ButtonGlowing simpleBtn",
+    className: "IndexCta_ButtonStyle ButtonGlowing",
     ref: ButtonAction
   }, props.definition.buttonAfterSignIn))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "IndexCta_DetailContainer"
@@ -70,4 +70,5 @@ var Module = function Module(props) {
     className: "IndexCta_Detail"
   }, props.definition.detail))) : null));
 };
-var _default = exports["default"] = Module;
+var _default = Module;
+exports["default"] = _default;

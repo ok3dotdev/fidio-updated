@@ -39,4 +39,5 @@ var Module = function Module(props) {
     ctaTopVideos: props.ctaTopVideos
   }))))));
 };
-var _default = exports["default"] = Module;
+var _default = Module;
+exports["default"] = _default;

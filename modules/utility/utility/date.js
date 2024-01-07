@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getTimeRemaining = void 0;
-var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targetDate, now) {
+var getTimeRemaining = function getTimeRemaining(targetDate, now) {
   if (now && targetDate) {
     // Calculate the time difference in milliseconds
     var timeDiff = targetDate - now;
@@ -23,3 +23,4 @@ var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targ
   }
   return null;
 };
+exports.getTimeRemaining = getTimeRemaining;
