@@ -1,9 +1,11 @@
 const path = require('path')
 
+const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: 'https://www.tv.tycoon.systems',
+  assetPrefix: website,
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')
