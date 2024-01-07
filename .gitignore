@@ -55,6 +55,7 @@ customModules/middleware/*
 !*customModules/middleware/index.js
 public/font/internal
 public/img/internal
+public/doc/internal
 !*public/img
 !*public/doc
 public/favicon.ico
