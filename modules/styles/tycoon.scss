@@ -372,10 +372,6 @@ button:not(:disabled):active {
     }
 }
 
-.IndexCta_LeadContainer {
-    // transition: 200ms;
-}
-
 .featureContainerOverflown::-webkit-scrollbar {
     height: .45rem;
 }
@@ -512,12 +508,6 @@ button:not(:disabled):active {
 
 .Product_img_container_large .Product_img {
     max-height: 75vh;
-}
-
-@media(max-width: 1050px) {
-    .Product_img_container_large .Product_img {
-        // max-height: 50vh;
-    }
 }
   
 @media(max-width: 800px) {
