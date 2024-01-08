@@ -1,0 +1,50 @@
+.container {
+    font-size: .85rem;
+    p {
+        font-size: .8rem;
+        margin: 0;
+    }
+}
+
+.internalContainer {
+    position: relative;
+}
+
+.adminBannerContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    .adminBannerInternalContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.adminMenuContainer {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.bodyContainer {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: .5rem;
+    li {
+        width: 150px;
+        button {
+            padding: 0;
+            background: none;
+            color: white;
+            width: 100%;
+            text-align: left;
+        }
+        button:not(disabled) {
+            cursor: pointer;
+        }
+    }
+}
+
+.contentBodyContainer {
+    margin-top: .125rem;
+}

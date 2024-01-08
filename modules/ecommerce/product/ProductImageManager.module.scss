@@ -1,0 +1,199 @@
+.changeImageButton,
+.changeImageButtonSmall {
+    opacity: .75;
+    color: white;
+    cursor: pointer;
+    background: grey;
+    position: absolute;
+    right: .25rem;
+    top: .25rem;
+    z-index: 5;
+}
+
+.changeImageButton:hover,
+.changeImageButtonSmall:hover {
+    opacity: 1;
+    background: black;
+}
+
+.changeImageButtonSmall {
+    right: .15rem;
+    top: .15rem;
+    border-radius: .25rem;
+    font-size: 1.35rem;
+    opacity: .85;
+}
+
+.warning {
+    position: absolute;
+    top: 1.75rem;
+    font-size: .7rem;
+    width: 100%;
+
+    .warningItemContainer {
+        padding: .25rem;
+        width: 100%;
+        text-align: center;
+        .warningItem {
+            padding: .25rem;
+            background: #ffffad;
+            color: black;
+            font-weight: 600;
+            border: 1px solid grey;
+        }
+    }
+}
+
+.productImageContainer,
+.productImageListThumbnailContainer {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.productImageListThumbnailContainer {
+    border: 1px solid grey;
+}
+
+.productImageListThumbnailContainer:hover {
+    border: 1px solid black;
+    outline: 1px solid white;
+}
+
+.productImageListContainer {
+    position: absolute;
+    z-index: 5;
+    bottom: .25rem;
+    left: .25rem;
+    display: flex;
+    gap: .25rem;
+}
+
+.commandBar {
+    padding: .25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.currentlyEditingProductContainer {
+    position: fixed;
+    z-index: 10;
+    background: black;
+    max-width: 80vw;
+    left: 10vw;
+    top: 10vh;
+    width: 100%;
+    border: 1px solid grey;
+    .currentEditingProductInnerContainer {
+        .currentlyEditingProductContent {
+            display: flex;
+            
+            padding: .5rem;
+            gap: .25rem;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .currentlyEditingProductContainer {
+        position: relative;
+        max-width: 100vw;
+        left: 0;
+        top: 0;
+        order: 1;
+    }
+}
+
+.productImgContainer {
+    flex-grow: 1;
+}
+
+.productMetaContainer {
+    width: 100%;
+}
+
+@media(max-width: 540px) {
+    .productMetaContainer {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media(min-width: 801px) and (max-width: 1150px) {
+    .productMetaContainer {
+        max-width: 30vw;
+        min-width: 250px;
+    }
+}
+
+@media(min-width: 1151px) {
+    .productMetaContainer {
+        max-width: 35vw;
+        min-width: 300px;
+    }
+}
+
+@media(max-width: 800px) {
+    .currentlyEditingProductContainer {
+        .currentEditingProductInnerContainer {
+            .currentlyEditingProductContent {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.buttonSetAsBackground {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    button {
+        border-radius: 1rem;
+        font-size: .7rem;
+    }
+}
+
+.setCurrencyExternalContainer {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    min-width: 35%;
+    .setCurrencyLabel {
+        font-size: .8rem;
+        font-weight: 600;
+    }
+    .setCurrencyContainer {
+        .setCurrencyOption {
+            display: flex;
+            gap: .5rem;
+            div {
+                padding: .5rem 0;
+            }
+        }
+    }
+}
+
+.currencyLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(150, 150, 150, 0.5);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 200ms;
+    height: min-content;
+}
+
+.currencyLabel:hover, .currencyLabelActive, .currencyOptionUsed {
+    background: #21a621;
+}
+
+.currencyOptionUsed {
+    color: white;
+}
+
+.currencyLabelActive:hover {
+    background: #35be35;
+}

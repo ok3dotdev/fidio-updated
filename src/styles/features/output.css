@@ -972,6 +972,10 @@ body {
   max-width: 80rem;
 }
 
+.max-w-\[108rem\] {
+  max-width: 108rem;
+}
+
 .max-w-\[110rem\] {
   max-width: 110rem;
 }
@@ -996,20 +1000,16 @@ body {
   max-width: 480px;
 }
 
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
 .max-w-\[90\%\] {
   max-width: 90%;
 }
 
-.max-w-\[98rem\] {
-  max-width: 98rem;
-}
-
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[800px\] {
-  max-width: 800px;
 }
 
 .basis-1\/2 {
@@ -1443,6 +1443,11 @@ body {
   padding-right: 1.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1471,11 +1476,6 @@ body {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .pb-1 {
@@ -1534,6 +1534,10 @@ body {
   padding-top: 20px;
 }
 
+.pt-\[40px\] {
+  padding-top: 40px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1548,6 +1552,10 @@ body {
 
 .font-sans {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-Archivo {
+  font-family: Archivo Black;
 }
 
 .text-2xl {
@@ -1573,8 +1581,8 @@ body {
   font-size: 24px;
 }
 
-.text-\[35px\] {
-  font-size: 35px;
+.text-\[26px\] {
+  font-size: 26px;
 }
 
 .text-base {
@@ -2360,6 +2368,10 @@ input {
     grid-column: span 2 / span 2;
   }
 
+  .lg\:mb-12 {
+    margin-bottom: 3rem;
+  }
+
   .lg\:mt-0 {
     margin-top: 0px;
   }
@@ -2519,6 +2531,10 @@ input {
     padding-right: 2rem;
   }
 
+  .lg\:pt-\[140px\] {
+    padding-top: 140px;
+  }
+
   .lg\:pt-\[200px\] {
     padding-top: 200px;
   }
@@ -2537,6 +2553,11 @@ input {
     line-height: 1;
   }
 
+  .lg\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
   .lg\:text-\[20px\] {
     font-size: 20px;
   }
@@ -2545,28 +2566,23 @@ input {
     font-size: 48px;
   }
 
-  .lg\:text-\[78px\] {
-    font-size: 78px;
-  }
-
-  .lg\:text-\[84px\] {
-    font-size: 84px;
+  .lg\:text-\[67px\] {
+    font-size: 67px;
   }
 
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
-
-  .lg\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1;
-  }
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:pt-\[200px\] {
-    padding-top: 200px;
+  .\32xl\:mb-16 {
+    margin-bottom: 4rem;
+  }
+
+  .\32xl\:pt-\[157px\] {
+    padding-top: 157px;
   }
 
   .\32xl\:text-\[84px\] {

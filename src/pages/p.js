@@ -23,16 +23,16 @@ export const page = (props) => {
   const [fetching, setFetching] = React.useState(false);
   const [mergeProps, setMergeProps] = React.useState({});
   let resolvedDefinition = props.resolvedDefinition;
-  const variables = resolveVariables();
-  let config = resolveConfig(variables, props);
-  let resolvedPage = resolvePage(config, props.path);
+  let resolvedPage = resolvePage(
+    resolveConfig(props._configVariables, props),
+    props.path
+  );
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
-
   const getDefaults = async (force) => {
     const defaults = await resolveDefaults(
       resolvedPage.url,
       props,
-      variables,
+      props._configVariables,
       query,
       asPath,
       setFetching,
@@ -43,12 +43,10 @@ export const page = (props) => {
       setMergeProps(newProps);
     }
   };
-
   props._LocalEventEmitter.unsubscribe('refetchDefaults');
   props._LocalEventEmitter.subscribe('refetchDefaults', (e) => {
     getDefaults(true);
   });
-
   React.useEffect(() => {
     if (
       resolvedPage &&
@@ -59,10 +57,11 @@ export const page = (props) => {
       getDefaults();
     }
   }, [fetching, mergeProps, resolvedPage]);
-
   const useProps = handlePropsPriority(mergeProps, props);
-  config = resolveConfig(variables, useProps);
-  resolvedPage = resolvePage(config, useProps.path);
+  resolvedPage = resolvePage(
+    resolveConfig(props._configVariables, useProps),
+    useProps.path
+  );
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
   return (
