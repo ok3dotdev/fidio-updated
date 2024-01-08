@@ -1,4 +1,5 @@
 /* AVOID EDITING THIS FILE. DEFAULT APPLICATION ENTRY. MANIPULATE customModules/middleware/Middleware.js FILE FOR MIDDLEWARE LOGIC. If file missing run node init_app.js */
+
 import React from 'react';
 import '../styles/globals.scss';
 import '../styles/styles.scss'; // Import all styles in here relative to styles directory using syntax: @import "/appstyles/component.scss";
@@ -6,6 +7,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { registerGoogleSignIn } from '/modules/utility/_app';
 import { Internal } from '/modules/internal/';
+
 function MyApp({ Component, pageProps }) {
   return (
     <div>

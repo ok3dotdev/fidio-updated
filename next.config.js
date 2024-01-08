@@ -1,7 +1,11 @@
 const path = require('path')
 
+const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  assetPrefix: website,
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')
@@ -18,6 +22,17 @@ const nextConfig = {
             presets: ['next/babel'],
           }
         }
+      })
+      // Add a rule to handle font files
+      config.module.rules.push({
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'static/fonts/',
+          },
+        },
       })
     }
     return config
