@@ -4,7 +4,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   font-family: helvetica, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -129,23 +128,21 @@ a {
   border-top: 1px dashed rgb(94, 94, 94);
 }
 
-.featureContainerOverflown::-webkit-scrollbar {
-  height: 0.45rem;
-}
-
-.FeatureContainerOpen .featureContainerOverflown_medium {
-  height: 111px;
-}
-
-.FeatureContainerOpen .featureContainerOverflown_large {
-  height: 246px;
-}
-
 .video-js button.chat-button {
   font-size: 1.5rem;
 }
-.video-js button.chat-button {
-  font-size: 1.5rem;
+
+body .opacity1 {
+  opacity: 1;
+}
+
+.googleSignInContainer iframe {
+  margin: 0 !important;
+}
+
+.MuiTooltip-tooltip {
+  font-size: 0.8rem !important;
+  line-height: 1rem;
 }
 
 @import '/modules/styles/tycoon.scss';

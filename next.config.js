@@ -1,8 +1,11 @@
 const path = require('path');
 
+const website = 'http://localhost:3020/'; // You must set this line to your own website
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  assetPrefix: website,
   reactStrictMode: true,
   images: {
     domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
@@ -20,6 +23,17 @@ const nextConfig = {
           loader: 'babel-loader',
           options: {
             presets: ['next/babel'],
+          },
+        },
+      });
+      // Add a rule to handle font files
+      config.module.rules.push({
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'static/fonts/',
           },
         },
       });

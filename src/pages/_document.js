@@ -34,26 +34,10 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp'
             rel='stylesheet'
           ></link>
-          <link rel='preconnect' href='https://fonts.googleapis.com'></link>
-          <link
-            rel='preconnect'
-            href='https://fonts.gstatic.com'
-            crossOrigin=''
-          ></link>
-          <link
-            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
-            rel='stylesheet'
-          ></link>
+          <script src='//js.paystack.co/v1/inline.js'></script>
         </Head>
         <body>
-          {/* TYCOON SYSTEMS MODULES VERSIONING */}
-          <div version='0.2.10' style={{ display: 'none' }}></div>
-          {/* Fidio VERSIONING */}
-          <div
-            id='fidio-version'
-            version='0.1.0'
-            style={{ display: 'none' }}
-          ></div>
+          <div version='0.3.0' style={{ display: 'none' }}></div>
           <Main />
           <NextScript />
         </body>
