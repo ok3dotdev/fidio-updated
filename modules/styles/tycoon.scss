@@ -251,6 +251,15 @@ button:not(:disabled):active {
     max-width: 90vw;
 }
 
+@media (max-width: 640px) {
+    .dropMenu {
+        position: fixed;
+        width: 90vw;
+        right: 5vw;
+        top: 6.5vh;
+    }
+}
+
 .dropMenu ul {
     list-style: none;
     padding-left: 0;
