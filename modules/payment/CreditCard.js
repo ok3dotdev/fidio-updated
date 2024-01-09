@@ -290,7 +290,9 @@ var Module = function Module(props) {
     style: {
       padding: '.125rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("span", null, props.purchaseDescription), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("p", {
+  }, props.purchaseDescription ? /*#__PURE__*/_react["default"].createElement("span", null, props.purchaseDescription) : null, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "Ecommerce_CreditCard_Container_Meta"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("p", {
     style: {
       marginBottom: .1 + "rem",
       paddingBottom: 0 + "rem",
@@ -304,10 +306,10 @@ var Module = function Module(props) {
     }
   }, "Expiry ", /*#__PURE__*/_react["default"].createElement("span", null, validCc.exp_month, " / ", validCc.exp_year))), validCc.name ? /*#__PURE__*/_react["default"].createElement("p", {
     style: {
-      marginTop: .4 + "rem",
+      marginTop: 0,
       margin: 0
     }
-  }, validCc.name) : null)) : props._stripeSecret && props._stripeSecret.client_secret ? /*#__PURE__*/_react["default"].createElement(_reactStripeJs.Elements, {
+  }, validCc.name) : null))) : props._stripeSecret && props._stripeSecret.client_secret ? /*#__PURE__*/_react["default"].createElement(_reactStripeJs.Elements, {
     stripe: stripePromise,
     options: {
       clientSecret: props._stripeSecret.client_secret

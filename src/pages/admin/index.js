@@ -37,7 +37,8 @@ export const page = props => {
         if (resolvedPage && resolvedPage.url && !fetching && isObjectEmpty(mergeProps)) {
             getDefaults()
         }
-    }, [ fetching, mergeProps, resolvedPage ])
+    }, [ fetching, mergeProps, resolvedPagels
+     ])
 
     const useProps = handlePropsPriority(mergeProps, props)
 	return (

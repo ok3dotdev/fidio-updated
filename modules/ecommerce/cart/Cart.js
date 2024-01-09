@@ -109,8 +109,9 @@ var Module = function Module(props) {
           props.passOveride();
         }
         setTimeout(function () {
+          // Only keep override open for very short period of time. Sub 2 seconds
           setTempOveride(false);
-        }, 10000);
+        }, 1500);
       } else if (e.dispatch === 'purchaseComplete') {
         if (e.type === 'paystack') {
           console.log('paystack purchase', e);

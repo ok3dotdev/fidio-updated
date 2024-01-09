@@ -173,7 +173,7 @@
     .IndexItemsContainer {
         .IndexItemUpperContainer {
             max-height: 325px;
-            width: calc(25% - .375rem);
+            // width: calc(25% - .375rem);
             margin-left: 5px;
             margin-right: 5px;
             .BgContainer {
@@ -254,26 +254,26 @@
                 max-height: 90vh;
             }
         }
-        @media (max-width: 1280px) {
-            .IndexItemUpperContainer {
-                min-width: calc(33vw - 1.1rem);
-            }
-        }
-        @media (max-width: 920px) {
-            .IndexItemUpperContainer {
-                min-width: calc(33vw - 1.175rem);
-            }
-        }
-        @media (max-width: 720px) {
-            .IndexItemUpperContainer {
-                min-width: calc(50vw - 1.625rem);
-            }
-        }
-        @media (max-width: 540px) {
-            .IndexItemUpperContainer {
-                min-width: calc(100vw - 2.75rem);
-            }
-        }
+        // @media (max-width: 1280px) {
+        //     .IndexItemUpperContainer {
+        //         min-width: calc(33vw - 1.1rem);
+        //     }
+        // }
+        // @media (max-width: 920px) {
+        //     .IndexItemUpperContainer {
+        //         min-width: calc(33vw - 1.175rem);
+        //     }
+        // }
+        // @media (max-width: 720px) {
+        //     .IndexItemUpperContainer {
+        //         min-width: calc(50vw - 1.625rem);
+        //     }
+        // }
+        // @media (max-width: 540px) {
+        //     .IndexItemUpperContainer {
+        //         min-width: calc(100vw - 2.75rem);
+        //     }
+        // }
         .IndexItemUpperContainer:first-child {
             margin-left: 0px;
         }

@@ -64,6 +64,7 @@ var Module = function Module(props) {
   });
   var toggleCart = _react["default"].useCallback(function (e) {
     if (e && props && props._toggleSingleOpenMenu) {
+      console.log(props);
       props._toggleSingleOpenMenu(e, 'cart');
     }
   });
@@ -218,7 +219,7 @@ var Module = function Module(props) {
   var resolvedCountry = props !== null && props !== void 0 && props.regionsData && props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.meta) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.locationMeta) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.country && props.regionsData[props._loggedIn.meta.locationMeta.country] && props.regionsData[props._loggedIn.meta.locationMeta.country].name ? props.regionsData[props._loggedIn.meta.locationMeta.country].name : (_props$_loggedIn$meta = props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.meta) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.locationMeta) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.country) !== null && _props$_loggedIn$meta !== void 0 ? _props$_loggedIn$meta : null;
 
   // console.log('Cart', cart, props.menuConfig.right)
-
+  console.log(props);
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 100 + "%",

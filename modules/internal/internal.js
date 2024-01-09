@@ -220,9 +220,8 @@ var Internal = function Internal(usePageProps) {
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            console.log(e);
             (0, _app2.handleGlobalEvent)(e, pageProps, fetchBusy, setFetchBusy);
-          case 2:
+          case 1:
           case "end":
             return _context3.stop();
         }
