@@ -174,10 +174,10 @@ function registerProxyConsoleLog(window) {
       // If user ser do show logs then they must want to show logs
       var log = window.console.log;
       // window.console.bind(window.console)
-      if (variables.mute) {
-        return;
-      }
       window.console.log = function () {
+        if (variables.mute) {
+          return log('');
+        }
         for (var _len = arguments.length, message = new Array(_len), _key = 0; _key < _len; _key++) {
           message[_key] = arguments[_key];
         }
