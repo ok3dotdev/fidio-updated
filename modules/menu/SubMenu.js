@@ -119,5 +119,4 @@ var SubMenu = function SubMenu(props) {
     }, c.muiIcon))) : null : null);
   }) : null);
 };
-var _default = SubMenu;
-exports["default"] = _default;
+var _default = exports["default"] = SubMenu;

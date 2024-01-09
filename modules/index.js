@@ -22,6 +22,7 @@ var _receipt = require("./ecommerce/receipt");
 var _product = require("./ecommerce/product");
 var _feature = require("./search/feature");
 var _wideFeature = require("./search/wideFeature");
+var _settings = require("./settings");
 var _util = require("./util");
 var _analytics = require("./analytics");
 var _app = require("./utility/_app");
@@ -42,7 +43,8 @@ var Onboarding = {
   checkSignedInAndPrompt: _index6.checkSignedInAndPrompt,
   checkUserData: _index6.checkUserData,
   logout: _index6.logout,
-  updateLocalLoginSession: _index6.updateLocalLoginSession
+  updateLocalLoginSession: _index6.updateLocalLoginSession,
+  requestSettingsUpdate: _index6.requestSettingsUpdate
 };
 var Ecommerce = {
   createShop: _index8.createShop,
@@ -92,6 +94,9 @@ var Util = {
   registerCheckLocalStorageSize: _util.registerCheckLocalStorageSize,
   registerCheckMobile: _util.registerCheckMobile
 };
+var SettingsModules = {
+  Settings: _settings.Settings
+};
 var Pages = {
   SignInPage: _index.SignInPage,
   ProfilePage: _profile.ProfilePage,
@@ -122,11 +127,11 @@ var Modules = {
   Onboarding: Onboarding,
   Payment: Payment,
   Search: Search,
+  SettingsModules: SettingsModules,
   Stream: Stream,
   Template: Template,
   Utility: Utility,
   Util: Util,
   Socket: Socket
 };
-var _default = Modules;
-exports["default"] = _default;
+var _default = exports["default"] = Modules;
