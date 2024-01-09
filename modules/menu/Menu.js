@@ -331,7 +331,7 @@ var Module = function Module(props) {
         borderTop: '1px solid grey',
         margin: '.25rem 0'
       }
-    }), (_props$_loggedIn4 = props._loggedIn) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.meta) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.locationMeta) !== null && _props$_loggedIn4 !== void 0 && _props$_loggedIn4.city && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.locationMeta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/offers",
       className: "menuLinkSelector ".concat(c.className),
       onClick: handleToggleSettings,
@@ -342,7 +342,7 @@ var Module = function Module(props) {
       key: i
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
-    }, "redeem"), /*#__PURE__*/_react["default"].createElement("div", null, "Offers and Gifts"))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    }, "redeem"), /*#__PURE__*/_react["default"].createElement("div", null, "Offers and Gifts"))), (_props$_loggedIn4 = props._loggedIn) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.meta) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.locationMeta) !== null && _props$_loggedIn4 !== void 0 && _props$_loggedIn4.city && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.locationMeta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/settings?t=location",
       className: "menuLinkSelector ".concat(c.className),
       onClick: handleToggleSettings,
@@ -353,12 +353,12 @@ var Module = function Module(props) {
       key: i
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
-    }, "flag"), /*#__PURE__*/_react["default"].createElement("div", null, "Location:\xA0", /*#__PURE__*/_react["default"].createElement("span", null, resolvedCountry)))), /*#__PURE__*/_react["default"].createElement("div", {
+    }, "flag"), /*#__PURE__*/_react["default"].createElement("div", null, "Location:\xA0", /*#__PURE__*/_react["default"].createElement("span", null, resolvedCountry))))) : null, /*#__PURE__*/_react["default"].createElement("div", {
       style: {
         borderTop: '1px solid grey',
         margin: '.25rem 0'
       }
-    })) : null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("li", {
+    }), props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("li", {
       onClick: handleLogout
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"

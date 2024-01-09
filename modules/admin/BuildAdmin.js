@@ -569,7 +569,6 @@ var Module = function Module(props) {
     console.log(e);
   });
   var strippedUrl = props !== null && props !== void 0 && props.domainUrl ? props.domainUrl.replace(/(?:www\.)?/, '') : '';
-  console.log(packages);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " Admin_Build_Container")
   }, /*#__PURE__*/_react["default"].createElement("h3", null, "Build"), /*#__PURE__*/_react["default"].createElement("div", {

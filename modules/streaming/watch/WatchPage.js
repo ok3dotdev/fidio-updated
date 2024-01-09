@@ -194,7 +194,6 @@ var Module = function Module(props) {
   }, [componentDidMount, videoPlayer.current, intent, props.cdn, props.watchData]);
   _react["default"].useEffect(function () {
     if (props.cdn && props.watchData) {
-      console.log(props);
       var options = {};
       initializePlayer(options);
     }

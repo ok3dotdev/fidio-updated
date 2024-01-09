@@ -165,7 +165,7 @@ var Module = function Module(props) {
             e.preventDefault();
             console.log(e, elements, stripe, nameOnCard);
             if (fetchBusy) {
-              _context2.next = 22;
+              _context2.next = 23;
               break;
             }
             setFetchBusy(true);
@@ -174,11 +174,11 @@ var Module = function Module(props) {
             }, 15000);
             user = (0, _SignIn.checkSignedInAndPrompt)();
             if (!user) {
-              _context2.next = 22;
+              _context2.next = 23;
               break;
             }
             if (!(nameOnCard && nameOnCard.current && nameOnCard.current.value)) {
-              _context2.next = 20;
+              _context2.next = 21;
               break;
             }
             data = {
@@ -199,9 +199,10 @@ var Module = function Module(props) {
             });
           case 13:
             data.result = _context2.sent;
-            _context2.next = 16;
+            console.log('Stripe Payment', data, props);
+            _context2.next = 17;
             return (0, _index.saveCreditCardInfo)(props.apiUrl, props.domainKey, data, _SignIn.checkSignedIn);
-          case 16:
+          case 17:
             res = _context2.sent;
             if (!res) {
               props._setPageError("Failed to save Credit Card");
@@ -217,24 +218,24 @@ var Module = function Module(props) {
               props._setStripeSecret(res.newSecret);
               setFetchBusy(false);
             }
-            _context2.next = 22;
+            _context2.next = 23;
             break;
-          case 20:
+          case 21:
             props._setPageError("Please type in your Full Name as it appears on your Credit Card");
             setFetchBusy(false);
-          case 22:
-            _context2.next = 28;
+          case 23:
+            _context2.next = 29;
             break;
-          case 24:
-            _context2.prev = 24;
+          case 25:
+            _context2.prev = 25;
             _context2.t0 = _context2["catch"](0);
             console.log(_context2.t0); // fail silently
             setFetchBusy(false);
-          case 28:
+          case 29:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 24]]);
+      }, _callee2, null, [[0, 25]]);
     }));
     return function handleSaveBillingInfo(_x, _x2, _x3, _x4) {
       return _ref.apply(this, arguments);

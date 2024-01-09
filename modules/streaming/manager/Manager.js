@@ -359,7 +359,6 @@ var Module = function Module(props) {
     privateRef2.current ? privateRef2.current.checked = useSettings["private"] : null;
     passwordRef.current ? passwordRef.current.value = useSettings.password : null;
     passwordRef2.current ? passwordRef2.current.value = useSettings.password : null;
-    console.log(streamSettings);
   };
   console.log(props, streamSettings);
   var handleCreateShop = _react["default"].useCallback( /*#__PURE__*/function () {

@@ -127,19 +127,19 @@ var Module = function Module(props) {
           case 0:
             modif = e === null || e === void 0 ? void 0 : e.currentTarget.getAttribute('modif');
             if (!modif) {
-              _context.next = 35;
+              _context.next = 32;
               break;
             }
             setPageError(null);
             if (!(modif === 'username')) {
-              _context.next = 15;
+              _context.next = 14;
               break;
             }
             console.log(e);
             proposed = (_document$getElementB = document.getElementById("Settings_".concat(componentId, "_Username_Input"))) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.value;
             console.log(proposed);
             if (!proposed) {
-              _context.next = 12;
+              _context.next = 11;
               break;
             }
             _context.next = 10;
@@ -148,63 +148,60 @@ var Module = function Module(props) {
             }, props, setFetchBusy, fetchBusy);
           case 10:
             res = _context.sent;
-            console.log(res);
-          case 12:
+          case 11:
             handleChangeUsername();
-            _context.next = 33;
+            _context.next = 30;
             break;
-          case 15:
+          case 14:
             if (!(modif === 'firstName' || modif === 'lastName')) {
-              _context.next = 27;
+              _context.next = 24;
               break;
             }
             _proposed = {
               firstName: (_document$getElementB2 = (_document$getElementB3 = document.getElementById("Settings_".concat(componentId, "_firstName_Input"))) === null || _document$getElementB3 === void 0 ? void 0 : _document$getElementB3.value) !== null && _document$getElementB2 !== void 0 ? _document$getElementB2 : props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 || (_props$_loggedIn = _props$_loggedIn.meta) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.firstName,
               lastName: (_document$getElementB4 = (_document$getElementB5 = document.getElementById("Settings_".concat(componentId, "_lastName_Input"))) === null || _document$getElementB5 === void 0 ? void 0 : _document$getElementB5.value) !== null && _document$getElementB4 !== void 0 ? _document$getElementB4 : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.meta) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.lastName
             };
-            console.log(_proposed);
             if (!_proposed) {
-              _context.next = 25;
+              _context.next = 22;
               break;
             }
-            _context.next = 21;
+            _context.next = 19;
             return (0, _onboarding.requestSettingsUpdate)(props.apiUrl, props.domainKey, {
               fullName: _proposed
             }, props, setFetchBusy, fetchBusy);
-          case 21:
+          case 19:
             res = _context.sent;
-            console.log(res);
             setEditedInputs(_objectSpread(_objectSpread({}, editedInputs), {}, {
               firstName: false
             }));
             setEditedInputs(_objectSpread(_objectSpread({}, editedInputs), {}, {
               lastName: false
             }));
-          case 25:
-            _context.next = 33;
+          case 22:
+            _context.next = 30;
             break;
-          case 27:
+          case 24:
             if (!(modif === 'keepSubscriptionsPrivate')) {
-              _context.next = 33;
+              _context.next = 30;
               break;
             }
             if (!document.getElementById("Settings_".concat(componentId, "_keepSubscriptionsPrivate_Input"))) {
-              _context.next = 33;
+              _context.next = 30;
               break;
             }
             _proposed2 = (_document$getElementB6 = document.getElementById("Settings_".concat(componentId, "_keepSubscriptionsPrivate_Input"))) === null || _document$getElementB6 === void 0 ? void 0 : _document$getElementB6.checked;
-            _context.next = 32;
+            _context.next = 29;
             return (0, _onboarding.requestSettingsUpdate)(props.apiUrl, props.domainKey, {
               keepSubscriptionsPrivate: _proposed2
             }, props, setFetchBusy, fetchBusy);
-          case 32:
+          case 29:
             res = _context.sent;
-          case 33:
+          case 30:
             if (((_res = res) === null || _res === void 0 ? void 0 : _res.status) !== 'success' && res.message) {
               setPageError(res.message);
             }
             setEditedInputs(_objectSpread(_objectSpread({}, editedInputs), {}, _defineProperty({}, modif, false)));
-          case 35:
+          case 32:
           case "end":
             return _context.stop();
         }

@@ -82,10 +82,8 @@ var getFormattedDate = exports.getFormattedDate = function getFormattedDate(date
         month: 'short',
         year: 'numeric'
       };
-      console.log('Format Date', date, _typeof(date));
       var dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
       var formattedDate = dateFormatter.format(new Date(date));
-      console.log('Time for Date', date);
       var formattedTime = getFormattedTime(new Date(date));
       console.log('Formatted Time Date', formattedDate, formattedTime);
       // Combine date and time
