@@ -10,21 +10,24 @@ class MyDocument extends Document {
             name='google-site-verification'
             content='l53G0XsvnsA_mJv2edhC-90dcDQLE6UXn2IjcrJvXUU'
           />
-          <script
+          <Script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
-          ></script>
-          <script src='https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js'></script>
-          <script
+          ></Script>
+          <Script src='https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js'></Script>
+          <Script
+            id='google-analytics-script'
             dangerouslySetInnerHTML={{
-              __html: ` window.dataLayer = window.dataLayer || [];
+              __html: `
+                window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-B57K7JWE6J', {
                   page_path: window.location.pathname
-                });`,
+                });
+              `,
             }}
-          ></script>
+          />
           <Script
             src='https://unpkg.com/@glidejs/glide'
             crossorigin='anonymous'
@@ -44,7 +47,7 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
             rel='stylesheet'
           ></link>
-          <script src='//js.paystack.co/v1/inline.js'></script>
+          <Script src='//js.paystack.co/v1/inline.js'></Script>
         </Head>
         <body>
           <div version='0.3.0' style={{ display: 'none' }}></div>

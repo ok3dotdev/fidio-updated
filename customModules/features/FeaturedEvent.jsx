@@ -59,11 +59,11 @@ const FeaturedEvent = (props) => {
   const carouselItems = [
     {
       backgroundImageDesktop: 'url(/img/internal/home-banner.png)',
-      backgroundImageMobile: 'url(/img/internal/home-banner-mobile.png)',
-      artist: 'STORIES UNTOLD',
-      event: '',
-      date: ' November 26, 2023 07:00PM WAT',
-      id: 'stories-untold-show',
+      backgroundImageMobile: 'url(/img/internal/home-banner-mobile1.png)',
+      artist: 'TINY’S CONDO SESSION',
+      event: 'Live from Lagos',
+      date: ' January 14, 2024 4:00PM WAT',
+      id: 'tinys-condo-session',
     },
   ];
 
@@ -157,7 +157,7 @@ const FeaturedEvent = (props) => {
       {showPop && <FreePopUp onClose={handlePopupClose} />}
       {isPopupVisible && <TicketClaimedPopup onClose={handlePopupClose} />}
       {props.showTimer ? (
-        <Countdown eventDate='2023-11-26T19:00:00.000Z' />
+        <Countdown eventDate='2024-01-14T15:00:00.000Z' />
       ) : (
         ''
       )}

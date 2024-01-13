@@ -57,31 +57,13 @@ const FeaturedEvent = (props, showTimer, data) => {
   const carouselItems = [
     {
       backgroundImageDesktop: 'url(/img/internal/home-banner.png)',
-      backgroundImageMobile: 'url(/img/internal/home-banner-mobile.png)',
-      artist: 'STORIES UNTOLD',
-      event: '',
-      date: ' November 26, 2023 07:00PM WAT',
+      backgroundImageMobile: 'url(/img/internal/home-banner-mobile1.png)',
+      artist: 'TINY’S CONDO SESSION',
+      event: 'Live from Lagos',
+      date: 'January 14, 2024 4:00PM WAT',
       id: 'stories-untold-show',
     },
   ];
-
-  // const receiveData = (data) => {
-  //   // ('data', data);
-  //   setEvetsData(data.data.fetchedData[0].productReq);
-  // };
-  // <FetchHandler
-  //   {...props}
-  //   handlerName='my_handler'
-  //   handlerArgs={[
-  //     {
-  //       productReq: [
-  //         '1da050fa-6be1-4926-9e10-cf0a9ee575a8',
-  //         '68f37cef-a4f8-40d2-96aa-cdf57b0a220a',
-  //       ],
-  //     },
-  //   ]}
-  //   receiveData={receiveData}
-  // />;
 
   useEffect(() => {
     const handleResize = () => {

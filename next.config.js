@@ -1,6 +1,6 @@
 const path = require('path');
 
-const website = 'http://localhost:3020/'; // You must set this line to your own website
+const website = 'https://www.fidio.ca/'; // You must set this line to your own website
 
 /** @type {import('next').NextConfig} */
 

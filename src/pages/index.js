@@ -120,12 +120,12 @@ export const Page = (props) => {
               src='/img/internal/swirls.png'
               alt='swirls'
             />
-            <a
+            <Link
               href='/signin'
               className='relative py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans text-black z-10 text-sm'
             >
               Sign up for free with Google
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,17 +3,29 @@ import { upcomingEvents } from './data';
 import Marquee from 'react-fast-marquee';
 
 const EventsGrid = () => {
+  // Duplicate the first and last elements to create a loop effect
+  const eventsWithLoop = [
+    ...upcomingEvents,
+    upcomingEvents[0],
+    upcomingEvents[upcomingEvents.length - 1],
+  ];
+
   return (
     <div className='w-full mb-12 mt-12 px-2 lg:px-8'>
       <h2 className='text-2xl font-bold'>Past Shows</h2>
       <div className='mt-8'>
         <Marquee
-          style={{ display: 'flex', gap: '0' }}
+          style={{
+            display: 'flex-wrap',
+            gap: '0',
+            marginLeft: '-16px',
+            marginRight: '-16px',
+          }}
           className='w-full flex '
           pauseOnClick={true}
           speed={20}
         >
-          {upcomingEvents.map(({ img, title, artist, date, price }, index) => (
+          {eventsWithLoop.map(({ img, title, artist, date, price }, index) => (
             <Events
               key={index}
               title={title}

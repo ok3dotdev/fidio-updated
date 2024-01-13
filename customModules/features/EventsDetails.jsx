@@ -4,8 +4,8 @@ import Upcoming from './Upcoming';
 
 const events = [
   {
-    name: 'Afro Fusion Night',
-    date: 'Nov 29th, 2023',
+    name: 'TINY’S CONDO SESSION',
+    date: 'January 14, 2024',
     venue: 'Lagos, Nigeria',
     img: '/img/internal/sharon5.png',
   },
@@ -19,16 +19,19 @@ const EventsDetails = (props) => {
       image: '/img/internal/odu-portrait.png',
       title: 'ODUMODU BLVCK',
       lineUp: [
-        { title: 'Bandhitz', image: '/img/internal/home-banner-mobile.png' },
-        { title: 'Timi Dakolo', image: '/img/internal/timi-dakolo.png' },
-        { title: 'Raybekah', image: '/img/internal/raybekah.png' },
-        { title: 'Amaeya', image: '/img/internal/amaeya.png' },
-        { title: 'Lade', image: '/img/internal/lade.png' },
-        { title: 'Spyro', image: '/img/internal/spyro.png' },
+        { title: 'UAX', image: '/img/internal/uax.png' },
+        { title: 'Tomi Owo ', image: '/img/internal/tomi-owo.png' },
+        { title: 'Deji', image: '/img/internal/deji.png' },
+        { title: 'Feel fancy', image: '/img/internal/feel-fancy.png' },
+        { title: 'Flo', image: '/img/internal/flo.png' },
+        { title: 'Toni verse', image: '/img/internal/toni-verse.png' },
+        { title: 'TMT', image: '/img/internal/tmt.png' },
+        { title: 'A30', image: '/img/internal/a30.png' },
+        { title: 'Shalom Dubas', image: '/img/internal/shalom-dubas.png' },
       ],
       host: [
         {
-          name: 'Bandhitz',
+          name: 'Yawa Media',
         },
       ],
     },
@@ -39,8 +42,9 @@ const EventsDetails = (props) => {
         <div className='w-full '>
           <h2 className='text-xl'>About</h2>
           <p className='font-sans text-xl mb-4 lg:w-[70%]'>
-            Nigeria's uprising premium band hosts their debut live concert in
-            Lagos Nigeria.
+            Tiny’s Condo sessions is global music community that curates
+            intimate experiences for lovers of pure sounds and live music. Catch
+            them live from Lagos Nigeria.
           </p>
           {/* <p className='font-sans text-xl mb-4 lg:w-[70%]'>
             ODUMODUBLVCK is one of the most exciting voices out of the Nigeria.
@@ -54,7 +58,7 @@ const EventsDetails = (props) => {
           <div className='lg:grid lg:grid-cols-2 gap-y-8 mt-8 flex flex-col'>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Host</h3>
-              <p className='font-sans text-sm mb-1'>Bandhitz</p>
+              <p className='font-sans text-sm mb-1'>Yawa Media</p>
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Ticket price</h3>
@@ -66,7 +70,7 @@ const EventsDetails = (props) => {
             </div>
             <div className=' border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Date</h3>
-              <p className='font-sans text-sm'>Sunday, November 26, 2023</p>
+              <p className='font-sans text-sm'>Sunday, January 14, 2024</p>
             </div>
             <div className=' border-t pt-4  border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Location</h3>
@@ -74,13 +78,13 @@ const EventsDetails = (props) => {
             </div>
             <div className='border-b py-6 border-t pt-4 border-[#2F333A] lg:border-none'>
               <h3 className='text-lg'>Time</h3>
-              <p className='font-sans text-sm'>07:00PM WAT</p>
+              <p className='font-sans text-sm'>4:00PM WAT</p>
             </div>
           </div>
           <div className='flex flex-col items-start mt-8'>
             <div>
               <h2 className='text-center lg:text-left mb-4'>Line Up</h2>
-              <div className='flex flex-col gap-8 lg:flex-row justify-between '>
+              <div className='flex flex-col gap-8 lg:flex-row justify-between flex-wrap'>
                 {data[0].lineUp.map((item, index) => {
                   // Access data[0].lineUp here
                   return (
@@ -105,7 +109,7 @@ const EventsDetails = (props) => {
               <div className='flex flex-col lg:flex-row'>
                 <div className='flex flex-col items-center'>
                   {/* <div className='lg:h-24 lg:w-24 h-24 w-24 rounded-full '></div> */}
-                  <span className='text-sm mt-2 font-sans'>Bandhitz</span>
+                  <span className='text-sm mt-2 font-sans'>Yawa Media</span>
                 </div>
               </div>
             </div>
@@ -122,9 +126,9 @@ const EventsDetails = (props) => {
               </h3>
             </div>
             <p className='font-sans font-normal text-sm mt-4 mb-4 opacity-100'>
-              This event is free so that everyone can enjoy live Afrobeats this
-              Christmas season. If you love our mission of bringing live African
-              performances to the world, consider supporting us. Thank you.{' '}
+              This event is free so that you can enjoy live Afro sounds from
+              wherever you are. If you would like to see more shows from the
+              host and the artists, consider supporting them. Thank you.{' '}
             </p>
             <a
               className='bg-white text-black rounded-xl px-4 py-2 text-sm mt-12 font-sans opacity-100 font-bold'
