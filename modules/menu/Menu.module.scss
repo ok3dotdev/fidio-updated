@@ -1,12 +1,14 @@
 @import '/modules/styles/supporting/Color.module.scss';
 
 .container {
+    top: 0;
     position: fixed;
     padding-bottom: .25rem;
     background-color: rgba(0, 0, 0, 1);
     color: white;
     z-index: 100;
     height: 35px;
+    transition: 200ms;
 }
 
 .containerClosed {
@@ -15,6 +17,7 @@
 
 .menu {
     display: flex;
+    align-items: center;
     justify-content: space-around;
     list-style: none;
     margin: 0;
@@ -30,9 +33,11 @@
 
     .menuLink {
         border-radius: .25rem;
-        box-shadow: inset 0 0 7.5px #5c5c5c;
         background: rgba(0,0,0,0) !important;
-        border: 1px solid grey;
+        // box-shadow: inset 0 0 7.5px #5c5c5c;
+        // border: 1px solid grey;
+        box-shadow: none;
+        border: 1px solid transparent;
         width: 100%;
         transition: 100ms;
         cursor: pointer;
@@ -91,6 +96,33 @@
             width: -webkit-fill-available;
             display: block;
         }
+    }
+
+    .smallUntilHover {
+        .menuLink {
+            padding: 0 .125rem;
+            padding-left: 0;
+            .menuLinkText {
+                contain: inline-size;
+                transition: 200ms;
+                min-width: 25px;
+                .menuLinkIconPair {
+                    flex-grow: 1;
+                }
+            }
+
+        }
+        .menuText {
+            width: 0%;
+            // width: 100%;
+            overflow: hidden;
+            flex-shrink: 100;
+            max-width: fit-content;
+        }
+    }
+
+    .smallUntilHover:hover {
+        
     }
 
     .menuLink .menuLinkIcon {
@@ -157,11 +189,11 @@
         display: flex;
         align-items: center;
         gap: .15rem;
-        border: 1px solid transparent;
+        border: 2px solid transparent;
         padding: .05rem .3rem;
         cursor: pointer;
         text-decoration: none;
-        border-radius: .125rem;
+        border-radius: .25rem;
         height: 25px;
 
         .itemName {
@@ -191,7 +223,8 @@
 }
 
 .subMenuItemContainer:hover {
-    border: 1px solid grey;
+    background: rgb(35, 35, 35, 1) !important;
+    border: 2px solid grey;
     
 
     .itemName {

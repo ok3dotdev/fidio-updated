@@ -219,7 +219,7 @@ var Module = function Module(props) {
     setRecentChatsBlock(temp);
   };
   _react["default"].useEffect(function () {
-    console.log(fetchBusy, props._rooms, props._socket);
+    console.log(fetchBusy, props._rooms, props._socket, props.chatFor);
     var useRoom = "".concat(props.chatFor, "-chat");
     attemptInitChat(useRoom);
     handleSetCurrentChat();

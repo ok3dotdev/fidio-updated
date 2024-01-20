@@ -111,11 +111,6 @@ var Module = function Module(props) {
       right: '.5rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      height: '20px',
-      padding: '.25rem 1rem',
-      paddingTop: '.125rem'
-    },
     onClick: toggleAdminPanel
   }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, props.profileData && props.profileData.user && !props.hideDefault ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "",

@@ -30,7 +30,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Module = function Module(props) {
-  var _props$_openMenu3, _useCartOfCurrency$cu2, _useCartOfCurrency$it, _useCartOfCurrency$cu3, _useCartOfCurrency$cu4, _useCartOfCurrency$cu5, _useCartOfCurrency$cu6, _useCartOfCurrency$cu7, _useCartOfCurrency$cu8, _useCartOfCurrency$re, _useCartOfCurrency$re2, _useCartOfCurrency$re3;
+  var _props$_openMenu4, _useCartOfCurrency$cu3, _props$menuConfig, _useCartOfCurrency$it, _useCartOfCurrency$cu4, _useCartOfCurrency$cu5, _useCartOfCurrency$cu6, _useCartOfCurrency$cu7, _useCartOfCurrency$cu8, _useCartOfCurrency$cu9, _useCartOfCurrency$re, _useCartOfCurrency$re2, _useCartOfCurrency$re3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -80,10 +80,9 @@ var Module = function Module(props) {
     }
   }, [componentDidMount]);
   var mouseOverContainer = function mouseOverContainer() {
-    console.log('Did mouse over', props);
-    if (props._toggleSingleOpenMenu) {
-      props._toggleSingleOpenMenu(null, 'cart', true);
-    }
+    props._LocalEventEmitter.dispatch('cart_update', {
+      dispatch: 'mouseOver'
+    });
   };
   props._LocalEventEmitter.unsubscribe('cart_update');
   props._LocalEventEmitter.subscribe('cart_update', function (e) {
@@ -106,7 +105,7 @@ var Module = function Module(props) {
         // Attempts to flash cart showing cart based on recent interaction
         setTempOveride(true);
         if (props.passOveride) {
-          props.passOveride();
+          props.passOveride('cart');
         }
         setTimeout(function () {
           // Only keep override open for very short period of time. Sub 2 seconds
@@ -119,6 +118,14 @@ var Module = function Module(props) {
             setFetchBusy(false);
           }, 20000);
           completePurchase(e.data.snapshot, e.data.cart, r, e.data);
+        }
+      } else if (e.dispatch === 'mouseOver') {
+        var _props$_openMenu;
+        console.log('Did mouse over', props, closing);
+        if ((props === null || props === void 0 || (_props$_openMenu = props._openMenu) === null || _props$_openMenu === void 0 ? void 0 : _props$_openMenu.currentMenu) === 'cart') {
+          if (!closing && props._toggleSingleOpenMenu) {
+            props._toggleSingleOpenMenu(null, 'cart', true);
+          }
         }
       }
     }
@@ -303,13 +310,13 @@ var Module = function Module(props) {
   }, [props, cart]);
   var handlePerformPurchase = _react["default"].useCallback( /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-      var _useCartOfCurrency$cu, r, snapshot, _props$paymentConfig, _props$_loggedIn, _props$paymentConfig$, _props$paymentConfig2, transactionRef, handler;
+      var _useCartOfCurrency$cu, r, snapshot, _props$paymentConfig, _props$_loggedIn, _useCartOfCurrency$cu2, transactionRef, handler;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             _context3.prev = 0;
             if (fetchBusy) {
-              _context3.next = 24;
+              _context3.next = 25;
               break;
             }
             setFetchBusy(true);
@@ -324,7 +331,7 @@ var Module = function Module(props) {
             }, props);
             console.log('snapshot', snapshot, solution);
             if (!solution) {
-              _context3.next = 22;
+              _context3.next = 23;
               break;
             }
             if (!(solution.payment === 'stripe')) {
@@ -334,23 +341,27 @@ var Module = function Module(props) {
             completePurchase(snapshot, useCartOfCurrency, r, {
               type: 'stripe'
             });
-            _context3.next = 20;
+            _context3.next = 21;
             break;
           case 13:
             if (!(solution.payment === 'paystack' && PaystackPop && props !== null && props !== void 0 && (_props$paymentConfig = props.paymentConfig) !== null && _props$paymentConfig !== void 0 && (_props$paymentConfig = _props$paymentConfig.keys) !== null && _props$paymentConfig !== void 0 && _props$paymentConfig.paystack && props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.email)) {
-              _context3.next = 20;
+              _context3.next = 21;
               break;
             }
             transactionRef = (0, _uuid.v4)();
             clearTimeout(r);
-            _context3.next = 18;
+            if (!(useCartOfCurrency !== null && useCartOfCurrency !== void 0 && (_useCartOfCurrency$cu2 = useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu2 !== void 0 && _useCartOfCurrency$cu2.currency)) {
+              _context3.next = 21;
+              break;
+            }
+            _context3.next = 19;
             return PaystackPop.setup({
               key: props.paymentConfig.keys.paystack,
               // Replace with your public key
               email: props._loggedIn.email,
               amount: snapshot.total * 100,
               // the amount value is multiplied by 100 to convert to the lowest currency unit
-              currency: (_props$paymentConfig$ = (_props$paymentConfig2 = props.paymentConfig) === null || _props$paymentConfig2 === void 0 || (_props$paymentConfig2 = _props$paymentConfig2.currency) === null || _props$paymentConfig2 === void 0 ? void 0 : _props$paymentConfig2.paystack) !== null && _props$paymentConfig$ !== void 0 ? _props$paymentConfig$ : 'USD',
+              currency: useCartOfCurrency.currency.currency,
               // Use GHS for Ghana Cedis or USD for US Dollars
               ref: transactionRef,
               // Replace with a reference you generated
@@ -379,44 +390,44 @@ var Module = function Module(props) {
                 });
               }
             });
-          case 18:
+          case 19:
             handler = _context3.sent;
             handler.openIframe();
-          case 20:
-            _context3.next = 24;
+          case 21:
+            _context3.next = 25;
             break;
-          case 22:
+          case 23:
             setFetchBusy(false);
             setPageError({
               message: 'Purchase currently not supported in your Country',
               placement: 'purchase'
             });
-          case 24:
-            _context3.next = 29;
+          case 25:
+            _context3.next = 30;
             break;
-          case 26:
-            _context3.prev = 26;
+          case 27:
+            _context3.prev = 27;
             _context3.t0 = _context3["catch"](0);
             setFetchBusy(false);
-          case 29:
+          case 30:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[0, 26]]);
+      }, _callee3, null, [[0, 27]]);
     }));
     return function (_x5) {
       return _ref3.apply(this, arguments);
     };
   }());
   _react["default"].useEffect(function () {
-    var _props$_openMenu, _props$_openMenu2;
-    if (((props === null || props === void 0 || (_props$_openMenu = props._openMenu) === null || _props$_openMenu === void 0 ? void 0 : _props$_openMenu.currentMenu) === 'cart' || tempOveride) && !menuOpen) {
+    var _props$_openMenu2, _props$_openMenu3;
+    if (((props === null || props === void 0 || (_props$_openMenu2 = props._openMenu) === null || _props$_openMenu2 === void 0 ? void 0 : _props$_openMenu2.currentMenu) === 'cart' || tempOveride) && !menuOpen) {
       setMenuOpen(true);
       setClosing(false);
       if (closeTimeoutRef !== null && closeTimeoutRef !== void 0 && closeTimeoutRef.current) {
         clearTimeout(closeTimeoutRef.current);
       }
-    } else if ((props === null || props === void 0 || (_props$_openMenu2 = props._openMenu) === null || _props$_openMenu2 === void 0 ? void 0 : _props$_openMenu2.currentMenu) !== 'cart' && !tempOveride && menuOpen) {
+    } else if ((props === null || props === void 0 || (_props$_openMenu3 = props._openMenu) === null || _props$_openMenu3 === void 0 ? void 0 : _props$_openMenu3.currentMenu) !== 'cart' && !tempOveride && menuOpen) {
       // We track open state internally because we want to animate the cart closing as opposed to destroying it immediately
       setClosing(true);
       var r = setTimeout(function () {
@@ -426,21 +437,26 @@ var Module = function Module(props) {
       }, 500);
       closeTimeoutRef.current = r;
     }
-  }, [props === null || props === void 0 || (_props$_openMenu3 = props._openMenu) === null || _props$_openMenu3 === void 0 ? void 0 : _props$_openMenu3.currentMenu, closing, menuOpen, closeTimeoutRef === null || closeTimeoutRef === void 0 ? void 0 : closeTimeoutRef.current]);
+  }, [props === null || props === void 0 || (_props$_openMenu4 = props._openMenu) === null || _props$_openMenu4 === void 0 ? void 0 : _props$_openMenu4.currentMenu, closing, menuOpen, closeTimeoutRef === null || closeTimeoutRef === void 0 ? void 0 : closeTimeoutRef.current]);
   var total = (0, _ecommerce.calculateTotal)(useCartOfCurrency, null, {
-    region: (_useCartOfCurrency$cu2 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu2 !== void 0 ? _useCartOfCurrency$cu2 : null,
+    region: (_useCartOfCurrency$cu3 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu3 !== void 0 ? _useCartOfCurrency$cu3 : null,
     object: true
   }, props);
   var free = total && Object.prototype.hasOwnProperty.call(total, 'total') && total.total === 0;
   console.log('Cart', cart, total, validCc, useCartOfCurrency);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Cart_Container ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Ecommerce_Cart_Container_Visible' : ''),
-    ref: container
+    ref: container,
+    style: {
+      top: props !== null && props !== void 0 && (_props$menuConfig = props.menuConfig) !== null && _props$menuConfig !== void 0 && _props$menuConfig.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
+    }
   }, props.open || menuOpen ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Cart_Internal_Container"
-  },
+  }, /*#__PURE__*/_react["default"].createElement("h5", {
+    className: 'Ecommerce_Label'
+  }, "Cart"),
   // this must go into cart module
   !cart || cart && !cart.items || cart && cart.items && cart.items.length === 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Prompt"
@@ -546,8 +562,8 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex Ecommerce_Price"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, "Items:\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, (_useCartOfCurrency$cu3 = useCartOfCurrency === null || useCartOfCurrency === void 0 || (_useCartOfCurrency$cu4 = useCartOfCurrency.currency) === null || _useCartOfCurrency$cu4 === void 0 ? void 0 : _useCartOfCurrency$cu4.symbol) !== null && _useCartOfCurrency$cu3 !== void 0 ? _useCartOfCurrency$cu3 : null, (0, _ecommerce.resolveMoneyFormat)((0, _ecommerce.calculateTotal)(useCartOfCurrency, null, {
-    region: (_useCartOfCurrency$cu5 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu5 !== void 0 ? _useCartOfCurrency$cu5 : null
+  }, /*#__PURE__*/_react["default"].createElement("div", null, "Items:\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, (_useCartOfCurrency$cu4 = useCartOfCurrency === null || useCartOfCurrency === void 0 || (_useCartOfCurrency$cu5 = useCartOfCurrency.currency) === null || _useCartOfCurrency$cu5 === void 0 ? void 0 : _useCartOfCurrency$cu5.symbol) !== null && _useCartOfCurrency$cu4 !== void 0 ? _useCartOfCurrency$cu4 : null, (0, _ecommerce.resolveMoneyFormat)((0, _ecommerce.calculateTotal)(useCartOfCurrency, null, {
+    region: (_useCartOfCurrency$cu6 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu6 !== void 0 ? _useCartOfCurrency$cu6 : null
   }, props)))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex Ecommerce_Price"
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -558,8 +574,8 @@ var Module = function Module(props) {
     style: {
       fontSize: '1.25rem'
     }
-  }, (_useCartOfCurrency$cu6 = useCartOfCurrency === null || useCartOfCurrency === void 0 || (_useCartOfCurrency$cu7 = useCartOfCurrency.currency) === null || _useCartOfCurrency$cu7 === void 0 ? void 0 : _useCartOfCurrency$cu7.symbol) !== null && _useCartOfCurrency$cu6 !== void 0 ? _useCartOfCurrency$cu6 : null, (0, _ecommerce.resolveMoneyFormat)((0, _ecommerce.calculateTotal)(useCartOfCurrency, null, {
-    region: (_useCartOfCurrency$cu8 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu8 !== void 0 ? _useCartOfCurrency$cu8 : null
+  }, (_useCartOfCurrency$cu7 = useCartOfCurrency === null || useCartOfCurrency === void 0 || (_useCartOfCurrency$cu8 = useCartOfCurrency.currency) === null || _useCartOfCurrency$cu8 === void 0 ? void 0 : _useCartOfCurrency$cu8.symbol) !== null && _useCartOfCurrency$cu7 !== void 0 ? _useCartOfCurrency$cu7 : null, (0, _ecommerce.resolveMoneyFormat)((0, _ecommerce.calculateTotal)(useCartOfCurrency, null, {
+    region: (_useCartOfCurrency$cu9 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu9 !== void 0 ? _useCartOfCurrency$cu9 : null
   }, props)))), (validCc || free) && cart && cart.items && cart.items.length > 0 ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("button", {
     style: {
       width: '100%',
@@ -607,7 +623,7 @@ var Module = function Module(props) {
     }
   }, "Credit Card") : cart && cart.items && cart.items.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
-      fontSize: '.65rem'
+      fontSize: '.75rem'
     }
   }, free ? '' : 'Add a Credit Card to fulfill Purchase') : null : null, /*#__PURE__*/_react["default"].createElement(_index.CreditCard, _extends({}, props, {
     stagger: 500,

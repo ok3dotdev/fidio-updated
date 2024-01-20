@@ -20,7 +20,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var allowedTypes = ['application/gzip'];
+var allowedTypes = ['application/gzip', 'application/x-gzip'];
 var Module = function Module(props) {
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -32,40 +32,44 @@ var Module = function Module(props) {
     setComponentId = _React$useState4[1];
   var _React$useState5 = _react["default"].useState(null),
     _React$useState6 = _slicedToArray(_React$useState5, 2),
-    msg1 = _React$useState6[0],
-    setMsg1 = _React$useState6[1];
+    pageError = _React$useState6[0],
+    setPageError = _React$useState6[1];
   var _React$useState7 = _react["default"].useState(null),
     _React$useState8 = _slicedToArray(_React$useState7, 2),
-    msg2 = _React$useState8[0],
-    setMsg2 = _React$useState8[1];
+    msg1 = _React$useState8[0],
+    setMsg1 = _React$useState8[1];
   var _React$useState9 = _react["default"].useState(null),
     _React$useState10 = _slicedToArray(_React$useState9, 2),
-    msg3 = _React$useState10[0],
-    setMsg3 = _React$useState10[1];
+    msg2 = _React$useState10[0],
+    setMsg2 = _React$useState10[1];
   var _React$useState11 = _react["default"].useState(null),
     _React$useState12 = _slicedToArray(_React$useState11, 2),
-    msg4 = _React$useState12[0],
-    setMsg4 = _React$useState12[1];
+    msg3 = _React$useState12[0],
+    setMsg3 = _React$useState12[1];
   var _React$useState13 = _react["default"].useState(null),
     _React$useState14 = _slicedToArray(_React$useState13, 2),
-    msg5 = _React$useState14[0],
-    setMsg5 = _React$useState14[1];
+    msg4 = _React$useState14[0],
+    setMsg4 = _React$useState14[1];
   var _React$useState15 = _react["default"].useState(null),
     _React$useState16 = _slicedToArray(_React$useState15, 2),
-    msg6 = _React$useState16[0],
-    setMsg6 = _React$useState16[1];
+    msg5 = _React$useState16[0],
+    setMsg5 = _React$useState16[1];
   var _React$useState17 = _react["default"].useState(null),
     _React$useState18 = _slicedToArray(_React$useState17, 2),
-    msg7 = _React$useState18[0],
-    setMsg7 = _React$useState18[1];
+    msg6 = _React$useState18[0],
+    setMsg6 = _React$useState18[1];
   var _React$useState19 = _react["default"].useState(null),
     _React$useState20 = _slicedToArray(_React$useState19, 2),
-    packages = _React$useState20[0],
-    setPackages = _React$useState20[1];
-  var _React$useState21 = _react["default"].useState(-1),
+    msg7 = _React$useState20[0],
+    setMsg7 = _React$useState20[1];
+  var _React$useState21 = _react["default"].useState(null),
     _React$useState22 = _slicedToArray(_React$useState21, 2),
-    lastFetchPackages = _React$useState22[0],
-    setLastFetchPackages = _React$useState22[1];
+    packages = _React$useState22[0],
+    setPackages = _React$useState22[1];
+  var _React$useState23 = _react["default"].useState(-1),
+    _React$useState24 = _slicedToArray(_React$useState23, 2),
+    lastFetchPackages = _React$useState24[0],
+    setLastFetchPackages = _React$useState24[1];
   var buildInput = _react["default"].useRef();
   var buildInput2 = _react["default"].useRef();
   var installPackageRef = _react["default"].useRef();
@@ -162,8 +166,9 @@ var Module = function Module(props) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             options = _args2.length > 4 && _args2[4] !== undefined ? _args2[4] : {};
+            setPageError(null);
             if (!(user.identifier && user.hash && domainKey)) {
-              _context2.next = 31;
+              _context2.next = 32;
               break;
             }
             if (props.setFetchBusy) {
@@ -185,31 +190,31 @@ var Module = function Module(props) {
               "package": pkg,
               options: options
             };
-            _context2.next = 7;
+            _context2.next = 8;
             return (0, _fetch.fetchPost)(uri + '/a/installpackage', null, null, body);
-          case 7:
+          case 8:
             res = _context2.sent;
             clearTimeout(r);
             props.setFetchBusy(false);
             if (res) {
-              _context2.next = 14;
+              _context2.next = 15;
               break;
             }
             return _context2.abrupt("return", false);
-          case 14:
+          case 15:
             if (!res.hasOwnProperty('status')) {
-              _context2.next = 28;
+              _context2.next = 29;
               break;
             }
             if (!(res.status == "disauthenticated")) {
-              _context2.next = 20;
+              _context2.next = 21;
               break;
             }
             logout();
             return _context2.abrupt("return", "disauthenticated");
-          case 20:
+          case 21:
             if (!(res.status == "failed")) {
-              _context2.next = 25;
+              _context2.next = 26;
               break;
             }
             if (res.data) {
@@ -220,9 +225,9 @@ var Module = function Module(props) {
               }
             }
             return _context2.abrupt("return", false);
-          case 25:
+          case 26:
             if (!(res.status == "success" && res.data)) {
-              _context2.next = 28;
+              _context2.next = 29;
               break;
             }
             if (options !== null && options !== void 0 && options.uninstall) {
@@ -231,11 +236,11 @@ var Module = function Module(props) {
               setMsg3((_res$report2 = res.report) !== null && _res$report2 !== void 0 ? _res$report2 : 'done');
             }
             return _context2.abrupt("return", res);
-          case 28:
-            return _context2.abrupt("return", false);
-          case 31:
+          case 29:
             return _context2.abrupt("return", false);
           case 32:
+            return _context2.abrupt("return", false);
+          case 33:
           case "end":
             return _context2.stop();
         }
@@ -248,11 +253,16 @@ var Module = function Module(props) {
   var handleNewBuild = _react["default"].useCallback(function (e) {
     try {
       console.log(e.target);
+      setPageError(null);
       if (e && e.target && e.target.files) {
         var files = e.target.files;
         if (files && files.length > 0) {
           var filesRenamed = Array.from(files).slice(0, files.length > 1 ? 1 : files.length).filter(function (m) {
-            return m.type && allowedTypes.indexOf(m.type) > -1;
+            var goodType = m.type && allowedTypes.indexOf(m.type) > -1;
+            if (!goodType) {
+              setPageError('Some types that were uploaded were not allowed. Please check that you are uploading the appropriate types for any file upload');
+            }
+            return goodType;
           }).map(function (m) {
             var blob = m.slice(0, m.size, m.type);
             return new File([blob], "".concat((0, _uuid.v4)(), ".tar.gz"), {
@@ -492,8 +502,9 @@ var Module = function Module(props) {
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
           case 0:
+            setPageError(null);
             if (!(user.identifier && user.hash && domainKey)) {
-              _context6.next = 30;
+              _context6.next = 31;
               break;
             }
             if (props.setFetchBusy) {
@@ -509,47 +520,47 @@ var Module = function Module(props) {
               username: user.username,
               domainKey: domainKey
             };
-            _context6.next = 6;
+            _context6.next = 7;
             return (0, _fetch.fetchPost)(uri + '/a/daemonbuild', null, null, body);
-          case 6:
+          case 7:
             res = _context6.sent;
             clearTimeout(r);
             props.setFetchBusy(false);
             if (res) {
-              _context6.next = 13;
+              _context6.next = 14;
               break;
             }
             return _context6.abrupt("return", false);
-          case 13:
+          case 14:
             if (!res.hasOwnProperty('status')) {
-              _context6.next = 27;
+              _context6.next = 28;
               break;
             }
             if (!(res.status == "disauthenticated")) {
-              _context6.next = 19;
+              _context6.next = 20;
               break;
             }
             logout();
             return _context6.abrupt("return", "disauthenticated");
-          case 19:
+          case 20:
             if (!(res.status == "failed")) {
-              _context6.next = 24;
+              _context6.next = 25;
               break;
             }
             setMsg7('Daemon Failed');
             return _context6.abrupt("return", false);
-          case 24:
+          case 25:
             if (!(res.status == "success" && res.data)) {
-              _context6.next = 27;
+              _context6.next = 28;
               break;
             }
             setMsg7('Attempted to Daemon Build. Refresh on another tab to check');
             return _context6.abrupt("return", res);
-          case 27:
-            return _context6.abrupt("return", false);
-          case 30:
+          case 28:
             return _context6.abrupt("return", false);
           case 31:
+            return _context6.abrupt("return", false);
+          case 32:
           case "end":
             return _context6.stop();
         }
@@ -568,12 +579,21 @@ var Module = function Module(props) {
   var handleRecover = _react["default"].useCallback(function (e) {
     console.log(e);
   });
+  var handleCloseError = function handleCloseError() {
+    setPageError(null);
+  };
   var strippedUrl = props !== null && props !== void 0 && props.domainUrl ? props.domainUrl.replace(/(?:www\.)?/, '') : '';
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " Admin_Build_Container")
-  }, /*#__PURE__*/_react["default"].createElement("h3", null, "Build"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, pageError ? /*#__PURE__*/_react["default"].createElement("p", {
+    className: "error",
+    style: {
+      marginTop: '.5rem'
+    },
+    onClick: handleCloseError
+  }, pageError) : null, /*#__PURE__*/_react["default"].createElement("h3", null, "Build"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "Admin_Build_InternalContainer"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("input", {
     type: "file",
     style: {
       display: 'none'
@@ -595,7 +615,7 @@ var Module = function Module(props) {
     onClick: handleUploadNewBuild
   }, "Upload Build"), msg1 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "admin_update"
-  }, msg1) : null)), /*#__PURE__*/_react["default"].createElement("input", {
+  }, msg1) : null))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("input", {
     type: "file",
     style: {
       display: 'none'
@@ -619,7 +639,7 @@ var Module = function Module(props) {
     modif: "public"
   }, "Upload Public Folder"), msg2 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "admin_update"
-  }, msg2) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, msg2) : null))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 'fit-content'
     }
@@ -637,7 +657,7 @@ var Module = function Module(props) {
     modif: "public"
   }, "Deploy Build"), msg7 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "admin_update"
-  }, msg7) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, msg7) : null))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 'fit-content'
     }
@@ -659,7 +679,7 @@ var Module = function Module(props) {
       className: "flex gap-p5",
       key: i
     }, /*#__PURE__*/_react["default"].createElement("div", null, m[0]), /*#__PURE__*/_react["default"].createElement("div", null, m[1]));
-  }) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }) : null))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 'fit-content'
     }
@@ -671,7 +691,7 @@ var Module = function Module(props) {
       marginBottom: '.125rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Run Install")))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "admin_pair"
+    className: "".concat(_AdminModule["default"].adminPair, " admin_pair")
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     placeholder: "NPM Package",
@@ -680,7 +700,7 @@ var Module = function Module(props) {
     onClick: handleInstall
   }, "Install")), msg3 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "admin_update"
-  }, msg3) : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, msg3) : null)), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 'fit-content'
     }
@@ -692,7 +712,7 @@ var Module = function Module(props) {
       marginBottom: '.125rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("b", null, "Run Uninstall")))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "admin_pair"
+    className: "".concat(_AdminModule["default"].adminPair, " admin_pair")
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     placeholder: "NPM Package",
@@ -702,6 +722,6 @@ var Module = function Module(props) {
     modif: "uninstall"
   }, "Uninstall")), msg4 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "admin_update"
-  }, msg4) : null)));
+  }, msg4) : null))));
 };
 var _default = exports["default"] = Module;

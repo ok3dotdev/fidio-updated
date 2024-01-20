@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <script src="//js.paystack.co/v1/inline.js"></script>
         </Head>
         <body>
-          <div version='0.3.2' style={{ display: 'none' }}></div>
+          <div version='0.3.18' style={{ display: 'none' }}></div>
           <Main />
           <NextScript />
         </body>

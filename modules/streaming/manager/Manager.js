@@ -872,7 +872,7 @@ var Module = function Module(props) {
       marginBottom: '.125rem',
       marginTop: '.125rem'
     }
-  }, "Create your own Auth Tags to provide authorization to watch the stream for any tickets with matching tags"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, "Create your own Auth Keys to provide authorization to watch the stream for any tickets with matching tags"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Enter dates in the following format MON-DD-YYYY or they will not be parsed as dates. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of tickets with matching tags for the stream",
     className: "flex gap-p2",
     style: {

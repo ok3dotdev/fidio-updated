@@ -60,6 +60,10 @@ var Module = function Module(props) {
     setHideGoogleSignIn(false);
     buildButtonAndTryPrompt(500);
   });
+  props._LocalEventEmitter.unsubscribe('checkAdminAuth');
+  props._LocalEventEmitter.subscribe('checkAdminAuth', function (e) {
+    handleGetAdminAuth(true);
+  });
   _react["default"].useEffect(function () {
     var muteLoginErr = function muteLoginErr() {
       setPageError(null);
@@ -68,6 +72,7 @@ var Module = function Module(props) {
       once: true
     });
   }, []);
+  console.log(asPath, query);
   var buildLoginAndUpdate = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
       var status;
@@ -88,6 +93,11 @@ var Module = function Module(props) {
               (0, _index.setStripeSecretData)(props.apiUrl, props.domainKey, status, props._setStripeSecret);
               props._setLoggedIn(status);
               console.log(props.redirectOnAuth, status.username);
+              if (asPath === '/admin') {
+                setTimeout(function () {
+                  props._LocalEventEmitter.dispatch('checkAdminAuth', {});
+                }, 1000);
+              }
               if (props.redirectOnAuth && status.username && asPath !== props.redirectOnAuth) {
                 router.push(props.redirectOnAuth);
               }
@@ -227,22 +237,23 @@ var Module = function Module(props) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             if (!(props !== null && props !== void 0 && props.path.match(/\/admin/) && !didCheckAdminAuth || force)) {
-              _context3.next = 7;
+              _context3.next = 8;
               break;
             }
+            console.log(props);
             if (!(props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.identifier && props !== null && props !== void 0 && (_props$_loggedIn2 = props._loggedIn) !== null && _props$_loggedIn2 !== void 0 && _props$_loggedIn2.hash && props !== null && props !== void 0 && props.domainKey && !props._adminAuth && props !== null && props !== void 0 && props._setAdminAuth)) {
-              _context3.next = 7;
+              _context3.next = 8;
               break;
             }
             setDidCheckAdminAuth(true);
-            _context3.next = 5;
+            _context3.next = 6;
             return getAdminAuth(props.apiUrl, props._loggedIn.identifier, props._loggedIn.hash, props.domainKey);
-          case 5:
+          case 6:
             res = _context3.sent;
             if (res !== null && res !== void 0 && res.admin) {
               props._setAdminAuth(res.admin);
             }
-          case 7:
+          case 8:
           case "end":
             return _context3.stop();
         }

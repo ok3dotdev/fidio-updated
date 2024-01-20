@@ -28,10 +28,12 @@
         .TimeSectionValue, .TimeSectionColon {
             font-size: 11rem;
             line-height: 10rem;
+            font-weight: 600;
         }
         .TimeSectionLabel {
             font-size: 1.5rem;
             text-transform: uppercase;
+            font-weight: 600;
         }
         .TimeSection {
             width: 145px;
@@ -93,7 +95,7 @@
                 background: rgba(0, 0, 0, .75);
                 font-size: .9rem;
                 line-height: 1.25rem;
-                font-weight: 700;
+                font-weight: 400;
                 max-width: 60vw;
                 margin-bottom: 1rem;
             }
@@ -223,7 +225,7 @@
                 width: 100%;
                 .Lead {
                     white-space: break-spaces;
-                    font-weight: 600;
+                    font-weight: 700;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     display: -webkit-box;
@@ -234,6 +236,7 @@
                 .Author {
                     margin-top: .5rem;
                     font-size: .9rem;
+                    font-weight: 600;
                 }
                 .CtaHolder {
                     position: relative;
@@ -241,7 +244,7 @@
                 .CtaButton {
                     position: absolute;
                     right: 0;
-                    padding: .125rem .5rem;
+                    padding: .25rem .5rem;
                     font-size: .8rem;
                 }
             }
@@ -337,6 +340,7 @@
 .TimeSimple {
     display: flex;
     justify-content: right;
+    font-weight: 600;
     div {
         background: rgba(0, 0, 0, 0);
         padding: 0 .5rem;
@@ -352,7 +356,7 @@
 }
 
 .CtaButton {
-    border-radius: .5rem;
+    border-radius: 1rem;
 }
 
 .SliderBulletsContainer {

@@ -33,7 +33,7 @@ var Module = function Module(props) {
   _react["default"].useEffect(function () {
     var f = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var fetchBody, res;
+        var _props$handlerName, fetchBody, res;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -43,7 +43,7 @@ var Module = function Module(props) {
                 break;
               }
               console.log(props, didFetch);
-              if (!(!fetchBusy && props.handlerName && props.handlerArgs && props.domainKey && props.apiUrl && !didFetch)) {
+              if (!(!fetchBusy && props.handlerArgs && props.domainKey && props.apiUrl && !didFetch)) {
                 _context.next = 25;
                 break;
               }
@@ -55,7 +55,7 @@ var Module = function Module(props) {
               setDidFetch(true);
               fetchBody = {
                 domainKey: props.domainKey,
-                handlerName: props.handlerName,
+                handlerName: (_props$handlerName = props.handlerName) !== null && _props$handlerName !== void 0 ? _props$handlerName : null,
                 handlerArgs: props.handlerArgs
               };
               _context.next = 11;
@@ -106,7 +106,7 @@ var Module = function Module(props) {
       };
     }();
     f();
-  }, [didFetch, fetchBusy, props.handlerName, props.handlerArgs, props.domainKey]);
+  }, [didFetch, fetchBusy, props === null || props === void 0 ? void 0 : props.handlerName, props.handlerArgs, props.domainKey]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
   });

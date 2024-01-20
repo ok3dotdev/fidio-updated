@@ -4,11 +4,19 @@
         font-size: .8rem;
         margin: 0;
     }
+    button {
+        padding: .05rem 1rem;
+    }
 }
 
 .internalContainer {
     position: relative;
+    margin-right: .5rem;
+    section {
+        margin-bottom: .35rem;
+    }
 }
+
 
 .adminBannerContainer {
     position: fixed;
@@ -24,16 +32,10 @@
     list-style: none;
     padding-left: 0;
     margin: 0;
-}
-
-.bodyContainer {
-    margin-top: 1.25rem;
-    display: flex;
-    gap: .5rem;
     li {
         width: 150px;
         button {
-            padding: 0;
+            padding: .125rem .25rem;
             background: none;
             color: white;
             width: 100%;
@@ -45,6 +47,39 @@
     }
 }
 
+.bodyContainer {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: .5rem;
+}
+
 .contentBodyContainer {
     margin-top: .125rem;
+    width: 100%;
+    button {
+        border-radius: 1rem;
+    }
+}
+
+.itemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222222;
+    gap: .25rem;
+    width: 100%;
+    padding: .125rem .5rem;
+    border-radius: 1rem;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: .125rem;
+}
+
+.adminPair {
+    button {
+        border-radius: 0;
+    }
 }

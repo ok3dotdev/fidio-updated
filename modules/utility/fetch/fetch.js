@@ -34,8 +34,13 @@ var fetchPost = exports.fetchPost = /*#__PURE__*/function () {
           updatedBody = body;
           if (options.formData) {
             body.append('dborigin', (0, _app.resolveVariables)().dborigin);
+            if (body.has('domainKey')) {
+              body["delete"]('domainKey');
+            }
+            body.append('domainKey', (0, _app.resolveVariables)().domainKey);
           } else {
             updatedBody.dborigin = (0, _app.resolveVariables)().dborigin;
+            updatedBody.domainKey = (0, _app.resolveVariables)().domainKey;
           }
           console.log('Form Data', options.formData);
           payload = {

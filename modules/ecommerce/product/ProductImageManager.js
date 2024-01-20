@@ -132,8 +132,7 @@ var Module = function Module(props) {
                       case 11:
                         data = _context.sent;
                         if (data && data.product && data.product.products) {
-                          if (props.setShopProducts && props.setCombinedFeed) {
-                            props.setShopProducts(data.product.products);
+                          if (props.setCombinedFeed) {
                             props.setCombinedFeed(data.product.products);
                             if (props.setEditing) {
                               _f = data.product.products.find(function (m) {

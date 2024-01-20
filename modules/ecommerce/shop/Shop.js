@@ -15,6 +15,7 @@ var _AllInclusive = _interopRequireDefault(require("@mui/icons-material/AllInclu
 var _ConfirmationNumber = _interopRequireDefault(require("@mui/icons-material/ConfirmationNumber"));
 var _Stadium = _interopRequireDefault(require("@mui/icons-material/Stadium"));
 var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
+var _reactTextareaAutosize = _interopRequireDefault(require("react-textarea-autosize"));
 var _ecommerce = require("../../utility/ecommerce");
 var _product = require("../product");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -38,6 +39,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var defaultEditingOptionsMeta = {
+  description: '',
   productType: 'virtual',
   ticket: false,
   livestream: false,
@@ -61,7 +63,7 @@ var defaultDefinePriceCurrency = {
   symbol: '$'
 };
 var Module = function Module(props) {
-  var _selectedStyle$option, _currentDefinePriceCu, _priceInput$current, _priceInput$current2, _ref2, _currentDefinePriceCu2, _editing$meta, _currentDefinePriceCu3;
+  var _selectedStyle$option, _editing$detailmeta, _currentDefinePriceCu, _priceInput$current, _priceInput$current2, _ref2, _currentDefinePriceCu2, _editing$meta, _currentDefinePriceCu3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     fetchBusy = _React$useState2[0],
@@ -98,30 +100,27 @@ var Module = function Module(props) {
     _React$useState18 = _slicedToArray(_React$useState17, 2),
     shop = _React$useState18[0],
     setShop = _React$useState18[1];
-  var _React$useState19 = _react["default"].useState(null),
+  var _React$useState19 = _react["default"].useState({}),
     _React$useState20 = _slicedToArray(_React$useState19, 2),
-    shopProducts = _React$useState20[0],
-    setShopProducts = _React$useState20[1];
-  var _React$useState21 = _react["default"].useState({}),
+    pageError = _React$useState20[0],
+    setPageError = _React$useState20[1];
+  var _React$useState21 = _react["default"].useState(null),
     _React$useState22 = _slicedToArray(_React$useState21, 2),
-    pageError = _React$useState22[0],
-    setPageError = _React$useState22[1];
+    tempImagesForCurrentlyEditing = _React$useState22[0],
+    setTempImagesForCurrentlyEditing = _React$useState22[1];
   var _React$useState23 = _react["default"].useState(null),
     _React$useState24 = _slicedToArray(_React$useState23, 2),
-    tempImagesForCurrentlyEditing = _React$useState24[0],
-    setTempImagesForCurrentlyEditing = _React$useState24[1];
-  var _React$useState25 = _react["default"].useState(null),
+    currentLineupEditing = _React$useState24[0],
+    setCurrentLineupEditing = _React$useState24[1];
+  var _React$useState25 = _react["default"].useState(false),
     _React$useState26 = _slicedToArray(_React$useState25, 2),
-    currentLineupEditing = _React$useState26[0],
-    setCurrentLineupEditing = _React$useState26[1];
-  var _React$useState27 = _react["default"].useState(false),
+    isSettingCurrency = _React$useState26[0],
+    setIsSettingCurrency = _React$useState26[1];
+  var _React$useState27 = _react["default"].useState(defaultDefinePriceCurrency),
     _React$useState28 = _slicedToArray(_React$useState27, 2),
-    isSettingCurrency = _React$useState28[0],
-    setIsSettingCurrency = _React$useState28[1];
-  var _React$useState29 = _react["default"].useState(defaultDefinePriceCurrency),
-    _React$useState30 = _slicedToArray(_React$useState29, 2),
-    currentDefinePriceCurrency = _React$useState30[0],
-    setCurrentDefinePriceCurrency = _React$useState30[1];
+    currentDefinePriceCurrency = _React$useState28[0],
+    setCurrentDefinePriceCurrency = _React$useState28[1];
+  var descriptionInputRef = _react["default"].useRef();
   var styleInput = _react["default"].useRef();
   var optionInput = _react["default"].useRef();
   var quantityInput = _react["default"].useRef();
@@ -147,9 +146,6 @@ var Module = function Module(props) {
       }
       if (!shop || !s || s && !s.id) {
         setShop(s);
-      }
-      if (!shopProducts) {
-        setShopProducts(f);
       }
       if (combinedFeed.length === 0 && f.length !== 0) {
         setCombinedFeed(f);
@@ -230,9 +226,17 @@ var Module = function Module(props) {
         tempMeta.productType = 'virtual';
         setEditingOptionsMeta(tempMeta);
         setTimeout(function () {
+          var _window;
           styleInput.current.value = style.style;
           if (style.option[0] && Object.hasOwnProperty.call(style.option[0], 'option')) {
             optionInput.current.value = style.option[0].option;
+          }
+          var currentProduct = document.getElementById(product.id);
+          if (currentProduct !== null && currentProduct !== void 0 && currentProduct.offsetTop && (_window = window) !== null && _window !== void 0 && _window.scrollTo && props._isMobile) {
+            window.scrollTo({
+              behavior: 'smooth',
+              top: currentProduct.offsetTop - 5
+            });
           }
         }, 200);
       }
@@ -445,10 +449,8 @@ var Module = function Module(props) {
         if (Object.prototype.hasOwnProperty.call(e.currentTarget, 'checked')) {
           var temp = _objectSpread({}, editingOptionsMeta);
           temp[e.currentTarget.getAttribute('option')] = e.currentTarget.checked;
+          console.log(temp);
           setEditingOptionsMeta(temp);
-          setEditingOptionsMeta(function (prev) {
-            return _objectSpread({}, prev);
-          });
         } else if (e.currentTarget.getAttribute('option') === 'livestreamDef' || e.currentTarget.getAttribute('option') === 'eventDateDef') {
           var _temp = _objectSpread({}, editingOptionsMeta);
           if (e.currentTarget.getAttribute('option2')) {
@@ -543,6 +545,7 @@ var Module = function Module(props) {
     }
   });
   var publishProduct = function publishProduct(modif, existing) {
+    var dontSetProducts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     try {
       var fn = /*#__PURE__*/function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -551,7 +554,7 @@ var Module = function Module(props) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
                 if (fetchBusy) {
-                  _context.next = 27;
+                  _context.next = 30;
                   break;
                 }
                 setPageError({});
@@ -600,15 +603,20 @@ var Module = function Module(props) {
                 if (data) {
                   if (data.product) {
                     if (data.product.products) {
-                      setShopProducts(data.product.products);
-                      setCombinedFeed(data.product.products);
-                      setCurrentDefinePriceCurrency(defaultDefinePriceCurrency);
-                      setEditing({});
+                      if (!dontSetProducts) {
+                        // We use this if we run publishProduct then another request because some requests dont update everything publishProduct does, for example upload lineup images. Upload lineup images will return a new combined feed after so we dont need to run this here as it will interrupt the view and functions of other queued requests
+                        setCombinedFeed(data.product.products);
+                        setCurrentDefinePriceCurrency(defaultDefinePriceCurrency);
+                        setEditing({});
+                      }
                       setFetchBusy(false);
                     }
                   }
                 }
-              case 27:
+                return _context.abrupt("return", data);
+              case 30:
+                return _context.abrupt("return", null);
+              case 31:
               case "end":
                 return _context.stop();
             }
@@ -618,9 +626,10 @@ var Module = function Module(props) {
           return _ref.apply(this, arguments);
         };
       }();
-      fn();
+      return fn();
     } catch (err) {
       // fail silently
+      return null;
     }
   };
   var handlePublishProduct = _react["default"].useCallback(function (e) {
@@ -679,6 +688,23 @@ var Module = function Module(props) {
       }
     }
   });
+  var handleUpdateProductDescription = _react["default"].useCallback(function (e) {
+    var value = e.currentTarget.value;
+    console.log(value);
+    if (editing) {
+      var temp = _objectSpread({}, editingOptionsMeta);
+      console.log(temp, editingOptionsMeta, editing);
+      if (temp) {
+        temp.description = value;
+        var newEditing = _objectSpread({}, editing);
+        newEditing.detailmeta = temp;
+        setEditing(newEditing);
+        if (temp) {
+          setEditingOptionsMeta(temp);
+        }
+      }
+    }
+  });
 
   // list all shop items
   // allow for creation of shop item with
@@ -705,7 +731,7 @@ var Module = function Module(props) {
   console.log(adminAuth, shop);
   var noShop = shop && shop.status && shop.status === 'nonexistent';
   console.log(noShop, editing, tempImagesForCurrentlyEditing, currentDefinePriceCurrency);
-  console.log(editingOptionsMeta, currentLineupEditing, selectedStyle);
+  console.log(editingOptionsMeta, currentLineupEditing, selectedStyle, combinedFeed);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -724,7 +750,7 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("button", {
     disabled: !(0, _util.isObjectEmpty)(editing),
     onClick: createNewProduct
-  }, "Create New"), editing && !(0, _util.isObjectEmpty)(editing) ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Create Product"), editing && !(0, _util.isObjectEmpty)(editing) ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleCancelProduct,
     modif: "save"
   }, editing["new"] ? 'Abandon' : 'Cancel') : null)) : null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -742,12 +768,7 @@ var Module = function Module(props) {
     passTempImages: passTempImages
   }))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ProductImageManagerModule["default"].productMetaContainer, " Product_meta_container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentEditingProductCommandBar, " ").concat(_ProductImageManagerModule["default"].commandBar)
-  }, /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleCancelProduct,
-    modif: "save"
-  }, "Abandon"))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Name of Product",
     placement: "right"
   }, /*#__PURE__*/_react["default"].createElement("input", {
@@ -763,6 +784,22 @@ var Module = function Module(props) {
   })), pageError.location && pageError.location === 'product_name' ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "error"
   }, pageError.message) : null), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Product Description",
+    placement: "left"
+  }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
+    className: "".concat(_ProductImageManagerModule["default"].textArea),
+    name: "description",
+    placeholder: "Description",
+    defaultValue: editing === null || editing === void 0 || (_editing$detailmeta = editing.detailmeta) === null || _editing$detailmeta === void 0 ? void 0 : _editing$detailmeta.description,
+    onChange: handleUpdateProductDescription,
+    ref: descriptionInputRef
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex",
+    style: {
+      flexWrap: 'wrap',
+      gap: '.05rem 0.2rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "If your product has multiple styles, set them here. A style should be an alternate design or color for a single product that you want to track as single product. For example you might have white, black, grey for t-shirts as individual styles.",
     placement: "right"
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -775,7 +812,7 @@ var Module = function Module(props) {
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, "Style:"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Style"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "dropdown_input"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
@@ -807,7 +844,7 @@ var Module = function Module(props) {
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, "Option:"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Option"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "dropdown_input"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
@@ -829,7 +866,7 @@ var Module = function Module(props) {
       className: "option_option",
       key: i
     }, option.option);
-  }))))) : null, /*#__PURE__*/_react["default"].createElement("div", {
+  }))))) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
@@ -897,7 +934,7 @@ var Module = function Module(props) {
       width: '100%',
       display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
     },
-    defaultValue: "1",
+    defaultValue: "10",
     ref: quantityInput,
     onChange: setCurrentQuantity
   }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
@@ -919,27 +956,17 @@ var Module = function Module(props) {
     onClick: addStyle
   }, "Add Style"), /*#__PURE__*/_react["default"].createElement("button", {
     onClick: addOption
-  }, "Add Option")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center',
-      height: '18px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, "Add Option"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Set the product type",
-    placement: "left"
+    placement: "right"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600,
-      paddingTop: '.2rem'
-    }
-  }, "Type: ")), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2",
     style: {
       fontSize: '.8rem',
       alignItems: 'center'
     }
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    className: "flex"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "radio",
     id: "virtual",
@@ -949,7 +976,9 @@ var Module = function Module(props) {
     onChange: onProductTypeChange
   }), /*#__PURE__*/_react["default"].createElement("label", {
     "for": "virtual"
-  }, "Virtual"), /*#__PURE__*/_react["default"].createElement("input", {
+  }, "Virtual")), /*#__PURE__*/_react["default"].createElement("span", {
+    className: "flex"
+  }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "radio",
     id: "physical",
     name: "fav_language",
@@ -957,7 +986,7 @@ var Module = function Module(props) {
     onChange: onProductTypeChange
   }), /*#__PURE__*/_react["default"].createElement("label", {
     "for": "physical"
-  }, "Physical"))), editingOptionsMeta && editingOptionsMeta.productType === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Physical"))))), editingOptionsMeta && editingOptionsMeta.productType === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 promptContainer",
     style: {
       alignItems: 'center',
@@ -1026,18 +1055,20 @@ var Module = function Module(props) {
     defaultChecked: editingOptionsMeta.livestream,
     onChange: setOptionsMetaData,
     option: "livestream"
-  })), editingOptionsMeta.livestream ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      paddingBottom: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  })), editingOptionsMeta.livestream ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates. Time must be input in 24 H military time. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    style: {
+      fontSize: '.8rem',
+      fontWeight: '600',
+      whiteSpace: 'nowrap'
+    }
+  }, "Auth Tags"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',
@@ -1070,18 +1101,20 @@ var Module = function Module(props) {
       className: "tagItem",
       key: i
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates. Time must be input in 24 H military time. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    style: {
+      fontSize: '.8rem',
+      fontWeight: '600',
+      whiteSpace: 'nowrap'
+    }
+  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',
@@ -1276,11 +1309,11 @@ var Module = function Module(props) {
       setEditingOptionsMeta: setEditingOptionsMeta,
       setOptionsMetaData: setOptionsMetaData,
       handlePublishProduct: handlePublishProduct,
+      publishProduct: publishProduct,
       handleCancelProduct: handleCancelProduct,
       nameRef: nameRef,
       setEditingSelectedStyle: setEditingSelectedStyle,
       setEditingSelectedOption: setEditingSelectedOption,
-      setShopProducts: setShopProducts,
       setCombinedFeed: setCombinedFeed,
       setCurrentLineupEditing: setCurrentLineupEditing,
       currentLineupEditing: currentLineupEditing,

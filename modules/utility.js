@@ -178,12 +178,15 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
             body.regionsReq = true;
           }
           if (!(doPreReq === true)) {
-            _context.next = 14;
+            _context.next = 15;
             break;
           }
-          _context.next = 12;
+          if (variables.domainKey) {
+            body.domainKey = variables.domainKey;
+          }
+          _context.next = 13;
           return (0, _fetch.fetchPost)(variables.apiUrl + '/m/pagedefaults', null, null, body);
-        case 12:
+        case 13:
           defaults = _context.sent;
           if (defaults && defaults.data) {
             newProps = Object.keys(defaults.data).reduce(function (acc, key) {
@@ -191,10 +194,10 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
               return acc;
             }, newProps);
           }
-        case 14:
+        case 15:
           newProps._loggedIn = (0, _onboarding.checkSignedIn)();
           return _context.abrupt("return", newProps);
-        case 16:
+        case 17:
         case "end":
           return _context.stop();
       }
@@ -285,12 +288,15 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
             body.params[p[0]] = p[1];
           });
           if (!doPreReq) {
-            _context2.next = 19;
+            _context2.next = 20;
             break;
           }
-          _context2.next = 17;
+          if (variables.domainKey) {
+            body.domainKey = variables.domainKey;
+          }
+          _context2.next = 18;
           return (0, _fetch.fetchPost)(variables.apiUrl + '/m/pagedefaults', null, null, body);
-        case 17:
+        case 18:
           defaults = _context2.sent;
           if (defaults && defaults.data) {
             data.props = Object.keys(defaults.data).reduce(function (acc, key) {
@@ -298,7 +304,7 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
               return acc;
             }, data.props);
           }
-        case 19:
+        case 20:
           if (context && context.query) {
             data.props.params = context.query;
           }
@@ -308,7 +314,7 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
             }
           }
           return _context2.abrupt("return", data);
-        case 22:
+        case 23:
         case "end":
           return _context2.stop();
       }

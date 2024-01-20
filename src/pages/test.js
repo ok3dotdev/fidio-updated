@@ -11,7 +11,11 @@ export const page = props => {
     const useAppConfigLayout = true
 	return (
         <React.Fragment>
-            <PageContainer { ...props } pageName={pageName} useMenu={useMenu} useAppConfigLayout={useAppConfigLayout} />
+            {
+                props.dev
+                    ? <PageContainer { ...props } pageName={pageName} useMenu={useMenu} useAppConfigLayout={useAppConfigLayout} />
+                    : null
+            }
         </React.Fragment>
 	)
 }
