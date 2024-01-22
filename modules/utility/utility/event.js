@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fireGlobalEvent = void 0;
+exports.selectThisText = exports.fireGlobalEvent = void 0;
 var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emitter) {
   if (e && emitter) {
     var _e$currentTarget;
@@ -39,6 +39,20 @@ var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emit
           action: action,
           e: e
         });
+      }
+    }
+  }
+};
+var selectThisText = exports.selectThisText = function selectThisText(e) {
+  var _e$currentTarget8;
+  if (e !== null && e !== void 0 && (_e$currentTarget8 = e.currentTarget) !== null && _e$currentTarget8 !== void 0 && _e$currentTarget8.getAttribute) {
+    var _navigator;
+    var select = e.currentTarget.getAttribute('selectValue');
+    if (select && (_navigator = navigator) !== null && _navigator !== void 0 && (_navigator = _navigator.clipboard) !== null && _navigator !== void 0 && _navigator.writeText) {
+      var _window;
+      navigator.clipboard.writeText(select);
+      if ((_window = window) !== null && _window !== void 0 && _window.getSelection) {
+        window.getSelection().selectAllChildren(e.currentTarget);
       }
     }
   }

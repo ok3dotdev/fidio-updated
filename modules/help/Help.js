@@ -130,7 +130,8 @@ var Module = function Module(props) {
     }
   });
   var setPinned = function setPinned() {
-    if (queryRef !== null && queryRef !== void 0 && queryRef.current) {
+    var _props$helpIndex;
+    if (queryRef !== null && queryRef !== void 0 && queryRef.current && props !== null && props !== void 0 && (_props$helpIndex = props.helpIndex) !== null && _props$helpIndex !== void 0 && _props$helpIndex.filter) {
       var value = queryRef.current.value;
       if (!value || value === '') {
         var pinned = props.helpIndex.filter(function (m) {

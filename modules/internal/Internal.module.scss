@@ -1,0 +1,22 @@
+.devContainer {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    .devInternalContainer {
+        border: 1px solid grey;
+        padding: .5rem;
+        border-radius: .5rem;
+        backdrop-filter: blur(10px);
+        width: 50vw;
+    }
+}
+
+@media (max-width: 640px) {
+    .devInternalContainer {
+        max-width: 100vw;
+    }
+}
+.devLogContainer {
+    background: black;
+    font-size: .75rem;
+}

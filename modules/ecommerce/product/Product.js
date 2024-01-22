@@ -726,7 +726,7 @@ var Module = function Module(props) {
       fontWeight: '600',
       whiteSpace: 'nowrap'
     }
-  }, "Auth Tags"), /*#__PURE__*/_react["default"].createElement("input", {
+  }, "Auth Keys"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',

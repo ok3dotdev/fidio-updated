@@ -596,21 +596,19 @@ var Module = function Module(props) {
   }, cartMessages.map(function (m) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       style: _defineProperty({
-        background: '#4c4c4c',
+        background: 'rgba(34, 34, 34, 1)',
+        borderRadius: '.5rem',
         padding: '.25rem',
         width: '-webkit-fill-available',
         textAlign: 'center'
       }, "width", '100%')
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m.message), m.href ? /*#__PURE__*/_react["default"].createElement("span", null, "\xA0", /*#__PURE__*/_react["default"].createElement("span", {
-      style: {
-        background: '#eaeaea',
-        color: '#000000',
-        padding: '.125rem',
-        borderRadius: '.125rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("a", {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, m.message), m.href ? /*#__PURE__*/_react["default"].createElement("span", null, "\xA0", /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("a", {
       href: m.href
-    }, /*#__PURE__*/_react["default"].createElement("button", null, m.hrefCta)))) : null);
+    }, /*#__PURE__*/_react["default"].createElement("button", {
+      style: {
+        padding: '.25rem 1rem'
+      }
+    }, m.hrefCta)))) : null);
   })) : null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Credit_Card_Module_Container ".concat(validCc ? 'slide_hide slide_hide_do_full_show' : 'slide_hide slide_hide_visible', " ").concat(props.forceShowCc || props._isMobile ? 'slide_hide_do_force_show' : ''),
     style: {

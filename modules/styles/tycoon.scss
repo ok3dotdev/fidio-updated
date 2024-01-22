@@ -753,6 +753,20 @@ button:not(:disabled):active {
     background: rgb(98, 98, 98);
 }
 
+.short_bottom_border {
+    position: relative;
+}
+
+.short_bottom_border:not(:last-child):before {
+    content : "";
+    position: absolute;
+    left    : 25%;
+    bottom  : 0;
+    height  : 1px;
+    width   : 50%;
+    border-bottom: 1px solid grey;
+}
+
 @import "./video/videoPlayer.scss";
 @import "./video/videojs.scss";
 @import "./video/videoPlayerTycoon.scss";
