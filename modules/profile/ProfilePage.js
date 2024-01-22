@@ -62,7 +62,6 @@ var Module = function Module(props) {
       setComponentDidMount(true);
     }
   }, [componentDidMount]);
-  var styleSafety = props.StyleSafety;
   _react["default"].useEffect(function () {
     var _props$profileData, _props$profileData2;
     if (props !== null && props !== void 0 && (_props$profileData = props.profileData) !== null && _props$profileData !== void 0 && _props$profileData.currentLive) {
@@ -113,11 +112,7 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: toggleAdminPanel
   }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, props.profileData && props.profileData.user && !props.hideDefault ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "",
-    style: {
-      padding: styleSafety ? styleSafety.padding : 0,
-      margin: styleSafety ? styleSafety.margin : 0
-    }
+    className: "ProfilePage_UserContainer"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "PagePadding PagePaddingTop ProfilePage_MetaContainer"
   }, /*#__PURE__*/_react["default"].createElement("img", {

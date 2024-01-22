@@ -6,6 +6,7 @@
         border: 1px solid grey;
         padding: .5rem;
         border-radius: .5rem;
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         width: 50vw;
     }

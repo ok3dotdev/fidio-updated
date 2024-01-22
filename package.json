@@ -36,5 +36,8 @@
     "universal-cookie": "^4.0.4",
     "uuid": "^8.3.2",
     "video.js": "^8.3.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^14.1.0"
   }
 }

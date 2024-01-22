@@ -14,6 +14,7 @@
     height: fit-content;
     background: rgba(0, 0, 0, .5);
     font-size: 1.25rem;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     max-height: 90vh;
     overflow: auto;
