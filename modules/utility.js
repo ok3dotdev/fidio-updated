@@ -17,7 +17,6 @@ var _index3 = require("./payment/index");
 var _manager = require("./streaming/manager");
 var _feature = require("./search/feature");
 var _wideFeature = require("./search/wideFeature");
-var _index4 = require("./video/player/index");
 var _indexing = require("./indexing");
 var _router = require("next/router");
 var _fetch = require("./utility/fetch");
@@ -60,8 +59,6 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_manager.Manager, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Onboarding_SignIn_Username':
         return /*#__PURE__*/_react["default"].createElement(_index.Username, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
-      case 'Video_Test_Live_Player':
-        return /*#__PURE__*/_react["default"].createElement(_index4.LivePlayer, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Feature':
         return /*#__PURE__*/_react["default"].createElement(_feature.Feature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'WideFeature':

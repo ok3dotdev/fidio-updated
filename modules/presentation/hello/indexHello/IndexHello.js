@@ -186,6 +186,7 @@ var Module = function Module(props) {
     infinite: true,
     speed: 500,
     swipeToSlide: true,
+    slidesToScroll: 1,
     // variableWidth: true,
     responsive: [{
       breakpoint: 4000,

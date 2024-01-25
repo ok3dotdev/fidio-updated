@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-fast-marquee": "^1.6.2",
     "react-responsive-carousel": "^3.2.23",
+    "react-slick": "^0.30.0",
     "react-textarea-autosize": "^8.5.3",
     "sass": "^1.62.1",
     "socket.io-client": "^2.4.0",
