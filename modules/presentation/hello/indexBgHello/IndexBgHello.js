@@ -195,7 +195,8 @@ var Module = function Module(props) {
     infinite: true,
     speed: 500,
     swipeToSlide: true,
-    touchThreshold: 60
+    touchThreshold: 60,
+    arrows: false
   };
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);

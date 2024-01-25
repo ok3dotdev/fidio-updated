@@ -183,52 +183,47 @@ var Module = function Module(props) {
     return [{}, {}, {}, {}];
   }, [resolvedUseItems, useHandler, props === null || props === void 0 ? void 0 : props.items]);
   var useSettings = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     swipeToSlide: true,
     slidesToScroll: 1,
+    arrows: false,
     // variableWidth: true,
     responsive: [{
       breakpoint: 4000,
       settings: {
         slidesToShow: 6,
-        touchThreshold: 120,
-        infinite: true
+        touchThreshold: 120
       }
     }, {
       breakpoint: 1920,
       settings: {
         slidesToShow: 5,
-        touchThreshold: 100,
-        infinite: true
+        touchThreshold: 100
       }
     }, {
       breakpoint: 1680,
       settings: {
         slidesToShow: 4,
-        touchThreshold: 80,
-        infinite: true
+        touchThreshold: 80
       }
     }, {
       breakpoint: 1280,
       settings: {
         slidesToShow: 3,
-        touchThreshold: 60,
-        infinite: true
+        touchThreshold: 60
       }
     }, {
       breakpoint: 900,
       settings: {
         slidesToShow: 2,
-        touchThreshold: 40,
-        infinite: true
+        touchThreshold: 40
       }
     }, {
       breakpoint: 570,
       settings: {
         slidesToShow: 1,
-        touchThreshold: 20,
-        infinite: true
+        touchThreshold: 20
       }
     }]
   };
