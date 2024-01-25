@@ -244,3 +244,14 @@ const predefined = {
 # Use redirectOnAuth to redirect platform on login
 
 <SignInPage {...props} redirectOnAuth={'/'}>
+
+## Menu Configuration
+
+# To disable a menu on any page make sure to add to its "props" object in the app.config.js the following
+useMenu: false
+
+# Similarily to disable the application default layout add the following to a pages "props" object in the app.config.js:
+useAppConfigLayout: false
+
+
+
