@@ -6,7 +6,7 @@ import { PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 
-const pageName = 'r';
+const pageName = 'e'
 
 export const page = props => {
     const useMenu = true
@@ -19,7 +19,7 @@ export const page = props => {
 }
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
-};
+	return await getServerSidePropsDefault(context, pageDefaults[pageName])
+}
 
-export default page;
+export default page

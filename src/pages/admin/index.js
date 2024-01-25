@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
+<<<<<<< HEAD
 import React from 'react';
 import { useRouter } from 'next/router';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
@@ -13,9 +14,16 @@ import {
 import { isObjectEmpty } from '/modules/util';
 import { Admin } from '/modules/admin';
 import { SignIn } from '/modules/onboarding/signin';
+=======
+import React from 'react'
+import { pageDefaults } from '/app.config'
+import { getServerSidePropsDefault } from '/modules/utility.js'
+import { Admin } from '/modules/admin'
+>>>>>>> pull-branch
 
 const pageName = 'admin';
 
+<<<<<<< HEAD
 export const page = (props) => {
   const router = useRouter();
   const { query, asPath } = router;
@@ -67,6 +75,17 @@ export const page = (props) => {
     </React.Fragment>
   );
 };
+=======
+export const page = props => {
+	return (
+        <React.Fragment>
+            <div className={`${pageName}_Body`}>
+                <Admin { ...props }></Admin>
+            </div>
+        </React.Fragment>
+	)
+}
+>>>>>>> pull-branch
 
 export const getServerSideProps = async (context) => {
   return await getServerSidePropsDefault(context, pageDefaults[pageName]);

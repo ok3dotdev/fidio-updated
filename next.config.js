@@ -1,6 +1,9 @@
 const path = require('path');
 
-const website = 'http://localhost:3020/'; // You must set this line to your own website
+const website = 'http://localhost:3020'; // You must set this line to your own website
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 /** @type {import('next').NextConfig} */
 
@@ -42,4 +45,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig)

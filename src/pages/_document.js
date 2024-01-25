@@ -37,20 +37,14 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp'
             rel='stylesheet'
           ></link>
-          <link rel='preconnect' href='https://fonts.googleapis.com'></link>
-          <link
-            rel='preconnect'
-            href='https://fonts.gstatic.com'
-            crossOrigin=''
-          ></link>
-          <link
-            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
-            rel='stylesheet'
-          ></link>
-          <Script src='//js.paystack.co/v1/inline.js'></Script>
+          <script src='//js.paystack.co/v1/inline.js'></script>
         </Head>
         <body>
-          <div version='0.3.0' style={{ display: 'none' }}></div>
+          <div
+            version='0.3.39'
+            business='Tycoon Systems Corp.'
+            style={{ display: 'none' }}
+          ></div>
           <Main />
           <NextScript />
         </body>
