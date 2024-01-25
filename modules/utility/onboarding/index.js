@@ -39,6 +39,12 @@ Object.defineProperty(exports, "logout", {
     return _SignIn.logout;
   }
 });
+Object.defineProperty(exports, "requestSettingsUpdate", {
+  enumerable: true,
+  get: function get() {
+    return _SignIn.requestSettingsUpdate;
+  }
+});
 Object.defineProperty(exports, "updateLocalLoginSession", {
   enumerable: true,
   get: function get() {

@@ -1,43 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React from 'react'
-import { useRouter } from 'next/router'
-import resolveConfig from '/app.config'
-import { basicError, generateComponent, handlePropsPriority, resolvePage, getServerSidePropsDefault, resolveDefaults } from '/modules/utility.js'
-import { isObjectEmpty } from '/modules/util'
+import { PageContainer } from '/modules/internal'
+import { getServerSidePropsDefault } from '/modules/utility.js'
+
+const pageName = 'test'
 
 export const page = props => {
-    const router = useRouter()
-    const { query, asPath } = router
-    const [ fetching, setFetching ] = React.useState(false)
-    const [ mergeProps, setMergeProps ] = React.useState({})
-    let resolvedDefinition = props.resolvedDefinition
-    let resolvedPage = resolvePage(resolveConfig(props._configVariables, props), props.path)
-    resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
-
-    React.useEffect(() => {
-        const getDefaults = async () => {
-            const defaults = await resolveDefaults(resolvedPage.url, props, props._configVariables, query, asPath, setFetching)
-            if (!isObjectEmpty(defaults)) {
-                const newProps = Object.assign({...props}, defaults)
-                setMergeProps(newProps)
-            }
-        }
-        if (resolvedPage && resolvedPage.url && !fetching && isObjectEmpty(mergeProps)) {
-            getDefaults()
-        }
-    }, [ fetching, mergeProps, resolvedPage ])
-
-    const useProps = handlePropsPriority(mergeProps, props)
-    resolvedPage = resolvePage(resolveConfig(props._configVariables, useProps), useProps.path)
-    resolvedDefinition = resolvedPage && resolvedPage.data // Access the `data` property
-    const components = generateComponent(resolvedDefinition)
 	return (
         <React.Fragment>
             {
                 props.dev
-                    ? <div className={`${props.pageClass ?? ''}`}>{components}</div>
-                    : <div></div>
+                    ? <PageContainer { ...props } pageName={pageName} />
+                    : null
             }
         </React.Fragment>
 	)

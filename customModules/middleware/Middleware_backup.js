@@ -8,6 +8,8 @@ const Middleware = pageProps => {
 
   	return (
 		<div className='Middleware_Container'>
+			{/* Your Platform Versioning Here */}
+			<div version='0.0.0' business='' style={{ display: 'none' }} domain={pageProps?.domainUrl ?? ''}></div>
 			{/* NECESSARY IMPORT. DO NOT REMOVE ATTRIBUTES FROM THIS COMPONENT OR ELSE APP WILL FAIL */}
     		<pageProps._MasterPageComponent {...pageProps} passProps={passProps} />
 		</div>
