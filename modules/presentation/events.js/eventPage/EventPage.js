@@ -258,7 +258,7 @@ var Module = function Module(props) {
     className: "".concat(_PresentationModule["default"].Description, " ").concat(moduleName, "_Description ").concat(props.descriptionClassName)
   }, (_m$description = m === null || m === void 0 ? void 0 : m.description) !== null && _m$description !== void 0 ? _m$description : '') : null, m.showSimpleDate && useCountdown ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].TimeSimpleInline, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : '')) : null, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$detailmeta = m.detailmeta) !== null && _m$detailmeta !== void 0 && _m$detailmeta.lineup && m.detailmeta.lineup.map ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : '')) : null, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$detailmeta = m.detailmeta) !== null && _m$detailmeta !== void 0 && _m$detailmeta.lineup && m.detailmeta.lineup.map && m.detailmeta.lineup.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginTop: '.5rem'
     }

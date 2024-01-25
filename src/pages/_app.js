@@ -4,7 +4,7 @@ import React from 'react'
 import '../styles/globals.scss' // Place style import declarations in /styles/styles.scss and actual style css files under /styles/appstyles/
 import Head from 'next/head'
 import { Internal } from '/modules/internal/'
-import { GoogleGsiClient, GoogleSignInRegister } from '../modules/internal/localImports'
+import { GoogleGsiClient, GoogleSignInRegister } from '/modules/internal/localImports'
 
 function MyApp({ Component, pageProps }) {
   	return (

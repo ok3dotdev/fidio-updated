@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: website,
+  // assetPrefix: website,
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')

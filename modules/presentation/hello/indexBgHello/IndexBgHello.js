@@ -224,11 +224,11 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].SliderBulletsContainer, " ").concat(moduleName, "_SliderBulletsContainer ").concat(props.sliderBulletsContainerClassName)
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    "class": "".concat(_PresentationModule["default"].SliderBullets, " glide__bullets"),
+    className: "".concat(_PresentationModule["default"].SliderBullets, " glide__bullets"),
     "data-glide-el": "controls[nav]"
   }, props.items && props.items.map && props.items.length > 1 ? props.items.map(function (m, i) {
     return /*#__PURE__*/_react["default"].createElement("button", {
-      "class": "".concat(_PresentationModule["default"].SliderBullet, " glide__bullet"),
+      className: "".concat(_PresentationModule["default"].SliderBullet, " glide__bullet"),
       "data-glide-dir": "=".concat(i),
       key: i
     });

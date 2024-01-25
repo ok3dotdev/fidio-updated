@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { GlideScript, GoogleFontsLink, PaystackScript } from '../modules/internal/localImports'
+import { GlideScript, GoogleFontsLink, PaystackScript } from '/modules/internal/localImports'
 
 class MyDocument extends Document {
 	render() {
@@ -11,7 +11,7 @@ class MyDocument extends Document {
 					{ PaystackScript }
 				</Head>
 				<body>
-					<div version='0.3.40' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+					<div version='0.3.44' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
 					<Main />
 					<NextScript />
 				</body>
