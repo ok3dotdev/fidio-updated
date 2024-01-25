@@ -11,16 +11,13 @@ const pageName = 'privacy'
 
 export const page = props => {
 	return (
-        <React.Fragment>
-            <PageContainer { ...props } pageName={pageName} />
             <HomeLayout
-              useProps={useProps}
+              useProps={props}
               pageName={pageName}
               pageData={privacyPolicyPageData}
             >
-              {components}
+              <PageContainer { ...props } pageName={pageName} />
             </HomeLayout>
-        </React.Fragment>
 	)
 }
 
