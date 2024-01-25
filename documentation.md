@@ -252,6 +252,3 @@ useMenu: false
 
 # Similarily to disable the application default layout add the following to a pages "props" object in the app.config.js:
 useAppConfigLayout: false
-
-
-
