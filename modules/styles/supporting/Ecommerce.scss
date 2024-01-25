@@ -95,14 +95,19 @@
 
 .Ecommerce_Title,
 .Ecommerce_Price {
-    text-align: right;
+    text-align: left;
     font-weight: 600;
     margin: .25rem 0;
 }
 
+.Ecommerce_Price {
+    text-align: right;
+}
+
 .Ecommerce_Cart_Side_Meta_Container,
 .Ecommerce_Cart_Price_Container {
-    width: 115px;
+    width: fit-content;
+    max-width: 75px;
 }
 
 .Ecommerce_Cart_Container button {
