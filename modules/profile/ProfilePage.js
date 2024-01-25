@@ -130,6 +130,6 @@ var Module = function Module(props) {
     profile: true
   }))) : /*#__PURE__*/_react["default"].createElement("div", {
     className: "PagePadding"
-  }, "No User here :/") : null, props.childrenAfter);
+  }, "No User here") : null, props.childrenAfter);
 };
 var _default = exports["default"] = Module;

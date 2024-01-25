@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.basicError = void 0;
 exports.generateComponent = generateComponent;
-exports.resolvePage = exports.resolveDefaults = exports.resolveComponent = exports.handlePropsPriority = exports.getServerSidePropsDefault = void 0;
+exports.resolvePageName = exports.resolvePage = exports.resolveDefaults = exports.resolveComponent = exports.handlePropsPriority = exports.getServerSidePropsDefault = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _app = _interopRequireWildcard(require("/app.config"));
 var _watch = require("./streaming/watch");
@@ -109,6 +109,14 @@ var resolvePage = exports.resolvePage = function resolvePage(def, path) {
     return match;
   }
   return null;
+};
+var resolvePageName = exports.resolvePageName = function resolvePageName(path) {
+  switch (path) {
+    case '/':
+      return 'Index';
+    default:
+      return path !== null && path !== void 0 && path.replace ? path.replace('/', '') : '';
+  }
 };
 function generateComponent(json) {
   if (json) {
