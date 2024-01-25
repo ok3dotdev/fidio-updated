@@ -233,6 +233,10 @@ var Internal = function Internal(usePageProps) {
       return _ref3.apply(this, arguments);
     };
   }());
+
+  /**
+   * Socket Initialized Here
+   */
   var _React$useState25 = _react["default"].useState(null),
     _React$useState26 = _slicedToArray(_React$useState25, 2),
     _socket = _React$useState26[0],
