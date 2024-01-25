@@ -10,6 +10,7 @@ var _router = require("next/router");
 var _streaming = require("../../utility/streaming");
 var _SignIn = require("../../utility/onboarding/SignIn");
 var _ecommerce = require("../../utility/ecommerce");
+var _event = require("../../utility/utility/event");
 var _uuid = require("uuid");
 var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
 var _ManagerModule = _interopRequireDefault(require("./Manager.module.scss"));
@@ -761,7 +762,9 @@ var Module = function Module(props) {
       padding: '0 .125rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("a", {
-    href: "".concat(props.devLocal ? props.devAddress : 'https://' + props.domainUrl, "/w?u=").concat(props._loggedIn.username)
+    href: "".concat(props.devLocal ? props.devAddress : 'https://' + props.domainUrl, "/w?u=").concat(props._loggedIn.username),
+    onClick: _event.selectThisText,
+    selectValue: "".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)
   }, "".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)))), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontSize: '.85rem',
@@ -774,7 +777,9 @@ var Module = function Module(props) {
       fontWeight: 400,
       background: 'black',
       padding: '0 .125rem'
-    }
+    },
+    onClick: _event.selectThisText,
+    selectValue: streamTo
   }, streamTo)), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontSize: '.85rem',
@@ -787,7 +792,9 @@ var Module = function Module(props) {
       fontWeight: 400,
       background: 'black',
       padding: '0 .125rem'
-    }
+    },
+    onClick: _event.selectThisText,
+    selectValue: streamKey
   }, streamKey))) : null, currentlyStreaming ? !askEndStream ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !updatingStreamConfig ? /*#__PURE__*/_react["default"].createElement("button", {
     style: {
       width: '100%',

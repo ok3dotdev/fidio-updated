@@ -166,6 +166,7 @@ var Module = function Module(props) {
 
   // Register google sign in button. Necessary for register CC and login
   _react["default"].useEffect(function () {
+    document.removeEventListener('thirdparty-signin', buildLoginAndUpdate); // Without this a request for Sign in can fire multiple times
     document.addEventListener('thirdparty-signin', buildLoginAndUpdate);
     buildButtonAndTryPrompt(500);
   }, []);

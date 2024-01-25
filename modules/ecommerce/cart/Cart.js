@@ -30,7 +30,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Module = function Module(props) {
-  var _props$_openMenu4, _useCartOfCurrency$cu3, _props$menuConfig, _useCartOfCurrency$it, _useCartOfCurrency$cu4, _useCartOfCurrency$cu5, _useCartOfCurrency$cu6, _useCartOfCurrency$cu7, _useCartOfCurrency$cu8, _useCartOfCurrency$cu9, _useCartOfCurrency$re, _useCartOfCurrency$re2, _useCartOfCurrency$re3;
+  var _props$_openMenu4, _useCartOfCurrency$cu3, _cart$items, _props$menuConfig, _useCartOfCurrency$it, _useCartOfCurrency$cu4, _useCartOfCurrency$cu5, _useCartOfCurrency$cu6, _useCartOfCurrency$cu7, _useCartOfCurrency$cu8, _useCartOfCurrency$cu9, _useCartOfCurrency$re, _useCartOfCurrency$re2, _useCartOfCurrency$re3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -84,6 +84,11 @@ var Module = function Module(props) {
       dispatch: 'mouseOver'
     });
   };
+  var handleToggleSettings = _react["default"].useCallback(function (e) {
+    if (e && props && props._toggleSingleOpenMenu) {
+      props._toggleSingleOpenMenu(e, 'main_settings');
+    }
+  }, [props._openMenu]);
   props._LocalEventEmitter.unsubscribe('cart_update');
   props._LocalEventEmitter.subscribe('cart_update', function (e) {
     var temp = _toConsumableArray(cartMessages);
@@ -442,7 +447,7 @@ var Module = function Module(props) {
     region: (_useCartOfCurrency$cu3 = useCartOfCurrency === null || useCartOfCurrency === void 0 ? void 0 : useCartOfCurrency.currency) !== null && _useCartOfCurrency$cu3 !== void 0 ? _useCartOfCurrency$cu3 : null,
     object: true
   }, props);
-  var free = total && Object.prototype.hasOwnProperty.call(total, 'total') && total.total === 0;
+  var free = total && Object.prototype.hasOwnProperty.call(total, 'total') && total.total === 0 && (cart === null || cart === void 0 || (_cart$items = cart.items) === null || _cart$items === void 0 ? void 0 : _cart$items.length) > 0;
   console.log('Cart', cart, total, validCc, useCartOfCurrency);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Cart_Container ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Ecommerce_Cart_Container_Visible' : ''),
@@ -614,7 +619,7 @@ var Module = function Module(props) {
     style: {
       marginBottom: '.25rem'
     }
-  }, showContent ? validCc ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, showContent ? validCc && props._loggedIn ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "hover_show ".concat(props.forceShowCc || props._isMobile ? 'hover_show_Cc_force' : '', " Ecommerce_Credit_Card_Label"),
     style: {
       textAlign: 'center'
@@ -623,7 +628,13 @@ var Module = function Module(props) {
     style: {
       fontSize: '.75rem'
     }
-  }, free ? '' : 'Add a Credit Card to fulfill Purchase') : null : null, /*#__PURE__*/_react["default"].createElement(_index.CreditCard, _extends({}, props, {
+  }, free ? '' : 'Add a Credit Card to fulfill Purchase') : null : null, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: handleToggleSettings,
+    style: {
+      fontSize: '.75rem',
+      width: '100%'
+    }
+  }, "Please Sign In") : null, /*#__PURE__*/_react["default"].createElement(_index.CreditCard, _extends({}, props, {
     stagger: 500,
     validCc: validCc,
     setValidCc: setValidCc,
@@ -634,7 +645,7 @@ var Module = function Module(props) {
       marginTop: '.25rem'
     },
     children: props.ccChildren
-  }))), validCc && cart && cart.items && cart.items.length > 0 || free ? /*#__PURE__*/_react["default"].createElement("div", {
+  }))), validCc && cart && cart.items && cart.items.length > 0 && props._loggedIn || free ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       background: '#222222',
       borderRadius: '.5rem',

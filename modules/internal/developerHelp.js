@@ -116,6 +116,35 @@ var Module = function Module(props) {
     }
   }, [props === null || props === void 0 ? void 0 : props.settingsConfig]);
   _react["default"].useEffect(function () {
+    if (props.menuConfig) {
+      var issues = [];
+      if (!Object.prototype.hasOwnProperty.call(props.menuConfig, 'height')) {
+        issues.push({
+          m: 'The Menu Config does not have a height property. Setting a height property on your Menu Config will ensure that all floating and static elements load at the correct height such that they do not block the users interaction height {Number}',
+          s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
+        });
+      }
+      if (!props.menuConfig.left || props.menuConfig.left && !Array.isArray(props.menuConfig.left)) {
+        issues.push({
+          m: 'The Menu Config does not have a correctly defined left property. This determines what items are loaded on the left. It must be of type array under props.menuConfig.left Array[ ...{Object} ]',
+          s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
+        });
+      }
+      if (!props.menuConfig.right || props.menuConfig.right && !Array.isArray(props.menuConfig.right)) {
+        issues.push({
+          m: 'The Menu Config does not have a correctly defined right property. This determines what items are loaded on the right. It must be of type array under props.menuConfig.right Array[ ...{Object} ]',
+          s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
+        });
+      }
+      setSettingsIssues(issues);
+    } else {
+      setSettingsIssues([{
+        m: 'Menu Config is not defined. Please set in config file',
+        s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
+      }]);
+    }
+  }, [props === null || props === void 0 ? void 0 : props.menuConfig]);
+  _react["default"].useEffect(function () {
     setAllIssues([].concat(paymentIssues, settingsIssues, helpIssues));
   }, [paymentIssues, settingsIssues, helpIssues]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props !== null && props !== void 0 && props.dev && allIssues.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {

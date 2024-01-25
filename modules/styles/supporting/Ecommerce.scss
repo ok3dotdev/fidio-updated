@@ -81,6 +81,18 @@
     margin-bottom: .25rem;
 }
 
+.Ecommerce_Title {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 200px;
+}
+
+
 .Ecommerce_Title,
 .Ecommerce_Price {
     text-align: right;
@@ -91,7 +103,6 @@
 .Ecommerce_Cart_Side_Meta_Container,
 .Ecommerce_Cart_Price_Container {
     width: 115px;
-    overflow: auto;
 }
 
 .Ecommerce_Cart_Container button {

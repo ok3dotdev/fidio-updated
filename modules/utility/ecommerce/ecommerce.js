@@ -536,13 +536,13 @@ var addToCart = exports.addToCart = /*#__PURE__*/function () {
 }();
 var performPurchase = exports.performPurchase = /*#__PURE__*/function () {
   var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(uri, domainKey, user, cart, setFetchBusy, options) {
-    var variabes, _variables$paymentCon, _variables$paymentCon2, stripeIsLive, paystackisLive, fetchBody, res;
+    var variables, _variables$paymentCon, _variables$paymentCon2, stripeIsLive, paystackisLive, fetchBody, res;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
           _context7.prev = 0;
-          variabes = (0, _app.resolveVariables)();
-          if (!(variabes.paymentConfig && variabes.dev)) {
+          variables = (0, _app.resolveVariables)();
+          if (!(variables.paymentConfig && variables.dev)) {
             _context7.next = 8;
             break;
           }

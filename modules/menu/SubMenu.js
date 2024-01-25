@@ -27,7 +27,7 @@ var SubMenu = function SubMenu(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props._loggedIn ? "".concat(_MenuModule["default"].subMenu) : "".concat(_MenuModule["default"].subMenu, " ").concat(_MenuModule["default"].subMenuBottomPadding, " subMenuContainer"), " ").concat(props.className)
   }, props.menuConfig && props.menuConfig.left ? props.menuConfig.left.map(function (c, i) {
-    var _c$width, _c$height, _c$width2, _c$height2;
+    var _props$handleToggleMe, _props$handleToggleMe2, _props$handleToggleMe3, _c$width, _c$height, _c$width2, _c$height2, _props$handleToggleMe4;
     return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
       key: i
     }, c.type ? c.type === 'home' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
@@ -36,7 +36,8 @@ var SubMenu = function SubMenu(props) {
         alignSelf: 'center'
       },
       className: "menuLinkSelector ".concat(c.className),
-      key: i
+      key: i,
+      onClick: (_props$handleToggleMe = props.handleToggleMenuOff) !== null && _props$handleToggleMe !== void 0 ? _props$handleToggleMe : null
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: "/",
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
@@ -52,7 +53,8 @@ var SubMenu = function SubMenu(props) {
       style: {
         alignSelf: 'center'
       },
-      key: i
+      key: i,
+      onClick: (_props$handleToggleMe2 = props.handleToggleMenuOff) !== null && _props$handleToggleMe2 !== void 0 ? _props$handleToggleMe2 : null
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: "/w",
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
@@ -73,7 +75,8 @@ var SubMenu = function SubMenu(props) {
       },
       key: i
     }, c.href ? /*#__PURE__*/_react["default"].createElement("a", {
-      href: c.href
+      href: c.href,
+      onClick: (_props$handleToggleMe3 = props.handleToggleMenuOff) !== null && _props$handleToggleMe3 !== void 0 ? _props$handleToggleMe3 : null
     }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
       loader: function loader() {
         if (c.src.match(/greythumb/) || c.local) {
@@ -106,7 +109,8 @@ var SubMenu = function SubMenu(props) {
       style: {
         alignSelf: 'center'
       },
-      key: i
+      key: i,
+      onClick: (_props$handleToggleMe4 = props.handleToggleMenuOff) !== null && _props$handleToggleMe4 !== void 0 ? _props$handleToggleMe4 : null
     }, /*#__PURE__*/_react["default"].createElement("span", {
       href: c.href,
       className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),

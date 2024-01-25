@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resolveMainLink = exports.normalizeData = exports.datePassed = void 0;
+exports.resolveMainLink = exports.resolveGoodDate = exports.normalizeData = exports.datePassed = void 0;
 var normalizeData = exports.normalizeData = function normalizeData(data) {
   return data.map(function (m) {
     if (m.name) {
@@ -25,7 +25,8 @@ var normalizeData = exports.normalizeData = function normalizeData(data) {
       var _m$authorData;
       if (m !== null && m !== void 0 && (_m$authorData = m.authorData) !== null && _m$authorData !== void 0 && _m$authorData.icon) {
         m.icon = m.authorData.icon;
-        if (!m.authorData.cdnIcon) {
+        if (!m.authorData.cdnIcon || !m.authorData.meta || m.authorData.meta && !m.authorData.meta.cdnIcon) {
+          // Handles if icon is from cdn or not. If present do not assign raw (signify raw icon url)
           m.raw = true;
         }
       }
@@ -91,5 +92,13 @@ var datePassed = exports.datePassed = function datePassed(date) {
     return new Date(useValue).getTime() < new Date().getTime();
   } catch (err) {
     return false;
+  }
+};
+var resolveGoodDate = exports.resolveGoodDate = function resolveGoodDate(date) {
+  try {
+    var useValue = Number(date);
+    return new Date(useValue).toLocaleDateString() + ' ' + new Date(useValue).toLocaleTimeString();
+  } catch (err) {
+    return '';
   }
 };

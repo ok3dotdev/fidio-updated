@@ -292,12 +292,12 @@ var Module = function Module(props) {
   }))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("h4", null, "Platform Stream Status"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "gradient_style_bg_3",
     style: {
-      fontSize: '1.25rem',
+      fontSize: '.9rem',
       fontWeight: 700,
       width: 'fit-content',
-      padding: '.5rem 3rem'
+      padding: '0.125rem 5rem'
     }
-  }, "Live"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "LIVE"), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontSize: '.75rem',
       marginTop: '.25rem'

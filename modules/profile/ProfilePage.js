@@ -111,7 +111,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: toggleAdminPanel
-  }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, props.profileData && props.profileData.user && !props.hideDefault ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, !props.hideDefault ? props.profileData && props.profileData.user ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "ProfilePage_UserContainer"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "PagePadding PagePaddingTop ProfilePage_MetaContainer"
@@ -128,6 +128,8 @@ var Module = function Module(props) {
     _gridListType: 'video'
   }, props))), /*#__PURE__*/_react["default"].createElement(_shop.Shop, _extends({}, props, {
     profile: true
-  }))) : /*#__PURE__*/_react["default"].createElement("div", null, "No User here :/"));
+  }))) : /*#__PURE__*/_react["default"].createElement("div", {
+    className: "PagePadding"
+  }, "No User here :/") : null, props.childrenAfter);
 };
 var _default = exports["default"] = Module;

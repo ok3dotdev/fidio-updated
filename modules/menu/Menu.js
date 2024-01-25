@@ -222,6 +222,10 @@ var Module = function Module(props) {
     setHelpOpen(true);
     return;
   });
+  var handleToggleMenuOff = _react["default"].useCallback(function (e) {
+    props._toggleSingleOpenMenu(null, {}, true);
+    setHelpOpen(false);
+  });
   var resolvedCountry = props !== null && props !== void 0 && props.regionsData && props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.meta) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.locationMeta) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.country && props.regionsData[props._loggedIn.meta.locationMeta.country] && props.regionsData[props._loggedIn.meta.locationMeta.country].name ? props.regionsData[props._loggedIn.meta.locationMeta.country].name : (_props$_loggedIn$meta = props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.meta) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.locationMeta) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.country) !== null && _props$_loggedIn$meta !== void 0 ? _props$_loggedIn$meta : null;
 
   // console.log('Cart', cart, props.menuConfig.right)
@@ -240,7 +244,9 @@ var Module = function Module(props) {
       maxHeight: '100%'
     },
     className: "margin1600 menuContainer"
-  }, /*#__PURE__*/_react["default"].createElement(_SubMenu["default"], props), /*#__PURE__*/_react["default"].createElement("ul", {
+  }, /*#__PURE__*/_react["default"].createElement(_SubMenu["default"], _extends({}, props, {
+    handleToggleMenuOff: handleToggleMenuOff
+  })), /*#__PURE__*/_react["default"].createElement("ul", {
     className: !props._loggedIn ? "".concat(_MenuModule["default"].menu, " ").concat(_MenuModule["default"].menuClosed) : _MenuModule["default"].menu
   }, props.menuConfig && props.menuConfig.right ? props.menuConfig.right.map(function (c, i) {
     var _props$_loggedIn$icon, _props$_loggedIn3, _props$_loggedIn4, _props$_loggedIn5, _props$siteTitle;
@@ -459,7 +465,8 @@ var Module = function Module(props) {
       style: {
         alignSelf: 'center'
       },
-      key: i
+      key: i,
+      onClick: handleToggleMenuOff
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "".concat(_MenuModule["default"].menuLinkText)
     }, /*#__PURE__*/_react["default"].createElement("div", {

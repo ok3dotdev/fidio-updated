@@ -26,6 +26,7 @@ var _util = require("./util");
 var _settings = require("./settings");
 var _customModules = _interopRequireDefault(require("../customModules"));
 var _presentation = _interopRequireDefault(require("./presentation"));
+var _eventPage = require("./presentation/events.js/eventPage");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -49,6 +50,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_index.SignInPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ProfilePage':
         return /*#__PURE__*/_react["default"].createElement(_index2.ProfilePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+      case 'EventPage':
+        return /*#__PURE__*/_react["default"].createElement(_eventPage.EventPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ReceiptPage':
         return /*#__PURE__*/_react["default"].createElement(_receipt.ReceiptPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CreditCard':
@@ -152,7 +155,8 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
           }
           body = {
             url: asPath,
-            params: queryParams
+            params: queryParams,
+            domainKey: variables.domainKey
           };
           if (url === '/p' && (!props.profileData || force)) {
             doPreReq = true;
@@ -166,12 +170,15 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
             doPreReq = true;
             body.profileReq = true;
             body.receiptReq = true;
-            body.domainKey = variables.domainKey;
             user = (0, _onboarding.checkSignedIn)();
             if (user && user.identifier && user.hash) {
               body.identifier = user.identifier;
               body.hash = user.hash;
             }
+          } else if (url === '/e') {
+            doPreReq = true;
+            body.profileReq = true;
+            body.eventReq = true;
           }
           if (!props.regionsData) {
             doPreReq = true;
@@ -260,7 +267,8 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
           body = {
             url: context.req.url,
             params: context.query,
-            domainKey: variables.domainKey
+            domainKey: variables.domainKey,
+            serverReq: true
           };
           doPreReq = false;
           if (resolvedPage && resolvedPage.url === '/p') {
@@ -271,6 +279,10 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
             doPreReq = true;
             body.watchReq = true;
             body.shopProfileReq = true;
+          } else if (resolvedPage && resolvedPage.url === '/e') {
+            doPreReq = true;
+            body.profileReq = true;
+            body.eventReq = true;
           }
           if (resolvedPage && resolvePage.data) {
             data.props.resolvedDefinition = resolvedPage.data; // Access the `data` property

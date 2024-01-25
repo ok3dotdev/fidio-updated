@@ -169,6 +169,18 @@ button:not(:disabled):active {
     display: flex;
 }
 
+.gap-p30 {
+    gap: 3rem;
+}
+
+.gap-p20 {
+    gap: 2rem;
+}
+
+.gap-p10 {
+    gap: 1rem;
+}
+
 .gap-p5 {
     gap: .5rem;
 }
@@ -770,3 +782,12 @@ button:not(:disabled):active {
 @import "./video/videoPlayer.scss";
 @import "./video/videojs.scss";
 @import "./video/videoPlayerTycoon.scss";
+
+@import "./supporting/Editor.scss";
+
+.ql-toolbar .ql-formats button.ql-seperator {
+    margin: 0 .25rem;
+    padding: 0;
+    background: black;
+    width: 1px;
+}

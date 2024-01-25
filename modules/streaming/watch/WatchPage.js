@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _video = _interopRequireDefault(require("video.js"));
+var _script = _interopRequireDefault(require("next/script"));
 var _WatchPageModule = _interopRequireDefault(require("./WatchPage.module.scss"));
 var _onboarding = require("../../utility/onboarding");
 var _streaming = require("../../utility/streaming");
@@ -177,7 +177,7 @@ var Module = function Module(props) {
     fn();
   }, [props.watchData, relevantTicket, fetchBusy]);
   _react["default"].useEffect(function () {
-    if (!componentDidMount) {
+    if (!componentDidMount && window.videojs) {
       setComponentDidMount(new Date().getTime());
       var id = (0, _uuid.v4)();
       setComponentId(id);
@@ -199,20 +199,20 @@ var Module = function Module(props) {
     }
   }, [videoPlayer.current, intent, props.cdn, props.watchData]);
   var initializePlayer = function initializePlayer(options) {
-    if (!videoPlayer.current) {
-      var players = _video["default"].players;
+    if (!videoPlayer.current && window.videojs) {
+      var players = window.videojs.players;
       if (players && Object.keys(players).length) {
         if (players['my-player']) {
           players['my-player'].dispose();
         }
       }
-      videoPlayer.current = (0, _video["default"])('my-player', options, /*#__PURE__*/function () {
+      videoPlayer.current = window.videojs('my-player', options, /*#__PURE__*/function () {
         var _onPlayerReady = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
           var chatButton, chatButtonDom, dispatchSetVideoSetChatState, src, temp;
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
-                _video["default"].log('Your player is ready!');
+                window.videojs.log('Your player is ready!');
                 console.log(videoPlayer.current);
                 // Add Chat Button
                 chatButton = videoPlayer.current.controlBar.addChild('button');
@@ -249,7 +249,7 @@ var Module = function Module(props) {
 
                 // How about an event listener?
                 this.on('ended', function () {
-                  _video["default"].log('Awww...over so soon?!');
+                  window.videojs.log('Awww...over so soon?!');
                   this.dispose();
                 });
                 if (intent.src) {
@@ -349,7 +349,9 @@ var Module = function Module(props) {
 
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " WatchPage_Container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement(_script["default"], {
+    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js"
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_WatchPageModule["default"].videoQuadrant, " WatchPage_VideoQuadrant"),
     style: {
       height: "calc(100vh - ".concat(menuHeight, ")")

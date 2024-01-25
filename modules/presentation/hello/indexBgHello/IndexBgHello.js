@@ -83,7 +83,7 @@ var Module = function Module(props) {
         console.log(useCurrentTime);
         if (useCurrentTime !== null && useCurrentTime !== undefined) {
           var useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : _typeof(useCurrentTime) === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
-          if (datePassed(useTime)) {
+          if ((0, _utility2.datePassed)(useTime)) {
             setUseCountdown('nodate');
           } else if (!isNaN(useTime)) {
             var timeRemaining = (0, _utility.getTimeRemaining)(useTime, new Date());
@@ -172,22 +172,6 @@ var Module = function Module(props) {
       glide.mount();
     }
   }, [componentId]);
-  var resolveGoodDate = function resolveGoodDate(date) {
-    try {
-      var useValue = Number(date);
-      return new Date(useValue).toLocaleDateString() + ' ' + new Date(useValue).toLocaleTimeString();
-    } catch (err) {
-      return '';
-    }
-  };
-  var datePassed = function datePassed(date) {
-    try {
-      var useValue = Number(date);
-      return new Date(useValue).getTime() < new Date().getTime();
-    } catch (err) {
-      return false;
-    }
-  };
   var resolveImage = function resolveImage(item, img, type) {
     if (item !== null && item !== void 0 && item.rawBg && type === 'bg') {
       return img;
@@ -236,7 +220,7 @@ var Module = function Module(props) {
   };
   console.log('r', useItems, props);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className)
+    className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className, " ").concat(props.medium ? "".concat(_PresentationModule["default"].IndexBgContainerMedium) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].SliderBulletsContainer, " ").concat(moduleName, "_SliderBulletsContainer ").concat(props.sliderBulletsContainerClassName)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -307,7 +291,7 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)
     }, "Seconds")))) : null), m.showSimpleDate && useCountdown ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_PresentationModule["default"].TimeSimple, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? resolveGoodDate(m.date) : '')) : null), /*#__PURE__*/_react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : '')) : null), /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_PresentationModule["default"].DataContainer, " ").concat(moduleName, "_DataContainer ").concat(props.DataContainerClassName)
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_PresentationModule["default"].AuthorContainer, " ").concat(moduleName, "_AuthorContainer ").concat(props.authorContainerClassName)

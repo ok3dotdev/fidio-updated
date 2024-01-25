@@ -83,3 +83,23 @@
         border-radius: 0;
     }
 }
+
+@font-face {
+    font-family: 'Miller Text';
+    src: local('Miller Text'), url(https://d2zsu4v7czjhvo.cloudfront.net/font/miller/MillerTextBoldItalic.otf) format('truetype') font-weight-bold,
+}
+
+.actionButton {
+    min-width: 200px;
+}
+
+@media(max-width: 640px) {
+    .actionButton {
+        min-width: none;
+        width: 100%;
+    }
+}
+
+.millerText {
+    font-family: 'Miller Text';
+}

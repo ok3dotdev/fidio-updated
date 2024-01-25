@@ -20,6 +20,7 @@ var cookies = new _universalCookie["default"]();
 var updateLocalLoginSession = exports.updateLocalLoginSession = function updateLocalLoginSession(data) {
   cookies.set('login', data);
 };
+var doThirdPartySignIn = function doThirdPartySignIn() {};
 
 /**
  * Attempt to sign in user or ask for more information (username) for register completion
@@ -27,12 +28,13 @@ var updateLocalLoginSession = exports.updateLocalLoginSession = function updateL
  * @returns {*}
  */
 var attemptThirdPartySignIn = exports.attemptThirdPartySignIn = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, apiUrl, domainKey) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data, apiUrl, domainKey, LocalEventEmitter) {
     var decodedToken, fetchBody, res, _res$vendor, cookieObj, cart, event;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
+          console.log('Running', data, apiUrl, domainKey);
           // Decode google third party sign in data and make fetch to server for info
 
           if (data && data.detail && data.detail.credential) {
@@ -48,12 +50,17 @@ var attemptThirdPartySignIn = exports.attemptThirdPartySignIn = /*#__PURE__*/fun
             fetchBody.requestedUsername = data.requestedUsername;
           }
           // Call to server to look for user
-          _context.next = 6;
+          _context.next = 7;
           return (0, _fetch.fetchPost)(apiUrl + '/m/authenticate', null, null, fetchBody);
-        case 6:
+        case 7:
           res = _context.sent;
           if (res && res.hash) {
             // Update cookie signifying login
+            if (LocalEventEmitter) {
+              LocalEventEmitter.dispatch('completeSignIn', {
+                data: res
+              });
+            }
             cookieObj = _defineProperty(_defineProperty({
               identifier: res.identifier,
               username: res.username,
@@ -76,18 +83,18 @@ var attemptThirdPartySignIn = exports.attemptThirdPartySignIn = /*#__PURE__*/fun
             document.dispatchEvent(event);
           }
           return _context.abrupt("return", res);
-        case 11:
-          _context.prev = 11;
+        case 12:
+          _context.prev = 12;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
           return _context.abrupt("return", null);
-        case 15:
+        case 16:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 11]]);
+    }, _callee, null, [[0, 12]]);
   }));
-  return function attemptThirdPartySignIn(_x, _x2, _x3) {
+  return function attemptThirdPartySignIn(_x, _x2, _x3, _x4) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -239,7 +246,7 @@ var grabUsername = exports.grabUsername = /*#__PURE__*/function () {
       }
     }, _callee2, null, [[0, 34]]);
   }));
-  return function grabUsername(_x4, _x5, _x6, _x7, _x8) {
+  return function grabUsername(_x5, _x6, _x7, _x8, _x9) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -316,7 +323,7 @@ var checkUserData = exports.checkUserData = /*#__PURE__*/function () {
       }
     }, _callee3);
   }));
-  return function checkUserData(_x9, _x10) {
+  return function checkUserData(_x10, _x11) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -442,7 +449,7 @@ var requestSettingsUpdate = exports.requestSettingsUpdate = /*#__PURE__*/functio
       }
     }, _callee4, null, [[3, 50]]);
   }));
-  return function requestSettingsUpdate(_x11, _x12, _x13) {
+  return function requestSettingsUpdate(_x12, _x13, _x14) {
     return _ref4.apply(this, arguments);
   };
 }();

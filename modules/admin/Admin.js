@@ -6,11 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _script = _interopRequireDefault(require("next/script"));
 var _link = _interopRequireDefault(require("next/link"));
 var _uuid = require("uuid");
 var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
 var _BuildAdmin = _interopRequireDefault(require("./BuildAdmin"));
 var _StreamAdmin = _interopRequireDefault(require("./StreamAdmin"));
+var _PostAdmin = _interopRequireDefault(require("./PostAdmin"));
 var _index = require("/modules/onboarding/signin/index.js");
 var _util = require("/modules/util");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -43,7 +45,8 @@ var Module = function Module(props) {
     setPage = _React$useState8[1];
   var Auth_Table = {
     BuildAdmin: ['full'],
-    StreamAdmin: ['full']
+    StreamAdmin: ['full', 'administrative'],
+    PostAdmin: ['full', 'administrative']
   };
   var resolveAuth = function resolveAuth(page, auth) {
     var _auth$adminc;
@@ -89,7 +92,12 @@ var Module = function Module(props) {
   console.log(isAdmin);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " ").concat(_AdminModule["default"].container, " Admin_Container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement(_script["default"], {
+    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js"
+  }), /*#__PURE__*/_react["default"].createElement("link", {
+    href: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css",
+    rel: "stylesheet"
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(doShowSignIn && !isAdmin ? 'simpleCenter' : '')
   }, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)), isAdmin ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].internalContainer, " Admin_InternalContainer")
@@ -105,14 +113,17 @@ var Module = function Module(props) {
     className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
   }, /*#__PURE__*/_react["default"].createElement("ul", {
     className: "".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")
-  }, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "build"
-  }, "Build")) : null, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleSetPage,
     modif: "stream"
-  }, "Stream"))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Stream")) : null, resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: handleSetPage,
+    modif: "post"
+  }, "Post")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: handleSetPage,
+    modif: "build"
+  }, "Build")) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
-  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : null : null))) : null);
+  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : null : null))) : null);
 };
 var _default = exports["default"] = Module;
