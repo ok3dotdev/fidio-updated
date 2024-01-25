@@ -27,6 +27,11 @@ nvm ls
 # Pull new changes
 
 git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-client
+
+# To safely pull /modules folder changes run update_version script
+./update_version
+
+# To merge the rest of the changes run the following
 git pull upstream
 git merge your-branch
 ./extract_modules_dist
@@ -50,6 +55,10 @@ yarn dev
 # or
 pnpm dev
 ```
+
+# To Analyze Dependency Sizes use the following
+
+ANALYZE=true npm run build
 
 # Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
