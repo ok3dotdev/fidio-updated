@@ -14,7 +14,7 @@ export const page = props => {
 	return (
         <React.Fragment>
           <HomeLayout
-            props={useProps}
+            props={props}
             pageName={pageName}
             pageData={termsOfServicePageData}
           >
