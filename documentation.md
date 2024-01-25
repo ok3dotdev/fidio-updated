@@ -298,3 +298,17 @@ replyOff: true // @param {Boolean} Set Reply System off here, on by default if u
 # Use redirectOnAuth to redirect platform on login
 
 <SignInPage {...props} redirectOnAuth={'/'}>
+<<<<<<< HEAD
+=======
+
+## Menu Configuration
+
+# To disable a menu on any page make sure to add to its "props" object in the app.config.js the following
+useMenu: false
+
+# Similarily to disable the application default layout add the following to a pages "props" object in the app.config.js:
+useAppConfigLayout: false
+
+
+
+>>>>>>> 6c87614b7b71044eacf5c6e9d87e6628230dc2ee
