@@ -1,4 +1,8 @@
 git fetch upstream master
 yes | git checkout -p upstream/master -- modules
 git commit --amend --date="$(date)" -m "Modules Update ${date}"
+yes | git checkout -p upstream/master -- makebuild
+yes | git checkout -p upstream/master -- init_app.js
+yes | git checkout -p upstream/master -- documentation.md
+yes | git checkout -p upstream/master -- extract_modules_dist
 git pull upstream master

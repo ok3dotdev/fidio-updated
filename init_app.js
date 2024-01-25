@@ -1,5 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
+
+// Initializes Application
 
 let useFile = 'customModules/middleware/Middleware.js'
 if (fs.existsSync(useFile)) {
