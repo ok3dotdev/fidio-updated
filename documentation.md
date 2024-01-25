@@ -252,3 +252,8 @@ useMenu: false
 
 # Similarily to disable the application default layout add the following to a pages "props" object in the app.config.js:
 useAppConfigLayout: false
+
+## Handling Production Builds
+
+# Before you make a build you must update the next.config.js file. Ensure your Businesses website is under assetPrefix. Like so:
+const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
