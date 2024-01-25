@@ -9,6 +9,7 @@ var _script = _interopRequireDefault(require("next/script"));
 var _app = require("../utility/_app");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 // externalScripts.js
+// Place scripts here for importing instead of placing directly in _app or document.js
 
 var GlideScript = exports.GlideScript = /*#__PURE__*/_react["default"].createElement(_script["default"], {
   src: "https://unpkg.com/@glidejs/glide",
