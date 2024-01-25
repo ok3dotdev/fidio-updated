@@ -15,7 +15,7 @@ import {
   resolveDefaults,
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
-import Hero from '../../customModules/features/Hero.new';
+import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '../../customModules/features/seo-data';
 import ShowGrid from '../components/ShowGrid';
