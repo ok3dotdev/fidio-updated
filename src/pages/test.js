@@ -7,13 +7,11 @@ import { getServerSidePropsDefault } from '/modules/utility.js'
 const pageName = 'test'
 
 export const page = props => {
-    const useMenu = true
-    const useAppConfigLayout = true
 	return (
         <React.Fragment>
             {
                 props.dev
-                    ? <PageContainer { ...props } pageName={pageName} useMenu={useMenu} useAppConfigLayout={useAppConfigLayout} />
+                    ? <PageContainer { ...props } pageName={pageName} />
                     : null
             }
         </React.Fragment>

@@ -1,15 +1,12 @@
-/* AVOID EDITING THIS FILE. DEFAULT APPLICATION ENTRY. MANIPULATE customModules/middleware/Middleware.js FILE FOR MIDDLEWARE LOGIC. If file missing run node init_app.js */
+/* AVOID EDITING THIS FILE. DEFAULT APPLICATION ENTRY. MANIPULATE customModules/middleware/Middleware.js FILE FOR MIDDLEWARE LOGIC. If files missing run node init_app.js */
 
 import React from 'react'
-import '../styles/globals.scss'
-import '../styles/styles.scss' // Import all styles in here relative to styles directory using syntax: @import "/appstyles/component.scss";
+import '../styles/globals.scss' // Place style import declarations in /styles/styles.scss and actual style css files under /styles/appstyles/
 import Head from 'next/head'
-import Script from 'next/script'
-import { registerGoogleSignIn } from '/modules/utility/_app'
 import { Internal } from '/modules/internal/'
+import { GoogleGsiClient, GoogleSignInRegister } from '../modules/internal/localImports'
 
 function MyApp({ Component, pageProps }) {
-
   	return (
 		<div>
 			<Head>
@@ -17,14 +14,10 @@ function MyApp({ Component, pageProps }) {
 				<title>{pageProps.siteTitle}</title>
 			</Head>
 			<>
-				<Script src="https://accounts.google.com/gsi/client" async defer></Script>
-				<Script strategy="lazyOnload" id='script_one_tap_sign_in' className="lazyOnload">
-				{
-					registerGoogleSignIn
-				}
-				</Script>
+				{ GoogleGsiClient }
+				{ GoogleSignInRegister }
 			</>
-    		<Internal {...pageProps} _MasterPageComponent={Component} />
+    		<Internal {...pageProps} _MasterPageComponent={Component} /> {/* Application Start */}
 		</div>
   	)
 }

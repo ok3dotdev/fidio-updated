@@ -1,31 +1,73 @@
 const fs = require('fs');
 const path = require('path');
 
-const f1 = 'customModules/middleware/Middleware.js'
-if (fs.existsSync(f1)) {
+let useFile = 'customModules/middleware/Middleware.js'
+if (fs.existsSync(useFile)) {
     // Add your commands here
-    console.log(`${f1} File exists on`, process.platform, fs.constants.COPYFILE_EXCL)
+    console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/middleware/Middleware_backup.js', f1)
-    console.log(`${f1} File does not exist on`, process.platform)
+    fs.copyFileSync('customModules/middleware/Middleware_backup.js', 'customModules/middleware/Middleware.js')
+    console.log(useFile, 'File does not exist on', process.platform)
 }
 
-const f2 = 'customModules/index.js'
-if (fs.existsSync(f2)) {
+useFile = 'customModules/index.js'
+if (fs.existsSync(useFile)) {
     // Add your commands here
-    console.log(`${f2} File exists on`, process.platform)
+    console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/index_backup.js', f2, fs.constants.COPYFILE_EXCL)
-    console.log(`${f2} File does not exist on`, process.platform)
+    fs.copyFileSync('customModules/index_backup.js', 'customModules/index.js')
+    console.log(useFile, 'File does not exist on', process.platform)
 }
 
-const f3 = 'src/styles/styles.scss'
-if (fs.existsSync(f3)) {
+useFile = 'src/styles/styles.module.scss'
+if (fs.existsSync(useFile)) {
     // Add your commands here
-    console.log(`${f3} File exists on`, process.platform, fs.constants.COPYFILE_EXCL)
+    console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.writeFile(f3, '', err => {
+    fs.writeFile(useFile, '', err => {
         console.log(err)
     })
-    console.log(`${f3} File does not exist on`, process.platform)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'public/doc'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'public/doc/internal'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'public/doc/internal/privacy'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    const data = 'import React from \'react\'; const MyComponent = () => { return <div>Privacy</div> }; export default MyComponent'
+    fs.writeFile(useFile + '.js', data, err => {
+        console.log(err)
+    })
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'public/doc/internal/terms'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    const data = 'import React from \'react\'; const MyComponent = () => { return <div>Terms</div> }; export default MyComponent'
+    fs.writeFile(useFile + '.js', data, err => {
+        console.log(err)
+    })
+    console.log(useFile, 'File does not exist on', process.platform)
 }
