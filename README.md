@@ -17,6 +17,8 @@ nvm use 16
 # Check node versions
 nvm ls
 
+-------------
+## Git Operations
 # You must fork this and create your own repo
 
 # Add Upstream repo once you have forked into your own repo
@@ -26,8 +28,12 @@ git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-c
 # To safely pull /modules folder changes run update_version script
 ./update_version
 
-# After you are finished resolving any possible conflicts run merge. If you face any issues contact admin@tycoon.systems
-git merge your-branch
+# Finish merge by running git pull
+git pull
+
+# Push data up to your repo
+git push
+-------------
 
 # Run init_app.js to create required dependency files. Else errors will throw in development
 node init_app.js
