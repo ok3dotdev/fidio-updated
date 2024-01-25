@@ -14,10 +14,14 @@ a {
   text-decoration: none;
 }
 
+.a:link { color: #9b9bff; }
+.a:visited { color: #ca91ff; }
+
 * {
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .PagePadding {
   padding: 0 0.75rem;
 }
@@ -147,3 +151,6 @@ body .opacity1 {
 }
 
 @import '/modules/styles/tycoon.scss';
+=======
+@import "/modules/styles/tycoon.scss";
+>>>>>>> ce697d27689aed4c509371f2aa1daa4a9306a368
