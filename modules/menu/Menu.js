@@ -228,8 +228,8 @@ var Module = function Module(props) {
   });
   var resolvedCountry = props !== null && props !== void 0 && props.regionsData && props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.meta) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.locationMeta) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.country && props.regionsData[props._loggedIn.meta.locationMeta.country] && props.regionsData[props._loggedIn.meta.locationMeta.country].name ? props.regionsData[props._loggedIn.meta.locationMeta.country].name : (_props$_loggedIn$meta = props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.meta) === null || _props$_loggedIn2 === void 0 || (_props$_loggedIn2 = _props$_loggedIn2.locationMeta) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.country) !== null && _props$_loggedIn$meta !== void 0 ? _props$_loggedIn$meta : null;
 
-  // console.log('Cart', cart, props.menuConfig.right)
-  console.log(props);
+  // console.log(props)
+
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: 100 + "%",
@@ -257,8 +257,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
       title: "Profile",
       placement: "bottom"
@@ -282,8 +281,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", {
       style: {
         padding: '.75rem'
@@ -319,8 +317,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
     }, "settings"), /*#__PURE__*/_react["default"].createElement("div", null, "Settings"))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
@@ -330,8 +327,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
     }, "receipt"), /*#__PURE__*/_react["default"].createElement("div", null, "Orders"))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
@@ -341,8 +337,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
     }, "payment"), /*#__PURE__*/_react["default"].createElement("div", null, "Payment Methods")))) : null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -357,8 +352,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
     }, "redeem"), /*#__PURE__*/_react["default"].createElement("div", null, "Offers and Gifts"))), (_props$_loggedIn4 = props._loggedIn) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.meta) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.locationMeta) !== null && _props$_loggedIn4 !== void 0 && _props$_loggedIn4.city && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.locationMeta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
@@ -368,8 +362,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
     }, "flag"), /*#__PURE__*/_react["default"].createElement("div", null, "Location:\xA0", /*#__PURE__*/_react["default"].createElement("span", null, resolvedCountry))))) : null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -399,8 +392,7 @@ var Module = function Module(props) {
       style: {
         position: 'relative',
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", {
       className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink"),
       onClick: fireShowSignIn
@@ -440,8 +432,7 @@ var Module = function Module(props) {
       onClick: handleToggleCart,
       style: {
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "".concat(_MenuModule["default"].menuLinkText)
     }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -455,8 +446,7 @@ var Module = function Module(props) {
       className: "menuLinkSelector ".concat(c.className, " ").concat(c.smallUntilHover ? "".concat(_MenuModule["default"].smallUntilHover) : null),
       style: {
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
       title: "Livestream Now",
       placement: "bottom"
@@ -465,7 +455,6 @@ var Module = function Module(props) {
       style: {
         alignSelf: 'center'
       },
-      key: i,
       onClick: handleToggleMenuOff
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "".concat(_MenuModule["default"].menuLinkText)
@@ -479,8 +468,7 @@ var Module = function Module(props) {
       className: "menuLinkSelector ".concat(c.className, " ").concat(c.smallUntilHover ? "".concat(_MenuModule["default"].smallUntilHover) : null),
       style: {
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
       title: "Notifications",
       placement: "bottom"
@@ -489,7 +477,6 @@ var Module = function Module(props) {
       style: {
         alignSelf: 'center'
       },
-      key: i,
       onClick: handleToggleNotifications
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "".concat(_MenuModule["default"].menuLinkText)
@@ -504,8 +491,7 @@ var Module = function Module(props) {
       className: "menuLinkSelector ".concat(c.className),
       style: {
         alignSelf: 'center'
-      },
-      key: i
+      }
     }, /*#__PURE__*/_react["default"].createElement("li", {
       className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink menuLinkSelector ").concat(c.className),
       style: {

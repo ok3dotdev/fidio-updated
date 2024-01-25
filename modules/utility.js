@@ -83,7 +83,6 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
       case 'Presentation':
         if (json && json.props && json.props.module && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props.module)) {
           var _UseModule = _presentation["default"][json.props.module];
-          console.log('Module Found', _UseModule, _presentation["default"]);
           if (_UseModule) {
             return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
@@ -120,7 +119,6 @@ var resolvePageName = exports.resolvePageName = function resolvePageName(path) {
 };
 function generateComponent(json) {
   if (json) {
-    console.log(json);
     var type = json.type,
       props = json.props,
       children = json.children;
@@ -224,7 +222,6 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
 }();
 var handlePropsPriority = exports.handlePropsPriority = function handlePropsPriority(mergeProps, props) {
   var temp = (0, _util.isObjectEmpty)(mergeProps) ? props : mergeProps;
-  console.log(props, mergeProps);
   for (var key in temp) {
     if (key.startsWith('_')) {
       var desc = Object.getOwnPropertyDescriptor(temp, key);

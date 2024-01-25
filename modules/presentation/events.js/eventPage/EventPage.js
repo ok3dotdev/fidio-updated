@@ -28,7 +28,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var moduleName = 'IndexHello';
 var RESET_CTA_TIMER = 180000;
 var Module = function Module(props) {
-  var _m$leadBg, _props$menuConfig$hei, _props$menuConfig, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$author3, _m$author4, _m$title, _m$item, _m$item2, _m$item3, _m$item4, _m$item5, _m$item6, _m$description, _m$detailmeta;
+  var _m$leadBg, _props$menuConfig$hei, _props$menuConfig, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$author3, _m$author4, _m$title, _m$item, _m$item2, _m$item3, _m$description, _m$detailmeta;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -149,8 +149,8 @@ var Module = function Module(props) {
     }
     return 'img/default/greythumb.jpg';
   };
-  console.log('EventPage', reqData);
   var m = reqData !== null && reqData !== void 0 && reqData.id ? reqData : null;
+  console.log(m);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " ").concat(_PresentationModule["default"].IndexBgContainer, " EventPage_Container")
   }, props.children, !props.hideDefault ? m ? /*#__PURE__*/_react["default"].createElement("div", {
@@ -242,17 +242,48 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props.leadClassName)
-  }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : '')), m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : '')), m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p5"
+  }, /*#__PURE__*/_react["default"].createElement("button", {
     className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(moduleName, "_Cta ").concat(props.ctaClassName),
     onClick: handleFireGlobalEvent,
     action: ['add_to_cart', 'buy'].indexOf(m === null || m === void 0 ? void 0 : m.action) > -1 ? m.action : 'add_to_cart',
-    item: m === null || m === void 0 || (_m$item4 = m.item) === null || _m$item4 === void 0 ? void 0 : _m$item4.id,
-    selectedstyle: m === null || m === void 0 || (_m$item5 = m.item) === null || _m$item5 === void 0 ? void 0 : _m$item5.style,
-    currentoption: m === null || m === void 0 || (_m$item6 = m.item) === null || _m$item6 === void 0 ? void 0 : _m$item6.option,
+    item: m.item.id,
+    selectedstyle: m.item.style,
+    currentoption: m.item.option,
     ref: ctaRef,
     ctaAfter: m.ctaAfter,
     cta: m.cta
-  }, m.cta) : null)))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, m.cta), function (_m$styles) {
+    var style = m !== null && m !== void 0 && (_m$styles = m.styles) !== null && _m$styles !== void 0 && _m$styles.find ? m.styles.find(function (n) {
+      return n.sid === m.item.style;
+    }) : null;
+    var price = (0, _ecommerce.resolveRegionBasedPrice)(props, style);
+    if ((price === null || price === void 0 ? void 0 : price.price) == 0) {
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "flex",
+        style: {
+          fontSize: '1.5rem',
+          fontWeight: '600',
+          marginTop: '.5rem'
+        }
+      }, /*#__PURE__*/_react["default"].createElement("div", null, "Free"));
+    } else if (price !== null && price !== void 0 && price.currency && price !== null && price !== void 0 && price.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "flex",
+        style: {
+          fontSize: '1.25rem',
+          fontWeight: '600',
+          marginTop: '.5rem'
+        }
+      }, /*#__PURE__*/_react["default"].createElement("div", null, price.symbol), /*#__PURE__*/_react["default"].createElement("div", {
+        style: {
+          marginRight: '.25rem'
+        }
+      }, (0, _ecommerce.resolveMoneyFormat)(price.price)), /*#__PURE__*/_react["default"].createElement("div", null, price.currency));
+    }
+    return /*#__PURE__*/_react["default"].createElement("div", null);
+  }()) : null)))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].SecondDataContainer)
   }, m.description && m.description !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].Description, " ").concat(moduleName, "_Description ").concat(props.descriptionClassName)

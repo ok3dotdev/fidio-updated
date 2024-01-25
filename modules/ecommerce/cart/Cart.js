@@ -278,7 +278,6 @@ var Module = function Module(props) {
       return _ref2.apply(this, arguments);
     };
   }();
-  console.log(props, props._cart);
   var useCartOfCurrency = _react["default"].useMemo(function () {
     var _useFirstItem$product;
     var useFirstItem = (cart === null || cart === void 0 ? void 0 : cart.items) && cart.items[0];
@@ -448,7 +447,9 @@ var Module = function Module(props) {
     object: true
   }, props);
   var free = total && Object.prototype.hasOwnProperty.call(total, 'total') && total.total === 0 && (cart === null || cart === void 0 || (_cart$items = cart.items) === null || _cart$items === void 0 ? void 0 : _cart$items.length) > 0;
-  console.log('Cart', cart, total, validCc, useCartOfCurrency);
+
+  // console.log('Cart', cart, total, validCc, useCartOfCurrency)
+
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_Cart_Container ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Ecommerce_Cart_Container_Visible' : ''),
     ref: container,

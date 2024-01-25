@@ -39,12 +39,11 @@ var Module = function Module(props) {
             case 0:
               _context.prev = 0;
               if (!props.apiUrl) {
-                _context.next = 25;
+                _context.next = 24;
                 break;
               }
-              console.log(props, didFetch);
               if (!(!fetchBusy && props.handlerArgs && props.domainKey && props.apiUrl && !didFetch)) {
-                _context.next = 25;
+                _context.next = 24;
                 break;
               }
               setFetchBusy(true);
@@ -58,48 +57,48 @@ var Module = function Module(props) {
                 handlerName: (_props$handlerName = props.handlerName) !== null && _props$handlerName !== void 0 ? _props$handlerName : null,
                 handlerArgs: props.handlerArgs
               };
-              _context.next = 11;
+              _context.next = 10;
               return (0, _fetch.fetchPost)(props.apiUrl + '/m/fetchhandler', null, null, fetchBody);
-            case 11:
+            case 10:
               res = _context.sent;
               console.log('Handler', res);
               if (res) {
-                _context.next = 18;
+                _context.next = 17;
                 break;
               }
               setFetchBusy(false);
               return _context.abrupt("return", false);
-            case 18:
+            case 17:
               if (!res.hasOwnProperty('status')) {
-                _context.next = 25;
-                break;
-              }
-              if (!(res.status == "failed")) {
                 _context.next = 24;
                 break;
               }
+              if (!(res.status == "failed")) {
+                _context.next = 23;
+                break;
+              }
               setFetchBusy(false);
               return _context.abrupt("return", false);
-            case 24:
+            case 23:
               if (res.status == "success") {
                 setFetchBusy(false);
                 if (props.receiveData) {
                   props.receiveData(res);
                 }
               }
-            case 25:
-              _context.next = 31;
+            case 24:
+              _context.next = 30;
               break;
-            case 27:
-              _context.prev = 27;
+            case 26:
+              _context.prev = 26;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
               setFetchBusy(false);
-            case 31:
+            case 30:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 27]]);
+        }, _callee, null, [[0, 26]]);
       }));
       return function f() {
         return _ref.apply(this, arguments);

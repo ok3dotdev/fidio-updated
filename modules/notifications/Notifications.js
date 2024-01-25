@@ -89,17 +89,6 @@ var Module = function Module(props) {
           }
         }
       }
-      // if (e.dispatch === 'notification') {
-      //     temp = temp.filter(m => m && m.type !== 'purchase')
-      //     const domain = props.devLocal ? props.devAddress : 'https://' + props.domainUrl
-      //     temp.push({
-      //         message: 'Purchase success',
-      //         href: `${domain}/r?o=${e.id}`,
-      //         hrefCta: 'View your Receipt Here',
-      //         type: 'purchase'
-      //     })
-      //     setCartMessages(temp)
-      // }
     }
   });
   _react["default"].useEffect(function () {
@@ -130,7 +119,6 @@ var Module = function Module(props) {
     setClosing(true);
     props._toggleSingleOpenMenu(null, 'notifications', false);
   });
-  console.log('Notifications', props);
 
   // TODO, store locally all notifications user has viewed
   // Show Notifications that user has not viewed by default should be unviewed

@@ -779,6 +779,30 @@ button:not(:disabled):active {
     border-bottom: 1px solid grey;
 }
 
+.IndexHello_IndexItemsContainer .slick-track {
+    display: flex;
+    gap: .5rem;
+    // width: 10000px !important;
+}
+
+// Experimental variable width
+// .IndexHello_IndexItemsContainer .slick-slide {
+//     min-width: calc(100vw / 6);
+// }
+
+// @media(max-width: 1920px) {
+//     .IndexHello_IndexItemsContainer .slick-slide {
+//         min-width: calc(100vw / 5);
+//     }
+// }
+
+// @media(max-width: 1680px) {
+//     .IndexHello_IndexItemsContainer .slick-slide {
+//         min-width: calc(100vw / 4);
+//     }
+// }
+
+
 @import "./video/videoPlayer.scss";
 @import "./video/videojs.scss";
 @import "./video/videoPlayerTycoon.scss";

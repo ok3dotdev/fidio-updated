@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _router = require("next/router");
+var _reactSlick = _interopRequireDefault(require("react-slick"));
 var _PresentationModule = _interopRequireDefault(require("../../Presentation.module.scss"));
 var _uuid = require("uuid");
 var _utility = require("../../../utility/utility");
@@ -28,6 +30,7 @@ var moduleName = 'IndexHello';
 var RESET_CTA_TIMER = 180000;
 var Module = function Module(props) {
   var _props$request;
+  var router = (0, _router.useRouter)();
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -57,8 +60,8 @@ var Module = function Module(props) {
     resolvedUseItems = _React$useState14[0],
     setResolvedUseItems = _React$useState14[1];
   var ctaRef = _react["default"].useRef();
-  var currentGlide = _react["default"].useRef();
-  var glideTrackRef = _react["default"].useRef();
+  var currentSlider = _react["default"].useRef();
+  var sliderTrackRef = _react["default"].useRef();
   props._LocalEventEmitter.unsubscribe(componentId);
   props._LocalEventEmitter.subscribe(componentId, function (d) {
     if (d && d.dispatch) {
@@ -122,45 +125,6 @@ var Module = function Module(props) {
       return _ref.apply(this, arguments);
     };
   }());
-  _react["default"].useEffect(function () {
-    if (componentDidMount && window && window.Glide) {
-      if (currentGlide !== null && currentGlide !== void 0 && currentGlide.current) {
-        currentGlide.current.destroy();
-      }
-      console.log(glideTrackRef.current);
-      var glide = new window.Glide(glideTrackRef.current, {
-        type: 'carousel',
-        perView: 4,
-        focusAt: 0,
-        breakpoints: {
-          4000: {
-            perView: 6
-          },
-          1920: {
-            perView: 5
-          },
-          1680: {
-            perView: 4
-          },
-          1280: {
-            perView: 3
-          },
-          900: {
-            perView: 2
-          },
-          570: {
-            perView: 1
-          }
-        }
-      });
-      console.log('Glide', glide);
-      // glide.on(['build.before'], function() {
-      //     document.querySelector(`.glide_${componentId}`).classList.add(`opacity1`)
-      // })
-      currentGlide.current = glide;
-      glide.mount();
-    }
-  }, [componentDidMount]);
   var resolveImage = function resolveImage(item, img, type) {
     if (item !== null && item !== void 0 && item.rawBg && type === 'bg') {
       return img;
@@ -211,7 +175,6 @@ var Module = function Module(props) {
     var _props$items;
     if (resolvedUseItems && useHandler) {
       var useData = (0, _utility2.normalizeData)(resolvedUseItems);
-      console.log(useData);
       return useData;
     }
     if (props !== null && props !== void 0 && (_props$items = props.items) !== null && _props$items !== void 0 && _props$items.map) {
@@ -219,10 +182,61 @@ var Module = function Module(props) {
     }
     return [{}, {}, {}, {}];
   }, [resolvedUseItems, useHandler, props === null || props === void 0 ? void 0 : props.items]);
-  console.log(useItems);
+  var useSettings = {
+    infinite: true,
+    speed: 500,
+    swipeToSlide: true,
+    // variableWidth: true,
+    responsive: [{
+      breakpoint: 4000,
+      settings: {
+        slidesToShow: 6,
+        touchThreshold: 120,
+        infinite: true
+      }
+    }, {
+      breakpoint: 1920,
+      settings: {
+        slidesToShow: 5,
+        touchThreshold: 100,
+        infinite: true
+      }
+    }, {
+      breakpoint: 1680,
+      settings: {
+        slidesToShow: 4,
+        touchThreshold: 80,
+        infinite: true
+      }
+    }, {
+      breakpoint: 1280,
+      settings: {
+        slidesToShow: 3,
+        touchThreshold: 60,
+        infinite: true
+      }
+    }, {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+        touchThreshold: 40,
+        infinite: true
+      }
+    }, {
+      breakpoint: 570,
+      settings: {
+        slidesToShow: 1,
+        touchThreshold: 20,
+        infinite: true
+      }
+    }]
+  };
+  var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
+    (0, _utility2.handleSliderLinkClickUp)(e, router);
+  });
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " glide_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
-    ref: glideTrackRef
+    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " sliderContainer_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
+    ref: sliderTrackRef
   }, props.groupLabel ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].GroupLabelContainer, " ").concat(moduleName, "_groupLabelContainer ").concat(props.groupLabelContainerClassName)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -231,20 +245,20 @@ var Module = function Module(props) {
     handlerArgs: props.request.handlerArgs,
     receiveData: receiveData
   }, props)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    "data-glide-el": "track",
-    className: "".concat(_PresentationModule["default"].GlideTrack, " glide__track ").concat(moduleName, "_SliderTrack ").concat(componentId, "_slider_track"),
-    style: {
-      minWidth: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_PresentationModule["default"].IndexItemsContainer, " glide__slides ").concat(moduleName, "_IndexItemsContainer ").concat(props.IndexItemsContainerClassName)
-  }, useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
+    className: "swipe slider_".concat(componentId)
+  }, /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], _extends({}, useSettings, {
+    className: "".concat(_PresentationModule["default"].IndexItemsContainer, " swiper-wrapper slider_slides  ").concat(moduleName, "_IndexItemsContainer ").concat(props.IndexItemsContainerClassName)
+  }), useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
     var _m$leadBg, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$title, _m$author3, _m$item, _m$item2, _m$item3, _m$item4, _m$item5, _m$item6;
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].IndexItemUpperContainer, " ").concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(componentId, "_IndexItemUpperContainer"),
+      className: "swiper-slide ".concat(_PresentationModule["default"].IndexItemUpperContainer, " ").concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(componentId, "_IndexItemUpperContainer ").concat(m.important ? "slider_item_important" : ''),
       key: i
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: (0, _utility2.resolveMainLink)(m),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }
@@ -265,6 +279,10 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].IconContainer, " ").concat(moduleName, "_IconContainer ").concat(props.iconContainerClassName)
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/p?u=".concat((_m$author = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author !== void 0 ? _m$author : ''),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }
@@ -287,6 +305,10 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].DataContainer, " ").concat(moduleName, "_DataContainer ").concat(props.DataContainerClassName)
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: (0, _utility2.resolveMainLink)(m),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }
@@ -296,6 +318,10 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].CtaHolder, " ").concat(moduleName, "_CtaHolder ").concat(props.CtaHolderClassName)
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/p?u=".concat(m === null || m === void 0 ? void 0 : m.author),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }

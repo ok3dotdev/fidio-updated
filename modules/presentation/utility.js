@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resolveMainLink = exports.resolveGoodDate = exports.normalizeData = exports.datePassed = void 0;
+exports.resolveMainLink = exports.resolveGoodDate = exports.normalizeData = exports.handleSliderLinkClickUp = exports.handleSliderLinkClickDown = exports.handleSliderLinkClick = exports.datePassed = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var normalizeData = exports.normalizeData = function normalizeData(data) {
   return data.map(function (m) {
     if (m.name) {
@@ -53,7 +55,6 @@ var normalizeData = exports.normalizeData = function normalizeData(data) {
     }
     if (!(m !== null && m !== void 0 && m.date)) {
       var _m$detailmeta4;
-      console.log(m.detailmeta);
       if (m !== null && m !== void 0 && (_m$detailmeta4 = m.detailmeta) !== null && _m$detailmeta4 !== void 0 && (_m$detailmeta4 = _m$detailmeta4.eventDateDef) !== null && _m$detailmeta4 !== void 0 && _m$detailmeta4.dates && m.detailmeta.eventDateDef.dates.length > 0) {
         m.showSimpleDate = true;
         m.date = new Date(m.detailmeta.eventDateDef.dates[0]).getTime();
@@ -100,5 +101,41 @@ var resolveGoodDate = exports.resolveGoodDate = function resolveGoodDate(date) {
     return new Date(useValue).toLocaleDateString() + ' ' + new Date(useValue).toLocaleTimeString();
   } catch (err) {
     return '';
+  }
+};
+var handleSliderLinkClick = exports.handleSliderLinkClick = function handleSliderLinkClick(e) {
+  e.preventDefault();
+};
+var handleSliderLinkClickDown = exports.handleSliderLinkClickDown = function handleSliderLinkClickDown(e) {
+  var _e$currentTarget;
+  if (e !== null && e !== void 0 && (_e$currentTarget = e.currentTarget) !== null && _e$currentTarget !== void 0 && _e$currentTarget.getAttribute && e.currentTarget.getAttribute('href') && Object.prototype.hasOwnProperty.call(e, 'screenX') && Object.prototype.hasOwnProperty.call(e, 'screenY')) {
+    localStorage.setItem('last_click_location', JSON.stringify({
+      x: e.screenX,
+      y: e.screenY
+    }));
+  }
+};
+var handleSliderLinkClickUp = exports.handleSliderLinkClickUp = function handleSliderLinkClickUp(e, router) {
+  if (Object.prototype.hasOwnProperty.call(e, 'screenX') && Object.prototype.hasOwnProperty.call(e, 'screenY')) {
+    var x = e.screenX;
+    var y = e.screenY;
+    var lastClick = localStorage.getItem('last_click_location');
+    if (lastClick) {
+      var _e$currentTarget2;
+      var lastClickParsed = JSON.parse(lastClick);
+      if (lastClickParsed && e !== null && e !== void 0 && (_e$currentTarget2 = e.currentTarget) !== null && _e$currentTarget2 !== void 0 && _e$currentTarget2.getAttribute) {
+        var useHref = e.currentTarget.getAttribute('href');
+        if (useHref) {
+          var xDif = x - lastClickParsed.x;
+          var yDif = y - lastClickParsed.y;
+          var distance = Math.sqrt(xDif * xDif + yDif * yDif);
+          if (distance < 12.5) {
+            router.push(useHref);
+            return;
+          }
+          console.log(distance);
+        }
+      }
+    }
   }
 };

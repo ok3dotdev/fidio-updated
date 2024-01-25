@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _router = require("next/router");
+var _reactSlick = _interopRequireDefault(require("react-slick"));
 var _PresentationModule = _interopRequireDefault(require("../../Presentation.module.scss"));
 var _uuid = require("uuid");
 var _utility = require("../../../utility/utility");
@@ -28,6 +30,7 @@ var moduleName = 'IndexBgHello';
 var RESET_CTA_TIMER = 180000;
 var Module = function Module(props) {
   var _props$request;
+  var router = (0, _router.useRouter)();
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -66,7 +69,6 @@ var Module = function Module(props) {
     var _props$items;
     if (resolvedUseItems && useHandler) {
       var useData = (0, _utility2.normalizeData)(resolvedUseItems);
-      console.log(useData);
       return useData;
     }
     if (props !== null && props !== void 0 && (_props$items = props.items) !== null && _props$items !== void 0 && _props$items.map) {
@@ -78,9 +80,7 @@ var Module = function Module(props) {
   props._LocalEventEmitter.subscribe(componentId, function (d) {
     if (d && d.dispatch) {
       if (d.dispatch === 'updateCountdown') {
-        console.log(useItems[currentSlide]);
         var useCurrentTime = useItems[currentSlide] ? useItems[currentSlide].date : null;
-        console.log(useCurrentTime);
         if (useCurrentTime !== null && useCurrentTime !== undefined) {
           var useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : _typeof(useCurrentTime) === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
           if ((0, _utility2.datePassed)(useTime)) {
@@ -145,33 +145,6 @@ var Module = function Module(props) {
       return _ref.apply(this, arguments);
     };
   }());
-  _react["default"].useEffect(function () {
-    if (componentId && window && window.Glide) {
-      if (currentGlide !== null && currentGlide !== void 0 && currentGlide.current) {
-        currentGlide.current.destroy();
-      }
-      var glide = new window.Glide(".glide_".concat(componentId), {
-        type: 'carousel',
-        perView: 1,
-        focusAt: 'center'
-        // breakpoints: {
-        //     1200: {
-        //         perView: 2
-        //     },
-        //     480: {
-        //         perView: 1
-        //     }
-        // }
-      });
-      glide.on(['mount.after', 'run'], function () {
-        var currentIndex = glide.index;
-        setCurrentSlide(currentIndex);
-        setDisplayTime(false);
-      });
-      currentGlide.current = glide;
-      glide.mount();
-    }
-  }, [componentId]);
   var resolveImage = function resolveImage(item, img, type) {
     if (item !== null && item !== void 0 && item.rawBg && type === 'bg') {
       return img;
@@ -218,7 +191,15 @@ var Module = function Module(props) {
     // Must set image based on if feature image present. if no feature image present use 1st image (if tall view, look for tall image first)
     // Use Name for title. Use author username for author
   };
-  console.log('r', useItems, props);
+  var useSettings = {
+    infinite: true,
+    speed: 500,
+    swipeToSlide: true,
+    touchThreshold: 60
+  };
+  var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
+    (0, _utility2.handleSliderLinkClickUp)(e, router);
+  });
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className, " ").concat(props.medium ? "".concat(_PresentationModule["default"].IndexBgContainerMedium) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -236,14 +217,13 @@ var Module = function Module(props) {
     handlerArgs: props.request.handlerArgs,
     receiveData: receiveData
   }, props)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    "data-glide-el": "track",
-    className: "glide__track"
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "glide__slides",
+    className: "swipe slider_".concat(componentId)
+  }, /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], _extends({}, useSettings, {
+    className: "swiper-wrapper slider_slides",
     style: {
       height: 'inherit'
     }
-  }, useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
+  }), useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
     var _m$leadBg, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$author3, _m$author4, _m$title, _m$description, _m$item, _m$item2, _m$item3, _m$item4, _m$item5, _m$item6;
     return /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_PresentationModule["default"].BgUpperContainer, " ").concat(moduleName, "_Container"),
@@ -299,6 +279,10 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].IconContainer, " ").concat(moduleName, "_IconContainer ").concat(props.iconContainerClassName)
     }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/p?u=".concat((_m$author = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author !== void 0 ? _m$author : ''),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }
@@ -318,6 +302,10 @@ var Module = function Module(props) {
       layout: "responsive"
     }))) : null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/p?u=".concat((_m$author3 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author3 !== void 0 ? _m$author3 : ''),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }
@@ -325,6 +313,10 @@ var Module = function Module(props) {
       className: "".concat(_PresentationModule["default"].Author, " ").concat(moduleName, "_Author ").concat(props.authorClassName)
     }, (_m$author4 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author4 !== void 0 ? _m$author4 : ''))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: (0, _utility2.resolveMainLink)(m),
+      onClick: _utility2.handleSliderLinkClick,
+      onMouseDown: _utility2.handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
       style: {
         alignSelf: 'center'
       }

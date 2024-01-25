@@ -15,7 +15,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 var SubMenu = function SubMenu(props) {
   var loggedIn = props.loggedIn,
     rest = _objectWithoutProperties(props, _excluded);
-  console.log(props.menuConfig.left);
   var myLoader = function myLoader(_ref) {
     var src = _ref.src;
     if (src.match(/greythumb/)) {
