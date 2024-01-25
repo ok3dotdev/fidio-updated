@@ -18,17 +18,16 @@ nvm use 16
 nvm ls
 
 # You must fork this and create your own repo
-# Pull new changes
+
+# Add Upstream repo once you have forked into your own repo
 
 git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-client
 
 # To safely pull /modules folder changes run update_version script
 ./update_version
 
-# To merge the rest of the changes run the following
-git pull upstream
+# After you are finished resolving any possible conflicts run merge. If you face any issues contact admin@tycoon.systems
 git merge your-branch
-./extract_modules_dist
 
 # Run init_app.js to create required dependency files. Else errors will throw in development
 node init_app.js
