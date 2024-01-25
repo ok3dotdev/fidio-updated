@@ -1,3 +1,4 @@
 git fetch upstream master
 yes | git checkout -p upstream/master -- modules
 git commit --amend --date="$(date)" -m "Modules Update ${date}"
+git pull upstream master
