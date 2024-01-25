@@ -16,6 +16,12 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+    text-align: center;
+    span {
+        input {
+            width: 100%;
+        }
+    }
 }
 
 .Username_PromptContainer {

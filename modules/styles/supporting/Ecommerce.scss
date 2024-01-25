@@ -8,12 +8,13 @@
     border-radius: 0.25rem;
     box-shadow: inset 0 0 7.5px #5c5c5c;
     border: 1px solid grey;
-    transition: 100ms;
+    transition: 250ms;
     line-height: 1.5rem;
     height: -moz-fit-content;
     height: fit-content;
     background: rgba(0, 0, 0, .5);
     font-size: 1.25rem;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     max-height: 90vh;
     overflow: auto;
@@ -36,7 +37,11 @@
 .Ecommerce_Item_Container {
     background: #222222;
     padding: .25rem;
-    border-radius: .125rem;
+    border-radius: .5rem;
+}
+
+.Ecommerce_Item_DarkContainerHover:hover {
+    background: #313131;
 }
 
 .Ecommerce_Item_Image_Container {
@@ -76,6 +81,18 @@
     margin-bottom: .25rem;
 }
 
+.Ecommerce_Title {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 200px;
+}
+
+
 .Ecommerce_Title,
 .Ecommerce_Price {
     text-align: right;
@@ -86,7 +103,6 @@
 .Ecommerce_Cart_Side_Meta_Container,
 .Ecommerce_Cart_Price_Container {
     width: 115px;
-    overflow: auto;
 }
 
 .Ecommerce_Cart_Container button {
@@ -99,4 +115,16 @@
     font-weight: 600;
     background: rgba(226, 226, 226, .2);
     line-height: 1.65rem;
+}
+
+.Ecommerce_CreditCard_Container_Meta {
+    display: flex;
+    gap: .5rem;
+    text-transform: uppercase;
+    justify-content: space-between;
+    font-size: .85rem;
+}
+
+.Ecommerce_Label {
+    margin: .5rem 0;
 }
