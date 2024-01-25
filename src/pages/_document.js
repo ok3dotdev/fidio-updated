@@ -18,7 +18,11 @@ class MyDocument extends Document {
           <script src='//js.paystack.co/v1/inline.js'></script>
         </Head>
         <body>
-          <div version='0.3.39' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+          <div
+            version='0.3.39'
+            business='Tycoon Systems Corp.'
+            style={{ display: 'none' }}
+          ></div>
           <Main />
           <NextScript />
         </body>
@@ -27,8 +31,4 @@ class MyDocument extends Document {
   }
 }
 
-<<<<<<< HEAD
 export default MyDocument;
-=======
-export default MyDocument
->>>>>>> ce697d27689aed4c509371f2aa1daa4a9306a368

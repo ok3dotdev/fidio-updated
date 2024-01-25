@@ -1,0 +1,29 @@
+.Username_Container {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    margin: .5rem 0;
+    align-items: center;
+}
+
+.Username_ContainerBg {
+    background: #272727;
+    padding: .5rem;
+    border-radius: .125rem;
+}
+
+.Username_ItemsContainer, .Username_PromptContainer {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-align: center;
+    span {
+        input {
+            width: 100%;
+        }
+    }
+}
+
+.Username_PromptContainer {
+    flex-direction: column;
+}

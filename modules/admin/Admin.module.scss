@@ -1,0 +1,105 @@
+.container {
+    font-size: .85rem;
+    p {
+        font-size: .8rem;
+        margin: 0;
+    }
+    button {
+        padding: .05rem 1rem;
+    }
+}
+
+.internalContainer {
+    position: relative;
+    margin-right: .5rem;
+    section {
+        margin-bottom: .35rem;
+    }
+}
+
+
+.adminBannerContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    .adminBannerInternalContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.adminMenuContainer {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    li {
+        width: 150px;
+        button {
+            padding: .125rem .25rem;
+            background: none;
+            color: white;
+            width: 100%;
+            text-align: left;
+        }
+        button:not(disabled) {
+            cursor: pointer;
+        }
+    }
+}
+
+.bodyContainer {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.contentBodyContainer {
+    margin-top: .125rem;
+    width: 100%;
+    button {
+        border-radius: 1rem;
+    }
+}
+
+.itemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222222;
+    gap: .25rem;
+    width: 100%;
+    padding: .125rem .5rem;
+    border-radius: 1rem;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: .125rem;
+}
+
+.adminPair {
+    button {
+        border-radius: 0;
+    }
+}
+
+@font-face {
+    font-family: 'Miller Text';
+    src: local('Miller Text'), url(https://d2zsu4v7czjhvo.cloudfront.net/font/miller/MillerTextBoldItalic.otf) format('truetype') font-weight-bold,
+}
+
+.actionButton {
+    min-width: 200px;
+}
+
+@media(max-width: 640px) {
+    .actionButton {
+        min-width: none;
+        width: 100%;
+    }
+}
+
+.millerText {
+    font-family: 'Miller Text';
+}
