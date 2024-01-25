@@ -1,0 +1,38 @@
+.Editor_Platform {
+    color: black;
+    background: white;
+    .ql-editor {
+        min-height: 300px;
+        max-height: 100vh;
+        padding: .25rem;
+    }
+    .ql-clipboard {
+        position: absolute;
+        top: -10000px;
+    }
+}
+
+.Editor_Container {
+    .ql-toolbar {
+        background: white;
+        .ql-formats {
+            button {
+                border-radius: 0;
+            }
+            button:hover {
+                border: 1px solid grey;
+            }
+        }
+    }
+}
+
+.Editor_MaxWidth {
+    width: 80vw;
+    max-width: 1200px;
+}
+
+@media (max-width: 840px) {
+    .Editor_MaxWidth {
+        width: 100%;
+    }
+}

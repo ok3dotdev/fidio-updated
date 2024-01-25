@@ -10,16 +10,13 @@ var _cta = require("../../cta");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
-  var styleSafety = props.StyleSafety;
   console.log(props);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "",
     style: {
-      background: "url(".concat(props.backgroundUrl, ")"),
-      padding: styleSafety ? styleSafety.padding : 0,
-      margin: styleSafety ? styleSafety.margin : 0
+      background: "url(".concat(props.backgroundUrl, ")")
     }
   }, props.children, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex sign-in-page-container"
@@ -39,5 +36,4 @@ var Module = function Module(props) {
     ctaTopVideos: props.ctaTopVideos
   }))))));
 };
-var _default = Module;
-exports["default"] = _default;
+var _default = exports["default"] = Module;

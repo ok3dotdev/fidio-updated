@@ -11,11 +11,15 @@ var _shop = require("../ecommerce/shop");
 var _router = require("next/router");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var OPEN_PANEL_OFFSET = 1000;
 var Module = function Module(props) {
@@ -58,11 +62,24 @@ var Module = function Module(props) {
       setComponentDidMount(true);
     }
   }, [componentDidMount]);
-  var styleSafety = props.StyleSafety;
   _react["default"].useEffect(function () {
-    if (props && props.profileData && props.profileData.currentLive) {
+    var _props$profileData, _props$profileData2;
+    if (props !== null && props !== void 0 && (_props$profileData = props.profileData) !== null && _props$profileData !== void 0 && _props$profileData.currentLive) {
       setCurrentLive(props.profileData.currentLive);
       setCombinedFeed([props.profileData.currentLive].concat(feed));
+    } else if (!(props !== null && props !== void 0 && (_props$profileData2 = props.profileData) !== null && _props$profileData2 !== void 0 && _props$profileData2.currentLive)) {
+      console.log('Remove');
+      var temp = _toConsumableArray(feed);
+      var f = temp.findIndex(function (m) {
+        var _props$profileData3;
+        return (m === null || m === void 0 ? void 0 : m.author) === (props === null || props === void 0 || (_props$profileData3 = props.profileData) === null || _props$profileData3 === void 0 || (_props$profileData3 = _props$profileData3.user) === null || _props$profileData3 === void 0 ? void 0 : _props$profileData3.id) && (m === null || m === void 0 ? void 0 : m.status) === 'live';
+      });
+      console.log(f, temp);
+      if (f > -1) {
+        temp.splice(f, 1);
+      }
+      setCurrentLive({});
+      setCombinedFeed(temp);
     }
   }, [props.profileData, feed]);
   var adminAuth = props._loggedIn && props._loggedIn.identifier && props.profileData && props.profileData.user && props.profileData.user.id && props._loggedIn.identifier === props.profileData.user.id;
@@ -80,7 +97,6 @@ var Module = function Module(props) {
     }
     setAdminPanelState(temp);
   }, [adminPanelState]);
-  console.log(props, adminPanelState);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
   }, adminAuth ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -94,19 +110,9 @@ var Module = function Module(props) {
       right: '.5rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      height: '20px',
-      padding: '.25rem 1rem',
-      borderRadius: '.125rem',
-      paddingTop: '.125rem'
-    },
     onClick: toggleAdminPanel
-  }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, props.profileData && props.profileData.user && !props.hideDefault ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "",
-    style: {
-      padding: styleSafety ? styleSafety.padding : 0,
-      margin: styleSafety ? styleSafety.margin : 0
-    }
+  }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, !props.hideDefault ? props.profileData && props.profileData.user ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "ProfilePage_UserContainer"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "PagePadding PagePaddingTop ProfilePage_MetaContainer"
   }, /*#__PURE__*/_react["default"].createElement("img", {
@@ -122,7 +128,8 @@ var Module = function Module(props) {
     _gridListType: 'video'
   }, props))), /*#__PURE__*/_react["default"].createElement(_shop.Shop, _extends({}, props, {
     profile: true
-  }))) : /*#__PURE__*/_react["default"].createElement("div", null, "No User here :/"));
+  }))) : /*#__PURE__*/_react["default"].createElement("div", {
+    className: "PagePadding"
+  }, "No User here :/") : null, props.childrenAfter);
 };
-var _default = Module;
-exports["default"] = _default;
+var _default = exports["default"] = Module;
