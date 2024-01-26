@@ -412,7 +412,7 @@ var Module = function Module(props) {
           gap: '1rem'
         }
       }, resolvedOrders !== null && resolvedOrders !== void 0 && (_resolvedOrders$order = resolvedOrders.orders) !== null && _resolvedOrders$order !== void 0 && _resolvedOrders$order.map ? resolvedOrders.orders.map(function (m, i) {
-        var _m$paymentmethoddetai, _m$paymentmethoddetai2, _m$paymentmethoddetai3, _m$paymentmethoddetai4, _m$id, _m$id2, _m$cart, _m$totals$total, _m$totals, _m$meta, _card$brand, _card$last;
+        var _m$paymentmethoddetai, _m$paymentmethoddetai2, _m$paymentmethoddetai3, _m$paymentmethoddetai4, _m$id, _m$id2, _m$cart, _westernMoneyFormat$f, _m$totals, _m$meta, _card$brand, _card$last;
         var useSymbol;
         var card = (_m$paymentmethoddetai = m === null || m === void 0 || (_m$paymentmethoddetai2 = m.paymentmethoddetails) === null || _m$paymentmethoddetai2 === void 0 ? void 0 : _m$paymentmethoddetai2.card) !== null && _m$paymentmethoddetai !== void 0 ? _m$paymentmethoddetai : null;
         var cardBilling = (_m$paymentmethoddetai3 = m === null || m === void 0 || (_m$paymentmethoddetai4 = m.paymentmethoddetails) === null || _m$paymentmethoddetai4 === void 0 ? void 0 : _m$paymentmethoddetai4.billing_details) !== null && _m$paymentmethoddetai3 !== void 0 ? _m$paymentmethoddetai3 : null;
@@ -528,7 +528,7 @@ var Module = function Module(props) {
           style: {
             fontSize: '1.25rem'
           }
-        }, useSymbol, (_m$totals$total = m === null || m === void 0 || (_m$totals = m.totals) === null || _m$totals === void 0 ? void 0 : _m$totals.total) !== null && _m$totals$total !== void 0 ? _m$totals$total : '')), /*#__PURE__*/_react["default"].createElement("div", null, m.paymentfulfilled ? /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$meta = m.meta) !== null && _m$meta !== void 0 && _m$meta.charged && m !== null && m !== void 0 && m.currency ? /*#__PURE__*/_react["default"].createElement("div", {
+        }, useSymbol, (_westernMoneyFormat$f = _ecommerce.westernMoneyFormat.format(m === null || m === void 0 || (_m$totals = m.totals) === null || _m$totals === void 0 ? void 0 : _m$totals.total)) !== null && _westernMoneyFormat$f !== void 0 ? _westernMoneyFormat$f : '')), /*#__PURE__*/_react["default"].createElement("div", null, m.paymentfulfilled ? /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$meta = m.meta) !== null && _m$meta !== void 0 && _m$meta.charged && m !== null && m !== void 0 && m.currency ? /*#__PURE__*/_react["default"].createElement("div", {
           className: _ReceiptPageModule["default"].pair,
           style: {
             fontSize: '.7rem'

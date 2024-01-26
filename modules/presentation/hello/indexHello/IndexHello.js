@@ -180,7 +180,7 @@ var Module = function Module(props) {
     if (props !== null && props !== void 0 && (_props$items = props.items) !== null && _props$items !== void 0 && _props$items.map) {
       return (0, _utility2.normalizeData)(props.items);
     }
-    return [{}, {}, {}, {}];
+    return [{}, {}, {}, {}, {}, {}];
   }, [resolvedUseItems, useHandler, props === null || props === void 0 ? void 0 : props.items]);
   var useSettings = {
     infinite: false,

@@ -22,6 +22,8 @@
     position: fixed;
     top: 0;
     width: 100%;
+    padding: 0 .35rem;
+    background: #353535;
     .adminBannerInternalContainer {
         display: flex;
         justify-content: space-between;
@@ -51,6 +53,30 @@
     margin-top: 1.25rem;
     display: flex;
     gap: .5rem;
+}
+
+.MonthsContainer {
+    max-width: calc(100vw - 200px);
+}
+
+@media(max-width: 780px) {
+    .MonthsContainer {
+        max-width: 92.5vw;
+    }
+    .bodyContainer {
+        flex-direction: column;
+    }
+    .adminMenuContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+    .internalContainer {
+        width: min-content;
+        min-width: 100%;
+        .bodyContainer {
+            padding: .5rem;
+        }
+    }
 }
 
 .contentBodyContainer {
@@ -102,4 +128,87 @@
 
 .millerText {
     font-family: 'Miller Text';
+}
+
+.InvoiceContainer {
+    width: 600px;
+    .InvoiceInternalContainer {
+        padding: 4rem;
+        background: white;
+        color: black;
+        font-size: .8rem;
+        .Entity {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        .QuoteContainer {
+            text-align: right;
+            .InvoiceLabel {
+                font-size: 6.5rem;
+                font-weight: 600;
+            }
+        }
+        .DetailTable {
+            font-size: .75rem;
+        }
+    }
+}
+@media(max-width: 950px) {
+    .InvoiceContainer {
+        width: auto;
+    }
+}
+
+.DetailTableContainer {
+    min-height: 200px;
+    .DetailTable {
+        border-spacing: 0;
+        margin-top: .5rem;
+        th {
+            font-weight: 700;
+            padding-bottom: .125rem;
+        }
+        tr:first-child, th {
+            border-bottom: 1px solid black;
+            line-height: 10px;
+        }
+        tr {
+            line-height: 15px;
+        }
+        td {
+            vertical-align: top;
+        }
+        .TableNumber {
+            text-align: right;
+        }
+        .DescriptionContainer {
+            width: 50%;
+        }
+    }
+}
+
+.maxWidth {
+    max-width: 1200px;
+    width: 80vw;
+}
+
+.ChargesExternalContainer,
+.InfoContainer {
+    border: 1px solid grey;
+    padding: 1rem 3rem;
+}
+
+.DetailTableContainer {
+    .DetailTableCheckered {
+        th {
+            border-left: 1px solid grey;
+            border-right: 1px solid grey;
+        }
+        tr {
+            line-height: 20px;
+        }
+        tr:nth-child(even) {
+            background: #353535;
+        }
+    }
 }

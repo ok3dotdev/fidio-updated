@@ -13,6 +13,7 @@ var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
 var _BuildAdmin = _interopRequireDefault(require("./BuildAdmin"));
 var _StreamAdmin = _interopRequireDefault(require("./StreamAdmin"));
 var _PostAdmin = _interopRequireDefault(require("./PostAdmin"));
+var _BillingAdmin = _interopRequireDefault(require("./BillingAdmin"));
 var _index = require("/modules/onboarding/signin/index.js");
 var _util = require("/modules/util");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -46,7 +47,8 @@ var Module = function Module(props) {
   var Auth_Table = {
     BuildAdmin: ['full'],
     StreamAdmin: ['full', 'administrative'],
-    PostAdmin: ['full', 'administrative']
+    PostAdmin: ['full', 'administrative'],
+    BillingAdmin: ['full', 'administrative']
   };
   var resolveAuth = function resolveAuth(page, auth) {
     var _auth$adminc;
@@ -122,8 +124,11 @@ var Module = function Module(props) {
   }, "Post")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleSetPage,
     modif: "build"
-  }, "Build")) : null), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: handleSetPage,
+    modif: "billing"
+  }, "Billing")) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
-  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : null : null))) : null);
+  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BillingAdmin["default"], props)) : null : null))) : null);
 };
 var _default = exports["default"] = Module;

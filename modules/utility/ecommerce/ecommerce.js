@@ -637,7 +637,8 @@ var performPurchase = exports.performPurchase = /*#__PURE__*/function () {
 }();
 var westernMoneyFormat = exports.westernMoneyFormat = new Intl.NumberFormat('en-US', {
   minimumIntegerDigits: 1,
-  minimumFractionDigits: 2
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
 });
 var resolveMoneyFormat = exports.resolveMoneyFormat = function resolveMoneyFormat(v) {
   try {

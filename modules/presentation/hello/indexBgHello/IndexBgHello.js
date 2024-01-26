@@ -192,7 +192,7 @@ var Module = function Module(props) {
     // Use Name for title. Use author username for author
   };
   var useSettings = {
-    infinite: true,
+    infinite: useItems.length > 1,
     speed: 500,
     swipeToSlide: true,
     touchThreshold: 60,
@@ -201,6 +201,7 @@ var Module = function Module(props) {
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);
   });
+  console.log(useItems);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className, " ").concat(props.medium ? "".concat(_PresentationModule["default"].IndexBgContainerMedium) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
