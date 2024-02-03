@@ -834,3 +834,32 @@ button:not(:disabled):active {
     background: black;
     width: 1px;
 }
+
+.newItem {
+    display: flex;
+    align-items: center;
+    background: #1d9bca;
+    color: yellow;
+    outline: 1px solid yellow;
+    gap: .125rem;
+    border-radius: 1rem;
+    max-width: fit-content;
+    padding: .025rem .5rem;
+    font-size: .65rem;
+    font-weight: 700;
+}
+
+.newItem {
+    background: rgb(238,82,82);
+    background: -moz-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    background: -webkit-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    background: linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    border: 1px solid rgb(255, 255, 255);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#527eee",endColorstr="#2ad552",GradientType=1);
+}
+
+@media (min-width: 640px) {
+    .newItem {
+        font-size: .75rem;
+    }
+}

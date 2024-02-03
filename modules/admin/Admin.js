@@ -110,7 +110,10 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, "Welcome ", (_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.identifier)), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p5"
   }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/"
+    href: "/",
+    style: {
+      fontWeight: '600'
+    }
   }, props.domainUrl), /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && (_props$_adminAuth2 = props._adminAuth) !== null && _props$_adminAuth2 !== void 0 && (_props$_adminAuth2 = _props$_adminAuth2.adminc) !== null && _props$_adminAuth2 !== void 0 && _props$_adminAuth2.access ? "(admin access: ".concat(props === null || props === void 0 || (_props$_adminAuth3 = props._adminAuth) === null || _props$_adminAuth3 === void 0 || (_props$_adminAuth3 = _props$_adminAuth3.adminc) === null || _props$_adminAuth3 === void 0 ? void 0 : _props$_adminAuth3.access, ")") : '')))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
   }, /*#__PURE__*/_react["default"].createElement("ul", {

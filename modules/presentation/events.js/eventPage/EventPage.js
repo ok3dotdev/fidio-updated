@@ -238,12 +238,29 @@ var Module = function Module(props) {
   }, (_m$author4 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author4 !== void 0 ? _m$author4 : ''))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
     href: (0, _utility2.resolveMainLink)(m),
     style: {
-      alignSelf: 'center'
+      alignSelf: 'center',
+      position: 'relative'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props.leadClassName)
-  }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : '')), m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p5"
+  }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : ''), m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "newItem",
+    style: {
+      position: 'absolute',
+      top: '-18.5px',
+      left: '75px'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "New"), /*#__PURE__*/_react["default"].createElement("span", {
+    style: {
+      fontSize: '.9rem'
+    },
+    className: "star material-icons"
+  }, "star")) : null), m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex",
+    style: {
+      alignItems: 'center',
+      columnGap: '.5rem'
+    }
   }, /*#__PURE__*/_react["default"].createElement("button", {
     className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(moduleName, "_Cta ").concat(props.ctaClassName),
     onClick: handleFireGlobalEvent,
@@ -273,8 +290,7 @@ var Module = function Module(props) {
         className: "flex",
         style: {
           fontSize: '1.25rem',
-          fontWeight: '600',
-          marginTop: '.5rem'
+          fontWeight: '600'
         }
       }, /*#__PURE__*/_react["default"].createElement("div", null, price.symbol), /*#__PURE__*/_react["default"].createElement("div", {
         style: {
@@ -283,6 +299,25 @@ var Module = function Module(props) {
       }, (0, _ecommerce.resolveMoneyFormat)(price.price)), /*#__PURE__*/_react["default"].createElement("div", null, price.currency));
     }
     return /*#__PURE__*/_react["default"].createElement("div", null);
+  }(), function () {
+    var option = (0, _ecommerce.resolveOption)(m, m.item.style, m.item.option, true);
+    var paint = option !== null && option !== void 0 && option.quantity && option.quantity > 300 ? '' : option !== null && option !== void 0 && option.quantity && option.quantity <= 300 ? "Not much left in stock" : '';
+    console.log(option, paint);
+    return paint !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
+      style: {
+        alignItems: 'center',
+        display: 'flex',
+        fontSize: '.85rem',
+        fontWeight: '700',
+        gap: '.25rem',
+        color: '#ff8686'
+      }
+    }, /*#__PURE__*/_react["default"].createElement("span", null, paint), /*#__PURE__*/_react["default"].createElement("span", {
+      style: {
+        fontSize: '1.15rem'
+      },
+      className: "inventory material-icons"
+    }, "inventory")) : null;
   }()) : null)))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].SecondDataContainer)
   }, m.description && m.description !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
@@ -329,7 +364,11 @@ var Module = function Module(props) {
       style: {
         opacity: '.7'
       }
-    }, "Participant")), n.time ? /*#__PURE__*/_react["default"].createElement("div", {
+    }, "Participant")), n.description ? /*#__PURE__*/_react["default"].createElement("div", {
+      style: {
+        marginBottom: '.5rem'
+      }
+    }, n.description) : null, n.time ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "lineupItem_time ".concat(_PresentationModule["default"].LineupItemTime)
     }, (0, _util.getFormattedTime)(n.time, {
       simple: true

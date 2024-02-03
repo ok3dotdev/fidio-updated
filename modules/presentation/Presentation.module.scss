@@ -426,6 +426,9 @@
             .TimeSimple {
                 top: -15.5px;
             }
+            .TimeContainer {
+                top: 7.5%;
+            }
             .TimeSection {
                 max-width: 15px;
             }
@@ -711,6 +714,49 @@
                         height: 150px;
                         width: 150px;
                     }
+                }
+            }
+        }
+    }
+}
+
+.BannerHello {
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+    .IndexBgContainerAd {
+        min-height: 285px;
+        height: calc(35vh + .25rem);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        .TypeContainer {
+            margin-left: 1rem;
+            width: -webkit-fill-available;
+            .Lead {
+                margin: 0;
+                margin-bottom: .5rem;
+                font-size: 6rem;
+            }
+            .Text {
+                font-size: 1.25rem;
+                word-wrap: break-word;
+                max-width: -webkit-fill-available;
+                margin-right: 1rem;
+            }
+            @media(max-width: 780px) {
+                .Lead {
+                    font-size: 5rem;
+                }
+                .Text {
+                    font-size: 1rem;
+                    word-wrap: break-word;
+                    max-width: -webkit-fill-available;
+                    margin-right: 1rem;
+                }
+            }
+            @media(max-width: 640px) {
+                .Lead {
+                    font-size: 4rem;
                 }
             }
         }

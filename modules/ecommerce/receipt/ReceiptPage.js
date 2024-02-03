@@ -31,23 +31,6 @@ var Module = function Module(props) {
     }
     return '';
   };
-  var resolveOption = function resolveOption(p, s, o) {
-    if (p && p.styles && s) {
-      var f = p.styles.find(function (m) {
-        return m.sid === s;
-      });
-      if (f.option) {
-        console.log(f.option);
-        var f2 = f.option.find(function (m) {
-          return m.sid === o;
-        });
-        if (f2 && f2.option) {
-          return f2.option;
-        }
-      }
-    }
-    return '';
-  };
   var receiptData = props === null || props === void 0 ? void 0 : props.receiptData;
   var currency = receiptData === null || receiptData === void 0 ? void 0 : receiptData.currency;
   var cartTotal = receiptData === null || receiptData === void 0 || (_receiptData$totals = receiptData.totals) === null || _receiptData$totals === void 0 ? void 0 : _receiptData$totals.total;
@@ -92,7 +75,7 @@ var Module = function Module(props) {
       style: {
         fontSize: '.7rem'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", null, resolveStyle(m.product, m.style)), /*#__PURE__*/_react["default"].createElement("div", null, resolveOption(m.product, m.style, m.option))));
+    }, /*#__PURE__*/_react["default"].createElement("div", null, resolveStyle(m.product, m.style)), /*#__PURE__*/_react["default"].createElement("div", null, (0, _ecommerce.resolveOption)(m.product, m.style, m.option))));
   }) : null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ReceiptPageModule["default"].pair, " separator_top")
   }, /*#__PURE__*/_react["default"].createElement("div", {

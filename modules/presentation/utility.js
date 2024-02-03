@@ -116,6 +116,11 @@ var handleSliderLinkClickDown = exports.handleSliderLinkClickDown = function han
   }
 };
 var handleSliderLinkClickUp = exports.handleSliderLinkClickUp = function handleSliderLinkClickUp(e, router) {
+  var isRightMB = "which" in e ? e.which == 3 : 'button' in e ? e.button == 2 : false; // e.which 3 = Gecko (Firefox), WebKit (Safari/Chrome) & Opera e.button 2 = IE, Opera 
+  if (isRightMB) {
+    e.preventDefault();
+    return;
+  }
   if (Object.prototype.hasOwnProperty.call(e, 'screenX') && Object.prototype.hasOwnProperty.call(e, 'screenY')) {
     var x = e.screenX;
     var y = e.screenY;

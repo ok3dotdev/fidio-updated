@@ -23,6 +23,7 @@ var _fetch = require("./utility/fetch");
 var _onboarding = require("./utility/onboarding");
 var _util = require("./util");
 var _settings = require("./settings");
+var _survey = require("./survey");
 var _customModules = _interopRequireDefault(require("../customModules"));
 var _presentation = _interopRequireDefault(require("./presentation"));
 var _eventPage = require("./presentation/events.js/eventPage");
@@ -67,6 +68,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_indexing.SliderBasic, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'FetchHandler':
         return /*#__PURE__*/_react["default"].createElement(_fetch.FetchHandler, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+      case 'Survey':
+        return /*#__PURE__*/_react["default"].createElement(_survey.Survey, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Settings':
         return /*#__PURE__*/_react["default"].createElement(_settings.Settings, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CustomModule':

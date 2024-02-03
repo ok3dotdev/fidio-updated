@@ -96,13 +96,21 @@ var Module = function Module(props) {
   }, [props._loggedIn, props.regionsData, solution, props.setSolution]);
   _react["default"].useEffect(function () {
     var _props$paymentConfig;
-    if (props !== null && props !== void 0 && (_props$paymentConfig = props.paymentConfig) !== null && _props$paymentConfig !== void 0 && (_props$paymentConfig = _props$paymentConfig.keys) !== null && _props$paymentConfig !== void 0 && _props$paymentConfig.stripe && !stripePromise) {
-      var prom = (0, _stripeJs.loadStripe)(props.paymentConfig.keys.stripe);
+    console.log(props.useAdmin, props.paymentConfig);
+    if (props !== null && props !== void 0 && props.useAdmin) {
+      // Register with Admin Payment Client Stripe Key
+      var prom = (0, _stripeJs.loadStripe)(props.useAdmin);
       if (prom) {
         setStripePromise(prom);
       }
+    } else if (props !== null && props !== void 0 && (_props$paymentConfig = props.paymentConfig) !== null && _props$paymentConfig !== void 0 && (_props$paymentConfig = _props$paymentConfig.keys) !== null && _props$paymentConfig !== void 0 && _props$paymentConfig.stripe && !stripePromise) {
+      // Register with normal Payment Client Stripe Key
+      var _prom = (0, _stripeJs.loadStripe)(props.paymentConfig.keys.stripe);
+      if (_prom) {
+        setStripePromise(_prom);
+      }
     }
-  }, [props === null || props === void 0 || (_props$paymentConfig2 = props.paymentConfig) === null || _props$paymentConfig2 === void 0 || (_props$paymentConfig2 = _props$paymentConfig2.keys) === null || _props$paymentConfig2 === void 0 ? void 0 : _props$paymentConfig2.stripe]);
+  }, [props === null || props === void 0 || (_props$paymentConfig2 = props.paymentConfig) === null || _props$paymentConfig2 === void 0 || (_props$paymentConfig2 = _props$paymentConfig2.keys) === null || _props$paymentConfig2 === void 0 ? void 0 : _props$paymentConfig2.stripe, props.useAdmin]);
   _react["default"].useEffect(function () {
     function fn() {
       return _fn.apply(this, arguments);
@@ -124,7 +132,9 @@ var Module = function Module(props) {
               _context.prev = 2;
               setFetchingCc(true);
               _context.next = 6;
-              return (0, _index.getStripeSecretData)(props.apiUrl, props.domainKey, props._loggedIn);
+              return (0, _index.getStripeSecretData)(props.apiUrl, props.domainKey, props._loggedIn, {
+                useAdmin: props === null || props === void 0 ? void 0 : props.useAdmin
+              });
             case 6:
               data = _context.sent;
               if (!(data && data.client_secret && data.card)) {
@@ -154,7 +164,7 @@ var Module = function Module(props) {
       return _fn.apply(this, arguments);
     }
     fn();
-  }, [props._loggedIn, props._stripeSecret, solution]);
+  }, [props._loggedIn, props._stripeSecret, solution, props.useAdmin]);
   var handleSaveBillingInfo = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e, elements, stripe, nameOnCard) {
       var user, data, res;
@@ -201,7 +211,9 @@ var Module = function Module(props) {
             data.result = _context2.sent;
             console.log('Stripe Payment', data, props);
             _context2.next = 17;
-            return (0, _index.saveCreditCardInfo)(props.apiUrl, props.domainKey, data, _SignIn.checkSignedIn);
+            return (0, _index.saveCreditCardInfo)(props.apiUrl, props.domainKey, data, _SignIn.checkSignedIn, {
+              useAdmin: props === null || props === void 0 ? void 0 : props.useAdmin
+            });
           case 17:
             res = _context2.sent;
             if (!res) {
@@ -272,6 +284,17 @@ var Module = function Module(props) {
   if (props.setValidCc && props.validCc !== validCc) {
     props.setValidCc(validCc);
   }
+  _react["default"].useEffect(function () {
+    if (props !== null && props !== void 0 && props._stripeSecret.adminSecret && props.validCc && !props.useAdmin) {
+      // Use admin is off and the stripe secret is for an admin. Turn off stripe secret. Reset
+      setValidCc(false);
+      props._setStripeSecret(false);
+    } else if (props.useAdmin && props !== null && props !== void 0 && props._stripeSecret && !props._stripeSecret.adminSecret) {
+      // Use admin is true but stripe secret does not have adminSecret flag. Turn off stripe secret. Reset
+      setValidCc(false);
+      props._setStripeSecret(false);
+    }
+  }, [props === null || props === void 0 ? void 0 : props._stripeSecret, props === null || props === void 0 ? void 0 : props.useAdmin, props === null || props === void 0 ? void 0 : props.validCc]);
   var handleRegisterNewCard = _react["default"].useCallback(function (e) {
     if (registerNewCard) {
       setRegisterNewCard(false);
@@ -279,13 +302,17 @@ var Module = function Module(props) {
     }
     setRegisterNewCard(true);
   });
-  console.log('CC', solution);
+  console.log('CC', solution, props._stripeSecret);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className),
     style: props.sx
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), !props.stagger || props.stagger && stagger ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, (solution === null || solution === void 0 ? void 0 : solution.payment) === 'stripe' ? validCc && !registerNewCard ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }), props.useAdmin ? /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      background: '#353535'
+    }
+  }, "Payments to Tycoon Systems Corp.") : null, !props.stagger || props.stagger && stagger ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, (solution === null || solution === void 0 ? void 0 : solution.payment) === 'stripe' ? validCc && !registerNewCard ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Ecommerce_CreditCard_Container",
     style: {
       padding: '.125rem'

@@ -87,6 +87,12 @@ Object.defineProperty(exports, "resolveMoneyFormat", {
     return _ecommerce.resolveMoneyFormat;
   }
 });
+Object.defineProperty(exports, "resolveOption", {
+  enumerable: true,
+  get: function get() {
+    return _ecommerce.resolveOption;
+  }
+});
 Object.defineProperty(exports, "resolveRegionBasedPrice", {
   enumerable: true,
   get: function get() {

@@ -217,7 +217,8 @@ var Module = function Module(props) {
       fontStyle: 'italic',
       width: '100%',
       marginBottom: '.25rem',
-      fontSize: '1.5rem'
+      fontSize: '1.5rem',
+      fontWeight: '700'
     }
   })), /*#__PURE__*/_react["default"].createElement("div", {
     id: "".concat(editorElementId),

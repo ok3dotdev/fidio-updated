@@ -29,7 +29,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var CHECK_HANDLE_USER_DATA_THRESHOLD = 1800000;
 var Internal = function Internal(usePageProps) {
-  var _pageProps;
+  var _pageProps11;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     appDidMount = _React$useState2[0],
@@ -235,6 +235,19 @@ var Internal = function Internal(usePageProps) {
   }());
 
   /**
+   * Handles setting admin auth as required
+   */
+  _react["default"].useEffect(function () {
+    var _pageProps, _pageProps2, _pageProps3, _pageProps$_loggedIn$, _pageProps4, _pageProps5, _pageProps6, _pageProps7, _pageProps8, _pageProps9, _pageProps10;
+    console.log;
+    if ((_pageProps = pageProps) !== null && _pageProps !== void 0 && (_pageProps = _pageProps._loggedIn) !== null && _pageProps !== void 0 && _pageProps.admin && !_adminAuth && (_pageProps2 = pageProps) !== null && _pageProps2 !== void 0 && _pageProps2.dborigin && (_pageProps3 = pageProps) !== null && _pageProps3 !== void 0 && (_pageProps3 = _pageProps3._loggedIn) !== null && _pageProps3 !== void 0 && _pageProps3.admin.origin && pageProps.dborigin === pageProps._loggedIn.admin.origin && (_pageProps$_loggedIn$ = pageProps._loggedIn.admin) !== null && _pageProps$_loggedIn$ !== void 0 && _pageProps$_loggedIn$.userid && (_pageProps4 = pageProps) !== null && _pageProps4 !== void 0 && (_pageProps4 = _pageProps4._loggedIn) !== null && _pageProps4 !== void 0 && _pageProps4.identifier && pageProps._loggedIn.admin.userid === pageProps._loggedIn.identifier) {
+      _setAdminAuth(pageProps._loggedIn.admin);
+    } else if (!(_adminAuth !== null && _adminAuth !== void 0 && _adminAuth.userid) || !((_pageProps5 = pageProps) !== null && _pageProps5 !== void 0 && _pageProps5._loggedIn) || (_pageProps6 = pageProps) !== null && _pageProps6 !== void 0 && _pageProps6._loggedIn && !pageProps._loggedIn.identifier || _adminAuth !== null && _adminAuth !== void 0 && _adminAuth.userid && (_pageProps7 = pageProps) !== null && _pageProps7 !== void 0 && (_pageProps7 = _pageProps7._loggedIn) !== null && _pageProps7 !== void 0 && _pageProps7.identifier && _adminAuth.userid !== pageProps._loggedIn.identifier || !((_pageProps8 = pageProps) !== null && _pageProps8 !== void 0 && (_pageProps8 = _pageProps8._adminAuth) !== null && _pageProps8 !== void 0 && _pageProps8.origin) || !((_pageProps9 = pageProps) !== null && _pageProps9 !== void 0 && _pageProps9.dborigin) || (_pageProps10 = pageProps) !== null && _pageProps10 !== void 0 && (_pageProps10 = _pageProps10._adminAuth) !== null && _pageProps10 !== void 0 && _pageProps10.origin && pageProps.dborigin && pageProps._adminAuth.origin !== pageProps.dborigin) {
+      _setAdminAuth(null);
+    }
+  }, [pageProps._loggedIn, _adminAuth]);
+
+  /**
    * Socket Initialized Here
    */
   var _React$useState25 = _react["default"].useState(null),
@@ -262,12 +275,12 @@ var Internal = function Internal(usePageProps) {
     };
   }, [router.events, pageProps._loggedIn, pageProps.apiUrl, pageProps.domainKey]);
   pageProps._socket = _socket;
-  console.log('Socket', _socket);
+  console.log('Socket', _socket, pageProps);
   return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_socket3.SocketContainer, _extends({
     _socket: _socket,
     setRooms: _setRooms
   }, pageProps)), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement(_middleware.UseMiddleware, pageProps), (_pageProps = pageProps) !== null && _pageProps !== void 0 && _pageProps.dev ? /*#__PURE__*/_react["default"].createElement(_.DeveloperHelp, pageProps) : null);
+  }), /*#__PURE__*/_react["default"].createElement(_middleware.UseMiddleware, pageProps), (_pageProps11 = pageProps) !== null && _pageProps11 !== void 0 && _pageProps11.dev ? /*#__PURE__*/_react["default"].createElement(_.DeveloperHelp, pageProps) : null);
 };
 var _default = exports["default"] = Internal;

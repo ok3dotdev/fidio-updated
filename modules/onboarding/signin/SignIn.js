@@ -79,7 +79,7 @@ var Module = function Module(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _SignIn.attemptThirdPartySignIn)(data, props.apiUrl, props.domainKey);
+            return (0, _SignIn.attemptThirdPartySignIn)(data, props.apiUrl, props.domainKey, props._LocalEventEmitter, props._setAdminAuth);
           case 2:
             status = _context.sent;
             if (status && status.hasOwnProperty('username')) {

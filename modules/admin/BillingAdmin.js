@@ -15,10 +15,12 @@ var _fetch = require("../utility/fetch");
 var _date = require("../utility/utility/date");
 var _ecommerce = require("../utility/ecommerce");
 var _util = require("../util");
+var _payment = require("../payment");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -30,7 +32,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var moduleName = 'BillingAdmin';
 var Module = function Module(props) {
-  var _invoiceData$simpleDa, _invoiceData$simpleDa2, _invoiceData$simpleDa3, _invoiceData$simpleDa4, _invoiceData$simpleDa5, _invoiceData$simpleDa6, _ref3, _invoiceData$simpleDa7, _invoiceData$simpleDa8, _invoiceData$data$pay, _invoiceData$data, _invoiceData$data$add, _invoiceData$data2, _invoiceData$data3, _invoiceData$data$pay2, _invoiceData$data4, _invoiceData$data$pay3, _invoiceData$data5, _invoiceData$data$pay4, _invoiceData$data6, _invoiceData$data$pay5, _invoiceData$data7, _invoiceData$data8, _invoiceData$data9, _invoiceData$data$pay6, _invoiceData$data10, _invoiceData$id, _invoiceData$simpleDa9, _invoiceData$data11, _invoiceData$data12, _invoiceData$data$pay7, _invoiceData$data13, _invoiceData$data$pay8, _invoiceData$data14, _invoiceData$data$pay9, _invoiceData$data15, _invoiceData$data16, _invoiceData$data17, _invoiceData$data18, _invoiceData$data19, _invoiceData$data20, _invoiceData$data21, _invoiceData$data$pay10, _invoiceData$data22, _invoiceData$simpleDa10, _invoiceData$data23, _invoiceData$simpleDa11, _invoiceData$data$pay11, _invoiceData$data24, _invoiceData$data$pay12, _invoiceData$data25, _invoiceData$simpleDa12, _invoiceData$simpleDa13, _invoiceData$simpleDa14, _invoiceData$simpleDa15, _invoiceData$simpleDa16, _invoiceData$data$pay13, _invoiceData$data26;
+  var _invoiceData$simpleDa, _invoiceData$simpleDa2, _invoiceData$simpleDa3, _invoiceData$simpleDa4, _invoiceData$simpleDa5, _invoiceData$simpleDa6, _invoiceData$simpleDa7, _invoiceData$simpleDa8, _invoiceData$simpleDa9, _ref3, _invoiceData$simpleDa10, _invoiceData$simpleDa11, _invoiceData$data$pay, _invoiceData$data, _invoiceData$data$add, _invoiceData$data2, _invoiceData$data3, _invoiceData$data$pay2, _invoiceData$data4, _invoiceData$data$pay3, _invoiceData$data5, _invoiceData$data$pay4, _invoiceData$data6, _invoiceData$data$pay5, _invoiceData$data7, _invoiceData$data8, _invoiceData$data9, _invoiceData$data$pay6, _invoiceData$data10, _invoiceData$id, _invoiceData$simpleDa12, _invoiceData$data11, _invoiceData$data12, _invoiceData$data$pay7, _invoiceData$data13, _invoiceData$data$pay8, _invoiceData$data14, _invoiceData$data$pay9, _invoiceData$data15, _invoiceData$data16, _invoiceData$data17, _invoiceData$data18, _invoiceData$data19, _invoiceData$data20, _invoiceData$data21, _invoiceData$data$pay10, _invoiceData$data22, _invoiceData$simpleDa13, _invoiceData$data23, _invoiceData$simpleDa14, _invoiceData$data$pay11, _invoiceData$data24, _invoiceData$data$pay12, _invoiceData$data25, _invoiceData$simpleDa15, _invoiceData$simpleDa16, _invoiceData$simpleDa17, _invoiceData$simpleDa18, _invoiceData$simpleDa19, _invoiceData$data$pay13, _invoiceData$data26;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -55,6 +57,14 @@ var Module = function Module(props) {
     _React$useState12 = _slicedToArray(_React$useState11, 2),
     outstanding = _React$useState12[0],
     setOutstanding = _React$useState12[1];
+  var _React$useState13 = _react["default"].useState(false),
+    _React$useState14 = _slicedToArray(_React$useState13, 2),
+    loadEcommerce = _React$useState14[0],
+    setLoadEcommerce = _React$useState14[1];
+  var _React$useState15 = _react["default"].useState(null),
+    _React$useState16 = _slicedToArray(_React$useState15, 2),
+    adminStripeSecretKey = _React$useState16[0],
+    setAdminStripeSecretKey = _React$useState16[1];
   props._LocalEventEmitter.unsubscribe(moduleName);
   props._LocalEventEmitter.subscribe(moduleName, function (e) {
     if (e) {
@@ -87,7 +97,8 @@ var Module = function Module(props) {
               hash: props._loggedIn.hash,
               identifier: props._loggedIn.identifier,
               month: month !== void 0 ? month : currentMonth,
-              year: year !== void 0 ? year : currentYear
+              year: year !== void 0 ? year : currentYear,
+              adminStripeSecretKey: true // DPT
             };
             _context.next = 3;
             return (0, _fetch.fetchPost)(props.apiUrl + '/a/getplatformbillinginvoices', null, null, body);
@@ -100,7 +111,7 @@ var Module = function Module(props) {
             return _context.abrupt("return", false);
           case 8:
             if (!res.hasOwnProperty('status')) {
-              _context.next = 22;
+              _context.next = 25;
               break;
             }
             if (!(res.status == "disauthenticated")) {
@@ -118,14 +129,22 @@ var Module = function Module(props) {
             return _context.abrupt("return", false);
           case 19:
             if (!(res.status == "success")) {
-              _context.next = 22;
+              _context.next = 25;
               break;
             }
+            console.log(res);
             if (res !== null && res !== void 0 && res.data) {
               setInvoiceData(res.data);
             }
+            if (res !== null && res !== void 0 && res.adminStripeSecretKey) {
+              setAdminStripeSecretKey(res.adminStripeSecretKey);
+              setLoadEcommerce(true);
+            }
+            if (res.outstanding) {
+              setOutstanding(res.outstanding);
+            }
             return _context.abrupt("return", res);
-          case 22:
+          case 25:
           case "end":
             return _context.stop();
         }
@@ -185,12 +204,6 @@ var Module = function Module(props) {
     return useMonths;
   }, [currentMonth, currentYear]);
   console.log(currentMonth, currentYear, invoiceData, props);
-
-  // Run request for live public stripe key 
-  // Use key local as state
-  // Pass as prop to credit card
-  // Process payments to Tycoon
-
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " ").concat(moduleName, "_Container")
   }, /*#__PURE__*/_react["default"].createElement("h3", null, "Billing"), /*#__PURE__*/_react["default"].createElement("div", {
@@ -198,9 +211,6 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].MonthsContainer, " tagContainer tinyBar"),
     style: {
-      direction: 'rtl',
-      flexWrap: 'nowrap',
-      overflow: 'auto',
       paddingBottom: '.25rem'
     }
   }, displayMonths.map(function (m, i) {
@@ -214,7 +224,41 @@ var Module = function Module(props) {
       y: m.y,
       onClick: handleUpdateDate
     }, _date.MONTHS[m.m], " ", m.y);
-  })), outstanding ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, "$ ", outstanding.total ? _ecommerce.westernMoneyFormat.format(outstanding.total) : "\xA0")) : null, /*#__PURE__*/_react["default"].createElement("div", null, invoiceData ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), loadEcommerce ? /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_payment.CreditCard, _extends({}, props, {
+    useAdmin: adminStripeSecretKey,
+    hide: loadEcommerce
+  }))) : null, outstanding ? /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '1rem',
+      fontWeight: '600'
+    }
+  }, "Currently Outstanding"), /*#__PURE__*/_react["default"].createElement("div", null, "$ ", outstanding.total ? _ecommerce.westernMoneyFormat.format(outstanding.total) : '0')) : null, (invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa = invoiceData.simpleData) === null || _invoiceData$simpleDa === void 0 ? void 0 : _invoiceData$simpleDa.total) === 0 && (invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) !== 'not due' ? /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '1rem',
+      fontWeight: '600'
+    }
+  }, "No bill this month"), /*#__PURE__*/_react["default"].createElement("div", null, "Thankyou for your Business")) : (invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) === 'paid' ? /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '1rem',
+      fontWeight: '600'
+    }
+  }, "Paid"), /*#__PURE__*/_react["default"].createElement("div", null, "Thankyou for your Business")) : null, /*#__PURE__*/_react["default"].createElement("div", null, invoiceData ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].ChargesExternalContainer),
     style: {
       marginTop: '.5rem'
@@ -240,7 +284,7 @@ var Module = function Module(props) {
     style: {
       width: '100%'
     }
-  }, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "Details"), /*#__PURE__*/_react["default"].createElement("th", null, "Rate"), /*#__PURE__*/_react["default"].createElement("th", null, "Qty"), /*#__PURE__*/_react["default"].createElement("th", null, "Line Total")), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa = invoiceData.simpleData) !== null && _invoiceData$simpleDa !== void 0 && _invoiceData$simpleDa.table ? invoiceData.simpleData.table.map(function (m, i) {
+  }, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "Details"), /*#__PURE__*/_react["default"].createElement("th", null, "Rate"), /*#__PURE__*/_react["default"].createElement("th", null, "Qty"), /*#__PURE__*/_react["default"].createElement("th", null, "Line Total")), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa2 = invoiceData.simpleData) !== null && _invoiceData$simpleDa2 !== void 0 && _invoiceData$simpleDa2.table ? invoiceData.simpleData.table.map(function (m, i) {
     return /*#__PURE__*/_react["default"].createElement("tr", {
       key: i
     }, /*#__PURE__*/_react["default"].createElement("td", {
@@ -282,7 +326,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Subtotal"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa2 = invoiceData.simpleData) !== null && _invoiceData$simpleDa2 !== void 0 && _invoiceData$simpleDa2.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.subTotal) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa3 = invoiceData.simpleData) !== null && _invoiceData$simpleDa3 !== void 0 && _invoiceData$simpleDa3.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.subTotal) : '0')), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex",
     style: {
       justifyContent: 'space-between',
@@ -290,7 +334,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Tax"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa3 = invoiceData.simpleData) !== null && _invoiceData$simpleDa3 !== void 0 && _invoiceData$simpleDa3.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.tax) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa4 = invoiceData.simpleData) !== null && _invoiceData$simpleDa4 !== void 0 && _invoiceData$simpleDa4.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.tax) : '0')), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex",
     style: {
       borderTop: '1px solid black',
@@ -299,29 +343,32 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Current Bill Total"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa4 = invoiceData.simpleData) !== null && _invoiceData$simpleDa4 !== void 0 && _invoiceData$simpleDa4.total ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.total) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa5 = invoiceData.simpleData) !== null && _invoiceData$simpleDa5 !== void 0 && _invoiceData$simpleDa5.total ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.total) : '0')), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontSize: '.7rem'
     }
-  }, "(", (_invoiceData$simpleDa5 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa6 = invoiceData.simpleData) === null || _invoiceData$simpleDa6 === void 0 ? void 0 : _invoiceData$simpleDa6.currency) !== null && _invoiceData$simpleDa5 !== void 0 ? _invoiceData$simpleDa5 : "\xA0", ")"))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, "(", (_invoiceData$simpleDa6 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa7 = invoiceData.simpleData) === null || _invoiceData$simpleDa7 === void 0 ? void 0 : _invoiceData$simpleDa7.currency) !== null && _invoiceData$simpleDa6 !== void 0 ? _invoiceData$simpleDa6 : "\xA0", ")"))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginTop: '1rem'
     }
-  }, (invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) === 'not due' ? 'This Bill is not due yet' : ['due', 'sent'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) > -1 ? 'This Bill is due, please see Invoice' : "\xA0"))))) : /*#__PURE__*/_react["default"].createElement("div", null, "No Billing Info for this period"), ['due', 'sent'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) === -1 && currentMonth !== void 0 && invoiceData !== null ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, (invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) === 'not due' ? 'This Bill is not due yet' : ['due', 'sent'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) > -1 ? 'This Bill is due, please see Invoice' : (invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa8 = invoiceData.simpleData) === null || _invoiceData$simpleDa8 === void 0 ? void 0 : _invoiceData$simpleDa8.total) === 0 ? 'No Bill this month' : ['paid'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) > -1 ? 'This Bill has been paid' : "\xA0"))))) : /*#__PURE__*/_react["default"].createElement("div", null, "No Billing Info for this period"), ['due', 'sent', 'paid'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) > -1 && currentMonth !== void 0 && invoiceData !== null && (invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa9 = invoiceData.simpleData) === null || _invoiceData$simpleDa9 === void 0 ? void 0 : _invoiceData$simpleDa9.total) !== 0 ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontWeight: '600',
       fontSize: '1.5rem',
       marginBottom: '2rem',
       marginTop: '1rem'
     }
-  }, "Please see your Invoice for the month of ", (_ref3 = (_invoiceData$simpleDa7 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa8 = invoiceData.simpleData) === null || _invoiceData$simpleDa8 === void 0 ? void 0 : _invoiceData$simpleDa8.period) !== null && _invoiceData$simpleDa7 !== void 0 ? _invoiceData$simpleDa7 : "".concat(_date.MONTHS[currentMonth]).concat(currentYear)) !== null && _ref3 !== void 0 ? _ref3 : "\xA0", " due below"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Please see your Invoice for the month of ", (_ref3 = (_invoiceData$simpleDa10 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa11 = invoiceData.simpleData) === null || _invoiceData$simpleDa11 === void 0 ? void 0 : _invoiceData$simpleDa11.period) !== null && _invoiceData$simpleDa10 !== void 0 ? _invoiceData$simpleDa10 : "".concat(_date.MONTHS[currentMonth]).concat(currentYear)) !== null && _ref3 !== void 0 ? _ref3 : "\xA0", " below"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].InvoiceContainer),
     style: {
-      marginBottom: '2rem'
+      marginBottom: '2rem',
+      position: 'relative'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].InvoiceInternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, ['paid'].indexOf(invoiceData === null || invoiceData === void 0 ? void 0 : invoiceData.status) > -1 ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_AdminModule["default"].PaidStamp)
+  }, "Paid") : null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].Entity),
     style: {
       marginBottom: '.5rem'
@@ -344,7 +391,7 @@ var Module = function Module(props) {
     style: _defineProperty(_defineProperty({
       justifyContent: 'right'
     }, "justifyContent", 'space-between'), "marginLeft", '25%')
-  }, /*#__PURE__*/_react["default"].createElement("div", null, "Date"), /*#__PURE__*/_react["default"].createElement("div", null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa9 = invoiceData.simpleData) !== null && _invoiceData$simpleDa9 !== void 0 && _invoiceData$simpleDa9.dateIssued ? "".concat(new Date(invoiceData.simpleData.dateIssued).toLocaleDateString(), " ").concat(new Date(invoiceData.simpleData.dateIssued).toTimeString()) : "\xA0")))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, "Date"), /*#__PURE__*/_react["default"].createElement("div", null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa12 = invoiceData.simpleData) !== null && _invoiceData$simpleDa12 !== void 0 && _invoiceData$simpleDa12.dateIssued ? "".concat(new Date(invoiceData.simpleData.dateIssued).toLocaleDateString(), " ").concat(new Date(invoiceData.simpleData.dateIssued).toTimeString()) : "\xA0")))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2",
     style: {
       justifyContent: 'space-between'
@@ -357,7 +404,7 @@ var Module = function Module(props) {
     className: "flex gap-p2"
   }, /*#__PURE__*/_react["default"].createElement("div", null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data12 = invoiceData.data) !== null && _invoiceData$data12 !== void 0 && _invoiceData$data12.payerCity ? invoiceData.data.payerCity + ', ' : ''), /*#__PURE__*/_react["default"].createElement("div", null, (_invoiceData$data$pay7 = invoiceData === null || invoiceData === void 0 || (_invoiceData$data13 = invoiceData.data) === null || _invoiceData$data13 === void 0 ? void 0 : _invoiceData$data13.payerState) !== null && _invoiceData$data$pay7 !== void 0 ? _invoiceData$data$pay7 : ''), /*#__PURE__*/_react["default"].createElement("div", null, (_invoiceData$data$pay8 = invoiceData === null || invoiceData === void 0 || (_invoiceData$data14 = invoiceData.data) === null || _invoiceData$data14 === void 0 ? void 0 : _invoiceData$data14.payerPostalCode) !== null && _invoiceData$data$pay8 !== void 0 ? _invoiceData$data$pay8 : '')), /*#__PURE__*/_react["default"].createElement("div", null, (_invoiceData$data$pay9 = invoiceData === null || invoiceData === void 0 || (_invoiceData$data15 = invoiceData.data) === null || _invoiceData$data15 === void 0 ? void 0 : _invoiceData$data15.payerCountry) !== null && _invoiceData$data$pay9 !== void 0 ? _invoiceData$data$pay9 : ''), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2"
-  }, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data16 = invoiceData.data) !== null && _invoiceData$data16 !== void 0 && _invoiceData$data16.payerNumber ? /*#__PURE__*/_react["default"].createElement("div", null, invoiceData === null || invoiceData === void 0 || (_invoiceData$data17 = invoiceData.data) === null || _invoiceData$data17 === void 0 ? void 0 : _invoiceData$data17.payerNumber) : null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data18 = invoiceData.data) !== null && _invoiceData$data18 !== void 0 && _invoiceData$data18.payerNumber && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data19 = invoiceData.data) !== null && _invoiceData$data19 !== void 0 && _invoiceData$data19.payerWebsite ? /*#__PURE__*/_react["default"].createElement("div", null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data20 = invoiceData.data) !== null && _invoiceData$data20 !== void 0 && _invoiceData$data20.payerNumber && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data21 = invoiceData.data) !== null && _invoiceData$data21 !== void 0 && _invoiceData$data21.payerWebsite ? '|' : '') : null, /*#__PURE__*/_react["default"].createElement("div", null, (_invoiceData$data$pay10 = invoiceData === null || invoiceData === void 0 || (_invoiceData$data22 = invoiceData.data) === null || _invoiceData$data22 === void 0 ? void 0 : _invoiceData$data22.payerWebsite) !== null && _invoiceData$data$pay10 !== void 0 ? _invoiceData$data$pay10 : "\xA0"))), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa10 = invoiceData.simpleData) !== null && _invoiceData$simpleDa10 !== void 0 && _invoiceData$simpleDa10.total && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data23 = invoiceData.data) !== null && _invoiceData$data23 !== void 0 && _invoiceData$data23.currency ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data16 = invoiceData.data) !== null && _invoiceData$data16 !== void 0 && _invoiceData$data16.payerNumber ? /*#__PURE__*/_react["default"].createElement("div", null, invoiceData === null || invoiceData === void 0 || (_invoiceData$data17 = invoiceData.data) === null || _invoiceData$data17 === void 0 ? void 0 : _invoiceData$data17.payerNumber) : null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data18 = invoiceData.data) !== null && _invoiceData$data18 !== void 0 && _invoiceData$data18.payerNumber && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data19 = invoiceData.data) !== null && _invoiceData$data19 !== void 0 && _invoiceData$data19.payerWebsite ? /*#__PURE__*/_react["default"].createElement("div", null, invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data20 = invoiceData.data) !== null && _invoiceData$data20 !== void 0 && _invoiceData$data20.payerNumber && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data21 = invoiceData.data) !== null && _invoiceData$data21 !== void 0 && _invoiceData$data21.payerWebsite ? '|' : '') : null, /*#__PURE__*/_react["default"].createElement("div", null, (_invoiceData$data$pay10 = invoiceData === null || invoiceData === void 0 || (_invoiceData$data22 = invoiceData.data) === null || _invoiceData$data22 === void 0 ? void 0 : _invoiceData$data22.payerWebsite) !== null && _invoiceData$data$pay10 !== void 0 ? _invoiceData$data$pay10 : "\xA0"))), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa13 = invoiceData.simpleData) !== null && _invoiceData$simpleDa13 !== void 0 && _invoiceData$simpleDa13.total && invoiceData !== null && invoiceData !== void 0 && (_invoiceData$data23 = invoiceData.data) !== null && _invoiceData$data23 !== void 0 && _invoiceData$data23.currency ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginBottom: '.25rem'
     }
@@ -373,7 +420,7 @@ var Module = function Module(props) {
     className: "".concat(_AdminModule["default"].DetailTableContainer)
   }, /*#__PURE__*/_react["default"].createElement("table", {
     className: "".concat(_AdminModule["default"].DetailTable)
-  }, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "Details"), /*#__PURE__*/_react["default"].createElement("th", null, "Rate"), /*#__PURE__*/_react["default"].createElement("th", null, "Qty"), /*#__PURE__*/_react["default"].createElement("th", null, "Line Total")), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa11 = invoiceData.simpleData) !== null && _invoiceData$simpleDa11 !== void 0 && _invoiceData$simpleDa11.table ? invoiceData.simpleData.table.map(function (m, i) {
+  }, /*#__PURE__*/_react["default"].createElement("tr", null, /*#__PURE__*/_react["default"].createElement("th", null, "Details"), /*#__PURE__*/_react["default"].createElement("th", null, "Rate"), /*#__PURE__*/_react["default"].createElement("th", null, "Qty"), /*#__PURE__*/_react["default"].createElement("th", null, "Line Total")), invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa14 = invoiceData.simpleData) !== null && _invoiceData$simpleDa14 !== void 0 && _invoiceData$simpleDa14.table ? invoiceData.simpleData.table.map(function (m, i) {
     return /*#__PURE__*/_react["default"].createElement("tr", {
       key: i
     }, /*#__PURE__*/_react["default"].createElement("td", {
@@ -427,7 +474,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Subtotal"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa12 = invoiceData.simpleData) !== null && _invoiceData$simpleDa12 !== void 0 && _invoiceData$simpleDa12.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.subTotal) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa15 = invoiceData.simpleData) !== null && _invoiceData$simpleDa15 !== void 0 && _invoiceData$simpleDa15.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.subTotal) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex",
     style: {
       justifyContent: 'space-between',
@@ -435,7 +482,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Tax"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa13 = invoiceData.simpleData) !== null && _invoiceData$simpleDa13 !== void 0 && _invoiceData$simpleDa13.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.tax) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa16 = invoiceData.simpleData) !== null && _invoiceData$simpleDa16 !== void 0 && _invoiceData$simpleDa16.subTotal ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.tax) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex",
     style: {
       borderTop: '1px solid black',
@@ -444,11 +491,11 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", null, "Total Due"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "w600"
-  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa14 = invoiceData.simpleData) !== null && _invoiceData$simpleDa14 !== void 0 && _invoiceData$simpleDa14.total ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.total) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "$ ", invoiceData !== null && invoiceData !== void 0 && (_invoiceData$simpleDa17 = invoiceData.simpleData) !== null && _invoiceData$simpleDa17 !== void 0 && _invoiceData$simpleDa17.total ? _ecommerce.westernMoneyFormat.format(invoiceData.simpleData.total) : "\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       fontSize: '.7rem'
     }
-  }, "(", (_invoiceData$simpleDa15 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa16 = invoiceData.simpleData) === null || _invoiceData$simpleDa16 === void 0 ? void 0 : _invoiceData$simpleDa16.currency) !== null && _invoiceData$simpleDa15 !== void 0 ? _invoiceData$simpleDa15 : "\xA0", ")"))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, "(", (_invoiceData$simpleDa18 = invoiceData === null || invoiceData === void 0 || (_invoiceData$simpleDa19 = invoiceData.simpleData) === null || _invoiceData$simpleDa19 === void 0 ? void 0 : _invoiceData$simpleDa19.currency) !== null && _invoiceData$simpleDa18 !== void 0 ? _invoiceData$simpleDa18 : "\xA0", ")"))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].millerText),
     style: {
       textAlign: 'right',
