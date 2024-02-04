@@ -1112,7 +1112,7 @@ var Module = function Module(props) {
       key: i
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
   })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates. Time must be input in 24 H military time. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
+    title: "Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates.",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
