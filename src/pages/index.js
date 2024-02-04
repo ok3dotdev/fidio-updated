@@ -84,8 +84,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
-<<<<<<< HEAD
-export default page;
-=======
 export default page
->>>>>>> e39562659a88fe3e00c4a67e172c30f6bd989c66
