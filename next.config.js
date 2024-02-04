@@ -1,6 +1,6 @@
 const path = require('path')
 
-const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
+const website = 'https://www.website.com' // You must set this line to your own website
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
