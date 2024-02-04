@@ -16,6 +16,11 @@
 }
 
 .notifContainer {
+    padding-bottom: .075rem;
+    border-radius: .5rem;
+}
+
+.notifInternalContainer {
     display: flex;
     justify-content: space-between;
     background: transparent;
@@ -28,7 +33,36 @@
     background: #222222;;
 }
 
+.notifProduct {
+    display: flex;
+}
+
 .detailContainer {
     display: flex;
     gap: .25rem;
+}
+
+.notifBox {
+    background: #404040;
+    border-radius: 1rem;
+    padding: .5rem;
+    margin: .5rem;
+}
+
+.notifImageContainer {
+    background-size: contain;
+    width: 75px;
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.productName {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
 }

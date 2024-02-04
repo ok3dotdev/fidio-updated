@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 exports.ensureAutoPlay = ensureAutoPlay;
 function _callback_onAutoplayBlocked() {
   // do something, for example "show big play button"
@@ -42,3 +43,6 @@ function ensureAutoPlay(p, player) {
     console.error("_checkAutoplay: promise could not work in your browser ", p);
   }
 }
+var _default = exports["default"] = {
+  ensureAutoPlay: ensureAutoPlay
+};

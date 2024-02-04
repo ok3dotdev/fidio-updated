@@ -39,7 +39,6 @@ var Module = function Module(props) {
     _React$useState12 = _slicedToArray(_React$useState11, 2),
     allIssues = _React$useState12[0],
     setAllIssues = _React$useState12[1];
-  console.log('Dev', props);
   _react["default"].useEffect(function () {
     if (props.paymentConfig) {
       var issues = [];

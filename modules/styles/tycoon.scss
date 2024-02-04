@@ -13,6 +13,10 @@
     height: 0.65rem;
 }
 
+.tinyBar::-webkit-scrollbar {
+    height: .45rem;
+}
+
 ::-webkit-scrollbar-track {
     background-color: transparent; /* #f6f6f6; */
     border: 1rem;
@@ -36,6 +40,7 @@
 ::-webkit-scrollbar-button {
     border-radius: 1.5rem;
     height: 0;
+    width: 0;
 }
   
 ::-webkit-scrollbar-corner {
@@ -95,6 +100,10 @@ body {
     cursor: pointer;
 }
 
+.w600 {
+    font-weight: 600;
+}
+
 button {
     cursor: pointer;
     padding: 0.25rem 1.5rem;
@@ -105,6 +114,10 @@ button {
     bottom: 0px;
     transition: 200ms;
     border: 1px solid transparent;
+}
+
+textarea, button, input {
+    color: black;
 }
 
 button:hover {
@@ -382,6 +395,16 @@ button:not(:disabled):active {
     padding: .075rem .5rem;
     font-weight: 600;
     font-size: .8rem;
+}
+
+.tagContainer .tagItemSelected {
+    color: white;
+    background: rgb(238,82,82);
+    background: -moz-linear-gradient(50deg, rgb(238, 82, 168) 0%, rgb(25, 255, 78) 99%);
+    background: -webkit-linear-gradient(50deg, rgb(238, 82, 168) 0%, rgb(25, 255, 78) 99%);
+    background: linear-gradient(50deg, rgb(238, 82, 168) 0%, rgb(25, 255, 78) 99%);
+    border: 1px solid rgb(255, 255, 255);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ee5252",endColorstr="#39e662",GradientType=1);
 }
 
 .fetchNotBusy {
@@ -769,7 +792,7 @@ button:not(:disabled):active {
     position: relative;
 }
 
-.short_bottom_border:not(:last-child):before {
+.short_bottom_border:before {
     content : "";
     position: absolute;
     left    : 25%;
@@ -778,6 +801,30 @@ button:not(:disabled):active {
     width   : 50%;
     border-bottom: 1px solid grey;
 }
+
+.IndexHello_IndexItemsContainer .slick-track {
+    display: flex;
+    gap: .5rem;
+    // width: 10000px !important;
+}
+
+// Experimental variable width
+// .IndexHello_IndexItemsContainer .slick-slide {
+//     min-width: calc(100vw / 6);
+// }
+
+// @media(max-width: 1920px) {
+//     .IndexHello_IndexItemsContainer .slick-slide {
+//         min-width: calc(100vw / 5);
+//     }
+// }
+
+// @media(max-width: 1680px) {
+//     .IndexHello_IndexItemsContainer .slick-slide {
+//         min-width: calc(100vw / 4);
+//     }
+// }
+
 
 @import "./video/videoPlayer.scss";
 @import "./video/videojs.scss";
@@ -790,4 +837,33 @@ button:not(:disabled):active {
     padding: 0;
     background: black;
     width: 1px;
+}
+
+.newItem {
+    display: flex;
+    align-items: center;
+    background: #1d9bca;
+    color: yellow;
+    outline: 1px solid yellow;
+    gap: .125rem;
+    border-radius: 1rem;
+    max-width: fit-content;
+    padding: .025rem .5rem;
+    font-size: .65rem;
+    font-weight: 700;
+}
+
+.newItem {
+    background: rgb(238,82,82);
+    background: -moz-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    background: -webkit-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    background: linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    border: 1px solid rgb(255, 255, 255);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#527eee",endColorstr="#2ad552",GradientType=1);
+}
+
+@media (min-width: 640px) {
+    .newItem {
+        font-size: .75rem;
+    }
 }

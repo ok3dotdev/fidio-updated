@@ -139,7 +139,7 @@ var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           if (!e) {
-            _context2.next = 31;
+            _context2.next = 34;
             break;
           }
           if (!(e.action === 'buy')) {
@@ -210,11 +210,11 @@ var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
           }
           setFetchBusy(false);
         case 20:
-          _context2.next = 31;
+          _context2.next = 34;
           break;
         case 22:
           if (!(e.action === 'add_to_cart')) {
-            _context2.next = 31;
+            _context2.next = 33;
             break;
           }
           pageProps._setPageError(null);
@@ -244,6 +244,16 @@ var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
             });
           }
         case 31:
+          _context2.next = 34;
+          break;
+        case 33:
+          if (e.action === 'logout') {
+            // Enforces logout globally
+            if (pageProps._setLoggedIn) {
+              pageProps._setLoggedIn(false);
+            }
+          }
+        case 34:
         case "end":
           return _context2.stop();
       }

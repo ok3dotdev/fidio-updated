@@ -17,16 +17,17 @@ var _index3 = require("./payment/index");
 var _manager = require("./streaming/manager");
 var _feature = require("./search/feature");
 var _wideFeature = require("./search/wideFeature");
-var _index4 = require("./video/player/index");
 var _indexing = require("./indexing");
 var _router = require("next/router");
 var _fetch = require("./utility/fetch");
 var _onboarding = require("./utility/onboarding");
 var _util = require("./util");
 var _settings = require("./settings");
+var _survey = require("./survey");
 var _customModules = _interopRequireDefault(require("../customModules"));
 var _presentation = _interopRequireDefault(require("./presentation"));
 var _eventPage = require("./presentation/events.js/eventPage");
+var _article = require("./article");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -54,14 +55,14 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_eventPage.EventPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ReceiptPage':
         return /*#__PURE__*/_react["default"].createElement(_receipt.ReceiptPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+      case 'ArticlePage':
+        return /*#__PURE__*/_react["default"].createElement(_article.ArticlePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CreditCard':
         return /*#__PURE__*/_react["default"].createElement(_index3.CreditCard, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Streaming_Manager':
         return /*#__PURE__*/_react["default"].createElement(_manager.Manager, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Onboarding_SignIn_Username':
         return /*#__PURE__*/_react["default"].createElement(_index.Username, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
-      case 'Video_Test_Live_Player':
-        return /*#__PURE__*/_react["default"].createElement(_index4.LivePlayer, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Feature':
         return /*#__PURE__*/_react["default"].createElement(_feature.Feature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'WideFeature':
@@ -70,6 +71,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_indexing.SliderBasic, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'FetchHandler':
         return /*#__PURE__*/_react["default"].createElement(_fetch.FetchHandler, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+      case 'Survey':
+        return /*#__PURE__*/_react["default"].createElement(_survey.Survey, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Settings':
         return /*#__PURE__*/_react["default"].createElement(_settings.Settings, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CustomModule':
@@ -83,7 +86,6 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
       case 'Presentation':
         if (json && json.props && json.props.module && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props.module)) {
           var _UseModule = _presentation["default"][json.props.module];
-          console.log('Module Found', _UseModule, _presentation["default"]);
           if (_UseModule) {
             return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
@@ -120,7 +122,6 @@ var resolvePageName = exports.resolvePageName = function resolvePageName(path) {
 };
 function generateComponent(json) {
   if (json) {
-    console.log(json);
     var type = json.type,
       props = json.props,
       children = json.children;
@@ -187,6 +188,11 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
             doPreReq = true;
             body.profileReq = true;
             body.eventReq = true;
+          } else if (url === '/ar') {
+            // Resolve article page
+            doPreReq = true;
+            body.profileReq = true;
+            body.articleReq = true;
           }
           if (!props.regionsData) {
             doPreReq = true;
@@ -224,7 +230,6 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
 }();
 var handlePropsPriority = exports.handlePropsPriority = function handlePropsPriority(mergeProps, props) {
   var temp = (0, _util.isObjectEmpty)(mergeProps) ? props : mergeProps;
-  console.log(props, mergeProps);
   for (var key in temp) {
     if (key.startsWith('_')) {
       var desc = Object.getOwnPropertyDescriptor(temp, key);
@@ -280,17 +285,25 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
           };
           doPreReq = false;
           if (resolvedPage && resolvedPage.url === '/p') {
+            // Resolve profile page
             doPreReq = true;
             body.profileReq = true;
             body.shopProfileReq = true;
           } else if (resolvedPage && resolvedPage.url === '/w') {
+            // Resolve watch page
             doPreReq = true;
             body.watchReq = true;
             body.shopProfileReq = true;
           } else if (resolvedPage && resolvedPage.url === '/e') {
+            // resolve event page
             doPreReq = true;
             body.profileReq = true;
             body.eventReq = true;
+          } else if (resolvedPage && resolvedPage.url === '/ar') {
+            // Resolve article page
+            doPreReq = true;
+            body.profileReq = true;
+            body.articleReq = true;
           }
           if (resolvedPage && resolvePage.data) {
             data.props.resolvedDefinition = resolvedPage.data; // Access the `data` property

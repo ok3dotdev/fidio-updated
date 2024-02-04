@@ -10,7 +10,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var getOrders = exports.getOrders = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(uri, domainKey, user, offset) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(uri, domainKey, user, sortField, sort, offset, limit) {
     var body, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -23,7 +23,10 @@ var getOrders = exports.getOrders = /*#__PURE__*/function () {
             identifier: user.identifier,
             hash: user.hash,
             domainKey: domainKey,
-            offset: offset
+            sortField: sortField,
+            sort: sort,
+            offset: offset,
+            limit: limit
           };
           _context.next = 4;
           return (0, _fetch.fetchPost)(uri + '/m/getorders', null, null, body);
@@ -67,7 +70,7 @@ var getOrders = exports.getOrders = /*#__PURE__*/function () {
       }
     }, _callee);
   }));
-  return function getOrders(_x, _x2, _x3, _x4) {
+  return function getOrders(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
     return _ref.apply(this, arguments);
   };
 }();

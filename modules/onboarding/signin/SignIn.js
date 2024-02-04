@@ -72,7 +72,6 @@ var Module = function Module(props) {
       once: true
     });
   }, []);
-  console.log(asPath, query);
   var buildLoginAndUpdate = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
       var status;
@@ -80,7 +79,7 @@ var Module = function Module(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _SignIn.attemptThirdPartySignIn)(data, props.apiUrl, props.domainKey);
+            return (0, _SignIn.attemptThirdPartySignIn)(data, props.apiUrl, props.domainKey, props._LocalEventEmitter, props._setAdminAuth);
           case 2:
             status = _context.sent;
             if (status && status.hasOwnProperty('username')) {
@@ -118,7 +117,6 @@ var Module = function Module(props) {
       return _ref.apply(this, arguments);
     };
   }();
-  console.log(props, query, asPath, router);
   var buildButtonAndTryPrompt = function buildButtonAndTryPrompt(delay) {
     try {
       var googleBtn = {

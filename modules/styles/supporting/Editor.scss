@@ -1,9 +1,10 @@
 .Editor_Platform {
     color: black;
     background: white;
+    max-height: 65vh;
+    overflow: auto;
     .ql-editor {
         min-height: 300px;
-        max-height: 100vh;
         padding: .25rem;
     }
     .ql-clipboard {
@@ -13,6 +14,7 @@
 }
 
 .Editor_Container {
+    max-height: 60vh;
     .ql-toolbar {
         background: white;
         .ql-formats {
@@ -27,7 +29,6 @@
 }
 
 .Editor_MaxWidth {
-    width: 80vw;
     max-width: 1200px;
 }
 
