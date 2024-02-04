@@ -1,6 +1,6 @@
 const path = require('path')
 
-const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website for PRODUCTION builds
+const website = 'https://www.website.com' // You must set this line to your own website for PRODUCTION builds
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: website,
+  // assetPrefix: website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   webpack: (config, { isServer }) => {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')
