@@ -191,7 +191,7 @@ var Module = function Module(props) {
       marginTop: 0
     }
   }, "Notifications"), /*#__PURE__*/_react["default"].createElement("div", null, notificationsFeed !== null && notificationsFeed !== void 0 && (_notificationsFeed$no = notificationsFeed.notifications) !== null && _notificationsFeed$no !== void 0 && _notificationsFeed$no.map ? notificationsFeed.notifications.map(function (m) {
-    var _m$meta, _m$meta2, _m$meta3, _m$meta$message, _m$meta4, _m$meta5, _m$meta6, _props$cdn2, _m$meta7, _m$product2, _m$product3, _m$meta8, _m$meta9;
+    var _m$meta, _m$meta2, _m$meta3, _m$meta$message, _m$meta4, _m$meta5, _m$meta6, _props$cdn2, _m$meta7, _props$classes$produc, _props$classes, _m$product2, _m$product3, _m$meta8, _m$meta9;
     return /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_NotificationsModule["default"].notifContainer)
     }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -235,9 +235,10 @@ var Module = function Module(props) {
       href: (0, _utility2.resolveMainLink)(m === null || m === void 0 ? void 0 : m.product),
       onClick: handleClose
     }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].productName),
+      className: "".concat(_NotificationsModule["default"].productName, " ").concat((_props$classes$produc = props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.productName) !== null && _props$classes$produc !== void 0 ? _props$classes$produc : ''),
       style: {
-        fontSize: '.9rem'
+        fontSize: '.9rem',
+        fontWeight: '600'
       }
     }, m === null || m === void 0 || (_m$product2 = m.product) === null || _m$product2 === void 0 ? void 0 : _m$product2.name)), /*#__PURE__*/_react["default"].createElement("button", {
       className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(props.ctaClassName),
