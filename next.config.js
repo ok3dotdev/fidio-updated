@@ -1,6 +1,5 @@
 const path = require('path');
 
-const website = 'http://localhost:3020'; // You must set this line to your own website
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -8,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  assetPrefix: website,
+  // assetPrefix: website,
   reactStrictMode: true,
   images: {
     domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],

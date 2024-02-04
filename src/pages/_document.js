@@ -1,16 +1,50 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { GlideScript, GoogleFontsLink, PaystackScript } from '/modules/internal/localImports'
 
 class MyDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          <meta
-            name='google-site-verification'
-            content='l53G0XsvnsA_mJv2edhC-90dcDQLE6UXn2IjcrJvXUU'
+	render() {
+		return (
+			<Html>
+				<Head>
+					{ GlideScript }
+					{ GoogleFontsLink }
+					{ PaystackScript }
+          <script
+            id='google-analytics-script'
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-B57K7JWE6J', {
+                  page_path: window.location.pathname
+                });
+              `,
+            }}
           />
           <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
+          ></script>
+          <link
+            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
+            rel='stylesheet'
+          ></link>
+				</Head>
+				<body>
+					<div version='0.3.47' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		)
+	}
+}
+
+export default MyDocument
+
+
+{/* <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
           ></script>
@@ -38,23 +72,6 @@ class MyDocument extends Document {
             rel='stylesheet'
           ></link>
           <link
-            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
-            rel='stylesheet'
-          ></link>
-          <script src='//js.paystack.co/v1/inline.js'></script>
-        </Head>
-        <body>
-          <div
-            version='0.3.39'
-            business='Tycoon Systems Corp.'
-            style={{ display: 'none' }}
-          ></div>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-
-export default MyDocument;
+            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap' */}
+          //   rel='stylesheet'
+          // ></link>

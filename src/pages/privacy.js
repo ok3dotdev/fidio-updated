@@ -1,36 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
 
-import React from 'react';
-// import { PageContainer } from '/modules/internal';
-import { pageDefaults } from '/app.config';
-import { getServerSidePropsDefault } from '/modules/utility.js';
-import { privacyPolicyPageData } from '../../customModules/features/seo-data';
+import React from 'react'
+import { PageContainer } from '/modules/internal'
+import { pageDefaults } from '/app.config'
+import { getServerSidePropsDefault } from '/modules/utility.js'
 import HomeLayout from '../../customModules/features/HomeLayout';
+import { privacyPolicyPageData } from '../../customModules/features/seo-data';
 
-const pageName = 'Privacy';
+const pageName = 'privacy'
 
-export const page = (props) => {
-  const useMenu = true;
-  const useAppConfigLayout = true;
-  return (
-    <React.Fragment>
-      {/* <PageContainer
-        {...props}
-        pageName={pageName}
-        useMenu={useMenu}
-        useAppConfigLayout={useAppConfigLayout}
-      /> */}
-      <HomeLayout
-        props={useProps}
-        pageName={pageName}
-        pageData={privacyPolicyPageData}
-      >
-        {components}
-      </HomeLayout>
-    </React.Fragment>
-  );
-};
+export const page = props => {
+	return (
+    <HomeLayout
+      useProps={props}
+      pageName={pageName}
+      pageData={privacyPolicyPageData}
+    >
+      <PageContainer { ...props } pageName={pageName} />
+    </HomeLayout>
+	)
+}
 
 export const getServerSideProps = async (context) => {
   return await getServerSidePropsDefault(context, pageDefaults[pageName]);

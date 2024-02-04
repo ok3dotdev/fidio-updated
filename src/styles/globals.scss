@@ -25,4 +25,5 @@ a {
   box-sizing: border-box;
 }
 
-@import '/modules/styles/tycoon.scss';
+@import "/modules/styles/tycoon.scss";
+@import "styles.scss"; // Customers customer stylesheet. Not included in repo.

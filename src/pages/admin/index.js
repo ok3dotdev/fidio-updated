@@ -6,7 +6,7 @@ import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 import { Admin } from '/modules/admin'
 
-const pageName = 'admin';
+const pageName = 'admin'
 
 export const page = props => {
 	return (
