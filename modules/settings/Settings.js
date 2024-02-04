@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _link = _interopRequireDefault(require("next/link"));
 var _router = require("next/router");
 var _SettingsModule = _interopRequireDefault(require("./Settings.module.scss"));
 var _payment = require("../payment");
@@ -13,11 +14,9 @@ var _uuid = require("uuid");
 var _Close = _interopRequireDefault(require("@mui/icons-material/Close"));
 var _onboarding = require("../utility/onboarding");
 var _orders = require("../utility/utility/orders");
-var _ecommerce = require("../utility/ecommerce");
-var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
-var _ReceiptPageModule = _interopRequireDefault(require("../ecommerce/receipt/ReceiptPage.module.scss"));
-var _event = require("../utility/utility/event");
+var _receipt = require("../ecommerce/receipt");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -104,7 +103,7 @@ var Module = function Module(props) {
                 case 0:
                   user = (0, _onboarding.checkSignedIn)();
                   _context.next = 3;
-                  return (0, _orders.getOrders)(props.apiUrl, props.domainKey, user, 0);
+                  return (0, _orders.getOrders)(props.apiUrl, props.domainKey, user, 'creation', 'desc', 0, 50);
                 case 3:
                   userOrders = _context.sent;
                   if (userOrders !== null && userOrders !== void 0 && userOrders.data) {
@@ -412,137 +411,9 @@ var Module = function Module(props) {
           gap: '1rem'
         }
       }, resolvedOrders !== null && resolvedOrders !== void 0 && (_resolvedOrders$order = resolvedOrders.orders) !== null && _resolvedOrders$order !== void 0 && _resolvedOrders$order.map ? resolvedOrders.orders.map(function (m, i) {
-        var _m$paymentmethoddetai, _m$paymentmethoddetai2, _m$paymentmethoddetai3, _m$paymentmethoddetai4, _m$id, _m$id2, _m$cart, _westernMoneyFormat$f, _m$totals, _m$meta, _card$brand, _card$last;
-        var useSymbol;
-        var card = (_m$paymentmethoddetai = m === null || m === void 0 || (_m$paymentmethoddetai2 = m.paymentmethoddetails) === null || _m$paymentmethoddetai2 === void 0 ? void 0 : _m$paymentmethoddetai2.card) !== null && _m$paymentmethoddetai !== void 0 ? _m$paymentmethoddetai : null;
-        var cardBilling = (_m$paymentmethoddetai3 = m === null || m === void 0 || (_m$paymentmethoddetai4 = m.paymentmethoddetails) === null || _m$paymentmethoddetai4 === void 0 ? void 0 : _m$paymentmethoddetai4.billing_details) !== null && _m$paymentmethoddetai3 !== void 0 ? _m$paymentmethoddetai3 : null;
-        return /*#__PURE__*/_react["default"].createElement("div", {
-          className: "short_bottom_border",
-          style: {
-            paddingBottom: '1rem'
-          },
-          key: i,
-          i: i
-        }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, "Order ", /*#__PURE__*/_react["default"].createElement("span", {
-          style: {
-            background: '#222222',
-            borderRadius: '1rem',
-            padding: '.0rem .75rem'
-          },
-          selectValue: "".concat((_m$id = m === null || m === void 0 ? void 0 : m.id) !== null && _m$id !== void 0 ? _m$id : ''),
-          onClick: _event.selectThisText
-        }, "#", (_m$id2 = m === null || m === void 0 ? void 0 : m.id) !== null && _m$id2 !== void 0 ? _m$id2 : ''), " - ", m !== null && m !== void 0 && m.creation && !isNaN(Number(m.creation)) && new Date(Number(m.creation)) ? "".concat(new Date(Number(m.creation)).toDateString()) : ''), /*#__PURE__*/_react["default"].createElement("div", {
-          className: "flex gap-p3",
-          style: {
-            flexDirection: 'column',
-            marginTop: '.3rem',
-            marginBottom: '.3rem'
-          }
-        }, m !== null && m !== void 0 && (_m$cart = m.cart) !== null && _m$cart !== void 0 && _m$cart.map ? m.cart.map(function (n, j) {
-          var _priceObject$symbol, _n$product$name, _n$product, _currentStyle$style, _currentOption$option;
-          var currentStyle = (0, _ecommerce.resolveCurrentStyle)(n.product, n.style);
-          var currentOption = (0, _ecommerce.resolveCurrentOption)(currentStyle, n.option);
-          var priceObject = (0, _ecommerce.resolveRegionBasedPrice)(props, currentStyle);
-          var symbol = (_priceObject$symbol = priceObject === null || priceObject === void 0 ? void 0 : priceObject.symbol) !== null && _priceObject$symbol !== void 0 ? _priceObject$symbol : '';
-          useSymbol = symbol;
-          return /*#__PURE__*/_react["default"].createElement("div", {
-            className: "gap-p2 Ecommerce_Item_Container",
-            key: j,
-            i: j
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            style: {
-              display: 'flex',
-              gap: '.5rem'
-            }
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Item_Image_Container",
-            style: {
-              backgroundImage: resolveOrderImg(n) ? "url(".concat(resolveOrderImg(n), ")") : null
-            }
-          }, /*#__PURE__*/_react["default"].createElement("img", {
-            src: 'img/default/greythumb_product.jpg',
-            className: "Product_img",
-            style: {
-              width: '82.5px',
-              maxHeight: '82.5px',
-              opacity: resolveOrderImg(n) ? 0 : 1
-            }
-          })), /*#__PURE__*/_react["default"].createElement("div", {
-            style: {
-              width: '100%'
-            }
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            className: "flex gap-p2 Ecommerce_Cart_Title_Main_Container"
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Title"
-          }, (_n$product$name = n === null || n === void 0 || (_n$product = n.product) === null || _n$product === void 0 ? void 0 : _n$product.name) !== null && _n$product$name !== void 0 ? _n$product$name : ''), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Cart_Price_Container"
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Price"
-          }, symbol, (0, _ecommerce.resolveMoneyFormat)(n.price)))), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "flex",
-            style: {
-              justifyContent: 'space-between'
-            }
-          }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
-            className: "flex",
-            style: {
-              fontSize: '.7rem',
-              color: 'grey'
-            }
-          }, /*#__PURE__*/_react["default"].createElement("div", null, (_currentStyle$style = currentStyle === null || currentStyle === void 0 ? void 0 : currentStyle.style) !== null && _currentStyle$style !== void 0 ? _currentStyle$style : ''), /*#__PURE__*/_react["default"].createElement("span", null, "\xA0~\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, (_currentOption$option = currentOption === null || currentOption === void 0 ? void 0 : currentOption.option) !== null && _currentOption$option !== void 0 ? _currentOption$option : '')), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Cart_Quantity_Container"
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            style: {
-              display: 'flex',
-              alignSelf: 'center'
-            }
-          }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], {
-            sx: {
-              width: '.85rem',
-              height: '.9rem',
-              marginRight: '.25rem'
-            }
-          })), /*#__PURE__*/_react["default"].createElement("div", null, Object.prototype.hasOwnProperty.call(n, 'quantity') ? n.quantity : ''))), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Cart_Side_Meta_Container"
-          }, /*#__PURE__*/_react["default"].createElement("div", {
-            style: {
-              color: 'grey',
-              fontSize: '.7rem',
-              height: '17px',
-              textAlign: 'right'
-            }
-          }, "Subtotal:"), /*#__PURE__*/_react["default"].createElement("div", {
-            className: "Ecommerce_Price"
-          }, symbol, (0, _ecommerce.resolveMoneyFormat)(n.quantity * n.price)))))));
-        }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-          className: "flex Ecommerce_Price",
-          style: {
-            justifyContent: 'space-between'
-          }
-        }, /*#__PURE__*/_react["default"].createElement("div", {
-          style: {
-            lineHeight: '1.4rem'
-          }
-        }, "Total:\xA0"), /*#__PURE__*/_react["default"].createElement("div", {
-          style: {
-            fontSize: '1.25rem'
-          }
-        }, useSymbol, (_westernMoneyFormat$f = _ecommerce.westernMoneyFormat.format(m === null || m === void 0 || (_m$totals = m.totals) === null || _m$totals === void 0 ? void 0 : _m$totals.total)) !== null && _westernMoneyFormat$f !== void 0 ? _westernMoneyFormat$f : '')), /*#__PURE__*/_react["default"].createElement("div", null, m.paymentfulfilled ? /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$meta = m.meta) !== null && _m$meta !== void 0 && _m$meta.charged && m !== null && m !== void 0 && m.currency ? /*#__PURE__*/_react["default"].createElement("div", {
-          className: _ReceiptPageModule["default"].pair,
-          style: {
-            fontSize: '.7rem'
-          }
-        }, /*#__PURE__*/_react["default"].createElement("div", null, "Paid ", useSymbol, (0, _ecommerce.resolveMoneyFormat)(m.amountcaptured), " ", m.currency.toUpperCase(), " on ", new Date(m.meta.charged).toLocaleDateString(), " ", new Date(m.meta.charged).toTimeString()), /*#__PURE__*/_react["default"].createElement("div", null, card ? /*#__PURE__*/_react["default"].createElement("div", {
-          style: {
-            display: 'flex',
-            gap: '.25rem'
-          }
-        }, /*#__PURE__*/_react["default"].createElement("div", null, (_card$brand = card.brand) !== null && _card$brand !== void 0 ? _card$brand : ''), /*#__PURE__*/_react["default"].createElement("div", null, (_card$last = card.last4) !== null && _card$last !== void 0 ? _card$last : ''), /*#__PURE__*/_react["default"].createElement("div", null, cardBilling !== null && cardBilling !== void 0 && cardBilling.name ? cardBilling.name : '')) : null)) : '') : /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-          style: {
-            fontSize: '.75rem'
-          }
-        }, "Payment Unfulfilled")))));
+        return /*#__PURE__*/_react["default"].createElement(_receipt.Order, _extends({
+          order: m
+        }, props));
       }) : null)) : null);
     } else {
       return /*#__PURE__*/_react["default"].createElement("div", null, itemType);

@@ -70,7 +70,7 @@ var normalizeData = exports.normalizeData = function normalizeData(data) {
   });
 };
 var resolveMainLink = exports.resolveMainLink = function resolveMainLink(m) {
-  var _m$item;
+  var _m$item, _m$detailmeta6;
   // m?.date && !datePassed(m.date) && m?.item?.id ? `/e?p=${m.item.id}` : m?.streamId ? `/w?v=${m?.streamId ?? ''}` : `/w?u=${m?.author ?? ''}
   if ((m === null || m === void 0 || (_m$item = m.item) === null || _m$item === void 0 ? void 0 : _m$item.type) === 'ticket') {
     var _m$item2;
@@ -84,6 +84,10 @@ var resolveMainLink = exports.resolveMainLink = function resolveMainLink(m) {
   }
   if (m !== null && m !== void 0 && m.author) {
     return "w?u=".concat(m.author);
+  } else if (m !== null && m !== void 0 && (_m$detailmeta6 = m.detailmeta) !== null && _m$detailmeta6 !== void 0 && _m$detailmeta6.ticket) {
+    if (m !== null && m !== void 0 && m.id) {
+      return "/e?p=".concat(m.id);
+    }
   }
   return '';
 };

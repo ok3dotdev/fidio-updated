@@ -367,8 +367,7 @@ var Module = function Module(props) {
           className: "flex",
           style: {
             fontSize: '1.5rem',
-            fontWeight: '600',
-            marginTop: '.5rem'
+            fontWeight: '600'
           }
         }, /*#__PURE__*/_react["default"].createElement("div", null, "Free"));
       } else if (price !== null && price !== void 0 && price.currency && price !== null && price !== void 0 && price.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {

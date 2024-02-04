@@ -788,7 +788,7 @@ button:not(:disabled):active {
     position: relative;
 }
 
-.short_bottom_border:not(:last-child):before {
+.short_bottom_border:before {
     content : "";
     position: absolute;
     left    : 25%;
