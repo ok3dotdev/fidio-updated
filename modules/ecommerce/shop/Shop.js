@@ -1079,7 +1079,7 @@ var Module = function Module(props) {
       marginBottom: '.125rem',
       width: '-webkit-fill-available'
     },
-    placeholder: "Date in DD/MM/YY format or a tag",
+    placeholder: "Date in DD/MM/YY format or a Tag",
     onInput: setOptionsMetaData,
     option: "livestreamDef",
     option2: "input",
