@@ -5,6 +5,13 @@ import React from 'react';
 // import { PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
+import HomeLayout from '../../customModules/features/HomeLayout';
+import { homePageData } from '@/customModules/features/seo-data';
+import Hero from '../../customModules/features/Hero.new';
+import ShowGrid from '../components/ShowGrid';
+import Link from 'next/link';
+
+
 
 const pageName = 'Index';
 
@@ -60,7 +67,7 @@ export const page = (props) => {
         </div>
         <ShowGrid />
         <div className='max-w-7xl mx-auto py-24'>
-          <div className='flex gap-1 px-4 lg:px-6 items-center'>
+          <div className='flex-col md:flex-row flex gap-6 md:gap-1 px-4 lg:px-6 items-center'>
             <h3 className='text-sm font-sans'>Ready to stream?</h3>
             <div className='relative'>
               <img

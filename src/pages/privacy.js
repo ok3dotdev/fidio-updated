@@ -6,6 +6,7 @@ import React from 'react';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { privacyPolicyPageData } from '../../customModules/features/seo-data';
+import HomeLayout from '../../customModules/features/HomeLayout';
 
 const pageName = 'Privacy';
 
@@ -23,7 +24,7 @@ export const page = (props) => {
       <HomeLayout
         props={useProps}
         pageName={pageName}
-        pageData={termsOfServicePageData}
+        pageData={privacyPolicyPageData}
       >
         {components}
       </HomeLayout>

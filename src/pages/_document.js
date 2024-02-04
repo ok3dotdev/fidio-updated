@@ -10,12 +10,12 @@ class MyDocument extends Document {
             name='google-site-verification'
             content='l53G0XsvnsA_mJv2edhC-90dcDQLE6UXn2IjcrJvXUU'
           />
-          <Script
+          <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
-          ></Script>
+          ></script>
           <Script src='https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js'></Script>
-          <Script
+          <script
             id='google-analytics-script'
             dangerouslySetInnerHTML={{
               __html: `
@@ -35,6 +35,10 @@ class MyDocument extends Document {
           ></Script>
           <link
             href='https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp'
+            rel='stylesheet'
+          ></link>
+          <link
+            href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
             rel='stylesheet'
           ></link>
           <script src='//js.paystack.co/v1/inline.js'></script>

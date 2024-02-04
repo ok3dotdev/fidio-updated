@@ -1,0 +1,34 @@
+.author {
+    font-weight: 600;
+}
+
+.icon {
+    border-radius: 50%;
+	background-color: #4b4b4b;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	align-items: center;
+	font-size: 3rem;
+	aspect-ratio: 1 / 1;
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.notifContainer {
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    transition: 200ms;
+    border-radius: .5rem;
+    padding: 0 .25rem;
+}
+
+.notifContainer:hover {
+    background: #222222;;
+}
+
+.detailContainer {
+    display: flex;
+    gap: .25rem;
+}
