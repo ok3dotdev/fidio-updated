@@ -893,12 +893,17 @@ var Module = function Module(props) {
     onClick: setCurrentPrice,
     value: priceInput === null || priceInput === void 0 || (_priceInput$current2 = priceInput.current) === null || _priceInput$current2 === void 0 ? void 0 : _priceInput$current2.value,
     style: {
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
+      lineHeight: '.5rem',
+      fontSize: '.75rem'
     }
   }, "Set Price")) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null),
+    style: {
+      lineHeight: '.5rem'
+    },
     onClick: handleSetIsSettingCurrency,
     ref: currentCurrencyRef
   }, (_ref2 = (_currentDefinePriceCu2 = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== null && _currentDefinePriceCu2 !== void 0 ? _currentDefinePriceCu2 : editing === null || editing === void 0 || (_editing$meta = editing.meta) === null || _editing$meta === void 0 ? void 0 : _editing$meta.currency) !== null && _ref2 !== void 0 ? _ref2 : 'USD')), isSettingCurrency ? /*#__PURE__*/_react["default"].createElement("div", {
@@ -1056,7 +1061,7 @@ var Module = function Module(props) {
     onChange: setOptionsMetaData,
     option: "livestream"
   })), editingOptionsMeta.livestream ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates. Time must be input in 24 H military time. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
+    title: "Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM. Time must be input in 24 H military time. Values that do not match dates will be parsed as Tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
@@ -1068,7 +1073,7 @@ var Module = function Module(props) {
       fontWeight: '600',
       whiteSpace: 'nowrap'
     }
-  }, "Auth Keys"), /*#__PURE__*/_react["default"].createElement("input", {
+  }, "Auth Keys | Tags"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',
@@ -1079,7 +1084,12 @@ var Module = function Module(props) {
     option: "livestreamDef",
     option2: "input",
     defaultValue: editingOptionsMeta.livestreamDef.input
-  })), editingOptionsMeta.livestreamDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), /*#__PURE__*/_react["default"].createElement("span", {
+    className: "flex gap-p2",
+    style: {
+      marginBottom: '.25rem'
+    }
+  }, editingOptionsMeta.livestreamDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
@@ -1101,7 +1111,7 @@ var Module = function Module(props) {
       className: "tagItem",
       key: i
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates. Time must be input in 24 H military time. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
     className: "flex gap-p2",
     style: {
