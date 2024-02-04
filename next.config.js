@@ -7,8 +7,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  // assetPrefix: website,
-  reactStrictMode: true,
+  assetPrefix: website,
+  reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
     domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
   },
