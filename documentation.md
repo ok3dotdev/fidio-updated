@@ -257,3 +257,14 @@ useAppConfigLayout: false
 
 # Before you make a build you must update the next.config.js file. Ensure your Businesses website is under assetPrefix. Like so:
 const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
+
+## Article
+
+# Load articles into the DOM like so
+import DOMPurify from 'dompurify'
+
+function createMarkup() {
+    return {__html: DOMPurify.sanitize(JSON.parse(articleData.contents) ?? '') }
+}
+
+<div dangerouslySetInnerHTML={createMarkup()}></div>
