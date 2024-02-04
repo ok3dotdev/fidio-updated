@@ -4,7 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.westernMoneyFormat = exports.updateCart = exports.resolveStyles = exports.resolveRegionBasedPrice = exports.resolveMoneyFormat = exports.resolveImg = exports.resolveDefaultStyle = exports.resolveCurrentStyle = exports.resolveCurrentPrice = exports.resolveCurrentOption = exports.performPurchase = exports.doUploadImageForProduct = exports.doUploadImageForLineupParticipant = exports.doPublishProduct = exports.createShop = exports.calculateTotal = exports.addToCartGlobal = exports.addToCart = void 0;
+exports.westernMoneyFormat = exports.updateCart = exports.resolveStyles = exports.resolveRegionBasedPrice = exports.resolveOption = exports.resolveMoneyFormat = exports.resolveImg = exports.resolveDefaultStyle = exports.resolveCurrentStyle = exports.resolveCurrentPrice = exports.resolveCurrentOption = exports.performPurchase = exports.doUploadImageForProduct = exports.doUploadImageForLineupParticipant = exports.doPublishProduct = exports.createShop = exports.calculateTotal = exports.addToCartGlobal = exports.addToCart = void 0;
 var _fetch = require("../fetch/fetch");
 var _SignIn = require("/modules/utility/onboarding/SignIn.js");
 var _util = require("../../util");
@@ -637,7 +637,8 @@ var performPurchase = exports.performPurchase = /*#__PURE__*/function () {
 }();
 var westernMoneyFormat = exports.westernMoneyFormat = new Intl.NumberFormat('en-US', {
   minimumIntegerDigits: 1,
-  minimumFractionDigits: 2
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
 });
 var resolveMoneyFormat = exports.resolveMoneyFormat = function resolveMoneyFormat(v) {
   try {
@@ -685,4 +686,25 @@ var resolveRegionBasedPrice = exports.resolveRegionBasedPrice = function resolve
     symbol: '$',
     price: style && Object.prototype.hasOwnProperty.call(style, 'price') ? style.price : null
   };
+};
+var resolveOption = exports.resolveOption = function resolveOption(p, s, o) {
+  var returnObject = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  console.log(p, s, o);
+  if (p && p.styles && s) {
+    var f = p.styles.find(function (m) {
+      return m.sid === s;
+    });
+    if (f.option) {
+      var f2 = f.option.find(function (m) {
+        return m.sid === o;
+      });
+      if (returnObject && f2) {
+        return f2;
+      }
+      if (f2 && f2.option) {
+        return f2.option;
+      }
+    }
+  }
+  return '';
 };

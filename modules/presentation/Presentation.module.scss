@@ -89,7 +89,7 @@
                 max-width: 70vw;
                 width: 1200px;
                 line-height: 3.75rem;
-                margin-bottom: .5rem;
+                margin-bottom: 1rem;
             }
             .Description {
                 padding: .75rem;
@@ -175,7 +175,6 @@
     }
     .IndexItemsContainer {
         .IndexItemUpperContainer {
-            min-width: calc(100vw / 6 - 5px * 6);
             margin-left: 5px;
             margin-right: 5px;
             .BgContainer {
@@ -242,6 +241,7 @@
                 .CtaHolder {
                     position: relative;
                     display: flex;
+                    gap: .5rem;
                     justify-content: space-between;
                 }
                 .CtaButton {
@@ -270,7 +270,6 @@
         }
         @media (max-width: 1920px) {
             .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
-                min-width: calc(100vw / 5 - 5px * 5);
                 height: calc(12vw + 70px);
                 min-height: 295px;
                 .BgContainer {
@@ -281,7 +280,6 @@
         }
         @media (max-width: 1680px) {
             .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
-                min-width: calc(100vw / 4 - 5px * 4);
                 height: calc(13vw + 70px);
                 min-height: 275px;
                 .BgContainer {
@@ -292,7 +290,6 @@
         }
         @media (max-width: 1280px) {
             .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
-                min-width: calc(100vw / 3 - 5px * 5);
                 height: calc(23vw + 70px);
                 min-height: 295px;
                 max-height: 315px;
@@ -304,7 +301,6 @@
         }
         @media (max-width: 900px) {
             .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
-                min-width: calc(100vw / 2 - 5px * 6);
                 height: calc(30vw + 70px);
                 min-height: 295px;
                 .BgContainer {
@@ -316,7 +312,6 @@
         }
         @media (max-width: 570px) {
             .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
-                min-width: calc(100vw - 50px);
                 min-height: 335px;
                 .BgContainer {
                     min-height: 245px;
@@ -431,6 +426,9 @@
             .TimeSimple {
                 top: -15.5px;
             }
+            .TimeContainer {
+                top: 7.5%;
+            }
             .TimeSection {
                 max-width: 15px;
             }
@@ -539,7 +537,7 @@
 
 .SliderBulletsContainer {
     position: absolute;
-    bottom: 10vh;
+    bottom: 7.5%;
     left: calc(50% - 150px);
     width: 300px;
     z-index: 20;
@@ -716,6 +714,49 @@
                         height: 150px;
                         width: 150px;
                     }
+                }
+            }
+        }
+    }
+}
+
+.BannerHello {
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+    .IndexBgContainerAd {
+        min-height: 285px;
+        height: calc(35vh + .25rem);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        .TypeContainer {
+            margin-left: 1rem;
+            width: -webkit-fill-available;
+            .Lead {
+                margin: 0;
+                margin-bottom: .5rem;
+                font-size: 6rem;
+            }
+            .Text {
+                font-size: 1.25rem;
+                word-wrap: break-word;
+                max-width: -webkit-fill-available;
+                margin-right: 1rem;
+            }
+            @media(max-width: 780px) {
+                .Lead {
+                    font-size: 5rem;
+                }
+                .Text {
+                    font-size: 1rem;
+                    word-wrap: break-word;
+                    max-width: -webkit-fill-available;
+                    margin-right: 1rem;
+                }
+            }
+            @media(max-width: 640px) {
+                .Lead {
+                    font-size: 4rem;
                 }
             }
         }

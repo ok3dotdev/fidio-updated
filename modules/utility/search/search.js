@@ -32,9 +32,8 @@ var fetchSearchData = exports.fetchSearchData = /*#__PURE__*/function () {
           return (0, _fetch.fetchPost)(apiUrl + '/m/pagedefaults', null, null, body);
         case 5:
           defaults = _context.sent;
-          console.log('Defaults', defaults);
           return _context.abrupt("return", defaults);
-        case 8:
+        case 7:
         case "end":
           return _context.stop();
       }

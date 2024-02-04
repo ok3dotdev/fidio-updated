@@ -292,7 +292,7 @@ var Module = function Module(props) {
                       props.setFetchBusy(true);
                       setTimeout(function () {
                         props.setFetchBusy(false);
-                      }, 10000);
+                      }, 30000);
                     }
                     if (e !== null && e !== void 0 && (_e$target = e.target) !== null && _e$target !== void 0 && _e$target.getAttribute('modif')) {
                       modif = e.target.getAttribute('modif');

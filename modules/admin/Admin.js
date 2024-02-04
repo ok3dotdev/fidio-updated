@@ -13,6 +13,7 @@ var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
 var _BuildAdmin = _interopRequireDefault(require("./BuildAdmin"));
 var _StreamAdmin = _interopRequireDefault(require("./StreamAdmin"));
 var _PostAdmin = _interopRequireDefault(require("./PostAdmin"));
+var _BillingAdmin = _interopRequireDefault(require("./BillingAdmin"));
 var _index = require("/modules/onboarding/signin/index.js");
 var _util = require("/modules/util");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -26,7 +27,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Module = function Module(props) {
-  var _props$_adminAuth, _props$_loggedIn$user, _props$_loggedIn, _props$_loggedIn2, _props$_adminAuth2, _props$_adminAuth3;
+  var _props$_adminAuth, _props$_loggedIn$user, _props$_loggedIn, _props$_loggedIn2, _props$_loggedIn$user2, _props$_loggedIn3, _props$_loggedIn4, _props$_adminAuth2, _props$_adminAuth3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -46,7 +47,8 @@ var Module = function Module(props) {
   var Auth_Table = {
     BuildAdmin: ['full'],
     StreamAdmin: ['full', 'administrative'],
-    PostAdmin: ['full', 'administrative']
+    PostAdmin: ['full', 'administrative'],
+    BillingAdmin: ['full', 'administrative']
   };
   var resolveAuth = function resolveAuth(page, auth) {
     var _auth$adminc;
@@ -105,11 +107,30 @@ var Module = function Module(props) {
     className: "".concat(_AdminModule["default"].adminBannerContainer, " Admin_BannerContainer")
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].adminBannerInternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, "Welcome ", (_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.identifier)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p5"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      textWrap: 'nowrap'
+    }
+  }, "Welcome ", /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    href: "/p?u=".concat((_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.identifier),
+    style: {
+      fontWeight: '600'
+    }
+  }, (_props$_loggedIn$user2 = props === null || props === void 0 || (_props$_loggedIn3 = props._loggedIn) === null || _props$_loggedIn3 === void 0 ? void 0 : _props$_loggedIn3.username) !== null && _props$_loggedIn$user2 !== void 0 ? _props$_loggedIn$user2 : props === null || props === void 0 || (_props$_loggedIn4 = props._loggedIn) === null || _props$_loggedIn4 === void 0 ? void 0 : _props$_loggedIn4.identifier))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p5",
+    style: {
+      alignItems: 'center'
+    }
   }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/"
-  }, props.domainUrl), /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && (_props$_adminAuth2 = props._adminAuth) !== null && _props$_adminAuth2 !== void 0 && (_props$_adminAuth2 = _props$_adminAuth2.adminc) !== null && _props$_adminAuth2 !== void 0 && _props$_adminAuth2.access ? "(admin access: ".concat(props === null || props === void 0 || (_props$_adminAuth3 = props._adminAuth) === null || _props$_adminAuth3 === void 0 || (_props$_adminAuth3 = _props$_adminAuth3.adminc) === null || _props$_adminAuth3 === void 0 ? void 0 : _props$_adminAuth3.access, ")") : '')))), /*#__PURE__*/_react["default"].createElement("div", {
+    href: "/",
+    style: {
+      fontWeight: '600'
+    }
+  }, props.domainUrl), /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      textWrap: 'nowrap'
+    }
+  }, props !== null && props !== void 0 && (_props$_adminAuth2 = props._adminAuth) !== null && _props$_adminAuth2 !== void 0 && (_props$_adminAuth2 = _props$_adminAuth2.adminc) !== null && _props$_adminAuth2 !== void 0 && _props$_adminAuth2.access ? "(admin access: ".concat(props === null || props === void 0 || (_props$_adminAuth3 = props._adminAuth) === null || _props$_adminAuth3 === void 0 || (_props$_adminAuth3 = _props$_adminAuth3.adminc) === null || _props$_adminAuth3 === void 0 ? void 0 : _props$_adminAuth3.access, ")") : '')))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
   }, /*#__PURE__*/_react["default"].createElement("ul", {
     className: "".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")
@@ -122,8 +143,11 @@ var Module = function Module(props) {
   }, "Post")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleSetPage,
     modif: "build"
-  }, "Build")) : null), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: handleSetPage,
+    modif: "billing"
+  }, "Billing")) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
-  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : null : null))) : null);
+  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BillingAdmin["default"], props)) : null : null))) : null);
 };
 var _default = exports["default"] = Module;
