@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-const path = require('path');
-=======
 const path = require('path')
 
 const website = 'https://www.website.com' // You must set this line to your own website
->>>>>>> 5fab2e7094daf7346452b01c7b77957ae9b9aaaf
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
