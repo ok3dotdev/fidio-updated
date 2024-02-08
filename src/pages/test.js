@@ -5,15 +5,19 @@ import { PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 import { getServerSidePropsFunc } from '/appServer/serverProps'
+import dir from '/customModules/pages/'
 
 const pageName = 'test'
+const CustomPageChildren = dir[pageName]
 
 export const page = props => {
 	return (
         <React.Fragment>
             {
                 props.dev
-                    ? <PageContainer { ...props } pageName={pageName} />
+                    ? <PageContainer { ...props } pageName={pageName}>
+                        <CustomPageChildren { ...props } />
+                    </PageContainer>
                     : null
             }
         </React.Fragment>

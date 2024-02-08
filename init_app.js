@@ -125,3 +125,27 @@ if (fs.existsSync(useFile)) {
     fs.copyFileSync('views/defaults/Article_backup.js', 'views/Article.js')
     console.log(useFile, 'File does not exist on', process.platform)
 }
+
+const pageChildren = [ 'ar', 'e', 'index', 'p', 'privacy', 'r', 'settings', 'terms', 'test', 'w' ]
+
+for (let i = 0; i < pageChildren.length; i++) {
+    useFile = `customModules/pages/${pageChildren[i]}`
+    if (fs.existsSync(useFile)) {
+        // Add your commands here
+        console.log(useFile, 'File exists on', process.platform)
+    } else {
+        fs.cp(`customModules/pages/defaults/${pageChildren[i]}`, useFile, { recursive: true }, err => {
+            console.log('Err', err)
+        })
+        console.log(useFile, 'File does not exist on', process.platform)
+    }
+}
+
+useFile = 'customModules/pages/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('customModules/pages/defaults/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}

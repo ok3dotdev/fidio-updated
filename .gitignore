@@ -76,3 +76,8 @@ views/*
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
+
+customModules/pages
+customModules/pages/*
+!*customModules/pages
+!*customModules/pages/defaults

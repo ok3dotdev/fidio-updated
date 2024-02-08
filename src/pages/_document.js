@@ -12,7 +12,7 @@ class MyDocument extends Document {
 					{ PaystackScript }
 				</Head>
 				<body>
-					<div version='0.3.82' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+					<div version='0.3.83' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
 					<Main />
 					<NextScript />
 				</body>
