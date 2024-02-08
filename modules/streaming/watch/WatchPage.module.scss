@@ -1,7 +1,8 @@
 .videoQuadrant {
     height: calc(100vh - 35px);
     .videoContainer {
-        display: contents;
+        display: block;
+        width: 100%;
         .videoPlayer {
             width: 100%;
             min-height: 100%;
@@ -73,7 +74,7 @@
 .videoExternalContainer {
     display: flex;
     overflow: hidden;
-    height: 100%;
+    min-height: 100%;
 }
 
 @media (max-width: 700px) {

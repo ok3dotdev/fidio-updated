@@ -16,25 +16,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // Will fetch stripe secret using id or username
 var fetchStripeSecret = exports.fetchStripeSecret = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(uri, domainKey, user) {
-    var fetchBody, res;
+    var options,
+      fetchBody,
+      res,
+      _args = arguments;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
+          options = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
           if (!(user && user.identifier && user.hash && domainKey)) {
-            _context.next = 6;
+            _context.next = 7;
             break;
           }
-          fetchBody = _defineProperty(_defineProperty(_defineProperty({
+          fetchBody = Object.assign(_defineProperty(_defineProperty(_defineProperty({
             domainKey: domainKey
-          }, "domainKey", domainKey), "hash", user.hash), "identifier", user.identifier);
-          _context.next = 4;
+          }, "domainKey", domainKey), "hash", user.hash), "identifier", user.identifier), options);
+          _context.next = 5;
           return (0, _fetch.fetchPost)(uri + '/m/getclientsecret', null, null, fetchBody);
-        case 4:
+        case 5:
           res = _context.sent;
           return _context.abrupt("return", res);
-        case 6:
-          return _context.abrupt("return", false);
         case 7:
+          return _context.abrupt("return", false);
+        case 8:
         case "end":
           return _context.stop();
       }
@@ -45,13 +49,13 @@ var fetchStripeSecret = exports.fetchStripeSecret = /*#__PURE__*/function () {
   };
 }();
 var getStripeSecretData = exports.getStripeSecretData = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(uri, domainKey, data) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(uri, domainKey, data, options) {
     var secret;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return fetchStripeSecret(uri, domainKey, data);
+          return fetchStripeSecret(uri, domainKey, data, options);
         case 2:
           secret = _context2.sent;
           if (!secret) {
@@ -67,7 +71,7 @@ var getStripeSecretData = exports.getStripeSecretData = /*#__PURE__*/function ()
       }
     }, _callee2);
   }));
-  return function getStripeSecretData(_x4, _x5, _x6) {
+  return function getStripeSecretData(_x4, _x5, _x6, _x7) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -90,7 +94,7 @@ var setStripeSecretData = exports.setStripeSecretData = /*#__PURE__*/function ()
       }
     }, _callee3);
   }));
-  return function setStripeSecretData(_x7, _x8, _x9, _x10) {
+  return function setStripeSecretData(_x8, _x9, _x10, _x11) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -102,76 +106,81 @@ var setStripeSecretData = exports.setStripeSecretData = /*#__PURE__*/function ()
 */
 var saveCreditCardInfo = exports.saveCreditCardInfo = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(uri, domainKey, data, checkSignedIn) {
-    var user, fetchBody, res;
+    var options,
+      user,
+      fetchBody,
+      res,
+      _args4 = arguments;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
+          options = _args4.length > 4 && _args4[4] !== undefined ? _args4[4] : {};
           user = checkSignedIn();
           if (!user) {
-            _context4.next = 30;
+            _context4.next = 31;
             break;
           }
           if (!(user.identifier && user.hash)) {
-            _context4.next = 27;
+            _context4.next = 28;
             break;
           }
-          fetchBody = {
+          fetchBody = Object.assign({
             cus_id: data.stripeSecret.user,
             domainKey: domainKey,
             hash: user.hash,
             identifier: user.identifier
-          };
+          }, options);
           if (data.result && data.result.setupIntent && data.result.setupIntent.payment_method) {
             fetchBody.payment_id = data.result.setupIntent.payment_method;
           }
-          _context4.next = 7;
+          _context4.next = 8;
           return (0, _fetch.fetchPost)(uri + '/m/saveccinfo', null, null, fetchBody);
-        case 7:
+        case 8:
           res = _context4.sent;
           if (res) {
-            _context4.next = 12;
+            _context4.next = 13;
             break;
           }
           return _context4.abrupt("return", false);
-        case 12:
+        case 13:
           if (!res.hasOwnProperty('status')) {
-            _context4.next = 24;
+            _context4.next = 25;
             break;
           }
           if (!(res.status == "disauthenticated")) {
-            _context4.next = 18;
+            _context4.next = 19;
             break;
           }
           (0, _SignIn.logout)();
           return _context4.abrupt("return", "disauthenticated");
-        case 18:
+        case 19:
           if (!(res.status == "failed")) {
-            _context4.next = 22;
+            _context4.next = 23;
             break;
           }
           return _context4.abrupt("return", false);
-        case 22:
+        case 23:
           if (!(res.status == "success")) {
-            _context4.next = 24;
+            _context4.next = 25;
             break;
           }
           return _context4.abrupt("return", res);
-        case 24:
-          return _context4.abrupt("return", false);
-        case 27:
+        case 25:
           return _context4.abrupt("return", false);
         case 28:
-          _context4.next = 31;
-          break;
-        case 30:
           return _context4.abrupt("return", false);
+        case 29:
+          _context4.next = 32;
+          break;
         case 31:
+          return _context4.abrupt("return", false);
+        case 32:
         case "end":
           return _context4.stop();
       }
     }, _callee4);
   }));
-  return function saveCreditCardInfo(_x11, _x12, _x13, _x14) {
+  return function saveCreditCardInfo(_x12, _x13, _x14, _x15) {
     return _ref4.apply(this, arguments);
   };
 }();

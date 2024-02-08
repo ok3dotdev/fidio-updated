@@ -1,7 +1,5 @@
-const fs = require('fs')
-const path = require('path')
-
-// Initializes Application
+const fs = require('fs');
+const path = require('path');
 
 let useFile = 'customModules/middleware/Middleware.js'
 if (fs.existsSync(useFile)) {
@@ -21,7 +19,7 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'src/styles/styles.module.scss'
+useFile = 'src/styles/styles.scss'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
@@ -71,5 +69,83 @@ if (fs.existsSync(useFile)) {
     fs.writeFile(useFile + '.js', data, err => {
         console.log(err)
     })
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'appServer/serverProps.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('appServer/defaults/serverProps_backup.js', 'appServer/serverProps.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'views/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('views/defaults/index_backup.js', 'views/index.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'views/Cart.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('views/defaults/Cart_backup.js', 'views/Cart.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'views/Profile.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('views/defaults/Profile_backup.js', 'views/Profile.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'views/Watch.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('views/defaults/Watch_backup.js', 'views/Watch.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'views/Article.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('views/defaults/Article_backup.js', 'views/Article.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+const pageChildren = [ 'ar', 'e', 'index', 'p', 'privacy', 'r', 'settings', 'terms', 'test', 'w' ]
+
+for (let i = 0; i < pageChildren.length; i++) {
+    useFile = `customModules/pages/${pageChildren[i]}`
+    if (fs.existsSync(useFile)) {
+        // Add your commands here
+        console.log(useFile, 'File exists on', process.platform)
+    } else {
+        fs.cp(`customModules/pages/defaults/${pageChildren[i]}`, useFile, { recursive: true }, err => {
+            console.log('Err', err)
+        })
+        console.log(useFile, 'File does not exist on', process.platform)
+    }
+}
+
+useFile = 'customModules/pages/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('customModules/pages/defaults/index_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }

@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _indexBgHello = require("./hello/indexBgHello");
 var _indexHello = require("./hello/indexHello");
+var _bannerHello = require("./hello/bannerHello");
 var Modules = {
+  BannerHello: _bannerHello.BannerHello,
   IndexBgHello: _indexBgHello.IndexBgHello,
   IndexHello: _indexHello.IndexHello
 };

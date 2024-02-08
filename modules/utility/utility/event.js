@@ -5,9 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.selectThisText = exports.fireGlobalEvent = void 0;
 var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emitter) {
+  console.log(e);
   if (e && emitter) {
-    var _e$currentTarget;
-    var action = e === null || e === void 0 || (_e$currentTarget = e.currentTarget) === null || _e$currentTarget === void 0 ? void 0 : _e$currentTarget.getAttribute('action');
+    var _ref, _e$currentTarget$getA, _e$currentTarget;
+    var action = (_ref = (_e$currentTarget$getA = e === null || e === void 0 || (_e$currentTarget = e.currentTarget) === null || _e$currentTarget === void 0 ? void 0 : _e$currentTarget.getAttribute('action')) !== null && _e$currentTarget$getA !== void 0 ? _e$currentTarget$getA : e.event) !== null && _ref !== void 0 ? _ref : null;
     if (action) {
       if (action === 'buy') {
         var _e$currentTarget2, _e$currentTarget3, _e$currentTarget4;

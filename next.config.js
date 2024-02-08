@@ -1,4 +1,6 @@
-const path = require('path');
+const path = require('path')
+
+const website = 'https://www.website.com' // You must set this line to your own website for PRODUCTION builds
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -8,7 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   // assetPrefix: website,
-  reactStrictMode: true,
+  reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
     domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
   },

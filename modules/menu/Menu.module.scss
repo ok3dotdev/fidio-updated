@@ -65,7 +65,7 @@
             }
         }
 
-        @media(min-width: 641px) {
+        @media(min-width: 569px) {
             .menuLinkText {
                 font-size: .8rem;
             }
@@ -111,6 +111,11 @@
                 }
             }
 
+        }
+        @media(max-width: 568px) {
+            .menuLink {
+                padding: 0 .25rem !important;
+            }
         }
         .menuText {
             width: 0%;
@@ -250,7 +255,6 @@
     .subMenu {
         gap: .05rem;
         justify-content: space-between;
-    
         .subMenuItemContainer {
             padding: .025rem .15rem;
             .subMenuItem {

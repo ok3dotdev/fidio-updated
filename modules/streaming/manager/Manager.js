@@ -117,6 +117,16 @@ var Module = function Module(props) {
       }
     });
   }
+  props._LocalEventEmitter.unsubscribe('manager');
+  props._LocalEventEmitter.subscribe('manager', function (d) {
+    if (d && d.dispatch) {
+      if (d.dispatch === 'setMenu') {
+        if ((d === null || d === void 0 ? void 0 : d.menu) === 'stream') {
+          setOpenMenu('stream');
+        }
+      }
+    }
+  });
   var router = (0, _router.useRouter)();
   _react["default"].useEffect(function () {
     if (!componentDidMount) {

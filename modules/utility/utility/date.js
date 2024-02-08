@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getTimeRemaining = void 0;
+exports.getTimeRemaining = exports.MONTHS = void 0;
 var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targetDate, now) {
   if (now && targetDate) {
     // Calculate the time difference in milliseconds
@@ -23,3 +23,4 @@ var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targ
   }
   return null;
 };
+var MONTHS = exports.MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];

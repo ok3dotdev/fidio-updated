@@ -211,7 +211,8 @@ var Module = function Module(props) {
       href: m.a,
       style: {
         cursor: 'pointer'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "Misc_Item_Container Misc_Item_DarkContainerHover",
       style: {
@@ -234,7 +235,8 @@ var Module = function Module(props) {
         padding: '.5rem',
         display: 'grid',
         gap: '.25rem'
-      }
+      },
+      key: i
     }, /*#__PURE__*/_react["default"].createElement("div", {
       style: {
         fontWeight: '500'

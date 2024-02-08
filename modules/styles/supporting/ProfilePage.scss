@@ -3,9 +3,8 @@
     font-weight: 600;
 }
 
-.ProfilePage_MetaContainer {
-    display: flex;
-    gap: 1rem;
+.ProfilePage_ProfileContainer {
+    max-width: calc(100vw - 175px);
 }
 
 .ProfilePage_Icon {

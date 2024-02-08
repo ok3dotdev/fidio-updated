@@ -234,7 +234,7 @@ var defaultLedger = function defaultLedger(owner) {
 var handleRouteChange = exports.handleRouteChange = function handleRouteChange(props, route, context) {
   try {
     var _props$_loggedIn$iden, _props$_loggedIn;
-    console.log('Route Change', props);
+    console.log('Route Change', props, route);
     var owner = (_props$_loggedIn$iden = props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.identifier) !== null && _props$_loggedIn$iden !== void 0 ? _props$_loggedIn$iden : null;
     if (owner) {
       var event = {
@@ -267,11 +267,14 @@ var handleRouteChange = exports.handleRouteChange = function handleRouteChange(p
         }
         ledger.ledger.unshift(event);
         localStorage.setItem('user_ledger', JSON.stringify(ledger));
-        console.log(ledger);
         if (props.apiUrl && props.domainKey && props._LocalEventEmitter) {
           throttleFunctionCallQueue(props._LocalEventEmitter, '_senduseranalyticsrequest', 1500, _analytics.sendUserAnalytics, [props.apiUrl, props.domainKey, props._loggedIn, ledger]);
         }
       }
+    }
+    // Reset Global Manager Open to page change
+    if (props._setManagerOpen) {
+      props._setManagerOpen(false);
     }
   } catch (err) {
     console.log(err);
