@@ -1,12 +1,13 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { GlideScript, GoogleFontsLink, PaystackScript } from '/modules/internal/localImports'
+import { SliderStyles, SliderTheme, GoogleFontsLink, PaystackScript } from '/modules/internal/localImports'
 
 class MyDocument extends Document {
 	render() {
 		return (
 			<Html>
 				<Head>
-					{ GlideScript }
+					{ SliderStyles }
+					{ SliderTheme }
 					{ GoogleFontsLink }
 					{ PaystackScript }
           <script
@@ -32,7 +33,7 @@ class MyDocument extends Document {
           ></link>
 				</Head>
 				<body>
-					<div version='0.3.47' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+					<div version='0.3.67' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
 					<Main />
 					<NextScript />
 				</body>

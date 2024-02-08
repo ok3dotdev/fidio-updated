@@ -1,0 +1,131 @@
+.container {
+    height: -webkit-fill-available;
+    .innerContainer {
+        height: -webkit-fill-available;
+    }
+}
+
+.itemsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: .25rem;
+    .item {
+        cursor: pointer;
+        margin: 0;
+        font-size: .9rem;
+        padding: .125rem .5rem;
+        border-radius: .25rem;
+        background: linear-gradient(to top right, #282828, #1a1a1a,#141414, #000000);
+        color: white;
+    }
+
+    .activeItem {
+        background: linear-gradient(to top right, #f371ff, #fd42d7,#ff0000, #ff0000);
+    }
+}
+
+.settingsSectionContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 50vh;
+    flex-wrap: wrap;
+    place-self: flex-start;
+    .settingContainer {
+        max-width: 300px;
+    }
+}
+
+.streamingInfoContainer {
+    background: #656565;
+    padding: .5rem;
+    border: 4px solid #fe2986;
+    transition: 10000ms;
+    border-radius: .5rem;
+}
+
+.isStreamingContainer {
+    border: 4px solid red;
+}
+
+@media(max-width: 540px) {
+    .settingsSectionContainer {
+        .settingContainer {
+            max-width: 100%;
+        }
+    }
+}
+
+@property --c1 {
+    syntax: '<color>';
+    initial-value: rgba(243,113,255,1);
+    inherits: false;
+  }
+  
+@property --c2 {
+    syntax: '<color>';
+    initial-value: rgba(238,82,82,1);
+    inherits: false;
+}
+
+@property --c3 {
+    syntax: '<color>';
+    initial-value: rgba(154,116,255,1);
+    inherits: false;
+}
+
+@property --c4 {
+    syntax: '<color>';
+    initial-value: rgba(57,230,98,1);
+    inherits: false;
+}
+
+@property --c5 {
+    syntax: '<color>';
+    initial-value: rgba(113,209,255,1);
+    inherits: false;
+}
+
+.streamingButton {
+    overflow: hidden;
+    height: 30px;
+    background: rgb(243,113,255);
+    background: -moz-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    background: -webkit-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    background: linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f371ff",endColorstr="#39e662",GradientType=1);
+    transition: 200ms;
+    color: white;
+    border: 2px solid rgb(243, 113, 255);
+    outline: 4px solid transparent;
+    border-radius: 1rem;
+    transition: --c1 .5s, --c2 .5s, --c3 .5s, --c4 .5s, --c5 .5s;
+}
+
+button.streamingButton:not(:disabled):hover {
+    background: rgb(243,113,255);
+    background: -moz-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    background: -webkit-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    background: linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f371ff",endColorstr="#39e662",GradientType=1);
+    --c1: rgba(57,230,98,1);
+    --c2: rgba(113,209,255,1);
+    --c3: rgba(243,113,255,1);
+    --c4: rgba(238,82,82,1);
+    --c5: rgba(154,116,255,1);
+    border: 2px solid rgb(255, 255, 255);
+    outline: 4px solid rgb(243, 113, 255);
+    outline-offset: -6px;
+    box-shadow: 0 0px 15px 2px white;
+    color: white;
+}
+
+.streamingButtonMini {
+    transition: 200ms;
+}
+
+.streamingButtonOff {
+    height: 0px;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+}

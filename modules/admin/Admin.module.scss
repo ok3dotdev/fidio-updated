@@ -1,0 +1,300 @@
+.container {
+    a:hover {
+        color: red;
+    }
+    font-size: .85rem;
+    p {
+        font-size: .8rem;
+        margin: 0;
+    }
+    button {
+        padding: .05rem 1rem;
+    }
+}
+
+.internalContainer {
+    position: relative;
+    margin-right: .5rem;
+    section {
+        margin-bottom: .35rem;
+    }
+}
+
+
+.adminBannerContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 .35rem;
+    background: #353535;
+    z-index: 10;
+    display: flex;
+    overflow: hidden;
+    gap: .5rem;
+    .adminBannerInternalContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: .5rem;
+        width: 100%;
+    }
+}
+
+.adminMenuContainer {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    li {
+        width: 150px;
+        button {
+            padding: .125rem .25rem;
+            background: none;
+            color: white;
+            width: 100%;
+            text-align: left;
+        }
+        button:not(disabled) {
+            cursor: pointer;
+        }
+    }
+}
+
+.bodyContainer {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.MonthsContainer {
+    max-width: calc(100vw - 170px);
+    overflow-x: auto;
+    direction: rtl;
+    flex-wrap: nowrap;
+}
+
+@media(max-width: 780px) {
+    .MonthsContainer {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+    .bodyContainer {
+        flex-direction: column;
+    }
+    .adminMenuContainer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .internalContainer {
+        width: min-content;
+        min-width: 100%;
+        .bodyContainer {
+            padding: .5rem;
+        }
+    }
+}
+
+.contentBodyContainer {
+    margin-top: .125rem;
+    width: 100%;
+    button {
+        border-radius: 1rem;
+    }
+}
+
+.itemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222222;
+    gap: .25rem;
+    width: 100%;
+    padding: .125rem .5rem;
+    border-radius: 1rem;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: .125rem;
+}
+
+.adminPair {
+    button {
+        border-radius: 0;
+    }
+}
+
+@font-face {
+    font-family: 'Miller Text';
+    src: local('Miller Text'), url(https://d2zsu4v7czjhvo.cloudfront.net/font/miller/MillerTextBoldItalic.otf) format('truetype') font-weight-bold,
+}
+
+.actionButton {
+    min-width: 200px;
+}
+
+@media(max-width: 640px) {
+    .actionButton {
+        min-width: none;
+        width: 100%;
+    }
+}
+
+.millerText {
+    font-family: 'Miller Text';
+}
+
+.InvoiceContainer {
+    width: 600px;
+    .InvoiceInternalContainer {
+        padding: 4rem;
+        background: white;
+        color: black;
+        font-size: .8rem;
+        .Entity {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        .QuoteContainer {
+            text-align: right;
+            .InvoiceLabel {
+                font-size: 6.5rem;
+                font-weight: 600;
+            }
+        }
+        .DetailTable {
+            font-size: .75rem;
+        }
+    }
+}
+@media(max-width: 950px) {
+    .InvoiceContainer {
+        width: auto;
+    }
+}
+
+.DetailTableContainer {
+    min-height: 200px;
+    .DetailTable {
+        border-spacing: 0;
+        margin-top: .5rem;
+        th {
+            font-weight: 700;
+            padding-bottom: .125rem;
+        }
+        tr:first-child, th {
+            border-bottom: 1px solid black;
+            line-height: 10px;
+        }
+        tr {
+            line-height: 15px;
+        }
+        td {
+            vertical-align: top;
+        }
+        .TableNumber {
+            text-align: right;
+        }
+        .DescriptionContainer {
+            width: 50%;
+        }
+    }
+}
+
+.maxWidth {
+    max-width: 1200px;
+    width: 80vw;
+}
+
+.ChargesExternalContainer,
+.InfoContainer {
+    border: 1px solid grey;
+    padding: 1rem 3rem;
+}
+
+.DetailTableContainer {
+    .DetailTableCheckered {
+        th {
+            border-left: 1px solid grey;
+            border-right: 1px solid grey;
+        }
+        tr {
+            line-height: 20px;
+        }
+        tr:nth-child(even) {
+            background: #353535;
+        }
+    }
+}
+
+.PaidStamp {
+    font-size: 10rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: calc(50% - 92.5px);
+    left: calc( 50% - 176px);
+    opacity: .5;
+    -webkit-text-stroke: 10px red;
+    color: transparent;
+}
+
+.containerTwoSmallRight {
+    display: flex;
+    gap: .5rem;
+}
+
+.containerTwoSmallRight > div:first-child {
+    flex-shrink: 4;
+}
+
+.containerTwoSmallRight > div:last-child {
+    width: 400px;
+    flex-grow: 1;
+}
+
+@media(max-width: 980px) {
+    .containerTwoSmallRight > div:first-child {
+        width: 50vw;
+    }
+    .containerTwoSmallRight > div:last-child {
+        width: 210px;
+    }
+}
+
+@media(max-width: 780px) {
+    .containerTwoSmallRight > div:first-child {
+        width: 100%;
+    }
+    .containerTwoSmallRight > div:last-child {
+        width: 185px;
+    }
+}
+
+@media(max-width: 640px) {
+    .containerTwoSmallRight {
+        flex-direction: column;
+    }
+    .containerTwoSmallRight > div:last-child {
+        width: 100%;
+    }
+}
+
+.simpleList {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.simpleListShortText {
+    div {
+        white-space: break-spaces;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+}
