@@ -5,10 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _gridList = _interopRequireDefault(require("../video/player/gridList"));
-var _manager = require("../streaming/manager");
-var _shop = require("../ecommerce/shop");
 var _router = require("next/router");
+var _views = require("../../views");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -99,37 +97,12 @@ var Module = function Module(props) {
   }, [adminPanelState]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
-  }, adminAuth ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "AdminPanel_Container ".concat(adminPanelState ? 'AdminPanel_ContainerOpen' : ''),
-    ref: adminPanelContainerRef
-  }, /*#__PURE__*/_react["default"].createElement(_manager.Manager, _extends({}, props, {
-    adminPanelState: adminPanelState
-  }))), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      position: 'absolute',
-      right: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: toggleAdminPanel
-  }, adminPanelState ? 'Close' : 'Open', " Manager"))) : null, props.children, !props.hideDefault ? props.profileData && props.profileData.user ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "ProfilePage_UserContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "PagePadding PagePaddingTop ProfilePage_MetaContainer"
-  }, /*#__PURE__*/_react["default"].createElement("img", {
-    className: "ProfilePage_Icon",
-    src: props.profileData && props.profileData.user && props.profileData.user.icon ? props.profileData.user.icon : ''
-  }), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "ProfilePage_ProfileName"
-  }, props.profileData.user.username)))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "ProfilePage_Feed"
-  }, /*#__PURE__*/_react["default"].createElement(_gridList["default"], _extends({
-    loggedIn: props._loggedIn,
-    _gridItems: combinedFeed,
-    _gridListType: 'video'
-  }, props))), /*#__PURE__*/_react["default"].createElement(_shop.Shop, _extends({}, props, {
-    profile: true
-  }))) : /*#__PURE__*/_react["default"].createElement("div", {
-    className: "PagePadding"
-  }, "No User here") : null, props.childrenAfter);
+  }, /*#__PURE__*/_react["default"].createElement(_views.Profile, _extends({}, props, {
+    adminAuth: adminAuth,
+    combinedFeed: combinedFeed,
+    adminPanelState: adminPanelState,
+    toggleAdminPanel: toggleAdminPanel,
+    adminPanelContainerRef: adminPanelContainerRef
+  })));
 };
 var _default = exports["default"] = Module;

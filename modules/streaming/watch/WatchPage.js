@@ -13,7 +13,7 @@ var _streaming = require("../../utility/streaming");
 var _utility = require("../../video/player/utility");
 var _uuid = require("uuid");
 var _util = require("../../util");
-var _chat = require("../chat");
+var _views = require("../../../views");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -32,7 +32,6 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var defaultPoster = 'img/internal/videoposter.png';
 var Module = function Module(props) {
-  var _props$watchData, _props$watchData2;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -351,40 +350,14 @@ var Module = function Module(props) {
     className: "".concat(props.className, " WatchPage_Container")
   }, /*#__PURE__*/_react["default"].createElement(_script["default"], {
     src: "https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js"
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].videoQuadrant, " WatchPage_VideoQuadrant"),
-    style: {
-      height: "calc(100vh - ".concat(menuHeight, ")")
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].streamLeadPrompt, " ").concat(!(0, _util.isObjectEmpty)(streamLeadPrompt) ? _WatchPageModule["default"].streamLeadPrompt_Visible : '', " WatchPage_StreamLeadPrompt"),
-    ref: authContainer
-  }, streamLeadPrompt ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.lead ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.lead) : null, streamLeadPrompt.description ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.description) : null, streamLeadPrompt.password ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.password) : null, streamLeadPrompt.tags ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.tags) : null, streamLeadPrompt.tagsList ? /*#__PURE__*/_react["default"].createElement("div", null, streamLeadPrompt.tagsList) : null) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].videoExternalContainer, " WatchPage_VideoExternalContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].videoContainer, " ").concat(mobileStyleConfigs ? "".concat(_WatchPageModule["default"].mobileVideoPlayer) : null, " WatchPage_VideoContainer")
-  }, /*#__PURE__*/_react["default"].createElement("video", {
-    id: "my-player",
-    "class": "".concat(_WatchPageModule["default"].videoPlayer, " video-js WatchPage_VideoPlayer"),
-    style: {
-      maxHeight: "calc(100vh - ".concat(menuHeight)
-    },
-    controls: true,
-    preload: "auto",
-    playsInline: true,
-    poster: currentPoster
-  }, /*#__PURE__*/_react["default"].createElement("p", {
-    "class": "vjs-no-js"
-  }, "To view this video please enable JavaScript, and consider upgrading to a web browser that", /*#__PURE__*/_react["default"].createElement("a", {
-    href: "https://videojs.com/html5-video-support/",
-    target: "_blank"
-  }, "supports HTML5 video")))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_WatchPageModule["default"].chatContainer, " ").concat(chatState ? "".concat(_WatchPageModule["default"].chatOpen) : "".concat(_WatchPageModule["default"].chatClosed), " ").concat(!chatState && props !== null && props !== void 0 && props._isMobile ? "".concat(_WatchPageModule["default"].chatClosedMobile) : null, " WatchPage_ChatContainer")
-  }, /*#__PURE__*/_react["default"].createElement(_chat.Chat, _extends({}, props, {
-    setMobileStyleConfigs: handleSetMobileStyleConfigs,
-    chatFor: props === null || props === void 0 || (_props$watchData = props.watchData) === null || _props$watchData === void 0 ? void 0 : _props$watchData.id,
-    videoStatus: props === null || props === void 0 || (_props$watchData2 = props.watchData) === null || _props$watchData2 === void 0 ? void 0 : _props$watchData2.status,
-    chatState: chatState
-  }))))));
+  }), /*#__PURE__*/_react["default"].createElement(_views.Watch, _extends({}, props, {
+    chatState: chatState,
+    handleSetMobileStyleConfigs: handleSetMobileStyleConfigs,
+    menuHeight: menuHeight,
+    currentPoster: currentPoster,
+    streamLeadPrompt: streamLeadPrompt,
+    authContainer: authContainer,
+    WatchPageStyles: _WatchPageModule["default"]
+  })));
 };
 var _default = exports["default"] = Module;

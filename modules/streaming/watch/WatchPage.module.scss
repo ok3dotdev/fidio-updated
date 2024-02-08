@@ -73,7 +73,7 @@
 .videoExternalContainer {
     display: flex;
     overflow: hidden;
-    height: 100%;
+    min-height: 100%;
 }
 
 @media (max-width: 700px) {

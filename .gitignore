@@ -69,3 +69,10 @@ styles/appstyles/*
 public.tar.gz
 servebuild.bat
 .next.tar.gz
+
+views/*
+!*/views/defaults/*
+!*views/defaults
+appServer/*
+!*/appServer/defaults/*
+!*appServer/defaults/
