@@ -17,9 +17,7 @@ const HomeLayout = ({ useProps, pageName, children, pageData, props }) => {
     <div className='relative h-full'>
       <HeadSEO site={siteData} page={pageData} />
       {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
-      {/* <main className={archivo.className}> */}
         {children}
-      {/* </main> */}
       {showFooter && <Footer pageName={pageName} />}
     </div>
   );

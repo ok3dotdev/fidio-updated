@@ -4,7 +4,7 @@ import React from 'react'
 import { PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
-import Hero from '../../customModules/features/Hero';
+// import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '@/customModules/features/seo-data';
 import Hero from '../../customModules/features/Hero.new';
@@ -16,7 +16,7 @@ const pageName = 'Index'
 export const page = props => {
 	return (
         <React.Fragment>
-            <PageContainer { ...props } pageName={pageName} />
+            {/* <PageContainer { ...props } pageName={pageName} /> */}
             <HomeLayout
               useProps={props}
               pageName={pageName}
