@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminPanel, ProfileCard, UserFeed, UserShop } from '../modules/profile'
+import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '../modules/profile'
 
 const Module = props => {
     return (
@@ -8,7 +8,13 @@ const Module = props => {
             {
                 props?.profileData?.user
                     ? <div>
-                        <ProfileCard { ...props } />
+                        <div className={`${props?.className ?? ''} flex wrap gap-p10 PagePadding pTop ProfilePage_ProfileContainer`}>
+                            <UserIcon { ...props } />
+                            <div className={`flex wrap gap-p5`} style={{ height: 'fit-content' }}>
+                                <UsernameContainer { ...props } />
+                                <BeginStream { ...props } />
+                            </div>
+                        </div>
                         <UserFeed { ...props } />
                         <UserShop { ...props } />
                     </div>

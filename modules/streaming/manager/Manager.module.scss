@@ -86,6 +86,8 @@
 }
 
 .streamingButton {
+    overflow: hidden;
+    height: 30px;
     background: rgb(243,113,255);
     background: -moz-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
     background: -webkit-linear-gradient(50deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 40%, var(--c4) 60%, var(--c5) 100%);
@@ -94,6 +96,7 @@
     transition: 200ms;
     color: white;
     border: 2px solid rgb(243, 113, 255);
+    outline: 4px solid transparent;
     border-radius: 1rem;
     transition: --c1 .5s, --c2 .5s, --c3 .5s, --c4 .5s, --c5 .5s;
 }
@@ -109,9 +112,20 @@ button.streamingButton:not(:disabled):hover {
     --c3: rgba(243,113,255,1);
     --c4: rgba(238,82,82,1);
     --c5: rgba(154,116,255,1);
-    border: 1px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
     outline: 4px solid rgb(243, 113, 255);
     outline-offset: -6px;
     box-shadow: 0 0px 15px 2px white;
     color: white;
+}
+
+.streamingButtonMini {
+    transition: 200ms;
+}
+
+.streamingButtonOff {
+    height: 0px;
+    padding: 0;
+    border: 0;
+    opacity: 0;
 }

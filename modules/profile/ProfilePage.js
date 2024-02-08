@@ -7,6 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _router = require("next/router");
 var _views = require("../../views");
+var _ManagerModule = _interopRequireDefault(require("../streaming/manager/Manager.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -45,16 +46,43 @@ var Module = function Module(props) {
     adminPanelState = _React$useState10[0],
     setAdminPanelState = _React$useState10[1];
   var adminPanelContainerRef = _react["default"].useRef();
-  _react["default"].useEffect(function () {
-    if (!componentDidMount) {
-      console.log(query);
-      if ((query === null || query === void 0 ? void 0 : query.a) === 'openbeginstream') {
+  props._LocalEventEmitter.unsubscribe('profilePage');
+  props._LocalEventEmitter.subscribe('profilePage', function (d) {
+    if (d && d.dispatch) {
+      if (d.dispatch === 'openAdminPanel') {
+        setAdminPanelState(true);
+        props._setManagerOpen(true);
+        if ((d === null || d === void 0 ? void 0 : d.menu) === 'stream') {
+          props._LocalEventEmitter.dispatch('manager', {
+            dispatch: 'setMenu',
+            menu: 'stream'
+          });
+        }
         setTimeout(function () {
-          setAdminPanelState(true);
           window.scrollTo({
             top: 0,
             behavior: 'smooth'
           });
+        }, 1500);
+      }
+    }
+  });
+  _react["default"].useEffect(function () {
+    if (!componentDidMount) {
+      if ((query === null || query === void 0 ? void 0 : query.a) === 'openbeginstream') {
+        setTimeout(function () {
+          setAdminPanelState(true);
+          props._setManagerOpen(true);
+          props._LocalEventEmitter.dispatch('manager', {
+            dispatch: 'setMenu',
+            menu: 'stream'
+          });
+          setTimeout(function () {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }, 1500);
         }, OPEN_PANEL_OFFSET);
       }
       setComponentDidMount(true);
@@ -88,13 +116,23 @@ var Module = function Module(props) {
       temp = false;
     } else {
       temp = true;
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      setTimeout(function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 1500);
     }
     setAdminPanelState(temp);
+    props._setManagerOpen(temp);
   }, [adminPanelState]);
+
+  // Enforce out of step global manager open state
+  _react["default"].useEffect(function () {
+    if (props._managerOpen === false && adminPanelState === true) {
+      props._setManagerOpen(true);
+    }
+  }, [adminPanelState, props._managerOpen]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className)
   }, /*#__PURE__*/_react["default"].createElement(_views.Profile, _extends({}, props, {
@@ -102,7 +140,8 @@ var Module = function Module(props) {
     combinedFeed: combinedFeed,
     adminPanelState: adminPanelState,
     toggleAdminPanel: toggleAdminPanel,
-    adminPanelContainerRef: adminPanelContainerRef
+    adminPanelContainerRef: adminPanelContainerRef,
+    ManagerStyles: _ManagerModule["default"]
   })));
 };
 var _default = exports["default"] = Module;

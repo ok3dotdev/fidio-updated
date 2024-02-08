@@ -272,6 +272,10 @@ var handleRouteChange = exports.handleRouteChange = function handleRouteChange(p
         }
       }
     }
+    // Reset Global Manager Open to page change
+    if (props._setManagerOpen) {
+      props._setManagerOpen(false);
+    }
   } catch (err) {
     console.log(err);
   }

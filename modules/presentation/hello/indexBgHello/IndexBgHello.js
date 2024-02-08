@@ -83,14 +83,12 @@ var Module = function Module(props) {
       if (d.dispatch === 'updateCountdown') {
         var useCurrentTime = useItems[currentSlide] ? useItems[currentSlide].date : null;
         if (useCurrentTime !== null && useCurrentTime !== undefined) {
-          console.log(useItems, currentSlide);
           var useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : _typeof(useCurrentTime) === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
           if ((0, _utility2.datePassed)(useTime)) {
             setUseCountdown('nodate');
           } else if (!isNaN(useTime)) {
             var timeRemaining = (0, _utility.getTimeRemaining)(useTime, new Date());
             if (timeRemaining) {
-              console.log('Set update', timeRemaining);
               setUseCountdown(timeRemaining);
               setDisplayTime(true);
             }
@@ -110,6 +108,7 @@ var Module = function Module(props) {
         setUseHandler(true);
       }
       setInterval(function () {
+        // Update time every second
         props._LocalEventEmitter.dispatch(id, {
           dispatch: 'updateCountdown'
         });
@@ -214,7 +213,6 @@ var Module = function Module(props) {
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);
   });
-  console.log(useItems);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className, " ").concat(props.medium ? "".concat(_PresentationModule["default"].IndexBgContainerMedium) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -399,7 +397,6 @@ var Module = function Module(props) {
     }(), function () {
       var option = (0, _ecommerce.resolveOption)(m, m.item.style, m.item.option, true);
       var paint = option !== null && option !== void 0 && option.quantity && option.quantity > 300 ? '' : option !== null && option !== void 0 && option.quantity && option.quantity <= 300 ? "Not much left in stock" : '';
-      console.log(option, paint);
       return paint !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
         style: {
           alignItems: 'center',

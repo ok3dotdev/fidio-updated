@@ -1,5 +1,5 @@
-import resolveConfig, { resolveVariables } from "../app.config"
-import { resolvePage } from "../modules/utility"
+import resolveConfig, { resolveVariables } from "/app.config"
+import { resolvePage } from "/modules/utility"
 
 /**
  * Empowers you to get server side props before page load. Use conditionals to determine which pages to run specific requests

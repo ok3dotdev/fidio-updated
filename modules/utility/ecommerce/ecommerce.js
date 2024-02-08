@@ -689,7 +689,6 @@ var resolveRegionBasedPrice = exports.resolveRegionBasedPrice = function resolve
 };
 var resolveOption = exports.resolveOption = function resolveOption(p, s, o) {
   var returnObject = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  console.log(p, s, o);
   if (p && p.styles && s) {
     var f = p.styles.find(function (m) {
       return m.sid === s;

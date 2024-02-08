@@ -74,10 +74,14 @@ var Internal = function Internal(usePageProps) {
     _React$useState22 = _slicedToArray(_React$useState21, 2),
     _adminAuth = _React$useState22[0],
     _setAdminAuth = _React$useState22[1];
-  var _React$useState23 = _react["default"].useState(-1),
+  var _React$useState23 = _react["default"].useState(false),
     _React$useState24 = _slicedToArray(_React$useState23, 2),
-    lastCheckHandleUserData = _React$useState24[0],
-    setLastCheckHandleUserData = _React$useState24[1];
+    _managerOpen = _React$useState24[0],
+    _setManagerOpen = _React$useState24[1];
+  var _React$useState25 = _react["default"].useState(-1),
+    _React$useState26 = _slicedToArray(_React$useState25, 2),
+    lastCheckHandleUserData = _React$useState26[0],
+    setLastCheckHandleUserData = _React$useState26[1];
 
   // Must assign usePageProps as it cannot be used directly
   var pageProps = Object.assign({}, usePageProps);
@@ -207,6 +211,8 @@ var Internal = function Internal(usePageProps) {
   pageProps._isMobile = _isMobile;
   pageProps._adminAuth = _adminAuth;
   pageProps._setAdminAuth = _setAdminAuth;
+  pageProps._managerOpen = _managerOpen;
+  pageProps._setManagerOpen = _setManagerOpen;
   pageProps.fetchBusy = fetchBusy;
   pageProps.setFetchBusy = setFetchBusy;
   var _configVariables = (0, _app.resolveVariables)();
@@ -250,14 +256,14 @@ var Internal = function Internal(usePageProps) {
   /**
    * Socket Initialized Here
    */
-  var _React$useState25 = _react["default"].useState(null),
-    _React$useState26 = _slicedToArray(_React$useState25, 2),
-    _socket = _React$useState26[0],
-    setSocket = _React$useState26[1];
   var _React$useState27 = _react["default"].useState(null),
     _React$useState28 = _slicedToArray(_React$useState27, 2),
-    socketTimeout = _React$useState28[0],
-    setSocketTimeout = _React$useState28[1];
+    _socket = _React$useState28[0],
+    setSocket = _React$useState28[1];
+  var _React$useState29 = _react["default"].useState(null),
+    _React$useState30 = _slicedToArray(_React$useState29, 2),
+    socketTimeout = _React$useState30[0],
+    setSocketTimeout = _React$useState30[1];
   _react["default"].useEffect(function () {
     (0, _app2.registerSocket)(_socket2["default"], _socket, setSocket, socketTimeout, pageProps, setSocketTimeout);
   }, [_socket, socketTimeout]);

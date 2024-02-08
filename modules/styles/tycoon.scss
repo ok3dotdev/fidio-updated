@@ -182,6 +182,10 @@ button:not(:disabled):active {
     display: flex;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
 .gap-p30 {
     gap: 3rem;
 }
