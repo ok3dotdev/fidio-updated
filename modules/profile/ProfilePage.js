@@ -84,6 +84,21 @@ var Module = function Module(props) {
             });
           }, 1500);
         }, OPEN_PANEL_OFFSET);
+      } else if ((query === null || query === void 0 ? void 0 : query.a) === 'golive') {
+        setTimeout(function () {
+          setAdminPanelState(true);
+          props._setManagerOpen(true);
+          props._LocalEventEmitter.dispatch('manager', {
+            dispatch: 'setMenu',
+            menu: 'stream'
+          });
+          setTimeout(function () {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }, 1500);
+        }, OPEN_PANEL_OFFSET);
       }
       setComponentDidMount(true);
     }

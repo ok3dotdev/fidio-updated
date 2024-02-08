@@ -347,6 +347,61 @@ button:not(:disabled):active {
     background: #565656;
 }
 
+@property --c6 {
+    syntax: '<color>';
+    initial-value: rgba(49, 49, 49,1);
+    inherits: false;
+}
+
+@property --c7 {
+    syntax: '<color>';
+    initial-value: rgba(49, 49, 49,1);
+    inherits: false;
+}
+
+@property --c8 {
+    syntax: '<color>';
+    initial-value: rgba(49, 49, 49,1);
+    inherits: false;
+}
+
+@property --c9 {
+    syntax: '<color>';
+    initial-value: rgb(39, 240, 230);
+    inherits: false;
+}
+
+.dropMenu .slideGradient li {
+    background: rgb(49,49,49);
+    background: -moz-linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    background: -webkit-linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    background: linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f371ff",endColorstr="#39e662",GradientType=1);
+    transition: 200ms;
+    color: white;
+    transition: --c6 .5s, --c7 .75s, --c8 1.5s, --c4 .5s, --c5 .5s;
+    box-shadow: 0 0px 0px 0px transparent;
+    font-weight: 700;
+}
+
+.dropMenu .slideGradient li:not(:disabled):hover {
+    background: -moz-linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    background: -webkit-linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    background: linear-gradient(50deg, var(--c6) 0%, var(--c7) 20%, var(--c8) 70%, var(--c9) 85%, var(--c4) 90%, var(--c1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f371ff",endColorstr="#39e662",GradientType=1);
+    --c6: rgba(57,230,98,1);
+    --c7: rgb(81, 148, 179);
+    --c8: rgba(243,113,255,1);
+    --c4: rgba(238,82,82,1);
+    --c1: rgba(154,116,255,1);
+    --c9: rgba(84, 214, 84, 1);
+    // border: 2px solid rgb(255, 255, 255);
+    // outline: 4px solid rgb(243, 113, 255);
+    // outline-offset: -6px;
+    box-shadow: 0 0px 7.5px 2px rgba(255, 255, 255, 1);
+    color: white;
+}
+
 .options button {
     border-radius: .25rem;
 }
@@ -750,6 +805,7 @@ button:not(:disabled):active {
     border-radius: 1rem;
     transition: --c1 .5s, --c2 .5s, --c3 .5s, --c4 .5s, --c5 .5s;
 }
+
 
 .Product_img_container {
     border: 1px solid transparent;

@@ -255,7 +255,7 @@ var Module = function Module(props) {
   })), /*#__PURE__*/_react["default"].createElement("ul", {
     className: !props._loggedIn ? "".concat(_MenuModule["default"].menu, " ").concat(_MenuModule["default"].menuClosed) : _MenuModule["default"].menu
   }, props.menuConfig && props.menuConfig.right ? props.menuConfig.right.map(function (c, i) {
-    var _props$_loggedIn$icon, _props$_loggedIn3, _props$_loggedIn4, _props$_loggedIn5, _props$_adminAuth, _props$siteTitle;
+    var _props$_loggedIn$icon, _props$_loggedIn3, _props$_loggedIn4, _props$_loggedIn5, _props$_loggedIn6, _props$_adminAuth, _props$siteTitle;
     return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
       key: i
     }, c.type ? c.type === 'user' ? props._loggedIn ? /*#__PURE__*/_react["default"].createElement("div", {
@@ -311,7 +311,17 @@ var Module = function Module(props) {
       }
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
-    }, "account_box"), /*#__PURE__*/_react["default"].createElement("div", null, "View Your Profile")))))) : null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_index.Username, props) : null, /*#__PURE__*/_react["default"].createElement("div", {
+    }, "account_box"), /*#__PURE__*/_react["default"].createElement("div", null, "View Your Profile")))))) : null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_index.Username, props), (_props$_loggedIn4 = props._loggedIn) !== null && _props$_loggedIn4 !== void 0 && _props$_loggedIn4.username ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
+      href: "/p?a=golive",
+      className: "menuLinkSelector ".concat(c.className, " slideGradient"),
+      onClick: handleToggleSettings,
+      style: {
+        position: 'relative',
+        alignSelf: 'center'
+      }
+    }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "material-icons"
+    }, "stream"), /*#__PURE__*/_react["default"].createElement("div", null, "Go Live"))) : null) : null, /*#__PURE__*/_react["default"].createElement("div", {
       style: {
         borderTop: '1px solid grey',
         margin: '.25rem 0'
@@ -361,7 +371,7 @@ var Module = function Module(props) {
       }
     }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
       className: "material-icons"
-    }, "redeem"), /*#__PURE__*/_react["default"].createElement("div", null, "Offers and Gifts"))), (_props$_loggedIn4 = props._loggedIn) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.meta) !== null && _props$_loggedIn4 !== void 0 && (_props$_loggedIn4 = _props$_loggedIn4.locationMeta) !== null && _props$_loggedIn4 !== void 0 && _props$_loggedIn4.city && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.locationMeta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    }, "redeem"), /*#__PURE__*/_react["default"].createElement("div", null, "Offers and Gifts"))), (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.locationMeta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.city && (_props$_loggedIn6 = props._loggedIn) !== null && _props$_loggedIn6 !== void 0 && (_props$_loggedIn6 = _props$_loggedIn6.meta) !== null && _props$_loggedIn6 !== void 0 && (_props$_loggedIn6 = _props$_loggedIn6.locationMeta) !== null && _props$_loggedIn6 !== void 0 && _props$_loggedIn6.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: "/settings?t=location",
       className: "menuLinkSelector ".concat(c.className),
       onClick: handleToggleSettings,

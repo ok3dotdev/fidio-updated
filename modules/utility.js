@@ -115,7 +115,7 @@ var resolvePage = exports.resolvePage = function resolvePage(def, path) {
 var resolvePageName = exports.resolvePageName = function resolvePageName(path) {
   switch (path) {
     case '/':
-      return 'Index';
+      return 'index';
     default:
       return path !== null && path !== void 0 && path.replace ? path.replace('/', '') : '';
   }
