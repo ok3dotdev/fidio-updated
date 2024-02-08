@@ -4,6 +4,7 @@
 import React from 'react'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
+import { getServerSidePropsFunc } from '/appServer/serverProps'
 import { Admin } from '/modules/admin'
 
 const pageName = 'admin'
@@ -19,7 +20,8 @@ export const page = props => {
 }
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
-};
+	let currentProps = await getServerSidePropsDefault(context, pageDefaults[pageName])
+    return await getServerSidePropsFunc(currentProps, context)
+}
 
-export default page;
+export default page
