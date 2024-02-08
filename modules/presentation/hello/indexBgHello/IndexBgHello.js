@@ -83,12 +83,14 @@ var Module = function Module(props) {
       if (d.dispatch === 'updateCountdown') {
         var useCurrentTime = useItems[currentSlide] ? useItems[currentSlide].date : null;
         if (useCurrentTime !== null && useCurrentTime !== undefined) {
+          console.log(useItems, currentSlide);
           var useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : _typeof(useCurrentTime) === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
           if ((0, _utility2.datePassed)(useTime)) {
             setUseCountdown('nodate');
           } else if (!isNaN(useTime)) {
             var timeRemaining = (0, _utility.getTimeRemaining)(useTime, new Date());
             if (timeRemaining) {
+              console.log('Set update', timeRemaining);
               setUseCountdown(timeRemaining);
               setDisplayTime(true);
             }
@@ -197,7 +199,12 @@ var Module = function Module(props) {
     speed: 500,
     swipeToSlide: true,
     touchThreshold: 60,
-    arrows: false
+    arrows: false,
+    beforeChange: function beforeChange(current, next) {
+      if (next !== currentSlide) {
+        setCurrentSlide(next);
+      }
+    }
   };
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);
