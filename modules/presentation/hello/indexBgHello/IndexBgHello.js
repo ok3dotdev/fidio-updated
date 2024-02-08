@@ -203,6 +203,11 @@ var Module = function Module(props) {
     beforeChange: function beforeChange(current, next) {
       if (next !== currentSlide) {
         setCurrentSlide(next);
+        setTimeout(function () {
+          props._LocalEventEmitter.dispatch(componentId, {
+            dispatch: 'updateCountdown'
+          });
+        }, 1);
       }
     }
   };
