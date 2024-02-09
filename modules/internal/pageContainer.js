@@ -29,7 +29,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var PageContainer = function PageContainer(props) {
-  var _resolvedDefinition, _resolvedDefinition$p, _props$before, _resolvedDefinition2, _resolvedDefinition$p2, _props$pageClass, _props$children;
+  var _resolvedDefinition, _resolvedDefinition$p, _resolvedDefinition2, _resolvedDefinition$p2, _props$pageClass;
   var router = (0, _router.useRouter)();
   var query = router.query,
     asPath = router.asPath;
@@ -82,11 +82,27 @@ var PageContainer = function PageContainer(props) {
   resolvedPage = (0, _utility.resolvePage)((0, _app["default"])(props._configVariables, useProps), useProps.path);
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   var components = (0, _utility.generateComponent)(resolvedDefinition);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !resolvedDefinition || (_resolvedDefinition = resolvedDefinition) !== null && _resolvedDefinition !== void 0 && _resolvedDefinition.props && !Object.prototype.hasOwnProperty.call(resolvedDefinition.props, 'useMenu') || (_resolvedDefinition$p = resolvedDefinition.props) !== null && _resolvedDefinition$p !== void 0 && _resolvedDefinition$p.useMenu ? /*#__PURE__*/_react["default"].createElement(_menu.Menu, useProps) : null, (_props$before = props.before) !== null && _props$before !== void 0 ? _props$before : null, !resolvedDefinition || (_resolvedDefinition2 = resolvedDefinition) !== null && _resolvedDefinition2 !== void 0 && _resolvedDefinition2.props && !Object.prototype.hasOwnProperty.call(resolvedDefinition.props, 'useAppConfigLayout') || (_resolvedDefinition$p2 = resolvedDefinition.props) !== null && _resolvedDefinition$p2 !== void 0 && _resolvedDefinition$p2.useAppConfigLayout ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.pageName, "_Body ").concat((_props$pageClass = props.pageClass) !== null && _props$pageClass !== void 0 ? _props$pageClass : ''),
+  var useMenu = !resolvedDefinition || ((_resolvedDefinition = resolvedDefinition) === null || _resolvedDefinition === void 0 ? void 0 : _resolvedDefinition.props) && !Object.prototype.hasOwnProperty.call(resolvedDefinition.props, 'useMenu') || ((_resolvedDefinition$p = resolvedDefinition.props) === null || _resolvedDefinition$p === void 0 ? void 0 : _resolvedDefinition$p.useMenu);
+  var useAppConfigLayout = !resolvedDefinition || ((_resolvedDefinition2 = resolvedDefinition) === null || _resolvedDefinition2 === void 0 ? void 0 : _resolvedDefinition2.props) && !Object.prototype.hasOwnProperty.call(resolvedDefinition.props, 'useAppConfigLayout') || ((_resolvedDefinition$p2 = resolvedDefinition.props) === null || _resolvedDefinition$p2 === void 0 ? void 0 : _resolvedDefinition$p2.useAppConfigLayout);
+  var cpProps = Object.assign({}, useProps);
+  cpProps.useMenu = useMenu; // Determines if we useMenu based on definition app.config.js
+  cpProps.useAppConfigLayout = useAppConfigLayout; // Determines if we use appConfigLayout based on definition app.config.js
+  var componentsContainer = /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(useProps.pageName, "_Body ").concat((_props$pageClass = props.pageClass) !== null && _props$pageClass !== void 0 ? _props$pageClass : ''),
     style: {
-      top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : ''
+      top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
+      position: 'relative'
     }
-  }, components) : null, (_props$children = props.children) !== null && _props$children !== void 0 ? _props$children : null);
+  }, components);
+  if (cpProps.useAppConfigLayout) {
+    cpProps.appConfigLayout = componentsContainer;
+  }
+  var propChildren = _react["default"].Children.map(props.children, function (child) {
+    if (child !== null) {
+      return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+    }
+    return /*#__PURE__*/_react["default"].createElement('div');
+  });
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, propChildren);
 };
 var _default = exports["default"] = PageContainer;

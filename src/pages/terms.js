@@ -1,20 +1,20 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React from 'react'
-import { PageContainer } from '/modules/internal'
+import { AppConfigLayout, PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 import { getServerSidePropsFunc } from '/appServer/serverProps'
-import dir from '/customModules/pages/'
+import { Menu } from '/modules/menu/'
 
 const pageName = 'terms'
-const CustomPageChildren = dir[pageName]
 
 export const page = props => {
 	return (
         <React.Fragment>
             <PageContainer { ...props } pageName={pageName}>
-                <CustomPageChildren { ...props } />
+                <Menu></Menu>
+                <AppConfigLayout></AppConfigLayout>
             </PageContainer>
         </React.Fragment>
 	)

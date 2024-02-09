@@ -16,6 +16,7 @@ const nextConfig = {
     config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js')
     config.resolve.alias['/customModules'] = path.join(__dirname, 'customModules')
     config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles')
+    config.resolve.alias['/layout'] = path.join(__dirname, 'layout/')
     
     if (!isServer) {
       config.module.rules.push({

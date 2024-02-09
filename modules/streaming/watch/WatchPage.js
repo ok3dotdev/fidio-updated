@@ -13,7 +13,7 @@ var _streaming = require("../../utility/streaming");
 var _utility = require("../../video/player/utility");
 var _uuid = require("uuid");
 var _util = require("../../util");
-var _views = require("../../../views");
+var _layout = require("/layout");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -350,7 +350,7 @@ var Module = function Module(props) {
     className: "".concat(props.className, " WatchPage_Container")
   }, /*#__PURE__*/_react["default"].createElement(_script["default"], {
     src: "https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js"
-  }), /*#__PURE__*/_react["default"].createElement(_views.Watch, _extends({}, props, {
+  }), /*#__PURE__*/_react["default"].createElement(_layout.Watch, _extends({}, props, {
     chatState: chatState,
     handleSetMobileStyleConfigs: handleSetMobileStyleConfigs,
     menuHeight: menuHeight,
