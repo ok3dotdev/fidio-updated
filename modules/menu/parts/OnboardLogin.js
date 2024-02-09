@@ -10,9 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   var _props$siteTitle;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "dropMenu"
-  }, /*#__PURE__*/_react["default"].createElement("ul", null, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings' ? !props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       padding: '.5rem .5rem .125rem'
     }
@@ -28,6 +26,6 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement(_signin.SignIn, _extends({}, props, {
     maxWidth: '100%'
-  })))) : null)) : null);
+  })))) : null : null);
 };
 var _default = exports["default"] = Module;
