@@ -126,11 +126,11 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'layout/Menu.js'
+useFile = 'layout/DropMenu.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Menu_backup.js', useFile)
+    fs.copyFileSync('layout/defaults/DropMenu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }

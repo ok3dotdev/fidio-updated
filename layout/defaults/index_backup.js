@@ -1,13 +1,13 @@
-import Cart from './Cart.js'
-import Watch from './Watch.js'
-import Profile from './Profile.js'
-import Article from './Article.js'
-import Menu from './Menu'
+import Cart from './Cart'
+import Watch from './Watch'
+import Profile from './Profile'
+import Article from './Article'
+import DropMenu from './DropMenu'
 
 export {
     Article,
     Cart,
     Profile,
     Watch,
-    Menu
+    DropMenu
 }

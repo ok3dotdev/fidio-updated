@@ -256,7 +256,7 @@ var Module = function Module(props) {
   }, props !== null && props !== void 0 && (_props$menuConfig3 = props.menuConfig) !== null && _props$menuConfig3 !== void 0 && _props$menuConfig3.right ? props.menuConfig.right.map(function (c, i) {
     return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
       key: i
-    }, c.type ? c.type === 'user' ? /*#__PURE__*/_react["default"].createElement(_index3.Menu, _extends({}, props, {
+    }, c.type ? c.type === 'user' ? /*#__PURE__*/_react["default"].createElement(_index3.DropMenu, _extends({}, props, {
       resolvedCountry: resolvedCountry,
       handleToggleSettings: handleToggleSettings,
       handleLogout: handleLogout,
