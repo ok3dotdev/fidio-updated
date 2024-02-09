@@ -206,6 +206,7 @@ var Internal = function Internal(usePageProps) {
   pageProps._setPageError = _setPageError;
   pageProps._toggleSingleOpenMenu = handleToggleSingleOpenMenu;
   pageProps._openMenu = _openMenu;
+  pageProps._setOpenMenu = _setOpenMenu;
   pageProps._cart = _cart;
   pageProps._rooms = _rooms;
   pageProps._isMobile = _isMobile;
