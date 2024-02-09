@@ -224,7 +224,7 @@ var Module = function Module(props) {
       style: {
         fontWeight: '500'
       }
-    }, m.question), /*#__PURE__*/_react["default"].createElement("div", {
+    }, m.question), /*#__PURE__*/_react["default"].createElement("pre", {
       style: {
         fontSize: '.85rem',
         lineHeight: 'normal'
@@ -241,7 +241,7 @@ var Module = function Module(props) {
       style: {
         fontWeight: '500'
       }
-    }, m.question), /*#__PURE__*/_react["default"].createElement("div", {
+    }, m.question), /*#__PURE__*/_react["default"].createElement("pre", {
       style: {
         fontSize: '.85rem',
         lineHeight: 'normal'

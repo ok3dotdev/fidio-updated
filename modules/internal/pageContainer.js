@@ -29,7 +29,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var PageContainer = function PageContainer(props) {
-  var _resolvedDefinition, _resolvedDefinition$p, _resolvedDefinition2, _resolvedDefinition$p2, _props$pageClass;
+  var _resolvedDefinition, _resolvedDefinition$p, _resolvedDefinition2, _resolvedDefinition$p2, _props$pageClass, _resolvedPage;
   var router = (0, _router.useRouter)();
   var query = router.query,
     asPath = router.asPath;
@@ -103,6 +103,9 @@ var PageContainer = function PageContainer(props) {
     }
     return /*#__PURE__*/_react["default"].createElement('div');
   });
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, propChildren);
+  var articlePage = ((_resolvedPage = resolvedPage) === null || _resolvedPage === void 0 ? void 0 : _resolvedPage.url) === '/ar';
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(articlePage ? "Article_SafeStyles" : '')
+  }, propChildren));
 };
 var _default = exports["default"] = PageContainer;

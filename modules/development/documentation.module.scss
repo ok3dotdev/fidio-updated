@@ -1,0 +1,29 @@
+.container {
+    margin: 0 .5rem;
+}
+
+.codePre {
+    border-radius: .5rem;
+    margin: 0;
+    background: #1e1e1e;
+    padding: .5rem;
+    white-space: pre-wrap;
+}
+
+.text {
+    white-space: pre-wrap;
+}
+
+.lead {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.quadrant {
+    width: 40%;
+}
+
+.quadrant2 {
+    width: 60%;
+}
