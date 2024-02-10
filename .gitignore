@@ -70,8 +70,8 @@ public.tar.gz
 servebuild.bat
 .next.tar.gz
 
-views/*
-!*/views/defaults/*
+layout/*
+!*/layout/defaults/*
 !*views/defaults
 appServer/*
 !*/appServer/defaults/*
