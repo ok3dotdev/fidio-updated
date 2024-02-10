@@ -203,6 +203,18 @@ button:not(:disabled):active {
     gap: .5rem;
 }
 
+.gap-p025 {
+    gap: .25rem;
+}
+
+.gap-p05 {
+    gap: .5rem;
+}
+
+.gap-p1 {
+    gap: 1rem;
+}
+
 .gap-p2 {
     gap: .2rem;
 }
@@ -926,5 +938,24 @@ button:not(:disabled):active {
 @media (min-width: 640px) {
     .newItem {
         font-size: .75rem;
+    }
+}
+
+.max-width-dropdown {
+    -webkit-line-clamp: 1;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    max-width: 205px;
+}
+
+@media(max-width: 640px) {
+    .max-width-dropdown {
+        max-width: 90vw;
     }
 }

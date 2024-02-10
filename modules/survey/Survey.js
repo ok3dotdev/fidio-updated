@@ -247,7 +247,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("h1", {
     className: _SurveyModule["default"].survey__title
-  }, backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label), (backStageItem === null || backStageItem === void 0 || (_backStageItem$input = backStageItem.input) === null || _backStageItem$input === void 0 ? void 0 : _backStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
+  }, backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label), backStageItem !== null && backStageItem !== void 0 && backStageItem.pipeline ? /*#__PURE__*/_react["default"].createElement("div", null, "Handle List Inputs Here") : (backStageItem === null || backStageItem === void 0 || (_backStageItem$input = backStageItem.input) === null || _backStageItem$input === void 0 ? void 0 : _backStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
     className: _SurveyModule["default"].survey__optionsList
   }, backStageItem === null || backStageItem === void 0 || (_backStageItem$input2 = backStageItem.input) === null || _backStageItem$input2 === void 0 ? void 0 : _backStageItem$input2.options.map(function (option) {
     return /*#__PURE__*/_react["default"].createElement("li", {
@@ -287,7 +287,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("h1", {
     className: _SurveyModule["default"].survey__title
-  }, currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label), (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp = currentStageItem.input) === null || _currentStageItem$inp === void 0 ? void 0 : _currentStageItem$inp.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
+  }, currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label), currentStageItem !== null && currentStageItem !== void 0 && currentStageItem.pipeline ? /*#__PURE__*/_react["default"].createElement("div", null, "Handle List Inputs Here") : (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp = currentStageItem.input) === null || _currentStageItem$inp === void 0 ? void 0 : _currentStageItem$inp.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
     className: _SurveyModule["default"].survey__optionsList
   }, currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp2 = currentStageItem.input) === null || _currentStageItem$inp2 === void 0 ? void 0 : _currentStageItem$inp2.options.map(function (option) {
     return /*#__PURE__*/_react["default"].createElement("li", {
@@ -332,7 +332,7 @@ var Module = function Module(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("h1", {
     className: _SurveyModule["default"].survey__title
-  }, nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label), (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input = nextStageItem.input) === null || _nextStageItem$input === void 0 ? void 0 : _nextStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
+  }, nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label), nextStageItem !== null && nextStageItem !== void 0 && nextStageItem.pipeline ? /*#__PURE__*/_react["default"].createElement("div", null, "Handle List Inputs Here") : (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input = nextStageItem.input) === null || _nextStageItem$input === void 0 ? void 0 : _nextStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
     className: _SurveyModule["default"].survey__optionsList
   }, nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input2 = nextStageItem.input) === null || _nextStageItem$input2 === void 0 ? void 0 : _nextStageItem$input2.options.map(function (option) {
     return /*#__PURE__*/_react["default"].createElement("li", {

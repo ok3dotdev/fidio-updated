@@ -21,7 +21,7 @@ var devIndex = [{
 }, {
   lead: 'Import Styles',
   text: "You can import your own styles in the styles/styles.scss file. If there is no styles.scss file under styles make sure to run node init_app.js. This will create that file. \n        \nYou can place your actual stylesheets in the appstyles folder under styles. Then you will want to import those styles in the styles.scss. This is the recommended method for applying global styles to the application",
-  code: ".borderLarge {\n    border: 4px dotted grey;\n},\n\n@import \"appstyles/business.scss\";\n@import \"appstyles/marketing.scss\";\n",
+  code: ".borderLarge {\n    border: 4px dotted grey;\n}\n\n@import \"appstyles/business.scss\";\n@import \"appstyles/marketing.scss\";\n",
   response: null,
   pinned: true,
   meta: 'styles appstyles folder application global file import classes graphics design'

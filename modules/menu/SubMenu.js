@@ -73,7 +73,7 @@ var SubMenu = function SubMenu(props) {
         alignSelf: 'center'
       },
       key: i
-    }, c.href ? /*#__PURE__*/_react["default"].createElement("a", {
+    }, c.href ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
       href: c.href,
       onClick: (_props$handleToggleMe3 = props.handleToggleMenuOff) !== null && _props$handleToggleMe3 !== void 0 ? _props$handleToggleMe3 : null
     }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
