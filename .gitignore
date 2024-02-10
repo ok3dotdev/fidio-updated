@@ -72,7 +72,7 @@ servebuild.bat
 
 layout/*
 !*/layout/defaults/*
-!*views/defaults
+!*layout/defaults
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
