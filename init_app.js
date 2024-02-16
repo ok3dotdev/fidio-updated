@@ -81,71 +81,56 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'views/index.js'
+useFile = 'layout/index.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('views/defaults/index_backup.js', 'views/index.js')
+    fs.copyFileSync('layout/defaults/index_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'views/Cart.js'
+useFile = 'layout/Cart.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('views/defaults/Cart_backup.js', 'views/Cart.js')
+    fs.copyFileSync('layout/defaults/Cart_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'views/Profile.js'
+useFile = 'layout/Profile.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('views/defaults/Profile_backup.js', 'views/Profile.js')
+    fs.copyFileSync('layout/defaults/Profile_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'views/Watch.js'
+useFile = 'layout/Watch.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('views/defaults/Watch_backup.js', 'views/Watch.js')
+    fs.copyFileSync('layout/defaults/Watch_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'views/Article.js'
+useFile = 'layout/Article.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('views/defaults/Article_backup.js', 'views/Article.js')
+    fs.copyFileSync('layout/defaults/Article_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-const pageChildren = [ 'ar', 'e', 'index', 'p', 'privacy', 'r', 'settings', 'terms', 'test', 'w' ]
-
-for (let i = 0; i < pageChildren.length; i++) {
-    useFile = `customModules/pages/${pageChildren[i]}`
-    if (fs.existsSync(useFile)) {
-        // Add your commands here
-        console.log(useFile, 'File exists on', process.platform)
-    } else {
-        fs.cp(`customModules/pages/defaults/${pageChildren[i]}`, useFile, { recursive: true }, err => {
-            console.log('Err', err)
-        })
-        console.log(useFile, 'File does not exist on', process.platform)
-    }
-}
-
-useFile = 'customModules/pages/index.js'
+useFile = 'layout/DropMenu.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/pages/defaults/index_backup.js', useFile)
+    fs.copyFileSync('layout/defaults/DropMenu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }

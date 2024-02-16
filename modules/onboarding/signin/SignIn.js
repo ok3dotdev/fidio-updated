@@ -99,6 +99,8 @@ var Module = function Module(props) {
               }
               if (props.redirectOnAuth && status.username && asPath !== props.redirectOnAuth) {
                 router.push(props.redirectOnAuth);
+              } else if (props.redirectOnAuth && status.username && asPath === props.redirectOnAuth) {
+                router.reload(props.redirectOnAuth);
               }
               setTimeout(function () {
                 setPageError(null);
@@ -119,44 +121,46 @@ var Module = function Module(props) {
   }();
   var buildButtonAndTryPrompt = function buildButtonAndTryPrompt(delay) {
     try {
-      var googleBtn = {
-        theme: 'outline',
-        size: 'medium',
-        logo_alignment: 'center'
-      };
-      setTimeout(function () {
-        try {
-          var signInStatus = (0, _SignIn.checkSignedIn)();
-          if (!signInStatus) {
-            google.accounts.id.renderButton(googleSignIn.current, googleBtn);
-            googleSignInRenderedSet(true);
-            google.accounts.id.prompt(function (notification) {
-              console.log('on prompt notification', notification);
-            });
-          } else {
-            props._setLoggedIn(signInStatus);
-          }
-        } catch (err) {
-          setTimeout(function () {
-            try {
-              var _signInStatus = (0, _SignIn.checkSignedIn)();
-              if (!_signInStatus) {
-                // @ts-ignore
-                google.accounts.id.renderButton(googleSignIn.current, googleBtn);
-                googleSignInRenderedSet(true);
-                // @ts-ignore
-                google.accounts.id.prompt(function (notification) {
-                  console.log('on prompt notification', notification);
-                });
-              } else {
-                props._setLoggedIn(_signInStatus);
-              }
-            } catch (err) {
-              console.log(err); // fail silently
+      if (!googleSignInRendered) {
+        var googleBtn = {
+          theme: 'outline',
+          size: 'medium',
+          logo_alignment: 'center'
+        };
+        setTimeout(function () {
+          try {
+            var signInStatus = (0, _SignIn.checkSignedIn)();
+            if (!signInStatus) {
+              google.accounts.id.renderButton(googleSignIn.current, googleBtn);
+              googleSignInRenderedSet(true);
+              google.accounts.id.prompt(function (notification) {
+                console.log('on prompt notification', notification);
+              });
+            } else {
+              props._setLoggedIn(signInStatus);
             }
-          }, 10000);
-        }
-      }, delay);
+          } catch (err) {
+            setTimeout(function () {
+              try {
+                var _signInStatus = (0, _SignIn.checkSignedIn)();
+                if (!_signInStatus) {
+                  // @ts-ignore
+                  google.accounts.id.renderButton(googleSignIn.current, googleBtn);
+                  googleSignInRenderedSet(true);
+                  // @ts-ignore
+                  google.accounts.id.prompt(function (notification) {
+                    console.log('on prompt notification', notification);
+                  });
+                } else {
+                  props._setLoggedIn(_signInStatus);
+                }
+              } catch (err) {
+                console.log(err); // fail silently
+              }
+            }, 10000);
+          }
+        }, delay);
+      }
     } catch (err) {
       console.log(err); // fail silently
     }

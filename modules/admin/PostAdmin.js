@@ -9,6 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 var _link = _interopRequireDefault(require("next/link"));
 var _uuid = require("uuid");
 var _reactTextareaAutosize = _interopRequireDefault(require("react-textarea-autosize"));
+var _StorageAdmin = _interopRequireDefault(require("./StorageAdmin"));
 var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
 var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
 var _SignIn = require("../utility/onboarding/SignIn");
@@ -18,6 +19,7 @@ var _utility = require("./article/utility");
 var _event = require("../utility/utility/event");
 var _toolbarOptions = _interopRequireDefault(require("./editor/toolbarOptions"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -469,10 +471,18 @@ var Module = function Module(props) {
     href: "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))
   }, "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))))) : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("h4", {
+    style: {
       fontWeight: '600'
     }
   }, "Recent Articles"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].simpleList, " ").concat(_AdminModule["default"].simpleListShortText)
+    className: "".concat(_AdminModule["default"].simpleList, " ").concat(_AdminModule["default"].simpleListShortText),
+    style: {
+      maxHeight: '200px',
+      overflow: 'auto'
+    }
   }, (recentArticles === null || recentArticles === void 0 ? void 0 : recentArticles.length) > 0 ? recentArticles.map(function (m, i) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       style: {
@@ -485,6 +495,8 @@ var Module = function Module(props) {
       article: m === null || m === void 0 ? void 0 : m.id,
       onClick: handleLoadArticle
     }, m.title), /*#__PURE__*/_react["default"].createElement("span", null, m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? " - ".concat(new Date(Number(m.publish)).toDateString()) : ''));
-  }) : null))));
+  }) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StorageAdmin["default"], _extends({}, props, {
+    vert: true
+  }))))));
 };
 var _default = exports["default"] = Module;
