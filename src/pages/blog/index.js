@@ -6,6 +6,7 @@ import React from 'react';
 // import { PageContainer } from '/modules/internal';
 import { pageDefaults } from '../../../app.config';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { getServerSidePropsDefault } from '../../../modules/utility';
 import HomeLayout from '../../../customModules/features/HomeLayout';
 import { homePageData } from '@/customModules/features/seo-data';
@@ -66,28 +67,30 @@ export const page = (props) => {
             <div className='flex justify-center'>
               <div className='basis-1/2'>
                 {data.fetchedData.map((articleReq, index) => (
-                  <div key={index} className='p-4'>
-                    <div className='w-full min-h-[600px]'>
-                      <img
-                        className='object-cover w-full'
-                        src='https://images.ctfassets.net/v44fuld738we/2XLuJUv8JhkanTWtTsSJY7/23378a4140cdb824fd5a5b9bc86d70ee/iPhoneExplainer_1900x1900_Magazine_Square__1_.jpg'
-                        alt=''
-                      />
-                    </div>
-                    <div>
-                      <p className='font-sans'>
-                        {articleReq.articleReq[0][0].tags}
-                      </p>
-                      <h2>{articleReq.articleReq[0][0].title}</h2>
-                      <div className='font-sans'>
-                        {articleReq.articleReq[0][0].contents
-                          .split(/\s+/)
-                          .slice(0, 50)
-                          .join(' ')
-                          .replace('"<p>', '')}
+                  <Link href={'/ar?p=9384431e-3a9c-4bbc-82a8-eaa6882e5aa4'}>
+                    <div key={index} className='p-4'>
+                      <div className='w-full min-h-[600px]'>
+                        <img
+                          className='object-cover w-full'
+                          src='https://images.ctfassets.net/v44fuld738we/2XLuJUv8JhkanTWtTsSJY7/23378a4140cdb824fd5a5b9bc86d70ee/iPhoneExplainer_1900x1900_Magazine_Square__1_.jpg'
+                          alt=''
+                        />
+                      </div>
+                      <div>
+                        <p className='font-sans'>
+                          {articleReq.articleReq[0][0].tags}
+                        </p>
+                        <h2>{articleReq.articleReq[0][0].title}</h2>
+                        <div className='font-sans'>
+                          {articleReq.articleReq[0][0].contents
+                            .split(/\s+/)
+                            .slice(0, 50)
+                            .join(' ')
+                            .replace('"<p>', '')}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <div className='flex basis-2/5 pt-[54px]'>
