@@ -1,28 +1,31 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React from 'react'
-import { PageContainer } from '/modules/internal'
+import { AppConfigLayout, PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
-import HomeLayout from '../../customModules/features/HomeLayout';
-import { privacyPolicyPageData } from '../../customModules/features/seo-data';
+import { getServerSidePropsFunc } from '/appServer/serverProps'
+import { Menu } from '/modules/menu/'
 
 const pageName = 'privacy'
 
 export const page = props => {
 	return (
-    <HomeLayout
-      useProps={props}
-      pageName={pageName}
-      pageData={privacyPolicyPageData}
-    >
-      <PageContainer { ...props } pageName={pageName} />
-    </HomeLayout>
+        <React.Fragment>
+            <PageContainer { ...props } pageName={pageName}>
+                <Menu></Menu>
+                <AppConfigLayout></AppConfigLayout>
+            </PageContainer>
+        </React.Fragment>
 	)
 }
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
+  let currentProps = await getServerSidePropsDefault(
+    context,
+    pageDefaults[pageName]
+  );
+  return await getServerSidePropsFunc(currentProps, context);
 };
 
 export default page;

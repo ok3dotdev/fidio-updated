@@ -1,7 +1,5 @@
-const fs = require('fs')
-const path = require('path')
-
-// Initializes Application
+const fs = require('fs');
+const path = require('path');
 
 let useFile = 'customModules/middleware/Middleware.js'
 if (fs.existsSync(useFile)) {
@@ -21,7 +19,7 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'src/styles/styles.module.scss'
+useFile = 'src/styles/styles.scss'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
@@ -71,5 +69,68 @@ if (fs.existsSync(useFile)) {
     fs.writeFile(useFile + '.js', data, err => {
         console.log(err)
     })
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'appServer/serverProps.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('appServer/defaults/serverProps_backup.js', 'appServer/serverProps.js')
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Cart.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Cart_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Profile.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Profile_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Watch.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Watch_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Article.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Article_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/DropMenu.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/DropMenu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
