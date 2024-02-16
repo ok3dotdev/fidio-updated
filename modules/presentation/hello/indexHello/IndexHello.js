@@ -93,14 +93,12 @@ var Module = function Module(props) {
       }, 1000);
       setTimeout(function () {
         var slickTracks = document.getElementsByClassName('slick-track');
-        if (slickTracks) {
-          if (slickTracks[0]) {
-            slickTracks[0].style.transition = '500ms';
-            slickTracks[0].style.left = '-20px';
-            setTimeout(function () {
-              slickTracks[0].style.left = '0';
-            }, 2000);
-          }
+        if (slickTracks && slickTracks[0]) {
+          slickTracks[0].style.transition = '500ms';
+          slickTracks[0].style.left = '-25px';
+          setTimeout(function () {
+            slickTracks && slickTracks[0] ? slickTracks[0].style.left = '0' : null;
+          }, 2000);
         }
       }, 2000);
       setComponentDidMount(true);
