@@ -168,7 +168,7 @@ var Module = function Module(props) {
     var addOption = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
     var o = {
       sid: (0, _uuid.v4)(),
-      quantity: 1
+      quantity: 100
     };
     if (addOption) {
       o.option = '';
@@ -914,7 +914,7 @@ var Module = function Module(props) {
       width: '100%',
       display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
     },
-    defaultValue: "10",
+    defaultValue: "100",
     ref: quantityInput,
     onChange: setCurrentQuantity
   }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
