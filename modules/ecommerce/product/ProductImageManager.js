@@ -279,7 +279,7 @@ var Module = function Module(props) {
   var currentIsBgImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (bgImg === null || bgImg === void 0 ? void 0 : bgImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
   var currentIsLeadImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (leadImg === null || leadImg === void 0 ? void 0 : leadImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ProductImageManager_container"),
+    className: "".concat(props.className, " ").concat(_ProductImageManagerModule["default"].productImageManagerContainer, " ProductImageManager_container"),
     style: {
       position: 'relative'
     }

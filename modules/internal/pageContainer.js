@@ -99,7 +99,10 @@ var PageContainer = function PageContainer(props) {
   }
   var propChildren = _react["default"].Children.map(props.children, function (child) {
     if (child !== null) {
-      return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+      if (typeof child.type === 'function') {
+        return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+      }
+      return child;
     }
     return /*#__PURE__*/_react["default"].createElement('div');
   });

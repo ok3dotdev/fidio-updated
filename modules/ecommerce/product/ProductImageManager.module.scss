@@ -7,6 +7,10 @@
     }
 }
 
+.productImageManagerContainer {
+    height: -webkit-fill-available;
+}
+
 .changeImageButton,
 .changeImageButtonSmall {
     opacity: .75;
@@ -332,4 +336,18 @@
 
 .productPageTitle {
     margin: 0;
+}
+
+.smallContainer {
+    .currentlyEditingProductContent {
+        max-height: 75vh;
+        height: 450px;
+    }
+    .productImageContainer {
+        height: 100%;
+        img {
+            height: 100%;
+        }
+    }
+
 }

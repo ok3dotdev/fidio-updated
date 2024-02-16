@@ -773,7 +773,7 @@ var Module = function Module(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ShopModule["default"].container)
+    className: "".concat(_ShopModule["default"].container, " ").concat(props.smaller ? "".concat(_ProductImageManagerModule["default"].smallContainer) : null)
   }, adminAuth && !noShop ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ShopModule["default"].adminContainer)
   }, /*#__PURE__*/_react["default"].createElement("div", {
