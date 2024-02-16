@@ -959,3 +959,26 @@ button:not(:disabled):active {
         max-width: 90vw;
     }
 }
+
+.shareButton {
+    background: #4b4b4b;
+    width: max-content;
+    padding: .25rem .5rem;
+    font-weight: 600;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.shareButton:hover {
+    background: grey;
+}
+
+.shareButton div {
+    font-size: .85rem;
+}
+
+.shareButton svg {
+    height: 1.15rem;
+    width: 1.15rem;
+}

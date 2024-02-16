@@ -34,6 +34,18 @@ var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emit
           style: _style,
           option: _option
         });
+      } else if (action === 'add_to_cart_subscribe') {
+        var _e$currentTarget8, _e$currentTarget9, _e$currentTarget10;
+        var _item2 = e === null || e === void 0 || (_e$currentTarget8 = e.currentTarget) === null || _e$currentTarget8 === void 0 ? void 0 : _e$currentTarget8.getAttribute('item');
+        var _style2 = e === null || e === void 0 || (_e$currentTarget9 = e.currentTarget) === null || _e$currentTarget9 === void 0 ? void 0 : _e$currentTarget9.getAttribute('selectedstyle');
+        var _option2 = e === null || e === void 0 || (_e$currentTarget10 = e.currentTarget) === null || _e$currentTarget10 === void 0 ? void 0 : _e$currentTarget10.getAttribute('currentoption');
+        emitter.dispatch('global_event', {
+          action: action,
+          e: e,
+          item: _item2,
+          style: _style2,
+          option: _option2
+        });
       } else {
         emitter.dispatch('global_event', {
           custom: true,
@@ -45,8 +57,8 @@ var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emit
   }
 };
 var selectThisText = exports.selectThisText = function selectThisText(e) {
-  var _e$currentTarget8;
-  if (e !== null && e !== void 0 && (_e$currentTarget8 = e.currentTarget) !== null && _e$currentTarget8 !== void 0 && _e$currentTarget8.getAttribute) {
+  var _e$currentTarget11;
+  if (e !== null && e !== void 0 && (_e$currentTarget11 = e.currentTarget) !== null && _e$currentTarget11 !== void 0 && _e$currentTarget11.getAttribute) {
     var _navigator;
     var select = e.currentTarget.getAttribute('selectValue');
     if (select && (_navigator = navigator) !== null && _navigator !== void 0 && (_navigator = _navigator.clipboard) !== null && _navigator !== void 0 && _navigator.writeText) {

@@ -28,6 +28,7 @@ var _customModules = _interopRequireDefault(require("../customModules"));
 var _presentation = _interopRequireDefault(require("./presentation"));
 var _eventPage = require("./presentation/events.js/eventPage");
 var _article = require("./article");
+var _product = require("./ecommerce/product");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -51,6 +52,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return /*#__PURE__*/_react["default"].createElement(_index.SignInPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ProfilePage':
         return /*#__PURE__*/_react["default"].createElement(_index2.ProfilePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+      case 'ProductPage':
+        return /*#__PURE__*/_react["default"].createElement(_product.ProductPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'EventPage':
         return /*#__PURE__*/_react["default"].createElement(_eventPage.EventPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ReceiptPage':
@@ -108,6 +111,12 @@ var resolvePage = exports.resolvePage = function resolvePage(def, path) {
       }
       return false;
     });
+    if (!match) {
+      // If no match in app.config atleast return url
+      return {
+        url: path
+      };
+    }
     return match;
   }
   return null;
@@ -193,6 +202,11 @@ var resolveDefaults = exports.resolveDefaults = /*#__PURE__*/function () {
             doPreReq = true;
             body.profileReq = true;
             body.articleReq = true;
+          } else if (url === '/pr') {
+            doPreReq = true;
+            body.productReq = true;
+          } else if (url === '/admin') {
+            doPreReq = true;
           }
           if (!props.regionsData) {
             doPreReq = true;
@@ -304,8 +318,13 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
             doPreReq = true;
             body.profileReq = true;
             body.articleReq = true;
+          } else if (resolvedPage && resolvedPage.url === '/pr') {
+            doPreReq = true;
+            body.productReq = true;
+          } else if (resolvedPage && resolvedPage.url === '/admin') {
+            doPreReq = true;
           }
-          if (resolvedPage && resolvePage.data) {
+          if (resolvedPage && resolvedPage.data) {
             data.props.resolvedDefinition = resolvedPage.data; // Access the `data` property
           }
           if (pageDefaults) {

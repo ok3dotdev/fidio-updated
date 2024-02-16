@@ -241,7 +241,7 @@ var Module = function Module(props) {
       style: {
         fontWeight: '500'
       }
-    }, m.question), /*#__PURE__*/_react["default"].createElement("pre", {
+    }, m.question), /*#__PURE__*/_react["default"].createElement("div", {
       style: {
         fontSize: '.85rem',
         lineHeight: 'normal'

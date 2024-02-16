@@ -99,6 +99,8 @@ var Module = function Module(props) {
               }
               if (props.redirectOnAuth && status.username && asPath !== props.redirectOnAuth) {
                 router.push(props.redirectOnAuth);
+              } else if (props.redirectOnAuth && status.username && asPath === props.redirectOnAuth) {
+                router.reload(props.redirectOnAuth);
               }
               setTimeout(function () {
                 setPageError(null);

@@ -22,23 +22,27 @@
 .Product_col {
     -webkit-flex: 0 0 33.33333333%;
     flex: 0 0 33.33333333%;
-    width: calc(100%/7 - 1rem);
+    width: calc(100%/8 - 1rem);
     padding: 0;
     -webkit-flex-basis: auto;
     flex-basis: auto;
     order: 1000;
 }
 
-@media(max-width: 1548px) {
-    .Product_flex_container {
-        gap: 1.2rem;
-    }
+.Product_flex_container {
+    gap: 1.2rem;
+    max-width: 2100px;
+    margin: 0 auto;
+    place-content: center;
+}
+
+@media(max-width: 1748px) {
     .Product_col {
         width: calc(100%/6 - 1rem);
     }
 }
 
-@media(max-width: 1248px) {
+@media(max-width: 1448px) {
     .Product_flex_container {
         gap: 1.25rem;
     }

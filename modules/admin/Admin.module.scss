@@ -116,6 +116,7 @@
     display: flex;
     flex-direction: column;
     gap: .125rem;
+    overflow: auto;
 }
 
 .adminPair {
@@ -247,6 +248,7 @@
 
 .containerTwoSmallRight > div:first-child {
     flex-shrink: 4;
+    width: -webkit-fill-available;
 }
 
 .containerTwoSmallRight > div:last-child {
@@ -290,11 +292,20 @@
 .simpleListShortText {
     div {
         white-space: break-spaces;
-        overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         line-clamp: 2;
         -webkit-box-orient: vertical;
     }
+}
+
+.vertView {
+    flex-direction: column;
+}
+
+.shortened {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

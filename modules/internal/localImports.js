@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SliderTheme = exports.SliderStyles = exports.PaystackScript = exports.GoogleSignInRegister = exports.GoogleGsiClient = exports.GoogleFontsLink = void 0;
+exports.SliderTheme = exports.SliderStyles = exports.ReactCarouselCss = exports.PaystackScript = exports.GoogleSignInRegister = exports.GoogleGsiClient = exports.GoogleFontsLink = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _script = _interopRequireDefault(require("next/script"));
 var _app = require("../utility/_app");
@@ -36,3 +36,7 @@ var GoogleSignInRegister = exports.GoogleSignInRegister = /*#__PURE__*/_react["d
   id: "script_one_tap_sign_in",
   className: "lazyOnload"
 }, _app.registerGoogleSignIn);
+var ReactCarouselCss = exports.ReactCarouselCss = /*#__PURE__*/_react["default"].createElement("link", {
+  href: "https://d2zsu4v7czjhvo.cloudfront.net/all/react-carousel/1.30.1/react-carousel.es.min.css",
+  rel: "stylesheet"
+});

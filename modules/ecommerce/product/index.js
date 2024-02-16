@@ -15,6 +15,13 @@ Object.defineProperty(exports, "ProductImageManager", {
     return _ProductImageManager["default"];
   }
 });
+Object.defineProperty(exports, "ProductPage", {
+  enumerable: true,
+  get: function get() {
+    return _ProductPage["default"];
+  }
+});
 var _Product = _interopRequireDefault(require("./Product"));
 var _ProductImageManager = _interopRequireDefault(require("./ProductImageManager"));
+var _ProductPage = _interopRequireDefault(require("./ProductPage"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

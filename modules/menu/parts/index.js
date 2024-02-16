@@ -93,6 +93,12 @@ Object.defineProperty(exports, "SignOut", {
     return _SignOut["default"];
   }
 });
+Object.defineProperty(exports, "SimpleDropMenuLink", {
+  enumerable: true,
+  get: function get() {
+    return _SimpleDropMenuLink["default"];
+  }
+});
 Object.defineProperty(exports, "User", {
   enumerable: true,
   get: function get() {
@@ -115,4 +121,5 @@ var _Login = _interopRequireDefault(require("./Login"));
 var _OnboardLogin = _interopRequireDefault(require("./OnboardLogin"));
 var _User = _interopRequireDefault(require("./User"));
 var _Invite = _interopRequireDefault(require("./Invite"));
+var _SimpleDropMenuLink = _interopRequireDefault(require("./SimpleDropMenuLink"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

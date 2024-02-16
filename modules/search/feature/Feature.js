@@ -155,19 +155,20 @@ var Module = function Module(props) {
             case 0:
               selector = props.featureData ? 'featureData' : 'noSelection';
               useData = (0, _util.isObjectEmpty)(featureData) ? props[selector] : featureData;
+              console.log(useData);
               if (!(useData && !fetchBusy)) {
-                _context.next = 18;
+                _context.next = 19;
                 break;
               }
               console.log('Use Data!', useData);
               if (!(lastFeatureCheck < new Date().getTime() - 10000)) {
-                _context.next = 18;
+                _context.next = 19;
                 break;
               }
               setLastFeatureCheck(new Date().getTime());
               setFetchBusy(true);
               if (!(!useData.user && props._loggedIn && props._loggedIn.identifier)) {
-                _context.next = 16;
+                _context.next = 17;
                 break;
               }
               args = {
@@ -179,9 +180,9 @@ var Module = function Module(props) {
                   s: (_props$s = props.s) !== null && _props$s !== void 0 ? _props$s : ''
                 }
               };
-              _context.next = 11;
+              _context.next = 12;
               return (0, _search.fetchSearchData)(props.apiUrl, ['featureData'], args);
-            case 11:
+            case 12:
               res = _context.sent;
               setFetchBusy(false);
               if (res) {
@@ -189,12 +190,12 @@ var Module = function Module(props) {
                   setFeatureData(res.data[selector]);
                 }
               }
-              _context.next = 18;
+              _context.next = 19;
               break;
-            case 16:
+            case 17:
               setFetchBusy(false);
               setFeatureData(props[selector]);
-            case 18:
+            case 19:
             case "end":
               return _context.stop();
           }

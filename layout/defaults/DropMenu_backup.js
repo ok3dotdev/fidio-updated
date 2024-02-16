@@ -1,5 +1,5 @@
 import React from 'react'
-import { Account, Admin, Bug, Feedback, GoLive, Location, Login, OffersAndGifts, OnboardLogin, Orders, Payment, Settings, SignOut, User, Help, Invite } from '../modules/menu/parts'
+import { Account, Admin, Bug, Feedback, GoLive, Location, Login, OffersAndGifts, OnboardLogin, Orders, Payment, Settings, SignOut, User, Help, Invite, SimpleDropMenuLink } from '../modules/menu/parts'
 import { Username } from '../modules/onboarding/signin'
 
 
@@ -46,6 +46,10 @@ const Module = props => {
                             ? <div className='dropMenu'>
                                 <ul>
                                     <OnboardLogin { ...props } />
+                                    <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
+                                    <GoLive { ...props } />
+                                    <SimpleDropMenuLink { ...props } href='/create' materialIcon='inventory' text='Create Product' />
+                                    <Invite { ...props } />
                                 </ul>
                             </div>
                             : null
