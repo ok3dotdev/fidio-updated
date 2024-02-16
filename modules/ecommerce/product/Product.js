@@ -37,7 +37,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var allowedTypes = ['image/jpeg', 'image/png'];
 var Module = function Module(props) {
-  var _props$editing, _props$editing2, _props$product, _props$editing3, _props$editing4, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref5, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$editingOptions, _props$product2, _props$product3, _props$product4, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product5;
+  var _props$editing, _props$editing2, _props$product2, _props$editing3, _props$editing4, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref5, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$editingOptions, _props$product3, _props$product4, _props$product5, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product6;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -147,7 +147,8 @@ var Module = function Module(props) {
       if (modif === 'edit' && props.handleEdit) {
         props.handleEdit(props.product);
         setTimeout(function () {
-          props.nameRef.current.value = props.product.name;
+          var _props$product;
+          props.nameRef.current.value = props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.name;
           if (props.product.styles && props.product.styles[0]) {
             props.styleInput.current.value = props.product.styles[0].style;
             props.setEditingSelectedStyle(props.product.styles[0].sid);
@@ -413,7 +414,7 @@ var Module = function Module(props) {
   var currentPrice = _react["default"].useMemo(function () {
     return (0, _ecommerce.resolveRegionBasedPrice)(props, validStyleObject);
   }, [props.product, validStyleObject, currency]);
-  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.id) && props.editing.id === props.product.id;
+  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product2 = props.product) === null || _props$product2 === void 0 ? void 0 : _props$product2.id) && props.editing.id === props.product.id;
   var useEditingOptions = isEditing && (props === null || props === void 0 ? void 0 : props.editingOptionsMeta) || !isEditing && props.product.detailmeta;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(isEditing ? _ProductImageManagerModule["default"].currentlyEditingProductContainer : 'Product_col', " ").concat(props.className),
@@ -1021,14 +1022,14 @@ var Module = function Module(props) {
     defaultChecked: props.product.detailmeta.subscription,
     onChange: props.setOptionsMetaData,
     option: "subscription"
-  })), props !== null && props !== void 0 && (_props$product2 = props.product) !== null && _props$product2 !== void 0 && _props$product2.published ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), props !== null && props !== void 0 && (_props$product3 = props.product) !== null && _props$product3 !== void 0 && _props$product3.published ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 shareButton",
-    selectValue: "".concat(props !== null && props !== void 0 && (_props$product3 = props.product) !== null && _props$product3 !== void 0 && _props$product3.id ? "".concat(props.dev ? props.devAddress : domainUrl, "/pr?p=").concat(props.product.id) : null),
+    selectValue: "".concat(props !== null && props !== void 0 && (_props$product4 = props.product) !== null && _props$product4 !== void 0 && _props$product4.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null),
     onClick: _event.selectThisText
   }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "Share")), /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props !== null && props !== void 0 && (_props$product4 = props.product) !== null && _props$product4 !== void 0 && _props$product4.id ? "".concat(props.dev ? props.devAddress : domainUrl, "/pr?p=").concat(props.product.id) : null)
+    href: "".concat(props !== null && props !== void 0 && (_props$product5 = props.product) !== null && _props$product5 !== void 0 && _props$product5.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 shareButton"
   }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "View")))) : null), /*#__PURE__*/_react["default"].createElement("div", {
@@ -1167,7 +1168,7 @@ var Module = function Module(props) {
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart"
-  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product5 = props.product) !== null && _props$product5 !== void 0 && (_props$product5 = _props$product5.detailmeta) !== null && _props$product5 !== void 0 && _props$product5.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product6 = props.product) !== null && _props$product6 !== void 0 && (_props$product6 = _props$product6.detailmeta) !== null && _props$product6 !== void 0 && _props$product6.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleFireGlobalEvent,
     item: props.product.id,
     selectedstyle: selectedStyle,
