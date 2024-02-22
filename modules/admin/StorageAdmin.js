@@ -430,7 +430,7 @@ var Module = function Module(props) {
     title: "See Storage for ".concat((_props$siteTitle = props.siteTitle) !== null && _props$siteTitle !== void 0 ? _props$siteTitle : 'your Platform', " below"),
     placement: "bottom"
   }, /*#__PURE__*/_react["default"].createElement("h4", null, "Files")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
+    className: "".concat(_AdminModule["default"].storageActionContainer, " flex gap-p2"),
     style: {
       marginBottom: '.25rem'
     }

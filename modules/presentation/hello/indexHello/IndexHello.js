@@ -92,12 +92,13 @@ var Module = function Module(props) {
         });
       }, 1000);
       setTimeout(function () {
-        var slickTracks = document.getElementsByClassName('slick-track');
-        if (slickTracks && slickTracks[0]) {
-          slickTracks[0].style.transition = '500ms';
-          slickTracks[0].style.left = '-25px';
+        var slickTracks = document.getElementsByClassName("slider_slides_".concat(id));
+        if (slickTracks && slickTracks[0] && slickTracks[0].childNodes && slickTracks[0].childNodes[0] && slickTracks[0].childNodes[0].childNodes && slickTracks[0].childNodes[0].childNodes[0]) {
+          var useContainer = slickTracks[0].childNodes[0].childNodes[0];
+          useContainer.style.transition = '500ms';
+          useContainer.style.left = '-25px';
           setTimeout(function () {
-            slickTracks && slickTracks[0] ? slickTracks[0].style.left = '0' : null;
+            useContainer ? useContainer.style.left = '0' : null;
           }, 2000);
         }
       }, 2000);
@@ -253,7 +254,7 @@ var Module = function Module(props) {
   }, props)) : null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "swipe slider_".concat(componentId)
   }, /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], _extends({}, useSettings, {
-    className: "".concat(_PresentationModule["default"].IndexItemsContainer, " swiper-wrapper slider_slides  ").concat(moduleName, "_IndexItemsContainer ").concat(props.IndexItemsContainerClassName)
+    className: "".concat(_PresentationModule["default"].IndexItemsContainer, " swiper-wrapper slider_slides ").concat(moduleName, "_IndexItemsContainer slider_slides_").concat(componentId, " ").concat(props.IndexItemsContainerClassName)
   }), useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
     var _m$leadBg, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$title, _m$author3, _m$item, _m$item2, _m$item3, _m$item4, _m$item5, _m$item6;
     return /*#__PURE__*/_react["default"].createElement("div", {

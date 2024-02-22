@@ -37,7 +37,7 @@ var editorElementId = 'admin_editor_element';
 var defaultText = "Let's start a conversation.";
 var useToolbarOptions = _toolbarOptions["default"];
 var Module = function Module(props) {
-  var _ref2, _published$authorUser, _props$_loggedIn, _ref3, _published$authorUser2, _props$_loggedIn2;
+  var _ref2, _published$authorUser, _props$_loggedIn, _ref3, _published$authorUser2, _props$_loggedIn2, _meta$featuredImg, _meta$featuredImg2, _meta$featuredImg3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -95,6 +95,8 @@ var Module = function Module(props) {
   var groupsRef = _react["default"].useRef();
   var tagsRef = _react["default"].useRef();
   var approvedRef = _react["default"].useRef();
+  var featuredImgRef = _react["default"].useRef();
+  var featuredImgUrlRef = _react["default"].useRef();
   var useDefaultText = defaultText;
   props._LocalEventEmitter.unsubscribe(moduleName);
   props._LocalEventEmitter.subscribe(moduleName, function (e) {
@@ -306,7 +308,7 @@ var Module = function Module(props) {
     if (e !== null && e !== void 0 && (_e$currentTarget3 = e.currentTarget) !== null && _e$currentTarget3 !== void 0 && _e$currentTarget3.getAttribute) {
       var article = e.currentTarget.getAttribute('article');
       if (article) {
-        (0, _utility.loadArticle)(props, article, editorRef, titleRef, groupsRef, tagsRef, setUseGroups, setUseTags, setPublished, setApproved, approvedRef);
+        (0, _utility.loadArticle)(props, article, editorRef, titleRef, groupsRef, tagsRef, setUseGroups, setUseTags, setPublished, setApproved, approvedRef, setMeta);
       }
     }
   });
@@ -315,7 +317,17 @@ var Module = function Module(props) {
       setApproved(e.currentTarget.checked);
     }
   });
-  console.log(recentArticles);
+  var handleSetFeaturedImage = _react["default"].useCallback(function (e) {
+    if (e !== null && e !== void 0 && e.currentTarget) {
+      var temp = meta;
+      temp.featuredImg = e.currentTarget.value;
+      setMeta(temp);
+      if (featuredImgRef !== null && featuredImgRef !== void 0 && featuredImgRef.current) {
+        featuredImgRef.current.style.backgroundImage = "url(".concat(temp.featuredImg, ")");
+      }
+    }
+  });
+  console.log(recentArticles, meta);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className, " ").concat(moduleName, "_Container")
   }, /*#__PURE__*/_react["default"].createElement("h3", null, "Post"), /*#__PURE__*/_react["default"].createElement("div", {
@@ -370,16 +382,55 @@ var Module = function Module(props) {
       marginBottom: '.25rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("p", null, useDefaultText)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
+    className: "".concat(_AdminModule["default"].metaContainer, " flex gap-p2"),
+    style: {
+      marginBottom: '.25rem'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      minWidth: '150px'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      whiteSpace: 'nowrap'
+    }
+  }, "Featured Image"), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "text",
+    placeholder: "Featured Image Url",
     style: {
       width: '100%',
-      marginBottom: '.25rem'
+      fontWeight: '600'
+    },
+    defaultValue: "".concat((_meta$featuredImg = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg !== void 0 ? _meta$featuredImg : ''),
+    onChange: handleSetFeaturedImage,
+    ref: featuredImgUrlRef
+  })), /*#__PURE__*/_react["default"].createElement("img", {
+    style: {
+      backgroundImage: "url(".concat((_meta$featuredImg2 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg2 !== void 0 ? _meta$featuredImg2 : null),
+      height: '100px',
+      width: '100%',
+      minWidth: '100px',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+    },
+    selectValue: "".concat((_meta$featuredImg3 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg3 !== void 0 ? _meta$featuredImg3 : null),
+    onClick: _event.selectThisText,
+    ref: featuredImgRef
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      width: '100%'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       width: '100%'
     }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, "Groups"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     id: "".concat(moduleName, "_groupingInput"),
     placeholder: "Post Groups",
@@ -390,7 +441,7 @@ var Module = function Module(props) {
     onInput: handleUpdateInput,
     modif: "groups",
     ref: groupsRef
-  }), (useGroups === null || useGroups === void 0 ? void 0 : useGroups.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), (useGroups === null || useGroups === void 0 ? void 0 : useGroups.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
@@ -403,7 +454,9 @@ var Module = function Module(props) {
     style: {
       width: '100%'
     }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, "Tags"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     id: "".concat(moduleName, "_useTagsInput"),
     placeholder: "Tags",
@@ -414,7 +467,7 @@ var Module = function Module(props) {
     onInput: handleUpdateInput,
     modif: "tags",
     ref: tagsRef
-  }), (useTags === null || useTags === void 0 ? void 0 : useTags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), (useTags === null || useTags === void 0 ? void 0 : useTags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
@@ -423,8 +476,8 @@ var Module = function Module(props) {
     return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "tagItem"
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : null)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
+  })) : null))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_AdminModule["default"].forceSafeBreak, " flex gap-p2")
   }, !published ? /*#__PURE__*/_react["default"].createElement("button", {
     className: "".concat(_AdminModule["default"].actionButton),
     onClick: handlePublishArticle
