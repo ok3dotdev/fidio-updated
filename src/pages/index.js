@@ -4,23 +4,19 @@ import React from 'react'
 import { AppConfigLayout, PageContainer } from '/modules/internal'
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
-<<<<<<< HEAD
 // import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '@/customModules/features/seo-data';
 import Hero from '../../customModules/features/Hero.new';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
-=======
 import { getServerSidePropsFunc } from '/appServer/serverProps'
 import { Menu } from '/modules/menu/'
->>>>>>> fidio-app-router
 
 const pageName = 'index'
 
 export const page = props => {
 	return (
-<<<<<<< HEAD
         <React.Fragment>
             {/* <PageContainer { ...props } pageName={pageName} /> */}
             <HomeLayout
@@ -83,14 +79,6 @@ export const page = props => {
               </div>
             </HomeLayout>
         </React.Fragment>
-=======
-    <React.Fragment>
-      <PageContainer { ...props } pageName={pageName}>
-        <Menu></Menu>
-        <AppConfigLayout></AppConfigLayout>
-      </PageContainer>
-    </React.Fragment>
->>>>>>> fidio-app-router
 	)
 }
 
@@ -102,8 +90,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-<<<<<<< HEAD
 export default page
-=======
-export default page;
->>>>>>> fidio-app-router

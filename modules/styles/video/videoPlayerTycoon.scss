@@ -1,0 +1,231 @@
+.shaka-range-container {
+    margin: 0;
+    border-radius: 0;
+    height: 3px;
+    transition: 200ms;
+}
+
+.shaka-bottom-controls {
+    width: 100%;
+    position: relative;
+}
+
+.shaka-video-container:fullscreen .shaka-bottom-controls {
+    max-height: 25px;
+}
+
+.shaka-overflow-menu {
+    bottom: 60px;
+    border-radius: 5px;
+    background: rgb(27, 27, 27);
+}
+
+.shaka-video-container:fullscreen .shaka-overflow-menu {
+    bottom: 70px;
+}
+
+.shaka-overflow-menu button {
+    color: white;
+}
+
+.shaka-overflow-menu button:hover {
+    background: grey !important;
+}
+
+.shaka-overflow-menu button .shaka-overflow-button-label span:first-child {
+    color: white;
+}
+
+.shaka-overflow-menu button .shaka-overflow-button-label span:nth-child(2) {
+    color: #ff7171;
+    font-weight: 600;
+}
+
+.shaka-overflow-menu .shaka-overflow-button-label {
+    padding: .5rem 1rem;
+}
+
+.shaka-controls-button-panel>* {
+    color: rgb(180, 180, 180);
+}
+
+.shaka-volume-bar-container {
+    opacity: .7
+}
+
+.shaka-controls-button-panel>*:hover {
+    color: rgb(255, 255, 255);
+}
+
+.shaka-volume-bar-container:hover {
+    opacity: 1;
+}
+
+@media(min-width: 540px) and (max-width: 860px) {
+    .shaka-controls-button-panel .shaka-range-container {
+        max-width: 50px;
+    }
+}
+
+.shaka-spinner-path {
+    stroke-width: 3;
+    r: 7;
+    stroke: white;
+}
+
+.shaka-spinner-svg {
+    animation: rotate 8s linear infinite;
+}
+
+.moveableVideoContainer {
+    background: black;
+}
+
+.ghostVideoItem {
+    z-index: 4;
+}
+
+.ghostVideoContainerItemActive:hover {
+    box-shadow: 0rem 0rem 3rem black;
+}
+
+.ghostVideoContainerItemActive .ghostVideoItem {
+    outline: 2.5px solid transparent;
+    height: -webkit-fill-available;
+    overflow: hidden;
+}
+
+.ghostVideoContainerItemActive:hover .ghostVideoItem {
+    outline: 2.5px solid grey;
+}
+
+.ghostVideoMeta {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1.95px;
+    width: calc(100% + 4px);
+    height: 100%;
+    z-index: 3;
+    background: black;
+    border: 2.5px solid grey;
+    border-top: none;
+    padding: .5rem;
+    cursor: default;
+    box-shadow: 0rem 2.5rem 3rem black;
+}
+
+.activeVideoItemContainer:hover .ghostVideoMeta,
+.ghostVideoMeta:hover {
+    display: block;
+}
+
+#lead-video-container {
+    height: 95.55566677vh;
+}
+
+#lead-video-container .shaka-scrim-container,
+#splashvideocontainer .shaka-scrim-container {
+    top: 1px;
+}
+
+#lead-video-container .shaka-bottom-controls {
+    padding-bottom: 1.25%;
+}
+
+#lead-video-container:fullscreen .shaka-bottom-controls {
+    padding-bottom: 3%;
+}
+
+#lead-video-container .shaka-controls-button-panel .material-icons-round {
+    font-size: 38px;
+}
+
+#lead-video-container .shaka-controls-button-panel {
+    padding-bottom: .75rem;
+    padding-left: .375rem;
+    padding-right: .375rem;
+}
+
+#lead-video-container .shaka-current-time {
+    font-weight: 600;
+    line-height: 2.55rem;
+    opacity: .7;
+}
+
+#lead-video-container .shaka-current-time:hover {
+    font-weight: 600;
+    line-height: 2.5rem;
+    opacity: 1;
+}
+
+#lead-video-container .shaka-volume-bar-container {
+    top: 0.175rem;
+}
+
+#lead-video-container .shaka-overflow-menu {
+    bottom: 95px;
+}
+
+#lead-video-container:fullscreen .shaka-overflow-menu {
+    bottom: 80px;
+}
+
+.max-height-viewport {
+    max-height: 95.55566677vh;
+}
+
+.shaka-ad-controls {
+    position: absolute;
+    top: 7px;
+    left: 57px;
+}
+
+div[ad-active="true"] .shaka-current-time {
+    opacity: 0 !important;
+}
+
+.shaka-ad-controls {
+    transition: 350ms;
+    opacity: 0 !important;
+}
+
+div[shown="true"] .shaka-ad-controls {
+    opacity: 1 !important;
+}
+
+div[ad-active="true"] .shaka-small-play-button {
+    line-height: .5;
+}
+
+.shaka-ad-counter-span {
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: .7;
+}
+
+/* Video.js */
+
+.video-js .vjs-control-bar {
+    background-color: rgba(0,0,0,0);
+    height: 3rem;
+}
+
+.video-js .vjs-control {
+    font-size: 1rem;
+    width: 3rem;
+}
+
+.video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal:active, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active {
+    width: 9em;
+}
+
+.vide-js .vjs-control:focus:before,
+.video-js .vjs-control:hover:before,
+.video-js .vjs-control:focus {
+    text-shadow: none !important;
+}
+
+.vjs-icon-placeholder:hover {
+    text-shadow: 0em 0em .5em white;
+}
