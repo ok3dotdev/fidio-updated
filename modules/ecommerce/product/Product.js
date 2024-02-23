@@ -1161,12 +1161,6 @@ var Module = function Module(props) {
     item: props.product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
-    action: "buy"
-  }, "Buy Now"), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleFireGlobalEvent,
-    item: props.product.id,
-    selectedstyle: selectedStyle,
-    currentoption: currentOption,
     action: "add_to_cart"
   }, "Add To Cart"), props !== null && props !== void 0 && (_props$product6 = props.product) !== null && _props$product6 !== void 0 && (_props$product6 = _props$product6.detailmeta) !== null && _props$product6 !== void 0 && _props$product6.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleFireGlobalEvent,

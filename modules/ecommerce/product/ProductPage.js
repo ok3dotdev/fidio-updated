@@ -207,12 +207,6 @@ var Module = function Module(props) {
     item: product === null || product === void 0 ? void 0 : product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
-    action: "buy"
-  }, "Buy Now"), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleFireGlobalEvent,
-    item: product === null || product === void 0 ? void 0 : product.id,
-    selectedstyle: selectedStyle,
-    currentoption: currentOption,
     action: "add_to_cart"
   }, "Add To Cart"), product !== null && product !== void 0 && (_product$detailmeta2 = product.detailmeta) !== null && _product$detailmeta2 !== void 0 && _product$detailmeta2.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleFireGlobalEvent,
