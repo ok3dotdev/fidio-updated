@@ -407,10 +407,13 @@ var Module = function Module(props) {
       marginBottom: '.25rem'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
+    className: "flex gap-p2",
+    style: {
+      flexDirection: 'column'
+    }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
-      minWidth: '150px'
+      minWidth: '200px'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
