@@ -10,7 +10,7 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var loadArticle = exports.loadArticle = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(props, id, editorRef, titleRef, groupsRef, tagsRef, setUseGroups, setUseTags, setPublished, setApproved, approvedRef, setMeta) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(props, id, editorRef, titleRef, groupsRef, tagsRef, setUseGroups, setUseTags, setPublished, setApproved, approvedRef, setMeta, setInHtmlImages) {
     var body, res, data, delta;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -93,6 +93,9 @@ var loadArticle = exports.loadArticle = /*#__PURE__*/function () {
             if (data.meta) {
               setMeta(data.meta);
             }
+            if (data.images) {
+              setInHtmlImages(data.images);
+            }
             setPublished(res.data);
           }
           return _context.abrupt("return", res);
@@ -110,12 +113,12 @@ var loadArticle = exports.loadArticle = /*#__PURE__*/function () {
       }
     }, _callee, null, [[0, 30]]);
   }));
-  return function loadArticle(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9, _x10, _x11, _x12) {
+  return function loadArticle(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9, _x10, _x11, _x12, _x13) {
     return _ref.apply(this, arguments);
   };
 }();
 var publishArticle = exports.publishArticle = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(props, published, titleRef, useGroups, useTags, setUseTags, setUseGroups, tagsRef, groupsRef, editorRef, meta, setDidPublishThisSession, setPublished, loadDefault, useDefaultText, approved, setApproved, approvedRef) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(props, published, titleRef, useGroups, useTags, setUseTags, setUseGroups, tagsRef, groupsRef, editorRef, meta, setDidPublishThisSession, setPublished, loadDefault, useDefaultText, approved, setApproved, approvedRef, inHtmlImages) {
     var safeContents, body, res;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
@@ -143,6 +146,7 @@ var publishArticle = exports.publishArticle = /*#__PURE__*/function () {
             contents: safeContents,
             groups: useGroups,
             tags: useTags,
+            images: inHtmlImages,
             meta: meta,
             approved: approved
           };
@@ -217,7 +221,7 @@ var publishArticle = exports.publishArticle = /*#__PURE__*/function () {
       }
     }, _callee2, null, [[0, 32]]);
   }));
-  return function publishArticle(_x13, _x14, _x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27, _x28, _x29, _x30) {
+  return function publishArticle(_x14, _x15, _x16, _x17, _x18, _x19, _x20, _x21, _x22, _x23, _x24, _x25, _x26, _x27, _x28, _x29, _x30, _x31, _x32) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -306,7 +310,7 @@ var deleteArticle = exports.deleteArticle = /*#__PURE__*/function () {
       }
     }, _callee3, null, [[0, 38]]);
   }));
-  return function deleteArticle(_x31, _x32, _x33, _x34, _x35, _x36, _x37, _x38, _x39, _x40, _x41) {
+  return function deleteArticle(_x33, _x34, _x35, _x36, _x37, _x38, _x39, _x40, _x41, _x42, _x43) {
     return _ref3.apply(this, arguments);
   };
 }();

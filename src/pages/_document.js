@@ -33,7 +33,7 @@ class MyDocument extends Document {
           ></link>
 				</Head>
 				<body>
-					<div version='0.4.1' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
+					<div version='0.4.8' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
 					<Main />
 					<NextScript />
 				</body>
