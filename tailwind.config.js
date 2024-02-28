@@ -9,6 +9,7 @@ module.exports = {
     './src/**/*.{js,jsx}',
     './customModules/**/*.{html,js,jsx,tsx}',
     './src/pages/**/*.{js, jsx}',
+    './layout/*.{js, jsx}'
   ],
   theme: {
     container: {

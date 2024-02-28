@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { getServerSidePropsFunc } from '/appServer/serverProps'
 import { Menu } from '/modules/menu/'
 
-const pageName = 'index'
+const pageName = 'Index'
 
 export const page = props => {
 	return (

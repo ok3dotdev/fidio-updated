@@ -10,7 +10,7 @@ import { ThemeProvider } from '../components/provider';
 
 function MyApp({ Component, pageProps }) {
   	return (
-		<div>
+		<div className='antialiased'>
 			<Head>
 				<meta name="google-signin-client_id" content="169701902623-9a74mqcbqr38uj87qm8tm3190cicaa7m.apps.googleusercontent.com"/>
 				<title>{pageProps.siteTitle}</title>
