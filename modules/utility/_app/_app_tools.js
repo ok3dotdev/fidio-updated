@@ -134,12 +134,12 @@ var registerSocket = exports.registerSocket = function registerSocket(io, _socke
 };
 var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e, pageProps, fetchBusy, setFetchBusy) {
-    var cart, res, snapshot, res2, _res2$data, _cart, _res;
+    var cart, res, snapshot, res2, _res2$data, _cart, _res, _cart2, _res2;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           if (!e) {
-            _context2.next = 34;
+            _context2.next = 45;
             break;
           }
           if (!(e.action === 'buy')) {
@@ -210,7 +210,7 @@ var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
           }
           setFetchBusy(false);
         case 20:
-          _context2.next = 34;
+          _context2.next = 45;
           break;
         case 22:
           if (!(e.action === 'add_to_cart')) {
@@ -244,16 +244,52 @@ var handleGlobalEvent = exports.handleGlobalEvent = /*#__PURE__*/function () {
             });
           }
         case 31:
-          _context2.next = 34;
+          _context2.next = 45;
           break;
         case 33:
+          if (!(e.action === 'add_to_cart_subscribe')) {
+            _context2.next = 44;
+            break;
+          }
+          pageProps._setPageError(null);
+          if (!(!fetchBusy && e.item && e.style && e.option)) {
+            _context2.next = 42;
+            break;
+          }
+          _cart2 = JSON.parse(localStorage.getItem('cart'));
+          _context2.next = 39;
+          return (0, _ecommerce.addToCartGlobal)(pageProps.apiUrl, pageProps.domainKey, pageProps._loggedIn, _cart2, e.item, {
+            style: e.style,
+            option: e.option
+          }, setFetchBusy, {
+            subscribe: 'monthly'
+          });
+        case 39:
+          _res2 = _context2.sent;
+          pageProps._LocalEventEmitter.dispatch('cart_update', {
+            dispatch: 'flashCart'
+          });
+          if (_res2) {
+            if (_res2.status === 'success') {
+              (0, _ecommerce.updateCart)(_cart2, _res2.cart);
+            }
+          } else {
+            pageProps._setPageError({
+              message: 'Add to cart failed',
+              placement: 'add_to_cart'
+            });
+          }
+        case 42:
+          _context2.next = 45;
+          break;
+        case 44:
           if (e.action === 'logout') {
             // Enforces logout globally
             if (pageProps._setLoggedIn) {
               pageProps._setLoggedIn(false);
             }
           }
-        case 34:
+        case 45:
         case "end":
           return _context2.stop();
       }

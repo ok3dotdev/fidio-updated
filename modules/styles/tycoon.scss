@@ -75,6 +75,7 @@
 @import "./supporting/Product.scss";
 @import "./supporting/Ecommerce.scss";
 @import "./supporting/Misc.scss";
+@import "./supporting/Article.scss";
   
 body .opacity1 {
     opacity: 1;
@@ -202,6 +203,18 @@ button:not(:disabled):active {
     gap: .5rem;
 }
 
+.gap-p025 {
+    gap: .25rem;
+}
+
+.gap-p05 {
+    gap: .5rem;
+}
+
+.gap-p1 {
+    gap: 1rem;
+}
+
 .gap-p2 {
     gap: .2rem;
 }
@@ -212,6 +225,10 @@ button:not(:disabled):active {
 
 .al-cen {
     align-items: center;
+}
+
+.text-cen {
+    text-align: center;
 }
 
 .simpleCenter {
@@ -291,7 +308,7 @@ button:not(:disabled):active {
 
 .leadMenuContainer + div {
     position: relative;
-    top: 35px;
+    top: 5px;
 }
 
 .dropMenu {
@@ -926,4 +943,46 @@ button:not(:disabled):active {
     .newItem {
         font-size: .75rem;
     }
+}
+
+.max-width-dropdown {
+    -webkit-line-clamp: 1;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    max-width: 205px;
+}
+
+@media(max-width: 640px) {
+    .max-width-dropdown {
+        max-width: 90vw;
+    }
+}
+
+.shareButton {
+    background: #4b4b4b;
+    width: max-content;
+    padding: .25rem .5rem;
+    font-weight: 600;
+    align-items: center;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.shareButton:hover {
+    background: grey;
+}
+
+.shareButton div {
+    font-size: .85rem;
+}
+
+.shareButton svg {
+    height: 1.15rem;
+    width: 1.15rem;
 }

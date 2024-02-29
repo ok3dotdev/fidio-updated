@@ -732,6 +732,17 @@
         .TypeContainer {
             margin-left: 1rem;
             width: -webkit-fill-available;
+            .TypeContainerEnforceSpace {
+                height: 40vh;
+            }
+            .leadImgContainer {
+                width: 100%;
+                .leadImg {
+                    width: 55%;
+                    max-width: 600px;
+                    min-width: 250px;
+                }
+            }
             .Lead {
                 margin: 0;
                 margin-bottom: .5rem;
@@ -741,7 +752,6 @@
                 font-size: 1.25rem;
                 word-wrap: break-word;
                 max-width: -webkit-fill-available;
-                margin-right: 1rem;
             }
             @media(max-width: 780px) {
                 .Lead {
@@ -760,5 +770,15 @@
                 }
             }
         }
+    }
+    .IndexBgContainerCenter {
+        .TypeContainer {
+            text-align: center;
+            margin-left: 0;
+            padding-top: 10vh;
+        }
+    }
+    .IndexBgContainerAdTall {
+        min-height: 65vh;
     }
 }

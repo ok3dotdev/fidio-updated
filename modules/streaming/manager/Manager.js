@@ -204,6 +204,9 @@ var Module = function Module(props) {
               }
               if (res.data && res.data.status == 'streaming' && res.data.stream) {
                 setCurrentlyStreaming(res.data.stream);
+                if (props !== null && props !== void 0 && props._setCurrentlyStreaming) {
+                  props._setCurrentlyStreaming(res.data.stream);
+                }
                 setStreamData(res.data.stream);
                 if (res.data.key) {
                   setStreamKey(res.data.key);
@@ -307,6 +310,9 @@ var Module = function Module(props) {
               setUpdatingStreamConfig(false);
               if (res.data && res.data.status == 'streaming') {
                 setCurrentlyStreaming(res.data.stream);
+                if (props !== null && props !== void 0 && props._setCurrentlyStreaming) {
+                  props._setCurrentlyStreaming(res.data.stream);
+                }
                 if (res.data.key) {
                   setStreamKey(res.data.key);
                 }
@@ -520,6 +526,9 @@ var Module = function Module(props) {
                       // On successfull credit card received, purchase phone number and then update locally
                       setFetchBusy(false);
                       setCurrentlyStreaming(false);
+                      if (props !== null && props !== void 0 && props._setCurrentlyStreaming) {
+                        props._setCurrentlyStreaming(false);
+                      }
                       setStreamKey(null);
                       setStreamTo(null);
                       setStreamSettings({

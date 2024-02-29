@@ -99,22 +99,6 @@ export const page = (props) => {
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={useProps}>
-        {/* {loading ? (
-          <LoadingSkeleton />
-        ) : (
-          <FeaturedEventPage {...props} showTimer={true} data={eventsData} />
-        )}
-        <EventsDetails {...props} data={eventsData[0]} />
-        <FetchHandler
-          {...props}
-          handlerName='my_handler'
-          handlerArgs={[
-            {
-              productReq: [`${router.query.slug[0]}`],
-            },
-          ]}
-          receiveData={receiveData}
-        /> */}
         <FeaturedEventPage {...props} data={[]} />
         <EventsDetails {...props} data={[]} />
       </HomeLayout>

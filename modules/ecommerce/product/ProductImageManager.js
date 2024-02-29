@@ -25,7 +25,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var allowedTypes = ['image/jpeg', 'image/png'];
+var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 var Module = function Module(props) {
   var _props$product3, _props$product4;
   var _React$useState = _react["default"].useState(false),
@@ -105,7 +105,7 @@ var Module = function Module(props) {
                     while (1) switch (_context.prev = _context.next) {
                       case 0:
                         if (!(!props.fetchBusy && props.apiUrl && props.domainKey && props._loggedIn && props.editing)) {
-                          _context.next = 13;
+                          _context.next = 14;
                           break;
                         }
                         formData = new FormData();
@@ -127,9 +127,10 @@ var Module = function Module(props) {
                             props.setFetchBusy(false);
                           }, 10000);
                         }
-                        _context.next = 11;
+                        console.log(formData.get('image'), filesRenamed);
+                        _context.next = 12;
                         return (0, _ecommerce.doUploadImageForProduct)(props.apiUrl, props.domainKey, props.editing.id, props._loggedIn, formData);
-                      case 11:
+                      case 12:
                         data = _context.sent;
                         if (data && data.product && data.product.products) {
                           if (props.setCombinedFeed) {
@@ -147,7 +148,7 @@ var Module = function Module(props) {
                             props.setFetchBusy(false);
                           }
                         }
-                      case 13:
+                      case 14:
                       case "end":
                         return _context.stop();
                     }
@@ -279,7 +280,7 @@ var Module = function Module(props) {
   var currentIsBgImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (bgImg === null || bgImg === void 0 ? void 0 : bgImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
   var currentIsLeadImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (leadImg === null || leadImg === void 0 ? void 0 : leadImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ProductImageManager_container"),
+    className: "".concat(props.className, " ").concat(_ProductImageManagerModule["default"].productImageManagerContainer, " ProductImageManager_container"),
     style: {
       position: 'relative'
     }

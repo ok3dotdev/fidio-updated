@@ -6,17 +6,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _link = _interopRequireDefault(require("next/link"));
 var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
 var _ecommerce = require("../../utility/ecommerce");
 var _utility = require("../../utility/utility");
 var _util = require("../../util");
 var _AllInclusive = _interopRequireDefault(require("@mui/icons-material/AllInclusive"));
 var _ConfirmationNumber = _interopRequireDefault(require("@mui/icons-material/ConfirmationNumber"));
+var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
 var _Stadium = _interopRequireDefault(require("@mui/icons-material/Stadium"));
 var _ = require(".");
 var _ProductImageManagerModule = _interopRequireDefault(require("./ProductImageManager.module.scss"));
 var _uuid = require("uuid");
 var _reactTextareaAutosize = _interopRequireDefault(require("react-textarea-autosize"));
+var _event = require("../../utility/utility/event");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -34,7 +37,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var allowedTypes = ['image/jpeg', 'image/png'];
 var Module = function Module(props) {
-  var _props$editing, _props$editing2, _props$product, _props$editing3, _props$editing4, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref5, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$editingOptions, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc;
+  var _props$editing, _props$editing2, _props$product2, _props$editing3, _props$editing4, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref5, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$editingOptions, _props$product3, _props$product4, _props$product5, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product6;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -144,7 +147,8 @@ var Module = function Module(props) {
       if (modif === 'edit' && props.handleEdit) {
         props.handleEdit(props.product);
         setTimeout(function () {
-          props.nameRef.current.value = props.product.name;
+          var _props$product;
+          props.nameRef.current.value = props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.name;
           if (props.product.styles && props.product.styles[0]) {
             props.styleInput.current.value = props.product.styles[0].style;
             props.setEditingSelectedStyle(props.product.styles[0].sid);
@@ -410,7 +414,7 @@ var Module = function Module(props) {
   var currentPrice = _react["default"].useMemo(function () {
     return (0, _ecommerce.resolveRegionBasedPrice)(props, validStyleObject);
   }, [props.product, validStyleObject, currency]);
-  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.id) && props.editing.id === props.product.id;
+  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product2 = props.product) === null || _props$product2 === void 0 ? void 0 : _props$product2.id) && props.editing.id === props.product.id;
   var useEditingOptions = isEditing && (props === null || props === void 0 ? void 0 : props.editingOptionsMeta) || !isEditing && props.product.detailmeta;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(isEditing ? _ProductImageManagerModule["default"].currentlyEditingProductContainer : 'Product_col', " ").concat(props.className),
@@ -425,12 +429,24 @@ var Module = function Module(props) {
     className: "".concat(_ProductImageManagerModule["default"].productImgContainer, " ").concat(!isEditing ? 'Product_img_container' : '', " Product_img_container_large")
   }, /*#__PURE__*/_react["default"].createElement(_.ProductImageManager, props)), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ProductImageManagerModule["default"].productMetaContainer, " Product_meta_container")
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      height: "calc(100% - ".concat(props._loggedIn ? '25' : '40', "px)"),
+      maxHeight: '75vh',
+      overflow: 'auto'
+    }
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "Name of Product",
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("label", {
+    style: {
+      fontWeight: '600'
+    }
+  }, "Title: ")), /*#__PURE__*/_react["default"].createElement("input", {
     name: "name",
-    placeholder: "Product Name",
+    placeholder: "Product Title",
     style: {
       fontWeight: '600',
       width: '100%'
@@ -452,10 +468,101 @@ var Module = function Module(props) {
     onChange: handleUpdateProductDescription,
     ref: descriptionInputRef
   })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Set the price for the currently selected Style",
+    placement: "left"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '.8rem',
+      fontWeight: 600
+    }
+  }, (_props$currentDefineP = (_props$currentDefineP2 = props.currentDefinePriceCurrency) === null || _props$currentDefineP2 === void 0 ? void 0 : _props$currentDefineP2.symbol) !== null && _props$currentDefineP !== void 0 ? _props$currentDefineP : '$')), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "currency",
+    style: {
+      width: '100%'
+    },
+    defaultValue: "10.00",
+    ref: props.priceInput,
+    onChange: props.setCurrentPrice
+  }), validStyleObject && ((_props$currentDefineP3 = props.currentDefinePriceCurrency) === null || _props$currentDefineP3 === void 0 ? void 0 : _props$currentDefineP3.currency) === 'USD' && (validStyleObject === null || validStyleObject === void 0 ? void 0 : validStyleObject.price) != (props === null || props === void 0 || (_props$priceInput = props.priceInput) === null || _props$priceInput === void 0 || (_props$priceInput = _props$priceInput.current) === null || _props$priceInput === void 0 ? void 0 : _props$priceInput.value) || ((_props$currentDefineP4 = props.currentDefinePriceCurrency) === null || _props$currentDefineP4 === void 0 ? void 0 : _props$currentDefineP4.currency) !== 'USD' && (!validStyleObject.priceTable || validStyleObject.priceTable && !validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] || props !== null && props !== void 0 && (_props$currentDefineP5 = props.currentDefinePriceCurrency) !== null && _props$currentDefineP5 !== void 0 && _props$currentDefineP5.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, props.currentDefinePriceCurrency.currency) && validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] != props.priceInput.current.value) ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "The price displayed is currently not set for this product style. Click here to set it"
+  }, /*#__PURE__*/_react["default"].createElement("button", {
+    onClick: props.setCurrentPrice,
+    value: (_props$priceInput2 = props.priceInput) === null || _props$priceInput2 === void 0 || (_props$priceInput2 = _props$priceInput2.current) === null || _props$priceInput2 === void 0 ? void 0 : _props$priceInput2.value,
+    style: {
+      whiteSpace: 'nowrap',
+      lineHeight: '.5rem',
+      fontSize: '.75rem'
+    }
+  }, "Set Price")) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null),
+    style: {
+      lineHeight: '.5rem'
+    },
+    onClick: handleSetIsSettingCurrency,
+    ref: currentCurrencyRef
+  }, (_ref5 = (_props$currentDefineP6 = (_props$currentDefineP7 = props.currentDefinePriceCurrency) === null || _props$currentDefineP7 === void 0 ? void 0 : _props$currentDefineP7.currency) !== null && _props$currentDefineP6 !== void 0 ? _props$currentDefineP6 : isEditing === null || isEditing === void 0 || (_isEditing$meta = isEditing.meta) === null || _isEditing$meta === void 0 ? void 0 : _isEditing$meta.currency) !== null && _ref5 !== void 0 ? _ref5 : 'USD')), isSettingCurrency ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_ProductImageManagerModule["default"].setCurrencyExternalContainer)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_ProductImageManagerModule["default"].setCurrencyContainer)
+  }, /*#__PURE__*/_react["default"].createElement("select", {
+    id: props.editing.id + '_setCurrency',
+    name: props.editing.id + '_setCurrency',
+    style: {
+      width: '100%'
+    },
+    onChange: handleChangeCurrentCurrency,
+    ref: props.setCurrencySelect,
+    defaultValue: (_props$currentDefineP8 = (_props$currentDefineP9 = props.currentDefinePriceCurrency) === null || _props$currentDefineP9 === void 0 ? void 0 : _props$currentDefineP9.currency) !== null && _props$currentDefineP8 !== void 0 ? _props$currentDefineP8 : 'USD'
+  }, props !== null && props !== void 0 && props.regionsData ? Object.entries(props.regionsData).map(function (m) {
+    return /*#__PURE__*/_react["default"].createElement("option", {
+      className: "".concat(_ProductImageManagerModule["default"].setCurrencyOption, " ").concat(m[1].currency !== 'USD' && validStyleObject !== null && validStyleObject !== void 0 && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, m[1].currency) ? _ProductImageManagerModule["default"].currencyOptionUsed : null, " ").concat(m[1].currency === 'USD' ? _ProductImageManagerModule["default"].currencyOptionUsed : null),
+      value: m[1].currency
+    }, /*#__PURE__*/_react["default"].createElement("div", null, m[1].currency), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].name), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].symbol));
+  }) : null))) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Set the quantity for the currently selected Style & Option combo"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '.8rem',
+      fontWeight: 600,
+      display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
+    }
+  }, "Qty")), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "number",
+    style: {
+      width: '100%',
+      display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
+    },
+    defaultValue: "10",
+    ref: props.quantityInput,
+    onChange: props.setCurrentQuantity
+  }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Infinite stock"
+  }, /*#__PURE__*/_react["default"].createElement(_AllInclusive["default"], null)), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "checkbox",
+    style: {
+      margin: 0
+    },
+    onChange: props.setInfinity,
+    checked: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      border: '1px solid #484848',
+      marginTop: '.125rem',
+      marginBottom: '.25rem'
+    }
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex",
     style: {
       flexWrap: 'wrap',
-      gap: '.05rem 0.2rem'
+      gap: '.05rem 0.2rem',
+      marginBottom: '.125rem'
     }
   }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
     title: "If your product has multiple styles, set them here. A style should be an alternate design or color for a single product that you want to track as single product. For example you might have white, black, grey for t-shirts as individual styles.",
@@ -525,94 +632,6 @@ var Module = function Module(props) {
       key: i
     }, option.option);
   }))))) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Set the price for the currently selected Style",
-    placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600
-    }
-  }, (_props$currentDefineP = (_props$currentDefineP2 = props.currentDefinePriceCurrency) === null || _props$currentDefineP2 === void 0 ? void 0 : _props$currentDefineP2.symbol) !== null && _props$currentDefineP !== void 0 ? _props$currentDefineP : '$')), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "currency",
-    style: {
-      width: '100%'
-    },
-    defaultValue: "1.00",
-    ref: props.priceInput,
-    onChange: props.setCurrentPrice
-  }), validStyleObject && ((_props$currentDefineP3 = props.currentDefinePriceCurrency) === null || _props$currentDefineP3 === void 0 ? void 0 : _props$currentDefineP3.currency) === 'USD' && (validStyleObject === null || validStyleObject === void 0 ? void 0 : validStyleObject.price) != (props === null || props === void 0 || (_props$priceInput = props.priceInput) === null || _props$priceInput === void 0 || (_props$priceInput = _props$priceInput.current) === null || _props$priceInput === void 0 ? void 0 : _props$priceInput.value) || ((_props$currentDefineP4 = props.currentDefinePriceCurrency) === null || _props$currentDefineP4 === void 0 ? void 0 : _props$currentDefineP4.currency) !== 'USD' && (!validStyleObject.priceTable || validStyleObject.priceTable && !validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] || props !== null && props !== void 0 && (_props$currentDefineP5 = props.currentDefinePriceCurrency) !== null && _props$currentDefineP5 !== void 0 && _props$currentDefineP5.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, props.currentDefinePriceCurrency.currency) && validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] != props.priceInput.current.value) ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "The price displayed is currently not set for this product style. Click here to set it"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: props.setCurrentPrice,
-    value: (_props$priceInput2 = props.priceInput) === null || _props$priceInput2 === void 0 || (_props$priceInput2 = _props$priceInput2.current) === null || _props$priceInput2 === void 0 ? void 0 : _props$priceInput2.value,
-    style: {
-      whiteSpace: 'nowrap',
-      lineHeight: '.5rem',
-      fontSize: '.75rem'
-    }
-  }, "Set Price")) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null),
-    style: {
-      lineHeight: '.5rem'
-    },
-    onClick: handleSetIsSettingCurrency,
-    ref: currentCurrencyRef
-  }, (_ref5 = (_props$currentDefineP6 = (_props$currentDefineP7 = props.currentDefinePriceCurrency) === null || _props$currentDefineP7 === void 0 ? void 0 : _props$currentDefineP7.currency) !== null && _props$currentDefineP6 !== void 0 ? _props$currentDefineP6 : isEditing === null || isEditing === void 0 || (_isEditing$meta = isEditing.meta) === null || _isEditing$meta === void 0 ? void 0 : _isEditing$meta.currency) !== null && _ref5 !== void 0 ? _ref5 : 'USD')), isSettingCurrency ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyExternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyContainer)
-  }, /*#__PURE__*/_react["default"].createElement("select", {
-    id: props.editing.id + '_setCurrency',
-    name: props.editing.id + '_setCurrency',
-    style: {
-      width: '100%'
-    },
-    onChange: handleChangeCurrentCurrency,
-    ref: props.setCurrencySelect,
-    defaultValue: (_props$currentDefineP8 = (_props$currentDefineP9 = props.currentDefinePriceCurrency) === null || _props$currentDefineP9 === void 0 ? void 0 : _props$currentDefineP9.currency) !== null && _props$currentDefineP8 !== void 0 ? _props$currentDefineP8 : 'USD'
-  }, props !== null && props !== void 0 && props.regionsData ? Object.entries(props.regionsData).map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      className: "".concat(_ProductImageManagerModule["default"].setCurrencyOption, " ").concat(m[1].currency !== 'USD' && validStyleObject !== null && validStyleObject !== void 0 && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, m[1].currency) ? _ProductImageManagerModule["default"].currencyOptionUsed : null, " ").concat(m[1].currency === 'USD' ? _ProductImageManagerModule["default"].currencyOptionUsed : null),
-      value: m[1].currency
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m[1].currency), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].name), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].symbol));
-  }) : null))) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Set the quantity for the currently selected Style & Option combo"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600,
-      display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
-    }
-  }, "Qty")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    style: {
-      width: '100%',
-      display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
-    },
-    defaultValue: "10",
-    ref: props.quantityInput,
-    onChange: props.setCurrentQuantity
-  }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Infinite stock"
-  }, /*#__PURE__*/_react["default"].createElement(_AllInclusive["default"], {
-    style: {
-      width: '15px'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    onChange: props.setInfinity,
-    checked: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000
-  })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 Product_admin_choice_container"
   }, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: props.addStyle
@@ -648,16 +667,17 @@ var Module = function Module(props) {
     onChange: props.onProductTypeChange
   }), /*#__PURE__*/_react["default"].createElement("label", {
     "for": "physical"
-  }, "Physical"))))), (props === null || props === void 0 || (_props$editingOptions = props.editingOptionsMeta) === null || _props$editingOptions === void 0 ? void 0 : _props$editingOptions.productType) === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 promptContainer",
+  }, "Physical"))))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "promptContainer",
     style: {
       alignItems: 'center',
-      height: '20px',
       borderRadius: '.5rem',
       margin: '.25rem 0'
     }
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
   }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Ticketed Products offer universally unique ids that are unique across the product being sold and can be stamped onto Virtual Ticket Images",
+    title: "Ticketed Products offer universally unique ids that are unique across the product being sold and can be stamped onto Ticket Images. Virtual Tickets are for Virtual Events. Physical Tickets serve Virtual Tickets for your own In Person Events.",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
@@ -669,7 +689,8 @@ var Module = function Module(props) {
     }
   }, "Is this a ticket?"), /*#__PURE__*/_react["default"].createElement(_ConfirmationNumber["default"], {
     style: {
-      width: '15px'
+      width: '15px',
+      height: '15px'
     }
   })), /*#__PURE__*/_react["default"].createElement("input", {
     type: "checkbox",
@@ -681,7 +702,43 @@ var Module = function Module(props) {
     onChange: props.setOptionsMetaData,
     option: "ticket",
     ref: isTicketRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  })), useEditingOptions.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates.",
+    className: "flex gap-p2",
+    style: {
+      alignItems: 'center'
+    },
+    placement: "right"
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    style: {
+      fontSize: '.8rem',
+      fontWeight: '600',
+      whiteSpace: 'nowrap'
+    }
+  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "text",
+    style: {
+      marginBottom: '.125rem',
+      width: '-webkit-fill-available'
+    },
+    placeholder: "Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty",
+    onInput: props.setOptionsMetaData,
+    option: "eventDateDef",
+    option2: "input",
+    defaultValue: props.product.detailmeta.eventDateDef.input
+  })), props.product.detailmeta.eventDateDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "tagContainer",
+    style: {
+      marginTop: '.25rem',
+      marginBottom: '.25rem'
+    }
+  }, props.product.detailmeta.eventDateDef.dates.map(function (d) {
+    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
+      className: "tagItem"
+    }, d ? (0, _util.getFormattedDate)(d, {
+      pretty: true
+    }) : '') : /*#__PURE__*/_react["default"].createElement("div", null);
+  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null), (props === null || props === void 0 || (_props$editingOptions = props.editingOptionsMeta) === null || _props$editingOptions === void 0 ? void 0 : _props$editingOptions.productType) === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "promptContainer",
     style: {
       borderRadius: '.5rem',
@@ -767,42 +824,7 @@ var Module = function Module(props) {
     return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "tagItem"
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, useEditingOptions.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates.",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: '600',
-      whiteSpace: 'nowrap'
-    }
-  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    style: {
-      marginBottom: '.125rem',
-      width: '-webkit-fill-available'
-    },
-    placeholder: "Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty",
-    onInput: props.setOptionsMetaData,
-    option: "eventDateDef",
-    option2: "input",
-    defaultValue: props.product.detailmeta.eventDateDef.input
-  })), props.product.detailmeta.eventDateDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, props.product.detailmeta.eventDateDef.dates.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
-    }, d ? (0, _util.getFormattedDate)(d, {
-      pretty: true
-    }) : '') : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null, useEditingOptions.livestream ? /*#__PURE__*/_react["default"].createElement("div", {
+  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, useEditingOptions.livestream ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       background: '#222222',
       marginTop: '.25rem',
@@ -969,6 +991,48 @@ var Module = function Module(props) {
     ref: fileInput,
     onChange: handleNewFile
   })) : /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2 promptContainer",
+    style: {
+      alignItems: 'center',
+      height: '20px',
+      borderRadius: '.5rem',
+      margin: '.25rem 0'
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Allow for your customers to subscribe to your product. This is a guarantee by your company that you will continue to deliver your Product to any subscribed customers. Subscriptions will charge monthly by default.",
+    className: "flex gap-p2",
+    style: {
+      alignItems: 'center'
+    },
+    placement: "left"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    style: {
+      fontSize: '.8rem'
+    }
+  }, "Is this a subscription?"), /*#__PURE__*/_react["default"].createElement(_Inventory["default"], {
+    style: {
+      width: '15px'
+    }
+  })), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "checkbox",
+    style: {
+      margin: 0
+    },
+    value: props.product.detailmeta.subscription,
+    defaultChecked: props.product.detailmeta.subscription,
+    onChange: props.setOptionsMetaData,
+    option: "subscription"
+  })), props !== null && props !== void 0 && (_props$product3 = props.product) !== null && _props$product3 !== void 0 && _props$product3.published ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2 shareButton",
+    selectValue: "".concat(props !== null && props !== void 0 && (_props$product4 = props.product) !== null && _props$product4 !== void 0 && _props$product4.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null),
+    onClick: _event.selectThisText
+  }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "Share")), /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    href: "".concat(props !== null && props !== void 0 && (_props$product5 = props.product) !== null && _props$product5 !== void 0 && _props$product5.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex gap-p2 shareButton"
+  }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "View")))) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 Product_admin_choice_container",
     style: {
       marginTop: '.125rem'
@@ -985,8 +1049,24 @@ var Module = function Module(props) {
     onClick: props.handleCancelProduct,
     modif: "save"
   }, props.editing["new"] ? 'Abandon' : 'Cancel') : null)))) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Product_img_container"
-  }, /*#__PURE__*/_react["default"].createElement(_.ProductImageManager, {
+    className: "".concat(_ProductImageManagerModule["default"].productImgContainer, " Product_img_container"),
+    style: {
+      position: 'relative'
+    }
+  }, isAdmin ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    title: "Edit Product",
+    placement: "left"
+  }, /*#__PURE__*/_react["default"].createElement("button", {
+    className: "".concat(_ProductImageManagerModule["default"].editProductButton, " ").concat(props._isMobile ? "".concat(_ProductImageManagerModule["default"].editProductButtonMobile) : null),
+    onClick: handleEdit,
+    modif: "edit",
+    alt: "edit"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "edit material-icons",
+    style: {
+      fontSize: '.85rem'
+    }
+  }, "edit"))) : null, /*#__PURE__*/_react["default"].createElement(_.ProductImageManager, {
     cdn: props.cdn,
     product: props.product,
     _loggedIn: props._loggedIn,
@@ -1047,16 +1127,19 @@ var Module = function Module(props) {
       alignItems: 'center'
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
+    className: "flex gap-p2",
+    style: {
+      margin: '.125rem 0'
+    }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
-      fontSize: '.8rem',
+      fontSize: '1rem',
       fontWeight: 600
     }
   }, /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$symbol = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.symbol) !== null && _currentPrice$symbol !== void 0 ? _currentPrice$symbol : null), /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$price = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.price) !== null && _currentPrice$price !== void 0 ? _currentPrice$price : null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: "Product_CurrencyLabel",
     style: {
-      fontSize: '.7rem',
+      fontSize: '.8rem',
       fontWeight: 600,
       background: 'rgba(150, 150, 150, .5)',
       padding: '.075rem',
@@ -1069,7 +1152,7 @@ var Module = function Module(props) {
       fontWeight: 600
     }
   }, validOptionObject && validOptionObject.quantity ? validOptionObject.quantity : '')), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 Product_admin_choice_container",
+    className: "flex gap-p2 Product_admin_choice_container wrap",
     style: {
       marginTop: '.125rem'
     }
@@ -1078,22 +1161,13 @@ var Module = function Module(props) {
     item: props.product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
-    action: "buy"
-  }, "Buy Now"), /*#__PURE__*/_react["default"].createElement("button", {
+    action: "add_to_cart"
+  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product6 = props.product) !== null && _props$product6 !== void 0 && (_props$product6 = _props$product6.detailmeta) !== null && _props$product6 !== void 0 && _props$product6.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleFireGlobalEvent,
     item: props.product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
-    action: "add_to_cart"
-  }, "Add To Cart"), isAdmin ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleEdit,
-    modif: "edit",
-    alt: "edit"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "edit material-icons",
-    style: {
-      fontSize: '1rem'
-    }
-  }, "edit")) : null))));
+    action: "add_to_cart_subscribe"
+  }, "Subscribe") : null))));
 };
 var _default = exports["default"] = Module;

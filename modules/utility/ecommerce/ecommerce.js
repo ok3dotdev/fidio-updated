@@ -84,7 +84,7 @@ var doPublishProduct = exports.doPublishProduct = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          if (!(user.identifier && user.hash && product && shop && domainKey)) {
+          if (!(user.identifier && user.hash && product && domainKey)) {
             _context2.next = 23;
             break;
           }
