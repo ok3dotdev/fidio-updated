@@ -50,10 +50,10 @@ export const page = (props) => {
       .catch((error) => console.log('hereee', error));
   }, []);
 
-  if (!isLoading) {
-    console.log('data222', data.fetchedData[0].articleReq[0]);
-    console.log('data2225', data)
-  }
+  // if (!isLoading) {
+  //   console.log('data222', data.fetchedData[0].articleReq[0]);
+  //   console.log('data2225', data)
+  // }
 
   const useMenu = true;
   const useAppConfigLayout = true;
@@ -68,7 +68,7 @@ export const page = (props) => {
             <div className='flex justify-center'>
               <div className='grid grid-cols-2 lg:grid-cols-3'>
                 {data.fetchedData[0].articleReq[0].map((articleReq, index) => (
-                  <Link href={`/ar?p=${articleReq?.id}`}>
+                  <Link key={index} href={`/ar?p=${articleReq?.id}`}>
                     <div key={index} className='p-4'>
                       <div className='w-full min-h-[250px]'>
                         <img
