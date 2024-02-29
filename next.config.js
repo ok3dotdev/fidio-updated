@@ -1,6 +1,6 @@
 const path = require('path');
 
-const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
+const website = 'http://loclahost:3020'; // You must set this line to your own website for PRODUCTION builds
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -9,7 +9,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  assetPrefix: website,
+  // assetPrefix: website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
     domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
