@@ -37,6 +37,10 @@ module.exports = {
       colors: {
         dashtext: 'rgb(241, 241, 241)',
         dashBorder: 'rgba(255, 255, 255, 0.2)',
+        dashBg: 'rgba(26, 25, 25, 1)',
+        dashFg: 'rgba(250, 248, 245, 1)',
+        accentY: 'rgba(253, 176, 0, 1)',
+        dashSides: 'rgba(46, 46, 46, 1)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -70,6 +74,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      boxShadow: {
+        'Txl': 'rgba(153, 152, 150, 0.33)',
       },
       fontFamily: {
         Archivo: 'Archivo Black',

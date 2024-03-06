@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: Archivo Black, helvetica, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
@@ -86,6 +87,9 @@ input {
   color: black;
   border-radius: 6px;
   width: 100%;
+}
+.Internal_devContainer__OSO0m{
+  display: none !important;
 }
 
 @media (min-width: 900px) {
