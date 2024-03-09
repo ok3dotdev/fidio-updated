@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getTimeRemaining = exports.MONTHS = void 0;
+exports.retrieveMonth = exports.retrieveDay = exports.getTimeRemaining = exports.MONTHS = exports.DAYS = void 0;
 var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targetDate, now) {
   if (now && targetDate) {
     // Calculate the time difference in milliseconds
@@ -24,3 +24,28 @@ var getTimeRemaining = exports.getTimeRemaining = function getTimeRemaining(targ
   return null;
 };
 var MONTHS = exports.MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+var DAYS = exports.DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+/**
+ * Based on users location get month in countries main language
+ * @param {*} m 
+ * @param {*} location 
+ */
+var retrieveMonth = exports.retrieveMonth = function retrieveMonth(m, location) {
+  if (m <= MONTHS.length) {
+    return MONTHS[m];
+  }
+  return '';
+};
+
+/**
+ * Based on users location get day in countries main language
+ * @param {*} m 
+ * @param {*} location 
+ */
+var retrieveDay = exports.retrieveDay = function retrieveDay(m, location) {
+  if (m <= DAYS.length) {
+    return DAYS[m];
+  }
+  return '';
+};

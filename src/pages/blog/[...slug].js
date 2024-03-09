@@ -6,7 +6,7 @@ import React from 'react';
 import { pageDefaults } from '../../../app.config';
 import { getServerSidePropsDefault } from '../../../modules/utility';
 import HomeLayout from '../../../customModules/features/HomeLayout';
-import { homePageData } from '@/customModules/features/seo-data';
+import { homePageData } from '../../../customModules/features/seo-data';
 
 
 

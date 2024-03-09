@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "Lineup", {
+  enumerable: true,
+  get: function get() {
+    return _Lineup["default"];
+  }
+});
 Object.defineProperty(exports, "Product", {
   enumerable: true,
   get: function get() {
@@ -21,6 +27,7 @@ Object.defineProperty(exports, "ProductPage", {
     return _ProductPage["default"];
   }
 });
+var _Lineup = _interopRequireDefault(require("./Lineup"));
 var _Product = _interopRequireDefault(require("./Product"));
 var _ProductImageManager = _interopRequireDefault(require("./ProductImageManager"));
 var _ProductPage = _interopRequireDefault(require("./ProductPage"));

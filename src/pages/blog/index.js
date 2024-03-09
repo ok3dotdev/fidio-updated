@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getServerSidePropsDefault } from '../../../modules/utility';
 import HomeLayout from '../../../customModules/features/HomeLayout';
-import { homePageData } from '@/customModules/features/seo-data';
+import { homePageData } from '../../../customModules/features/seo-data';
 
 const pageName = 'Blog';
 
@@ -17,6 +17,9 @@ export const page = (props) => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
+
+  console.log("props", props)
+  const url = props.dev === true ? 'https://dbservices.tycoon.systems/apidev/p/fetchhandler' : 'https://dbservices.tycoon.systems/api/p/fetchhandler'
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +27,7 @@ export const page = (props) => {
         console.log(error);
       }
     };
-    fetch('https://dbservices.tycoon.systems/api/p/fetchhandler', {
+    fetch(url, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({

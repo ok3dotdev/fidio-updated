@@ -21,6 +21,7 @@ var _reactTextareaAutosize = _interopRequireDefault(require("react-textarea-auto
 var _ecommerce = require("../../utility/ecommerce");
 var _product = require("../product");
 var _signin = require("../../onboarding/signin");
+var _Functions = require("./Functions");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -120,7 +121,7 @@ var Module = function Module(props) {
     _React$useState26 = _slicedToArray(_React$useState25, 2),
     tempImagesForCurrentlyEditing = _React$useState26[0],
     setTempImagesForCurrentlyEditing = _React$useState26[1];
-  var _React$useState27 = _react["default"].useState(null),
+  var _React$useState27 = _react["default"].useState(0),
     _React$useState28 = _slicedToArray(_React$useState27, 2),
     currentLineupEditing = _React$useState28[0],
     setCurrentLineupEditing = _React$useState28[1];
@@ -473,64 +474,7 @@ var Module = function Module(props) {
   });
   var setOptionsMetaData = _react["default"].useCallback(function (e) {
     console.log(e.currentTarget.checked, e.currentTarget.getAttribute('option'));
-    if (e.currentTarget) {
-      if (e.currentTarget.getAttribute('option')) {
-        if (Object.prototype.hasOwnProperty.call(e.currentTarget, 'checked')) {
-          var temp = _objectSpread({}, editingOptionsMeta);
-          temp[e.currentTarget.getAttribute('option')] = e.currentTarget.checked;
-          console.log(temp);
-          setEditingOptionsMeta(temp);
-        } else if (e.currentTarget.getAttribute('option') === 'livestreamDef' || e.currentTarget.getAttribute('option') === 'eventDateDef') {
-          var _temp = _objectSpread({}, editingOptionsMeta);
-          if (e.currentTarget.getAttribute('option2')) {
-            console.log(e.currentTarget);
-            _temp[e.currentTarget.getAttribute('option')][e.currentTarget.getAttribute('option2')] = e.currentTarget.value;
-            var values = e.currentTarget.value.split(' ');
-            var dates = [];
-            var tags = [];
-            values.map(function (v) {
-              if (!isNaN(new Date(v))) {
-                dates.push(new Date(v));
-              } else {
-                tags.push(v);
-              }
-            });
-            _temp[e.currentTarget.getAttribute('option')].dates = dates;
-            _temp[e.currentTarget.getAttribute('option')].tags = tags;
-            console.log(_temp);
-            setEditingOptionsMeta(_temp);
-          }
-        } else if (e.currentTarget.getAttribute('option') === 'lineupTemp') {
-          var _temp2 = _objectSpread({}, editingOptionsMeta);
-          if (!_temp2.lineup) {
-            _temp2.lineup = [];
-          }
-          var cur = currentLineupEditing;
-          if (_temp2.lineup.length < 10) {
-            var _temp2$detailmeta$lin;
-            console.log(cur);
-            if (cur === null) {
-              cur = _temp2.lineup.length; // Set valid index for currently editing
-              setCurrentLineupEditing(cur);
-            }
-            var temp2 = _objectSpread({}, editing);
-            if (!_temp2.lineup[cur]) {
-              _temp2.lineup[cur] = defaultLineup();
-              if (editing && !temp2.detailmeta.lineup) {
-                temp2.detailmeta.lineup = [];
-              }
-            }
-            console.log(temp2.detailmeta.lineup[cur], _temp2.lineup[cur]);
-            var retainImage = _temp2.lineup[cur].image == '' && (_temp2$detailmeta$lin = temp2.detailmeta.lineup[cur]) !== null && _temp2$detailmeta$lin !== void 0 && _temp2$detailmeta$lin.image ? temp2.detailmeta.lineup[cur].image : _temp2.lineup[cur].image;
-            temp2.detailmeta.lineup[cur] = _temp2.lineup[cur];
-            temp2.detailmeta.lineup[cur].image = retainImage;
-            setEditing(temp2);
-            _temp2.lineup[cur][e.currentTarget.getAttribute('option2')] = e.currentTarget.value;
-            setEditingOptionsMeta(_temp2);
-          }
-        }
-      }
-    }
+    (0, _Functions.doSetOptionsMetaData)(e, editingOptionsMeta, editing, setEditing, setEditingOptionsMeta, currentLineupEditing, setCurrentLineupEditing);
   });
   var updateLineup = _react["default"].useCallback(function (e) {
     if (e.currentTarget) {
@@ -699,13 +643,13 @@ var Module = function Module(props) {
       setEditing(temp);
       return value;
     } else {
-      var _temp3 = _toConsumableArray(combinedFeed);
-      var f = _temp3.findIndex(function (m) {
+      var _temp = _toConsumableArray(combinedFeed);
+      var f = _temp.findIndex(function (m) {
         return m.id === product.id;
       });
       if (f > -1) {
-        _temp3[f].meta.currency = value;
-        setCombinedFeed(_temp3);
+        _temp[f].meta.currency = value;
+        setCombinedFeed(_temp);
         return value;
       }
     }
@@ -1201,127 +1145,14 @@ var Module = function Module(props) {
       className: "tagItem",
       key: i
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, editingOptionsMeta.livestream ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      background: '#222222',
-      marginTop: '.25rem',
-      marginBottom: '.25rem',
-      borderRadius: '.25rem',
-      padding: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: '600'
-    }
-  }, "Lineup"), editingOptionsMeta.lineup && editingOptionsMeta.lineup.length < 10 || !editingOptionsMeta.lineup ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Enter participants name",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    placeholder: "Name",
-    style: {
-      fontSize: '.8rem',
-      width: '100%'
-    },
-    onInput: setOptionsMetaData,
-    option: "lineupTemp",
-    option2: "title",
-    ref: lineupNameRef
-  })), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Optional: Enter description of participant",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    placeholder: "Description",
-    style: {
-      fontSize: '.8rem',
-      width: '100%'
-    },
-    onInput: setOptionsMetaData,
-    option: "lineupTemp",
-    option2: "description",
-    ref: lineupDescriptionRef
-  })), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Optional: Enter expected time for lineup participant to be performing",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "time",
-    placeholder: "Time",
-    style: {
-      fontSize: '.8rem',
-      width: '100%'
-    },
-    onInput: setOptionsMetaData,
-    option: "lineupTemp",
-    option2: "time",
-    ref: lineupTimeRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.75rem',
-      padding: '.125rem',
-      paddingTop: '.25rem'
-    }
-  }, "After you publish this product you will be able to add Lineup participant images"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    }
-  }, editingOptionsMeta.lineup && editingOptionsMeta.lineup.length < 10 && editingOptionsMeta.lineup.length > 0 ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Add another Lineup Participant",
-    placement: "bottom"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%'
-    },
-    onClick: updateLineup,
-    option: "add"
-  }, "Add")) : null, editingOptionsMeta.lineup && editingOptionsMeta.lineup[currentLineupEditing] ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Remove this Lineup Participant",
-    placement: "bottom"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%'
-    },
-    onClick: updateLineup,
-    option: "remove"
-  }, "Remove")) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      overflow: 'auto'
-    }
-  }, editingOptionsMeta.lineup && editingOptionsMeta.lineup.map ? editingOptionsMeta.lineup.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "lineupItem_editing",
-      style: {
-        maxWidth: '75px'
-      },
-      onClick: updateLineup,
-      option: 'setSelected',
-      index: i,
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "lineupItem_id",
-      style: {
-        fontSize: '.5rem',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap'
-      }
-    }, m.id), /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        fontSize: '.7rem',
-        fontWeight: '600',
-        overflowWrap: 'anywhere'
-      }
-    }, m.title), m.time ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "lineupItem_time",
-      style: {
-        fontSize: '1rem'
-      }
-    }, (0, _util.getFormattedTime)(m.time, {
-      simple: true
-    })) : null);
-  }) : null)) : null) : null)) : /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", {
+  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
+    product: editing,
+    editing: editing,
+    editingOptionsMeta: editingOptionsMeta,
+    setOptionsMetaData: setOptionsMetaData,
+    currentLineupEditing: currentLineupEditing,
+    setCurrentLineupEditing: setCurrentLineupEditing
+  })))) : /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 promptContainer",
     style: {
       alignItems: 'center',
