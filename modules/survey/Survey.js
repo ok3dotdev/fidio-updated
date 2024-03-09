@@ -548,7 +548,7 @@ var Module = function Module(props) {
       height: props !== null && props !== void 0 && props.height ? "".concat(props.height, "px") : '100vh'
     }
   }, backStageItem ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].backItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackBack) : null),
+    className: "".concat(_SurveyModule["default"].backItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackBack) : null, " ").concat(backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.className),
     style: {
       background: (_backStageItem$bg = backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.bg) !== null && _backStageItem$bg !== void 0 ? _backStageItem$bg : null,
       color: (_backStageItem$color = backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.color) !== null && _backStageItem$color !== void 0 ? _backStageItem$color : null
@@ -601,7 +601,7 @@ var Module = function Module(props) {
       transition: 0
     }
   }, "Back") : null)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].currentItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextCurrent) : null, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackCurrent) : null, " ").concat(keepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null),
+    className: "".concat(_SurveyModule["default"].currentItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextCurrent) : null, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackCurrent) : null, " ").concat(keepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.className),
     style: {
       background: (_currentStageItem$bg = currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.bg) !== null && _currentStageItem$bg !== void 0 ? _currentStageItem$bg : null,
       color: (_currentStageItem$col = currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.color) !== null && _currentStageItem$col !== void 0 ? _currentStageItem$col : null
@@ -762,7 +762,7 @@ var Module = function Module(props) {
       transition: 0
     }
   }, "Back") : null)), nextStageItem ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].nextItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextNext) : null),
+    className: "".concat(_SurveyModule["default"].nextItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextNext) : null, " ").concat(nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.className),
     style: {
       background: (_nextStageItem$bg = nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.bg) !== null && _nextStageItem$bg !== void 0 ? _nextStageItem$bg : null,
       color: (_nextStageItem$color = nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.color) !== null && _nextStageItem$color !== void 0 ? _nextStageItem$color : null
