@@ -81,6 +81,10 @@ body .opacity1 {
     opacity: 1;
 }
 
+body .opacity0 {
+    opacity: 0;
+}
+
 html {
     background: black;
 }
@@ -885,6 +889,13 @@ button:not(:disabled):active {
     // width: 10000px !important;
 }
 
+.slick-full .slick-list {
+    margin: 0 -.25rem;
+}
+.slick-full .slick-slide>div {
+    padding: 0 .25rem;
+}
+
 // Experimental variable width
 // .IndexHello_IndexItemsContainer .slick-slide {
 //     min-width: calc(100vw / 6);
@@ -920,21 +931,21 @@ button:not(:disabled):active {
     display: flex;
     align-items: center;
     background: #1d9bca;
-    color: yellow;
-    outline: 1px solid yellow;
+    color: rgb(255, 255, 174);
+    outline: .5px solid yellow;
     gap: .125rem;
-    border-radius: 1rem;
+    border-radius: .75rem;
     max-width: fit-content;
-    padding: .025rem .5rem;
+    padding: .025rem .25rem;
     font-size: .65rem;
     font-weight: 700;
 }
 
 .newItem {
     background: rgb(238,82,82);
-    background: -moz-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
-    background: -webkit-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
-    background: linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(42, 213, 82) 99%);
+    background: -moz-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(155, 208, 168) 99%);
+    background: -webkit-linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(155, 208, 168) 99%);
+    background: linear-gradient(50deg, rgb(82, 126, 238) 0%, rgb(155, 208, 168) 99%);
     border: 1px solid rgb(255, 255, 255);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#527eee",endColorstr="#2ad552",GradientType=1);
 }
@@ -985,4 +996,43 @@ button:not(:disabled):active {
 .shareButton svg {
     height: 1.15rem;
     width: 1.15rem;
+}
+
+.spinnerBg {
+    background: rgb(35, 35, 35, 1);
+    outline-offset: -1.5px;
+    outline: 1px solid white;
+}
+
+.spinnerBusyBg, .spinnerBusyBg:hover, .spinnerBusyBg:active {
+    background: transparent !important;
+    outline: 1px solid transparent !important;
+    box-shadow: 0 0 0 0 transparent !important;
+    cursor: default;
+}
+
+.spinner::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+  
+@keyframes button-loading-spinner {
+    from {
+      transform: rotate(0turn);
+    }
+  
+    to {
+      transform: rotate(1turn);
+    }
 }

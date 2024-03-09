@@ -213,6 +213,7 @@ var Module = function Module(props) {
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);
   });
+  console.log(useItems, resolvedUseItems);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].IndexBgContainer, " glide_").concat(componentId, " ").concat(props.className, " ").concat(props.medium ? "".concat(_PresentationModule["default"].IndexBgContainerMedium) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -230,9 +231,9 @@ var Module = function Module(props) {
     handlerArgs: props.request.handlerArgs,
     receiveData: receiveData
   }, props)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "swipe slider_".concat(componentId)
+    className: "swipe slick-full slider_".concat(componentId)
   }, /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], _extends({}, useSettings, {
-    className: "swiper-wrapper slider_slides",
+    className: "".concat(_PresentationModule["default"].sliderContainer, " swiper-wrapper slider_slides"),
     style: {
       height: 'inherit'
     }
@@ -341,11 +342,12 @@ var Module = function Module(props) {
       style: {
         position: 'absolute',
         top: '-25px',
-        right: '100px'
+        right: '100px',
+        fontSize: '.7rem'
       }
     }, /*#__PURE__*/_react["default"].createElement("span", null, "New"), /*#__PURE__*/_react["default"].createElement("span", {
       style: {
-        fontSize: '.9rem'
+        fontSize: '.7rem'
       },
       className: "star material-icons"
     }, "star")) : null), m.description && m.description !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
