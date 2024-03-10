@@ -543,7 +543,7 @@ var Module = function Module(props) {
   console.log(currentStage, answers, backList, next, submitted, props);
   console.log('Pipeline Object', pipelineObject, pipelineDbItem, back, next);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: _SurveyModule["default"].survey__container,
+    className: "".concat(_SurveyModule["default"].survey__container, " ").concat(props === null || props === void 0 ? void 0 : props.className),
     style: {
       height: props !== null && props !== void 0 && props.height ? "".concat(props.height, "px") : '100vh'
     }
@@ -642,7 +642,7 @@ var Module = function Module(props) {
       style: {
         marginBottom: '.5rem'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("label", {
       style: {
         marginBottom: '.125rem'
       }
@@ -667,7 +667,8 @@ var Module = function Module(props) {
       "var": m === null || m === void 0 || (_m$input10 = m.input) === null || _m$input10 === void 0 ? void 0 : _m$input10["var"],
       pipeline: "true",
       surveyclear: "true",
-      usedefault: pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]]
+      usedefault: pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]],
+      className: "survey_datePicker"
     })) : (m === null || m === void 0 || (_m$input12 = m.input) === null || _m$input12 === void 0 ? void 0 : _m$input12.type) === 'lineup' ? /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(m === null || m === void 0 ? void 0 : m.className)
     }, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
