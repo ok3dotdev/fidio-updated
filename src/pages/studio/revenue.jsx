@@ -262,8 +262,7 @@ const Create = (props) => { // Must pass props here
   return (
     <StudioLayout {...props}>
       <div className='xl:mx-[20rem] md:mx-[3rem]'>
-        <Survey { ...props} survey={useSurvey} setCurrentStage={setCurrentStage} setImgCache={setImgCache} setPipelineDbItem={setPipelineDbItem} setPipelineObject={setPipelineObject} setImgFor={setImgFor} />
-        {/* <CreateForm/> */}
+        <h1>revenue</h1>
       </div>
     </StudioLayout>
   );

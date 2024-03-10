@@ -82,7 +82,7 @@ const CreateForm = () => {
 
   return (
     <div>
-      <div className='md:mx-[8rem]'>
+      <div className='w-full'>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col align-center'>
           {renderStep()}
           {step !== 12 && <button type='button' onClick={nextStep} className='bg-dashFg mt-4 font-sans px-8 py-2 rounded-[2rem] text-black w-[350px] mt-8'>Continue</button>}

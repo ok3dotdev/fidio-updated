@@ -19,6 +19,15 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'customModules/admin/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('customModules/admin/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 useFile = 'src/styles/styles.scss'
 if (fs.existsSync(useFile)) {
     // Add your commands here

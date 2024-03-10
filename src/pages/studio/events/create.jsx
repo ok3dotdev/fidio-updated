@@ -1,6 +1,6 @@
 import React from 'react'
 import StudioLayout from '@/components/Layouts/StudioLayout'
-import CreateForm from '../../components/steps/createEventForm';
+// import CreateForm from '../../components/steps/createEventForm';
 
 import { Survey } from '/modules/survey'
 import apiReq from '/modules/utility/api/apiReq' // Import API for making DB Requests
@@ -10,11 +10,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 import { getServerSidePropsFunc } from '/appServer/serverProps'
+import EventDetailsStep from '@/components/steps/EventDetailsStep'
 
 const pageName = 'create'
 
 const Create = (props) => { // Must pass props here
   // Handle Product Creation and Retrieval
+  const [step, setStep] = React.useState('ticket');
   const [ currentStage, setCurrentStage ] = React.useState(null)
   const [ imgCache, setImgCache ] = React.useState(null)
   const [ pipelineDbItem, setPipelineDbItem ] = React.useState({})
@@ -22,16 +24,17 @@ const Create = (props) => { // Must pass props here
   const [ imgFor, setImgFor ] = React.useState([])
 
   const doFunc = async () => {
-    console.log('Send Items', imgCache, pipelineDbItem, pipelineObject, imgFor, props._loggedIn, props.apiUrl)
-    const res = await apiReq('/product/createProduct', {
-        apiUrl: props?.apiUrl,
-        pipelineDbItem: pipelineDbItem,
-        pipelineObject: pipelineObject,
-        imgCache: imgCache,
-        imgFor: imgFor,
-        _loggedIn: props?._loggedIn // Requires Authentication
-    })
-    console.log('Res', res)
+    // console.log('Send Items', imgCache, pipelineDbItem, pipelineObject, imgFor, props._loggedIn, props.apiUrl)
+    // const res = await apiReq('/product/createProduct', {
+    //   apiUrl: props?.apiUrl,
+    //   pipelineDbItem: pipelineDbItem,
+    //   pipelineObject: pipelineObject,
+    //   imgCache: imgCache,
+    //   imgFor: imgFor,
+    //   _loggedIn: props?._loggedIn // Requires Authentication
+    // })
+    // console.log('Res', res)
+    setStep('merch')
   }
 
   // Will retrieve products based on object
@@ -262,8 +265,8 @@ const Create = (props) => { // Must pass props here
   return (
     <StudioLayout {...props}>
       <div className='xl:mx-[20rem] md:mx-[3rem]'>
-        <Survey { ...props} survey={useSurvey} setCurrentStage={setCurrentStage} setImgCache={setImgCache} setPipelineDbItem={setPipelineDbItem} setPipelineObject={setPipelineObject} setImgFor={setImgFor} />
-        {/* <CreateForm/> */}
+        { step === 'ticket' &&  <Survey { ...props} survey={useSurvey} setCurrentStage={setCurrentStage} setImgCache={setImgCache} setPipelineDbItem={setPipelineDbItem} setPipelineObject={setPipelineObject} setImgFor={setImgFor} />}
+        { step === 'merch' && <EventDetailsStep {...props}/>}
       </div>
     </StudioLayout>
   );

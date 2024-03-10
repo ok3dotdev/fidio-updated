@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { logout } from 'modules/utility/onboarding/SignIn.js';
-import { fetchPost } from '/modules/utility/fetch';
 import Link from 'next/link';
-import useUserStore from '../../hooks/userStore';
 
 const UserMenu = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loading, setIsLoading] = useState(true);
-  const [userIcon, setUserIcon] = useState('');
   const router = useRouter();
   const menuRef = useRef(null);
 

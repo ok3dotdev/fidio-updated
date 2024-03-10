@@ -273,6 +273,22 @@ input {
   }
 }
 
+
+/* SURVERY FORM */
+.Survey_currentItem__z2NUZ{
+  padding: 0 !important;
+}
+.Survey_currentItem__z2NUZ textarea{
+  @apply bg-dashFg text-black p-2 font-sans;
+}
+.Survey_title__I1MFz{
+  margin-bottom: 2rem;
+}
+.Survey_currentItem__z2NUZ input[type='datetime-local']{
+  @apply bg-dashFg text-black w-full p-2 font-sans;
+}
+
+
 /* @layer components {
   .zoom-image [data-rmiz-modal-overlay='visible'] {
     @apply bg-background/10 backdrop-blur;

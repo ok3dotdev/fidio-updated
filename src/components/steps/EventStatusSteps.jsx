@@ -1,33 +1,19 @@
 import React, { useState } from 'react';
-import Ticket from '../components/Ticket'
+import Ticket from '../Ticket'
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Link from 'next/link';
-import {cn} from '../lib/utils'
-import SearchBar from './SearchBar';
+import {cn} from '../../lib/utils'
+import SearchBar from '../inputs/SearchBar';
 
-const EventCreation = () => {
+const EventStatusSteps = () => {
   const [step, setStep] = useState('draft');
-  // const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState([]);
 
   // Function to handle creating an event
   const handleCreateEvent = () => {
     // Logic to create event
     console.log('Creating event...');
   };
-  const tickets = [
-    {
-      title: 'Asake Live in Toronto',
-      date: 'Feb 28, 2024 18:00 EAT'
-    },
-    {
-      title: 'Asake Live in Toronto',
-      date: 'Feb 28, 2024 18:00 EAT'
-    },
-    {
-      title: 'Asake Live in Toronto',
-      date: 'Feb 28, 2024 18:00 EAT'
-    }
-  ];
 
   return (
     <div className='mt-6'>
@@ -67,7 +53,7 @@ const EventCreation = () => {
             ))}
           </div>
           <div className='mt-4'>
-            <Link href='/studio/create'
+            <Link href='/studio/events/create'
               className='bg-dashFg rounded-[4rem] mt-4 px-3 py-2 text-black font-sans inline-flex justify-center gap-1'
               onClick={handleCreateEvent}
             >
@@ -77,8 +63,11 @@ const EventCreation = () => {
           </div>
         </>
       )}
+      {step === 'pending' && <h1>No pending tickets</h1>}
+      {step === 'approved' && <h1>No approved tickets</h1>}
+      {step === 'past' && <h1>No past tickets</h1>}
     </div>
   );
 };
 
-export default EventCreation;
+export default EventStatusSteps;
