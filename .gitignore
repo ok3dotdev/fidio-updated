@@ -33,7 +33,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+<<<<<<< HEAD
 .next.zip
+=======
+
+# Tycoon Systems Ignore Files
+>>>>>>> 2a6f47676326f739e4eae6454c8279b5d1036c07
 .env
 env.local
 credentials.js
@@ -81,3 +86,8 @@ customModules/pages
 customModules/pages/*
 !*customModules/pages
 !*customModules/pages/defaults
+!*customModules/admin
+customModules/admin/*
+!*customModules/admin/index_backup.js
+
+# Extra Ignore Files Here

@@ -138,6 +138,8 @@ var Module = function Module(props) {
   _react["default"].useEffect(function () {
     if (useData !== null && useData !== void 0 && useData.pipelineDbItemDefault && !(0, _util.isObjectEmpty)(useData.pipelineDbItemDefault) && (0, _util.isObjectEmpty)(pipelineDbItem)) {
       setPipelineDbItemProxy(useData.pipelineDbItemDefault);
+    } else if (props !== null && props !== void 0 && props.pipelineDbItem) {
+      setPipelineDbItemProxy(props.pipelineDbItem);
     }
   }, [pipelineDbItem, useData === null || useData === void 0 ? void 0 : useData.pipelineDbItemDefault]);
   var handleOptionClickConfirm = _react["default"].useCallback(function (e) {
@@ -405,7 +407,7 @@ var Module = function Module(props) {
       }
       var temp = _objectSpread({}, pipelineDbItem);
       if ((e === null || e === void 0 || (_e$currentTarget15 = e.currentTarget) === null || _e$currentTarget15 === void 0 ? void 0 : _e$currentTarget15.getAttribute('method')) === 'singleStyle') {
-        var f = temp.styles[0] ? 0 : -1;
+        var f = temp !== null && temp !== void 0 && temp.styles[0] ? 0 : -1;
         console.log(f, e.currentTarget.value, !isNaN(Number(e.currentTarget.value)));
         if (f > -1) {
           if (!isNaN(Number(e.currentTarget.value))) {
@@ -434,7 +436,7 @@ var Module = function Module(props) {
       }
       var temp = _objectSpread({}, pipelineDbItem);
       if ((e === null || e === void 0 || (_e$currentTarget19 = e.currentTarget) === null || _e$currentTarget19 === void 0 ? void 0 : _e$currentTarget19.getAttribute('method')) === 'singleStyle') {
-        var f = temp.styles[0] ? 0 : -1;
+        var f = temp !== null && temp !== void 0 && temp.styles[0] ? 0 : -1;
         if (f > -1) {
           var f2 = 0;
           if (f2 > -1) {
