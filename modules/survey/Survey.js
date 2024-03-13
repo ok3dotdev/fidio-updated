@@ -138,6 +138,8 @@ var Module = function Module(props) {
   _react["default"].useEffect(function () {
     if (useData !== null && useData !== void 0 && useData.pipelineDbItemDefault && !(0, _util.isObjectEmpty)(useData.pipelineDbItemDefault) && (0, _util.isObjectEmpty)(pipelineDbItem)) {
       setPipelineDbItemProxy(useData.pipelineDbItemDefault);
+    } else if (props !== null && props !== void 0 && props.pipelineDbItem) {
+      setPipelineDbItemProxy(props.pipelineDbItem);
     }
   }, [pipelineDbItem, useData === null || useData === void 0 ? void 0 : useData.pipelineDbItemDefault]);
   var handleOptionClickConfirm = _react["default"].useCallback(function (e) {
