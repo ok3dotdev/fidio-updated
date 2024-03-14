@@ -1,5 +1,6 @@
 "use strict";
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,6 +17,10 @@ var _Functions = require("../ecommerce/shop/Functions");
 var _uuid = require("uuid");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -24,7 +29,6 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -32,7 +36,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } // Survey.js
 var Module = function Module(props) {
-  var _backStageItem$bg, _backStageItem$color, _backStageItem$input, _backStageItem$input2, _backStageItem$input3, _backStageItem$input4, _backStageItem$input5, _backStageItem$input6, _backStageItem$confir, _backStageItem$confir2, _backStageItem$confir3, _currentStageItem$bg, _currentStageItem$col, _currentStageItem$inp, _currentStageItem$inp2, _currentStageItem$inp3, _currentStageItem$inp4, _currentStageItem$inp5, _currentStageItem$inp6, _currentStageItem$con, _currentStageItem$pip4, _currentStageItem$con2, _currentStageItem$con3, _currentStageItem$con4, _nextStageItem$bg, _nextStageItem$color, _nextStageItem$input, _nextStageItem$input2, _nextStageItem$input3, _nextStageItem$input4, _nextStageItem$input5, _nextStageItem$input6, _nextStageItem$confir, _nextStageItem$confir2, _nextStageItem$confir3;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -119,6 +122,14 @@ var Module = function Module(props) {
       setComponentDidMount(true);
     }
   }, [componentDidMount, props === null || props === void 0 ? void 0 : props.imgCache]);
+  var setAnswersProxy = function setAnswersProxy(useAnswers) {
+    if (props.setSurveyState && props.surveyState) {
+      var temp = props.surveyState;
+      temp.answers = useAnswers;
+      props.setSurveyState(temp);
+    }
+    setAnswers(useAnswers);
+  };
   var setCurrentStageProxy = function setCurrentStageProxy(stage) {
     var _useData$stages$stage;
     if (props.setSurveyState && props.surveyState) {
@@ -216,9 +227,9 @@ var Module = function Module(props) {
     if (currentStageItem !== null && currentStageItem !== void 0 && (_currentStageItem$pip = currentStageItem.pipeline) !== null && _currentStageItem$pip !== void 0 && _currentStageItem$pip.length) {
       for (var i = 0; i < currentStageItem.pipeline.length; i++) {
         var _currentStageItem$pip2, _currentStageItem$pip3;
-        console.log(_typeof(currentStageItem.pipeline[i].input.validation));
-        if ((_currentStageItem$pip2 = currentStageItem.pipeline[i]) !== null && _currentStageItem$pip2 !== void 0 && _currentStageItem$pip2.input && (_currentStageItem$pip3 = currentStageItem.pipeline[i].input) !== null && _currentStageItem$pip3 !== void 0 && _currentStageItem$pip3.validation && typeof currentStageItem.pipeline[i].input.validation === 'function') {
-          var message2 = currentStageItem.pipeline[i].input.validation(currentStageItem.pipeline[i], pipelineObject[currentStageItem.pipeline[i].input["var"]]);
+        if ((_currentStageItem$pip2 = currentStageItem.pipeline[i]) !== null && _currentStageItem$pip2 !== void 0 && _currentStageItem$pip2.input && (_currentStageItem$pip3 = currentStageItem.pipeline[i]) !== null && _currentStageItem$pip3 !== void 0 && (_currentStageItem$pip3 = _currentStageItem$pip3.input) !== null && _currentStageItem$pip3 !== void 0 && _currentStageItem$pip3.validation && typeof currentStageItem.pipeline[i].input.validation === 'function') {
+          var _currentStageItem$pip4;
+          var message2 = (_currentStageItem$pip4 = currentStageItem.pipeline[i]) === null || _currentStageItem$pip4 === void 0 || (_currentStageItem$pip4 = _currentStageItem$pip4.input) === null || _currentStageItem$pip4 === void 0 ? void 0 : _currentStageItem$pip4.validation(currentStageItem.pipeline[i], pipelineObject[currentStageItem.pipeline[i].input["var"]]);
           if (message2) {
             console.log(message2);
             var _temp = errorLog;
@@ -255,7 +266,7 @@ var Module = function Module(props) {
           }
           _temp2[currentStage].question = question;
           _temp2[currentStage].answer = value;
-          setAnswers(_temp2);
+          setAnswersProxy(_temp2);
         }
         if (useData !== null && useData !== void 0 && (_useData$stages$_goto = useData.stages[_goto3]) !== null && _useData$stages$_goto !== void 0 && _useData$stages$_goto.input && inputRef !== null && inputRef !== void 0 && inputRef.current) {
           if (Object.prototype.hasOwnProperty.call(useData === null || useData === void 0 ? void 0 : useData.stages[_goto3].input, 'default')) {
@@ -386,7 +397,7 @@ var Module = function Module(props) {
       temp2[currentStage].pipeline = {};
     }
     temp2[currentStage].pipeline[useVar] = value;
-    setAnswers(temp2);
+    setAnswersProxy(temp2);
     setPipelineObjectProxy(temp);
   };
   var handleKeyDown = _react["default"].useCallback(function (e) {
@@ -540,9 +551,34 @@ var Module = function Module(props) {
     });
   };
   var resolveImg = function resolveImg(m) {
-    var _m$input, _props$cdn, _props$cdn2, _m$input2;
-    if (imgCache.get(m === null || m === void 0 || (_m$input = m.input) === null || _m$input === void 0 ? void 0 : _m$input["var"])) {
-      fileToDataUrl(imgCache.get(m.input["var"]), m.input["var"]);
+    var _props$cdn, _props$cdn2, _m$input2;
+    var lastMatch;
+    // Find last match in imgFor for most recent updated
+    for (var i = 0; i < imgFor.length; i++) {
+      var _m$input;
+      if ((m === null || m === void 0 || (_m$input = m.input) === null || _m$input === void 0 ? void 0 : _m$input["var"]) === imgFor[i].modif) {
+        lastMatch = imgFor[i].name;
+      }
+    }
+    // Find only image types
+    var imageEntries = _toConsumableArray(imgCache.entries()).filter(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+        key = _ref4[0],
+        value = _ref4[1];
+      return key === 'image';
+    });
+    var f;
+    // Resolve last match for last used image file
+    imageEntries.forEach(function (_ref5, index) {
+      var _ref6 = _slicedToArray(_ref5, 2),
+        key = _ref6[0],
+        value = _ref6[1];
+      if (lastMatch === value.name) {
+        f = value;
+      }
+    });
+    if (f) {
+      fileToDataUrl(f, m.input["var"]);
     }
     var useFile = "".concat(m.input["var"] === 'featureImg' && bgImg ? "".concat(props === null || props === void 0 || (_props$cdn = props.cdn) === null || _props$cdn === void 0 ? void 0 : _props$cdn["static"], "/").concat(bgImg) : m.input["var"] === 'leadImg' && leadImg ? "".concat(props === null || props === void 0 || (_props$cdn2 = props.cdn) === null || _props$cdn2 === void 0 ? void 0 : _props$cdn2["static"], "/").concat(leadImg) : 'img/default/greythumb.jpg');
     return /*#__PURE__*/_react["default"].createElement("img", {
@@ -557,287 +593,193 @@ var Module = function Module(props) {
       selectimg: m === null || m === void 0 || (_m$input2 = m.input) === null || _m$input2 === void 0 ? void 0 : _m$input2["var"]
     });
   };
+  var resolveComponent = function resolveComponent(m) {
+    if (m !== null && m !== void 0 && m.component && typeof m.component === 'function') {
+      var UseComponent = m.component;
+      return /*#__PURE__*/_react["default"].createElement(UseComponent, _extends({}, props, {
+        m: m
+      }));
+    }
+  };
+  var resolveStageItem = function resolveStageItem(useStageItem, useAnimatingBack, useStyles, useAnimatingNext, useKeepCurrent, useStage) {
+    var _useStageItem$bg, _useStageItem$color, _useStageItem$input, _useStageItem$input2, _useStageItem$input3, _useStageItem$input4, _useStageItem$input5, _useStageItem$input6, _useStageItem$confirm, _answers$useStage, _useStageItem$pipelin, _useStageItem$confirm2, _useStageItem$confirm3, _useStageItem$confirm4;
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      className: "".concat(_SurveyModule["default"][useStyles], " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext && useAnimatingNext ? "".concat(_SurveyModule["default"][useAnimatingNext]) : null, " ").concat(animatingBack && useAnimatingBack ? "".concat(_SurveyModule["default"][useAnimatingBack]) : null, " ").concat(keepCurrent && useKeepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.className),
+      style: {
+        background: (_useStageItem$bg = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.bg) !== null && _useStageItem$bg !== void 0 ? _useStageItem$bg : null,
+        color: (_useStageItem$color = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.color) !== null && _useStageItem$color !== void 0 ? _useStageItem$color : null
+      }
+    }, /*#__PURE__*/_react["default"].createElement("h1", {
+      className: _SurveyModule["default"].title
+    }, useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label), (useStageItem === null || useStageItem === void 0 || (_useStageItem$input = useStageItem.input) === null || _useStageItem$input === void 0 ? void 0 : _useStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
+      className: _SurveyModule["default"].survey__optionsList
+    }, useStageItem === null || useStageItem === void 0 || (_useStageItem$input2 = useStageItem.input) === null || _useStageItem$input2 === void 0 ? void 0 : _useStageItem$input2.options.map(function (option) {
+      return /*#__PURE__*/_react["default"].createElement("li", {
+        key: option.label
+      }, /*#__PURE__*/_react["default"].createElement("button", {
+        className: _SurveyModule["default"].survey__optionButton,
+        onClick: handleOptionClick,
+        "goto": option["goto"],
+        label: option.label,
+        question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
+        value: option.label
+      }, option.label));
+    })) : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input3 = useStageItem.input) === null || _useStageItem$input3 === void 0 ? void 0 : _useStageItem$input3.type) === 'number' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
+      type: "number",
+      className: "".concat(_SurveyModule["default"].numberInput),
+      defaultValue: useStageItem === null || useStageItem === void 0 || (_useStageItem$input4 = useStageItem.input) === null || _useStageItem$input4 === void 0 ? void 0 : _useStageItem$input4["default"],
+      ref: inputRef
+    })) : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input5 = useStageItem.input) === null || _useStageItem$input5 === void 0 ? void 0 : _useStageItem$input5.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
+      type: "text",
+      className: "".concat(_SurveyModule["default"].textInput),
+      placeholder: useStageItem === null || useStageItem === void 0 || (_useStageItem$input6 = useStageItem.input) === null || _useStageItem$input6 === void 0 ? void 0 : _useStageItem$input6["default"],
+      minRows: 3,
+      ref: inputRef,
+      onKeyDown: handleKeyDown,
+      "goto": useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm = useStageItem.confirm) === null || _useStageItem$confirm === void 0 ? void 0 : _useStageItem$confirm["goto"],
+      question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
+      defaultValue: (_answers$useStage = answers[useStage]) === null || _answers$useStage === void 0 ? void 0 : _answers$useStage.answer
+    })) : useStageItem !== null && useStageItem !== void 0 && useStageItem.component && typeof useStageItem.component === 'function' ? /*#__PURE__*/_react["default"].createElement("div", null, resolveComponent(useStageItem)) : null, useStageItem !== null && useStageItem !== void 0 && (_useStageItem$pipelin = useStageItem.pipeline) !== null && _useStageItem$pipelin !== void 0 && _useStageItem$pipelin.map ? useStageItem.pipeline.map(function (m, i) {
+      var _m$label, _m$input3, _m$input4, _m$input5, _m$input$rows, _m$input6, _m$input7, _m$input8, _m$input9, _m$input10, _m$input11, _m$input12, _pipelineDbItem$detai, _m$input13, _m$input14, _m$input15, _m$input16, _m$input17, _m$input18, _m$input19, _m$input20, _m$input21, _m$input22, _m$input23, _m$input24, _m$input25, _m$input26, _m$height, _m$width, _m$input27;
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        key: i,
+        style: {
+          marginBottom: '.5rem'
+        }
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        style: {
+          marginBottom: '.125rem'
+        }
+      }, (_m$label = m === null || m === void 0 ? void 0 : m.label) !== null && _m$label !== void 0 ? _m$label : ''), /*#__PURE__*/_react["default"].createElement("div", null, (m === null || m === void 0 || (_m$input3 = m.input) === null || _m$input3 === void 0 ? void 0 : _m$input3.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
+      }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
+        type: "text",
+        className: "".concat(_SurveyModule["default"].textInput),
+        placeholder: m === null || m === void 0 || (_m$input4 = m.input) === null || _m$input4 === void 0 ? void 0 : _m$input4["default"],
+        onInput: handleKeyDown,
+        "var": m === null || m === void 0 || (_m$input5 = m.input) === null || _m$input5 === void 0 ? void 0 : _m$input5["var"],
+        pipeline: "true",
+        minRows: (_m$input$rows = m === null || m === void 0 || (_m$input6 = m.input) === null || _m$input6 === void 0 ? void 0 : _m$input6.rows) !== null && _m$input$rows !== void 0 ? _m$input$rows : 1,
+        usedefault: pipelineObject[m === null || m === void 0 || (_m$input7 = m.input) === null || _m$input7 === void 0 ? void 0 : _m$input7["var"]],
+        surveyclear: "true"
+      })) : (m === null || m === void 0 || (_m$input8 = m.input) === null || _m$input8 === void 0 ? void 0 : _m$input8.type) === 'datetime-local' ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
+      }, /*#__PURE__*/_react["default"].createElement("input", {
+        type: "datetime-local",
+        placeholder: m === null || m === void 0 || (_m$input9 = m.input) === null || _m$input9 === void 0 ? void 0 : _m$input9["default"],
+        onInput: handleKeyDown,
+        "var": m === null || m === void 0 || (_m$input10 = m.input) === null || _m$input10 === void 0 ? void 0 : _m$input10["var"],
+        pipeline: "true",
+        surveyclear: "true",
+        usedefault: pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]]
+      })) : (m === null || m === void 0 || (_m$input12 = m.input) === null || _m$input12 === void 0 ? void 0 : _m$input12.type) === 'lineup' ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
+      }, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
+        product: pipelineDbItem,
+        editing: pipelineDbItem,
+        editingOptionsMeta: (_pipelineDbItem$detai = pipelineDbItem === null || pipelineDbItem === void 0 ? void 0 : pipelineDbItem.detailmeta) !== null && _pipelineDbItem$detai !== void 0 ? _pipelineDbItem$detai : null,
+        setOptionsMetaData: setOptionsMetaData,
+        currentLineupEditing: currentLineupEditing,
+        setCurrentLineupEditing: setCurrentLineupEditing
+      }))) : (m === null || m === void 0 || (_m$input13 = m.input) === null || _m$input13 === void 0 ? void 0 : _m$input13.type) === 'price' ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
+      }, /*#__PURE__*/_react["default"].createElement("span", null, "$"), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
+        type: "text",
+        style: {
+          width: '100%'
+        },
+        onChange: setCurrentPrice,
+        "var": m === null || m === void 0 || (_m$input14 = m.input) === null || _m$input14 === void 0 ? void 0 : _m$input14["var"],
+        pipeline: "true",
+        surveyclear: "true",
+        method: m === null || m === void 0 || (_m$input15 = m.input) === null || _m$input15 === void 0 ? void 0 : _m$input15.method,
+        usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input16 = m.input) === null || _m$input16 === void 0 ? void 0 : _m$input16["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input17 = m.input) === null || _m$input17 === void 0 ? void 0 : _m$input17["var"]] !== null ? _ecommerce.westernMoneyFormat.format(pipelineObject[m === null || m === void 0 || (_m$input18 = m.input) === null || _m$input18 === void 0 ? void 0 : _m$input18["var"]]) : '10.00'
+      }))) : (m === null || m === void 0 || (_m$input19 = m.input) === null || _m$input19 === void 0 ? void 0 : _m$input19.type) === 'quantity' ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
+      }, /*#__PURE__*/_react["default"].createElement("span", null, "Qty"), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
+        type: "text",
+        style: {
+          width: '100%'
+        },
+        onChange: setCurrentQuantity,
+        "var": m === null || m === void 0 || (_m$input20 = m.input) === null || _m$input20 === void 0 ? void 0 : _m$input20["var"],
+        pipeline: "true",
+        surveyclear: "true",
+        method: m === null || m === void 0 || (_m$input21 = m.input) === null || _m$input21 === void 0 ? void 0 : _m$input21.method,
+        usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input22 = m.input) === null || _m$input22 === void 0 ? void 0 : _m$input22["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input23 = m.input) === null || _m$input23 === void 0 ? void 0 : _m$input23["var"]] !== null ? pipelineObject[m === null || m === void 0 || (_m$input24 = m.input) === null || _m$input24 === void 0 ? void 0 : _m$input24["var"]] : '100'
+      }))) : (m === null || m === void 0 || (_m$input25 = m.input) === null || _m$input25 === void 0 ? void 0 : _m$input25.type) === 'image' && ['leadImg', 'featureImg'].indexOf(m === null || m === void 0 || (_m$input26 = m.input) === null || _m$input26 === void 0 ? void 0 : _m$input26["var"]) > -1 ? /*#__PURE__*/_react["default"].createElement("div", {
+        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        style: {
+          height: (_m$height = m === null || m === void 0 ? void 0 : m.height) !== null && _m$height !== void 0 ? _m$height : '200px',
+          width: (_m$width = m === null || m === void 0 ? void 0 : m.width) !== null && _m$width !== void 0 ? _m$width : '200px'
+        }
+      }, resolveImg(m)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "flex gap-p2 ".concat(_SurveyModule["default"].pseudoButton),
+        style: {
+          alignItems: 'center',
+          fontSize: '.8rem',
+          marginTop: '.5rem'
+        },
+        onClick: addTempFile,
+        modif: m === null || m === void 0 || (_m$input27 = m.input) === null || _m$input27 === void 0 ? void 0 : _m$input27["var"]
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "material-icons",
+        style: {
+          alignSelf: 'center'
+        }
+      }, "add"), /*#__PURE__*/_react["default"].createElement("div", null, m === null || m === void 0 ? void 0 : m.note)), /*#__PURE__*/_react["default"].createElement("input", {
+        style: {
+          display: 'none'
+        },
+        type: "file",
+        onChange: handleNewFile,
+        selectmodif: m.input["var"]
+      })) : m !== null && m !== void 0 && m.component ? /*#__PURE__*/_react["default"].createElement("div", null, resolveComponent(m)) : null));
+    }) : null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "error",
+      ref: currentError,
+      style: {
+        opacity: 0
+      }
+    }, errorLog[useStage])), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "flex",
+      style: {
+        marginTop: '.5rem',
+        justifyContent: 'space-between'
+      }
+    }, /*#__PURE__*/_react["default"].createElement("button", {
+      className: _SurveyModule["default"].confirmButton,
+      onClick: handleOptionClickConfirm,
+      "goto": useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm2 = useStageItem.confirm) === null || _useStageItem$confirm2 === void 0 ? void 0 : _useStageItem$confirm2["goto"],
+      label: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
+      value: 'confirm',
+      question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
+      style: {
+        opacity: useStageItem !== null && useStageItem !== void 0 && useStageItem.confirm ? 1 : 0,
+        transition: 0
+      }
+    }, useStageItem !== null && useStageItem !== void 0 && (_useStageItem$confirm3 = useStageItem.confirm) !== null && _useStageItem$confirm3 !== void 0 && _useStageItem$confirm3.label ? useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.confirm.label : (useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm4 = useStageItem.confirm) === null || _useStageItem$confirm4 === void 0 ? void 0 : _useStageItem$confirm4["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !(useStageItem !== null && useStageItem !== void 0 && useStageItem.submit) && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
+      onClick: handleGoBack,
+      className: "".concat(_SurveyModule["default"].backButton),
+      style: {
+        transition: 0
+      }
+    }, "Back") : null));
+  };
   var bgImg = pipelineDbItem !== null && pipelineDbItem !== void 0 && pipelineDbItem.images ? pipelineDbItem.images.find(function (m) {
     return m === null || m === void 0 ? void 0 : m.bgImg;
   }) : null;
   var leadImg = pipelineDbItem.images ? pipelineDbItem.images.find(function (m) {
     return m === null || m === void 0 ? void 0 : m.leadImg;
   }) : null;
-  console.log(currentStage, answers, backList, next, submitted, props);
+  console.log(currentStage, answers, backList, next, submitted, props, currentStageItem);
   console.log('Pipeline Object', pipelineObject, pipelineDbItem, back, next);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].survey__container, " ").concat(props === null || props === void 0 ? void 0 : props.className),
+    className: _SurveyModule["default"].survey__container,
     style: {
       height: props !== null && props !== void 0 && props.height ? "".concat(props.height, "px") : '100vh'
     }
-  }, backStageItem ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].backItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackBack) : null, " ").concat(backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.className),
-    style: {
-      background: (_backStageItem$bg = backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.bg) !== null && _backStageItem$bg !== void 0 ? _backStageItem$bg : null,
-      color: (_backStageItem$color = backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.color) !== null && _backStageItem$color !== void 0 ? _backStageItem$color : null
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h1", {
-    className: _SurveyModule["default"].survey__title
-  }, backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label), backStageItem !== null && backStageItem !== void 0 && backStageItem.pipeline ? /*#__PURE__*/_react["default"].createElement("div", null) : (backStageItem === null || backStageItem === void 0 || (_backStageItem$input = backStageItem.input) === null || _backStageItem$input === void 0 ? void 0 : _backStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
-    className: _SurveyModule["default"].survey__optionsList
-  }, backStageItem === null || backStageItem === void 0 || (_backStageItem$input2 = backStageItem.input) === null || _backStageItem$input2 === void 0 ? void 0 : _backStageItem$input2.options.map(function (option) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: option.label
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _SurveyModule["default"].survey__optionButton,
-      onClick: handleOptionClick,
-      "goto": option["goto"],
-      label: option.label,
-      question: backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label,
-      value: option.label
-    }, option.label));
-  })) : (backStageItem === null || backStageItem === void 0 || (_backStageItem$input3 = backStageItem.input) === null || _backStageItem$input3 === void 0 ? void 0 : _backStageItem$input3.type) === 'number' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    className: "".concat(_SurveyModule["default"].numberInput),
-    defaultValue: backStageItem === null || backStageItem === void 0 || (_backStageItem$input4 = backStageItem.input) === null || _backStageItem$input4 === void 0 ? void 0 : _backStageItem$input4["default"]
-  })) : (backStageItem === null || backStageItem === void 0 || (_backStageItem$input5 = backStageItem.input) === null || _backStageItem$input5 === void 0 ? void 0 : _backStageItem$input5.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    type: "text",
-    className: "".concat(_SurveyModule["default"].textInput),
-    placeholder: backStageItem === null || backStageItem === void 0 || (_backStageItem$input6 = backStageItem.input) === null || _backStageItem$input6 === void 0 ? void 0 : _backStageItem$input6["default"],
-    minRows: 3
-  })) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex survey_confirmBackButtonContainer",
-    style: {
-      marginTop: '.5rem',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton"),
-    onClick: handleOptionClick,
-    "goto": backStageItem === null || backStageItem === void 0 || (_backStageItem$confir = backStageItem.confirm) === null || _backStageItem$confir === void 0 ? void 0 : _backStageItem$confir["goto"],
-    label: backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label,
-    value: 'confirm',
-    question: backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.label,
-    style: {
-      opacity: backStageItem !== null && backStageItem !== void 0 && backStageItem.confirm ? 1 : 0,
-      transition: 0
-    }
-  }, backStageItem !== null && backStageItem !== void 0 && (_backStageItem$confir2 = backStageItem.confirm) !== null && _backStageItem$confir2 !== void 0 && _backStageItem$confir2.label ? backStageItem === null || backStageItem === void 0 ? void 0 : backStageItem.confirm.label : (backStageItem === null || backStageItem === void 0 || (_backStageItem$confir3 = backStageItem.confirm) === null || _backStageItem$confir3 === void 0 ? void 0 : _backStageItem$confir3["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleGoBack,
-    className: "".concat(_SurveyModule["default"].backButton, " survey_backButton"),
-    style: {
-      transition: 0
-    }
-  }, "Back") : null)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].currentItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextCurrent) : null, " ").concat(animatingBack ? "".concat(_SurveyModule["default"].animatingBackCurrent) : null, " ").concat(keepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.className),
-    style: {
-      background: (_currentStageItem$bg = currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.bg) !== null && _currentStageItem$bg !== void 0 ? _currentStageItem$bg : null,
-      color: (_currentStageItem$col = currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.color) !== null && _currentStageItem$col !== void 0 ? _currentStageItem$col : null
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h1", {
-    className: _SurveyModule["default"].title
-  }, currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label), (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp = currentStageItem.input) === null || _currentStageItem$inp === void 0 ? void 0 : _currentStageItem$inp.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
-    className: _SurveyModule["default"].survey__optionsList
-  }, currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp2 = currentStageItem.input) === null || _currentStageItem$inp2 === void 0 ? void 0 : _currentStageItem$inp2.options.map(function (option) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: option.label
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _SurveyModule["default"].survey__optionButton,
-      onClick: handleOptionClick,
-      "goto": option["goto"],
-      label: option.label,
-      question: currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label,
-      value: option.label
-    }, option.label));
-  })) : (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp3 = currentStageItem.input) === null || _currentStageItem$inp3 === void 0 ? void 0 : _currentStageItem$inp3.type) === 'number' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    className: "".concat(_SurveyModule["default"].numberInput),
-    defaultValue: currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp4 = currentStageItem.input) === null || _currentStageItem$inp4 === void 0 ? void 0 : _currentStageItem$inp4["default"],
-    ref: inputRef
-  })) : (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp5 = currentStageItem.input) === null || _currentStageItem$inp5 === void 0 ? void 0 : _currentStageItem$inp5.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    type: "text",
-    className: "".concat(_SurveyModule["default"].textInput),
-    placeholder: currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$inp6 = currentStageItem.input) === null || _currentStageItem$inp6 === void 0 ? void 0 : _currentStageItem$inp6["default"],
-    minRows: 3,
-    ref: inputRef,
-    onKeyDown: handleKeyDown,
-    "goto": currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$con = currentStageItem.confirm) === null || _currentStageItem$con === void 0 ? void 0 : _currentStageItem$con["goto"],
-    question: currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label
-  })) : null, currentStageItem !== null && currentStageItem !== void 0 && (_currentStageItem$pip4 = currentStageItem.pipeline) !== null && _currentStageItem$pip4 !== void 0 && _currentStageItem$pip4.map ? currentStageItem.pipeline.map(function (m, i) {
-    var _m$label, _m$input3, _m$input4, _m$input5, _m$input$rows, _m$input6, _m$input7, _m$input8, _m$input9, _m$input10, _m$input11, _m$input12, _pipelineDbItem$detai, _m$input13, _m$input14, _m$input15, _m$input16, _m$input17, _m$input18, _m$input19, _m$input20, _m$input21, _m$input22, _m$input23, _m$input24, _m$input25, _m$input26, _m$height, _m$width, _m$input27;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      key: i,
-      style: {
-        marginBottom: '.5rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("label", {
-      style: {
-        marginBottom: '.125rem'
-      }
-    }, (_m$label = m === null || m === void 0 ? void 0 : m.label) !== null && _m$label !== void 0 ? _m$label : ''), /*#__PURE__*/_react["default"].createElement("div", null, (m === null || m === void 0 || (_m$input3 = m.input) === null || _m$input3 === void 0 ? void 0 : _m$input3.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-    }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-      type: "text",
-      className: "".concat(_SurveyModule["default"].textInput),
-      placeholder: m === null || m === void 0 || (_m$input4 = m.input) === null || _m$input4 === void 0 ? void 0 : _m$input4["default"],
-      onInput: handleKeyDown,
-      "var": m === null || m === void 0 || (_m$input5 = m.input) === null || _m$input5 === void 0 ? void 0 : _m$input5["var"],
-      pipeline: "true",
-      minRows: (_m$input$rows = m === null || m === void 0 || (_m$input6 = m.input) === null || _m$input6 === void 0 ? void 0 : _m$input6.rows) !== null && _m$input$rows !== void 0 ? _m$input$rows : 1,
-      usedefault: pipelineObject[m === null || m === void 0 || (_m$input7 = m.input) === null || _m$input7 === void 0 ? void 0 : _m$input7["var"]],
-      surveyclear: "true"
-    })) : (m === null || m === void 0 || (_m$input8 = m.input) === null || _m$input8 === void 0 ? void 0 : _m$input8.type) === 'datetime-local' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      type: "datetime-local",
-      placeholder: m === null || m === void 0 || (_m$input9 = m.input) === null || _m$input9 === void 0 ? void 0 : _m$input9["default"],
-      onInput: handleKeyDown,
-      "var": m === null || m === void 0 || (_m$input10 = m.input) === null || _m$input10 === void 0 ? void 0 : _m$input10["var"],
-      pipeline: "true",
-      surveyclear: "true",
-      usedefault: pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]],
-      className: "survey_datePicker"
-    })) : (m === null || m === void 0 || (_m$input12 = m.input) === null || _m$input12 === void 0 ? void 0 : _m$input12.type) === 'lineup' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-    }, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
-      product: pipelineDbItem,
-      editing: pipelineDbItem,
-      editingOptionsMeta: (_pipelineDbItem$detai = pipelineDbItem === null || pipelineDbItem === void 0 ? void 0 : pipelineDbItem.detailmeta) !== null && _pipelineDbItem$detai !== void 0 ? _pipelineDbItem$detai : null,
-      setOptionsMetaData: setOptionsMetaData,
-      currentLineupEditing: currentLineupEditing,
-      setCurrentLineupEditing: setCurrentLineupEditing
-    }))) : (m === null || m === void 0 || (_m$input13 = m.input) === null || _m$input13 === void 0 ? void 0 : _m$input13.type) === 'price' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
-    }, /*#__PURE__*/_react["default"].createElement("span", null, "$"), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
-      type: "text",
-      style: {
-        width: '100%'
-      },
-      onChange: setCurrentPrice,
-      "var": m === null || m === void 0 || (_m$input14 = m.input) === null || _m$input14 === void 0 ? void 0 : _m$input14["var"],
-      pipeline: "true",
-      surveyclear: "true",
-      method: m === null || m === void 0 || (_m$input15 = m.input) === null || _m$input15 === void 0 ? void 0 : _m$input15.method,
-      usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input16 = m.input) === null || _m$input16 === void 0 ? void 0 : _m$input16["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input17 = m.input) === null || _m$input17 === void 0 ? void 0 : _m$input17["var"]] !== null ? _ecommerce.westernMoneyFormat.format(pipelineObject[m === null || m === void 0 || (_m$input18 = m.input) === null || _m$input18 === void 0 ? void 0 : _m$input18["var"]]) : '10.00'
-    }))) : (m === null || m === void 0 || (_m$input19 = m.input) === null || _m$input19 === void 0 ? void 0 : _m$input19.type) === 'quantity' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
-    }, /*#__PURE__*/_react["default"].createElement("span", null, "Qty"), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
-      type: "text",
-      style: {
-        width: '100%'
-      },
-      onChange: setCurrentQuantity,
-      "var": m === null || m === void 0 || (_m$input20 = m.input) === null || _m$input20 === void 0 ? void 0 : _m$input20["var"],
-      pipeline: "true",
-      surveyclear: "true",
-      method: m === null || m === void 0 || (_m$input21 = m.input) === null || _m$input21 === void 0 ? void 0 : _m$input21.method,
-      usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input22 = m.input) === null || _m$input22 === void 0 ? void 0 : _m$input22["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input23 = m.input) === null || _m$input23 === void 0 ? void 0 : _m$input23["var"]] !== null ? pipelineObject[m === null || m === void 0 || (_m$input24 = m.input) === null || _m$input24 === void 0 ? void 0 : _m$input24["var"]] : '100'
-    }))) : (m === null || m === void 0 || (_m$input25 = m.input) === null || _m$input25 === void 0 ? void 0 : _m$input25.type) === 'image' && ['leadImg', 'featureImg'].indexOf(m === null || m === void 0 || (_m$input26 = m.input) === null || _m$input26 === void 0 ? void 0 : _m$input26["var"]) > -1 ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        height: (_m$height = m === null || m === void 0 ? void 0 : m.height) !== null && _m$height !== void 0 ? _m$height : '200px',
-        width: (_m$width = m === null || m === void 0 ? void 0 : m.width) !== null && _m$width !== void 0 ? _m$width : '200px'
-      }
-    }, resolveImg(m)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p2 ".concat(_SurveyModule["default"].pseudoButton),
-      style: {
-        alignItems: 'center',
-        fontSize: '.8rem',
-        marginTop: '.5rem'
-      },
-      onClick: addTempFile,
-      modif: m === null || m === void 0 || (_m$input27 = m.input) === null || _m$input27 === void 0 ? void 0 : _m$input27["var"]
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "material-icons",
-      style: {
-        alignSelf: 'center'
-      }
-    }, "add"), /*#__PURE__*/_react["default"].createElement("div", null, m === null || m === void 0 ? void 0 : m.note)), /*#__PURE__*/_react["default"].createElement("input", {
-      style: {
-        display: 'none'
-      },
-      type: "file",
-      onChange: handleNewFile,
-      selectmodif: m.input["var"]
-    })) : null));
-  }) : null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "error",
-    ref: currentError,
-    style: {
-      opacity: 0
-    }
-  }, errorLog[currentStage])), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex survey_confirmBackButtonContainer",
-    style: {
-      marginTop: '.5rem',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton"),
-    onClick: handleOptionClickConfirm,
-    "goto": currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$con2 = currentStageItem.confirm) === null || _currentStageItem$con2 === void 0 ? void 0 : _currentStageItem$con2["goto"],
-    label: currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label,
-    value: 'confirm',
-    question: currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.label,
-    style: {
-      opacity: currentStageItem !== null && currentStageItem !== void 0 && currentStageItem.confirm ? 1 : 0,
-      transition: 0
-    }
-  }, currentStageItem !== null && currentStageItem !== void 0 && (_currentStageItem$con3 = currentStageItem.confirm) !== null && _currentStageItem$con3 !== void 0 && _currentStageItem$con3.label ? currentStageItem === null || currentStageItem === void 0 ? void 0 : currentStageItem.confirm.label : (currentStageItem === null || currentStageItem === void 0 || (_currentStageItem$con4 = currentStageItem.confirm) === null || _currentStageItem$con4 === void 0 ? void 0 : _currentStageItem$con4["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !(currentStageItem !== null && currentStageItem !== void 0 && currentStageItem.submit) && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleGoBack,
-    className: "".concat(_SurveyModule["default"].backButton, " survey_backButton"),
-    style: {
-      transition: 0
-    }
-  }, "Back") : null)), nextStageItem ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SurveyModule["default"].nextItem, " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext ? "".concat(_SurveyModule["default"].animatingNextNext) : null, " ").concat(nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.className),
-    style: {
-      background: (_nextStageItem$bg = nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.bg) !== null && _nextStageItem$bg !== void 0 ? _nextStageItem$bg : null,
-      color: (_nextStageItem$color = nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.color) !== null && _nextStageItem$color !== void 0 ? _nextStageItem$color : null
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h1", {
-    className: _SurveyModule["default"].survey__title
-  }, nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label), nextStageItem !== null && nextStageItem !== void 0 && nextStageItem.pipeline ? /*#__PURE__*/_react["default"].createElement("div", null) : (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input = nextStageItem.input) === null || _nextStageItem$input === void 0 ? void 0 : _nextStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
-    className: _SurveyModule["default"].survey__optionsList
-  }, nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input2 = nextStageItem.input) === null || _nextStageItem$input2 === void 0 ? void 0 : _nextStageItem$input2.options.map(function (option) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: option.label
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _SurveyModule["default"].survey__optionButton,
-      onClick: handleOptionClick,
-      "goto": option["goto"],
-      label: option.label,
-      question: nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label,
-      value: option.label
-    }, option.label));
-  })) : (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input3 = nextStageItem.input) === null || _nextStageItem$input3 === void 0 ? void 0 : _nextStageItem$input3.type) === 'number' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    className: "".concat(_SurveyModule["default"].numberInput),
-    defaultValue: nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input4 = nextStageItem.input) === null || _nextStageItem$input4 === void 0 ? void 0 : _nextStageItem$input4["default"]
-  })) : (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input5 = nextStageItem.input) === null || _nextStageItem$input5 === void 0 ? void 0 : _nextStageItem$input5.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    type: "text",
-    className: "".concat(_SurveyModule["default"].textInput),
-    placeholder: nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$input6 = nextStageItem.input) === null || _nextStageItem$input6 === void 0 ? void 0 : _nextStageItem$input6["default"],
-    minRows: 3
-  })) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex survey_confirmBackButtonContainer",
-    style: {
-      marginTop: '.5rem',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton"),
-    onClick: handleOptionClick,
-    "goto": nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$confir = nextStageItem.confirm) === null || _nextStageItem$confir === void 0 ? void 0 : _nextStageItem$confir["goto"],
-    label: nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label,
-    value: 'confirm',
-    question: nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.label,
-    style: {
-      opacity: nextStageItem !== null && nextStageItem !== void 0 && nextStageItem.confirm ? 1 : 0,
-      transition: 0
-    }
-  }, nextStageItem !== null && nextStageItem !== void 0 && (_nextStageItem$confir2 = nextStageItem.confirm) !== null && _nextStageItem$confir2 !== void 0 && _nextStageItem$confir2.label ? nextStageItem === null || nextStageItem === void 0 ? void 0 : nextStageItem.confirm.label : (nextStageItem === null || nextStageItem === void 0 || (_nextStageItem$confir3 = nextStageItem.confirm) === null || _nextStageItem$confir3 === void 0 ? void 0 : _nextStageItem$confir3["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !(nextStageItem !== null && nextStageItem !== void 0 && nextStageItem.submit) && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleGoBack,
-    className: "".concat(_SurveyModule["default"].backButton, " survey_backButton"),
-    style: {
-      transition: 0
-    }
-  }, "Back") : null)) : null);
+  }, back ? resolveStageItem(backStageItem, 'animatingBackBack', 'backItem', null, null, back) : null, resolveStageItem(currentStageItem, 'animatingBackCurrent', 'currentItem', 'animatingNextCurrent', true, currentStage), next ? resolveStageItem(nextStageItem, null, 'nextItem', 'animatingNextNext', null, next) : null);
 };
 var _default = exports["default"] = Module;
