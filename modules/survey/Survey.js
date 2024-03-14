@@ -604,13 +604,13 @@ var Module = function Module(props) {
   var resolveStageItem = function resolveStageItem(useStageItem, useAnimatingBack, useStyles, useAnimatingNext, useKeepCurrent, useStage) {
     var _useStageItem$bg, _useStageItem$color, _useStageItem$input, _useStageItem$input2, _useStageItem$input3, _useStageItem$input4, _useStageItem$input5, _useStageItem$input6, _useStageItem$confirm, _answers$useStage, _useStageItem$pipelin, _useStageItem$confirm2, _useStageItem$confirm3, _useStageItem$confirm4;
     return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SurveyModule["default"][useStyles], " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext && useAnimatingNext ? "".concat(_SurveyModule["default"][useAnimatingNext]) : null, " ").concat(animatingBack && useAnimatingBack ? "".concat(_SurveyModule["default"][useAnimatingBack]) : null, " ").concat(keepCurrent && useKeepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.className),
+      className: "".concat(_SurveyModule["default"][useStyles], " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext && useAnimatingNext ? "".concat(_SurveyModule["default"][useAnimatingNext]) : null, " ").concat(animatingBack && useAnimatingBack ? "".concat(_SurveyModule["default"][useAnimatingBack]) : null, " ").concat(keepCurrent && useKeepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.className, " survey_itemContainer"),
       style: {
         background: (_useStageItem$bg = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.bg) !== null && _useStageItem$bg !== void 0 ? _useStageItem$bg : null,
         color: (_useStageItem$color = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.color) !== null && _useStageItem$color !== void 0 ? _useStageItem$color : null
       }
     }, /*#__PURE__*/_react["default"].createElement("h1", {
-      className: _SurveyModule["default"].title
+      className: "".concat(_SurveyModule["default"].title, " survey_title")
     }, useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label), (useStageItem === null || useStageItem === void 0 || (_useStageItem$input = useStageItem.input) === null || _useStageItem$input === void 0 ? void 0 : _useStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
       className: _SurveyModule["default"].survey__optionsList
     }, useStageItem === null || useStageItem === void 0 || (_useStageItem$input2 = useStageItem.input) === null || _useStageItem$input2 === void 0 ? void 0 : _useStageItem$input2.options.map(function (option) {
@@ -643,12 +643,13 @@ var Module = function Module(props) {
       var _m$label, _m$input3, _m$input4, _m$input5, _m$input$rows, _m$input6, _m$input7, _m$input8, _m$input9, _m$input10, _m$input11, _m$input12, _pipelineDbItem$detai, _m$input13, _m$input14, _m$input15, _m$input16, _m$input17, _m$input18, _m$input19, _m$input20, _m$input21, _m$input22, _m$input23, _m$input24, _m$input25, _m$input26, _m$height, _m$width, _m$input27;
       return /*#__PURE__*/_react["default"].createElement("div", {
         key: i,
+        className: "survey_pipelineItemContainer",
         style: {
-          marginBottom: '.5rem'
+          marginBottom: '.25rem'
         }
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+      }, /*#__PURE__*/_react["default"].createElement("label", {
         style: {
-          marginBottom: '.125rem'
+          lineHeight: '1.5rem'
         }
       }, (_m$label = m === null || m === void 0 ? void 0 : m.label) !== null && _m$label !== void 0 ? _m$label : ''), /*#__PURE__*/_react["default"].createElement("div", null, (m === null || m === void 0 || (_m$input3 = m.input) === null || _m$input3 === void 0 ? void 0 : _m$input3.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", {
         className: "".concat(m === null || m === void 0 ? void 0 : m.className)
@@ -736,20 +737,22 @@ var Module = function Module(props) {
         onChange: handleNewFile,
         selectmodif: m.input["var"]
       })) : m !== null && m !== void 0 && m.component ? /*#__PURE__*/_react["default"].createElement("div", null, resolveComponent(m)) : null));
-    }) : null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    }) : null, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "survey_errorContainer"
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "error",
       ref: currentError,
       style: {
         opacity: 0
       }
     }, errorLog[useStage])), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex",
+      className: "flex survey_confirmBackButtonContainer",
       style: {
         marginTop: '.5rem',
         justifyContent: 'space-between'
       }
     }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: _SurveyModule["default"].confirmButton,
+      className: "".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton"),
       onClick: handleOptionClickConfirm,
       "goto": useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm2 = useStageItem.confirm) === null || _useStageItem$confirm2 === void 0 ? void 0 : _useStageItem$confirm2["goto"],
       label: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
@@ -761,7 +764,7 @@ var Module = function Module(props) {
       }
     }, useStageItem !== null && useStageItem !== void 0 && (_useStageItem$confirm3 = useStageItem.confirm) !== null && _useStageItem$confirm3 !== void 0 && _useStageItem$confirm3.label ? useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.confirm.label : (useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm4 = useStageItem.confirm) === null || _useStageItem$confirm4 === void 0 ? void 0 : _useStageItem$confirm4["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !(useStageItem !== null && useStageItem !== void 0 && useStageItem.submit) && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
       onClick: handleGoBack,
-      className: "".concat(_SurveyModule["default"].backButton),
+      className: "".concat(_SurveyModule["default"].backButton, " survey_backButton"),
       style: {
         transition: 0
       }
