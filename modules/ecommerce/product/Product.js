@@ -36,7 +36,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Module = function Module(props) {
-  var _props$editing, _props$product2, _props$editing2, _props$editing3, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref2, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$editingOptions, _props$product3, _props$product4, _props$product5, _props$product6, _props$product7, _props$product8, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product9;
+  var _props$editing, _props$product2, _props$editing2, _props$editing3, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref2, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$product3, _props$product4, _props$editingOptions, _props$product5, _props$product6, _props$product7, _props$product8, _props$product9, _props$product10, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product11;
   var _React$useState = _react["default"].useState(false),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     componentDidMount = _React$useState2[0],
@@ -515,8 +515,8 @@ var Module = function Module(props) {
     onInput: props.setOptionsMetaData,
     option: "eventDateDef",
     option2: "input",
-    defaultValue: props.product.detailmeta.eventDateDef.input
-  })), props.product.detailmeta.eventDateDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    defaultValue: props === null || props === void 0 || (_props$product3 = props.product) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.detailmeta) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.eventDateDef) === null || _props$product3 === void 0 ? void 0 : _props$product3.input
+  })), (props === null || props === void 0 || (_props$product4 = props.product) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.detailmeta) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.eventDateDef) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.dates) === null || _props$product4 === void 0 ? void 0 : _props$product4.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem',
@@ -588,13 +588,13 @@ var Module = function Module(props) {
     onInput: props.setOptionsMetaData,
     option: "livestreamDef",
     option2: "input",
-    defaultValue: props === null || props === void 0 || (_props$product3 = props.product) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.detailmeta) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.livestreamDef) === null || _props$product3 === void 0 ? void 0 : _props$product3.input
+    defaultValue: props === null || props === void 0 || (_props$product5 = props.product) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.detailmeta) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.livestreamDef) === null || _props$product5 === void 0 ? void 0 : _props$product5.input
   })), /*#__PURE__*/_react["default"].createElement("span", {
     className: "flex gap-p2",
     style: {
       marginBottom: '.25rem'
     }
-  }, (props === null || props === void 0 || (_props$product4 = props.product) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.detailmeta) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.livestreamDef) === null || _props$product4 === void 0 ? void 0 : _props$product4.dates.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, (props === null || props === void 0 || (_props$product6 = props.product) === null || _props$product6 === void 0 || (_props$product6 = _props$product6.detailmeta) === null || _props$product6 === void 0 || (_props$product6 = _props$product6.livestreamDef) === null || _props$product6 === void 0 ? void 0 : _props$product6.dates.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
@@ -605,7 +605,7 @@ var Module = function Module(props) {
     }, d ? (0, _util.getFormattedDate)(d, {
       pretty: true
     }) : '') : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null), (props === null || props === void 0 || (_props$product5 = props.product) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.detailmeta) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.livestreamDef) === null || _props$product5 === void 0 ? void 0 : _props$product5.tags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  })) : /*#__PURE__*/_react["default"].createElement("div", null), (props === null || props === void 0 || (_props$product7 = props.product) === null || _props$product7 === void 0 || (_props$product7 = _props$product7.detailmeta) === null || _props$product7 === void 0 || (_props$product7 = _props$product7.livestreamDef) === null || _props$product7 === void 0 ? void 0 : _props$product7.tags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
@@ -655,14 +655,14 @@ var Module = function Module(props) {
     defaultChecked: props.product.detailmeta.subscription,
     onChange: props.setOptionsMetaData,
     option: "subscription"
-  })), props !== null && props !== void 0 && (_props$product6 = props.product) !== null && _props$product6 !== void 0 && _props$product6.published ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), props !== null && props !== void 0 && (_props$product8 = props.product) !== null && _props$product8 !== void 0 && _props$product8.published ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 shareButton",
-    selectValue: "".concat(props !== null && props !== void 0 && (_props$product7 = props.product) !== null && _props$product7 !== void 0 && _props$product7.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null),
+    selectValue: "".concat(props !== null && props !== void 0 && (_props$product9 = props.product) !== null && _props$product9 !== void 0 && _props$product9.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null),
     onClick: _event.selectThisText
   }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "Share")), /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props !== null && props !== void 0 && (_props$product8 = props.product) !== null && _props$product8 !== void 0 && _props$product8.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null)
+    href: "".concat(props !== null && props !== void 0 && (_props$product10 = props.product) !== null && _props$product10 !== void 0 && _props$product10.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 shareButton"
   }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "View")))) : null), /*#__PURE__*/_react["default"].createElement("div", {
@@ -795,7 +795,7 @@ var Module = function Module(props) {
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart"
-  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product9 = props.product) !== null && _props$product9 !== void 0 && (_props$product9 = _props$product9.detailmeta) !== null && _props$product9 !== void 0 && _props$product9.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product11 = props.product) !== null && _props$product11 !== void 0 && (_props$product11 = _props$product11.detailmeta) !== null && _props$product11 !== void 0 && _props$product11.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleFireGlobalEvent,
     item: props.product.id,
     selectedstyle: selectedStyle,

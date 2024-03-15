@@ -116,7 +116,7 @@ var Module = function Module(props) {
     className: "".concat(_AdminModule["default"].internalContainer, " Admin_InternalContainer")
   }, /*#__PURE__*/_react["default"].createElement(_.Banner, props), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("ul", {
     className: "".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")
   }, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
     onClick: handleSetPage,
@@ -135,13 +135,15 @@ var Module = function Module(props) {
     modif: "billing"
   }, "Billing")) : null, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
     href: "/documentation"
-  }, "Documentation"))), Object.entries(_admin["default"]).map(function (m, i) {
+  }, "Documentation")))), Object.entries(_admin["default"]).length > 0 ? /*#__PURE__*/_react["default"].createElement("ul", {
+    className: "".concat(_AdminModule["default"].adminMenuContainer, " ").concat(_AdminModule["default"].adminMenuContainerCustom, " Admin_MenuContainerCustom")
+  }, Object.entries(_admin["default"]).map(function (m, i) {
     var _m$, _m$2;
     return /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
       onClick: handleSetPage,
       modif: m[0]
     }, (_m$ = m[0]) !== null && _m$ !== void 0 && _m$.slice(1, m[0].length) && ((_m$2 = m[0]) === null || _m$2 === void 0 ? void 0 : _m$2.length) > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0]));
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  })) : null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
   }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BillingAdmin["default"], props)) : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StorageAdmin["default"], props)) : Object.entries(_admin["default"]).findIndex(function (m) {
     return m[0] === page;
