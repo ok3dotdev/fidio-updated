@@ -9,7 +9,7 @@ module.exports = {
     './src/**/*.{js,jsx}',
     './customModules/**/*.{html,js,jsx,tsx}',
     './src/pages/**/*.{js, jsx}',
-    './layout/*.{js, jsx}'
+    './layout/*.{js, jsx}',
   ],
   theme: {
     container: {
@@ -76,7 +76,7 @@ module.exports = {
         },
       },
       boxShadow: {
-        'Txl': 'rgba(153, 152, 150, 0.33)',
+        Txl: 'rgba(153, 152, 150, 0.33)',
       },
       fontFamily: {
         Archivo: 'Archivo Black',

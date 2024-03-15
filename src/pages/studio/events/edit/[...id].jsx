@@ -1,19 +1,19 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import React from 'react';
+import StudioLayout from '@/components/Layouts/StudioLayout';
+
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 
-import StudioLayout from '@/components/Layouts/StudioLayout';
-import StudioDash from '@/components/Layouts/StudioDash';
+import { useRouter } from 'next/router';
 
-const pageName = 'studio';
+const pageName = 'create';
 
-export const page = (props) => {
+const events = (props) => {
+  const router = useRouter();
   return (
     <StudioLayout {...props}>
-      <StudioDash {...props} />
+      <div>Edit event {router.query.id}</div>
     </StudioLayout>
   );
 };
@@ -26,4 +26,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default page;
+export default events;

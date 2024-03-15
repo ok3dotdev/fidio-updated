@@ -17,14 +17,16 @@ export const page = (props) => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
-
-  console.log("props", props)
-  const url = props.dev === true ? 'https://dbservices.tycoon.systems/apidev/p/fetchhandler' : 'https://dbservices.tycoon.systems/api/p/fetchhandler'
+  // console.log("props", props)
+  const url =
+    props.dev === true
+      ? 'https://dbservices.tycoon.systems/apidev/p/fetchhandler'
+      : 'https://dbservices.tycoon.systems/api/p/fetchhandler';
   useEffect(() => {
     const fetchData = async () => {
       try {
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     fetch(url, {
@@ -47,7 +49,7 @@ export const page = (props) => {
       .then((res) => res.json())
       .then((data) => {
         setData(data.data);
-        console.log('data', data);
+        // console.log('data', data);
         setLoading(false);
       })
       .catch((error) => console.log('hereee', error));
@@ -81,9 +83,7 @@ export const page = (props) => {
                         />
                       </div>
                       <div>
-                        <p className='font-sans'>
-                          {articleReq.tags}
-                        </p>
+                        <p className='font-sans'>{articleReq.tags}</p>
                         <h2>{articleReq.title}</h2>
                       </div>
                     </div>

@@ -70,13 +70,13 @@ export const page = (props) => {
 
   props._LocalEventEmitter.unsubscribe(profileEvent);
   props._LocalEventEmitter.subscribe(profileEvent, (e) => {
-    console.log(
-      e,
-      profileLoaded,
-      fetchingProfile,
-      props._loggedIn,
-      e.dispatch == 'fetch'
-    );
+    // console.log(
+    //   e,
+    //   profileLoaded,
+    //   fetchingProfile,
+    //   props._loggedIn,
+    //   e.dispatch == 'fetch'
+    // );
     if (e.dispatch && e.dispatch == 'fetch') {
       if (
         !profileLoaded &&

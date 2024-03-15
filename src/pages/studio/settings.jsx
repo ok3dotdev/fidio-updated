@@ -5,13 +5,13 @@ import { pageDefaults } from '/app.config'
 import { getServerSidePropsDefault } from '/modules/utility.js'
 import { getServerSidePropsFunc } from '/appServer/serverProps'
 
-const pageName = 'revenue'
+const pageName = 'settings'
 
-const Revenue = (props) => { 
+const Settings = (props) => { 
   return (
     <StudioLayout {...props}>
       <div className='xl:mx-[20rem] md:mx-[3rem]'>
-        <h1>revenue</h1>
+        <h1>settings</h1>
       </div>
     </StudioLayout>
   );
@@ -22,4 +22,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context)
 }
 
-export default Revenue;
+export default Settings;

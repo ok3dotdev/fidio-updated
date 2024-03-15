@@ -1,27 +1,20 @@
-import React from 'react'
+import React from 'react';
 import { useRouter } from 'next/router';
-import {cn} from '../../lib/utils'
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-
-
-
 const Sidebar = () => {
-
   const router = useRouter();
-  console.log(router.pathname)
-
   const sidebarItems = [
     { path: '/studio', label: 'Studio Home' },
     { path: '/studio/events', label: 'Events' },
     { path: '/studio/revenue', label: 'Revenue' },
     { path: '/studio/settings', label: 'Settings' },
-    { path: '/logout', label: 'Logout' }
   ];
   return (
-     <div className="bg-dashSides w-[240px] hidden md:block">
-      <ul className="">
-       {sidebarItems.map(({ path, label }) => {
+    <div className='bg-dashSides w-[240px] hidden md:block'>
+      <ul className=''>
+        {sidebarItems.map(({ path, label }) => {
           let isActive =
             router.pathname === path ||
             (router.pathname.startsWith(`${path}/`) && path !== '/studio');
@@ -41,9 +34,10 @@ const Sidebar = () => {
             </li>
           );
         })}
+        <li className='py-4 px-2 text-white font-normal font-sans'>Logout</li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
