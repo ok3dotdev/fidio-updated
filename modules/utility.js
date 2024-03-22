@@ -87,7 +87,6 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
             return /*#__PURE__*/_react["default"].createElement(UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
         }
-        return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
       case 'Presentation':
         useModules = 'module';
         if (json !== null && json !== void 0 && json.props && json.props[useModules] && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props[useModules])) {
@@ -96,9 +95,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
             return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
         }
-        return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
       default:
-        return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
+        return null;
     }
   }
   return null;
