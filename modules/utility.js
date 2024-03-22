@@ -90,8 +90,8 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         return null;
       case 'Presentation':
         useModules = 'module';
-        if (json !== null && json !== void 0 && json.props && json.props[useModules] && _customModules["default"] && Object.prototype.hasOwnProperty.call(_customModules["default"], json.props[useModules])) {
-          var _UseModule = _customModules["default"][json.props[useModules]];
+        if (json !== null && json !== void 0 && json.props && json.props[useModules] && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props[useModules])) {
+          var _UseModule = _presentation["default"][json.props[useModules]];
           if (_UseModule) {
             return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
