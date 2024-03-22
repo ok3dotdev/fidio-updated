@@ -135,11 +135,11 @@ function generateComponent(json) {
       props = json.props,
       children = json.children;
     if (props !== null && props !== void 0 && props.childrenBefore) {
-      var childElements = props.childrenBefore && props.childrenBefore.map(generateComponent);
+      var childElements = props.childrenBefore ? props.childrenBefore.map(generateComponent) : /*#__PURE__*/_react["default"].createElement("div", null);
       json.props.childrenBefore = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(childElements)))];
     }
     if (props !== null && props !== void 0 && props.childrenAfter) {
-      var _childElements = props.childrenAfter && props.childrenAfter.map(generateComponent);
+      var _childElements = props.childrenAfter ? props.childrenAfter.map(generateComponent) : /*#__PURE__*/_react["default"].createElement("div", null);
       json.props.childrenAfter = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements)))];
     }
     // If the type is a string, create a React element
@@ -150,7 +150,7 @@ function generateComponent(json) {
         return matchComponent;
       }
       if (children && children.map) {
-        var _childElements2 = children && children.map(generateComponent);
+        var _childElements2 = children.map(generateComponent);
         return /*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements2)));
       }
     }
