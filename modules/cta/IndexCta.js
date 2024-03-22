@@ -1,14 +1,14 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _react = _interopRequireDefault(require("react"));
 var _utility = require("../utility/utility");
 var _wideFeature = require("../search/wideFeature");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   var AfterSignIn = _react["default"].useRef();
   var Lead2 = _react["default"].useRef();
@@ -38,7 +38,7 @@ var Module = function Module(props) {
     className: "IndexCta_Container"
   }, props.definition ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "IndexCta_LeadContainer ".concat(props.className)
-  }, props.ctaTopVideos ? /*#__PURE__*/_react["default"].createElement(_wideFeature.WideFeature, _extends({
+  }, props.ctaTopVideos ? /*#__PURE__*/_react["default"].createElement(_wideFeature.WideFeature, (0, _extends2["default"])({
     image1: props.ctaTopVideos.image1
   }, props)) : '', /*#__PURE__*/_react["default"].createElement("img", {
     src: props.definition.logo,

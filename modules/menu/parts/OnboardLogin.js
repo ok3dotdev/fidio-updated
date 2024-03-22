@@ -1,13 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _react = _interopRequireDefault(require("react"));
 var _signin = require("../../onboarding/signin");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   var _props$siteTitle;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings' ? !props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
@@ -24,7 +24,7 @@ var Module = function Module(props) {
       padding: '.5rem',
       paddingTop: '0'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_signin.SignIn, _extends({}, props, {
+  }, /*#__PURE__*/_react["default"].createElement(_signin.SignIn, (0, _extends2["default"])({}, props, {
     maxWidth: '100%'
   })))) : null : null);
 };

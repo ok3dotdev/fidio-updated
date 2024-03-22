@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -122,4 +123,3 @@ var _OnboardLogin = _interopRequireDefault(require("./OnboardLogin"));
 var _User = _interopRequireDefault(require("./User"));
 var _Invite = _interopRequireDefault(require("./Invite"));
 var _SimpleDropMenuLink = _interopRequireDefault(require("./SimpleDropMenuLink"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

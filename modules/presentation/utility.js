@@ -1,11 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.resolveMainLink = exports.resolveGoodDate = exports.normalizeData = exports.handleSliderLinkClickUp = exports.handleSliderLinkClickDown = exports.handleSliderLinkClick = exports.datePassed = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var normalizeData = exports.normalizeData = function normalizeData(data) {
   return data.map(function (m) {
     if (m.name) {

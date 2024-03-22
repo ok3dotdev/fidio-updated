@@ -1,14 +1,14 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _react = _interopRequireDefault(require("react"));
 var _index = require("./index");
 var _cta = require("../../cta");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   console.log(props);
   return /*#__PURE__*/_react["default"].createElement("div", {
@@ -29,7 +29,7 @@ var Module = function Module(props) {
     }
   })) : /*#__PURE__*/_react["default"].createElement("div", {
     className: "SignIn_ImageSplashContainer"
-  }), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_cta.IndexCta, _extends({}, props, {
+  }), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_cta.IndexCta, (0, _extends2["default"])({}, props, {
     marginTop: '7rem',
     definition: props.OnboardCta,
     children: /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)),

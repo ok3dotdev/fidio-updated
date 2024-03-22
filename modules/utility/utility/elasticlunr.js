@@ -1,6 +1,7 @@
 "use strict";
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 /**
  * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 0.5.10
  * Copyright (C) 2015 Oliver Nightingale
@@ -457,7 +458,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       length: this.length
     };
   }, function (t, e) {
-    "function" == typeof define && define.amd ? define(e) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = e() : t.lunr = e();
+    "function" == typeof define && define.amd ? define(e) : "object" == (typeof exports === "undefined" ? "undefined" : (0, _typeof2["default"])(exports)) ? module.exports = e() : t.lunr = e();
   }(this, function () {
     return t;
   });

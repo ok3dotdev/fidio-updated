@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,7 +11,6 @@ var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory")
 var _ReceiptPageModule = _interopRequireDefault(require("./ReceiptPage.module.scss"));
 var _ecommerce = require("../../utility/ecommerce");
 var _event = require("../../utility/utility/event");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$order;
   var resolveOrderImg = function resolveOrderImg(m) {

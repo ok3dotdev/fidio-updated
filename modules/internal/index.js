@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -31,4 +32,3 @@ var _appConfigLayout = _interopRequireDefault(require("./appConfigLayout"));
 var _internal = _interopRequireDefault(require("./internal"));
 var _pageContainer = _interopRequireDefault(require("./pageContainer"));
 var _developerHelp = _interopRequireDefault(require("./developerHelp"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

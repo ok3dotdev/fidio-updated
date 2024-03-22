@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -31,4 +32,3 @@ var _WatchPage = _interopRequireDefault(require("./WatchPage.js"));
 var _Prompt = _interopRequireDefault(require("./Prompt.js"));
 var _Player = _interopRequireDefault(require("./Player.js"));
 var _Chat = _interopRequireDefault(require("./Chat.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

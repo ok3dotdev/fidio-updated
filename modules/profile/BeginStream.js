@@ -1,11 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$profileData, _props$_loggedIn, _props$className, _props$ManagerStyles, _props$ManagerStyles2, _props$ManagerStyles3;
   var handleOpenBeginStream = _react["default"].useCallback(function (e) {

@@ -1,12 +1,12 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _ecommerce = require("/modules/utility/ecommerce/ecommerce.js");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$useCartOfCurre, _props$useCartOfCurre2, _props$useCartOfCurre3, _props$useCartOfCurre4;
   return /*#__PURE__*/_react["default"].createElement("div", {

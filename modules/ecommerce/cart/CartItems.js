@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -7,7 +8,6 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _ecommerce = require("/modules/utility/ecommerce/ecommerce.js");
 var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$cart, _props$cart2, _props$useCartOfCurre;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !(props !== null && props !== void 0 && props.cart) || props !== null && props !== void 0 && props.cart && !(props !== null && props !== void 0 && (_props$cart = props.cart) !== null && _props$cart !== void 0 && _props$cart.items) || props !== null && props !== void 0 && (_props$cart2 = props.cart) !== null && _props$cart2 !== void 0 && _props$cart2.items && props.cart.items.length === 0 ? /*#__PURE__*/_react["default"].createElement("div", {

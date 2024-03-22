@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -7,7 +8,6 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _WatchPageModule = _interopRequireDefault(require("./WatchPage.module.scss"));
 var _util = require("../../util");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$className, _props$streamLeadProm, _props$streamLeadProm2, _props$streamLeadProm3, _props$streamLeadProm4, _props$streamLeadProm5;
   return /*#__PURE__*/_react["default"].createElement("div", {
