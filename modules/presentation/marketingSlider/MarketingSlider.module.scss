@@ -47,6 +47,12 @@
     flex-direction: column;
 }
 
+@media(max-width: 800px) {
+	.bgContainer {
+		height: auto !important;
+	}
+}
+
 .IndexItemsContainer {
 	display: flex;
 	flex-direction: column;

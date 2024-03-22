@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.basicError = void 0;
 exports.generateComponent = generateComponent;
-exports.resolvePageName = exports.resolvePage = exports.resolveDefaults = exports.resolveComponent = exports.handlePropsPriority = exports.getServerSidePropsDefault = void 0;
+exports.resolvePageName = exports.resolvePage = exports.resolveDefaults = exports.resolveComponent = exports.handlePropsPriority = exports.getServerSidePropsDefault = exports.getPropDefaults = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _app = _interopRequireWildcard(require("/app.config"));
 var _watch = require("./streaming/watch");
@@ -330,6 +330,9 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
             body.productReq = true;
           } else if (resolvedPage && resolvedPage.url === '/admin') {
             doPreReq = true;
+          } else if (resolvedPage && resolvedPage.url.match('/documentation')) {
+            doPreReq = true;
+            body.documentationReq = true;
           }
           if (resolvedPage && resolvedPage.data) {
             data.props.resolvedDefinition = resolvedPage.data; // Access the `data` property
@@ -381,5 +384,56 @@ var getServerSidePropsDefault = exports.getServerSidePropsDefault = /*#__PURE__*
   }));
   return function getServerSidePropsDefault(_x8, _x9) {
     return _ref2.apply(this, arguments);
+  };
+}();
+var getPropDefaults = exports.getPropDefaults = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data, context, pageDefaults) {
+    var params,
+      variables,
+      config,
+      body,
+      i,
+      defaults,
+      _args3 = arguments;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          params = _args3.length > 3 && _args3[3] !== undefined ? _args3[3] : {};
+          variables = (0, _app.resolveVariables)();
+          config = (0, _app["default"])(variables);
+          if (!(Array.isArray(pageDefaults) && pageDefaults.length > 0)) {
+            _context3.next = 13;
+            break;
+          }
+          body = {
+            url: context.req.url,
+            params: Object.assign(context.query, params),
+            domainKey: variables.domainKey,
+            serverReq: true
+          };
+          for (i = 0; i < pageDefaults.length; i++) {
+            body[pageDefaults[i] + 'Req'] = true;
+          }
+          _context3.next = 8;
+          return (0, _fetch.fetchPost)(variables.apiUrl + '/m/pagedefaults', null, null, body);
+        case 8:
+          defaults = _context3.sent;
+          if (defaults && defaults.data) {
+            data.props = Object.keys(defaults.data).reduce(function (acc, key) {
+              acc[key] = defaults.data[key];
+              return acc;
+            }, data.props);
+          }
+          return _context3.abrupt("return", data);
+        case 13:
+          return _context3.abrupt("return", {});
+        case 14:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3);
+  }));
+  return function getPropDefaults(_x10, _x11, _x12) {
+    return _ref3.apply(this, arguments);
   };
 }();

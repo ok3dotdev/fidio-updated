@@ -84,7 +84,8 @@ var Module = function Module(props) {
     };
   };
   return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " glide_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className)
+    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " glide_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
+    style: props === null || props === void 0 ? void 0 : props.style
   }, props.groupLabel ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].GroupLabelContainer, " ").concat(_MarketingSliderModule["default"].GroupLabelContainer, " ").concat(moduleName, "_groupLabelContainer ").concat(props.groupLabelContainerClassName),
     style: {
@@ -104,13 +105,13 @@ var Module = function Module(props) {
   }, useItems === null || useItems === void 0 || (_useItems$items = useItems.items) === null || _useItems$items === void 0 ? void 0 : _useItems$items.map(function (content, i) {
     var useSettings = resolveSettingsConfig(content.length);
     return /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], useSettings, content !== null && content !== void 0 && content.map ? content.map(function (row, k) {
-      var _props$itemHeight, _row$children;
+      var _row$bg, _props$itemHeight, _row$children;
       return /*#__PURE__*/_react["default"].createElement("div", {
         style: {
           margin: '1rem'
         }
       }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container"),
+        className: "".concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(row === null || row === void 0 ? void 0 : row.className),
         key: k,
         style: {
           margin: '1rem'
@@ -118,17 +119,17 @@ var Module = function Module(props) {
       }, /*#__PURE__*/_react["default"].createElement("div", {
         className: "".concat(_MarketingSliderModule["default"].bgContainer, " ").concat(props.tall ? "".concat(_MarketingSliderModule["default"].BgContainerTall) : null, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName),
         style: {
-          backgroundImage: row !== null && row !== void 0 && row.img ? "url(".concat(row === null || row === void 0 ? void 0 : row.img, ")") : null,
-          backgroundSize: 'cover',
+          background: row !== null && row !== void 0 && row.img ? "url(".concat(row === null || row === void 0 ? void 0 : row.img, ")") : (_row$bg = row === null || row === void 0 ? void 0 : row.bg) !== null && _row$bg !== void 0 ? _row$bg : null,
+          backgroundSize: 'cover !important',
           backgroundPosition: 'center',
           height: (_props$itemHeight = props === null || props === void 0 ? void 0 : props.itemHeight) !== null && _props$itemHeight !== void 0 ? _props$itemHeight : '22rem'
         }
       }, row !== null && row !== void 0 && row.upperText ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].upperText)
+        className: "".concat(_MarketingSliderModule["default"].upperText, " MarketingSlider_UpperText")
       }, row.upperText) : null, row !== null && row !== void 0 && row.lead ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].lead)
+        className: "".concat(_MarketingSliderModule["default"].lead, " MarketingSlider_Lead")
       }, row.lead) : null, row !== null && row !== void 0 && row.text ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].text)
+        className: "".concat(_MarketingSliderModule["default"].text, " MarketingSlider_Text")
       }, row.text) : null, row.linkText ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
         href: row.link
       }, row.linkText) : null, row !== null && row !== void 0 && (_row$children = row.children) !== null && _row$children !== void 0 && _row$children.map ? _react["default"].Children.map(row.children, function (child) {

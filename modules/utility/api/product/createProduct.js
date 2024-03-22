@@ -26,7 +26,9 @@ function _handler() {
           }
           formData = new FormData();
           product = (_body$pipelineDbItem = body.pipelineDbItem) !== null && _body$pipelineDbItem !== void 0 ? _body$pipelineDbItem : (0, _defaults.defaultProduct)();
+          imgNames = [];
           Object.entries(body.pipelineObject).map(function (m) {
+            var _product$detailmeta;
             switch (m[0]) {
               case 'name':
                 product.name = m[1];
@@ -35,7 +37,7 @@ function _handler() {
                 product.detailmeta.description = m[1];
                 break;
               case 'eventDate':
-                if (product !== null && product !== void 0 && product.detailmeta) {
+                if (!(product !== null && product !== void 0 && product.detailmeta)) {
                   product.detailmeta = (0, _defaults.defaultProduct)().detailmeta;
                 }
                 if (!(product !== null && product !== void 0 && product.detailmeta.eventDateDef)) {
@@ -69,16 +71,44 @@ function _handler() {
                 }
                 product.styles[0].quantity = m[1];
                 break;
-              default:
-                if (['price', 'quantity'].indexOf(m[0]) === -1) {
-                  product.meta[m[0]] = m[1];
+              case 'lineup':
+                if (product !== null && product !== void 0 && (_product$detailmeta = product.detailmeta) !== null && _product$detailmeta !== void 0 && _product$detailmeta.lineup && Array.isArray(m[1])) {
+                  m[1].map(function (n) {
+                    if (n.image && n.name && ['lineup'].indexOf(n.modif) > -1 && n.id) {
+                      formData.append('image', n.image);
+                      imgNames.push({
+                        name: n.name,
+                        modif: n.modif,
+                        id: n.id,
+                        title: n.title,
+                        time: n.time,
+                        description: n.description
+                      });
+                    }
+                  });
                 }
+                break;
+              case 'images':
+                if (Array.isArray(m[1])) {
+                  m[1].map(function (n) {
+                    if (n.image && n.name && ['leadImg', 'featureImg', 'productImg'].indexOf(n.modif) > -1) {
+                      formData.append('image', n.image);
+                      imgNames.push({
+                        name: n.name,
+                        modif: n.modif,
+                        id: n.id
+                      });
+                    }
+                  });
+                }
+                break;
+              default:
+                product.meta[m[0]] = m[1];
                 break;
             }
           });
-          imgNames = [];
           _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop(i) {
-            var values, f;
+            var values, f, _body$imgFor$i$id, _body$imgFor$i;
             return _regeneratorRuntime().wrap(function _loop$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
@@ -88,8 +118,12 @@ function _handler() {
                       return m.name === body.imgFor[i].name;
                     });
                     if (f) {
-                      formData.append('image', f);
-                      imgNames.push(f.name);
+                      formData.append('image', f); // Necessary filter through image cache user has shared. Do not send all images user has uploaded to server
+                      imgNames.push({
+                        name: f.name,
+                        modif: body.imgFor[i].modif,
+                        id: (_body$imgFor$i$id = (_body$imgFor$i = body.imgFor[i]) === null || _body$imgFor$i === void 0 ? void 0 : _body$imgFor$i.id) !== null && _body$imgFor$i$id !== void 0 ? _body$imgFor$i$id : null
+                      });
                     }
                   }
                 case 2:

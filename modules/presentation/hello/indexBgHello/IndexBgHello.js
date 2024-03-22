@@ -369,11 +369,11 @@ var Module = function Module(props) {
       ref: ctaRef,
       ctaAfter: m.ctaAfter,
       cta: m.cta
-    }, m.cta), function (_m$styles) {
+    }, m.cta), function (_m$styles, _m$item$useCustom, _m$item7) {
       var style = m !== null && m !== void 0 && (_m$styles = m.styles) !== null && _m$styles !== void 0 && _m$styles.find ? m.styles.find(function (n) {
         return n.sid === m.item.style;
       }) : null;
-      var price = (0, _ecommerce.resolveRegionBasedPrice)(props, style);
+      var price = (0, _ecommerce.resolveRegionBasedPrice)(props, style, (_m$item$useCustom = m === null || m === void 0 || (_m$item7 = m.item) === null || _m$item7 === void 0 ? void 0 : _m$item7.useCustom) !== null && _m$item$useCustom !== void 0 ? _m$item$useCustom : null);
       if ((price === null || price === void 0 ? void 0 : price.price) == 0) {
         return /*#__PURE__*/_react["default"].createElement("div", {
           className: "flex",

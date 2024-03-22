@@ -651,8 +651,16 @@ var resolveMoneyFormat = exports.resolveMoneyFormat = function resolveMoneyForma
     return null;
   }
 };
-var resolveRegionBasedPrice = exports.resolveRegionBasedPrice = function resolveRegionBasedPrice(props, style) {
+var resolveRegionBasedPrice = exports.resolveRegionBasedPrice = function resolveRegionBasedPrice(props, style, useCustom) {
   var _props$_loggedIn;
+  if (useCustom) {
+    var _useCustom$currency, _useCustom$symbol, _useCustom$price;
+    return {
+      currency: (_useCustom$currency = useCustom.currency) !== null && _useCustom$currency !== void 0 ? _useCustom$currency : null,
+      symbol: (_useCustom$symbol = useCustom.symbol) !== null && _useCustom$symbol !== void 0 ? _useCustom$symbol : null,
+      price: (_useCustom$price = useCustom.price) !== null && _useCustom$price !== void 0 ? _useCustom$price : null
+    };
+  }
   if (props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.meta) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.locationMeta) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.country && props !== null && props !== void 0 && props.regionsData) {
     var location = props._loggedIn.meta.locationMeta.country;
     if (props.regionsData[location] && style !== null && style !== void 0 && style.priceTable) {

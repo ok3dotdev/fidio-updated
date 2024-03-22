@@ -150,7 +150,6 @@ var Module = function Module(props) {
   };
   var receiveData = function receiveData(res) {
     var _res$data;
-    console.log(res);
     if (res !== null && res !== void 0 && (_res$data = res.data) !== null && _res$data !== void 0 && _res$data.fetchedData) {
       var items = [];
       var validGroups = res.data.fetchedData.map(function (m) {
@@ -243,7 +242,6 @@ var Module = function Module(props) {
   var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
     (0, _utility2.handleSliderLinkClickUp)(e, router);
   });
-  console.log(useItems, resolvedUseItems);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_PresentationModule["default"].IndexHelloContainer, " sliderContainer_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
     ref: sliderTrackRef

@@ -593,6 +593,33 @@ var Module = function Module(props) {
       selectimg: m === null || m === void 0 || (_m$input2 = m.input) === null || _m$input2 === void 0 ? void 0 : _m$input2["var"]
     });
   };
+  var appendFormData = function appendFormData(filesRenamed) {
+    var modif = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'lineup';
+    var useId = arguments.length > 2 ? arguments[2] : undefined;
+    var formData = imgCache;
+    var tempImgNames = imgFor;
+    if (filesRenamed) {
+      filesRenamed.forEach(function (img) {
+        formData.append("image", img);
+        tempImgNames.push({
+          name: img.name,
+          modif: modif,
+          id: useId
+        });
+      });
+      formData.append('imgNames', JSON.stringify(tempImgNames));
+    }
+    setImgCache(formData);
+    setImgFor(tempImgNames);
+    if (props !== null && props !== void 0 && props.setImgCache) {
+      props.setImgCache(formData);
+    }
+    if (props.setSurveyState && props.surveyState) {
+      var temp = props.surveyState;
+      temp.imgFor = tempImgNames;
+      props.setSurveyState(temp);
+    }
+  };
   var resolveComponent = function resolveComponent(m) {
     if (m !== null && m !== void 0 && m.component && typeof m.component === 'function') {
       var UseComponent = m.component;
@@ -681,7 +708,8 @@ var Module = function Module(props) {
         editingOptionsMeta: (_pipelineDbItem$detai = pipelineDbItem === null || pipelineDbItem === void 0 ? void 0 : pipelineDbItem.detailmeta) !== null && _pipelineDbItem$detai !== void 0 ? _pipelineDbItem$detai : null,
         setOptionsMetaData: setOptionsMetaData,
         currentLineupEditing: currentLineupEditing,
-        setCurrentLineupEditing: setCurrentLineupEditing
+        setCurrentLineupEditing: setCurrentLineupEditing,
+        appendFormData: appendFormData
       }))) : (m === null || m === void 0 || (_m$input13 = m.input) === null || _m$input13 === void 0 ? void 0 : _m$input13.type) === 'price' ? /*#__PURE__*/_react["default"].createElement("div", {
         className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
       }, /*#__PURE__*/_react["default"].createElement("span", null, "$"), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {

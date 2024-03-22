@@ -20,7 +20,7 @@
     .FillPageContainer {
         gap: 1rem;
         height: 100vh;
-        width: 100vw;
+        width: 100%;
         background-size: cover;
         position: relative;
         .TimeSectionValue, .TimeSectionColon {
@@ -61,6 +61,7 @@
             top: 37.5%;
             left: 10%;
             z-index: 20;
+            max-width: 70%;
             .AuthorContainer {
                 display: flex;
                 align-items: center;
@@ -153,7 +154,7 @@
                 font-size: 3.5rem;
             }
             .TimeContainer {
-                top: 7.5%;
+                top: 10%;
             }
             .TimeSectionValue {
                 line-height: 2.5rem;
@@ -425,7 +426,7 @@
                 top: -15.5px;
             }
             .TimeContainer {
-                top: 7.5%;
+                top: 10%;
             }
             .TimeSection {
                 max-width: 15px;
@@ -445,12 +446,12 @@
                 top: 20%;
                 .Lead {
                     font-size: 1.25rem;
-                    max-width: 85vw;
+                    max-width: 60vw;
                     line-height: 1.5rem;
                 }
                 .Description {
                     font-size: .75rem;
-                    max-width: 85vw;
+                    max-width: 75vw;
                     margin-bottom: .5rem;
                     -webkit-line-clamp: 3;
                     line-clamp: 3;
@@ -569,6 +570,12 @@
     }
 }
 
+@media(max-width: 1080px) {
+    .TimeSimple {
+        display: none;
+    }
+}
+
 .bubble {
     background: rgb(221, 255, 195);
     color: black;
@@ -669,6 +676,9 @@
             }
             .TimeSectionColon {
                 line-height: 5rem;
+            }
+            .TimeSimple {
+                display: none;
             }
         }
     }

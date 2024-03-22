@@ -616,7 +616,8 @@ var Module = function Module(props) {
     }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
   })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, /*#__PURE__*/_react["default"].createElement(_.Lineup, _extends({}, props, {
     product: props.product,
-    setWarning: setWarning
+    setWarning: setWarning,
+    appendFormData: props === null || props === void 0 ? void 0 : props.appendFormData
   }))), warning && warning.message ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(_ProductImageManagerModule["default"].warning)
   }, /*#__PURE__*/_react["default"].createElement("div", {

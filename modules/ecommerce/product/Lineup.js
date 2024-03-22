@@ -28,7 +28,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Module = function Module(props) {
-  var _props$editing, _props$editing2, _props$product, _props$editingOptions, _props$product3;
+  var _props$editing, _props$editing2, _props$product2, _props$editingOptions;
   var _React$useState = _react["default"].useState({}),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     selectedStyle = _React$useState2[0],
@@ -110,15 +110,18 @@ var Module = function Module(props) {
       props.setWarning(null);
     }
     setUploadingForLineupId(e.currentTarget.getAttribute('lineupid'));
-    if (fileInput.current) {
-      fileInput.current.click(); // Prompt file upload
-    }
+    setTimeout(function () {
+      if (fileInput.current) {
+        fileInput.current.click(); // Prompt file upload
+      }
+    }, 1);
   });
   var handleNewFile = _react["default"].useCallback(function (e) {
     try {
       if (e && e.target && e.target.files) {
         var files = e.target.files;
         if (files && files.length > 0) {
+          var _props$product;
           var filesRenamed = Array.from(files).slice(0, files.length > 1 ? 1 : files.length).filter(function (m) {
             return m.type && _defaults.allowedTypes.indexOf(m.type) > -1;
           }).map(function (m) {
@@ -141,7 +144,10 @@ var Module = function Module(props) {
                         if (filesRenamed) {
                           filesRenamed.forEach(function (img) {
                             formData.append("image", img);
-                            imgNames.push(img.name);
+                            imgNames.push({
+                              name: img.name,
+                              modif: 'lineup'
+                            });
                           });
                           formData.append('imgNames', JSON.stringify(imgNames));
                         }
@@ -240,7 +246,11 @@ var Module = function Module(props) {
               return _ref.apply(this, arguments);
             };
           }();
-          f();
+          if (props !== null && props !== void 0 && (_props$product = props.product) !== null && _props$product !== void 0 && _props$product["new"] && props !== null && props !== void 0 && props.appendFormData) {
+            props.appendFormData(filesRenamed, 'lineup', uploadingForLineupId);
+          } else {
+            f();
+          }
         }
       }
     } catch (err) {
@@ -264,7 +274,7 @@ var Module = function Module(props) {
   // console.log(props.product, props._loggedIn, currentOption, selectedStyle, props)
   var isAdmin = props.product && props.product.owner && props._loggedIn && props._loggedIn.identifier && props._loggedIn.identifier === props.product.owner;
   console.log(props.product, props.editingOptionsMeta, selectedStyle, currency, props.currentDefinePriceCurrency, props.priceInput, validStyleObject, props.editing, props.currentLineupEditing);
-  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.id) && props.editing.id === props.product.id;
+  var isEditing = (props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.id) && (props === null || props === void 0 || (_props$product2 = props.product) === null || _props$product2 === void 0 ? void 0 : _props$product2.id) && props.editing.id === props.product.id;
   var useEditingOptions = isEditing && (props === null || props === void 0 ? void 0 : props.editingOptionsMeta) || !isEditing && props.product.detailmeta;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "".concat(props.className),
@@ -365,7 +375,6 @@ var Module = function Module(props) {
       marginTop: '.125rem'
     }
   }, props.product.detailmeta.lineup && props.product.detailmeta.lineup.map ? props.product.detailmeta.lineup.map(function (m, i) {
-    var _props$product2;
     return /*#__PURE__*/_react["default"].createElement("div", {
       className: "lineupItem_editing ".concat(m.id === currentLineupId ? 'lineupItem_current' : ''),
       style: {
@@ -404,14 +413,14 @@ var Module = function Module(props) {
         backgroundSize: 'cover',
         borderRadius: '1rem'
       }
-    }, !(props !== null && props !== void 0 && (_props$product2 = props.product) !== null && _props$product2 !== void 0 && _props$product2["new"]) ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
       title: "Click here to upload an image for your lineup participant",
       placement: "bottom"
     }, /*#__PURE__*/_react["default"].createElement("div", {
       className: "".concat(_ProductImageManagerModule["default"].changeImageButtonSmall, " image material-icons"),
       onClick: handleUploadImage,
       lineupid: m.id
-    }, "image")) : null, /*#__PURE__*/_react["default"].createElement("img", {
+    }, "image")), /*#__PURE__*/_react["default"].createElement("img", {
       src: "".concat((0, _ecommerce.resolveImg)(null)),
       className: "Product_img",
       style: {
@@ -428,11 +437,7 @@ var Module = function Module(props) {
     }, (0, _util.getFormattedTime)(m.time, {
       simple: true
     })) : null);
-  }) : null)), props !== null && props !== void 0 && (_props$product3 = props.product) !== null && _props$product3 !== void 0 && _props$product3["new"] ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "After your product is created you can add Lineup Artist Images") : /*#__PURE__*/_react["default"].createElement("input", {
+  }) : null)), /*#__PURE__*/_react["default"].createElement("input", {
     type: "file",
     style: {
       display: 'none'

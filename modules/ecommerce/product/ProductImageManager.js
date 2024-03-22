@@ -113,7 +113,10 @@ var Module = function Module(props) {
                         if (filesRenamed) {
                           filesRenamed.forEach(function (img) {
                             formData.append("image", img);
-                            imgNames.push(img.name);
+                            imgNames.push({
+                              name: img.name,
+                              modif: 'productImage'
+                            });
                           });
                           formData.append('imgNames', JSON.stringify(imgNames));
                         }

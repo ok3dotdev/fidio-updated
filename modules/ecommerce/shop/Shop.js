@@ -133,6 +133,14 @@ var Module = function Module(props) {
     _React$useState32 = _slicedToArray(_React$useState31, 2),
     currentDefinePriceCurrency = _React$useState32[0],
     setCurrentDefinePriceCurrency = _React$useState32[1];
+  var _React$useState33 = _react["default"].useState(new FormData()),
+    _React$useState34 = _slicedToArray(_React$useState33, 2),
+    useFormData = _React$useState34[0],
+    setUseFormData = _React$useState34[1];
+  var _React$useState35 = _react["default"].useState([]),
+    _React$useState36 = _slicedToArray(_React$useState35, 2),
+    useImageNames = _React$useState36[0],
+    setUseImageNames = _React$useState36[1];
   var descriptionInputRef = _react["default"].useRef();
   var styleInput = _react["default"].useRef();
   var optionInput = _react["default"].useRef();
@@ -527,7 +535,7 @@ var Module = function Module(props) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
                 if (fetchBusy) {
-                  _context.next = 30;
+                  _context.next = 32;
                   break;
                 }
                 setPageError({});
@@ -546,17 +554,22 @@ var Module = function Module(props) {
                 setFetchBusy(false);
                 return _context.abrupt("return", 1);
               case 10:
-                formData = new FormData();
-                imgNames = [];
+                formData = useFormData;
+                imgNames = useImageNames;
                 if (tempImagesForCurrentlyEditing && tempImagesForCurrentlyEditing.editing === product.id) {
                   // Retrieve files for upload if matching upload image edit
                   tempImagesForCurrentlyEditing.images.forEach(function (img) {
                     console.log('Img', img);
                     formData.append("image", img);
-                    imgNames.push(img.name);
+                    imgNames.push({
+                      name: img.name,
+                      modif: 'productImage'
+                    });
                   });
                   formData.append('imgNames', JSON.stringify(imgNames));
                 }
+                setUseFormData(formData); // Set form data before setting other variables to ensure only images stored
+                setUseImageNames(imgNames);
                 formData.append('domainKey', props.domainKey);
                 formData.append('hash', props._loggedIn.hash);
                 formData.append('identifier', props._loggedIn.identifier);
@@ -568,12 +581,14 @@ var Module = function Module(props) {
                 setTimeout(function () {
                   setFetchBusy(false);
                 }, 10000);
-                _context.next = 24;
+                _context.next = 26;
                 return (0, _ecommerce.doPublishProduct)(props.apiUrl, props.domainKey, (_shop$id3 = shop === null || shop === void 0 ? void 0 : shop.id) !== null && _shop$id3 !== void 0 ? _shop$id3 : null, props._loggedIn, product, formData);
-              case 24:
+              case 26:
                 data = _context.sent;
                 console.log(data);
                 if (data) {
+                  setUseFormData(new FormData()); // Reset form data due to created product
+                  setUseImageNames([]);
                   if (data.product) {
                     if (props !== null && props !== void 0 && props.forceOpenRedirectOnDone) {
                       if (props.redirect) {
@@ -594,9 +609,9 @@ var Module = function Module(props) {
                   }
                 }
                 return _context.abrupt("return", data);
-              case 30:
+              case 32:
                 return _context.abrupt("return", null);
-              case 31:
+              case 33:
               case "end":
                 return _context.stop();
             }
@@ -685,6 +700,25 @@ var Module = function Module(props) {
       }
     }
   });
+  var appendFormData = function appendFormData(filesRenamed) {
+    var modif = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'lineup';
+    var useId = arguments.length > 2 ? arguments[2] : undefined;
+    var formData = useFormData;
+    var imgNames = useImageNames;
+    if (filesRenamed) {
+      filesRenamed.forEach(function (img) {
+        formData.append("image", img);
+        imgNames.push({
+          name: img.name,
+          modif: modif,
+          id: useId
+        });
+      });
+      formData.append('imgNames', JSON.stringify(imgNames));
+    }
+    setUseFormData(formData);
+    setUseImageNames(imgNames);
+  };
 
   // list all shop items
   // allow for creation of shop item with
@@ -1151,7 +1185,8 @@ var Module = function Module(props) {
     editingOptionsMeta: editingOptionsMeta,
     setOptionsMetaData: setOptionsMetaData,
     currentLineupEditing: currentLineupEditing,
-    setCurrentLineupEditing: setCurrentLineupEditing
+    setCurrentLineupEditing: setCurrentLineupEditing,
+    appendFormData: appendFormData
   })))) : /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex gap-p2 promptContainer",
     style: {
@@ -1249,7 +1284,8 @@ var Module = function Module(props) {
       changeCurrentCurrency: changeCurrentCurrency,
       currentDefinePriceCurrency: currentDefinePriceCurrency,
       setCurrentDefinePriceCurrency: setCurrentDefinePriceCurrency,
-      setDefaultPriceHtml: setDefaultPriceHtml
+      setDefaultPriceHtml: setDefaultPriceHtml,
+      appendFormData: appendFormData
     }));
   }) : null)));
 };
