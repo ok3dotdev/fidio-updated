@@ -88,24 +88,24 @@ const Create = (props) => {
     setStep(3);
   };
 
-  useEffect(() => {
-    if (eventDetails) {
-      console.log(
-        'dataaaaaa3',
-        eventDetails,
-        pipelineDbItem,
-        pipelineObject,
-        imgCache,
-        imgFor
-      );
-    }
-  }, [eventDetails]);
+  // useEffect(() => {
+  //   if (eventDetails) {
+  //     console.log(
+  //       'dataaaaaa3',
+  //       eventDetails,
+  //       pipelineDbItem,
+  //       pipelineObject,
+  //       imgCache,
+  //       imgFor
+  //     );
+  //   }
+  // }, [eventDetails]);
 
-  useEffect(() => {
-    if (pipelineDbItem) {
-      console.log('dataaaaaa3', pipelineDbItem);
-    }
-  }, [pipelineDbItem]);
+  // useEffect(() => {
+  //   if (pipelineDbItem) {
+  //     console.log('dataaaaaa3', pipelineDbItem);
+  //   }
+  // }, [pipelineDbItem]);
 
   const allowedTypes = ['image/jpeg', 'image/png'];
 
@@ -284,8 +284,8 @@ const Create = (props) => {
                 </p>
               </div>
               <p className='text-dashtext text-sm mt-2'>
-                Don&apos;t worry if you need a break! Your event details are
-                saved as a draft. Come back and complete it anytime.
+                Don't worry if you need a break! Your event details are saved as
+                a draft. Come back and complete it anytime.
               </p>
             </div>
             <Card className=' dark:bg-transparent mt-8'>
@@ -466,8 +466,8 @@ const Create = (props) => {
                 </p>
               </div>
               <p className='text-dashtext text-sm mt-2'>
-                Don&apos;t worry if you need a break! Your event details are
-                saved as a draft. Come back and complete it anytime.
+                Don't worry if you need a break! Your event details are saved as
+                a draft. Come back and complete it anytime.
               </p>
             </div>
             <Card className=' dark:bg-transparent mt-8'>

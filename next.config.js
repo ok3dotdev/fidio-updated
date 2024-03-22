@@ -12,16 +12,23 @@ const nextConfig = {
   // assetPrefix: website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
-    domains: ['d2ib7gxb0luc1i.cloudfront.net', 'another-domain.com'],
+    domains: [
+      'd2ib7gxb0luc1i.cloudfront.net',
+      'another-domain.com',
+      'googleusercontent.com',
+    ],
   },
   webpack: (config, { isServer }) => {
-    config.resolve.alias['/modules'] = path.join(__dirname, 'modules/')
-    config.resolve.alias['/appServer'] = path.join(__dirname, 'appServer/')
-    config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js')
-    config.resolve.alias['/customModules'] = path.join(__dirname, 'customModules')
-    config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles')
-    config.resolve.alias['/layout'] = path.join(__dirname, 'layout/')
-    
+    config.resolve.alias['/modules'] = path.join(__dirname, 'modules/');
+    config.resolve.alias['/appServer'] = path.join(__dirname, 'appServer/');
+    config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js');
+    config.resolve.alias['/customModules'] = path.join(
+      __dirname,
+      'customModules'
+    );
+    config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles');
+    config.resolve.alias['/layout'] = path.join(__dirname, 'layout/');
+
     if (!isServer) {
       config.module.rules.push({
         test: /\.(js|mjs|jsx|ts|tsx)$/,

@@ -8,12 +8,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 
-// const EventDetailsForm = () => {
-//   return <h1>hello</h1>;
-// };
-
-const EventDetailsForm = ({ handleNewFile, setbannerImage, bannerImage }) => {
-  const { register, control } = useForm();
+const EventDetailsForm = ({
+  handleNewFile,
+  setbannerImage,
+  bannerImage,
+  register,
+  control,
+}) => {
+  // const { register, control } = useForm();
 
   const { step, setStep } = useSurveyStore();
 
@@ -191,3 +193,11 @@ const EventDetailsForm = ({ handleNewFile, setbannerImage, bannerImage }) => {
 };
 
 export default EventDetailsForm;
+
+// <EventDetailsForm
+//   handleNewFile={handleLineupUpload}
+//   setbannerImage={setbannerImage}
+//   bannerImage={bannerImage}
+//   register={register}
+//   control={control}
+// />
