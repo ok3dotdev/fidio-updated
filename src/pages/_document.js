@@ -1,15 +1,20 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { SliderStyles, SliderTheme, GoogleFontsLink, PaystackScript } from '/modules/internal/localImports'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import {
+  SliderStyles,
+  SliderTheme,
+  GoogleFontsLink,
+  PaystackScript,
+} from '/modules/internal/localImports';
 
 class MyDocument extends Document {
-	render() {
-		return (
-			<Html>
-				<Head>
-					{ SliderStyles }
-					{ SliderTheme }
-					{ GoogleFontsLink }
-					{ PaystackScript }
+  render() {
+    return (
+      <Html>
+        <Head>
+          {SliderStyles}
+          {SliderTheme}
+          {GoogleFontsLink}
+          {PaystackScript}
           <script
             id='google-analytics-script'
             dangerouslySetInnerHTML={{
@@ -31,15 +36,23 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
             rel='stylesheet'
           ></link>
-				</Head>
-				<body>
-					<div version='0.4.21' business='Tycoon Systems Corp.' style={{ display: 'none' }}></div>
-					<Main />
-					<NextScript />
-				</body>
-			</Html>
-		)
-	}
+          <link
+            href='https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap'
+            rel='stylesheet'
+          ></link>
+        </Head>
+        <body>
+          <div
+            version='0.4.21'
+            business='Tycoon Systems Corp.'
+            style={{ display: 'none' }}
+          ></div>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 
-export default MyDocument
+export default MyDocument;

@@ -77,6 +77,11 @@ const Footer = (props) => {
                 Sponsors
               </a>
             </li>
+            <li>
+              <a className='font-sans' target='_blank' href='/blog'>
+                blog
+              </a>
+            </li>
           </ul>
         </div>
         <div>

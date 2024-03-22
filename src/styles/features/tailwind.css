@@ -6,9 +6,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Archivo Black, helvetica, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
 }
 
 .dark {
@@ -88,7 +85,7 @@ input {
   border-radius: 6px;
   width: 100%;
 }
-.Internal_devContainer__OSO0m{
+.Internal_devContainer__OSO0m {
   display: none !important;
 }
 
@@ -273,22 +270,21 @@ input {
   }
 }
 
-
 /* SURVERY FORM */
-.Survey_currentItem__z2NUZ{
+.Survey_currentItem__z2NUZ {
   padding: 0 !important;
 }
-.Survey_currentItem__z2NUZ textarea{
+.Survey_currentItem__z2NUZ textarea {
   @apply bg-dashFg text-black p-2 font-sans;
 }
-.Survey_title__I1MFz{
+.Survey_title__I1MFz {
   margin-bottom: 2rem;
 }
-.Survey_currentItem__z2NUZ input[type='datetime-local']{
+.Survey_currentItem__z2NUZ input[type='datetime-local'] {
   @apply bg-dashFg text-black w-full p-2 font-sans;
 }
 
-.Survey_currentItem__z2NUZ label{
+.Survey_currentItem__z2NUZ label {
   @apply font-sans;
 }
 

@@ -45,7 +45,7 @@ export default EventsGrid;
 
 const Events = ({ title, artist, date, price, img }) => {
   return (
-    <div className='max-w-[200px] lg:max-w-[400px] mr-4 transition-transform duration-300 overflow-hidden'>
+    <div className='max-w-[200px] lg:max-w-[400px] mr-4 transition-transform duration-300 overflow-hidden font-Archivo'>
       <div className='h-[200px] rounded-md mb-2 min-h-[200px] overflow-hidden relative transform transition-transform duration-300'>
         <img className='w-full object-cover h-full' src={img} alt='' />
         <div className='absolute inset-0 bg-black opacity-30 transition-opacity hover:opacity-20'></div>
@@ -54,7 +54,7 @@ const Events = ({ title, artist, date, price, img }) => {
           <p className='text-xs text-black z-20'>{date.slice(0, 6)}</p>
         </div>
         <div className='absolute bottom-0 left-0 mb-4 ml-4'>
-          <h3 className='text-white text-lg'>{title}</h3>
+          <h3 className='text-white text-lg font-Archivo'>{title}</h3>
           {/* <p className='text-gray-900'>{artist}</p>
           <p className='text-gray-900'>${price}</p> */}
         </div>

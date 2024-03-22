@@ -132,9 +132,13 @@ const FeaturedEvent = (props) => {
             }}
           >
             {/* <div className='absolute inset-0 bg-black min-h-[700px] opacity-80'></div> */}
-            <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20'>
-              <h2 className='text-3xl lg:text-6xl font-bold'>{item.artist}</h2>
-              <h2 className='text-3xl lg:text-6xl font-bold'>{item.event}</h2>
+            <div className='self-end w-full px-4 lg:px-8 py-12 pb-12 bg-gradient-to-b from-transparent to-black z-20 '>
+              <h2 className='text-3xl lg:text-6xl font-bold font-Archivo'>
+                {item.artist}
+              </h2>
+              <h2 className='text-3xl lg:text-6xl font-bold font-Archivo'>
+                {item.event}
+              </h2>
               <p className='lg:text-xl text-white mt-4'>{item.date}</p>
               <div className='flex gap-4 mt-4 items-center flex-wrap'>
                 <button

@@ -71,8 +71,8 @@ const Upcoming = (props) => {
   };
 
   return (
-    <div className='w-full mb-12 mt-12 relative '>
-      <h2 className='text-2xl font-bold'>{props.title}</h2>
+    <div className='w-full mb-12 mt-12 relative font-archivo'>
+      <h2 className='text-2xl font-bold font-Archivo'>{props.title}</h2>
       <div
         className='flex gap-8 w-full overflow-x-auto relative no-scrollbar pt-8'
         ref={scrollRef}
@@ -105,7 +105,7 @@ export default Upcoming;
 
 const Event = ({ img, name, venue, date }) => {
   return (
-    <div className='min-w-[300px] min-h-[400px] lg:min-w-[339px] lg:min-h-[480px] inset-0 rounded-2xl overflow-hidden relative transform transition-transform duration-300 hover:-translate-y-1.5 flex flex-col justify-end items-center pb-12 hover:bg-black/40'>
+    <div className='min-w-[300px] min-h-[400px] lg:min-w-[339px] lg:min-h-[480px] inset-0 rounded-2xl overflow-hidden relative transform transition-transform duration-300 hover:-translate-y-1.5 flex flex-col justify-end items-center pb-12 hover:bg-black/40 font-Archivo'>
       <div
         className='absolute rounded-2xl inset-0 bg-cover bg-center transform transition-transform duration-300 transition-filter hover:filter[blur(10px)]'
         style={{

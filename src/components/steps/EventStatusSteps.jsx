@@ -20,32 +20,32 @@ const EventStatusSteps = (props) => {
     { status: 'past', color: 'bg-blue-300' },
   ];
 
-  useEffect(() => {
-    fetchTickets(step);
-  }, [step, props?._loggedIn?.identifier]);
-  const router = useRouter();
-  const fetchTickets = async (status) => {
-    setLoading(true);
-    if (props && props?._loggedIn?.identifier) {
-      const res = await apiReq('/product/getProducts', {
-        apiUrl: props?.apiUrl,
-        pagination: 0,
-        extra: {
-          owner: props?._loggedIn?.identifier,
-        },
-        meta: {
-          status,
-        },
-      });
-      setTickets(res.products || []);
-      // console.log('tix', tickets);
-      setLoading(false);
-    }
-  };
+  // useEffect(() => {
+  //   fetchTickets(step);
+  // }, [step, props?._loggedIn?.identifier]);
+  // const router = useRouter();
+  // const fetchTickets = async (status) => {
+  //   setLoading(true);
+  //   if (props && props?._loggedIn?.identifier) {
+  //     const res = await apiReq('/product/getProducts', {
+  //       apiUrl: props?.apiUrl,
+  //       pagination: 0,
+  //       extra: {
+  //         owner: props?._loggedIn?.identifier,
+  //       },
+  //       meta: {
+  //         status,
+  //       },
+  //     });
+  //     setTickets(res.products || []);
+  //     // console.log('tix', tickets);
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleStepChange = (newStep) => {
     if (newStep !== step) {
-      setLoading(true);
+      // setLoading(true);
       setStep(newStep);
     }
   };

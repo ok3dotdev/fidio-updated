@@ -10,7 +10,7 @@ import StudioDash from '@/components/Layouts/StudioDash';
 
 const pageName = 'studio';
 
-export const page = (props) => {
+const Page = (props) => {
   return (
     <StudioLayout {...props}>
       <StudioDash {...props} />
@@ -26,4 +26,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default page;
+export default Page;

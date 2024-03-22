@@ -1,19 +1,20 @@
-// Create a file for your Zustand store, e.g., store.js
-import create from 'zustand';
+import { create } from 'zustand';
 
-const useGlobalState = create((set) => ({
-  step: '1',
+const useSurveyStore = create((set) => ({
+  imgCache: new FormData(),
+  step: 1,
+  eventDetails: {},
   currentStage: null,
-  imgCache: null,
   pipelineDbItem: {},
   pipelineObject: {},
   imgFor: [],
-  setStep: (step) => set({ step }),
-  setCurrentStage: (currentStage) => set({ currentStage }),
   setImgCache: (imgCache) => set({ imgCache }),
+  setStep: (step) => set({ step }),
+  setEventDetails: (eventDetails) => set({ eventDetails }),
+  setCurrentStage: (currentStage) => set({ currentStage }),
   setPipelineDbItem: (pipelineDbItem) => set({ pipelineDbItem }),
   setPipelineObject: (pipelineObject) => set({ pipelineObject }),
   setImgFor: (imgFor) => set({ imgFor }),
 }));
 
-export default useGlobalState;
+export default useSurveyStore;

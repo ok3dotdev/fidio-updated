@@ -21,7 +21,7 @@ import LoadingSkeleton from '../../../customModules/features/Skeleton';
 
 const pageName = 'event';
 
-export const page = (props) => {
+export const Page = (props) => {
   const router = useRouter();
   const { query, asPath } = router;
   const [fetching, setFetching] = React.useState(false);
@@ -115,4 +115,4 @@ export const getServerSideProps = async (context) => {
   );
 };
 
-export default page;
+export default Page;

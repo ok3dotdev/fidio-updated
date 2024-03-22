@@ -13,19 +13,27 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 
-const pageName = 'create';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Input } from '@/components/ui/input';
 
-const events = (props) => {
+const pageName = 'Events';
+
+const Events = (props) => {
   const [step, setStep] = useState('draft');
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    fetchTickets(step);
-  }, [step, props?._loggedIn?.identifier]);
-
-  const fetchTickets = async (status) => {
+  const fetchTickets = async () => {
     setLoading(true);
     if (props && props?._loggedIn?.identifier) {
       const res = await apiReq('/product/getProducts', {
@@ -34,19 +42,23 @@ const events = (props) => {
         extra: {
           owner: props?._loggedIn?.identifier,
         },
-        meta: {
-          status,
-        },
       });
-      setTickets(res.products || []);
-      // console.log('tix', tickets);
-      setLoading(false);
+      if (res && res.products) {
+        setTickets(res.products || []);
+        if (tickets) {
+          console.log('tix', tickets);
+          setLoading(false);
+        }
+      }
     }
   };
+  useEffect(() => {
+    fetchTickets();
+  }, [props?._loggedIn?.identifier]);
 
   const handleStepChange = async (newStep) => {
     if (newStep !== step) {
-      setLoading(true);
+      // setLoading(true);
       setStep(newStep);
     }
   };
@@ -57,68 +69,57 @@ const events = (props) => {
 
   return (
     <StudioLayout {...props}>
-      <div className='md:mx-[8rem]'>
-        <div className='mt-6'>
-          <div className='flex gap-4 my-2'>
-            {statusColors.map(({ status, color }) => (
-              <div
-                key={status}
-                className={cn(
-                  'p-2 rounded-[1.5rem] font-sans',
-                  step === status ? `bg-${color} text-black` : 'text-white'
-                )}
-                onClick={() => handleStepChange(status)}
-                style={{ pointerEvents: loading ? 'none' : 'auto' }}
-              >
-                {status.charAt(0).toUpperCase() + status.slice(1)}
+      <div className='font-lexend mt-[2rem]' key={props?.key}>
+        <div>
+          <h1 className='font-bold text-lg'>Manage your events</h1>
+          <p className='text-dashtext text-sm'>
+            This is your central hub for all your event creations! Track the
+            progress of your workshops, talks, and appearances with ease.
+          </p>
+        </div>
+        <div className='mt-8 flex justify-between p-1 items-center'>
+          <h3 className='font-lexend font-medium'>YOUR EVENTS</h3>
+          <div className='flex items-center gap-2'>
+            <p className='font-lexend'>Sort by:</p>
+            <div className='flex gap-2'>
+              <Select className='font-lexend'>
+                <SelectTrigger className='w-[180px]'>
+                  <SelectValue placeholder='Please choose' />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value='apple'>Most recent</SelectItem>
+                    <SelectItem value='banana'>Banana</SelectItem>
+                    <SelectItem value='blueberry'>Blueberry</SelectItem>
+                    <SelectItem value='grapes'>Grapes</SelectItem>
+                    <SelectItem value='pineapple'>Pineapple</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <div className='relative'>
+                <Input
+                  placeholder='Search'
+                  className='text-muted-foreground font-lexend'
+                />
+                <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' />
               </div>
-            ))}
+            </div>
           </div>
-          <SearchBar />
+        </div>
+        <div className='my-8 space-y-4'>
+          {!loading && tickets.length && (
+            <div className='my-8 space-y-4 mb-12'>
+              {tickets.map((m, index) => (
+                <Ticket key={index} info={props} ticketData={m} />
+              ))}
+            </div>
+          )}
           {loading && (
             <div className='mt-12 space-y-4'>
               <TicketLoadingSkeleton />
               <TicketLoadingSkeleton />
               <TicketLoadingSkeleton />
             </div>
-          )}
-          {!loading && (
-            <>
-              <div className='flex flex-col gap-4 mt-12'>
-                {tickets.length > 0 ? (
-                  tickets.map((ticket, index) => (
-                    <Ticket
-                      key={index}
-                      title={ticket.name}
-                      date={ticket.created}
-                      showButtons={getButtonsForStep(step)}
-                      handleView={handleView}
-                      id={ticket.id}
-                    />
-                  ))
-                ) : (
-                  <h3 className='font-sans'>
-                    {step === 'draft'
-                      ? 'No Draft Tickets'
-                      : `No ${
-                          step.charAt(0).toUpperCase() + step.slice(1)
-                        } Tickets at this time.`}
-                  </h3>
-                )}
-              </div>
-              {step === 'draft' && (
-                <div className='mt-4'>
-                  <Link
-                    href='/studio/events/create'
-                    className='bg-dashFg rounded-[4rem] mt-4 px-3 py-2 text-black font-sans inline-flex justify-center gap-1'
-                    onClick={() => console.log('Creating event...')}
-                  >
-                    <AddCircleRoundedIcon />
-                    Create event
-                  </Link>
-                </div>
-              )}
-            </>
           )}
         </div>
       </div>
@@ -134,4 +135,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default events;
+export default Events;

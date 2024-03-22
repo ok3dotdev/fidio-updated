@@ -75,23 +75,6 @@ const EventView = (props) => {
             />
           </div>
         )}
-        {/* {step === '1' && <EventDetailsForm />} */}
-        {/* {step === '2' && (
-          <div>
-            <h1>{pipelineObject.name}</h1>
-            <EventDetailsStep
-              props={props}
-              submit={doFunc}
-              survey={useSurvey}
-              pipelineObject={pipelineObject}
-              setPipelineObject={setPipelineObject}
-              pipelineDbItem={pipelineDbItem}
-              setPipelineDbItem={setPipelineDbItem}
-              imgFor={imgFor}
-              imgCache={imgCache}
-            />
-          </div>
-        )} */}
       </div>
     </StudioLayout>
   );

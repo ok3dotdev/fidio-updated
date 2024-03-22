@@ -284,8 +284,8 @@ const Create = (props) => {
                 </p>
               </div>
               <p className='text-dashtext text-sm mt-2'>
-                Don&apos;t worry if you need a break! Your event details are
-                saved as a draft. Come back and complete it anytime.
+                Dont worry if you need a break! Your event details are saved as
+                a draft. Come back and complete it anytime.
               </p>
             </div>
             <Card className=' dark:bg-transparent mt-8'>
@@ -753,3 +753,393 @@ export const getServerSideProps = async (context) => {
 };
 
 export default Create;
+
+// import React, { useState, useEffect } from 'react';
+// import StudioLayout from '@/components/Layouts/StudioLayout';
+// import Link from 'next/link';
+// import { format } from 'date-fns';
+
+// import apiReq from '/modules/utility/api/apiReq';
+// import { defaultStyle } from '/modules/ecommerce/product/defaults';
+// import { v4 as uuidv4 } from 'uuid';
+// import { useToast } from '@/components/ui/use-toast';
+// import { ToastAction } from '@/components/ui/toast';
+// import { useRouter } from 'next/router';
+// import { pageDefaults } from '/app.config';
+// import { getServerSidePropsDefault } from '/modules/utility.js';
+// import { getServerSidePropsFunc } from '/appServer/serverProps';
+// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// import { Input } from '@/components/ui/input';
+// import { Button } from '@/components/ui/button';
+// import { DatePickerDemo } from '../../../components/inputs/DatePicker';
+// import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+// import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+// import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
+// import useSurveyStore from '../../../hooks/store';
+
+// import { useForm, Controller } from 'react-hook-form';
+// import EventDetailsForm from '../../../components/forms/EventDetailsForm';
+// import ArtistDetailsForm from '../../../components/forms/ArtistDetailsForm';
+
+// const pageName = 'create';
+
+// const Create = (props) => {
+//   const { register, handleSubmit, reset, control, setValue } = useForm();
+//   const [selectedImage, setSelectedImage] = useState(null);
+//   const [bannerImage, setbannerImage] = useState(null);
+//   const [lineUpInfo, setLineUpInfo] = useState([{ title: '', image: null }]);
+//   const [componentDidMount, setComponentDidMount] = React.useState(false);
+//   const [sent, setSent] = useState(false);
+//   const router = useRouter();
+//   const { toast } = useToast();
+
+//   const {
+//     eventDetails,
+//     setEventDetails,
+//     pipelineDbItem,
+//     setPipelineDbItem,
+//     pipelineObject,
+//     step,
+//     setStep,
+//     imgCache,
+//     imgFor,
+//     setImgFor,
+//     setImgCache,
+//     setPipelineObject,
+//   } = useSurveyStore();
+
+//   useEffect(() => {
+//     if (!componentDidMount) {
+//       setComponentDidMount(true);
+//       setSurveyStateDefault();
+//     }
+//   }, [componentDidMount]);
+
+//   const onSubmit = (data) => {
+//     console.log('DATA', data);
+//     setSurveyStateDefault();
+//     const updatedLineup = lineUpInfo.map((performer, index) => ({
+//       id: performer.id || uuidv4(),
+//       title: data.detailmeta?.lineup[index]?.title || '',
+//       image: performer.image || eventDetails?.detailmeta?.lineup[index]?.image,
+//     }));
+
+//     const updatedEventDetails = {
+//       ...eventDetails,
+//       ...data,
+//       detailmeta: {
+//         ...eventDetails.detailmeta,
+//         lineup: updatedLineup,
+//       },
+//     };
+//     const temp = { ...pipelineDbItem };
+//     temp.detailmeta.lineup = updatedLineup;
+//     setPipelineDbItem(temp);
+
+//     setEventDetails(updatedEventDetails);
+//     setStep(3);
+//   };
+
+//   useEffect(() => {
+//     if (eventDetails) {
+//       console.log(
+//         'dataaaaaa3',
+//         eventDetails,
+//         pipelineDbItem,
+//         pipelineObject,
+//         imgCache,
+//         imgFor
+//       );
+//     }
+//   }, [eventDetails]);
+
+//   useEffect(() => {
+//     if (pipelineDbItem) {
+//       console.log('dataaaaaa3', pipelineDbItem);
+//     }
+//   }, [pipelineDbItem]);
+
+//   const allowedTypes = ['image/jpeg', 'image/png'];
+
+//   const handleNewFile = React.useCallback((files) => {
+//     console.log('files', files);
+//     const useForm = imgCache;
+//     const useImgName = uuidv4();
+//     useForm.append(
+//       'image',
+//       Array.from(files)
+//         .filter((m) => allowedTypes.indexOf(m.type) > -1)
+//         .map((m) => {
+//           var blob = m.slice(0, m.size, m.type);
+//           const ext =
+//             allowedTypes[allowedTypes.indexOf(m.type)].match(
+//               /\/([a-zA-Z0-9].*)/
+//             )[1];
+//           return new File([blob], `${useImgName}.${ext}`, { type: m.type });
+//         })[0]
+//     );
+//     const modif = 'featureImg'; // Valid in 'featureImg', 'leadImg'
+//     const useTempImgFor = imgFor;
+//     useTempImgFor.push({ name: useImgName, modif: modif });
+//     setImgFor(useTempImgFor);
+//     setImgCache(useForm);
+//   });
+
+//   const handleImageUpload = (e) => {
+//     console.log('EEE', e);
+//     const file = e?.target?.files[0];
+//     if (file) {
+//       const reader = new FileReader();
+//       reader.onload = (event) => {
+//         console.log('lll', event);
+//         setSelectedImage(event?.target?.result);
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   };
+
+//   const setSurveyStateDefault = () => {
+//     const pipelineDbItem = {
+//       id: uuidv4(),
+//       shop: props?.shop?.id ?? null,
+//       name: '',
+//       detailmeta: {
+//         productType: 'virtual',
+//         livestream: true,
+//         lineup: [],
+//         ticket: true,
+//       },
+//       styles: [defaultStyle()],
+//       shipping: [],
+//       published: false,
+//       images: [],
+//       protype: {
+//         type: 'virtual',
+//         subscription: false,
+//       },
+//       infinite: false,
+//       meta: {},
+//       files: {},
+//       new: true,
+//     };
+//     setPipelineDbItem(pipelineDbItem);
+//   };
+
+//   const deletePerformer = (index) => {
+//     const updatedLineUpInfo = [...lineUpInfo];
+//     updatedLineUpInfo.splice(index, 1);
+//     const updatedPipelineObject = {
+//       ...eventDetails,
+//       detailmeta: {
+//         ...pipelineObject.detailmeta,
+//         lineup: updatedLineUpInfo,
+//       },
+//     };
+//     setEventDetails(updatedPipelineObject);
+//     setLineUpInfo(updatedLineUpInfo);
+//   };
+
+//   const handleLineupUpload = (e, index) => {
+//     const file = e?.target?.files[0];
+//     if (file) {
+//       const reader = new FileReader();
+//       reader.onload = (event) => {
+//         console.log('fillee', e?.target?.result);
+//         const updatedLineUp = [...lineUpInfo];
+//         updatedLineUp[index].image = file;
+//         updatedLineUp[index].file = event?.target?.result;
+//         setLineUpInfo(updatedLineUp);
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   };
+
+//   const doFunc = async () => {
+//     console.log('fdhggdgrh');
+//     setSurveyStateDefault();
+//     try {
+//       const res = await apiReq('/product/createProduct', {
+//         apiUrl: props?.apiUrl,
+//         pipelineDbItem: pipelineDbItem,
+//         pipelineObject: eventDetails,
+//         imgCache: imgCache,
+//         imgFor,
+//         _loggedIn: props?._loggedIn,
+//       });
+//       if (res) {
+//         console.log(res);
+//       }
+//     } catch (error) {
+//       console.error('Error creating product:', error);
+//       toast({
+//         title: 'Error!',
+//         description:
+//           'An error occurred while creating the product. Please try again later.',
+//         status: 'error',
+//       });
+//     }
+//   };
+
+//   const addPerformer = () => {
+//     setLineUpInfo([...lineUpInfo, { title: '', image: null }]);
+//   };
+
+//   const handleButtonClick = async (e) => {
+//     e.preventDefault();
+//     await doFunc();
+//     setSent(true);
+//     toast({
+//       title: 'Success!',
+//       description:
+//         'Congrats! Your event has been created successfully. You can share a link to the events page, or add it to your marketing.',
+//       action: <ToastAction altText='Goto schedule to undo'>Undo</ToastAction>,
+//     });
+//     router.push('/studio');
+//   };
+
+//   return (
+//     <StudioLayout {...props}>
+//       {step === 1 && (
+//         <EventDetailsForm
+//           handleNewFile={handleNewFile}
+//           setbannerImage={setbannerImage}
+//           bannerImage={bannerImage}
+//         />
+//       )}
+//       {step === 2 && (
+//         <ArtistDetailsForm
+//           handleLineupUpload={handleLineupUpload}
+//           handleImageUpload={handleImageUpload}
+//           handleSubmit={handleSubmit}
+//           onSubmit={onSubmit}
+//           selectedImage={selectedImage}
+//           setSelectedImage={setSelectedImage}
+//           line
+//         />
+//       )}
+//       {step === 3 && eventDetails && (
+//         <div className='relative mt-[20px] mb-[12rem]'>
+//           <div
+//             className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-40 items-center justify-center'
+//             style={{
+//               backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0)) , url(${bannerImage})`,
+//               backgroundSize: 'cover',
+//             }}
+//           >
+//             <h3 className='font-bold text-4xl text-white'>
+//               {eventDetails.name}
+//             </h3>
+//             <div className='text-dashtext flex gap-4 text-sm'>
+//               <div className='flex items-center gap-1'>
+//                 <CalendarTodayOutlinedIcon className='w-3' />
+//                 <p className='  text-white font-medium'>
+//                   {eventDetails.date && format(eventDetails.date, 'PPP')}
+//                 </p>
+//               </div>
+//               <div className='flex items-center gap-1'>
+//                 <AccessTimeOutlinedIcon className='w-3' />
+//                 <p className='  text-white font-medium'>
+//                   {eventDetails.startTime}
+//                 </p>
+//               </div>
+//               <div className='flex items-center gap-1'>
+//                 <FmdGoodOutlinedIcon className='w-3' />
+//                 <p className='  text-white font-medium'>{eventDetails.venue}</p>
+//               </div>
+//             </div>
+//           </div>
+//           <div className='flex flex-col pt-4'>
+//             <div className='relative max-w-[500px] mx-auto'>
+//               <h3 className='max-w-[500px] mx-auto mb-2 font-semibold mt-6'>
+//                 {!sent ? `Preview your event` : 'Event created successfuly'}
+//               </h3>
+//               <div className='bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto'>
+//                 <div className='space-y-4'>
+//                   <p>Performers</p>
+//                   <p className='text-dashtext'>HEADLINER</p>
+//                   <div className='flex items-center gap-x-2'>
+//                     <img
+//                       src={selectedImage}
+//                       alt=''
+//                       className='w-14 h-14 object-cover rounded-full'
+//                     />
+//                     <p>{eventDetails.headliner.name}</p>
+//                   </div>
+//                 </div>
+//                 <div className='mt-5'>
+//                   <p className='text-dashtext'>OTHER PERFORMERS</p>
+//                   <div className='flex flex-wrap gap-x-4 mt-4'>
+//                     {eventDetails.detailmeta.lineup.map((performer, index) => (
+//                       <div key={index} className='flex'>
+//                         <div className='flex items-center gap-x-2'>
+//                           <img
+//                             src={lineUpInfo[index]?.file}
+//                             alt=''
+//                             className='w-14 h-14 rounded-full object-cover'
+//                           />
+//                           <p>{performer.name}</p>
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </div>
+//                 </div>
+//               </div>
+//               {!sent && (
+//                 <div className='flex gap-x-2 mt-4'>
+//                   <input type='checkbox' />
+//                   <p className='text-sm'>
+//                     Checking this button confirms your acceptance of our
+//                     <span className='underline'>event creation guidelines</span>
+//                     , which detail the process and expectations for creating
+//                     events.
+//                   </p>
+//                 </div>
+//               )}
+//               {!sent ? (
+//                 <div className='mt-4 space-x-2 absolute right-0'>
+//                   <Button
+//                     role=''
+//                     className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
+//                     onClick={(e) => {
+//                       e.preventDefault();
+//                       setStep(2);
+//                     }}
+//                   >
+//                     Go back safely
+//                   </Button>
+//                   <Button
+//                     onClick={handleButtonClick}
+//                     className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
+//                   >
+//                     Confirm event
+//                   </Button>
+//                 </div>
+//               ) : (
+//                 <div className='mt-8 space-x-2 absolute right-0'>
+//                   <Button
+//                     onClick={(e) => {
+//                       setSent(false);
+//                     }}
+//                     className='dark:bg-transparent dark:text-white dark:border-[1px] dark:border-dashBorder dark:hover:bg-transparent p-3 rounded-[6px] text-sm'
+//                   >
+//                     Create another event
+//                   </Button>
+//                 </div>
+//               )}
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </StudioLayout>
+//   );
+// };
+
+// export const getServerSideProps = async (context) => {
+//   let currentProps = await getServerSidePropsDefault(
+//     context,
+//     pageDefaults[pageName]
+//   );
+//   return await getServerSidePropsFunc(currentProps, context);
+// };
+
+// export default Create;

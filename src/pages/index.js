@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import React from 'react'
-import { AppConfigLayout, PageContainer } from '/modules/internal'
-import { pageDefaults } from '/app.config'
-import { getServerSidePropsDefault } from '/modules/utility.js'
+import React from 'react';
+import { AppConfigLayout, PageContainer } from '/modules/internal';
+import { pageDefaults } from '/app.config';
+import { getServerSidePropsDefault } from '/modules/utility.js';
 // import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '../../customModules/features/seo-data';
 import Hero from '../../customModules/features/Hero.new';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
-import { getServerSidePropsFunc } from '/appServer/serverProps'
-import { Menu } from '/modules/menu/'
+import { getServerSidePropsFunc } from '/appServer/serverProps';
+import { Menu } from '/modules/menu/';
 
-const pageName = 'Index'
+const pageName = 'Index';
 
-export const page = props => {
-	return (
+export const page = (props) => {
+  return (
     <React.Fragment>
       {/* <PageContainer { ...props } pageName={pageName} /> */}
       <HomeLayout
@@ -26,10 +26,12 @@ export const page = props => {
         props={props}
       >
         <Hero {...props} />
-        <div className='max-w-7xl mx-auto py-24'>
+        <div className='max-w-7xl mx-auto py-24 font-Archivo'>
           <div className='flex flex-col lg:flex-row'>
             <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
-              <h2 className='text-[24px] lg:text-[48px]'>Concert-to-go</h2>
+              <h2 className='text-[24px] lg:text-[48px] font-Archivo'>
+                Concert-to-go
+              </h2>
               <p className='leading-8 font-sans text-[16px] lg:text-[20px] pt-6'>
                 Never miss a live performance. <br /> Buy tickets and watch your
                 show, wherever you are, however you like.
@@ -79,8 +81,8 @@ export const page = props => {
         </div>
       </HomeLayout>
     </React.Fragment>
-	)
-}
+  );
+};
 
 export const getServerSideProps = async (context) => {
   let currentProps = await getServerSidePropsDefault(
@@ -90,4 +92,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default page
+export default page;

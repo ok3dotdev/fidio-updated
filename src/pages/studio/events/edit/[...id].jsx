@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 const pageName = 'create';
 
-const events = (props) => {
+const Events = (props) => {
   const router = useRouter();
   return (
     <StudioLayout {...props}>
@@ -26,4 +26,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default events;
+export default Events;

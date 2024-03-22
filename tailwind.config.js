@@ -35,17 +35,20 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       colors: {
-        dashtext: 'rgb(241, 241, 241)',
-        dashBorder: 'rgba(255, 255, 255, 0.2)',
-        dashBg: 'rgba(26, 25, 25, 1)',
+        dashtext: 'rgba(163, 163, 163, 1)',
+        dashBorder: 'rgba(64, 64, 64, 1)',
+        dashBg: 'rgba(23, 23, 23, 1)',
+        whiteGradient: 'rgba(64, 64, 64, 0.5)',
         dashFg: 'rgba(250, 248, 245, 1)',
-        accentY: 'rgba(253, 176, 0, 1)',
-        dashSides: 'rgba(46, 46, 46, 1)',
+        accentY: 'rgba(221, 104, 26, 1)',
+        dashSides: 'rgba(38, 38, 38, 1)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        foregroundLight: 'rgba(64, 64, 64, 0.2)',
+        divide: 'rgba(64, 64, 64, 1)',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -80,6 +83,7 @@ module.exports = {
       },
       fontFamily: {
         Archivo: 'Archivo Black',
+        lexend: 'Lexend',
       },
       borderRadius: {
         lg: 'var(--radius)',
