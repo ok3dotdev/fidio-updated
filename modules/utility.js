@@ -42,6 +42,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 var resolveComponent = exports.resolveComponent = function resolveComponent(json) {
+  var useModules;
   if (json.type) {
     switch (json.type) {
       case 'WatchPage':
@@ -79,16 +80,18 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
       case 'Settings':
         return /*#__PURE__*/_react["default"].createElement(_settings.Settings, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CustomModule':
-        if (json && json.props && json.props.customModule) {
-          var UseModule = _customModules["default"][json.props.customModule];
+        useModules = 'customModule';
+        if (json !== null && json !== void 0 && json.props && json.props[useModules] && _customModules["default"] && Object.prototype.hasOwnProperty.call(_customModules["default"], json.props[useModules])) {
+          var UseModule = _customModules["default"][json.props[useModules]];
           if (UseModule) {
             return /*#__PURE__*/_react["default"].createElement(UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
         }
         return null;
       case 'Presentation':
-        if (json && json.props && json.props.module && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props.module)) {
-          var _UseModule = _presentation["default"][json.props.module];
+        useModules = 'module';
+        if (json !== null && json !== void 0 && json.props && json.props[useModules] && _customModules["default"] && Object.prototype.hasOwnProperty.call(_customModules["default"], json.props[useModules])) {
+          var _UseModule = _customModules["default"][json.props[useModules]];
           if (_UseModule) {
             return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
@@ -135,11 +138,11 @@ function generateComponent(json) {
       props = json.props,
       children = json.children;
     if (props !== null && props !== void 0 && props.childrenBefore) {
-      var childElements = props.childrenBefore ? props.childrenBefore.map(generateComponent) : /*#__PURE__*/_react["default"].createElement("div", null);
+      var childElements = props.childrenBefore && props.childrenBefore.map(generateComponent);
       json.props.childrenBefore = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(childElements)))];
     }
     if (props !== null && props !== void 0 && props.childrenAfter) {
-      var _childElements = props.childrenAfter ? props.childrenAfter.map(generateComponent) : /*#__PURE__*/_react["default"].createElement("div", null);
+      var _childElements = props.childrenAfter && props.childrenAfter.map(generateComponent);
       json.props.childrenAfter = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements)))];
     }
     // If the type is a string, create a React element
@@ -150,7 +153,7 @@ function generateComponent(json) {
         return matchComponent;
       }
       if (children && children.map) {
-        var _childElements2 = children.map(generateComponent);
+        var _childElements2 = children && children.map(generateComponent);
         return /*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements2)));
       }
     }
