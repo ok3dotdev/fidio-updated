@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.normalizeText=void 0;var normalizeText=exports.normalizeText=function(e){var r=e;return r=(!(1<arguments.length&&void 0!==arguments[1])||arguments[1])&&"string"==typeof e?e.replace(/:nbsp;/g," "):r};

@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"WideFeature",{enumerable:!0,get:function(){return _WideFeature.default}});var _WideFeature=_interopRequireDefault(require("./WideFeature.js"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}

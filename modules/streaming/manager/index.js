@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"Manager",{enumerable:!0,get:function(){return _Manager.default}});var _Manager=_interopRequireDefault(require("./Manager.js"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}

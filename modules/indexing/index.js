@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"SliderBasic",{enumerable:!0,get:function(){return _SliderBasic.default}});var _SliderBasic=_interopRequireDefault(require("./SliderBasic"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}

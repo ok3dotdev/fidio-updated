@@ -1,1 +1,0 @@
-"use strict";var _LocalEventEmitter={_events:{},dispatch:function(t,e){this._events[t]&&this._events[t].forEach(function(t){return t(e)})},subscribe:function(t,e){this._events[t]||(this._events[t]=[]),this._events[t].push(e)},unsubscribe:function(t){this._events[t]&&delete this._events[t]}};module.exports={_LocalEventEmitter:_LocalEventEmitter};
