@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import DOMPurify from 'dompurify';
@@ -62,8 +63,14 @@ const Module = props => {
   }
   const useTemplates = Object.assign(templates, props?.articleTemplates ?? {}); // Merge Database Server Article Templates with Local Defaults
   const passTemplate = template && useTemplates && useTemplates[template];
-  return <React.Fragment>
-            <Article {...props} useTemplates={useTemplates} template={passTemplate} articleHtml={articleHtml} articleData={articleData} createMarkup={createMarkup} htmlRef={htmlRef} ArticleStyles={ArticleStyles} />
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Article, _extends({}, props, {
+    useTemplates: useTemplates,
+    template: passTemplate,
+    articleHtml: articleHtml,
+    articleData: articleData,
+    createMarkup: createMarkup,
+    htmlRef: htmlRef,
+    ArticleStyles: ArticleStyles
+  })));
 };
 export default Module;

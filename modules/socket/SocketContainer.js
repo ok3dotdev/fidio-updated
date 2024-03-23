@@ -106,8 +106,6 @@ const SocketContainer = props => {
       };
     }
   }, [props._loggedIn, props.setRooms]);
-  return _div || (_div = <div>
-            
-        </div>);
+  return _div || (_div = /*#__PURE__*/React.createElement("div", null));
 };
 export default SocketContainer;

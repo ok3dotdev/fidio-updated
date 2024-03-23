@@ -25,45 +25,45 @@ const resolveComponent = json => {
   if (json.type) {
     switch (json.type) {
       case 'WatchPage':
-        return <WatchPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</WatchPage>;
+        return /*#__PURE__*/React.createElement(WatchPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'SignIn':
-        return <SignIn {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</SignIn>;
+        return /*#__PURE__*/React.createElement(SignIn, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'SignInPage':
-        return <SignInPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</SignInPage>;
+        return /*#__PURE__*/React.createElement(SignInPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ProfilePage':
-        return <ProfilePage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</ProfilePage>;
+        return /*#__PURE__*/React.createElement(ProfilePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ProductPage':
-        return <ProductPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</ProductPage>;
+        return /*#__PURE__*/React.createElement(ProductPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'EventPage':
-        return <EventPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</EventPage>;
+        return /*#__PURE__*/React.createElement(EventPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ReceiptPage':
-        return <ReceiptPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</ReceiptPage>;
+        return /*#__PURE__*/React.createElement(ReceiptPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'ArticlePage':
-        return <ArticlePage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</ArticlePage>;
+        return /*#__PURE__*/React.createElement(ArticlePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CreditCard':
-        return <CreditCard {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</CreditCard>;
+        return /*#__PURE__*/React.createElement(CreditCard, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Streaming_Manager':
-        return <Manager {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</Manager>;
+        return /*#__PURE__*/React.createElement(Manager, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Onboarding_SignIn_Username':
-        return <Username {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</Username>;
+        return /*#__PURE__*/React.createElement(Username, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Feature':
-        return <Feature {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</Feature>;
+        return /*#__PURE__*/React.createElement(Feature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'WideFeature':
-        return <WideFeature {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</WideFeature>;
+        return /*#__PURE__*/React.createElement(WideFeature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'SliderBasic':
-        return <SliderBasic {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</SliderBasic>;
+        return /*#__PURE__*/React.createElement(SliderBasic, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'FetchHandler':
-        return <FetchHandler {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</FetchHandler>;
+        return /*#__PURE__*/React.createElement(FetchHandler, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Survey':
-        return <Survey {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</Survey>;
+        return /*#__PURE__*/React.createElement(Survey, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'Settings':
-        return <Settings {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</Settings>;
+        return /*#__PURE__*/React.createElement(Settings, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
       case 'CustomModule':
         useModules = 'customModule';
         if (json?.props && json.props[useModules] && CustomModules && Object.prototype.hasOwnProperty.call(CustomModules, json.props[useModules])) {
           const UseModule = CustomModules[json.props[useModules]];
           if (UseModule) {
-            return <UseModule {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</UseModule>;
+            return /*#__PURE__*/React.createElement(UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
         }
       case 'Presentation':
@@ -71,7 +71,7 @@ const resolveComponent = json => {
         if (json?.props && json.props[useModules] && PresentationModules && Object.prototype.hasOwnProperty.call(PresentationModules, json.props[useModules])) {
           const UseModule = PresentationModules[json.props[useModules]];
           if (UseModule) {
-            return <UseModule {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</UseModule>;
+            return /*#__PURE__*/React.createElement(UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
           }
         }
       default:
@@ -119,11 +119,11 @@ function generateComponent(json) {
     } = json;
     if (props?.childrenBefore) {
       const childElements = props.childrenBefore && props.childrenBefore.map(generateComponent);
-      json.props.childrenBefore = [React.createElement(type, props, ...childElements)];
+      json.props.childrenBefore = [/*#__PURE__*/React.createElement(type, props, ...childElements)];
     }
     if (props?.childrenAfter) {
       const childElements = props.childrenAfter && props.childrenAfter.map(generateComponent);
-      json.props.childrenAfter = [React.createElement(type, props, ...childElements)];
+      json.props.childrenAfter = [/*#__PURE__*/React.createElement(type, props, ...childElements)];
     }
     // If the type is a string, create a React element
     if (typeof type === 'string') {
@@ -134,7 +134,7 @@ function generateComponent(json) {
       }
       if (children && children.map) {
         const childElements = children && children.map(generateComponent);
-        return React.createElement(type, props, ...childElements);
+        return /*#__PURE__*/React.createElement(type, props, ...childElements);
       }
     }
     if (type) {

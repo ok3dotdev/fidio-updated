@@ -209,59 +209,86 @@ const Module = props => {
   const leadImg = props?.product?.images ? props.product.images.find(m => m?.leadImg) : null;
   const currentIsBgImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && bgImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
   const currentIsLeadImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && leadImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
-  return <div className={`${props.className} ${PIMStyles.productImageManagerContainer} ProductImageManager_container`} style={{
-    position: 'relative'
-  }}>
-            {props.editing && !isObjectEmpty(props.editing) ? <React.Fragment>
-                        <input type='file' style={{
-        display: 'none'
-      }} ref={fileInput} onChange={handleNewFile} />
-                        <Tooltip title="Click here to upload an image for your product" placement='bottom'>
-                            <div className={`${PIMStyles.changeImageButton} image material-icons`} onClick={handleUploadImage}>image</div>
-                        </Tooltip>
-                        {warning && warning.message ? <div className={`${PIMStyles.warning}`}>
-                                    <div className={`${PIMStyles.warningItemContainer}`}>
-                                        <div className={`${PIMStyles.warningItem}`}>{warning.message}</div>
-                                    </div>
-                                </div> : null}
-                    </React.Fragment> : null}
-            {props?.editing && !isObjectEmpty(props.editing) ? <div className={`${PIMStyles.buttonSetAsBackground}`}>
-                        {currentIsLeadImage ? <button className='gradient_style_bg_1 gradient_style_bg_drop' style={{
-        fontWeight: 600,
-        border: '1px solid #b8ff00',
-        borderRadius: '1rem',
-        fontSize: '.7rem',
-        textAlign: 'center',
-        padding: '0.125rem 1.5rem',
-        color: 'white'
-      }}>Current Lead Image</button> : <button onClick={setCurrentImageAsLead}>Tag As Lead Image</button>}
-                        {currentIsBgImage ? <button className='gradient_style_bg_2 gradient_style_bg_2_drop' style={{
-        fontWeight: 600,
-        border: '1px solid #fe4c4c',
-        borderRadius: '1rem',
-        fontSize: '.7rem',
-        textAlign: 'center',
-        padding: '0.125rem 1.5rem',
-        color: 'white'
-      }}>Current Feature Image</button> : <button onClick={setCurrentImageAsBackground}>Tag As Feature Image</button>}
-                    </div> : null}
-            <div className={`${PIMStyles.productImageListContainer}`}>
-                    {imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn.static ? imageThumbnailFeed.map(m => <div className={`${PIMStyles.productImageListThumbnailContainer}`} style={{
-        backgroundImage: `url(${props.cdn.static}/${m.name})`
-      }} onClick={setUseImageThumbnail} selector={m.name}>
-                                    <img src={resolveImg(props.editing, props.cdn)} className='Product_img' style={{
-          width: '45px',
-          opacity: useImage ? 0 : 1
-        }} />
-                                </div>) : null}
-            </div>
-            <div className={`${PIMStyles.productImageContainer}`} ref={productImageRef} style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} ${PIMStyles.productImageManagerContainer} ProductImageManager_container`,
+    style: {
+      position: 'relative'
+    }
+  }, props.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    style: {
+      display: 'none'
+    },
+    ref: fileInput,
+    onChange: handleNewFile
+  }), /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Click here to upload an image for your product",
+    placement: "bottom"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.changeImageButton} image material-icons`,
+    onClick: handleUploadImage
+  }, "image")), warning && warning.message ? /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.warning}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.warningItemContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.warningItem}`
+  }, warning.message))) : null) : null, props?.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.buttonSetAsBackground}`
+  }, currentIsLeadImage ? /*#__PURE__*/React.createElement("button", {
+    className: "gradient_style_bg_1 gradient_style_bg_drop",
+    style: {
+      fontWeight: 600,
+      border: '1px solid #b8ff00',
+      borderRadius: '1rem',
+      fontSize: '.7rem',
+      textAlign: 'center',
+      padding: '0.125rem 1.5rem',
+      color: 'white'
+    }
+  }, "Current Lead Image") : /*#__PURE__*/React.createElement("button", {
+    onClick: setCurrentImageAsLead
+  }, "Tag As Lead Image"), currentIsBgImage ? /*#__PURE__*/React.createElement("button", {
+    className: "gradient_style_bg_2 gradient_style_bg_2_drop",
+    style: {
+      fontWeight: 600,
+      border: '1px solid #fe4c4c',
+      borderRadius: '1rem',
+      fontSize: '.7rem',
+      textAlign: 'center',
+      padding: '0.125rem 1.5rem',
+      color: 'white'
+    }
+  }, "Current Feature Image") : /*#__PURE__*/React.createElement("button", {
+    onClick: setCurrentImageAsBackground
+  }, "Tag As Feature Image")) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.productImageListContainer}`
+  }, imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn.static ? imageThumbnailFeed.map(m => /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.productImageListThumbnailContainer}`,
+    style: {
+      backgroundImage: `url(${props.cdn.static}/${m.name})`
+    },
+    onClick: setUseImageThumbnail,
+    selector: m.name
+  }, /*#__PURE__*/React.createElement("img", {
+    src: resolveImg(props.editing, props.cdn),
+    className: "Product_img",
+    style: {
+      width: '45px',
+      opacity: useImage ? 0 : 1
+    }
+  }))) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.productImageContainer}`,
+    ref: productImageRef,
+    style: {
       backgroundImage: useImage ? `url(${useImage})` : ''
-    }}>
-                <img src={resolveImg(props.editing, props.cdn)} style={{
-        opacity: useImage ? 0 : 1
-      }} className='Product_img'></img>
-            </div>
-        </div>;
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: resolveImg(props.editing, props.cdn),
+    style: {
+      opacity: useImage ? 0 : 1
+    },
+    className: "Product_img"
+  })));
 };
 export default Module;

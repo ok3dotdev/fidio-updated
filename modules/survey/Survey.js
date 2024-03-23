@@ -1,4 +1,5 @@
 var _span, _span2;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 // Survey.js
 import React from 'react';
 import styles from './Survey.module.scss';
@@ -455,14 +456,17 @@ const Module = props => {
       fileToDataUrl(f, m.input.var);
     }
     const useFile = `${m.input.var === 'featureImg' && bgImg ? `${props?.cdn?.static}/${bgImg}` : m.input.var === 'leadImg' && leadImg ? `${props?.cdn?.static}/${leadImg}` : 'img/default/greythumb.jpg'}`;
-    return <img style={{
-      backgroundImage: `url(${useFile})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      width: '100%',
-      height: '100%'
-    }} selectimg={m?.input?.var}></img>;
+    return /*#__PURE__*/React.createElement("img", {
+      style: {
+        backgroundImage: `url(${useFile})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: '100%',
+        height: '100%'
+      },
+      selectimg: m?.input?.var
+    });
   };
   const appendFormData = (filesRenamed, modif = 'lineup', useId) => {
     const formData = imgCache;
@@ -492,105 +496,184 @@ const Module = props => {
   const resolveComponent = m => {
     if (m?.component && typeof m.component === 'function') {
       const UseComponent = m.component;
-      return <UseComponent {...props} m={m}></UseComponent>;
+      return /*#__PURE__*/React.createElement(UseComponent, _extends({}, props, {
+        m: m
+      }));
     }
   };
   const resolveStageItem = (useStageItem, useAnimatingBack, useStyles, useAnimatingNext, useKeepCurrent, useStage) => {
-    return <div className={`${styles[useStyles]} ${styles.item} ${animatingNext && useAnimatingNext ? `${styles[useAnimatingNext]}` : null} ${animatingBack && useAnimatingBack ? `${styles[useAnimatingBack]}` : null} ${keepCurrent && useKeepCurrent ? `${styles.keepCurrent} ${styles.backToOriginal}` : null} ${useStageItem?.className} survey_itemContainer`} style={{
-      background: useStageItem?.bg ?? null,
-      color: useStageItem?.color ?? null
-    }}>
-			<h1 className={`${styles.title} survey_title`}>{useStageItem?.label}</h1>
-			{useStageItem?.input?.type === 'select' ? <ul className={styles.survey__optionsList}>
-						{useStageItem?.input?.options.map(option => <li key={option.label}>
-									<button className={styles.survey__optionButton} onClick={handleOptionClick} goto={option.goto} label={option.label} question={useStageItem?.label} value={option.label}>{option.label}</button>
-								</li>)}
-				</ul> : useStageItem?.input?.type === 'number' ? <div>
-						<input type='number' className={`${styles.numberInput}`} defaultValue={useStageItem?.input?.default} ref={inputRef}></input>
-					</div> : useStageItem?.input?.type === 'text' ? <div>
-						<TextareaAutosize type='text' className={`${styles.textInput}`} placeholder={useStageItem?.input?.default} minRows={3} ref={inputRef} onKeyDown={handleKeyDown} goto={useStageItem?.confirm?.goto} question={useStageItem?.label} defaultValue={answers[useStage]?.answer}></TextareaAutosize>
-					</div> : useStageItem?.component && typeof useStageItem.component === 'function' ? <div>{resolveComponent(useStageItem)}</div> : null}
-			{useStageItem?.pipeline?.map ? useStageItem.pipeline.map((m, i) => <div key={i} className='survey_pipelineItemContainer' style={{
+    return /*#__PURE__*/React.createElement("div", {
+      className: `${styles[useStyles]} ${styles.item} ${animatingNext && useAnimatingNext ? `${styles[useAnimatingNext]}` : null} ${animatingBack && useAnimatingBack ? `${styles[useAnimatingBack]}` : null} ${keepCurrent && useKeepCurrent ? `${styles.keepCurrent} ${styles.backToOriginal}` : null} ${useStageItem?.className} survey_itemContainer`,
+      style: {
+        background: useStageItem?.bg ?? null,
+        color: useStageItem?.color ?? null
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      className: `${styles.title} survey_title`
+    }, useStageItem?.label), useStageItem?.input?.type === 'select' ? /*#__PURE__*/React.createElement("ul", {
+      className: styles.survey__optionsList
+    }, useStageItem?.input?.options.map(option => /*#__PURE__*/React.createElement("li", {
+      key: option.label
+    }, /*#__PURE__*/React.createElement("button", {
+      className: styles.survey__optionButton,
+      onClick: handleOptionClick,
+      goto: option.goto,
+      label: option.label,
+      question: useStageItem?.label,
+      value: option.label
+    }, option.label)))) : useStageItem?.input?.type === 'number' ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
+      type: "number",
+      className: `${styles.numberInput}`,
+      defaultValue: useStageItem?.input?.default,
+      ref: inputRef
+    })) : useStageItem?.input?.type === 'text' ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(TextareaAutosize, {
+      type: "text",
+      className: `${styles.textInput}`,
+      placeholder: useStageItem?.input?.default,
+      minRows: 3,
+      ref: inputRef,
+      onKeyDown: handleKeyDown,
+      goto: useStageItem?.confirm?.goto,
+      question: useStageItem?.label,
+      defaultValue: answers[useStage]?.answer
+    })) : useStageItem?.component && typeof useStageItem.component === 'function' ? /*#__PURE__*/React.createElement("div", null, resolveComponent(useStageItem)) : null, useStageItem?.pipeline?.map ? useStageItem.pipeline.map((m, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "survey_pipelineItemContainer",
+      style: {
         marginBottom: '.25rem'
-      }}>
-							<label style={{
-          lineHeight: '1.5rem'
-        }}>{m?.label ?? ''}</label>
-							<div>
-								{m?.input?.type === 'text' ? <div className={`${m?.className}`}>
-											<TextareaAutosize type='text' className={`${styles.textInput}`} placeholder={m?.input?.default} onInput={handleKeyDown} var={m?.input?.var} pipeline='true' minRows={m?.input?.rows ?? 1} usedefault={pipelineObject[m?.input?.var]} surveyclear='true'></TextareaAutosize>
-										</div> : m?.input?.type === 'datetime-local' ? <div className={`${m?.className}`}>
-											<input type='datetime-local' placeholder={m?.input?.default} onInput={handleKeyDown} var={m?.input?.var} pipeline='true' surveyclear='true' usedefault={pipelineObject[m?.input?.var]} />
-										</div> : m?.input?.type === 'lineup' ? <div className={`${m?.className}`}>
-											<Lineup {...props} product={pipelineDbItem} editing={pipelineDbItem} editingOptionsMeta={pipelineDbItem?.detailmeta ?? null} setOptionsMetaData={setOptionsMetaData} currentLineupEditing={currentLineupEditing} setCurrentLineupEditing={setCurrentLineupEditing} appendFormData={appendFormData} />
-										</div> : m?.input?.type === 'price' ? <div className={`${m?.className} flex gap-p2`}>
-											{_span || (_span = <span>$</span>)}
-											<span>
-												<input type='text' style={{
-                width: '100%'
-              }} onChange={setCurrentPrice} var={m?.input?.var} pipeline='true' surveyclear='true' method={m?.input?.method} usedefault={!isObjectEmpty(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m?.input?.var]) && pipelineObject[m?.input?.var] !== null ? westernMoneyFormat.format(pipelineObject[m?.input?.var]) : '10.00'} />
-											</span>
-										</div> : m?.input?.type === 'quantity' ? <div className={`${m?.className} flex gap-p2`}>
-											{_span2 || (_span2 = <span>Qty</span>)}
-											<span>
-												<input type='text' style={{
-                width: '100%'
-              }} onChange={setCurrentQuantity} var={m?.input?.var} pipeline='true' surveyclear='true' method={m?.input?.method} usedefault={!isObjectEmpty(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m?.input?.var]) && pipelineObject[m?.input?.var] !== null ? pipelineObject[m?.input?.var] : '100'} />
-											</span>
-										</div> : m?.input?.type === 'image' && ['leadImg', 'featureImg'].indexOf(m?.input?.var) > -1 ? <div className={`${m?.className}`}>
-											<div style={{
-              height: m?.height ?? '200px',
-              width: m?.width ?? '200px'
-            }}>
-												{resolveImg(m)}
-											</div>
-											<div className={`flex gap-p2 ${styles.pseudoButton}`} style={{
-              alignItems: 'center',
-              fontSize: '.8rem',
-              marginTop: '.5rem'
-            }} onClick={addTempFile} modif={m?.input?.var}>
-												<div className='material-icons' style={{
-                alignSelf: 'center'
-              }}>add</div>
-												<div>{m?.note}</div>
-											</div>
-											<input style={{
-              display: 'none'
-            }} type='file' onChange={handleNewFile} selectmodif={m.input.var} />
-										</div> : m?.component ? <div>{resolveComponent(m)}</div> : null}
-							</div>
-						</div>) : null}
-			<div className='survey_errorContainer'>
-				<div className='error' ref={currentError} style={{
-          opacity: 0
-        }}>{errorLog[useStage]}</div>
-			</div>
-			<div className='flex survey_confirmBackButtonContainer' style={{
+      }
+    }, /*#__PURE__*/React.createElement("label", {
+      style: {
+        lineHeight: '1.5rem'
+      }
+    }, m?.label ?? ''), /*#__PURE__*/React.createElement("div", null, m?.input?.type === 'text' ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className}`
+    }, /*#__PURE__*/React.createElement(TextareaAutosize, {
+      type: "text",
+      className: `${styles.textInput}`,
+      placeholder: m?.input?.default,
+      onInput: handleKeyDown,
+      var: m?.input?.var,
+      pipeline: "true",
+      minRows: m?.input?.rows ?? 1,
+      usedefault: pipelineObject[m?.input?.var],
+      surveyclear: "true"
+    })) : m?.input?.type === 'datetime-local' ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className}`
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "datetime-local",
+      placeholder: m?.input?.default,
+      onInput: handleKeyDown,
+      var: m?.input?.var,
+      pipeline: "true",
+      surveyclear: "true",
+      usedefault: pipelineObject[m?.input?.var]
+    })) : m?.input?.type === 'lineup' ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className}`
+    }, /*#__PURE__*/React.createElement(Lineup, _extends({}, props, {
+      product: pipelineDbItem,
+      editing: pipelineDbItem,
+      editingOptionsMeta: pipelineDbItem?.detailmeta ?? null,
+      setOptionsMetaData: setOptionsMetaData,
+      currentLineupEditing: currentLineupEditing,
+      setCurrentLineupEditing: setCurrentLineupEditing,
+      appendFormData: appendFormData
+    }))) : m?.input?.type === 'price' ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className} flex gap-p2`
+    }, _span || (_span = /*#__PURE__*/React.createElement("span", null, "$")), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      style: {
+        width: '100%'
+      },
+      onChange: setCurrentPrice,
+      var: m?.input?.var,
+      pipeline: "true",
+      surveyclear: "true",
+      method: m?.input?.method,
+      usedefault: !isObjectEmpty(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m?.input?.var]) && pipelineObject[m?.input?.var] !== null ? westernMoneyFormat.format(pipelineObject[m?.input?.var]) : '10.00'
+    }))) : m?.input?.type === 'quantity' ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className} flex gap-p2`
+    }, _span2 || (_span2 = /*#__PURE__*/React.createElement("span", null, "Qty")), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      style: {
+        width: '100%'
+      },
+      onChange: setCurrentQuantity,
+      var: m?.input?.var,
+      pipeline: "true",
+      surveyclear: "true",
+      method: m?.input?.method,
+      usedefault: !isObjectEmpty(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m?.input?.var]) && pipelineObject[m?.input?.var] !== null ? pipelineObject[m?.input?.var] : '100'
+    }))) : m?.input?.type === 'image' && ['leadImg', 'featureImg'].indexOf(m?.input?.var) > -1 ? /*#__PURE__*/React.createElement("div", {
+      className: `${m?.className}`
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        height: m?.height ?? '200px',
+        width: m?.width ?? '200px'
+      }
+    }, resolveImg(m)), /*#__PURE__*/React.createElement("div", {
+      className: `flex gap-p2 ${styles.pseudoButton}`,
+      style: {
+        alignItems: 'center',
+        fontSize: '.8rem',
+        marginTop: '.5rem'
+      },
+      onClick: addTempFile,
+      modif: m?.input?.var
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "material-icons",
+      style: {
+        alignSelf: 'center'
+      }
+    }, "add"), /*#__PURE__*/React.createElement("div", null, m?.note)), /*#__PURE__*/React.createElement("input", {
+      style: {
+        display: 'none'
+      },
+      type: "file",
+      onChange: handleNewFile,
+      selectmodif: m.input.var
+    })) : m?.component ? /*#__PURE__*/React.createElement("div", null, resolveComponent(m)) : null))) : null, /*#__PURE__*/React.createElement("div", {
+      className: "survey_errorContainer"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "error",
+      ref: currentError,
+      style: {
+        opacity: 0
+      }
+    }, errorLog[useStage])), /*#__PURE__*/React.createElement("div", {
+      className: "flex survey_confirmBackButtonContainer",
+      style: {
         marginTop: '.5rem',
         justifyContent: 'space-between'
-      }}>
-				<button className={`${styles.confirmButton} survey_confirmButton`} onClick={handleOptionClickConfirm} goto={useStageItem?.confirm?.goto} label={useStageItem?.label} value={'confirm'} question={useStageItem?.label} style={{
-          opacity: useStageItem?.confirm ? 1 : 0,
-          transition: 0
-        }}>
-					{useStageItem?.confirm?.label ? useStageItem?.confirm.label : useStageItem?.confirm?.goto === 'end' ? 'Confirm' : 'Next'}
-				</button>
-				{backList && backList.length > 0 && !useStageItem?.submit && !submitted ? <button onClick={handleGoBack} className={`${styles.backButton} survey_backButton`} style={{
-          transition: 0
-        }}>Back</button> : null}
-			</div>
-		</div>;
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      className: `${styles.confirmButton} survey_confirmButton`,
+      onClick: handleOptionClickConfirm,
+      goto: useStageItem?.confirm?.goto,
+      label: useStageItem?.label,
+      value: 'confirm',
+      question: useStageItem?.label,
+      style: {
+        opacity: useStageItem?.confirm ? 1 : 0,
+        transition: 0
+      }
+    }, useStageItem?.confirm?.label ? useStageItem?.confirm.label : useStageItem?.confirm?.goto === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !useStageItem?.submit && !submitted ? /*#__PURE__*/React.createElement("button", {
+      onClick: handleGoBack,
+      className: `${styles.backButton} survey_backButton`,
+      style: {
+        transition: 0
+      }
+    }, "Back") : null));
   };
   const bgImg = pipelineDbItem?.images ? pipelineDbItem.images.find(m => m?.bgImg) : null;
   const leadImg = pipelineDbItem.images ? pipelineDbItem.images.find(m => m?.leadImg) : null;
   console.log(currentStage, answers, backList, next, submitted, props, currentStageItem);
   console.log('Pipeline Object', pipelineObject, pipelineDbItem, back, next);
-  return <div className={styles.survey__container} style={{
-    height: props?.height ? `${props.height}px` : '100vh'
-  }}>
-			{back ? resolveStageItem(backStageItem, 'animatingBackBack', 'backItem', null, null, back) : null}
-			{resolveStageItem(currentStageItem, 'animatingBackCurrent', 'currentItem', 'animatingNextCurrent', true, currentStage)}
-			{next ? resolveStageItem(nextStageItem, null, 'nextItem', 'animatingNextNext', null, next) : null}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: styles.survey__container,
+    style: {
+      height: props?.height ? `${props.height}px` : '100vh'
+    }
+  }, back ? resolveStageItem(backStageItem, 'animatingBackBack', 'backItem', null, null, back) : null, resolveStageItem(currentStageItem, 'animatingBackCurrent', 'currentItem', 'animatingNextCurrent', true, currentStage), next ? resolveStageItem(nextStageItem, null, 'nextItem', 'animatingNextNext', null, next) : null);
 };
 export default Module;

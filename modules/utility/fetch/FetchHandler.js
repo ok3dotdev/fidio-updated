@@ -45,8 +45,8 @@ const Module = props => {
     };
     f();
   }, [didFetch, fetchBusy, props?.handlerName, props.handlerArgs, props.domainKey]);
-  return <div className={`${props.className}`}>
-            
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className}`
+  });
 };
 export default Module;

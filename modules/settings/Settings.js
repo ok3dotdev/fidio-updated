@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -155,115 +156,153 @@ const Module = props => {
   console.log(editedInputs, currentTab, resolvedOrders);
   const resolveCurrentItem = itemType => {
     if (itemType === 'firstNameLastName') {
-      return <React.Fragment>
-					<div className={`${Styles.FirstName_LastName_Container}`}>
-						<div style={{
-            maxWidth: '100%',
-            width: '100%'
-          }}>
-							{props?._loggedIn ? <React.Fragment>
-										<label className={`${Styles.label}`}>First Name</label>
-										{!editedInputs['firstName'] ? <div className={`${Styles.hoverHighlight}`} modif='firstName' onClick={handleChange}>{props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.firstName !== '' ? props._loggedIn.meta.firstName : props?._loggedIn ? 'Add First Name' : ''}</div> : <React.Fragment>
-													<input type='text' placeholder='First Name' className={`${Styles.input}`} id={`Settings_${componentId}_firstName_Input`} />
-													<button className={`${Styles.Save_Button}`} modif={'firstName'} onClick={saveChange}>Save</button>
-												</React.Fragment>}
-									</React.Fragment> : null}
-						</div>
-						<div style={{
-            maxWidth: '100%',
-            width: '100%'
-          }}>
-							{props?._loggedIn ? <React.Fragment>
-										<label className={`${Styles.label}`}>Last Name</label>
-										{!editedInputs['lastName'] ? <div className={`${Styles.hoverHighlight}`} modif='lastName' onClick={handleChange}>{props?._loggedIn?.meta?.lastName && props?._loggedIn?.meta?.lastName !== '' ? props._loggedIn.meta.lastName : props?._loggedIn ? 'Add Last Name' : ''}</div> : <React.Fragment>
-													<input type='text' placeholder='Last Name' className={`${Styles.input}`} id={`Settings_${componentId}_lastName_Input`} />
-													<button className={`${Styles.Save_Button}`} modif={'lastName'} onClick={saveChange}>Save</button>
-												</React.Fragment>}
-									</React.Fragment> : null}
-						</div>
-					</div>
-				</React.Fragment>;
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.FirstName_LastName_Container}`
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          maxWidth: '100%',
+          width: '100%'
+        }
+      }, props?._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.label}`
+      }, "First Name"), !editedInputs['firstName'] ? /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.hoverHighlight}`,
+        modif: "firstName",
+        onClick: handleChange
+      }, props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.firstName !== '' ? props._loggedIn.meta.firstName : props?._loggedIn ? 'Add First Name' : '') : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "First Name",
+        className: `${Styles.input}`,
+        id: `Settings_${componentId}_firstName_Input`
+      }), /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Save_Button}`,
+        modif: 'firstName',
+        onClick: saveChange
+      }, "Save"))) : null), /*#__PURE__*/React.createElement("div", {
+        style: {
+          maxWidth: '100%',
+          width: '100%'
+        }
+      }, props?._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.label}`
+      }, "Last Name"), !editedInputs['lastName'] ? /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.hoverHighlight}`,
+        modif: "lastName",
+        onClick: handleChange
+      }, props?._loggedIn?.meta?.lastName && props?._loggedIn?.meta?.lastName !== '' ? props._loggedIn.meta.lastName : props?._loggedIn ? 'Add Last Name' : '') : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "Last Name",
+        className: `${Styles.input}`,
+        id: `Settings_${componentId}_lastName_Input`
+      }), /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Save_Button}`,
+        modif: 'lastName',
+        onClick: saveChange
+      }, "Save"))) : null)));
     } else if (itemType === 'username') {
-      return <div>
-					{props?._loggedIn ? <React.Fragment>
-							<label className={`${Styles.label} ${Styles.fullWidth}`}>Username</label>
-							{editingUsername ? <React.Fragment>
-										<div className={`${Styles.ItemsFlex}`}>
-											<input type='text' placeholder='Username' className={`${Styles.input}`} modif={'username'} id={`Settings_${componentId}_Username_Input`} onChange={handleChange} />
-											<Close className={`${Styles.Close}`} onClick={handleChangeUsername}></Close>
-										</div>
-										{editedInputs['username'] ? <button className={`${Styles.Save_Button}`} modif={'username'} onClick={saveChange}>Save</button> : null}
-									</React.Fragment> : <div className={`${Styles.ItemsFlex}`}>
-										<div>{props?._loggedIn?.username ?? null}</div>
-										<button className={`${Styles.LowProfileButton}`} onClick={handleChangeUsername}>Get New Username</button>
-									</div>}
-							</React.Fragment> : null}
-				</div>;
+      return /*#__PURE__*/React.createElement("div", null, props?._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.label} ${Styles.fullWidth}`
+      }, "Username"), editingUsername ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.ItemsFlex}`
+      }, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "Username",
+        className: `${Styles.input}`,
+        modif: 'username',
+        id: `Settings_${componentId}_Username_Input`,
+        onChange: handleChange
+      }), /*#__PURE__*/React.createElement(Close, {
+        className: `${Styles.Close}`,
+        onClick: handleChangeUsername
+      })), editedInputs['username'] ? /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Save_Button}`,
+        modif: 'username',
+        onClick: saveChange
+      }, "Save") : null) : /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.ItemsFlex}`
+      }, /*#__PURE__*/React.createElement("div", null, props?._loggedIn?.username ?? null), /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.LowProfileButton}`,
+        onClick: handleChangeUsername
+      }, "Get New Username"))) : null);
     } else if (itemType === 'handleCreditCard') {
-      return <React.Fragment>
-					<label className={`${Styles.label} ${Styles.fullWidth}`}>Payment</label>
-					<CreditCard {...props}></CreditCard>
-				</React.Fragment>;
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.label} ${Styles.fullWidth}`
+      }, "Payment"), /*#__PURE__*/React.createElement(CreditCard, props));
     } else if (itemType === 'location') {
-      return <div>
-					<label className={`${Styles.Read_Only_Label}`}>Location</label>
-					<div className={`${Styles.Read_Only_Field}`}>
-                        <span>{props?._loggedIn?.meta?.locationMeta?.city ?? null}</span><span>{resolvedCountry ? ', ' : null}</span>
-						{_span || (_span = <span>{resolvedCountry}</span>)}
-					</div>
-				</div>;
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.Read_Only_Label}`
+      }, "Location"), /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.Read_Only_Field}`
+      }, /*#__PURE__*/React.createElement("span", null, props?._loggedIn?.meta?.locationMeta?.city ?? null), /*#__PURE__*/React.createElement("span", null, resolvedCountry ? ', ' : null), _span || (_span = /*#__PURE__*/React.createElement("span", null, resolvedCountry))));
     } else if (itemType === 'keepSubscriptionsPrivate') {
-      return <React.Fragment>
-					<div className={`${Styles.Settings_Checkbox_Container}`}>
-						<input type='checkbox' name='keepSubscriptionsPrivate' className={`${Styles.Settings_Checkbox}`} id={`Settings_${componentId}_keepSubscriptionsPrivate_Input`} modif={'keepSubscriptionsPrivate'} onChange={saveChange} defaultChecked={props?._loggedIn?.meta?.keepSubscriptionsPrivate} />
-						<label htmlFor='keepSubscriptionsPrivate' className={`${Styles.Checkbox_Label}`}>Keep Subscriptions Private</label>
-					</div>
-				</React.Fragment>;
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.Settings_Checkbox_Container}`
+      }, /*#__PURE__*/React.createElement("input", {
+        type: "checkbox",
+        name: "keepSubscriptionsPrivate",
+        className: `${Styles.Settings_Checkbox}`,
+        id: `Settings_${componentId}_keepSubscriptionsPrivate_Input`,
+        modif: 'keepSubscriptionsPrivate',
+        onChange: saveChange,
+        defaultChecked: props?._loggedIn?.meta?.keepSubscriptionsPrivate
+      }), /*#__PURE__*/React.createElement("label", {
+        htmlFor: "keepSubscriptionsPrivate",
+        className: `${Styles.Checkbox_Label}`
+      }, "Keep Subscriptions Private")));
     } else if (itemType === 'closeAccount') {
-      return <div>
-					<div className={`${Styles.Close_Account_Button_Container}`}>
-						{!editedInputs['closeAccount'] ? <button className={`${Styles.Warning_Button}`} modif={'closeAccount'} onClick={handleChange}>Close Account</button> : <div style={{
-            textAlign: 'center',
-            marginTop: '1rem'
-          }}>
-									<div style={{
-              fontWeight: '600'
-            }}>Are you sure you want to close your {props?.siteTitle} account?</div>
-									<div style={{
-              fontSize: '.8rem',
-              marginTop: '.5rem'
-            }}>This action is not reversible. All your data will be deleted and forgotten.</div>
-									<div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '10rem',
-              marginTop: '1rem'
-            }}>
-										<button className={`${Styles.Save_Button}`} style={{
-                fontWeight: '600'
-              }}>Yes</button>
-										<button className={`${Styles.Save_Button}`} onClick={cancelCloseAccount} style={{
-                fontWeight: '600'
-              }}>No</button>
-									</div>
-								</div>}
-					</div>
-				</div>;
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+        className: `${Styles.Close_Account_Button_Container}`
+      }, !editedInputs['closeAccount'] ? /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Warning_Button}`,
+        modif: 'closeAccount',
+        onClick: handleChange
+      }, "Close Account") : /*#__PURE__*/React.createElement("div", {
+        style: {
+          textAlign: 'center',
+          marginTop: '1rem'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontWeight: '600'
+        }
+      }, "Are you sure you want to close your ", props?.siteTitle, " account?"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          fontSize: '.8rem',
+          marginTop: '.5rem'
+        }
+      }, "This action is not reversible. All your data will be deleted and forgotten."), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '10rem',
+          marginTop: '1rem'
+        }
+      }, /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Save_Button}`,
+        style: {
+          fontWeight: '600'
+        }
+      }, "Yes"), /*#__PURE__*/React.createElement("button", {
+        className: `${Styles.Save_Button}`,
+        onClick: cancelCloseAccount,
+        style: {
+          fontWeight: '600'
+        }
+      }, "No")))));
     } else if (itemType === 'orders') {
-      return <div>
-					{props?._loggedIn ? <React.Fragment>
-								<label className={`${Styles.label} ${Styles.fullWidth}`}>Orders</label>
-								<div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem'
-          }}>
-									{resolvedOrders?.orders?.map ? resolvedOrders.orders.map((m, i) => <Order order={m} {...props} />) : null}
-								</div>
-							</React.Fragment> : null}
-				</div>;
+      return /*#__PURE__*/React.createElement("div", null, props?._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("label", {
+        className: `${Styles.label} ${Styles.fullWidth}`
+      }, "Orders"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem'
+        }
+      }, resolvedOrders?.orders?.map ? resolvedOrders.orders.map((m, i) => /*#__PURE__*/React.createElement(Order, _extends({
+        order: m
+      }, props))) : null)) : null);
     } else {
-      return <div>{itemType}</div>;
+      return /*#__PURE__*/React.createElement("div", null, itemType);
     }
   };
   const handleSetTab = React.useCallback(e => {
@@ -274,42 +313,46 @@ const Module = props => {
   });
   const resolveInitials = props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.lastName && props._loggedIn.meta.firstName.length > 0 && props._loggedIn.meta.lastName.length > 0 ? props._loggedIn.meta.firstName.charAt(0) + props._loggedIn.meta.lastName.charAt(0) : 'AV';
   console.log('Curr', currentTab, settingsConfig.tabs, props);
-  return <React.Fragment>
-			<div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-			<div className={`${Styles.Settings_Container}`} style={{
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
+  }), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Settings_Container}`,
+    style: {
       margin: '0 auto',
       width: '70vw',
       display: 'flex'
-    }}>
-				<div className={`${Styles.Settings_InternalContainer}`}>
-					<div className={`${Styles.Settings_Menu}`}>
-						{settingsConfig?.tabs ? settingsConfig.tabs.map(tab => <React.Fragment>
-										<div className={`${Styles.tab} ${settingsConfig?.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === tab?.label ? Styles.currentTab : ''}`} onClick={handleSetTab} modif={tab?.label}>{tab?.label ?? ''}</div>
-									</React.Fragment>) : null}
-					</div>
-					<div className={`${Styles.Settings_Data}`}>
-						{settingsConfig?.tabs && settingsConfig?.tabs[currentTab]?.avatar ? <div className={`${Styles.Settings_Profile_Picture}`} style={{
-            background: `url(${props?._loggedIn?.icon ?? null})`,
-            backgroundSize: 'contain'
-          }}>
-									{!props?._loggedIn?.icon ? <span className={`${Styles.Avatar_Placeholder_Text}`}>{resolveInitials}</span> : null}
-									{/* <img src='/img/default/editIcon.svg' alt='Circular edit icon with white pencil in the middle' className={`${Styles.Edit_Icon}`} /> */}
-								</div> : null}
-						<div className={`${Styles.settingsItemContainer}`}>
-							{pageError ? <p className='error' style={{
-              marginTop: '.5rem'
-            }} onClick={handleCloseError}>{pageError}</p> : null}
-							{settingsConfig?.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab]?.items && Array.isArray(settingsConfig.tabs[currentTab]?.items) ? settingsConfig.tabs[currentTab].items.map(item => {
-              const avatar = settingsConfig.tabs[currentTab].avatar;
-              return <div key={item.type}>
-													{resolveCurrentItem(item.type)}
-												</div>;
-            }) : null}
-						</div>
-					</div>
-				</div>
-			</div>	
-
-		</React.Fragment>;
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Settings_InternalContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Settings_Menu}`
+  }, settingsConfig?.tabs ? settingsConfig.tabs.map(tab => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.tab} ${settingsConfig?.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === tab?.label ? Styles.currentTab : ''}`,
+    onClick: handleSetTab,
+    modif: tab?.label
+  }, tab?.label ?? ''))) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Settings_Data}`
+  }, settingsConfig?.tabs && settingsConfig?.tabs[currentTab]?.avatar ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Settings_Profile_Picture}`,
+    style: {
+      background: `url(${props?._loggedIn?.icon ?? null})`,
+      backgroundSize: 'contain'
+    }
+  }, !props?._loggedIn?.icon ? /*#__PURE__*/React.createElement("span", {
+    className: `${Styles.Avatar_Placeholder_Text}`
+  }, resolveInitials) : null) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.settingsItemContainer}`
+  }, pageError ? /*#__PURE__*/React.createElement("p", {
+    className: "error",
+    style: {
+      marginTop: '.5rem'
+    },
+    onClick: handleCloseError
+  }, pageError) : null, settingsConfig?.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab]?.items && Array.isArray(settingsConfig.tabs[currentTab]?.items) ? settingsConfig.tabs[currentTab].items.map(item => {
+    const avatar = settingsConfig.tabs[currentTab].avatar;
+    return /*#__PURE__*/React.createElement("div", {
+      key: item.type
+    }, resolveCurrentItem(item.type));
+  }) : null)))));
 };
 export default Module;

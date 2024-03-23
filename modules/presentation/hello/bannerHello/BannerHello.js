@@ -26,66 +26,70 @@ const Module = props => {
     return 'img/default/greythumb.jpg';
   };
   const resolveType = () => {
-    return <div className={`${Styles.TypeContainer}`} ref={typeContainerRef}>
-                <div className={`${props?.tall ? `${Styles.TypeContainerEnforceSpace}` : null}`}>
-                    {props.lead ? <h2 className={`${Styles.Lead} ${moduleName}_Lead ${props?.classes?.Lead}`}>{props.lead}</h2> : null}
-                    {props.leadImg ? <div className={`${Styles.leadImgContainer} ${moduleName}_LeadImg`}>
-                                <img className={`${Styles.leadImg} ${moduleName}_LeadImg_img ${props?.classes?.Lead}`} src={`${props.leadImg}`} />
-                            </div> : null}
-                    {props.text ? <div className={`${Styles.Text} ${moduleName}_Text ${props?.classes?.Text}`}>{props.text}</div> : null}
-                    {props?.childrenBefore?.map ? React.Children.map(props.childrenBefore, function (child) {
-          if (child !== null) {
-            if (typeof child.type === 'function') {
-              const cpProps = {
-                bgContainerRef: bgContainerRef,
-                typeContainerRef: typeContainerRef
-              };
-              return React.cloneElement(child, cpProps);
-            }
-            return child;
-          }
-          return React.createElement('div');
-        }) : null}
-                </div>
-                <div>
-                    {props?.children?.map ? React.Children.map(props.children, function (child) {
-          if (child !== null) {
-            if (typeof child.type === 'function') {
-              const cpProps = {
-                bgContainerRef: bgContainerRef,
-                typeContainerRef: typeContainerRef
-              };
-              return React.cloneElement(child, cpProps);
-            }
-            return child;
-          }
-          return React.createElement('div');
-        }) : null}
-                </div>
-            </div>;
+    return /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.TypeContainer}`,
+      ref: typeContainerRef
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${props?.tall ? `${Styles.TypeContainerEnforceSpace}` : null}`
+    }, props.lead ? /*#__PURE__*/React.createElement("h2", {
+      className: `${Styles.Lead} ${moduleName}_Lead ${props?.classes?.Lead}`
+    }, props.lead) : null, props.leadImg ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.leadImgContainer} ${moduleName}_LeadImg`
+    }, /*#__PURE__*/React.createElement("img", {
+      className: `${Styles.leadImg} ${moduleName}_LeadImg_img ${props?.classes?.Lead}`,
+      src: `${props.leadImg}`
+    })) : null, props.text ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.Text} ${moduleName}_Text ${props?.classes?.Text}`
+    }, props.text) : null, props?.childrenBefore?.map ? React.Children.map(props.childrenBefore, function (child) {
+      if (child !== null) {
+        if (typeof child.type === 'function') {
+          const cpProps = {
+            bgContainerRef: bgContainerRef,
+            typeContainerRef: typeContainerRef
+          };
+          return /*#__PURE__*/React.cloneElement(child, cpProps);
+        }
+        return child;
+      }
+      return /*#__PURE__*/React.createElement('div');
+    }) : null), /*#__PURE__*/React.createElement("div", null, props?.children?.map ? React.Children.map(props.children, function (child) {
+      if (child !== null) {
+        if (typeof child.type === 'function') {
+          const cpProps = {
+            bgContainerRef: bgContainerRef,
+            typeContainerRef: typeContainerRef
+          };
+          return /*#__PURE__*/React.cloneElement(child, cpProps);
+        }
+        return child;
+      }
+      return /*#__PURE__*/React.createElement('div');
+    }) : null));
   };
-  return <div className={`${Styles.BannerHello} ${moduleName}_Container ${props.className}`}>
-            <div className={`${Styles.IndexBgContainerAd} ${moduleName}_IndexBgContainerAd ${props?.classes?.IndexBgContainerAd} ${props?.tall ? `${Styles.IndexBgContainerAdTall}` : ''} ${props?.center ? `${Styles.IndexBgContainerCenter}` : ''}`} ref={bgContainerRef}>
-                {props.href ? <Link href={`${props.href}`} draggable={false}>
-                            <div style={{
-          backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
-          height: '100%',
-          backgroundSize: 'cover',
-          borderRadius: '1rem',
-          position: 'relative'
-        }}>
-                                {resolveType()}
-                            </div>
-                        </Link> : <div style={{
-        backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
-        height: '100%',
-        backgroundSize: 'cover',
-        borderRadius: '1rem',
-        position: 'relative'
-      }}>
-                            {resolveType()}
-                        </div>}
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.BannerHello} ${moduleName}_Container ${props.className}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.IndexBgContainerAd} ${moduleName}_IndexBgContainerAd ${props?.classes?.IndexBgContainerAd} ${props?.tall ? `${Styles.IndexBgContainerAdTall}` : ''} ${props?.center ? `${Styles.IndexBgContainerCenter}` : ''}`,
+    ref: bgContainerRef
+  }, props.href ? /*#__PURE__*/React.createElement(Link, {
+    href: `${props.href}`,
+    draggable: false
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
+      height: '100%',
+      backgroundSize: 'cover',
+      borderRadius: '1rem',
+      position: 'relative'
+    }
+  }, resolveType())) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
+      height: '100%',
+      backgroundSize: 'cover',
+      borderRadius: '1rem',
+      position: 'relative'
+    }
+  }, resolveType())));
 };
 export default Module;

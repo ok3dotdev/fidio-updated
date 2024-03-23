@@ -312,145 +312,143 @@ const Module = props => {
     setPageError(null);
   };
   const strippedUrl = props?.domainUrl ? props.domainUrl.replace(/(?:www\.)?/, '') : '';
-  return <div className={`${props.className} Admin_Build_Container`}>
-            {pageError ? <p className='error' style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} Admin_Build_Container`
+  }, pageError ? /*#__PURE__*/React.createElement("p", {
+    className: "error",
+    style: {
       marginTop: '.5rem'
-    }} onClick={handleCloseError}>{pageError}</p> : null}
-            {_h || (_h = <h3>Build</h3>)}
-            <div className={`Admin_Build_InternalContainer`}>
-                <section>
-                    <input type='file' style={{
-          display: 'none'
-        }} ref={buildInput} onChange={handleNewBuild} />
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Upload your new build in .next.tar.gz format. Use makebuild script to create new build' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b || (_b = <b>Push New Build</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <div>
-                            <button onClick={handleUploadNewBuild}>Upload Build</button>
-                            {msg1 ? <div className='admin_update'>{msg1}</div> : null}
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <input type='file' style={{
-          display: 'none'
-        }} ref={buildInput2} onChange={handleNewBuild} modif='public' />
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Upload your new public folder in public.tar.gz format. Use makebuild script to create public folder tar' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b2 || (_b2 = <b>Push New Public Folder</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <div>
-                            <button onClick={handleUploadNewBuild} modif='public'>Upload Public Folder</button>
-                            {msg2 ? <div className='admin_update'>{msg2}</div> : null}
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Daemons current build uploaded to client server directory' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b3 || (_b3 = <b>Run Build</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <p className='admin_prompt'>Caution: Running a bad build will bring down the platform immediately. Running new builds without having installed packages will cause the platform to be taken offline as well. This is temporary until platform at sys.{strippedUrl} can be run to serve builds when {props.domainUrl} is offline.</p>
-                        <div>
-                            <button onClick={handleDaemonBuild} modif='public'>Deploy Build</button>
-                            {msg7 ? <div className='admin_update'>{msg7}</div> : null}
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Currently installed Packages' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b4 || (_b4 = <b>Installed Client Packages</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <div className='admin_container' style={{
-            maxHeight: '300px',
-            overflow: 'auto'
-          }}>
-                            {packages?.dependencies && Object.entries(packages.dependencies) ? Object.entries(packages.dependencies).map((m, i) => <div className='flex gap-p5' key={i}>
-                                            <div>{m[0]}</div>
-                                            <div>{m[1]}</div>
-                                        </div>) : null}
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Install NPM Package here. Use Package@Version syntax for specific Version if required. Request must be approved by repo if package not already whitelisted' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b5 || (_b5 = <b>Run Install</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <div className={`${AdminStyles.adminPair} admin_pair`}>
-                            <input type='text' placeholder='NPM Package' ref={installPackageRef} />
-                            <button onClick={handleInstall}>Install</button>
-                        </div>
-                        {msg3 ? <div className='admin_update'>{msg3}</div> : null}
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <div style={{
-            width: 'fit-content'
-          }}>
-                            <Tooltip title='Will uninstall package referenced here. Ensure to upload new build before uninstalling packages that current build relies on. Otherwise platform will go down' placement='right'>
-                                <div style={{
-                marginBottom: '.125rem'
-              }}>{_b6 || (_b6 = <b>Run Uninstall</b>)}</div>
-                            </Tooltip>
-                        </div>
-                        <div className={`${AdminStyles.adminPair} admin_pair`}>
-                            <input type='text' placeholder='NPM Package' ref={uninstallPackageRef} />
-                            <button onClick={handleInstall} modif='uninstall'>Uninstall</button>
-                        </div>
-                        {msg4 ? <div className='admin_update'>{msg4}</div> : null}
-                    </div>
-                </section>
-                {/* <div style={{ marginTop: '.25rem' }}>
-                    <button onClick={handleSetCurrentBuildAsSafe} modif='public'>Set Current Build as Safe Build</button>
-                    {
-                        msg5
-                            ? <div className='admin_update'>{msg5}</div>
-                            : null
-                    }
-                 </div>
-                 <div style={{ marginTop: '.25rem' }}>
-                    <button onClick={handleRecover} modif='public'>Recover from Safe Build</button>
-                    {
-                        msg6
-                            ? <div className='admin_update'>{msg6}</div>
-                            : null
-                    }
-                 </div> */}
-            </div>
-        </div>;
+    },
+    onClick: handleCloseError
+  }, pageError) : null, _h || (_h = /*#__PURE__*/React.createElement("h3", null, "Build")), /*#__PURE__*/React.createElement("div", {
+    className: `Admin_Build_InternalContainer`
+  }, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    style: {
+      display: 'none'
+    },
+    ref: buildInput,
+    onChange: handleNewBuild
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Upload your new build in .next.tar.gz format. Use makebuild script to create new build",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b || (_b = /*#__PURE__*/React.createElement("b", null, "Push New Build"))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleUploadNewBuild
+  }, "Upload Build"), msg1 ? /*#__PURE__*/React.createElement("div", {
+    className: "admin_update"
+  }, msg1) : null))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    style: {
+      display: 'none'
+    },
+    ref: buildInput2,
+    onChange: handleNewBuild,
+    modif: "public"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Upload your new public folder in public.tar.gz format. Use makebuild script to create public folder tar",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b2 || (_b2 = /*#__PURE__*/React.createElement("b", null, "Push New Public Folder"))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleUploadNewBuild,
+    modif: "public"
+  }, "Upload Public Folder"), msg2 ? /*#__PURE__*/React.createElement("div", {
+    className: "admin_update"
+  }, msg2) : null))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Daemons current build uploaded to client server directory",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b3 || (_b3 = /*#__PURE__*/React.createElement("b", null, "Run Build"))))), /*#__PURE__*/React.createElement("p", {
+    className: "admin_prompt"
+  }, "Caution: Running a bad build will bring down the platform immediately. Running new builds without having installed packages will cause the platform to be taken offline as well. This is temporary until platform at sys.", strippedUrl, " can be run to serve builds when ", props.domainUrl, " is offline."), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleDaemonBuild,
+    modif: "public"
+  }, "Deploy Build"), msg7 ? /*#__PURE__*/React.createElement("div", {
+    className: "admin_update"
+  }, msg7) : null))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Currently installed Packages",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b4 || (_b4 = /*#__PURE__*/React.createElement("b", null, "Installed Client Packages"))))), /*#__PURE__*/React.createElement("div", {
+    className: "admin_container",
+    style: {
+      maxHeight: '300px',
+      overflow: 'auto'
+    }
+  }, packages?.dependencies && Object.entries(packages.dependencies) ? Object.entries(packages.dependencies).map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p5",
+    key: i
+  }, /*#__PURE__*/React.createElement("div", null, m[0]), /*#__PURE__*/React.createElement("div", null, m[1]))) : null))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Install NPM Package here. Use Package@Version syntax for specific Version if required. Request must be approved by repo if package not already whitelisted",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b5 || (_b5 = /*#__PURE__*/React.createElement("b", null, "Run Install"))))), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.adminPair} admin_pair`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "NPM Package",
+    ref: installPackageRef
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: handleInstall
+  }, "Install")), msg3 ? /*#__PURE__*/React.createElement("div", {
+    className: "admin_update"
+  }, msg3) : null)), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 'fit-content'
+    }
+  }, /*#__PURE__*/React.createElement(Tooltip, {
+    title: "Will uninstall package referenced here. Ensure to upload new build before uninstalling packages that current build relies on. Otherwise platform will go down",
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.125rem'
+    }
+  }, _b6 || (_b6 = /*#__PURE__*/React.createElement("b", null, "Run Uninstall"))))), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.adminPair} admin_pair`
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "NPM Package",
+    ref: uninstallPackageRef
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: handleInstall,
+    modif: "uninstall"
+  }, "Uninstall")), msg4 ? /*#__PURE__*/React.createElement("div", {
+    className: "admin_update"
+  }, msg4) : null))));
 };
 export default Module;

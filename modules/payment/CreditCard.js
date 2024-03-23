@@ -197,82 +197,90 @@ const Module = props => {
     setRegisterNewCard(true);
   });
   console.log('CC', solution, props._stripeSecret);
-  return <div className={`${props.className}`} style={props.sx}>
-            <div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-            {props.useAdmin ? <div style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className}`,
+    style: props.sx
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
+  }), props.useAdmin ? /*#__PURE__*/React.createElement("div", {
+    style: {
       background: '#353535'
-    }}>Payments to Tycoon Systems Corp.</div> : null}
-            {!props.stagger || props.stagger && stagger ? <React.Fragment>
-                    {solution?.payment === 'stripe' ? validCc && !registerNewCard ? <div>
-                                <div className='Ecommerce_CreditCard_Container' style={{
-          padding: '.125rem'
-        }}>
-                                    {props.purchaseDescription ? <span>{props.purchaseDescription}</span> : null}
-                                    <div className='Ecommerce_CreditCard_Container_Meta'>
-                                        <div>
-                                            <p style={{
-                marginBottom: .1 + "rem",
-                paddingBottom: 0 + "rem",
-                margin: 0
-              }}>Ending in <span>{validCc.last4}</span></p>
-                                            <p style={{
-                marginBottom: .1 + "rem",
-                paddingBottom: 0 + "rem",
-                margin: 0
-              }}>Expiry <span>{validCc.exp_month} / {validCc.exp_year}</span></p>
-                                        </div>
-                                        {validCc.name ? <p style={{
-              marginTop: 0,
-              margin: 0
-            }}>{validCc.name}</p> : null}
-                                    </div>
-                                </div>
-                            </div> : props._stripeSecret && props._stripeSecret.client_secret ? <Elements stripe={stripePromise} options={{
-        clientSecret: props._stripeSecret.client_secret
-      }}>
-                                    <ElementsConsumer>
-                                        {({
-            elements,
-            stripe
-          }) => <form onSubmit={e => {
-            handleSaveBillingInfo(e, elements, stripe, nameOnCard);
-          }} style={{
-            display: 'grid',
-            gap: '.125rem'
-          }}>
-                                                <input type="text" placeholder="Full Name on Card" ref={nameOnCard}></input>
-                                                <CardElement options={{
-              iconStyle: 'solid',
-              style: {
-                base: {
-                  fontSize: '16px',
-                  color: 'black',
-                  fontWeight: 500,
-                  '::placeholder': {
-                    color: 'grey'
-                  },
-                  fontSmoothing: 'antialiased',
-                  width: 100 + "%",
-                  backgroundColor: 'white'
-                },
-                invalid: {
-                  color: '#9e2146'
-                }
-              }
-            }} />
-                                                {_button || (_button = <button type="submit">Save Billing Info</button>)}
-                                            </form>}
-                                    </ElementsConsumer>
-                                </Elements> : null : null}
-                    {solution?.payment === 'stripe' ? validCc ? <div style={{
-        display: 'grid',
-        gap: '.125rem',
-        marginTop: '.125rem'
-      }}>
-                                    <button type='submit' onClick={handleRegisterNewCard}>{registerNewCard ? 'Use Current Card' : 'Register New Card'}</button>
-                                </div> : null : null}
-                </React.Fragment> : null}
-            {props.children}
-        </div>;
+    }
+  }, "Payments to Tycoon Systems Corp.") : null, !props.stagger || props.stagger && stagger ? /*#__PURE__*/React.createElement(React.Fragment, null, solution?.payment === 'stripe' ? validCc && !registerNewCard ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "Ecommerce_CreditCard_Container",
+    style: {
+      padding: '.125rem'
+    }
+  }, props.purchaseDescription ? /*#__PURE__*/React.createElement("span", null, props.purchaseDescription) : null, /*#__PURE__*/React.createElement("div", {
+    className: "Ecommerce_CreditCard_Container_Meta"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: .1 + "rem",
+      paddingBottom: 0 + "rem",
+      margin: 0
+    }
+  }, "Ending in ", /*#__PURE__*/React.createElement("span", null, validCc.last4)), /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginBottom: .1 + "rem",
+      paddingBottom: 0 + "rem",
+      margin: 0
+    }
+  }, "Expiry ", /*#__PURE__*/React.createElement("span", null, validCc.exp_month, " / ", validCc.exp_year))), validCc.name ? /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginTop: 0,
+      margin: 0
+    }
+  }, validCc.name) : null))) : props._stripeSecret && props._stripeSecret.client_secret ? /*#__PURE__*/React.createElement(Elements, {
+    stripe: stripePromise,
+    options: {
+      clientSecret: props._stripeSecret.client_secret
+    }
+  }, /*#__PURE__*/React.createElement(ElementsConsumer, null, ({
+    elements,
+    stripe
+  }) => /*#__PURE__*/React.createElement("form", {
+    onSubmit: e => {
+      handleSaveBillingInfo(e, elements, stripe, nameOnCard);
+    },
+    style: {
+      display: 'grid',
+      gap: '.125rem'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Full Name on Card",
+    ref: nameOnCard
+  }), /*#__PURE__*/React.createElement(CardElement, {
+    options: {
+      iconStyle: 'solid',
+      style: {
+        base: {
+          fontSize: '16px',
+          color: 'black',
+          fontWeight: 500,
+          '::placeholder': {
+            color: 'grey'
+          },
+          fontSmoothing: 'antialiased',
+          width: 100 + "%",
+          backgroundColor: 'white'
+        },
+        invalid: {
+          color: '#9e2146'
+        }
+      }
+    }
+  }), _button || (_button = /*#__PURE__*/React.createElement("button", {
+    type: "submit"
+  }, "Save Billing Info"))))) : null : null, solution?.payment === 'stripe' ? validCc ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gap: '.125rem',
+      marginTop: '.125rem'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    onClick: handleRegisterNewCard
+  }, registerNewCard ? 'Use Current Card' : 'Register New Card')) : null : null) : null, props.children);
 };
 export default Module;

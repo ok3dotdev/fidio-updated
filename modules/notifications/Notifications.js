@@ -103,69 +103,83 @@ const Module = props => {
   // Chat in notifications
   // link in notifications
 
-  return <React.Fragment>
-            <div className={`Misc_Container Misc_Container_Bigger ${props.className} ${props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''}`} ref={container} style={{
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Container Misc_Container_Bigger ${props.className} ${props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''}`,
+    ref: container,
+    style: {
       top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }}>
-                {props.open || menuOpen ? <React.Fragment>
-                            <div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-                            <div className='Misc_Internal_Container' style={{
-          paddingTop: '.5rem',
-          paddingBottom: '.5rem'
-        }}>
-                                {/* <div style={{ position: 'sticky', top: '.5rem', right: 0, zIndex: 10 }}>
-                                    <Close className={'Misc_Icon_Button'} style={{ margin: '0rem 0', float: 'right' }} onClick={handleClose}></Close>
-                                 </div> */}
-                                <h5 className={`Misc_Label`} style={{
-            marginTop: 0
-          }}>Notifications</h5>
-                                <div>
-                                    {notificationsFeed?.notifications?.map ? notificationsFeed.notifications.map(m => <div className={`${Styles.notifContainer}`}>
-                                                        <div className={`${Styles.notifInternalContainer}`}>
-                                                            <div className={`${Styles.detailContainer}`}>
-                                                                <div className={`${Styles.author} Misc_P`}>{m?.meta?.fromAdmin && props?.siteTitle ? props.siteTitle : null}</div>
-                                                                {m?.meta?.verb ? <span className='Misc_P'>{m.meta.verb}</span> : null}
-                                                                <div className='Misc_P'>{m?.meta?.quotes ? '"' : ''}{m?.meta?.message ?? null}{m?.meta?.quotes ? '"' : ''}</div>
-                                                            </div>
-                                                            <div>
-                                                                {m?.meta?.image && props?.cdn?.static ? <div className={`${Styles.icon}`} style={{
-                    background: `url(${props.cdn.static}/${m.meta.image})`,
-                    backgroundSize: 'contain'
-                  }}></div> : m?.meta?.icon ? <div className={`${Styles.icon}`} style={{
-                    background: `url(${props.cdn.static}/${m.meta.icon})`,
-                    backgroundSize: 'contain'
-                  }}></div> : null}
-                                                            </div>
-                                                        </div>
-                                                        {m?.product ? <div className={`${Styles.notifBox} ${Styles.notifProduct} flex gap-p5`}>
-                                                                    <div>
-                                                                        <div className={`${Styles.notifImageContainer}`} style={{
-                    backgroundImage: resolveOrderImg(m) ? `url(${resolveOrderImg(m)})` : null
-                  }}>
-                                                                            <img src={'img/default/greythumb_product.jpg'} className='Product_img' style={{
-                      width: '75px',
-                      maxHeight: '60px',
-                      opacity: resolveOrderImg(m) ? 0 : 1
-                    }} />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                    <Link href={resolveMainLink(m?.product)} onClick={handleClose}>
-                                                                        <div className={`${Styles.productName} ${props?.classes?.productName ?? ''}`} style={{
-                      fontSize: '.9rem',
-                      fontWeight: '600'
-                    }}>{m?.product?.name}</div>
-                                                                    </Link>
-                                                                    <button className={`${PresentationStyles.CtaButton} ${props.ctaClassName}`} onClick={handleFireGlobalEvent} action={'add_to_cart'} item={m?.product?.id} selectedstyle={m?.meta?.productStyle} currentoption={m?.meta?.productOption} ctaAfter={'Added To Cart'}>Add To Cart</button>
-                                                                    </div>
-                                                                </div> : null}
-                                                    </div>) : _div || (_div = <div>
-                                                    <div className='Misc_P'>All Caught Up</div>
-                                                </div>)}
-                                </div>
-                            </div>
-                        </React.Fragment> : null}
-            </div>
-        </React.Fragment>;
+    }
+  }, props.open || menuOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "Misc_Internal_Container",
+    style: {
+      paddingTop: '.5rem',
+      paddingBottom: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("h5", {
+    className: `Misc_Label`,
+    style: {
+      marginTop: 0
+    }
+  }, "Notifications"), /*#__PURE__*/React.createElement("div", null, notificationsFeed?.notifications?.map ? notificationsFeed.notifications.map(m => /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.notifContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.notifInternalContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.detailContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.author} Misc_P`
+  }, m?.meta?.fromAdmin && props?.siteTitle ? props.siteTitle : null), m?.meta?.verb ? /*#__PURE__*/React.createElement("span", {
+    className: "Misc_P"
+  }, m.meta.verb) : null, /*#__PURE__*/React.createElement("div", {
+    className: "Misc_P"
+  }, m?.meta?.quotes ? '"' : '', m?.meta?.message ?? null, m?.meta?.quotes ? '"' : '')), /*#__PURE__*/React.createElement("div", null, m?.meta?.image && props?.cdn?.static ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.icon}`,
+    style: {
+      background: `url(${props.cdn.static}/${m.meta.image})`,
+      backgroundSize: 'contain'
+    }
+  }) : m?.meta?.icon ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.icon}`,
+    style: {
+      background: `url(${props.cdn.static}/${m.meta.icon})`,
+      backgroundSize: 'contain'
+    }
+  }) : null)), m?.product ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.notifBox} ${Styles.notifProduct} flex gap-p5`
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.notifImageContainer}`,
+    style: {
+      backgroundImage: resolveOrderImg(m) ? `url(${resolveOrderImg(m)})` : null
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: 'img/default/greythumb_product.jpg',
+    className: "Product_img",
+    style: {
+      width: '75px',
+      maxHeight: '60px',
+      opacity: resolveOrderImg(m) ? 0 : 1
+    }
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Link, {
+    href: resolveMainLink(m?.product),
+    onClick: handleClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.productName} ${props?.classes?.productName ?? ''}`,
+    style: {
+      fontSize: '.9rem',
+      fontWeight: '600'
+    }
+  }, m?.product?.name)), /*#__PURE__*/React.createElement("button", {
+    className: `${PresentationStyles.CtaButton} ${props.ctaClassName}`,
+    onClick: handleFireGlobalEvent,
+    action: 'add_to_cart',
+    item: m?.product?.id,
+    selectedstyle: m?.meta?.productStyle,
+    currentoption: m?.meta?.productOption,
+    ctaAfter: 'Added To Cart'
+  }, "Add To Cart"))) : null)) : _div || (_div = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "Misc_P"
+  }, "All Caught Up")))))) : null));
 };
 export default Module;

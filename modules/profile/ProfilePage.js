@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Profile } from '/layout';
@@ -113,8 +114,15 @@ const Module = props => {
       props._setManagerOpen(true);
     }
   }, [adminPanelState, props._managerOpen]);
-  return <div className={`${props.className}`}>
-            <Profile {...props} adminAuth={adminAuth} combinedFeed={combinedFeed} adminPanelState={adminPanelState} toggleAdminPanel={toggleAdminPanel} adminPanelContainerRef={adminPanelContainerRef} ManagerStyles={ManagerStyles} />
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className}`
+  }, /*#__PURE__*/React.createElement(Profile, _extends({}, props, {
+    adminAuth: adminAuth,
+    combinedFeed: combinedFeed,
+    adminPanelState: adminPanelState,
+    toggleAdminPanel: toggleAdminPanel,
+    adminPanelContainerRef: adminPanelContainerRef,
+    ManagerStyles: ManagerStyles
+  })));
 };
 export default Module;

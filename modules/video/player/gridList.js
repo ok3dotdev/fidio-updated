@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { debounce } from '../../util.js';
 import GridListStyles from './gridList.module.scss';
@@ -77,17 +78,27 @@ const GridList = props => {
       }
     });
   };
-  return <div className={`${GridListStyles.leadContainer}`}>
-            {props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map((item, i) => <div className={`${GridListStyles.col}`} key={i}>
-                                <VideoItem item={item} index={i} setActive={(e, i, d, p) => {
-        delayedSetActiveItem(e, i, d, p);
-      }} unsetActiveItem={i => {
-        // setActiveItem(-1);
-        setActiveItemData(null);
-      }} activeItem={activeItem} previousActiveItemData={previousActiveItemData} allowEditingFlag={detectAllowEditingFlag(item, props._loggedIn)} {...props}></VideoItem>
-                            </div>) : props._gridListType == 'product' ? props._gridItems.map((item, i) => <div className={`${GridListStyles.col}`} key={i}>
-                            Product
-                        </div>) : null : null}
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${GridListStyles.leadContainer}`
+  }, props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map((item, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${GridListStyles.col}`,
+    key: i
+  }, /*#__PURE__*/React.createElement(VideoItem, _extends({
+    item: item,
+    index: i,
+    setActive: (e, i, d, p) => {
+      delayedSetActiveItem(e, i, d, p);
+    },
+    unsetActiveItem: i => {
+      // setActiveItem(-1);
+      setActiveItemData(null);
+    },
+    activeItem: activeItem,
+    previousActiveItemData: previousActiveItemData,
+    allowEditingFlag: detectAllowEditingFlag(item, props._loggedIn)
+  }, props)))) : props._gridListType == 'product' ? props._gridItems.map((item, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${GridListStyles.col}`,
+    key: i
+  }, "Product")) : null : null);
 };
 export default GridList;
