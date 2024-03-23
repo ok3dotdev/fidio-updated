@@ -1,17 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _shop = require("../ecommerce/shop");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var Module = function Module(props) {
-  return <div>
-            <_shop.Shop {...Object.assign({}, props, {
-      profile: true
-    })}></_shop.Shop>
-        </div>;
-};
-var _default = exports["default"] = Module;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _react=_interopRequireDefault(require("react")),_shop=require("../ecommerce/shop");function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _extends(){return(_extends=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var r,n=arguments[t];for(r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var Module=function(e){return _react.default.createElement("div",null,_react.default.createElement(_shop.Shop,_extends({},e,{profile:!0})))},_default=exports.default=Module;

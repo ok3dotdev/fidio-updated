@@ -1,13 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "SocketContainer", {
-  enumerable: true,
-  get: function get() {
-    return _SocketContainer["default"];
-  }
-});
-var _SocketContainer = _interopRequireDefault(require("./SocketContainer"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"SocketContainer",{enumerable:!0,get:function(){return _SocketContainer.default}});var _SocketContainer=_interopRequireDefault(require("./SocketContainer"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}

@@ -1,18 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _div, _div2;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var Module = function Module(props) {
-  return <_react.default.Fragment>
-            <li onClick={props === null || props === void 0 ? void 0 : props.fireShareBug}>
-                {_div || (_div = <div className={"material-icons"}>bug_report</div>)}
-                {_div2 || (_div2 = <div>Report Bug</div>)}
-            </li>
-        </_react.default.Fragment>;
-};
-var _default = exports["default"] = Module;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _react=_interopRequireDefault(require("react"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var Module=function(e){return _react.default.createElement(_react.default.Fragment,null,_react.default.createElement("li",{onClick:null==e?void 0:e.fireShareBug},_react.default.createElement("div",{className:"material-icons"},"bug_report"),_react.default.createElement("div",null,"Report Bug")))},_default=exports.default=Module;

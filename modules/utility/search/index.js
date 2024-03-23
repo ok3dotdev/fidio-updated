@@ -1,12 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "fetchSearchData", {
-  enumerable: true,
-  get: function get() {
-    return _search.fetchSearchData;
-  }
-});
-var _search = require("./search");
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"fetchSearchData",{enumerable:!0,get:function(){return _search.fetchSearchData}});var _search=require("./search");

@@ -1,13 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "MarketingSlider", {
-  enumerable: true,
-  get: function get() {
-    return _MarketingSlider["default"];
-  }
-});
-var _MarketingSlider = _interopRequireDefault(require("./MarketingSlider"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"MarketingSlider",{enumerable:!0,get:function(){return _MarketingSlider.default}});var _MarketingSlider=_interopRequireDefault(require("./MarketingSlider"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}
