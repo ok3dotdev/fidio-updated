@@ -1,3 +1,6 @@
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 /**
  * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 0.5.10
  * Copyright (C) 2015 Oliver Nightingale
@@ -5,7 +8,7 @@
  * @license
  */
 !function () {
-  var t = function (e) {
+  var t = function t(e) {
     var n = new t.Index();
     return n.pipeline.add(t.trimmer, t.stopWordFilter, t.stemmer), e && e.call(n, n), n;
   };
@@ -363,7 +366,7 @@
       O = /^(.+?)e$/,
       P = /ll$/,
       N = new RegExp("^" + o + i + "[^aeiouwxy]$"),
-      T = function (n) {
+      T = function T(n) {
         var i, o, r, s, a, u, h;
         if (n.length < 3) return n;
         if (r = n.substr(0, 1), "y" == r && (n = r.toUpperCase() + n.substr(1)), s = f, a = m, s.test(n) ? n = n.replace(s, "$1$2") : a.test(n) && (n = n.replace(a, "$1$2")), s = v, a = g, s.test(n)) {
@@ -454,7 +457,7 @@
       length: this.length
     };
   }, function (t, e) {
-    "function" == typeof define && define.amd ? define(e) : "object" == typeof exports ? module.exports = e() : t.lunr = e();
+    "function" == typeof define && define.amd ? define(e) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = e() : t.lunr = e();
   }(this, function () {
     return t;
   });

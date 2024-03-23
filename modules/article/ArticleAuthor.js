@@ -1,11 +1,19 @@
-import Link from 'next/link';
-import React from 'react';
-import ArticleStyles from './Article.module.scss';
-const Module = props => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
-    className: `${ArticleStyles.author}`
-  }, /*#__PURE__*/React.createElement(Link, {
-    href: `/p?u=${props?.articleData?.authorData?.id}`
-  }, props?.articleData?.authorData?.username ?? '')));
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _link = _interopRequireDefault(require("next/link"));
+var _react = _interopRequireDefault(require("react"));
+var _ArticleModule = _interopRequireDefault(require("./Article.module.scss"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var Module = function Module(props) {
+  var _props$articleData, _props$articleData$au, _props$articleData2;
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("span", {
+    className: "".concat(_ArticleModule["default"].author)
+  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+    href: "/p?u=".concat(props === null || props === void 0 || (_props$articleData = props.articleData) === null || _props$articleData === void 0 || (_props$articleData = _props$articleData.authorData) === null || _props$articleData === void 0 ? void 0 : _props$articleData.id)
+  }, (_props$articleData$au = props === null || props === void 0 || (_props$articleData2 = props.articleData) === null || _props$articleData2 === void 0 || (_props$articleData2 = _props$articleData2.authorData) === null || _props$articleData2 === void 0 ? void 0 : _props$articleData2.username) !== null && _props$articleData$au !== void 0 ? _props$articleData$au : '')));
 };
-export default Module;
+var _default = exports["default"] = Module;

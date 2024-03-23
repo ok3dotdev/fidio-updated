@@ -1,33 +1,40 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _index = require("./index");
+var _cta = require("../../cta");
 var _div;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-import React from 'react';
-import { SignIn, Username } from './index';
-import { IndexCta } from '../../cta';
-const Module = props => {
+var Module = function Module(props) {
   console.log(props);
-  return /*#__PURE__*/React.createElement("div", {
-    className: `${props.className}`
-  }, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(props.className)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "",
     style: {
-      background: `url(${props.backgroundUrl})`
+      background: "url(".concat(props.backgroundUrl, ")")
     }
-  }, props.children, /*#__PURE__*/React.createElement("div", {
+  }, props.children, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex sign-in-page-container"
-  }, props.imageSplash && props.imageSplash.url ? /*#__PURE__*/React.createElement("div", {
+  }, props.imageSplash && props.imageSplash.url ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "SignIn_ImageSplashContainer"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "SignIn_ImageSplash",
     style: {
-      background: `url(${props.imageSplash.url}) no-repeat center center / cover`
+      background: "url(".concat(props.imageSplash.url, ") no-repeat center center / cover")
     }
-  })) : _div || (_div = /*#__PURE__*/React.createElement("div", {
+  })) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
     className: "SignIn_ImageSplashContainer"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(IndexCta, _extends({}, props, {
+  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_cta.IndexCta, _extends({}, props, {
     marginTop: '7rem',
     definition: props.OnboardCta,
-    children: /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(SignIn, props), /*#__PURE__*/React.createElement(Username, props)),
+    children: /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)),
     ctaTopVideos: props.ctaTopVideos
   }))))));
 };
-export default Module;
+var _default = exports["default"] = Module;

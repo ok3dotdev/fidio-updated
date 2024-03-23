@@ -1,17 +1,24 @@
-import React from 'react';
-import menuStyle from '../Menu.module.scss';
-const Module = props => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, !props._loggedIn ? /*#__PURE__*/React.createElement("li", {
-    className: `${menuStyle.menuLink} darkMenuLink`,
-    onClick: props?.fireShowSignIn
-  }, /*#__PURE__*/React.createElement("span", {
-    className: `${menuStyle.menuLinkText}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `${menuStyle.menuText}`
-  }, "Login"), /*#__PURE__*/React.createElement("div", {
-    className: `${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} person material-icons`
-  }, "person")), /*#__PURE__*/React.createElement("div", {
-    className: `${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} person material-icons`
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _MenuModule = _interopRequireDefault(require("../Menu.module.scss"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var Module = function Module(props) {
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement("li", {
+    className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink"),
+    onClick: props === null || props === void 0 ? void 0 : props.fireShowSignIn
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    className: "".concat(_MenuModule["default"].menuLinkText)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_MenuModule["default"].menuText)
+  }, "Login"), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_MenuModule["default"].menuLinkIconPair, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")
+  }, "person")), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_MenuModule["default"].menuLinkIcon, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")
   }, "person")) : null);
 };
-export default Module;
+var _default = exports["default"] = Module;
