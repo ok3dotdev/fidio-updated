@@ -1,12 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var Module = function Module(props) {
-  return /*#__PURE__*/_react["default"].createElement("div", null, props.useAppConfigLayout && props.appConfigLayout ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props.appConfigLayout) : null);
+import React from 'react';
+const Module = props => {
+  return <div>
+            {props.useAppConfigLayout && props.appConfigLayout ? <React.Fragment>{props.appConfigLayout}</React.Fragment> : null}
+		</div>;
 };
-var _default = exports["default"] = Module;
+export default Module;

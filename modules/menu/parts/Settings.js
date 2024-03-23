@@ -1,24 +1,19 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _link = _interopRequireDefault(require("next/link"));
 var _li;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var Module = function Module(props) {
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/settings",
-    className: "menuLinkSelector",
-    onClick: props === null || props === void 0 ? void 0 : props.handleToggleSettings,
-    style: {
-      position: 'relative',
-      alignSelf: 'center'
-    }
-  }, _li || (_li = /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "settings"), /*#__PURE__*/_react["default"].createElement("div", null, "Settings"))))) : null);
+import React from 'react';
+import Link from 'next/link';
+const Module = props => {
+  return <React.Fragment>
+            {props._loggedIn ? <React.Fragment>
+                        <Link href="/settings" className={`menuLinkSelector`} onClick={props?.handleToggleSettings} style={{
+        position: 'relative',
+        alignSelf: 'center'
+      }}>
+                            {_li || (_li = <li>
+                                <div className={`material-icons`}>settings</div>
+                                <div>Settings</div>
+                            </li>)}
+                        </Link>
+                    </React.Fragment> : null}
+        </React.Fragment>;
 };
-var _default = exports["default"] = Module;
+export default Module;

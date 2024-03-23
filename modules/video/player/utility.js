@@ -1,10 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-exports.ensureAutoPlay = ensureAutoPlay;
 function _callback_onAutoplayBlocked() {
   // do something, for example "show big play button"
 }
@@ -13,10 +6,10 @@ function isSafari() {
   var sfri = window.navigator.userAgent.toLowerCase().indexOf("safari") > -1;
   return !chr && sfri;
 }
-function ensureAutoPlay(p, player) {
+export function ensureAutoPlay(p, player) {
   var s = window['Promise'] ? window['Promise'].toString() : '';
   if (s.indexOf('function Promise()') !== -1 || s.indexOf('function ZoneAwarePromise()') !== -1) {
-    p["catch"](function (error) {
+    p.catch(function (error) {
       console.error("_checkAutoPlay, error:", error);
       if (error.name == "NotAllowedError") {
         // For Chrome/Firefox
@@ -43,6 +36,6 @@ function ensureAutoPlay(p, player) {
     console.error("_checkAutoplay: promise could not work in your browser ", p);
   }
 }
-var _default = exports["default"] = {
-  ensureAutoPlay: ensureAutoPlay
+export default {
+  ensureAutoPlay
 };
