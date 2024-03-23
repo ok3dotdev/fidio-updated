@@ -1,16 +1,47 @@
-import React from 'react';
-import Tooltip from '@mui/material/Tooltip';
-import InternalStyles from './Internal.module.scss';
-const Module = props => {
-  const [fetchBusy, setFetchBusy] = React.useState(false);
-  const [currentSelected, setCurrentSelected] = React.useState({});
-  const [paymentIssues, setPaymentIssues] = React.useState([]);
-  const [helpIssues, setHelpIssues] = React.useState([]);
-  const [settingsIssues, setSettingsIssues] = React.useState([]);
-  const [allIssues, setAllIssues] = React.useState([]);
-  React.useEffect(() => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
+var _InternalModule = _interopRequireDefault(require("./Internal.module.scss"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var Module = function Module(props) {
+  var _React$useState = _react["default"].useState(false),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    fetchBusy = _React$useState2[0],
+    setFetchBusy = _React$useState2[1];
+  var _React$useState3 = _react["default"].useState({}),
+    _React$useState4 = _slicedToArray(_React$useState3, 2),
+    currentSelected = _React$useState4[0],
+    setCurrentSelected = _React$useState4[1];
+  var _React$useState5 = _react["default"].useState([]),
+    _React$useState6 = _slicedToArray(_React$useState5, 2),
+    paymentIssues = _React$useState6[0],
+    setPaymentIssues = _React$useState6[1];
+  var _React$useState7 = _react["default"].useState([]),
+    _React$useState8 = _slicedToArray(_React$useState7, 2),
+    helpIssues = _React$useState8[0],
+    setHelpIssues = _React$useState8[1];
+  var _React$useState9 = _react["default"].useState([]),
+    _React$useState10 = _slicedToArray(_React$useState9, 2),
+    settingsIssues = _React$useState10[0],
+    setSettingsIssues = _React$useState10[1];
+  var _React$useState11 = _react["default"].useState([]),
+    _React$useState12 = _slicedToArray(_React$useState11, 2),
+    allIssues = _React$useState12[0],
+    setAllIssues = _React$useState12[1];
+  _react["default"].useEffect(function () {
     if (props.paymentConfig) {
-      let issues = [];
+      var issues = [];
       if (props.paymentConfig.keys) {
         if (!props.paymentConfig.keys.stripe) {
           issues.push({
@@ -32,10 +63,10 @@ const Module = props => {
         s: 'In order for the payment processor to function properly you must add Payment Configurations to resolveVariables as paymentConfig {Object}'
       }]);
     }
-  }, [props?.paymentConfig]);
-  React.useEffect(() => {
+  }, [props === null || props === void 0 ? void 0 : props.paymentConfig]);
+  _react["default"].useEffect(function () {
     if (props.helpIndex) {
-      let issues = [];
+      var issues = [];
       if (!Array.isArray(props.helpIndex)) {
         issues.push({
           m: 'The Help Index is not of an Array type. Please ensure that it is of an array type.',
@@ -49,10 +80,10 @@ const Module = props => {
         s: 'In order for leverage quick FAQ capabilities for your business you must add Help Index to resolveVariables as helpIndex [ ...{Object} ]'
       }]);
     }
-  }, [props?.helpIndex]);
-  React.useEffect(() => {
+  }, [props === null || props === void 0 ? void 0 : props.helpIndex]);
+  _react["default"].useEffect(function () {
     if (props.settingsConfig) {
-      let issues = [];
+      var issues = [];
       if (!props.settingsConfig.tabs) {
         issues.push({
           m: 'The Settings Config does not have a tabs property. Please ensure that it has a tabs property under settingsConfig.tabs of type Array[ ...{Object} ]. Each tab must have an items Array[ ...{Object} ]. It may have an label {String} and avatar {Boolean}',
@@ -64,10 +95,13 @@ const Module = props => {
           s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object} and then create an array at settingsConfig.tabs Array[ ...{Object} ]'
         });
       } else {
-        const badItem = props.settingsConfig.tabs.findIndex(m => !m.items ?? false);
+        var badItem = props.settingsConfig.tabs.findIndex(function (m) {
+          var _m$items;
+          return (_m$items = !m.items) !== null && _m$items !== void 0 ? _m$items : false;
+        });
         if (badItem > -1) {
           issues.push({
-            m: `A tab in the settingsConfig.tabs array does not have an appropriate config. Please ensure that the tab ${badItem} has a property of type Array[ ...{Object} ].`,
+            m: "A tab in the settingsConfig.tabs array does not have an appropriate config. Please ensure that the tab ".concat(badItem, " has a property of type Array[ ...{Object} ]."),
             s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object} and then create an array at settingsConfig.tabs Array[ ...{Object} ]'
           });
         }
@@ -79,10 +113,10 @@ const Module = props => {
         s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object}'
       }]);
     }
-  }, [props?.settingsConfig]);
-  React.useEffect(() => {
+  }, [props === null || props === void 0 ? void 0 : props.settingsConfig]);
+  _react["default"].useEffect(function () {
     if (props.menuConfig) {
-      let issues = [];
+      var issues = [];
       if (!Object.prototype.hasOwnProperty.call(props.menuConfig, 'height')) {
         issues.push({
           m: 'The Menu Config does not have a height property. Setting a height property on your Menu Config will ensure that all floating and static elements load at the correct height such that they do not block the users interaction height {Number}',
@@ -108,24 +142,26 @@ const Module = props => {
         s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
       }]);
     }
-  }, [props?.menuConfig]);
-  React.useEffect(() => {
+  }, [props === null || props === void 0 ? void 0 : props.menuConfig]);
+  _react["default"].useEffect(function () {
     setAllIssues([].concat(paymentIssues, settingsIssues, helpIssues));
   }, [paymentIssues, settingsIssues, helpIssues]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, props?.dev && allIssues.length > 0 ? /*#__PURE__*/React.createElement("div", {
-    className: `${InternalStyles.devContainer} ${props.className}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `${InternalStyles.devInternalContainer}`
-  }, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props !== null && props !== void 0 && props.dev && allIssues.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_InternalModule["default"].devContainer, " ").concat(props.className)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_InternalModule["default"].devInternalContainer)
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginBottom: '.5rem',
       fontSize: '.85rem'
     }
-  }, "Developer"), /*#__PURE__*/React.createElement("div", {
-    className: `${InternalStyles.devLogContainer}`
-  }, allIssues.map(m => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Tooltip, {
-    title: m.s,
-    placement: "right"
-  }, /*#__PURE__*/React.createElement("div", null, "* ", m.m))))))) : null);
+  }, "Developer"), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "".concat(_InternalModule["default"].devLogContainer)
+  }, allIssues.map(function (m) {
+    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+      title: m.s,
+      placement: "right"
+    }, /*#__PURE__*/_react["default"].createElement("div", null, "* ", m.m)));
+  })))) : null);
 };
-export default Module;
+var _default = exports["default"] = Module;

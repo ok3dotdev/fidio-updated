@@ -1,4 +1,10 @@
-const options = [['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block', {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var options = [['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block', {
   'script': 'sub'
 }, {
   'script': 'super'
@@ -27,4 +33,4 @@ const options = [['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-b
 }, 'seperator', 'link', 'image', 'seperator', {
   'direction': 'rtl'
 }, 'clean']];
-export default options;
+var _default = exports["default"] = options;

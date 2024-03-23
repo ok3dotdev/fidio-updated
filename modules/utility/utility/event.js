@@ -1,12 +1,20 @@
-export const fireGlobalEvent = (e, emitter) => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.selectThisText = exports.fireGlobalEvent = void 0;
+var fireGlobalEvent = exports.fireGlobalEvent = function fireGlobalEvent(e, emitter) {
   console.log(e);
   if (e && emitter) {
-    const action = e?.currentTarget?.getAttribute('action') ?? e.event ?? null;
+    var _ref, _e$currentTarget$getA, _e$currentTarget;
+    var action = (_ref = (_e$currentTarget$getA = e === null || e === void 0 || (_e$currentTarget = e.currentTarget) === null || _e$currentTarget === void 0 ? void 0 : _e$currentTarget.getAttribute('action')) !== null && _e$currentTarget$getA !== void 0 ? _e$currentTarget$getA : e.event) !== null && _ref !== void 0 ? _ref : null;
     if (action) {
       if (action === 'buy') {
-        const item = e?.currentTarget?.getAttribute('item');
-        const style = e?.currentTarget?.getAttribute('selectedstyle');
-        const option = e?.currentTarget?.getAttribute('currentoption');
+        var _e$currentTarget2, _e$currentTarget3, _e$currentTarget4;
+        var item = e === null || e === void 0 || (_e$currentTarget2 = e.currentTarget) === null || _e$currentTarget2 === void 0 ? void 0 : _e$currentTarget2.getAttribute('item');
+        var style = e === null || e === void 0 || (_e$currentTarget3 = e.currentTarget) === null || _e$currentTarget3 === void 0 ? void 0 : _e$currentTarget3.getAttribute('selectedstyle');
+        var option = e === null || e === void 0 || (_e$currentTarget4 = e.currentTarget) === null || _e$currentTarget4 === void 0 ? void 0 : _e$currentTarget4.getAttribute('currentoption');
         emitter.dispatch('global_event', {
           action: action,
           e: e,
@@ -15,26 +23,28 @@ export const fireGlobalEvent = (e, emitter) => {
           option: option
         });
       } else if (action === 'add_to_cart') {
-        const item = e?.currentTarget?.getAttribute('item');
-        const style = e?.currentTarget?.getAttribute('selectedstyle');
-        const option = e?.currentTarget?.getAttribute('currentoption');
+        var _e$currentTarget5, _e$currentTarget6, _e$currentTarget7;
+        var _item = e === null || e === void 0 || (_e$currentTarget5 = e.currentTarget) === null || _e$currentTarget5 === void 0 ? void 0 : _e$currentTarget5.getAttribute('item');
+        var _style = e === null || e === void 0 || (_e$currentTarget6 = e.currentTarget) === null || _e$currentTarget6 === void 0 ? void 0 : _e$currentTarget6.getAttribute('selectedstyle');
+        var _option = e === null || e === void 0 || (_e$currentTarget7 = e.currentTarget) === null || _e$currentTarget7 === void 0 ? void 0 : _e$currentTarget7.getAttribute('currentoption');
         emitter.dispatch('global_event', {
           action: action,
           e: e,
-          item: item,
-          style: style,
-          option: option
+          item: _item,
+          style: _style,
+          option: _option
         });
       } else if (action === 'add_to_cart_subscribe') {
-        const item = e?.currentTarget?.getAttribute('item');
-        const style = e?.currentTarget?.getAttribute('selectedstyle');
-        const option = e?.currentTarget?.getAttribute('currentoption');
+        var _e$currentTarget8, _e$currentTarget9, _e$currentTarget10;
+        var _item2 = e === null || e === void 0 || (_e$currentTarget8 = e.currentTarget) === null || _e$currentTarget8 === void 0 ? void 0 : _e$currentTarget8.getAttribute('item');
+        var _style2 = e === null || e === void 0 || (_e$currentTarget9 = e.currentTarget) === null || _e$currentTarget9 === void 0 ? void 0 : _e$currentTarget9.getAttribute('selectedstyle');
+        var _option2 = e === null || e === void 0 || (_e$currentTarget10 = e.currentTarget) === null || _e$currentTarget10 === void 0 ? void 0 : _e$currentTarget10.getAttribute('currentoption');
         emitter.dispatch('global_event', {
           action: action,
           e: e,
-          item: item,
-          style: style,
-          option: option
+          item: _item2,
+          style: _style2,
+          option: _option2
         });
       } else {
         emitter.dispatch('global_event', {
@@ -46,12 +56,15 @@ export const fireGlobalEvent = (e, emitter) => {
     }
   }
 };
-export const selectThisText = e => {
-  if (e?.currentTarget?.getAttribute) {
-    const select = e.currentTarget.getAttribute('selectValue');
-    if (select && navigator?.clipboard?.writeText) {
+var selectThisText = exports.selectThisText = function selectThisText(e) {
+  var _e$currentTarget11;
+  if (e !== null && e !== void 0 && (_e$currentTarget11 = e.currentTarget) !== null && _e$currentTarget11 !== void 0 && _e$currentTarget11.getAttribute) {
+    var _navigator;
+    var select = e.currentTarget.getAttribute('selectValue');
+    if (select && (_navigator = navigator) !== null && _navigator !== void 0 && (_navigator = _navigator.clipboard) !== null && _navigator !== void 0 && _navigator.writeText) {
+      var _window;
       navigator.clipboard.writeText(select);
-      if (window?.getSelection) {
+      if ((_window = window) !== null && _window !== void 0 && _window.getSelection) {
         window.getSelection().selectAllChildren(e.currentTarget);
       }
     }
