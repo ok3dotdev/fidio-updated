@@ -1,14 +1,20 @@
-import { v4 as uuidv4 } from 'uuid';
-const defaultLineup = () => {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.defaultStyle = exports.defaultProduct = exports.defaultOption = exports.defaultLineup = exports.defaultDefinePriceCurrency = exports.allowedTypes = void 0;
+var _uuid = require("uuid");
+var defaultLineup = exports.defaultLineup = function defaultLineup() {
   return {
-    id: uuidv4(),
+    id: (0, _uuid.v4)(),
     title: '',
     description: '',
     time: null,
     image: ''
   };
 };
-const defaultDefinePriceCurrency = {
+var defaultDefinePriceCurrency = exports.defaultDefinePriceCurrency = {
   code: 'US',
   name: 'United States',
   payment: 'stripe',
@@ -16,9 +22,10 @@ const defaultDefinePriceCurrency = {
   currency: 'USD',
   symbol: '$'
 };
-const defaultOption = (addOption = true) => {
-  const o = {
-    sid: uuidv4(),
+var defaultOption = exports.defaultOption = function defaultOption() {
+  var addOption = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var o = {
+    sid: (0, _uuid.v4)(),
     quantity: 100
   };
   if (addOption) {
@@ -26,20 +33,20 @@ const defaultOption = (addOption = true) => {
   }
   return o;
 };
-const defaultStyle = () => {
+var defaultStyle = exports.defaultStyle = function defaultStyle() {
   return {
     price: 10,
     currency: 'USD',
     priceTable: {},
-    sid: uuidv4(),
+    sid: (0, _uuid.v4)(),
     style: '',
     option: [defaultOption(false)]
   };
 };
-const defaultProduct = (shopId, useStyle) => {
+var defaultProduct = exports.defaultProduct = function defaultProduct(shopId, useStyle) {
   return {
-    id: uuidv4(),
-    shop: shopId ?? null,
+    id: (0, _uuid.v4)(),
+    shop: shopId !== null && shopId !== void 0 ? shopId : null,
     name: '',
     detailmeta: {
       productType: 'virtual',
@@ -47,7 +54,7 @@ const defaultProduct = (shopId, useStyle) => {
       lineup: [],
       ticket: true // Add this to ensure Item is interpreted as ticket w date
     },
-    styles: [useStyle ?? defaultStyle],
+    styles: [useStyle !== null && useStyle !== void 0 ? useStyle : defaultStyle],
     shipping: [],
     published: false,
     images: [],
@@ -58,8 +65,7 @@ const defaultProduct = (shopId, useStyle) => {
     infinite: false,
     meta: {},
     files: {},
-    new: true
+    "new": true
   };
 };
-const allowedTypes = ['image/jpeg', 'image/png'];
-export { allowedTypes, defaultLineup, defaultOption, defaultProduct, defaultStyle, defaultDefinePriceCurrency };
+var allowedTypes = exports.allowedTypes = ['image/jpeg', 'image/png'];
