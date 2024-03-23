@@ -104,38 +104,29 @@ var registerUsername = function registerUsername(props) {
       setRegisterUsernameOn(false);
     }
   }, [props._loggedIn, registerUsernameOn]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  }, props._loggedIn && !props._loggedIn.username && registerUsernameOn ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Username_Container Username_ContainerBg"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Username_ItemsContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Username_PromptContainer"
-  }, /*#__PURE__*/_react["default"].createElement("h4", {
-    style: {
-      margin: 0
-    }
-  }, (_props$prompt = props.prompt) !== null && _props$prompt !== void 0 ? _props$prompt : 'What username do you want?'), /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      margin: 0 + " auto"
-    }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    ref: proposed,
-    type: "text",
-    placeholder: "Username",
-    className: "simpleTextInput"
-  }), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: function onClick(e) {
-      handleSaveUsername(e);
-    },
-    style: {
-      borderRadius: '0'
-    }
-  }, (_props$confirm = props.confirm) !== null && _props$confirm !== void 0 ? _props$confirm : 'Give me that one!'))), pageError ? /*#__PURE__*/_react["default"].createElement("p", {
-    style: {
-      marginTop: '.5rem'
-    }
-  }, pageError) : null)) : null);
+  return <div className={"".concat(props.className)}>
+            {props._loggedIn && !props._loggedIn.username && registerUsernameOn ? <div className='Username_Container Username_ContainerBg'>
+                        <div className='Username_ItemsContainer'>
+                            <div className='Username_PromptContainer'>
+                                <h4 style={{
+            margin: 0
+          }}>{(_props$prompt = props.prompt) !== null && _props$prompt !== void 0 ? _props$prompt : 'What username do you want?'}</h4>
+                                <span style={{
+            margin: 0 + " auto"
+          }}>
+                                    <input ref={proposed} type="text" placeholder="Username" className='simpleTextInput' />
+                                    <button onClick={function (e) {
+              handleSaveUsername(e);
+            }} style={{
+              borderRadius: '0'
+            }}>{(_props$confirm = props.confirm) !== null && _props$confirm !== void 0 ? _props$confirm : 'Give me that one!'}</button>
+                                </span>
+                            </div>
+                            {pageError ? <p style={{
+          marginTop: '.5rem'
+        }}>{pageError}</p> : null}
+                        </div>
+                    </div> : null}
+        </div>;
 };
 var _default = exports["default"] = registerUsername;

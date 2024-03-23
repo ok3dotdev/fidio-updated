@@ -246,84 +246,64 @@ var Module = function Module(props) {
       return false;
     }
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_FeatureModule["default"].featureExternalContainer, " ").concat(combinedFeed.length > 0 ? featureState.size === 'thin' ? "FeatureContainerOpen" : featureState.size === 'medium' ? "FeatureContainerOpen ".concat(_FeatureModule["default"].featureContainerOpen, " FeatureContainerOpenMedium") : featureState.size === 'large' ? "FeatureContainerOpen ".concat(_FeatureModule["default"].featureContainerOpen, " FeatureContainerOpenLarge") : '' : '', " ").concat(props.className)
-  }, !props.hideToggle && combinedFeed.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_FeatureModule["default"].sizeExpandContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_FeatureModule["default"].sizeExpand),
-    onClick: cycleFeatureSize
-  })) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)), combinedFeed.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_FeatureModule["default"].featureContainer, " ").concat(featureState && featureState.size ? featureState.size === 'medium' ? _FeatureModule["default"].featureContainerMedium : featureState.size === 'large' ? _FeatureModule["default"].featureContainerLarge : '' : '', " ").concat(useOverflown ? featureState.size === 'medium' ? 'featureContainerOverflown featureContainerOverflown_medium' : featureState.size === 'large' ? 'featureContainerOverflown featureContainerOverflown_large' : '' : ''),
-    ref: featureContainerRef
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_FeatureModule["default"].itemContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemContainerThin : '')
-  }, combinedFeed.map(function (item, i) {
-    var _featureState$size;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].item, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemThin : "Item_ContainerMetaController Item_ContainerMetaControllerFeature", " Item_ContainerMetaControllerFeature_").concat((_featureState$size = featureState === null || featureState === void 0 ? void 0 : featureState.size) !== null && _featureState$size !== void 0 ? _featureState$size : '', " Feature_Item"),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "w?v=".concat(item.id)
-    }, item.status === 'live' && featureState.size !== 'thin' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "LiveTag ".concat(_FeatureModule["default"].statusContainer)
-    }, "LIVE", _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", {
-      className: "RecordingCircle RecordingCircle_Small"
-    }))) : '', featureState.size !== 'thin' ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-      loader: myLoader,
-      src: item.thumbnail && props.cdn && props.cdn["static"] ? item.thumbnail : 'img/default/greythumb.jpg',
-      alt: item.title ? item.title : "",
-      width: 60,
-      height: 30,
-      layout: "responsive",
-      className: "Feature_Img Feature_Img_Border"
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Item_GhostMeta Item_GhostMetaFeature"
-    }, item.creation && !isNaN(item.creation) && !isNaN(new Date(Number(item.creation))) ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Item_TinyMetaText Item_TinyMetaTextFeature",
-      style: {
-        marginBottom: '.25rem',
-        textShadow: '1px 2px 6px rgb(0 0 0 / 75%)'
-      }
-    }, "Stream started ", new Date(Number(item.creation)).toTimeString()) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Item_GhostMetaContainerInternal"
-    }, /*#__PURE__*/_react["default"].createElement("div", null, item.description ? item.description : "Watch Livestream Now")))) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].itemMetaContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].thinMetaContainerSize : '')
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].itemMetaContainerPadding)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].itemMetaText)
-    }, item.status === 'live' && featureState.size === 'thin' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "LiveTag ".concat(_FeatureModule["default"].statusContainerInline, " LiveTag_Thin }")
-    }, _div3 || (_div3 = /*#__PURE__*/_react["default"].createElement("div", {
-      className: "RecordingCircle RecordingCircle_Small"
-    }))) : '', /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p2 ".concat((item.title.length ? item.title.length : "".concat(item.author_username, " is Streaming Now").length) + item.author_username.length > 20 ? 'marquee' : '', " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].thinMeta : '', " ").concat(_FeatureModule["default"].itemMarqueeContainer)
-    }, (item.title.length ? item.title.length : "".concat(item.author_username, " is Streaming Now").length) + item.author_username.length > 20 ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "marqueeContainer ".concat((featureState === null || featureState === void 0 ? void 0 : featureState.size) === 'thin' ? "".concat(_FeatureModule["default"].marqueeContainerThin) : '')
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "marquee1"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].titleText)
-    }, item.title ? item.title : "".concat(item.author_username, " is Streaming Now")), _span || (_span = /*#__PURE__*/_react["default"].createElement("span", null, " - ")), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].authorUser)
-    }, item.author_username)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "marquee2"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].titleText)
-    }, item.title ? item.title : "".concat(item.author_username, " is Streaming Now")), _span2 || (_span2 = /*#__PURE__*/_react["default"].createElement("span", null, " - ")), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].authorUser)
-    }, item.author_username)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "marquee3"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].titleText)
-    }, item.title ? item.title : "".concat(item.author_username, " is Streaming Now")), _span3 || (_span3 = /*#__PURE__*/_react["default"].createElement("span", null, " - ")), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].authorUser)
-    }, item.author_username))) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].titleText)
-    }, item.title ? item.title : "".concat(item.author_username, " is Streaming Now")), _span4 || (_span4 = /*#__PURE__*/_react["default"].createElement("span", null, " - ")), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_FeatureModule["default"].authorUser)
-    }, item.author_username))))))));
-  }))) : null);
+  return <div className={"".concat(_FeatureModule["default"].featureExternalContainer, " ").concat(combinedFeed.length > 0 ? featureState.size === 'thin' ? "FeatureContainerOpen" : featureState.size === 'medium' ? "FeatureContainerOpen ".concat(_FeatureModule["default"].featureContainerOpen, " FeatureContainerOpenMedium") : featureState.size === 'large' ? "FeatureContainerOpen ".concat(_FeatureModule["default"].featureContainerOpen, " FeatureContainerOpenLarge") : '' : '', " ").concat(props.className)}>
+            {!props.hideToggle && combinedFeed.length > 0 ? <div className={"".concat(_FeatureModule["default"].sizeExpandContainer)}>
+                        <div className={"".concat(_FeatureModule["default"].sizeExpand)} onClick={cycleFeatureSize}></div>
+                    </div> : _div || (_div = <div></div>)}
+            {combinedFeed.length > 0 ? <div className={"".concat(_FeatureModule["default"].featureContainer, " ").concat(featureState && featureState.size ? featureState.size === 'medium' ? _FeatureModule["default"].featureContainerMedium : featureState.size === 'large' ? _FeatureModule["default"].featureContainerLarge : '' : '', " ").concat(useOverflown ? featureState.size === 'medium' ? 'featureContainerOverflown featureContainerOverflown_medium' : featureState.size === 'large' ? 'featureContainerOverflown featureContainerOverflown_large' : '' : '')} ref={featureContainerRef}>
+                        <div className={"".concat(_FeatureModule["default"].itemContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemContainerThin : '')}>
+                            {combinedFeed.map(function (item, i) {
+          var _featureState$size;
+          return <div className={"".concat(_FeatureModule["default"].item, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].itemThin : "Item_ContainerMetaController Item_ContainerMetaControllerFeature", " Item_ContainerMetaControllerFeature_").concat((_featureState$size = featureState === null || featureState === void 0 ? void 0 : featureState.size) !== null && _featureState$size !== void 0 ? _featureState$size : '', " Feature_Item")} key={i}>
+                                        <_link.default href={"w?v=".concat(item.id)}>
+                                            {item.status === 'live' && featureState.size !== 'thin' ? <div className={"LiveTag ".concat(_FeatureModule["default"].statusContainer)}>LIVE{_div2 || (_div2 = <div className='RecordingCircle RecordingCircle_Small'></div>)}</div> : ''}
+                                            {featureState.size !== 'thin' ? <_react.default.Fragment>
+                                                        <_image.default loader={myLoader} src={item.thumbnail && props.cdn && props.cdn["static"] ? item.thumbnail : 'img/default/greythumb.jpg'} alt={item.title ? item.title : ""} width={60} height={30} layout="responsive" className='Feature_Img Feature_Img_Border' />
+                                                        <div className='Item_GhostMeta Item_GhostMetaFeature'>
+                                                            {item.creation && !isNaN(item.creation) && !isNaN(new Date(Number(item.creation))) ? <div className='Item_TinyMetaText Item_TinyMetaTextFeature' style={{
+                    marginBottom: '.25rem',
+                    textShadow: '1px 2px 6px rgb(0 0 0 / 75%)'
+                  }}>Stream started {new Date(Number(item.creation)).toTimeString()}</div> : null}
+                                                            <div className='Item_GhostMetaContainerInternal'>
+                                                                <div>{item.description ? item.description : "Watch Livestream Now"}</div>
+                                                            </div>
+                                                        </div>
+                                                    </_react.default.Fragment> : null}
+                                            <div className={"".concat(_FeatureModule["default"].itemMetaContainer, " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].thinMetaContainerSize : '')}>
+                                                <div className={"".concat(_FeatureModule["default"].itemMetaContainerPadding)}>
+                                                    <div className={"".concat(_FeatureModule["default"].itemMetaText)}>
+                                                        {item.status === 'live' && featureState.size === 'thin' ? <div className={"LiveTag ".concat(_FeatureModule["default"].statusContainerInline, " LiveTag_Thin }")}>{_div3 || (_div3 = <div className='RecordingCircle RecordingCircle_Small'></div>)}</div> : ''}
+                                                        <div className={"flex gap-p2 ".concat((item.title.length ? item.title.length : "".concat(item.author_username, " is Streaming Now").length) + item.author_username.length > 20 ? 'marquee' : '', " ").concat(featureState.size === 'thin' ? _FeatureModule["default"].thinMeta : '', " ").concat(_FeatureModule["default"].itemMarqueeContainer)}>
+                                                            {(item.title.length ? item.title.length : "".concat(item.author_username, " is Streaming Now").length) + item.author_username.length > 20 ? <div className={"marqueeContainer ".concat((featureState === null || featureState === void 0 ? void 0 : featureState.size) === 'thin' ? "".concat(_FeatureModule["default"].marqueeContainerThin) : '')}>
+                                                                    <div className='marquee1'>
+                                                                        <div className={"".concat(_FeatureModule["default"].titleText)}>{item.title ? item.title : "".concat(item.author_username, " is Streaming Now")}</div>
+                                                                        {_span || (_span = <span> - </span>)}
+                                                                        <div className={"".concat(_FeatureModule["default"].authorUser)}>{item.author_username}</div>
+                                                                    </div>
+                                                                    <div className='marquee2'>
+                                                                        <div className={"".concat(_FeatureModule["default"].titleText)}>{item.title ? item.title : "".concat(item.author_username, " is Streaming Now")}</div>
+                                                                        {_span2 || (_span2 = <span> - </span>)}
+                                                                        <div className={"".concat(_FeatureModule["default"].authorUser)}>{item.author_username}</div>
+                                                                    </div>
+                                                                    <div className='marquee3'>
+                                                                        <div className={"".concat(_FeatureModule["default"].titleText)}>{item.title ? item.title : "".concat(item.author_username, " is Streaming Now")}</div>
+                                                                        {_span3 || (_span3 = <span> - </span>)}
+                                                                        <div className={"".concat(_FeatureModule["default"].authorUser)}>{item.author_username}</div>
+                                                                    </div>
+                                                                </div> : <_react.default.Fragment>
+                                                                    <div className={"".concat(_FeatureModule["default"].titleText)}>{item.title ? item.title : "".concat(item.author_username, " is Streaming Now")}</div>
+                                                                    {_span4 || (_span4 = <span> - </span>)}
+                                                                    <div className={"".concat(_FeatureModule["default"].authorUser)}>{item.author_username}</div>
+                                                                </_react.default.Fragment>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </_link.default>
+                                    </div>;
+        })}
+                        </div>
+                    </div> : null}
+        </div>;
 };
 var _default = exports["default"] = Module;

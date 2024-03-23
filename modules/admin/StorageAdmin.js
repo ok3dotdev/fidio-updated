@@ -415,160 +415,123 @@ var Module = function Module(props) {
   }, DO_SEARCH_DELAY), []); // Debounce Search
 
   console.log(storageFiles, folders, props, currentDir, currentImage);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(moduleName, "_Container")
-  }, pageError ? /*#__PURE__*/_react["default"].createElement("p", {
-    className: "error",
-    style: {
+  return <div className={"".concat(props.className, " ").concat(moduleName, "_Container")}>
+            {pageError ? <p className='error' style={{
       marginTop: '.5rem'
-    },
-    onClick: handleCloseError
-  }, pageError) : null, !(props !== null && props !== void 0 && props.vert) ? _h || (_h = /*#__PURE__*/_react["default"].createElement("h3", null, "Storage")) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].containerTwoSmallRight, " ").concat(props !== null && props !== void 0 && props.vert ? "".concat(_AdminModule["default"].vertView) : null)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(moduleName, "_InternalContainer")
-  }, /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "See Storage for ".concat((_props$siteTitle = props.siteTitle) !== null && _props$siteTitle !== void 0 ? _props$siteTitle : 'your Platform', " below"),
-    placement: "bottom"
-  }, _h2 || (_h2 = /*#__PURE__*/_react["default"].createElement("h4", null, "Files"))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].storageActionContainer, " flex gap-p2"),
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, currentDir !== '' ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Go back"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 al-cen pointer ".concat(_AdminModule["default"].itemContainer),
-    onClick: handleGoBack,
-    style: {
-      width: 'fit-content',
-      fontWeight: '600'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons",
-    style: {
-      fontSize: '1rem'
-    }
-  }, "arrow_back"), _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null, "back")))), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Upload New File to this Directory"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSelectUploadFile,
-    modif: "img"
-  }, "Upload New Image"))) : null, /*#__PURE__*/_react["default"].createElement("input", {
-    placeholder: "Search",
-    ref: searchRef,
-    style: {
-      borderRadius: '1rem',
-      borderWidth: 0,
-      padding: '.0rem .5rem'
-    },
-    onChange: handleDoSearch
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "file",
-    modif: "image",
-    style: {
-      display: 'none'
-    },
-    ref: uploadFile,
-    onChange: handleUploadFile
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].listContainer),
-    style: {
-      maxHeight: "".concat(props.vert ? '200px' : '65vh')
-    }
-  }, folders !== null && folders !== void 0 && folders.map ? folders.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_AdminModule["default"].itemContainer, " pointer"),
-      key: i,
-      modif: "goto",
-      usekey: "".concat(m.Prefix),
-      onClick: handleItemInteraction
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m.Prefix), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p2"
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "material-icons",
-      style: {
-        fontSize: '1rem'
-      }
-    }, "arrow_forward")));
-  }) : null, storageFiles !== null && storageFiles !== void 0 && storageFiles.map ? storageFiles.map(function (m, i) {
-    var _props$cdn$static2, _props$cdn2, _props$cdn$static3, _props$cdn3;
-    return m.Key !== currentDir ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_AdminModule["default"].itemContainer),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(props !== null && props !== void 0 && props.vert ? "".concat(_AdminModule["default"].shortened) : null),
-      selectValue: "".concat((_props$cdn$static2 = props === null || props === void 0 || (_props$cdn2 = props.cdn) === null || _props$cdn2 === void 0 ? void 0 : _props$cdn2["static"]) !== null && _props$cdn$static2 !== void 0 ? _props$cdn$static2 : '', "/").concat(m.Key),
-      onClick: handleDoLoad,
-      useKey: "".concat(m.Key),
-      style: {
-        cursor: 'pointer'
-      }
-    }, m.Key), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p2"
-    }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-      title: "Copy URL",
-      placement: "left"
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "material-icons",
-      modif: "copy_url",
-      usekey: "".concat(m.Key),
-      selectValue: "".concat((_props$cdn$static3 = props === null || props === void 0 || (_props$cdn3 = props.cdn) === null || _props$cdn3 === void 0 ? void 0 : _props$cdn3["static"]) !== null && _props$cdn$static3 !== void 0 ? _props$cdn$static3 : '', "/").concat(m.Key),
-      onClick: _event.selectThisText,
-      style: {
-        fontSize: '1rem'
-      }
-    }, "link")), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-      title: "Delete",
-      placement: "left"
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "material-icons",
-      modif: "delete",
-      usekey: "".concat(m.Key),
-      onClick: handleItemInteraction,
-      style: {
-        fontSize: '1rem'
-      }
-    }, "delete")))) : null;
-  }) : null), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "PaginationContainer"
-  }, itemOffsetPages.map(function (m, i) {
-    return m > -1 ? /*#__PURE__*/_react["default"].createElement("li", {
-      className: "".concat(m == itemOffset ? 'ActivePage' : ''),
-      scope: "itemOffset",
-      key: i,
-      i: m,
-      onClick: handleSetPagination
-    }, m + 1) : null;
-  }))), !(props !== null && props !== void 0 && props.vert) ? _section || (_section = /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, "Platform Storage Status:"), /*#__PURE__*/_react["default"].createElement("div", null, "Good")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, "Platform Content Delivery Network Status:"), /*#__PURE__*/_react["default"].createElement("div", null, "Good")))) : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontWeight: '600'
-    }
-  }, "View"), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Click to Copy URL"
-  }, /*#__PURE__*/_react["default"].createElement("img", {
-    style: {
-      backgroundImage: "url(".concat((_currentImage$locatio = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio !== void 0 ? _currentImage$locatio : null),
-      height: "".concat(props.vert ? '200px' : '400px'),
-      width: '100%',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    },
-    selectValue: "".concat((_currentImage$locatio2 = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio2 !== void 0 ? _currentImage$locatio2 : null),
-    onClick: _event.selectThisText
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 shareButton",
-    selectValue: "".concat((_currentImage$locatio3 = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio3 !== void 0 ? _currentImage$locatio3 : null),
-    onClick: _event.selectThisText
-  }, _PhotoCamera || (_PhotoCamera = /*#__PURE__*/_react["default"].createElement(_PhotoCamera2["default"], null)), _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null, "Copy URL"))))))));
+    }} onClick={handleCloseError}>{pageError}</p> : null}
+            {!(props !== null && props !== void 0 && props.vert) ? _h || (_h = <h3>Storage</h3>) : null}
+            <div className={"".concat(_AdminModule["default"].containerTwoSmallRight, " ").concat(props !== null && props !== void 0 && props.vert ? "".concat(_AdminModule["default"].vertView) : null)}>
+                <div className={"".concat(moduleName, "_InternalContainer")}>
+                    <section>
+                        <_Tooltip.default title={"See Storage for ".concat((_props$siteTitle = props.siteTitle) !== null && _props$siteTitle !== void 0 ? _props$siteTitle : 'your Platform', " below")} placement='bottom'>
+                            {_h2 || (_h2 = <h4>Files</h4>)}
+                        </_Tooltip.default>
+                        <div className={"".concat(_AdminModule["default"].storageActionContainer, " flex gap-p2")} style={{
+            marginBottom: '.25rem'
+          }}>
+                            {currentDir !== '' ? <_react.default.Fragment>
+                                        <_Tooltip.default title='Go back'>
+                                            <div className={"flex gap-p2 al-cen pointer ".concat(_AdminModule["default"].itemContainer)} onClick={handleGoBack} style={{
+                  width: 'fit-content',
+                  fontWeight: '600'
+                }}>
+                                                <div className='material-icons' style={{
+                    fontSize: '1rem'
+                  }}>arrow_back</div>
+                                                {_div || (_div = <div>back</div>)}
+                                            </div>
+                                        </_Tooltip.default>
+                                        <_Tooltip.default title='Upload New File to this Directory'>
+                                            <button onClick={handleSelectUploadFile} modif='img'>Upload New Image</button>
+                                        </_Tooltip.default>
+                                </_react.default.Fragment> : null}
+                            <input placeholder='Search' ref={searchRef} style={{
+              borderRadius: '1rem',
+              borderWidth: 0,
+              padding: '.0rem .5rem'
+            }} onChange={handleDoSearch} />
+                        </div>
+                        <input type='file' modif='image' style={{
+            display: 'none'
+          }} ref={uploadFile} onChange={handleUploadFile} />
+                        <div className={"".concat(_AdminModule["default"].listContainer)} style={{
+            maxHeight: "".concat(props.vert ? '200px' : '65vh')
+          }}>
+                            {folders !== null && folders !== void 0 && folders.map ? folders.map(function (m, i) {
+              return <div className={"".concat(_AdminModule["default"].itemContainer, " pointer")} key={i} modif='goto' usekey={"".concat(m.Prefix)} onClick={handleItemInteraction}>
+                                            <div>{m.Prefix}</div>
+                                            <div className='flex gap-p2'>
+                                                <button className='material-icons' style={{
+                    fontSize: '1rem'
+                  }}>arrow_forward</button>
+                                                {/* Dont allow deletion of folders. Users cannot create folders for now. Deletion of top level folders will fault app */}
+                                            </div>
+                                        </div>;
+            }) : null}
+                            {storageFiles !== null && storageFiles !== void 0 && storageFiles.map ? storageFiles.map(function (m, i) {
+              var _props$cdn$static2, _props$cdn2, _props$cdn$static3, _props$cdn3;
+              return m.Key !== currentDir ? <div className={"".concat(_AdminModule["default"].itemContainer)} key={i}>
+                                                    <div className={"".concat(props !== null && props !== void 0 && props.vert ? "".concat(_AdminModule["default"].shortened) : null)} selectValue={"".concat((_props$cdn$static2 = props === null || props === void 0 || (_props$cdn2 = props.cdn) === null || _props$cdn2 === void 0 ? void 0 : _props$cdn2["static"]) !== null && _props$cdn$static2 !== void 0 ? _props$cdn$static2 : '', "/").concat(m.Key)} onClick={handleDoLoad} useKey={"".concat(m.Key)} style={{
+                  cursor: 'pointer'
+                }}>{m.Key}</div>
+                                                    <div className='flex gap-p2'>
+                                                        <_Tooltip.default title='Copy URL' placement='left'>
+                                                            <button className='material-icons' modif='copy_url' usekey={"".concat(m.Key)} selectValue={"".concat((_props$cdn$static3 = props === null || props === void 0 || (_props$cdn3 = props.cdn) === null || _props$cdn3 === void 0 ? void 0 : _props$cdn3["static"]) !== null && _props$cdn$static3 !== void 0 ? _props$cdn$static3 : '', "/").concat(m.Key)} onClick={_event.selectThisText} style={{
+                      fontSize: '1rem'
+                    }}>link</button>
+                                                        </_Tooltip.default>
+                                                        <_Tooltip.default title='Delete' placement='left'>
+                                                            <button className='material-icons' modif='delete' usekey={"".concat(m.Key)} onClick={handleItemInteraction} style={{
+                      fontSize: '1rem'
+                    }}>delete</button>
+                                                        </_Tooltip.default>
+                                                    </div>
+                                                </div> : null;
+            }) : null}
+                        </div>
+                        <ul className={"PaginationContainer"}>
+                            {itemOffsetPages.map(function (m, i) {
+              return m > -1 ? <li className={"".concat(m == itemOffset ? 'ActivePage' : '')} scope='itemOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
+            })}
+                        </ul>
+                    </section>
+                    {!(props !== null && props !== void 0 && props.vert) ? _section || (_section = <section>
+                                <div className='flex gap-p2'>
+                                    <div>Platform Storage Status:</div>
+                                    <div>Good</div>
+                                </div>
+                                <div className='flex gap-p2'>
+                                    <div>Platform Content Delivery Network Status:</div>
+                                    <div>Good</div>
+                                </div>
+                            </section>) : null}
+                </div>
+                <div>
+                    <div style={{
+          fontWeight: '600'
+        }}>View</div>
+                    <div>
+                        <_Tooltip.default title='Click to Copy URL'>
+                            <img style={{
+              backgroundImage: "url(".concat((_currentImage$locatio = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio !== void 0 ? _currentImage$locatio : null),
+              height: "".concat(props.vert ? '200px' : '400px'),
+              width: '100%',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }} selectValue={"".concat((_currentImage$locatio2 = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio2 !== void 0 ? _currentImage$locatio2 : null)} onClick={_event.selectThisText} />
+                        </_Tooltip.default>
+                        <div style={{
+            display: 'flex'
+          }}>
+                            <div className={"flex gap-p2 shareButton"} selectValue={"".concat((_currentImage$locatio3 = currentImage === null || currentImage === void 0 ? void 0 : currentImage.location) !== null && _currentImage$locatio3 !== void 0 ? _currentImage$locatio3 : null)} onClick={_event.selectThisText}>
+                                {_PhotoCamera || (_PhotoCamera = <_PhotoCamera2.default></_PhotoCamera2.default>)}
+                                {_div2 || (_div2 = <div>Copy URL</div>)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

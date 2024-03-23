@@ -47,70 +47,66 @@ var Module = function Module(props) {
   };
   var resolveType = function resolveType() {
     var _props$classes, _props$classes2, _props$classes3, _props$childrenBefore, _props$children;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].TypeContainer),
-      ref: typeContainerRef
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].TypeContainerEnforceSpace) : null)
-    }, props.lead ? /*#__PURE__*/_react["default"].createElement("h2", {
-      className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.Lead)
-    }, props.lead) : null, props.leadImg ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].leadImgContainer, " ").concat(moduleName, "_LeadImg")
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      className: "".concat(_PresentationModule["default"].leadImg, " ").concat(moduleName, "_LeadImg_img ").concat(props === null || props === void 0 || (_props$classes2 = props.classes) === null || _props$classes2 === void 0 ? void 0 : _props$classes2.Lead),
-      src: "".concat(props.leadImg)
-    })) : null, props.text ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].Text, " ").concat(moduleName, "_Text ").concat(props === null || props === void 0 || (_props$classes3 = props.classes) === null || _props$classes3 === void 0 ? void 0 : _props$classes3.Text)
-    }, props.text) : null, props !== null && props !== void 0 && (_props$childrenBefore = props.childrenBefore) !== null && _props$childrenBefore !== void 0 && _props$childrenBefore.map ? _react["default"].Children.map(props.childrenBefore, function (child) {
-      if (child !== null) {
-        if (typeof child.type === 'function') {
-          var cpProps = {
-            bgContainerRef: bgContainerRef,
-            typeContainerRef: typeContainerRef
-          };
-          return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
-        }
-        return child;
-      }
-      return /*#__PURE__*/_react["default"].createElement('div');
-    }) : null), /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && (_props$children = props.children) !== null && _props$children !== void 0 && _props$children.map ? _react["default"].Children.map(props.children, function (child) {
-      if (child !== null) {
-        if (typeof child.type === 'function') {
-          var cpProps = {
-            bgContainerRef: bgContainerRef,
-            typeContainerRef: typeContainerRef
-          };
-          return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
-        }
-        return child;
-      }
-      return /*#__PURE__*/_react["default"].createElement('div');
-    }) : null));
+    return <div className={"".concat(_PresentationModule["default"].TypeContainer)} ref={typeContainerRef}>
+                <div className={"".concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].TypeContainerEnforceSpace) : null)}>
+                    {props.lead ? <h2 className={"".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.Lead)}>{props.lead}</h2> : null}
+                    {props.leadImg ? <div className={"".concat(_PresentationModule["default"].leadImgContainer, " ").concat(moduleName, "_LeadImg")}>
+                                <img className={"".concat(_PresentationModule["default"].leadImg, " ").concat(moduleName, "_LeadImg_img ").concat(props === null || props === void 0 || (_props$classes2 = props.classes) === null || _props$classes2 === void 0 ? void 0 : _props$classes2.Lead)} src={"".concat(props.leadImg)} />
+                            </div> : null}
+                    {props.text ? <div className={"".concat(_PresentationModule["default"].Text, " ").concat(moduleName, "_Text ").concat(props === null || props === void 0 || (_props$classes3 = props.classes) === null || _props$classes3 === void 0 ? void 0 : _props$classes3.Text)}>{props.text}</div> : null}
+                    {props !== null && props !== void 0 && (_props$childrenBefore = props.childrenBefore) !== null && _props$childrenBefore !== void 0 && _props$childrenBefore.map ? _react["default"].Children.map(props.childrenBefore, function (child) {
+          if (child !== null) {
+            if (typeof child.type === 'function') {
+              var cpProps = {
+                bgContainerRef: bgContainerRef,
+                typeContainerRef: typeContainerRef
+              };
+              return _react["default"].cloneElement(child, cpProps);
+            }
+            return child;
+          }
+          return _react["default"].createElement('div');
+        }) : null}
+                </div>
+                <div>
+                    {props !== null && props !== void 0 && (_props$children = props.children) !== null && _props$children !== void 0 && _props$children.map ? _react["default"].Children.map(props.children, function (child) {
+          if (child !== null) {
+            if (typeof child.type === 'function') {
+              var cpProps = {
+                bgContainerRef: bgContainerRef,
+                typeContainerRef: typeContainerRef
+              };
+              return _react["default"].cloneElement(child, cpProps);
+            }
+            return child;
+          }
+          return _react["default"].createElement('div');
+        }) : null}
+                </div>
+            </div>;
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].BannerHello, " ").concat(moduleName, "_Container ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexBgContainerAd, " ").concat(moduleName, "_IndexBgContainerAd ").concat(props === null || props === void 0 || (_props$classes4 = props.classes) === null || _props$classes4 === void 0 ? void 0 : _props$classes4.IndexBgContainerAd, " ").concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].IndexBgContainerAdTall) : '', " ").concat(props !== null && props !== void 0 && props.center ? "".concat(_PresentationModule["default"].IndexBgContainerCenter) : ''),
-    ref: bgContainerRef
-  }, props.href ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props.href),
-    draggable: false
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      backgroundImage: "url(".concat(resolveImage((_props$img = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img !== void 0 ? _props$img : null, 'img'), ")"),
-      height: '100%',
-      backgroundSize: 'cover',
-      borderRadius: '1rem',
-      position: 'relative'
-    }
-  }, resolveType())) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      backgroundImage: "url(".concat(resolveImage((_props$img2 = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img2 !== void 0 ? _props$img2 : null, 'img'), ")"),
-      height: '100%',
-      backgroundSize: 'cover',
-      borderRadius: '1rem',
-      position: 'relative'
-    }
-  }, resolveType())));
+  return <div className={"".concat(_PresentationModule["default"].BannerHello, " ").concat(moduleName, "_Container ").concat(props.className)}>
+            <div className={"".concat(_PresentationModule["default"].IndexBgContainerAd, " ").concat(moduleName, "_IndexBgContainerAd ").concat(props === null || props === void 0 || (_props$classes4 = props.classes) === null || _props$classes4 === void 0 ? void 0 : _props$classes4.IndexBgContainerAd, " ").concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].IndexBgContainerAdTall) : '', " ").concat(props !== null && props !== void 0 && props.center ? "".concat(_PresentationModule["default"].IndexBgContainerCenter) : '')} ref={bgContainerRef}>
+                {props.href ? <_link.default href={"".concat(props.href)} draggable={false}>
+                            <div style={{
+          backgroundImage: "url(".concat(resolveImage((_props$img = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img !== void 0 ? _props$img : null, 'img'), ")"),
+          height: '100%',
+          backgroundSize: 'cover',
+          borderRadius: '1rem',
+          position: 'relative'
+        }}>
+                                {resolveType()}
+                            </div>
+                        </_link.default> : <div style={{
+        backgroundImage: "url(".concat(resolveImage((_props$img2 = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img2 !== void 0 ? _props$img2 : null, 'img'), ")"),
+        height: '100%',
+        backgroundSize: 'cover',
+        borderRadius: '1rem',
+        position: 'relative'
+      }}>
+                            {resolveType()}
+                        </div>}
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

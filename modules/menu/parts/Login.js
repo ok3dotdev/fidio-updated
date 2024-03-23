@@ -8,17 +8,14 @@ var _react = _interopRequireDefault(require("react"));
 var _MenuModule = _interopRequireDefault(require("../Menu.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement("li", {
-    className: "".concat(_MenuModule["default"].menuLink, " darkMenuLink"),
-    onClick: props === null || props === void 0 ? void 0 : props.fireShowSignIn
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "".concat(_MenuModule["default"].menuLinkText)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_MenuModule["default"].menuText)
-  }, "Login"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_MenuModule["default"].menuLinkIconPair, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")
-  }, "person")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_MenuModule["default"].menuLinkIcon, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")
-  }, "person")) : null);
+  return <_react.default.Fragment>
+            {!props._loggedIn ? <li className={"".concat(_MenuModule["default"].menuLink, " darkMenuLink")} onClick={props === null || props === void 0 ? void 0 : props.fireShowSignIn}>
+                    <span className={"".concat(_MenuModule["default"].menuLinkText)}>
+                        <div className={"".concat(_MenuModule["default"].menuText)}>Login</div>
+                        <div className={"".concat(_MenuModule["default"].menuLinkIconPair, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")}>person</div>
+                    </span>
+                    <div className={"".concat(_MenuModule["default"].menuLinkIcon, " ").concat(_MenuModule["default"].maxIconWidth, " person material-icons")}>person</div>
+                </li> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

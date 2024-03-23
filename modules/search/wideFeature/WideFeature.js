@@ -40,23 +40,16 @@ var Module = function Module(props) {
     }
   };
   console.log(props, props.image1);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "WideFeatureContainer ".concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "WideFeatureInnerContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      maxHeight: '200px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-    loader: myLoader,
-    src: props.image1 && props.cdn && props.cdn["static"] ? props.image1 : 'img/default/greythumb.jpg',
-    width: 320,
-    height: 180,
-    layout: "responsive",
-    style: {
-      borderRadius: '1rem'
-    }
-  }))));
+  return <div className={"WideFeatureContainer ".concat(props.className)}>
+            <div className='WideFeatureInnerContainer'>
+                <div style={{
+        maxHeight: '200px'
+      }}>
+                    <_image.default loader={myLoader} src={props.image1 && props.cdn && props.cdn["static"] ? props.image1 : 'img/default/greythumb.jpg'} width={320} height={180} layout="responsive" style={{
+          borderRadius: '1rem'
+        }} />
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

@@ -170,86 +170,72 @@ var Module = function Module(props) {
   // Chat in notifications
   // link in notifications
 
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Container Misc_Container_Bigger ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''),
-    ref: container,
-    style: {
+  return <_react.default.Fragment>
+            <div className={"Misc_Container Misc_Container_Bigger ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Misc_Container_Visible' : '')} ref={container} style={{
       top: props !== null && props !== void 0 && (_props$menuConfig = props.menuConfig) !== null && _props$menuConfig !== void 0 && _props$menuConfig.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }
-  }, props.open || menuOpen ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Internal_Container",
-    style: {
-      paddingTop: '.5rem',
-      paddingBottom: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h5", {
-    className: "Misc_Label",
-    style: {
-      marginTop: 0
-    }
-  }, "Notifications"), /*#__PURE__*/_react["default"].createElement("div", null, notificationsFeed !== null && notificationsFeed !== void 0 && (_notificationsFeed$no = notificationsFeed.notifications) !== null && _notificationsFeed$no !== void 0 && _notificationsFeed$no.map ? notificationsFeed.notifications.map(function (m) {
-    var _m$meta, _m$meta2, _m$meta3, _m$meta$message, _m$meta4, _m$meta5, _m$meta6, _props$cdn2, _m$meta7, _props$classes$produc, _props$classes, _m$product2, _m$product3, _m$meta8, _m$meta9;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].notifContainer)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].notifInternalContainer)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].detailContainer)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].author, " Misc_P")
-    }, m !== null && m !== void 0 && (_m$meta = m.meta) !== null && _m$meta !== void 0 && _m$meta.fromAdmin && props !== null && props !== void 0 && props.siteTitle ? props.siteTitle : null), m !== null && m !== void 0 && (_m$meta2 = m.meta) !== null && _m$meta2 !== void 0 && _m$meta2.verb ? /*#__PURE__*/_react["default"].createElement("span", {
-      className: "Misc_P"
-    }, m.meta.verb) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Misc_P"
-    }, m !== null && m !== void 0 && (_m$meta3 = m.meta) !== null && _m$meta3 !== void 0 && _m$meta3.quotes ? '"' : '', (_m$meta$message = m === null || m === void 0 || (_m$meta4 = m.meta) === null || _m$meta4 === void 0 ? void 0 : _m$meta4.message) !== null && _m$meta$message !== void 0 ? _m$meta$message : null, m !== null && m !== void 0 && (_m$meta5 = m.meta) !== null && _m$meta5 !== void 0 && _m$meta5.quotes ? '"' : '')), /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$meta6 = m.meta) !== null && _m$meta6 !== void 0 && _m$meta6.image && props !== null && props !== void 0 && (_props$cdn2 = props.cdn) !== null && _props$cdn2 !== void 0 && _props$cdn2["static"] ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].icon),
-      style: {
-        background: "url(".concat(props.cdn["static"], "/").concat(m.meta.image, ")"),
-        backgroundSize: 'contain'
-      }
-    }) : m !== null && m !== void 0 && (_m$meta7 = m.meta) !== null && _m$meta7 !== void 0 && _m$meta7.icon ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].icon),
-      style: {
-        background: "url(".concat(props.cdn["static"], "/").concat(m.meta.icon, ")"),
-        backgroundSize: 'contain'
-      }
-    }) : null)), m !== null && m !== void 0 && m.product ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].notifBox, " ").concat(_NotificationsModule["default"].notifProduct, " flex gap-p5")
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].notifImageContainer),
-      style: {
-        backgroundImage: resolveOrderImg(m) ? "url(".concat(resolveOrderImg(m), ")") : null
-      }
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      src: 'img/default/greythumb_product.jpg',
-      className: "Product_img",
-      style: {
-        width: '75px',
-        maxHeight: '60px',
-        opacity: resolveOrderImg(m) ? 0 : 1
-      }
-    }))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: (0, _utility2.resolveMainLink)(m === null || m === void 0 ? void 0 : m.product),
-      onClick: handleClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_NotificationsModule["default"].productName, " ").concat((_props$classes$produc = props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.productName) !== null && _props$classes$produc !== void 0 ? _props$classes$produc : ''),
-      style: {
-        fontSize: '.9rem',
-        fontWeight: '600'
-      }
-    }, m === null || m === void 0 || (_m$product2 = m.product) === null || _m$product2 === void 0 ? void 0 : _m$product2.name)), /*#__PURE__*/_react["default"].createElement("button", {
-      className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(props.ctaClassName),
-      onClick: handleFireGlobalEvent,
-      action: 'add_to_cart',
-      item: m === null || m === void 0 || (_m$product3 = m.product) === null || _m$product3 === void 0 ? void 0 : _m$product3.id,
-      selectedstyle: m === null || m === void 0 || (_m$meta8 = m.meta) === null || _m$meta8 === void 0 ? void 0 : _m$meta8.productStyle,
-      currentoption: m === null || m === void 0 || (_m$meta9 = m.meta) === null || _m$meta9 === void 0 ? void 0 : _m$meta9.productOption,
-      ctaAfter: 'Added To Cart'
-    }, "Add To Cart"))) : null);
-  }) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_P"
-  }, "All Caught Up")))))) : null));
+    }}>
+                {props.open || menuOpen ? <_react.default.Fragment>
+                            <div className={"".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')}></div>
+                            <div className='Misc_Internal_Container' style={{
+          paddingTop: '.5rem',
+          paddingBottom: '.5rem'
+        }}>
+                                {/* <div style={{ position: 'sticky', top: '.5rem', right: 0, zIndex: 10 }}>
+                                    <Close className={'Misc_Icon_Button'} style={{ margin: '0rem 0', float: 'right' }} onClick={handleClose}></Close>
+                                 </div> */}
+                                <h5 className={"Misc_Label"} style={{
+            marginTop: 0
+          }}>Notifications</h5>
+                                <div>
+                                    {notificationsFeed !== null && notificationsFeed !== void 0 && (_notificationsFeed$no = notificationsFeed.notifications) !== null && _notificationsFeed$no !== void 0 && _notificationsFeed$no.map ? notificationsFeed.notifications.map(function (m) {
+              var _m$meta, _m$meta2, _m$meta3, _m$meta$message, _m$meta4, _m$meta5, _m$meta6, _props$cdn2, _m$meta7, _props$classes$produc, _props$classes, _m$product2, _m$product3, _m$meta8, _m$meta9;
+              return <div className={"".concat(_NotificationsModule["default"].notifContainer)}>
+                                                        <div className={"".concat(_NotificationsModule["default"].notifInternalContainer)}>
+                                                            <div className={"".concat(_NotificationsModule["default"].detailContainer)}>
+                                                                <div className={"".concat(_NotificationsModule["default"].author, " Misc_P")}>{m !== null && m !== void 0 && (_m$meta = m.meta) !== null && _m$meta !== void 0 && _m$meta.fromAdmin && props !== null && props !== void 0 && props.siteTitle ? props.siteTitle : null}</div>
+                                                                {m !== null && m !== void 0 && (_m$meta2 = m.meta) !== null && _m$meta2 !== void 0 && _m$meta2.verb ? <span className='Misc_P'>{m.meta.verb}</span> : null}
+                                                                <div className='Misc_P'>{m !== null && m !== void 0 && (_m$meta3 = m.meta) !== null && _m$meta3 !== void 0 && _m$meta3.quotes ? '"' : ''}{(_m$meta$message = m === null || m === void 0 || (_m$meta4 = m.meta) === null || _m$meta4 === void 0 ? void 0 : _m$meta4.message) !== null && _m$meta$message !== void 0 ? _m$meta$message : null}{m !== null && m !== void 0 && (_m$meta5 = m.meta) !== null && _m$meta5 !== void 0 && _m$meta5.quotes ? '"' : ''}</div>
+                                                            </div>
+                                                            <div>
+                                                                {m !== null && m !== void 0 && (_m$meta6 = m.meta) !== null && _m$meta6 !== void 0 && _m$meta6.image && props !== null && props !== void 0 && (_props$cdn2 = props.cdn) !== null && _props$cdn2 !== void 0 && _props$cdn2["static"] ? <div className={"".concat(_NotificationsModule["default"].icon)} style={{
+                      background: "url(".concat(props.cdn["static"], "/").concat(m.meta.image, ")"),
+                      backgroundSize: 'contain'
+                    }}></div> : m !== null && m !== void 0 && (_m$meta7 = m.meta) !== null && _m$meta7 !== void 0 && _m$meta7.icon ? <div className={"".concat(_NotificationsModule["default"].icon)} style={{
+                      background: "url(".concat(props.cdn["static"], "/").concat(m.meta.icon, ")"),
+                      backgroundSize: 'contain'
+                    }}></div> : null}
+                                                            </div>
+                                                        </div>
+                                                        {m !== null && m !== void 0 && m.product ? <div className={"".concat(_NotificationsModule["default"].notifBox, " ").concat(_NotificationsModule["default"].notifProduct, " flex gap-p5")}>
+                                                                    <div>
+                                                                        <div className={"".concat(_NotificationsModule["default"].notifImageContainer)} style={{
+                      backgroundImage: resolveOrderImg(m) ? "url(".concat(resolveOrderImg(m), ")") : null
+                    }}>
+                                                                            <img src={'img/default/greythumb_product.jpg'} className='Product_img' style={{
+                        width: '75px',
+                        maxHeight: '60px',
+                        opacity: resolveOrderImg(m) ? 0 : 1
+                      }} />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                    <_link.default href={(0, _utility2.resolveMainLink)(m === null || m === void 0 ? void 0 : m.product)} onClick={handleClose}>
+                                                                        <div className={"".concat(_NotificationsModule["default"].productName, " ").concat((_props$classes$produc = props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.productName) !== null && _props$classes$produc !== void 0 ? _props$classes$produc : '')} style={{
+                        fontSize: '.9rem',
+                        fontWeight: '600'
+                      }}>{m === null || m === void 0 || (_m$product2 = m.product) === null || _m$product2 === void 0 ? void 0 : _m$product2.name}</div>
+                                                                    </_link.default>
+                                                                    <button className={"".concat(_PresentationModule["default"].CtaButton, " ").concat(props.ctaClassName)} onClick={handleFireGlobalEvent} action={'add_to_cart'} item={m === null || m === void 0 || (_m$product3 = m.product) === null || _m$product3 === void 0 ? void 0 : _m$product3.id} selectedstyle={m === null || m === void 0 || (_m$meta8 = m.meta) === null || _m$meta8 === void 0 ? void 0 : _m$meta8.productStyle} currentoption={m === null || m === void 0 || (_m$meta9 = m.meta) === null || _m$meta9 === void 0 ? void 0 : _m$meta9.productOption} ctaAfter={'Added To Cart'}>Add To Cart</button>
+                                                                    </div>
+                                                                </div> : null}
+                                                    </div>;
+            }) : _div || (_div = <div>
+                                                    <div className='Misc_P'>All Caught Up</div>
+                                                </div>)}
+                                </div>
+                            </div>
+                        </_react.default.Fragment> : null}
+            </div>
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

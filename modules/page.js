@@ -79,7 +79,7 @@ var page = exports.page = function page(props) {
   resolvedPage = (0, _utility.resolvePage)(config, useProps.path);
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   var components = (0, _utility.generateComponent)(resolvedDefinition);
-  return /*#__PURE__*/_react["default"].createElement("div", null, components);
+  return <div>{components}</div>;
 };
 var getServerSideProps = exports.getServerSideProps = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(context) {

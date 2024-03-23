@@ -154,105 +154,83 @@ var Module = function Module(props) {
       props.setHelpOpen(false);
     }
   }, [props === null || props === void 0 || (_props$_openMenu2 = props._openMenu) === null || _props$_openMenu2 === void 0 ? void 0 : _props$_openMenu2.currentMenu]);
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Container ".concat(props.className, " ").concat(menuOpen && closing ? 'Misc_Container_Visible' : ''),
-    style: {
+  return <div>
+            {<div className={"Misc_Container ".concat(props.className, " ").concat(menuOpen && closing ? 'Misc_Container_Visible' : '')} style={{
       top: props !== null && props !== void 0 && (_props$menuConfig = props.menuConfig) !== null && _props$menuConfig !== void 0 && _props$menuConfig.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Internal_Container",
-    style: {
-      paddingTop: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      position: 'sticky',
-      top: '.5rem',
-      right: 0,
-      zIndex: 10
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Close["default"], {
-    className: "".concat(_SettingsModule["default"].Close),
-    style: {
-      margin: '0rem 0',
-      "float": 'right'
-    },
-    onClick: handleClose
-  })), /*#__PURE__*/_react["default"].createElement("h5", {
-    className: "Misc_Label",
-    style: {
-      marginTop: 0
-    }
-  }, "Help"), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      position: 'sticky',
-      top: '.5rem',
-      margin: '.5rem 0',
-      marginTop: '0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    onChange: handleUpdateSearch,
-    ref: queryRef,
-    style: {
-      border: '0px',
-      borderRadius: '.5rem',
-      width: '87.5%',
-      fontSize: '1.25rem',
-      padding: '0 .5rem'
-    },
-    placeholder: "How can we help?"
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      padding: '.25rem 0rem',
-      display: 'grid',
-      gap: '.5rem'
-    }
-  }, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map(function (m, i) {
-    return m !== null && m !== void 0 && m.a ? /*#__PURE__*/_react["default"].createElement("a", {
-      href: m.a,
-      style: {
-        cursor: 'pointer'
-      },
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Misc_Item_Container Misc_Item_DarkContainerHover",
-      style: {
-        padding: '.5rem',
-        display: 'grid',
-        gap: '.25rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        fontWeight: '500'
-      }
-    }, m.question), /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        fontSize: '.85rem',
-        lineHeight: 'normal'
-      }
-    }, m.answer))) : /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Misc_Item_Container",
-      style: {
-        padding: '.5rem',
-        display: 'grid',
-        gap: '.25rem'
-      },
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        fontWeight: '500'
-      }
-    }, m.question), /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        fontSize: '.85rem',
-        lineHeight: 'normal'
-      }
-    }, m.answer));
-  }) : (queryRef === null || queryRef === void 0 || (_queryRef$current = queryRef.current) === null || _queryRef$current === void 0 ? void 0 : _queryRef$current.value) !== '' ? _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      textAlign: 'center',
-      fontSize: '.95rem'
-    }
-  }, "Try Searching for something")))));
+    }}>
+                    <div className='Misc_Internal_Container' style={{
+        paddingTop: '.5rem'
+      }}>
+                        <div style={{
+          position: 'sticky',
+          top: '.5rem',
+          right: 0,
+          zIndex: 10
+        }}>
+                            <_Close.default className={"".concat(_SettingsModule["default"].Close)} style={{
+            margin: '0rem 0',
+            "float": 'right'
+          }} onClick={handleClose}></_Close.default>
+                        </div>
+                        <h5 className={"Misc_Label"} style={{
+          marginTop: 0
+        }}>Help</h5>
+                        <div style={{
+          position: 'sticky',
+          top: '.5rem',
+          margin: '.5rem 0',
+          marginTop: '0'
+        }}>
+                            <input onChange={handleUpdateSearch} ref={queryRef} style={{
+            border: '0px',
+            borderRadius: '.5rem',
+            width: '87.5%',
+            fontSize: '1.25rem',
+            padding: '0 .5rem'
+          }} placeholder='How can we help?'></input>
+                        </div>
+                        <div style={{
+          padding: '.25rem 0rem',
+          display: 'grid',
+          gap: '.5rem'
+        }}>
+                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map(function (m, i) {
+            return m !== null && m !== void 0 && m.a ? <a href={m.a} style={{
+              cursor: 'pointer'
+            }} key={i}>
+                                            <div className={"Misc_Item_Container Misc_Item_DarkContainerHover"} style={{
+                padding: '.5rem',
+                display: 'grid',
+                gap: '.25rem'
+              }}>
+                                                <div style={{
+                  fontWeight: '500'
+                }}>{m.question}</div>
+                                                <div style={{
+                  fontSize: '.85rem',
+                  lineHeight: 'normal'
+                }}>{m.answer}</div>
+                                            </div>
+                                        </a> : <div className={"Misc_Item_Container"} style={{
+              padding: '.5rem',
+              display: 'grid',
+              gap: '.25rem'
+            }} key={i}>
+                                            <div style={{
+                fontWeight: '500'
+              }}>{m.question}</div>
+                                            <div style={{
+                fontSize: '.85rem',
+                lineHeight: 'normal'
+              }}>{m.answer}</div>
+                                        </div>;
+          }) : (queryRef === null || queryRef === void 0 || (_queryRef$current = queryRef.current) === null || _queryRef$current === void 0 ? void 0 : _queryRef$current.value) !== '' ? _div || (_div = <div></div>) : <div style={{
+            textAlign: 'center',
+            fontSize: '.95rem'
+          }}>Try Searching for something</div>}
+                        </div>
+                    </div>
+                </div>}
+        </div>;
 };
 var _default = exports["default"] = Module;

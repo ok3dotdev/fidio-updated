@@ -87,28 +87,27 @@ var PageContainer = function PageContainer(props) {
   var cpProps = Object.assign({}, useProps);
   cpProps.useMenu = useMenu; // Determines if we useMenu based on definition app.config.js
   cpProps.useAppConfigLayout = useAppConfigLayout; // Determines if we use appConfigLayout based on definition app.config.js
-  var componentsContainer = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(useProps.pageName, "_Body ").concat((_props$pageClass = props.pageClass) !== null && _props$pageClass !== void 0 ? _props$pageClass : ''),
-    style: {
-      top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
-      position: 'relative'
-    }
-  }, components);
+  var componentsContainer = <div className={"".concat(useProps.pageName, "_Body ").concat((_props$pageClass = props.pageClass) !== null && _props$pageClass !== void 0 ? _props$pageClass : '')} style={{
+    top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
+    position: 'relative'
+  }}>{components}</div>;
   if (cpProps.useAppConfigLayout) {
     cpProps.appConfigLayout = componentsContainer;
   }
   var propChildren = _react["default"].Children.map(props.children, function (child) {
     if (child !== null) {
       if (typeof child.type === 'function') {
-        return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+        return _react["default"].cloneElement(child, cpProps);
       }
       return child;
     }
-    return /*#__PURE__*/_react["default"].createElement('div');
+    return _react["default"].createElement('div');
   });
   var articlePage = ((_resolvedPage = resolvedPage) === null || _resolvedPage === void 0 ? void 0 : _resolvedPage.url) === '/ar';
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(articlePage ? "Article_SafeStyles" : '')
-  }, propChildren));
+  return <_react.default.Fragment>
+                <div className={"".concat(articlePage ? "Article_SafeStyles" : '')}>
+                    {propChildren}
+                </div>
+            </_react.default.Fragment>;
 };
 var _default = exports["default"] = PageContainer;

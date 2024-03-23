@@ -16,7 +16,6 @@ var _util = require("../../util");
 var _layout = require("/layout");
 var _Script;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -347,18 +346,17 @@ var Module = function Module(props) {
   console.log(props, chatState);
   var menuHeight = props.menuConfig && props.menuConfig.height ? props.menuConfig.height + 2 + 'px' : '35px'; // Handles user menuConfig height for height of video page
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " WatchPage_Container")
-  }, _Script || (_Script = /*#__PURE__*/_react["default"].createElement(_script["default"], {
-    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js"
-  })), /*#__PURE__*/_react["default"].createElement(_layout.Watch, _extends({}, props, {
-    chatState: chatState,
-    handleSetMobileStyleConfigs: handleSetMobileStyleConfigs,
-    menuHeight: menuHeight,
-    currentPoster: currentPoster,
-    streamLeadPrompt: streamLeadPrompt,
-    authContainer: authContainer,
-    WatchPageStyles: _WatchPageModule["default"]
-  })));
+  return <div className={"".concat(props.className, " WatchPage_Container")}>
+            {_Script || (_Script = <_script.default src='https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js' />)}
+            <_layout.Watch {...Object.assign({}, props, {
+      chatState: chatState,
+      handleSetMobileStyleConfigs: handleSetMobileStyleConfigs,
+      menuHeight: menuHeight,
+      currentPoster: currentPoster,
+      streamLeadPrompt: streamLeadPrompt,
+      authContainer: authContainer,
+      WatchPageStyles: _WatchPageModule["default"]
+    })} />
+        </div>;
 };
 var _default = exports["default"] = Module;

@@ -8,10 +8,11 @@ var _react = _interopRequireDefault(require("react"));
 var _div, _div2;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("li", {
-    onClick: props === null || props === void 0 ? void 0 : props.fireShareFeedback
-  }, _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "feedback")), _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null, "Share Feedback"))));
+  return <_react.default.Fragment>
+            <li onClick={props === null || props === void 0 ? void 0 : props.fireShareFeedback}>
+                {_div || (_div = <div className={"material-icons"}>feedback</div>)}
+                {_div2 || (_div2 = <div>Share Feedback</div>)}
+            </li>
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

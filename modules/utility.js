@@ -46,45 +46,45 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
   if (json.type) {
     switch (json.type) {
       case 'WatchPage':
-        return /*#__PURE__*/_react["default"].createElement(_watch.WatchPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_watch.WatchPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_watch.WatchPage>;
       case 'SignIn':
-        return /*#__PURE__*/_react["default"].createElement(_index.SignIn, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_index.SignIn {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_index.SignIn>;
       case 'SignInPage':
-        return /*#__PURE__*/_react["default"].createElement(_index.SignInPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_index.SignInPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_index.SignInPage>;
       case 'ProfilePage':
-        return /*#__PURE__*/_react["default"].createElement(_index2.ProfilePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_index2.ProfilePage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_index2.ProfilePage>;
       case 'ProductPage':
-        return /*#__PURE__*/_react["default"].createElement(_product.ProductPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_product.ProductPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_product.ProductPage>;
       case 'EventPage':
-        return /*#__PURE__*/_react["default"].createElement(_eventPage.EventPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_eventPage.EventPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_eventPage.EventPage>;
       case 'ReceiptPage':
-        return /*#__PURE__*/_react["default"].createElement(_receipt.ReceiptPage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_receipt.ReceiptPage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_receipt.ReceiptPage>;
       case 'ArticlePage':
-        return /*#__PURE__*/_react["default"].createElement(_article.ArticlePage, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_article.ArticlePage {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_article.ArticlePage>;
       case 'CreditCard':
-        return /*#__PURE__*/_react["default"].createElement(_index3.CreditCard, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_index3.CreditCard {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_index3.CreditCard>;
       case 'Streaming_Manager':
-        return /*#__PURE__*/_react["default"].createElement(_manager.Manager, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_manager.Manager {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_manager.Manager>;
       case 'Onboarding_SignIn_Username':
-        return /*#__PURE__*/_react["default"].createElement(_index.Username, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_index.Username {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_index.Username>;
       case 'Feature':
-        return /*#__PURE__*/_react["default"].createElement(_feature.Feature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_feature.Feature {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_feature.Feature>;
       case 'WideFeature':
-        return /*#__PURE__*/_react["default"].createElement(_wideFeature.WideFeature, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_wideFeature.WideFeature {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_wideFeature.WideFeature>;
       case 'SliderBasic':
-        return /*#__PURE__*/_react["default"].createElement(_indexing.SliderBasic, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_indexing.SliderBasic {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_indexing.SliderBasic>;
       case 'FetchHandler':
-        return /*#__PURE__*/_react["default"].createElement(_fetch.FetchHandler, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_fetch.FetchHandler {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_fetch.FetchHandler>;
       case 'Survey':
-        return /*#__PURE__*/_react["default"].createElement(_survey.Survey, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_survey.Survey {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_survey.Survey>;
       case 'Settings':
-        return /*#__PURE__*/_react["default"].createElement(_settings.Settings, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+        return <_settings.Settings {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_settings.Settings>;
       case 'CustomModule':
         useModules = 'customModule';
         if (json !== null && json !== void 0 && json.props && json.props[useModules] && _customModules["default"] && Object.prototype.hasOwnProperty.call(_customModules["default"], json.props[useModules])) {
           var UseModule = _customModules["default"][json.props[useModules]];
           if (UseModule) {
-            return /*#__PURE__*/_react["default"].createElement(UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+            return <UseModule {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</UseModule>;
           }
         }
       case 'Presentation':
@@ -92,7 +92,7 @@ var resolveComponent = exports.resolveComponent = function resolveComponent(json
         if (json !== null && json !== void 0 && json.props && json.props[useModules] && _presentation["default"] && Object.prototype.hasOwnProperty.call(_presentation["default"], json.props[useModules])) {
           var _UseModule = _presentation["default"][json.props[useModules]];
           if (_UseModule) {
-            return /*#__PURE__*/_react["default"].createElement(_UseModule, json.props, json.children && json.children.map ? json.children.map(generateComponent) : null);
+            return <_UseModule {...json.props}>{json.children && json.children.map ? json.children.map(generateComponent) : null}</_UseModule>;
           }
         }
       default:
@@ -138,11 +138,11 @@ function generateComponent(json) {
       children = json.children;
     if (props !== null && props !== void 0 && props.childrenBefore) {
       var childElements = props.childrenBefore && props.childrenBefore.map(generateComponent);
-      json.props.childrenBefore = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(childElements)))];
+      json.props.childrenBefore = [_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(childElements)))];
     }
     if (props !== null && props !== void 0 && props.childrenAfter) {
       var _childElements = props.childrenAfter && props.childrenAfter.map(generateComponent);
-      json.props.childrenAfter = [/*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements)))];
+      json.props.childrenAfter = [_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements)))];
     }
     // If the type is a string, create a React element
     if (typeof type === 'string') {
@@ -153,7 +153,7 @@ function generateComponent(json) {
       }
       if (children && children.map) {
         var _childElements2 = children && children.map(generateComponent);
-        return /*#__PURE__*/_react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements2)));
+        return _react["default"].createElement.apply(_react["default"], [type, props].concat(_toConsumableArray(_childElements2)));
       }
     }
     if (type) {

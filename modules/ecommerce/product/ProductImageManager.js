@@ -282,88 +282,61 @@ var Module = function Module(props) {
   }) : null;
   var currentIsBgImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (bgImg === null || bgImg === void 0 ? void 0 : bgImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
   var currentIsLeadImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (leadImg === null || leadImg === void 0 ? void 0 : leadImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_ProductImageManagerModule["default"].productImageManagerContainer, " ProductImageManager_container"),
-    style: {
-      position: 'relative'
-    }
-  }, props.editing && !(0, _util.isObjectEmpty)(props.editing) ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "file",
-    style: {
-      display: 'none'
-    },
-    ref: fileInput,
-    onChange: handleNewFile
-  }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Click here to upload an image for your product",
-    placement: "bottom"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].changeImageButton, " image material-icons"),
-    onClick: handleUploadImage
-  }, "image")), warning && warning.message ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warning)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItemContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItem)
-  }, warning.message))) : null) : null, props !== null && props !== void 0 && props.editing && !(0, _util.isObjectEmpty)(props.editing) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].buttonSetAsBackground)
-  }, currentIsLeadImage ? /*#__PURE__*/_react["default"].createElement("button", {
-    className: "gradient_style_bg_1 gradient_style_bg_drop",
-    style: {
-      fontWeight: 600,
-      border: '1px solid #b8ff00',
-      borderRadius: '1rem',
-      fontSize: '.7rem',
-      textAlign: 'center',
-      padding: '0.125rem 1.5rem',
-      color: 'white'
-    }
-  }, "Current Lead Image") : /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: setCurrentImageAsLead
-  }, "Tag As Lead Image"), currentIsBgImage ? /*#__PURE__*/_react["default"].createElement("button", {
-    className: "gradient_style_bg_2 gradient_style_bg_2_drop",
-    style: {
-      fontWeight: 600,
-      border: '1px solid #fe4c4c',
-      borderRadius: '1rem',
-      fontSize: '.7rem',
-      textAlign: 'center',
-      padding: '0.125rem 1.5rem',
-      color: 'white'
-    }
-  }, "Current Feature Image") : /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: setCurrentImageAsBackground
-  }, "Tag As Feature Image")) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImageListContainer)
-  }, imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn["static"] ? imageThumbnailFeed.map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ProductImageManagerModule["default"].productImageListThumbnailContainer),
-      style: {
-        backgroundImage: "url(".concat(props.cdn["static"], "/").concat(m.name, ")")
-      },
-      onClick: setUseImageThumbnail,
-      selector: m.name
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      src: (0, _ecommerce.resolveImg)(props.editing, props.cdn),
-      className: "Product_img",
-      style: {
-        width: '45px',
-        opacity: useImage ? 0 : 1
-      }
-    }));
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImageContainer),
-    ref: productImageRef,
-    style: {
+  return <div className={"".concat(props.className, " ").concat(_ProductImageManagerModule["default"].productImageManagerContainer, " ProductImageManager_container")} style={{
+    position: 'relative'
+  }}>
+            {props.editing && !(0, _util.isObjectEmpty)(props.editing) ? <_react.default.Fragment>
+                        <input type='file' style={{
+        display: 'none'
+      }} ref={fileInput} onChange={handleNewFile} />
+                        <_Tooltip.default title="Click here to upload an image for your product" placement='bottom'>
+                            <div className={"".concat(_ProductImageManagerModule["default"].changeImageButton, " image material-icons")} onClick={handleUploadImage}>image</div>
+                        </_Tooltip.default>
+                        {warning && warning.message ? <div className={"".concat(_ProductImageManagerModule["default"].warning)}>
+                                    <div className={"".concat(_ProductImageManagerModule["default"].warningItemContainer)}>
+                                        <div className={"".concat(_ProductImageManagerModule["default"].warningItem)}>{warning.message}</div>
+                                    </div>
+                                </div> : null}
+                    </_react.default.Fragment> : null}
+            {props !== null && props !== void 0 && props.editing && !(0, _util.isObjectEmpty)(props.editing) ? <div className={"".concat(_ProductImageManagerModule["default"].buttonSetAsBackground)}>
+                        {currentIsLeadImage ? <button className='gradient_style_bg_1 gradient_style_bg_drop' style={{
+        fontWeight: 600,
+        border: '1px solid #b8ff00',
+        borderRadius: '1rem',
+        fontSize: '.7rem',
+        textAlign: 'center',
+        padding: '0.125rem 1.5rem',
+        color: 'white'
+      }}>Current Lead Image</button> : <button onClick={setCurrentImageAsLead}>Tag As Lead Image</button>}
+                        {currentIsBgImage ? <button className='gradient_style_bg_2 gradient_style_bg_2_drop' style={{
+        fontWeight: 600,
+        border: '1px solid #fe4c4c',
+        borderRadius: '1rem',
+        fontSize: '.7rem',
+        textAlign: 'center',
+        padding: '0.125rem 1.5rem',
+        color: 'white'
+      }}>Current Feature Image</button> : <button onClick={setCurrentImageAsBackground}>Tag As Feature Image</button>}
+                    </div> : null}
+            <div className={"".concat(_ProductImageManagerModule["default"].productImageListContainer)}>
+                    {imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn["static"] ? imageThumbnailFeed.map(function (m) {
+        return <div className={"".concat(_ProductImageManagerModule["default"].productImageListThumbnailContainer)} style={{
+          backgroundImage: "url(".concat(props.cdn["static"], "/").concat(m.name, ")")
+        }} onClick={setUseImageThumbnail} selector={m.name}>
+                                    <img src={(0, _ecommerce.resolveImg)(props.editing, props.cdn)} className='Product_img' style={{
+            width: '45px',
+            opacity: useImage ? 0 : 1
+          }} />
+                                </div>;
+      }) : null}
+            </div>
+            <div className={"".concat(_ProductImageManagerModule["default"].productImageContainer)} ref={productImageRef} style={{
       backgroundImage: useImage ? "url(".concat(useImage, ")") : ''
-    }
-  }, /*#__PURE__*/_react["default"].createElement("img", {
-    src: (0, _ecommerce.resolveImg)(props.editing, props.cdn),
-    style: {
-      opacity: useImage ? 0 : 1
-    },
-    className: "Product_img"
-  })));
+    }}>
+                <img src={(0, _ecommerce.resolveImg)(props.editing, props.cdn)} style={{
+        opacity: useImage ? 0 : 1
+      }} className='Product_img'></img>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

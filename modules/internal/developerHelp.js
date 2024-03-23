@@ -146,22 +146,24 @@ var Module = function Module(props) {
   _react["default"].useEffect(function () {
     setAllIssues([].concat(paymentIssues, settingsIssues, helpIssues));
   }, [paymentIssues, settingsIssues, helpIssues]);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props !== null && props !== void 0 && props.dev && allIssues.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devContainer, " ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devInternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginBottom: '.5rem',
-      fontSize: '.85rem'
-    }
-  }, "Developer"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devLogContainer)
-  }, allIssues.map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-      title: m.s,
-      placement: "right"
-    }, /*#__PURE__*/_react["default"].createElement("div", null, "* ", m.m)));
-  })))) : null);
+  return <_react.default.Fragment>
+            {props !== null && props !== void 0 && props.dev && allIssues.length > 0 ? <div className={"".concat(_InternalModule["default"].devContainer, " ").concat(props.className)}>
+                        <div className={"".concat(_InternalModule["default"].devInternalContainer)}>
+                            <div style={{
+          marginBottom: '.5rem',
+          fontSize: '.85rem'
+        }}>Developer</div>
+                            <div className={"".concat(_InternalModule["default"].devLogContainer)}>
+                                {allIssues.map(function (m) {
+            return <div>
+                                            <_Tooltip.default title={m.s} placement='right'>
+                                                <div>* {m.m}</div>
+                                            </_Tooltip.default>
+                                        </div>;
+          })}
+                            </div>
+                        </div>
+                    </div> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

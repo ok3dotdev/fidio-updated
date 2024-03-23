@@ -152,230 +152,183 @@ var Module = function Module(props) {
   };
   var m = reqData !== null && reqData !== void 0 && reqData.id ? reqData : null;
   console.log(m);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_PresentationModule["default"].IndexBgContainer, " EventPage_Container")
-  }, props.children, !props.hideDefault ? m ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].Container, " EventPage_EventContainer ")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].BgUpperContainer, " ").concat(moduleName, "_Container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].BgContainer, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName),
-    style: {
-      backgroundImage: "url(".concat(resolveImage(m, (_m$leadBg = m === null || m === void 0 ? void 0 : m.leadBg) !== null && _m$leadBg !== void 0 ? _m$leadBg : null, 'bg'), ")")
-    }
-  }, props.children, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].FillPageContainer, " ").concat(_PresentationModule["default"].FillPageContainerEvent, " ").concat(moduleName, "_FillPageContainer"),
-    style: {
-      height: "calc(100vh - ".concat((_props$menuConfig$hei = props === null || props === void 0 || (_props$menuConfig = props.menuConfig) === null || _props$menuConfig === void 0 ? void 0 : _props$menuConfig.height) !== null && _props$menuConfig$hei !== void 0 ? _props$menuConfig$hei : 45, "px)")
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeContainer, " ").concat(moduleName, "_TimeContainer ").concat(props.timeContainerClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeCountdown, " ").concat(moduleName, "_TimeCountdown ").concat(props.timeCountdownClassName, " ").concat(useCountdown ? "".concat(_PresentationModule["default"].TimeCountdownVisible) : null)
-  }, useCountdown && setDisplayTime ? useCountdown === 'nodate' ? _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, useCountdown.days > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(_PresentationModule["default"].TimeSectionDay, " ").concat(props.timeSectionClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)
-  }, useCountdown.days), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)
-  }, "Days")) : null, useCountdown.days > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)
-  }, ":") : null, useCountdown.hours === 0 && useCountdown.minutes === 0 && useCountdown.seconds === 0 ? _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null)) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)
-  }, useCountdown.hours), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)
-  }, "Hours")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)
-  }, ":"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)
-  }, useCountdown.minutes), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)
-  }, "Minutes")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)
-  }, ":"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)
-  }, useCountdown.seconds), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)
-  }, "Seconds")))) : null), m.showSimpleDate && useCountdown ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSimple, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : '')) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].DataContainer, " ").concat(moduleName, "_DataContainer ").concat(props.DataContainerClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].AuthorContainer, " ").concat(moduleName, "_AuthorContainer ").concat(props.authorContainerClassName)
-  }, (m === null || m === void 0 ? void 0 : m.icon) !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IconContainer, " ").concat(moduleName, "_IconContainer ").concat(props.iconContainerClassName)
-  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/p?u=".concat((_m$author = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author !== void 0 ? _m$author : ''),
-    style: {
-      alignSelf: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-    loader: function loader() {
-      var _m$icon;
-      return resolveImage(m, (_m$icon = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon !== void 0 ? _m$icon : null, 'icon');
-    },
-    src: resolveImage(m, (_m$icon2 = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon2 !== void 0 ? _m$icon2 : null, 'icon'),
-    style: {
-      maxWidth: '50px',
-      borderRadius: '4rem'
-    },
-    alt: (_m$author2 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author2 !== void 0 ? _m$author2 : '',
-    width: (_m$iconWidth = m.iconWidth) !== null && _m$iconWidth !== void 0 ? _m$iconWidth : '50',
-    height: (_m$iconHeight = m.iconHeight) !== null && _m$iconHeight !== void 0 ? _m$iconHeight : '50',
-    layout: "responsive"
-  }))) : null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/p?u=".concat((_m$author3 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author3 !== void 0 ? _m$author3 : ''),
-    style: {
-      alignSelf: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].Author, " ").concat(moduleName, "_Author ").concat(props.authorClassName)
-  }, (_m$author4 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author4 !== void 0 ? _m$author4 : ''))), /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: (0, _utility2.resolveMainLink)(m),
-    style: {
-      alignSelf: 'center',
-      position: 'relative'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props.leadClassName)
-  }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : ''), m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "newItem",
-    style: {
-      position: 'absolute',
-      top: '-18.5px',
-      left: '75px'
-    }
-  }, _span || (_span = /*#__PURE__*/_react["default"].createElement("span", null, "New")), /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontSize: '.9rem'
-    },
-    className: "star material-icons"
-  }, "star")) : null), m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex",
-    style: {
-      alignItems: 'center',
-      columnGap: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(moduleName, "_Cta ").concat(props.ctaClassName),
-    onClick: handleFireGlobalEvent,
-    action: ['add_to_cart', 'buy'].indexOf(m === null || m === void 0 ? void 0 : m.action) > -1 ? m.action : 'add_to_cart',
-    item: m.item.id,
-    selectedstyle: m.item.style,
-    currentoption: m.item.option,
-    ref: ctaRef,
-    ctaAfter: m.ctaAfter,
-    cta: m.cta
-  }, m.cta), function (_m$styles) {
-    var style = m !== null && m !== void 0 && (_m$styles = m.styles) !== null && _m$styles !== void 0 && _m$styles.find ? m.styles.find(function (n) {
-      return n.sid === m.item.style;
-    }) : null;
-    var price = (0, _ecommerce.resolveRegionBasedPrice)(props, style);
-    if ((price === null || price === void 0 ? void 0 : price.price) == 0) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "flex",
-        style: {
-          fontSize: '1.5rem',
-          fontWeight: '600',
-          marginTop: '.5rem'
-        }
-      }, _div3 || (_div3 = /*#__PURE__*/_react["default"].createElement("div", null, "Free")));
-    } else if (price !== null && price !== void 0 && price.currency && price !== null && price !== void 0 && price.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "flex",
-        style: {
-          fontSize: '1.25rem',
-          fontWeight: '600'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("div", null, price.symbol), /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          marginRight: '.25rem'
-        }
-      }, (0, _ecommerce.resolveMoneyFormat)(price.price)), /*#__PURE__*/_react["default"].createElement("div", null, price.currency));
-    }
-    return _div4 || (_div4 = /*#__PURE__*/_react["default"].createElement("div", null));
-  }(), function () {
-    var option = (0, _ecommerce.resolveOption)(m, m.item.style, m.item.option, true);
-    var paint = option !== null && option !== void 0 && option.quantity && option.quantity > 300 ? '' : option !== null && option !== void 0 && option.quantity && option.quantity <= 300 ? "Not much left in stock" : '';
-    console.log(option, paint);
-    return paint !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        alignItems: 'center',
-        display: 'flex',
-        fontSize: '.85rem',
-        fontWeight: '700',
-        gap: '.25rem',
-        color: '#ff8686'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("span", null, paint), /*#__PURE__*/_react["default"].createElement("span", {
-      style: {
-        fontSize: '1.15rem'
-      },
-      className: "inventory material-icons"
-    }, "inventory")) : null;
-  }()) : null)))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].SecondDataContainer)
-  }, m.description && m.description !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].Description, " ").concat(moduleName, "_Description ").concat(props.descriptionClassName)
-  }, (_m$description = m === null || m === void 0 ? void 0 : m.description) !== null && _m$description !== void 0 ? _m$description : '') : null, m.showSimpleDate && useCountdown ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].TimeSimpleInline, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : '')) : null, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && (_m$detailmeta = m.detailmeta) !== null && _m$detailmeta !== void 0 && _m$detailmeta.lineup && m.detailmeta.lineup.map && m.detailmeta.lineup.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].LineupLabel, " EventPage_Lineup_Label")
-  }, "Lineup"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].LineupContainer)
-  }, m.detailmeta.lineup.map(function (n, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].LineupItem),
-      index: i,
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        marginTop: '.125rem',
-        marginBottom: '1rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].LineupImageContainer),
-      style: {
-        position: 'relative'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].LineupImageInternalContainer),
-      style: {
-        backgroundImage: "url(".concat(props.cdn["static"], "/").concat(n.image, ")")
-      }
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      src: "".concat((0, _ecommerce.resolveImg)(null)),
-      className: "".concat(_PresentationModule["default"].LineupImage),
-      style: {
-        opacity: n.image ? 0 : 1
-      }
-    })))), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].ParticipantLabel)
-    }, n.title !== '' ? n.title : /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        opacity: '.7'
-      }
-    }, "Participant")), n.description ? /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        marginBottom: '.5rem'
-      }
-    }, n.description) : null, n.time ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "lineupItem_time ".concat(_PresentationModule["default"].LineupItemTime)
-    }, (0, _util.getFormattedTime)(n.time, {
-      simple: true
-    })) : null);
-  }))) : null))) : _div5 || (_div5 = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "PagePadding"
-  }, "No Event")) : null, props.childrenAfter);
+  return <div className={"".concat(props.className, " ").concat(_PresentationModule["default"].IndexBgContainer, " EventPage_Container")}>
+            {props.children}
+            {!props.hideDefault ? m ? <div className={"".concat(_PresentationModule["default"].Container, " EventPage_EventContainer ")}>
+                            <div className={"".concat(_PresentationModule["default"].BgUpperContainer, " ").concat(moduleName, "_Container")}>
+                                <div className={"".concat(_PresentationModule["default"].BgContainer, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName)} style={{
+          backgroundImage: "url(".concat(resolveImage(m, (_m$leadBg = m === null || m === void 0 ? void 0 : m.leadBg) !== null && _m$leadBg !== void 0 ? _m$leadBg : null, 'bg'), ")")
+        }}>
+                                    {props.children}
+                                    <div className={"".concat(_PresentationModule["default"].FillPageContainer, " ").concat(_PresentationModule["default"].FillPageContainerEvent, " ").concat(moduleName, "_FillPageContainer")} style={{
+            height: "calc(100vh - ".concat((_props$menuConfig$hei = props === null || props === void 0 || (_props$menuConfig = props.menuConfig) === null || _props$menuConfig === void 0 ? void 0 : _props$menuConfig.height) !== null && _props$menuConfig$hei !== void 0 ? _props$menuConfig$hei : 45, "px)")
+          }}>
+                                        <div className={"".concat(_PresentationModule["default"].TimeContainer, " ").concat(moduleName, "_TimeContainer ").concat(props.timeContainerClassName)}>
+                                            <div className={"".concat(_PresentationModule["default"].TimeCountdown, " ").concat(moduleName, "_TimeCountdown ").concat(props.timeCountdownClassName, " ").concat(useCountdown ? "".concat(_PresentationModule["default"].TimeCountdownVisible) : null)}>
+                                                {useCountdown && setDisplayTime ? useCountdown === 'nodate' ? _div || (_div = <div></div>) : <_react.default.Fragment>
+                                                                {useCountdown.days > 0 ? <div className={"".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(_PresentationModule["default"].TimeSectionDay, " ").concat(props.timeSectionClassName)}><div className={"".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)}>{useCountdown.days}</div><div className={"".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)}>Days</div></div> : null}
+                                                                {useCountdown.days > 0 ? <div className={"".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)}>:</div> : null}
+                                                                {useCountdown.hours === 0 && useCountdown.minutes === 0 && useCountdown.seconds === 0 ? _div2 || (_div2 = <div></div>) : <_react.default.Fragment>
+                                                                        <div className={"".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)}>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)}>{useCountdown.hours}</div>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)}>Hours</div>
+                                                                        </div>
+                                                                        <div className={"".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)}>:</div>
+                                                                        <div className={"".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)}>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)}>{useCountdown.minutes}</div>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)}>Minutes</div>
+                                                                        </div>
+                                                                        <div className={"".concat(_PresentationModule["default"].TimeSectionColon, " ").concat(moduleName, "_TimeSectionColon ").concat(props.timeSectionColonClassName)}>:</div>
+                                                                        <div className={"".concat(_PresentationModule["default"].TimeSection, " ").concat(moduleName, "_TimeSection ").concat(props.timeSectionClassName)}>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionValue, " ").concat(moduleName, "_TimeSectionValue ").concat(props.timeSectionValueClassName)}>{useCountdown.seconds}</div>
+                                                                            <div className={"".concat(_PresentationModule["default"].TimeSectionLabel, " ").concat(moduleName, "_TimeSectionLabel ").concat(props.TimeSectionLabelClassName)}>Seconds</div>
+                                                                        </div>
+                                                                    </_react.default.Fragment>}
+                                                            </_react.default.Fragment> : null}
+                                            </div>
+                                            {m.showSimpleDate && useCountdown ? <div className={"".concat(_PresentationModule["default"].TimeSimple, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)}>
+                                                        <div>{m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : ''}</div>
+                                                    </div> : null}
+                                        </div>
+                                        <div className={"".concat(_PresentationModule["default"].DataContainer, " ").concat(moduleName, "_DataContainer ").concat(props.DataContainerClassName)}>
+                                            <div className={"".concat(_PresentationModule["default"].AuthorContainer, " ").concat(moduleName, "_AuthorContainer ").concat(props.authorContainerClassName)}>
+                                                {(m === null || m === void 0 ? void 0 : m.icon) !== '' ? <div className={"".concat(_PresentationModule["default"].IconContainer, " ").concat(moduleName, "_IconContainer ").concat(props.iconContainerClassName)}>
+                                                            <_link.default href={"/p?u=".concat((_m$author = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author !== void 0 ? _m$author : '')} style={{
+                    alignSelf: 'center'
+                  }}>
+                                                                <_image.default loader={function () {
+                      var _m$icon;
+                      return resolveImage(m, (_m$icon = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon !== void 0 ? _m$icon : null, 'icon');
+                    }} src={resolveImage(m, (_m$icon2 = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon2 !== void 0 ? _m$icon2 : null, 'icon')} style={{
+                      maxWidth: '50px',
+                      borderRadius: '4rem'
+                    }} alt={(_m$author2 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author2 !== void 0 ? _m$author2 : ''} width={(_m$iconWidth = m.iconWidth) !== null && _m$iconWidth !== void 0 ? _m$iconWidth : '50'} height={(_m$iconHeight = m.iconHeight) !== null && _m$iconHeight !== void 0 ? _m$iconHeight : '50'} layout="responsive" />
+                                                            </_link.default>
+                                                        </div> : null}
+                                                <_link.default href={"/p?u=".concat((_m$author3 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author3 !== void 0 ? _m$author3 : '')} style={{
+                  alignSelf: 'center'
+                }}>
+                                                    <div className={"".concat(_PresentationModule["default"].Author, " ").concat(moduleName, "_Author ").concat(props.authorClassName)}>{(_m$author4 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author4 !== void 0 ? _m$author4 : ''}</div>
+                                                </_link.default>
+                                            </div>
+                                            <_link.default href={(0, _utility2.resolveMainLink)(m)} style={{
+                alignSelf: 'center',
+                position: 'relative'
+              }}>
+                                                <div className={"".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props.leadClassName)}>{(_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : ''}</div>
+                                                {m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? <div className='newItem' style={{
+                  position: 'absolute',
+                  top: '-18.5px',
+                  left: '75px'
+                }}>
+                                                            {_span || (_span = <span>New</span>)}
+                                                            <span style={{
+                    fontSize: '.9rem'
+                  }} className={"star material-icons"}>star</span>
+                                                        </div> : null}
+                                            </_link.default>
+                                            {m !== null && m !== void 0 && (_m$item = m.item) !== null && _m$item !== void 0 && _m$item.id && m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.style && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.option ? <div className={"flex"} style={{
+                alignItems: 'center',
+                columnGap: '.5rem'
+              }}>
+                                                        <button className={"".concat(_PresentationModule["default"].CtaButton, " ").concat(moduleName, "_Cta ").concat(props.ctaClassName)} onClick={handleFireGlobalEvent} action={['add_to_cart', 'buy'].indexOf(m === null || m === void 0 ? void 0 : m.action) > -1 ? m.action : 'add_to_cart'} item={m.item.id} selectedstyle={m.item.style} currentoption={m.item.option} ref={ctaRef} ctaAfter={m.ctaAfter} cta={m.cta}>{m.cta}</button>
+                                                        {function (_m$styles) {
+                  var style = m !== null && m !== void 0 && (_m$styles = m.styles) !== null && _m$styles !== void 0 && _m$styles.find ? m.styles.find(function (n) {
+                    return n.sid === m.item.style;
+                  }) : null;
+                  var price = (0, _ecommerce.resolveRegionBasedPrice)(props, style);
+                  if ((price === null || price === void 0 ? void 0 : price.price) == 0) {
+                    return <div className='flex' style={{
+                      fontSize: '1.5rem',
+                      fontWeight: '600',
+                      marginTop: '.5rem'
+                    }}>
+                                                                            {_div3 || (_div3 = <div>Free</div>)}
+                                                                        </div>;
+                  } else if (price !== null && price !== void 0 && price.currency && price !== null && price !== void 0 && price.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {
+                    return <div className='flex' style={{
+                      fontSize: '1.25rem',
+                      fontWeight: '600'
+                    }}>
+                                                                            <div>{price.symbol}</div>
+                                                                            <div style={{
+                        marginRight: '.25rem'
+                      }}>{(0, _ecommerce.resolveMoneyFormat)(price.price)}</div>
+                                                                            <div>{price.currency}</div>
+                                                                        </div>;
+                  }
+                  return _div4 || (_div4 = <div></div>);
+                }()}
+                                                        {function () {
+                  var option = (0, _ecommerce.resolveOption)(m, m.item.style, m.item.option, true);
+                  var paint = option !== null && option !== void 0 && option.quantity && option.quantity > 300 ? '' : option !== null && option !== void 0 && option.quantity && option.quantity <= 300 ? "Not much left in stock" : '';
+                  console.log(option, paint);
+                  return paint !== '' ? <div style={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    fontSize: '.85rem',
+                    fontWeight: '700',
+                    gap: '.25rem',
+                    color: '#ff8686'
+                  }}>
+                                                                        <span>{paint}</span>
+                                                                        <span style={{
+                      fontSize: '1.15rem'
+                    }} className={"inventory material-icons"}>inventory</span>
+                                                                    </div> : null;
+                }()}
+                                                    </div> : null}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={"".concat(_PresentationModule["default"].SecondDataContainer)}>
+                                {m.description && m.description !== '' ? <div className={"".concat(_PresentationModule["default"].Description, " ").concat(moduleName, "_Description ").concat(props.descriptionClassName)}>{(_m$description = m === null || m === void 0 ? void 0 : m.description) !== null && _m$description !== void 0 ? _m$description : ''}</div> : null}
+                                {m.showSimpleDate && useCountdown ? <div className={"".concat(_PresentationModule["default"].TimeSimpleInline, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName)}>
+                                            <div>{m !== null && m !== void 0 && m.date ? (0, _utility2.resolveGoodDate)(m.date) : ''}</div>
+                                        </div> : null}
+                                <div>
+                                {m !== null && m !== void 0 && (_m$detailmeta = m.detailmeta) !== null && _m$detailmeta !== void 0 && _m$detailmeta.lineup && m.detailmeta.lineup.map && m.detailmeta.lineup.length > 0 ? <div style={{
+            marginTop: '.5rem'
+          }}>
+                                            <div className={"".concat(_PresentationModule["default"].LineupLabel, " EventPage_Lineup_Label")}>Lineup</div>
+                                            <div className={"".concat(_PresentationModule["default"].LineupContainer)}>
+                                                {m.detailmeta.lineup.map(function (n, i) {
+                return <div className={"".concat(_PresentationModule["default"].LineupItem)} index={i} key={i}>
+                                                            <div style={{
+                    marginTop: '.125rem',
+                    marginBottom: '1rem'
+                  }}>
+                                                                <div className={"".concat(_PresentationModule["default"].LineupImageContainer)} style={{
+                      position: 'relative'
+                    }}>
+                                                                    <div className={"".concat(_PresentationModule["default"].LineupImageInternalContainer)} style={{
+                        backgroundImage: "url(".concat(props.cdn["static"], "/").concat(n.image, ")")
+                      }}>
+                                                                        <img src={"".concat((0, _ecommerce.resolveImg)(null))} className={"".concat(_PresentationModule["default"].LineupImage)} style={{
+                          opacity: n.image ? 0 : 1
+                        }} />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className={"".concat(_PresentationModule["default"].ParticipantLabel)}>{n.title !== '' ? n.title : <div style={{
+                      opacity: '.7'
+                    }}>Participant</div>}</div>
+                                                            {n.description ? <div style={{
+                    marginBottom: '.5rem'
+                  }}>{n.description}</div> : null}
+                                                            {n.time ? <div className={"lineupItem_time ".concat(_PresentationModule["default"].LineupItemTime)}>{(0, _util.getFormattedTime)(n.time, {
+                      simple: true
+                    })}</div> : null}
+                                                            {/* <div className='lineupItem_id' style={{ fontSize: '.5rem', overflow: 'hidden', whiteSpace: 'nowrap' }}>{m.id}</div> */}
+                                                        </div>;
+              })}
+                                            </div>
+                                        </div> : null}
+                                </div>
+                            </div>
+                        </div> : _div5 || (_div5 = <div className='PagePadding'>No Event</div>) : null}
+            {props.childrenAfter}
+        </div>;
 };
 var _default = exports["default"] = Module;

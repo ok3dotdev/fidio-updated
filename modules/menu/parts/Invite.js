@@ -81,52 +81,41 @@ var Module = function Module(props) {
       clearTimeout(resetRef.current);
     }
   });
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.username ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "menuLinkSelector",
-    onClick: handleInviteFriend,
-    style: {
-      position: 'relative',
-      alignSelf: 'center'
-    }
-  }, submitted ? /*#__PURE__*/_react["default"].createElement("li", null, _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "send")), /*#__PURE__*/_react["default"].createElement("div", {
-    onClick: handleSendAnother,
-    className: "max-width-dropdown"
-  }, "Sent request to ", /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontWeight: 600
-    }
-  }, submitted))) : !inputField ? /*#__PURE__*/_react["default"].createElement("li", null, _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "send")), /*#__PURE__*/_react["default"].createElement("div", {
-    onClick: handleInviteFriend
-  }, "Invite Friend")) : /*#__PURE__*/_react["default"].createElement("li", {
-    style: {
-      padding: '0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p05",
-    style: {
-      flex: 'auto',
-      height: '29px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    style: {
-      borderRadius: '.5rem',
-      borderWidth: '0',
-      marginLeft: '.5rem'
-    },
-    placeholder: "Friend's Email",
-    ref: inputFieldRef
-  }), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSubmitFriendRequest,
-    style: {
-      width: '-webkit-fill-available',
-      maxWidth: '85px',
-      marginRight: '.5rem'
-    }
-  }, "Invite")))) : null) : null);
+  return <_react.default.Fragment>
+            {props._loggedIn ? <_react.default.Fragment>
+                        {(_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.username ? <div className={"menuLinkSelector"} onClick={handleInviteFriend} style={{
+        position: 'relative',
+        alignSelf: 'center'
+      }}>
+                                        {submitted ? <li>
+                                                {_div || (_div = <div className={"material-icons"}>send</div>)}
+                                                <div onClick={handleSendAnother} className='max-width-dropdown'>Sent request to <span style={{
+              fontWeight: 600
+            }}>{submitted}</span></div>
+                                            </li> : !inputField ? <li>
+                                                    {_div2 || (_div2 = <div className={"material-icons"}>send</div>)}
+                                                    <div onClick={handleInviteFriend}>Invite Friend</div>
+                                                </li> : <li style={{
+          padding: '0'
+        }}>
+                                                    <div className='flex gap-p05' style={{
+            flex: 'auto',
+            height: '29px'
+          }}>
+                                                        <input type='text' style={{
+              borderRadius: '.5rem',
+              borderWidth: '0',
+              marginLeft: '.5rem'
+            }} placeholder={"Friend's Email"} ref={inputFieldRef} />
+                                                        <button onClick={handleSubmitFriendRequest} style={{
+              width: '-webkit-fill-available',
+              maxWidth: '85px',
+              marginRight: '.5rem'
+            }}>Invite</button>
+                                                    </div>
+                                                </li>}
+                                </div> : null}
+                    </_react.default.Fragment> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

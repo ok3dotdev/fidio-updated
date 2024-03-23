@@ -8,7 +8,6 @@ var _react = _interopRequireDefault(require("react"));
 var _Close = _interopRequireDefault(require("@mui/icons-material/Close"));
 var _ = require(".");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -92,33 +91,33 @@ var Module = function Module(props) {
     setClosing(true);
     props._toggleSingleOpenMenu(null, props === null || props === void 0 ? void 0 : props.handleName, false);
   });
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Container Misc_Container_Bigger ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''),
-    ref: container,
-    style: {
+  return <_react.default.Fragment>
+            <div className={"Misc_Container Misc_Container_Bigger ".concat(props.className, " ").concat(props.open || menuOpen && !closing ? 'Misc_Container_Visible' : '')} ref={container} style={{
       top: props !== null && props !== void 0 && (_props$menuConfig = props.menuConfig) !== null && _props$menuConfig !== void 0 && _props$menuConfig.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }
-  }, props.open || menuOpen ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      position: 'sticky',
-      top: '.5rem',
-      right: 0,
-      zIndex: 10
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Close["default"], {
-    className: 'Misc_Icon_Button',
-    style: {
-      margin: '0rem 0',
-      position: 'absolute',
-      right: '.5rem'
-    },
-    onClick: handleClose
-  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_.Survey, _extends({
-    survey: props === null || props === void 0 ? void 0 : props.survey,
-    height: 250,
-    close: handleClose
-  }, props)))) : null));
+    }}>
+                {props.open || menuOpen ? <_react.default.Fragment>
+                            <div className={"".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')}></div>
+                            <div style={{
+          position: 'sticky',
+          top: '.5rem',
+          right: 0,
+          zIndex: 10
+        }}>
+                                    <_Close.default className={'Misc_Icon_Button'} style={{
+            margin: '0rem 0',
+            position: 'absolute',
+            right: '.5rem'
+          }} onClick={handleClose}></_Close.default>
+                                </div>
+                            <div>
+                                <_.Survey {...Object.assign({
+            survey: props === null || props === void 0 ? void 0 : props.survey,
+            height: 250,
+            close: handleClose
+          }, props)}></_.Survey>
+                            </div>
+                        </_react.default.Fragment> : null}
+            </div>
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

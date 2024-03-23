@@ -16,7 +16,6 @@ var _onboarding = require("../utility/onboarding");
 var _orders = require("../utility/utility/orders");
 var _receipt = require("../ecommerce/receipt");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -264,159 +263,123 @@ var Module = function Module(props) {
   var resolveCurrentItem = function resolveCurrentItem(itemType) {
     if (itemType === 'firstNameLastName') {
       var _props$_loggedIn5, _props$_loggedIn6, _props$_loggedIn7, _props$_loggedIn8;
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].FirstName_LastName_Container)
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          maxWidth: '100%',
-          width: '100%'
-        }
-      }, props !== null && props !== void 0 && props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].label)
-      }, "First Name"), !editedInputs['firstName'] ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].hoverHighlight),
-        modif: "firstName",
-        onClick: handleChange
-      }, props !== null && props !== void 0 && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.firstName && (props === null || props === void 0 || (_props$_loggedIn6 = props._loggedIn) === null || _props$_loggedIn6 === void 0 || (_props$_loggedIn6 = _props$_loggedIn6.meta) === null || _props$_loggedIn6 === void 0 ? void 0 : _props$_loggedIn6.firstName) !== '' ? props._loggedIn.meta.firstName : props !== null && props !== void 0 && props._loggedIn ? 'Add First Name' : '') : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        placeholder: "First Name",
-        className: "".concat(_SettingsModule["default"].input),
-        id: "Settings_".concat(componentId, "_firstName_Input")
-      }), /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Save_Button),
-        modif: 'firstName',
-        onClick: saveChange
-      }, "Save"))) : null), /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          maxWidth: '100%',
-          width: '100%'
-        }
-      }, props !== null && props !== void 0 && props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].label)
-      }, "Last Name"), !editedInputs['lastName'] ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].hoverHighlight),
-        modif: "lastName",
-        onClick: handleChange
-      }, props !== null && props !== void 0 && (_props$_loggedIn7 = props._loggedIn) !== null && _props$_loggedIn7 !== void 0 && (_props$_loggedIn7 = _props$_loggedIn7.meta) !== null && _props$_loggedIn7 !== void 0 && _props$_loggedIn7.lastName && (props === null || props === void 0 || (_props$_loggedIn8 = props._loggedIn) === null || _props$_loggedIn8 === void 0 || (_props$_loggedIn8 = _props$_loggedIn8.meta) === null || _props$_loggedIn8 === void 0 ? void 0 : _props$_loggedIn8.lastName) !== '' ? props._loggedIn.meta.lastName : props !== null && props !== void 0 && props._loggedIn ? 'Add Last Name' : '') : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        placeholder: "Last Name",
-        className: "".concat(_SettingsModule["default"].input),
-        id: "Settings_".concat(componentId, "_lastName_Input")
-      }), /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Save_Button),
-        modif: 'lastName',
-        onClick: saveChange
-      }, "Save"))) : null)));
+      return <_react.default.Fragment>
+					<div className={"".concat(_SettingsModule["default"].FirstName_LastName_Container)}>
+						<div style={{
+            maxWidth: '100%',
+            width: '100%'
+          }}>
+							{props !== null && props !== void 0 && props._loggedIn ? <_react.default.Fragment>
+										<label className={"".concat(_SettingsModule["default"].label)}>First Name</label>
+										{!editedInputs['firstName'] ? <div className={"".concat(_SettingsModule["default"].hoverHighlight)} modif='firstName' onClick={handleChange}>{props !== null && props !== void 0 && (_props$_loggedIn5 = props._loggedIn) !== null && _props$_loggedIn5 !== void 0 && (_props$_loggedIn5 = _props$_loggedIn5.meta) !== null && _props$_loggedIn5 !== void 0 && _props$_loggedIn5.firstName && (props === null || props === void 0 || (_props$_loggedIn6 = props._loggedIn) === null || _props$_loggedIn6 === void 0 || (_props$_loggedIn6 = _props$_loggedIn6.meta) === null || _props$_loggedIn6 === void 0 ? void 0 : _props$_loggedIn6.firstName) !== '' ? props._loggedIn.meta.firstName : props !== null && props !== void 0 && props._loggedIn ? 'Add First Name' : ''}</div> : <_react.default.Fragment>
+													<input type='text' placeholder='First Name' className={"".concat(_SettingsModule["default"].input)} id={"Settings_".concat(componentId, "_firstName_Input")} />
+													<button className={"".concat(_SettingsModule["default"].Save_Button)} modif={'firstName'} onClick={saveChange}>Save</button>
+												</_react.default.Fragment>}
+									</_react.default.Fragment> : null}
+						</div>
+						<div style={{
+            maxWidth: '100%',
+            width: '100%'
+          }}>
+							{props !== null && props !== void 0 && props._loggedIn ? <_react.default.Fragment>
+										<label className={"".concat(_SettingsModule["default"].label)}>Last Name</label>
+										{!editedInputs['lastName'] ? <div className={"".concat(_SettingsModule["default"].hoverHighlight)} modif='lastName' onClick={handleChange}>{props !== null && props !== void 0 && (_props$_loggedIn7 = props._loggedIn) !== null && _props$_loggedIn7 !== void 0 && (_props$_loggedIn7 = _props$_loggedIn7.meta) !== null && _props$_loggedIn7 !== void 0 && _props$_loggedIn7.lastName && (props === null || props === void 0 || (_props$_loggedIn8 = props._loggedIn) === null || _props$_loggedIn8 === void 0 || (_props$_loggedIn8 = _props$_loggedIn8.meta) === null || _props$_loggedIn8 === void 0 ? void 0 : _props$_loggedIn8.lastName) !== '' ? props._loggedIn.meta.lastName : props !== null && props !== void 0 && props._loggedIn ? 'Add Last Name' : ''}</div> : <_react.default.Fragment>
+													<input type='text' placeholder='Last Name' className={"".concat(_SettingsModule["default"].input)} id={"Settings_".concat(componentId, "_lastName_Input")} />
+													<button className={"".concat(_SettingsModule["default"].Save_Button)} modif={'lastName'} onClick={saveChange}>Save</button>
+												</_react.default.Fragment>}
+									</_react.default.Fragment> : null}
+						</div>
+					</div>
+				</_react.default.Fragment>;
     } else if (itemType === 'username') {
       var _props$_loggedIn$user, _props$_loggedIn9;
-      return /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)
-      }, "Username"), editingUsername ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].ItemsFlex)
-      }, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        placeholder: "Username",
-        className: "".concat(_SettingsModule["default"].input),
-        modif: 'username',
-        id: "Settings_".concat(componentId, "_Username_Input"),
-        onChange: handleChange
-      }), /*#__PURE__*/_react["default"].createElement(_Close["default"], {
-        className: "".concat(_SettingsModule["default"].Close),
-        onClick: handleChangeUsername
-      })), editedInputs['username'] ? /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Save_Button),
-        modif: 'username',
-        onClick: saveChange
-      }, "Save") : null) : /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].ItemsFlex)
-      }, /*#__PURE__*/_react["default"].createElement("div", null, (_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn9 = props._loggedIn) === null || _props$_loggedIn9 === void 0 ? void 0 : _props$_loggedIn9.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : null), /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].LowProfileButton),
-        onClick: handleChangeUsername
-      }, "Get New Username"))) : null);
+      return <div>
+					{props !== null && props !== void 0 && props._loggedIn ? <_react.default.Fragment>
+							<label className={"".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)}>Username</label>
+							{editingUsername ? <_react.default.Fragment>
+										<div className={"".concat(_SettingsModule["default"].ItemsFlex)}>
+											<input type='text' placeholder='Username' className={"".concat(_SettingsModule["default"].input)} modif={'username'} id={"Settings_".concat(componentId, "_Username_Input")} onChange={handleChange} />
+											<_Close.default className={"".concat(_SettingsModule["default"].Close)} onClick={handleChangeUsername}></_Close.default>
+										</div>
+										{editedInputs['username'] ? <button className={"".concat(_SettingsModule["default"].Save_Button)} modif={'username'} onClick={saveChange}>Save</button> : null}
+									</_react.default.Fragment> : <div className={"".concat(_SettingsModule["default"].ItemsFlex)}>
+										<div>{(_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn9 = props._loggedIn) === null || _props$_loggedIn9 === void 0 ? void 0 : _props$_loggedIn9.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : null}</div>
+										<button className={"".concat(_SettingsModule["default"].LowProfileButton)} onClick={handleChangeUsername}>Get New Username</button>
+									</div>}
+							</_react.default.Fragment> : null}
+				</div>;
     } else if (itemType === 'handleCreditCard') {
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)
-      }, "Payment"), /*#__PURE__*/_react["default"].createElement(_payment.CreditCard, props));
+      return <_react.default.Fragment>
+					<label className={"".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)}>Payment</label>
+					<_payment.CreditCard {...props}></_payment.CreditCard>
+				</_react.default.Fragment>;
     } else if (itemType === 'location') {
       var _props$_loggedIn$meta2, _props$_loggedIn10;
-      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].Read_Only_Label)
-      }, "Location"), /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].Read_Only_Field)
-      }, /*#__PURE__*/_react["default"].createElement("span", null, (_props$_loggedIn$meta2 = props === null || props === void 0 || (_props$_loggedIn10 = props._loggedIn) === null || _props$_loggedIn10 === void 0 || (_props$_loggedIn10 = _props$_loggedIn10.meta) === null || _props$_loggedIn10 === void 0 || (_props$_loggedIn10 = _props$_loggedIn10.locationMeta) === null || _props$_loggedIn10 === void 0 ? void 0 : _props$_loggedIn10.city) !== null && _props$_loggedIn$meta2 !== void 0 ? _props$_loggedIn$meta2 : null), /*#__PURE__*/_react["default"].createElement("span", null, resolvedCountry ? ', ' : null), _span || (_span = /*#__PURE__*/_react["default"].createElement("span", null, resolvedCountry))));
+      return <div>
+					<label className={"".concat(_SettingsModule["default"].Read_Only_Label)}>Location</label>
+					<div className={"".concat(_SettingsModule["default"].Read_Only_Field)}>
+                        <span>{(_props$_loggedIn$meta2 = props === null || props === void 0 || (_props$_loggedIn10 = props._loggedIn) === null || _props$_loggedIn10 === void 0 || (_props$_loggedIn10 = _props$_loggedIn10.meta) === null || _props$_loggedIn10 === void 0 || (_props$_loggedIn10 = _props$_loggedIn10.locationMeta) === null || _props$_loggedIn10 === void 0 ? void 0 : _props$_loggedIn10.city) !== null && _props$_loggedIn$meta2 !== void 0 ? _props$_loggedIn$meta2 : null}</span><span>{resolvedCountry ? ', ' : null}</span>
+						{_span || (_span = <span>{resolvedCountry}</span>)}
+					</div>
+				</div>;
     } else if (itemType === 'keepSubscriptionsPrivate') {
       var _props$_loggedIn11;
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].Settings_Checkbox_Container)
-      }, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "checkbox",
-        name: "keepSubscriptionsPrivate",
-        className: "".concat(_SettingsModule["default"].Settings_Checkbox),
-        id: "Settings_".concat(componentId, "_keepSubscriptionsPrivate_Input"),
-        modif: 'keepSubscriptionsPrivate',
-        onChange: saveChange,
-        defaultChecked: props === null || props === void 0 || (_props$_loggedIn11 = props._loggedIn) === null || _props$_loggedIn11 === void 0 || (_props$_loggedIn11 = _props$_loggedIn11.meta) === null || _props$_loggedIn11 === void 0 ? void 0 : _props$_loggedIn11.keepSubscriptionsPrivate
-      }), /*#__PURE__*/_react["default"].createElement("label", {
-        htmlFor: "keepSubscriptionsPrivate",
-        className: "".concat(_SettingsModule["default"].Checkbox_Label)
-      }, "Keep Subscriptions Private")));
+      return <_react.default.Fragment>
+					<div className={"".concat(_SettingsModule["default"].Settings_Checkbox_Container)}>
+						<input type='checkbox' name='keepSubscriptionsPrivate' className={"".concat(_SettingsModule["default"].Settings_Checkbox)} id={"Settings_".concat(componentId, "_keepSubscriptionsPrivate_Input")} modif={'keepSubscriptionsPrivate'} onChange={saveChange} defaultChecked={props === null || props === void 0 || (_props$_loggedIn11 = props._loggedIn) === null || _props$_loggedIn11 === void 0 || (_props$_loggedIn11 = _props$_loggedIn11.meta) === null || _props$_loggedIn11 === void 0 ? void 0 : _props$_loggedIn11.keepSubscriptionsPrivate} />
+						<label htmlFor='keepSubscriptionsPrivate' className={"".concat(_SettingsModule["default"].Checkbox_Label)}>Keep Subscriptions Private</label>
+					</div>
+				</_react.default.Fragment>;
     } else if (itemType === 'closeAccount') {
-      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_SettingsModule["default"].Close_Account_Button_Container)
-      }, !editedInputs['closeAccount'] ? /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Warning_Button),
-        modif: 'closeAccount',
-        onClick: handleChange
-      }, "Close Account") : /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          textAlign: 'center',
-          marginTop: '1rem'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          fontWeight: '600'
-        }
-      }, "Are you sure you want to close your ", props === null || props === void 0 ? void 0 : props.siteTitle, " account?"), /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          fontSize: '.8rem',
-          marginTop: '.5rem'
-        }
-      }, "This action is not reversible. All your data will be deleted and forgotten."), /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '10rem',
-          marginTop: '1rem'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Save_Button),
-        style: {
-          fontWeight: '600'
-        }
-      }, "Yes"), /*#__PURE__*/_react["default"].createElement("button", {
-        className: "".concat(_SettingsModule["default"].Save_Button),
-        onClick: cancelCloseAccount,
-        style: {
-          fontWeight: '600'
-        }
-      }, "No")))));
+      return <div>
+					<div className={"".concat(_SettingsModule["default"].Close_Account_Button_Container)}>
+						{!editedInputs['closeAccount'] ? <button className={"".concat(_SettingsModule["default"].Warning_Button)} modif={'closeAccount'} onClick={handleChange}>Close Account</button> : <div style={{
+            textAlign: 'center',
+            marginTop: '1rem'
+          }}>
+									<div style={{
+              fontWeight: '600'
+            }}>Are you sure you want to close your {props === null || props === void 0 ? void 0 : props.siteTitle} account?</div>
+									<div style={{
+              fontSize: '.8rem',
+              marginTop: '.5rem'
+            }}>This action is not reversible. All your data will be deleted and forgotten.</div>
+									<div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '10rem',
+              marginTop: '1rem'
+            }}>
+										<button className={"".concat(_SettingsModule["default"].Save_Button)} style={{
+                fontWeight: '600'
+              }}>Yes</button>
+										<button className={"".concat(_SettingsModule["default"].Save_Button)} onClick={cancelCloseAccount} style={{
+                fontWeight: '600'
+              }}>No</button>
+									</div>
+								</div>}
+					</div>
+				</div>;
     } else if (itemType === 'orders') {
       var _resolvedOrders$order;
-      return /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
-        className: "".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)
-      }, "Orders"), /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem'
-        }
-      }, resolvedOrders !== null && resolvedOrders !== void 0 && (_resolvedOrders$order = resolvedOrders.orders) !== null && _resolvedOrders$order !== void 0 && _resolvedOrders$order.map ? resolvedOrders.orders.map(function (m, i) {
-        return /*#__PURE__*/_react["default"].createElement(_receipt.Order, _extends({
-          order: m
-        }, props));
-      }) : null)) : null);
+      return <div>
+					{props !== null && props !== void 0 && props._loggedIn ? <_react.default.Fragment>
+								<label className={"".concat(_SettingsModule["default"].label, " ").concat(_SettingsModule["default"].fullWidth)}>Orders</label>
+								<div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem'
+          }}>
+									{resolvedOrders !== null && resolvedOrders !== void 0 && (_resolvedOrders$order = resolvedOrders.orders) !== null && _resolvedOrders$order !== void 0 && _resolvedOrders$order.map ? resolvedOrders.orders.map(function (m, i) {
+              return <_receipt.Order {...Object.assign({
+                order: m
+              }, props)} />;
+            }) : null}
+								</div>
+							</_react.default.Fragment> : null}
+				</div>;
     } else {
-      return /*#__PURE__*/_react["default"].createElement("div", null, itemType);
+      return <div>{itemType}</div>;
     }
   };
   var handleSetTab = _react["default"].useCallback(function (e) {
@@ -430,49 +393,45 @@ var Module = function Module(props) {
   });
   var resolveInitials = props !== null && props !== void 0 && (_props$_loggedIn12 = props._loggedIn) !== null && _props$_loggedIn12 !== void 0 && (_props$_loggedIn12 = _props$_loggedIn12.meta) !== null && _props$_loggedIn12 !== void 0 && _props$_loggedIn12.firstName && props !== null && props !== void 0 && (_props$_loggedIn13 = props._loggedIn) !== null && _props$_loggedIn13 !== void 0 && (_props$_loggedIn13 = _props$_loggedIn13.meta) !== null && _props$_loggedIn13 !== void 0 && _props$_loggedIn13.lastName && props._loggedIn.meta.firstName.length > 0 && props._loggedIn.meta.lastName.length > 0 ? props._loggedIn.meta.firstName.charAt(0) + props._loggedIn.meta.lastName.charAt(0) : 'AV';
   console.log('Curr', currentTab, settingsConfig.tabs, props);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].Settings_Container),
-    style: {
+  return <_react.default.Fragment>
+			<div className={"".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')}></div>
+			<div className={"".concat(_SettingsModule["default"].Settings_Container)} style={{
       margin: '0 auto',
       width: '70vw',
       display: 'flex'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].Settings_InternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].Settings_Menu)
-  }, settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs ? settingsConfig.tabs.map(function (tab) {
-    var _tab$label;
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SettingsModule["default"].tab, " ").concat(settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === (tab === null || tab === void 0 ? void 0 : tab.label) ? _SettingsModule["default"].currentTab : ''),
-      onClick: handleSetTab,
-      modif: tab === null || tab === void 0 ? void 0 : tab.label
-    }, (_tab$label = tab === null || tab === void 0 ? void 0 : tab.label) !== null && _tab$label !== void 0 ? _tab$label : ''));
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].Settings_Data)
-  }, settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && settingsConfig !== null && settingsConfig !== void 0 && (_settingsConfig$tabs$2 = settingsConfig.tabs[currentTab]) !== null && _settingsConfig$tabs$2 !== void 0 && _settingsConfig$tabs$2.avatar ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].Settings_Profile_Picture),
-    style: {
-      background: "url(".concat((_props$_loggedIn$icon = props === null || props === void 0 || (_props$_loggedIn14 = props._loggedIn) === null || _props$_loggedIn14 === void 0 ? void 0 : _props$_loggedIn14.icon) !== null && _props$_loggedIn$icon !== void 0 ? _props$_loggedIn$icon : null, ")"),
-      backgroundSize: 'contain'
-    }
-  }, !(props !== null && props !== void 0 && (_props$_loggedIn15 = props._loggedIn) !== null && _props$_loggedIn15 !== void 0 && _props$_loggedIn15.icon) ? /*#__PURE__*/_react["default"].createElement("span", {
-    className: "".concat(_SettingsModule["default"].Avatar_Placeholder_Text)
-  }, resolveInitials) : null) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_SettingsModule["default"].settingsItemContainer)
-  }, pageError ? /*#__PURE__*/_react["default"].createElement("p", {
-    className: "error",
-    style: {
-      marginTop: '.5rem'
-    },
-    onClick: handleCloseError
-  }, pageError) : null, settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && (_settingsConfig$tabs$3 = settingsConfig.tabs[currentTab]) !== null && _settingsConfig$tabs$3 !== void 0 && _settingsConfig$tabs$3.items && Array.isArray((_settingsConfig$tabs$4 = settingsConfig.tabs[currentTab]) === null || _settingsConfig$tabs$4 === void 0 ? void 0 : _settingsConfig$tabs$4.items) ? settingsConfig.tabs[currentTab].items.map(function (item) {
-    var avatar = settingsConfig.tabs[currentTab].avatar;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      key: item.type
-    }, resolveCurrentItem(item.type));
-  }) : null)))));
+    }}>
+				<div className={"".concat(_SettingsModule["default"].Settings_InternalContainer)}>
+					<div className={"".concat(_SettingsModule["default"].Settings_Menu)}>
+						{settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs ? settingsConfig.tabs.map(function (tab) {
+            var _tab$label;
+            return <_react.default.Fragment>
+										<div className={"".concat(_SettingsModule["default"].tab, " ").concat(settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === (tab === null || tab === void 0 ? void 0 : tab.label) ? _SettingsModule["default"].currentTab : '')} onClick={handleSetTab} modif={tab === null || tab === void 0 ? void 0 : tab.label}>{(_tab$label = tab === null || tab === void 0 ? void 0 : tab.label) !== null && _tab$label !== void 0 ? _tab$label : ''}</div>
+									</_react.default.Fragment>;
+          }) : null}
+					</div>
+					<div className={"".concat(_SettingsModule["default"].Settings_Data)}>
+						{settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && settingsConfig !== null && settingsConfig !== void 0 && (_settingsConfig$tabs$2 = settingsConfig.tabs[currentTab]) !== null && _settingsConfig$tabs$2 !== void 0 && _settingsConfig$tabs$2.avatar ? <div className={"".concat(_SettingsModule["default"].Settings_Profile_Picture)} style={{
+            background: "url(".concat((_props$_loggedIn$icon = props === null || props === void 0 || (_props$_loggedIn14 = props._loggedIn) === null || _props$_loggedIn14 === void 0 ? void 0 : _props$_loggedIn14.icon) !== null && _props$_loggedIn$icon !== void 0 ? _props$_loggedIn$icon : null, ")"),
+            backgroundSize: 'contain'
+          }}>
+									{!(props !== null && props !== void 0 && (_props$_loggedIn15 = props._loggedIn) !== null && _props$_loggedIn15 !== void 0 && _props$_loggedIn15.icon) ? <span className={"".concat(_SettingsModule["default"].Avatar_Placeholder_Text)}>{resolveInitials}</span> : null}
+									{/* <img src='/img/default/editIcon.svg' alt='Circular edit icon with white pencil in the middle' className={`${Styles.Edit_Icon}`} /> */}
+								</div> : null}
+						<div className={"".concat(_SettingsModule["default"].settingsItemContainer)}>
+							{pageError ? <p className='error' style={{
+              marginTop: '.5rem'
+            }} onClick={handleCloseError}>{pageError}</p> : null}
+							{settingsConfig !== null && settingsConfig !== void 0 && settingsConfig.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && (_settingsConfig$tabs$3 = settingsConfig.tabs[currentTab]) !== null && _settingsConfig$tabs$3 !== void 0 && _settingsConfig$tabs$3.items && Array.isArray((_settingsConfig$tabs$4 = settingsConfig.tabs[currentTab]) === null || _settingsConfig$tabs$4 === void 0 ? void 0 : _settingsConfig$tabs$4.items) ? settingsConfig.tabs[currentTab].items.map(function (item) {
+              var avatar = settingsConfig.tabs[currentTab].avatar;
+              return <div key={item.type}>
+													{resolveCurrentItem(item.type)}
+												</div>;
+            }) : null}
+						</div>
+					</div>
+				</div>
+			</div>	
+
+		</_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

@@ -15,9 +15,11 @@ var Module = function Module(props) {
     day: 'numeric',
     year: 'numeric'
   }) : null;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, dateFormatted ? /*#__PURE__*/_react["default"].createElement("div", null, dateFormatted, " at ", useDate.toLocaleString('en-US', {
-    hour: 'numeric',
-    minute: 'numeric'
-  })) : null);
+  return <_react.default.Fragment>
+            {dateFormatted ? <div>{dateFormatted} at {useDate.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric'
+      })}</div> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

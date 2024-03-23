@@ -125,6 +125,8 @@ var SocketContainer = function SocketContainer(props) {
       };
     }
   }, [props._loggedIn, props.setRooms]);
-  return _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null));
+  return _div || (_div = <div>
+            
+        </div>);
 };
 var _default = exports["default"] = SocketContainer;

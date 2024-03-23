@@ -633,423 +633,297 @@ var Module = function Module(props) {
       setFetchBusy(false);
     }
   });
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].container, " ").concat(props.className)
-  }, pageError && pageError.message && !pageError.placement ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "error",
-    style: {
+  return <div className={"".concat(_ManagerModule["default"].container, " ").concat(props.className)}>
+            {pageError && pageError.message && !pageError.placement ? <div className='error' style={{
       margin: '.25rem',
       marginBottom: '0'
-    },
-    onClick: handleClearError
-  }, pageError.message) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].innerContainer, " flex gap-p2"),
-    style: {
+    }} onClick={handleClearError}>{pageError.message}</div> : null}
+            <div className={"".concat(_ManagerModule["default"].innerContainer, " flex gap-p2")} style={{
       flexDirection: 'column'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].itemsContainer, " flex Manager_Items"),
-    style: {
-      padding: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(openMenu == 'stream' ? _ManagerModule["default"].activeItem : '', " ").concat(_ManagerModule["default"].item),
-    onClick: handleSetAdminMenu,
-    menu: "stream"
-  }, "Stream"), /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(openMenu == 'shop' ? _ManagerModule["default"].activeItem : '', " ").concat(_ManagerModule["default"].item),
-    onClick: handleSetAdminMenu,
-    menu: "shop"
-  }, "Shop")), openMenu === 'stream' ? props._loggedIn && props._loggedIn.username ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].settingsSectionContainer, " flex gap-p5"),
-    style: {
-      padding: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].settingContainer, " ").concat(_ManagerModule["default"].streamingInfoContainer, " ").concat(currentlyStreaming ? "".concat(_ManagerModule["default"].isStreamingContainer) : '')
-  }, !fetchBusy && didCheckStream && didAskStream ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginBottom: '.25rem',
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem',
-      marginBottom: '.25rem'
-    }
-  }, "You have asked for permission to stream. Please check back soon.")) : !fetchBusy && didCheckStream && !canStream ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginBottom: '.25rem',
-      textAlign: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem',
-      marginBottom: '.25rem'
-    }
-  }, "You are currently not authorized to stream"), /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      borderRadius: '.25rem'
-    },
-    onClick: handleAskForStreamingPermissions
-  }, "Ask For Streaming Permissions?")) : null, !currentlyStreaming && canStream ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      height: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '1rem',
-      fontWeight: '600',
-      paddingTop: '0',
-      paddingBottom: '.125rem',
-      textAlign: 'center'
-    }
-  }, "Stream on ", props.siteTitle, " Now"), !fetchBusy ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      alignItems: 'center',
-      marginBottom: '.125rem',
-      height: 'inherit'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_ManagerModule["default"].streamingButton),
-    onClick: beginStreaming,
-    style: {
-      padding: '.125rem 2rem',
-      fontSize: '1.5rem',
-      paddingTop: '.125rem',
-      width: '-webkit-fill-available',
-      height: '75px'
-    }
-  }, "Begin Stream"), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      background: 'black',
-      padding: '0 .25rem',
-      borderRadius: '.25rem',
-      marginTop: '.25rem',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("label", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Private"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    onChange: setPrivate,
-    ref: privateRef
-  })), streamSettings["private"] ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("label", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Password"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    onChange: setPassword,
-    style: {
-      maxWidth: '100px',
-      maxHeight: '16px',
-      fontSize: '.85rem',
-      marginLeft: '.25rem',
-      borderRadius: '.25rem'
-    },
-    ref: passwordRef
-  })) : null)) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem'
-    }
-  }, "Please wait...")) : currentlyStreaming ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ManagerModule["default"].streamingButtonStreaming, " importantPrompt")
-  }, "Now Streaming ", _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "RecordingCircle RecordingCircle_Small"
-  }))), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem',
-      overflowWrap: 'anywhere'
-    }
-  }, _b || (_b = /*#__PURE__*/_react["default"].createElement("b", null, "Share your stream link:")), " ", /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      background: 'black',
-      padding: '0 .125rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("a", {
-    href: "".concat(props.devLocal ? props.devAddress : 'https://' + props.domainUrl, "/w?u=").concat(props._loggedIn.username),
-    onClick: _event.selectThisText,
-    selectValue: "".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)
-  }, "".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)))), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem',
-      fontWeight: 600,
-      color: '#94ff94',
-      overflowWrap: 'anywhere'
-    }
-  }, "Stream Endpoint: ", /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontWeight: 400,
-      background: 'black',
-      padding: '0 .125rem'
-    },
-    onClick: _event.selectThisText,
-    selectValue: streamTo
-  }, streamTo)), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem',
-      fontWeight: 600,
-      color: '#ff81ca',
-      overflowWrap: 'anywhere'
-    }
-  }, "Private Stream Key: ", /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontWeight: 400,
-      background: 'black',
-      padding: '0 .125rem'
-    },
-    onClick: _event.selectThisText,
-    selectValue: streamKey
-  }, streamKey))) : null, currentlyStreaming ? !askEndStream ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !updatingStreamConfig ? /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%',
-      marginTop: '.25rem',
-      lineHeight: '12.5px',
-      fontSize: '.8rem'
-    },
-    onClick: updateStreamConfig
-  }, "Update Changed Settings") : /*#__PURE__*/_react["default"].createElement(_LinearProgress["default"], {
-    color: "inherit",
-    style: {
-      height: '18.25px',
-      marginTop: '.25rem'
-    }
-  }), /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%',
-      marginTop: '.25rem',
-      lineHeight: '12.5px',
-      fontSize: '.8rem'
-    },
-    onClick: handleAskEndStream
-  }, "Terminate Stream")) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontWeight: 600,
-      textAlign: 'center',
-      marginTop: '.42rem'
-    }
-  }, "Terminate the Stream?"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%',
-      marginTop: '.25rem',
-      lineHeight: '12.5px',
-      fontSize: '.8rem'
-    },
-    onClick: handleAskEndStream,
-    modif: "yes"
-  }, "Yes"), /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      width: '100%',
-      marginTop: '.25rem',
-      lineHeight: '12.5px',
-      fontSize: '.8rem'
-    },
-    onClick: handleAskEndStream,
-    modif: "no"
-  }, "No"))) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ManagerModule["default"].settingContainer
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    modif: 'title',
-    ref: titleRef,
-    placeholder: "Title",
-    style: {
-      width: '100%'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("textarea", {
-    modif: 'description',
-    ref: descriptionRef,
-    placeholder: "Description",
-    style: {
-      maxWidth: '100%',
-      marginTop: '.25rem',
-      width: '100%',
-      height: '90px'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    modif: 'tags',
-    ref: myTagsRef,
-    placeholder: "Tags",
-    style: {
-      width: '100%'
-    }
-  }))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ManagerModule["default"].settingContainer
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      marginBottom: '.125rem',
-      marginTop: '.125rem'
-    }
-  }, "Create your own Auth Keys to provide authorization to watch the stream for any tickets with matching tags"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Enter dates in the following format MON-DD-YYYY or they will not be parsed as dates. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of tickets with matching tags for the stream",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    style: {
-      marginBottom: '.125rem',
-      width: '-webkit-fill-available'
-    },
-    placeholder: "Date in DD/MM/YY format or a Tag",
-    onInput: updateTags,
-    option: "livestreamDef",
-    defaultValue: streamSettings.input
-  })), streamSettings.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, streamSettings.dates.map(function (d, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem",
-      key: i
-    }, d && d.toLocaleString ? d.toLocaleString("en-US", {
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit'
-    }) : '');
-  })) : _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null)), streamSettings.tags.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, streamSettings.tags.map(function (d, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem",
-      key: i
-    }, d);
-  })) : _div3 || (_div3 = /*#__PURE__*/_react["default"].createElement("div", null)), currentlyStreaming ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      background: 'black',
-      padding: '0 .25rem',
-      borderRadius: '.25rem',
-      marginTop: '.25rem',
-      justifyContent: 'space-between'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("label", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Private"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    onChange: setPrivate,
-    ref: privateRef2
-  })), streamSettings && streamSettings["private"] ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("label", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Password"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    onChange: setPassword,
-    style: {
-      maxWidth: '100px',
-      maxHeight: '16px',
-      fontSize: '.85rem',
-      marginLeft: '.25rem',
-      borderRadius: '.25rem'
-    },
-    ref: passwordRef2
-  })) : null) : null)) : /*#__PURE__*/_react["default"].createElement("div", null, props._loggedIn ? !props._loggedIn.username ? 'Please register Username to begin streaming' : 'Please login to begin streaming' : null) : openMenu === 'shop' ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      padding: '.25rem'
-    }
-  }, props.shopProfileData && props.shopProfileData.shop && props.shopProfileData.shop.status && props.shopProfileData.shop.status == 'nonexistent' ? /*#__PURE__*/_react["default"].createElement("div", null, !creatingShop.status ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '.25rem',
-      paddingTop: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem'
-    }
-  }, "You do not currently own a shop. Would you like to request to open one?"), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleCreateShop,
-    phase: "1"
-  }, "Start Creating Shop"), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem'
-    }
-  }, "A shop allows for you to sell products on ", props.siteTitle, " with ease to all customers, fans, collectors, enthusiasts and passerbys utilizing all the tools offered on the platform. You will be able to track pending orders that have yet to be completed, products in carts, your personal inventory, sales and much more as well as sell products in such a way that makes it easier for your customers.")) : creatingShop.status && creatingShop.status == 'start' ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '.25rem',
-      paddingTop: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem'
-    }
-  }, "Name your Shop"), /*#__PURE__*/_react["default"].createElement("input", {
-    ref: proposedShopName,
-    type: "text",
-    placeholder: "Shop Name",
-    className: "simpleTextInput"
-  }), /*#__PURE__*/_react["default"].createElement("textarea", {
-    rows: "5",
-    style: {
-      height: 'auto',
-      resize: 'none'
-    },
-    ref: proposedShopDesc,
-    type: "text",
-    placeholder: "You can describe your Shop here. You might put a company slogan, introduce your business, describe the products you sell or nothing at all. It is up to you and your stakeholders.",
-    className: "simpleTextInput"
-  }), pageError && pageError.message && pageError.placement == 'description' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "error",
-    onClick: handleClearError
-  }, pageError.message) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.75rem',
-      background: 'black',
-      padding: '.125rem'
-    }
-  }, "When creating your shop, you must set up your vendor account. Please have your banking details ready for direct deposit setup. If you don't have banking details prepared at the moment, you can always set them up later. Once your shop is created, you can start creating products and showcasing them to the public. For all physical products, it is your responsibility to ensure that you have sufficient inventory available for direct-to-consumer sales through the platform. If any products offered for sale are out of stock, any payments received must be fully refunded to customers without exceptions. As a shop owner, you will be subject to platform fees, which will be deducted from your total revenues on the platform. ", props.siteTitle, " reserves the right to close any shop that is suspected of operating in a manner that jeopardizes the quality of service and integrity of the platform. All transactions on ", props.siteTitle, " are handled using Tycoon Systems Ecommerce Services. Any disputes on ", props.siteTitle, " are settled by the ", props.siteTitle, " platform. By submitting a request to open your shop below, you agree to the above terms and conditions."), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleCreateShop,
-    phase: "end"
-  }, "Open Shop"), pageError && pageError.message && pageError.placement == 'openshop' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "error",
-    onClick: handleClearError
-  }, pageError.message) : null) : null) : props.shopProfileData && props.shopProfileData.shop && props.shopProfileData.shop.name ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.85rem'
-    }
-  }, props.shopProfileData.shop.name)) : null) : null));
+    }}>
+                <div className={"".concat(_ManagerModule["default"].itemsContainer, " flex Manager_Items")} style={{
+        padding: '.5rem'
+      }}>
+                    <button className={"".concat(openMenu == 'stream' ? _ManagerModule["default"].activeItem : '', " ").concat(_ManagerModule["default"].item)} onClick={handleSetAdminMenu} menu='stream'>Stream</button>
+                    <button className={"".concat(openMenu == 'shop' ? _ManagerModule["default"].activeItem : '', " ").concat(_ManagerModule["default"].item)} onClick={handleSetAdminMenu} menu='shop'>Shop</button>
+                </div>
+                {openMenu === 'stream' ? props._loggedIn && props._loggedIn.username ? <div className={"".concat(_ManagerModule["default"].settingsSectionContainer, " flex gap-p5")} style={{
+        padding: '.25rem'
+      }}>
+                                    <div className={"".concat(_ManagerModule["default"].settingContainer, " ").concat(_ManagerModule["default"].streamingInfoContainer, " ").concat(currentlyStreaming ? "".concat(_ManagerModule["default"].isStreamingContainer) : '')}>
+                                        {!fetchBusy && didCheckStream && didAskStream ? <div style={{
+            marginBottom: '.25rem',
+            textAlign: 'center'
+          }}>
+                                                    <div style={{
+              fontSize: '.85rem',
+              marginBottom: '.25rem'
+            }}>You have asked for permission to stream. Please check back soon.</div>
+                                                </div> : !fetchBusy && didCheckStream && !canStream ? <div style={{
+            marginBottom: '.25rem',
+            textAlign: 'center'
+          }}>
+                                                        <div style={{
+              fontSize: '.85rem',
+              marginBottom: '.25rem'
+            }}>You are currently not authorized to stream</div>
+                                                        <button style={{
+              borderRadius: '.25rem'
+            }} onClick={handleAskForStreamingPermissions}>Ask For Streaming Permissions?</button>
+                                                    </div> : null}
+                                        {!currentlyStreaming && canStream ? <div style={{
+            height: '100%'
+          }}>
+                                                    <div style={{
+              fontSize: '1rem',
+              fontWeight: '600',
+              paddingTop: '0',
+              paddingBottom: '.125rem',
+              textAlign: 'center'
+            }}>Stream on {props.siteTitle} Now</div>
+                                                    {!fetchBusy ? <div style={{
+              alignItems: 'center',
+              marginBottom: '.125rem',
+              height: 'inherit'
+            }}>
+                                                                <button className={"".concat(_ManagerModule["default"].streamingButton)} onClick={beginStreaming} style={{
+                padding: '.125rem 2rem',
+                fontSize: '1.5rem',
+                paddingTop: '.125rem',
+                width: '-webkit-fill-available',
+                height: '75px'
+              }}>Begin Stream</button>
+                                                                <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'black',
+                padding: '0 .25rem',
+                borderRadius: '.25rem',
+                marginTop: '.25rem',
+                justifyContent: 'space-between'
+              }}>
+                                                                    <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                                                                        <label style={{
+                    fontSize: '.8rem'
+                  }}>Private</label><input type='checkbox' onChange={setPrivate} ref={privateRef} />
+                                                                    </div>
+                                                                    {streamSettings["private"] ? <div style={{
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                                                                                <label style={{
+                    fontSize: '.8rem'
+                  }}>Password</label>
+                                                                                <input type='text' onChange={setPassword} style={{
+                    maxWidth: '100px',
+                    maxHeight: '16px',
+                    fontSize: '.85rem',
+                    marginLeft: '.25rem',
+                    borderRadius: '.25rem'
+                  }} ref={passwordRef} />
+                                                                            </div> : null}
+                                                                </div>
+                                                            </div> : <div style={{
+              fontSize: '.85rem'
+            }}>Please wait...</div>}
+                                                </div> : currentlyStreaming ? <div>
+                                                        <div className={"".concat(_ManagerModule["default"].streamingButtonStreaming, " importantPrompt")}>Now Streaming {_div || (_div = <div className='RecordingCircle RecordingCircle_Small'></div>)}</div>
+                                                        <div style={{
+              fontSize: '.85rem',
+              overflowWrap: 'anywhere'
+            }}>{_b || (_b = <b>Share your stream link:</b>)} <span style={{
+                background: 'black',
+                padding: '0 .125rem'
+              }}><a href={"".concat(props.devLocal ? props.devAddress : 'https://' + props.domainUrl, "/w?u=").concat(props._loggedIn.username)} onClick={_event.selectThisText} selectValue={"".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)}>{"".concat(props.devLocal ? props.devAddress : props.domainUrl, "/w?u=").concat(props._loggedIn.username)}</a></span></div>
+                                                        <div style={{
+              fontSize: '.85rem',
+              fontWeight: 600,
+              color: '#94ff94',
+              overflowWrap: 'anywhere'
+            }}>Stream Endpoint: <span style={{
+                fontWeight: 400,
+                background: 'black',
+                padding: '0 .125rem'
+              }} onClick={_event.selectThisText} selectValue={streamTo}>{streamTo}</span></div>
+                                                        <div style={{
+              fontSize: '.85rem',
+              fontWeight: 600,
+              color: '#ff81ca',
+              overflowWrap: 'anywhere'
+            }}>Private Stream Key: <span style={{
+                fontWeight: 400,
+                background: 'black',
+                padding: '0 .125rem'
+              }} onClick={_event.selectThisText} selectValue={streamKey}>{streamKey}</span></div>
+                                                    </div> : null}
+                                        {currentlyStreaming ? !askEndStream ? <_react.default.Fragment>
+                                                        {!updatingStreamConfig ? <button style={{
+              width: '100%',
+              marginTop: '.25rem',
+              lineHeight: '12.5px',
+              fontSize: '.8rem'
+            }} onClick={updateStreamConfig}>Update Changed Settings</button> : <_LinearProgress.default color='inherit' style={{
+              height: '18.25px',
+              marginTop: '.25rem'
+            }} />}
+                                                        <button style={{
+              width: '100%',
+              marginTop: '.25rem',
+              lineHeight: '12.5px',
+              fontSize: '.8rem'
+            }} onClick={handleAskEndStream}>Terminate Stream</button>
+                                                    </_react.default.Fragment> : <_react.default.Fragment>
+                                                        <div style={{
+              fontWeight: 600,
+              textAlign: 'center',
+              marginTop: '.42rem'
+            }}>Terminate the Stream?</div>
+                                                        <div className='flex gap-p2'>
+                                                            <button style={{
+                width: '100%',
+                marginTop: '.25rem',
+                lineHeight: '12.5px',
+                fontSize: '.8rem'
+              }} onClick={handleAskEndStream} modif='yes'>Yes</button>
+                                                            <button style={{
+                width: '100%',
+                marginTop: '.25rem',
+                lineHeight: '12.5px',
+                fontSize: '.8rem'
+              }} onClick={handleAskEndStream} modif='no'>No</button>
+                                                        </div>
+                                                    </_react.default.Fragment> : null}
+                                    </div>
+                                    <div className={_ManagerModule["default"].settingContainer}>
+                                        <div><input type='text' modif={'title'} ref={titleRef} placeholder='Title' style={{
+              width: '100%'
+            }} /></div>
+                                        <div><textarea modif={'description'} ref={descriptionRef} placeholder='Description' style={{
+              maxWidth: '100%',
+              marginTop: '.25rem',
+              width: '100%',
+              height: '90px'
+            }} /></div>
+                                        <div><input type='text' modif={'tags'} ref={myTagsRef} placeholder='Tags' style={{
+              width: '100%'
+            }} /></div>
+                                    </div>
+                                    <div className={_ManagerModule["default"].settingContainer}>
+                                        <div style={{
+            fontSize: '.8rem',
+            marginBottom: '.125rem',
+            marginTop: '.125rem'
+          }}>Create your own Auth Keys to provide authorization to watch the stream for any tickets with matching tags</div>
+                                        <_Tooltip.default title="Enter dates in the following format MON-DD-YYYY or they will not be parsed as dates. Values that do not match dates will be parsed as tags that can be added to livestreams. Any matches will authorize viewership of tickets with matching tags for the stream" className='flex gap-p2' style={{
+            alignItems: 'center'
+          }} placement='right'>
+                                            <input type='text' style={{
+              marginBottom: '.125rem',
+              width: '-webkit-fill-available'
+            }} placeholder='Date in DD/MM/YY format or a Tag' onInput={updateTags} option='livestreamDef' defaultValue={streamSettings.input} />
+                                        </_Tooltip.default>
+                                        {streamSettings.dates.length > 0 ? <div className='tagContainer' style={{
+            marginTop: '.25rem'
+          }}>
+                                                    {streamSettings.dates.map(function (d, i) {
+              return <div className='tagItem' key={i}>{d && d.toLocaleString ? d.toLocaleString("en-US", {
+                  year: 'numeric',
+                  month: 'long',
+                  day: '2-digit'
+                }) : ''}</div>;
+            })}
+                                                </div> : _div2 || (_div2 = <div></div>)}
+                                        {streamSettings.tags.length > 0 ? <div className='tagContainer' style={{
+            marginTop: '.25rem'
+          }}>
+                                                    {streamSettings.tags.map(function (d, i) {
+              return <div className='tagItem' key={i}>{d}</div>;
+            })}
+                                                </div> : _div3 || (_div3 = <div></div>)}
+                                        {currentlyStreaming ? <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'black',
+            padding: '0 .25rem',
+            borderRadius: '.25rem',
+            marginTop: '.25rem',
+            justifyContent: 'space-between'
+          }}>
+                                                    <div style={{
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+                                                        <label style={{
+                fontSize: '.8rem'
+              }}>Private</label><input type='checkbox' onChange={setPrivate} ref={privateRef2} />
+                                                    </div>
+                                                    {streamSettings && streamSettings["private"] ? <div style={{
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+                                                                <label style={{
+                fontSize: '.8rem'
+              }}>Password</label>
+                                                                <input type='text' onChange={setPassword} style={{
+                maxWidth: '100px',
+                maxHeight: '16px',
+                fontSize: '.85rem',
+                marginLeft: '.25rem',
+                borderRadius: '.25rem'
+              }} ref={passwordRef2} />
+                                                            </div> : null}
+                                                </div> : null}
+                                    </div>
+                                </div> : <div>{props._loggedIn ? !props._loggedIn.username ? 'Please register Username to begin streaming' : 'Please login to begin streaming' : null}</div> : openMenu === 'shop' ? <div style={{
+        padding: '.25rem'
+      }}>
+                                    {props.shopProfileData && props.shopProfileData.shop && props.shopProfileData.shop.status && props.shopProfileData.shop.status == 'nonexistent' ? <div>
+                                                {!creatingShop.status ? <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.25rem',
+            paddingTop: '.25rem'
+          }}>
+                                                            <div style={{
+              fontSize: '.85rem'
+            }}>You do not currently own a shop. Would you like to request to open one?</div>
+                                                            <button onClick={handleCreateShop} phase='1'>Start Creating Shop</button>
+                                                            <div style={{
+              fontSize: '.85rem'
+            }}>A shop allows for you to sell products on {props.siteTitle} with ease to all customers, fans, collectors, enthusiasts and passerbys utilizing all the tools offered on the platform. You will be able to track pending orders that have yet to be completed, products in carts, your personal inventory, sales and much more as well as sell products in such a way that makes it easier for your customers.</div>
+                                                        </div> : creatingShop.status && creatingShop.status == 'start' ? <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.25rem',
+            paddingTop: '.25rem'
+          }}>
+                                                            <div style={{
+              fontSize: '.85rem'
+            }}>Name your Shop</div>
+                                                            <input ref={proposedShopName} type="text" placeholder="Shop Name" className='simpleTextInput' />
+                                                            <textarea rows='5' style={{
+              height: 'auto',
+              resize: 'none'
+            }} ref={proposedShopDesc} type="text" placeholder="You can describe your Shop here. You might put a company slogan, introduce your business, describe the products you sell or nothing at all. It is up to you and your stakeholders." className='simpleTextInput' />
+                                                            {pageError && pageError.message && pageError.placement == 'description' ? <div className='error' onClick={handleClearError}>{pageError.message}</div> : null}
+                                                            <div style={{
+              fontSize: '.75rem',
+              background: 'black',
+              padding: '.125rem'
+            }}>When creating your shop, you must set up your vendor account. Please have your banking details ready for direct deposit setup. If you don't have banking details prepared at the moment, you can always set them up later. Once your shop is created, you can start creating products and showcasing them to the public. For all physical products, it is your responsibility to ensure that you have sufficient inventory available for direct-to-consumer sales through the platform. If any products offered for sale are out of stock, any payments received must be fully refunded to customers without exceptions. As a shop owner, you will be subject to platform fees, which will be deducted from your total revenues on the platform. {props.siteTitle} reserves the right to close any shop that is suspected of operating in a manner that jeopardizes the quality of service and integrity of the platform. All transactions on {props.siteTitle} are handled using Tycoon Systems Ecommerce Services. Any disputes on {props.siteTitle} are settled by the {props.siteTitle} platform. By submitting a request to open your shop below, you agree to the above terms and conditions.</div>
+                                                            <button onClick={handleCreateShop} phase='end'>Open Shop</button>
+                                                            {pageError && pageError.message && pageError.placement == 'openshop' ? <div className='error' onClick={handleClearError}>{pageError.message}</div> : null}
+                                                        </div> : null}
+                                            </div> : props.shopProfileData && props.shopProfileData.shop && props.shopProfileData.shop.name ? <div>
+                                                    <div style={{
+            fontSize: '.85rem'
+          }}>{props.shopProfileData.shop.name}</div>
+                                                </div> : null}
+                                </div> : null}
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

@@ -515,160 +515,104 @@ var Module = function Module(props) {
   // Chat should have 1000 last chats
 
   console.log('Chat Log', chatLog, Array.isArray(chatLog), props.className, recentChats, props, userDisplay, currentBanTable, useThreadOffset, blockSend, blockChat);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_ChatModule["default"].chatContainer, " Chat_ChatContainer"),
-    onClick: handleRunTasks
-  }, userDisplay ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].userDisplayContainer, " Chat_UserDisplayContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Chat_UserDisplayInternalContainer",
-    style: {
-      display: 'flex',
-      gap: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Chat_UserDisplayUser"
-  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/p?u=".concat(userDisplay.user),
-    style: {
-      alignSelf: 'center'
-    }
-  }, userDisplay.user)), modPower !== null && modPower !== void 0 && modPower.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      fontSize: '.75rem',
-      padding: '.125rem .25rem'
-    },
-    onClick: handleAttemptUnBanUser,
-    userid: "".concat(userDisplay.id)
-  }, "Unban User") : /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      fontSize: '.75rem',
-      padding: '.125rem .25rem'
-    },
-    onClick: handleAttemptBanUser,
-    userid: "".concat(userDisplay.id)
-  }, "Ban User") : null)), /*#__PURE__*/_react["default"].createElement(_Close["default"], {
-    className: "".concat(_ChatModule["default"].close),
-    onClick: handleSetUserDisplayOff,
-    modif: "close"
-  })) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatLogExternalContainer, " ").concat(mobileStyleConfigs ? "".concat(_ChatModule["default"].mobileChatLogExternalContainer) : null, " Chat_ChatLogExternalContainer"),
-    ref: scrollChatRef
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatLogContainer, " Chat_ChatLogContainer"),
-    ref: scrollChatInnerRef
-  }, chatLog && Array.isArray(chatLog) ? chatLog.map(function (m, i) {
-    var _m$replyLogid;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ChatLogItemContainer",
-      key: i,
-      index: i
-    }, m.id && m.content && m.author ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ChatLogItemInternalContainer",
-      logid: m.id,
-      time: m.time,
-      author: m.author,
-      replylogid: (_m$replyLogid = m.replyLogid) !== null && _m$replyLogid !== void 0 ? _m$replyLogid : null,
-      replyusername: m.replyUsername
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].chatLogMain, " ").concat(highlightedChat === m.id ? "".concat(_ChatModule["default"].highlightedChat) : '', " Chat_ChatLogMain")
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].username, " ").concat(_ChatModule["default"].usernameChat, " Chat_ChatUsername"),
-      username: m.username,
-      author: m.author,
-      onClick: handleSetUserDisplay
-    }, m.username), replyOff ? null : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, m.replyLogid && m.replyUsername ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].replyMeta)
-    }, /*#__PURE__*/_react["default"].createElement("div", null, "Chat is Reply to ", /*#__PURE__*/_react["default"].createElement("b", null, "@", m.replyUsername))) : /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].replyMeta)
-    }, /*#__PURE__*/_react["default"].createElement("div", null, "Reply to ", /*#__PURE__*/_react["default"].createElement("b", null, "@", m.username)))), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_Content"
-    }, m.content), replyOff ? null : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, m.replyLogid ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].viewReplyTo, " Chat_ViewReplyTo"),
-      onClick: handleGoToPost,
-      logid: m.replyLogid,
-      style: {
-        marginTop: '.25rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement(_ArrowUpward["default"], {
-      logid: m.replyLogid
-    })) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].replyTo, " Chat_ReplyTo"),
-      onClick: handleReplyTo,
-      logid: m.id,
-      username: m.username,
-      author: m.author,
-      style: {
-        marginTop: '.25rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement(_Reply["default"], {
-      logid: m.id,
-      username: m.username,
-      author: m.author
-    }))))) : _React$Fragment || (_React$Fragment = /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null)));
-  }) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatInputContainer, " ").concat(!props.chatState ? "".concat(_ChatModule["default"].forceHideChat) : null, " Chat_ChatInputContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatInputInternalContainer, " Chat_ChatInputInternalContainer")
-  }, recentChatTimeout ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatWarningContainer, " Chat_ChatWarningContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].warningText, " Chat_WarningText")
-  }, recentChatTimeout ? 'Timed Out' : ''), recentChats !== null && recentChats !== void 0 && recentChats.length ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].warningBody),
-    style: {
-      fontSize: '.85rem'
-    }
-  }, "You have sent ", recentChats.length, " recent chats") : null) : null, replyToId && replyToUsername ? /*#__PURE__*/_react["default"].createElement("div", null, replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].replyToRepliesContainer, " Chat_ReplyToRepliesContainer"),
-    style: {
-      top: "-".concat(replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset, "rem")
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].threadLabel, " Chat_ThreadLabel")
-  }, "Thread"), replyToContent.slice(0).reverse().map(function (m, i) {
-    var _m$username, _m$content;
-    return i < 4 ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ChatModule["default"].replyToRepliesThread, " Chat_ReplyToRepliesThread"),
-      style: {
-        display: 'flex',
-        gap: '.25rem'
-      },
-      key: i,
-      index: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ReplyToRepliesUsername"
-    }, /*#__PURE__*/_react["default"].createElement("b", null, (_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : '')), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Chat_ReplyToRepliesContent"
-    }, (_m$content = m.content) !== null && _m$content !== void 0 ? _m$content : '')) : null;
-  })) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].replyToContainer, " Chat_ReplyToContainer"),
-    replytoid: replyToId
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Chat_ReplyingToUsername"
-  }, "Replying to ", /*#__PURE__*/_react["default"].createElement("b", null, "@", replyToUsername)), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "Cancel Reply",
-    placement: "top"
-  }, /*#__PURE__*/_react["default"].createElement(_Close["default"], {
-    onClick: handleCancelReplyTo,
-    className: "".concat(_ChatModule["default"].chatCancelReplyTo),
-    sx: {
-      height: '17.5px'
-    }
-  })))) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ChatModule["default"].chatInputSendContainer, " Chat_ChatInputSendContainer")
-  }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    className: "".concat(_ChatModule["default"].textChatInput, " ").concat(_ChatModule["default"].highlightBorder, " Chat_TextChatInput"),
-    ref: chatInputRef,
-    onKeyPress: function onKeyPress(e) {
-      (0, _utility.handleKeyPressChat)(e, handleSendChat);
-    },
-    onChange: handleChatTextChange,
-    disabled: blockChat || !currentChat
-  }), /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_ChatModule["default"].send, " ").concat(_ChatModule["default"].highlightBorder, " Chat_Send"),
-    onClick: handleSendChat,
-    disabled: blockSend || blockSendForce
-  }, "Send")))));
+  return <div className={"".concat(props.className, " ").concat(_ChatModule["default"].chatContainer, " Chat_ChatContainer")} onClick={handleRunTasks}>
+            {userDisplay ? <div className={"".concat(_ChatModule["default"].userDisplayContainer, " Chat_UserDisplayContainer")}>
+                        <div>
+                            <div className={"Chat_UserDisplayInternalContainer"} style={{
+          display: 'flex',
+          gap: '.25rem'
+        }}>
+                                <div className={"Chat_UserDisplayUser"}>
+                                    <_link.default href={"/p?u=".concat(userDisplay.user)} style={{
+              alignSelf: 'center'
+            }}>{userDisplay.user}</_link.default>
+                                </div>
+                                {modPower !== null && modPower !== void 0 && modPower.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? <button style={{
+            fontSize: '.75rem',
+            padding: '.125rem .25rem'
+          }} onClick={handleAttemptUnBanUser} userid={"".concat(userDisplay.id)}>Unban User</button> : <button style={{
+            fontSize: '.75rem',
+            padding: '.125rem .25rem'
+          }} onClick={handleAttemptBanUser} userid={"".concat(userDisplay.id)}>Ban User</button> : null}
+                            </div>
+                        </div>
+                        <_Close.default className={"".concat(_ChatModule["default"].close)} onClick={handleSetUserDisplayOff} modif='close'></_Close.default>
+                    </div> : null}
+            <div className={"".concat(_ChatModule["default"].chatLogExternalContainer, " ").concat(mobileStyleConfigs ? "".concat(_ChatModule["default"].mobileChatLogExternalContainer) : null, " Chat_ChatLogExternalContainer")} ref={scrollChatRef}>
+                <div className={"".concat(_ChatModule["default"].chatLogContainer, " Chat_ChatLogContainer")} ref={scrollChatInnerRef}>
+                {chatLog && Array.isArray(chatLog) ? chatLog.map(function (m, i) {
+          var _m$replyLogid;
+          return <div className={"Chat_ChatLogItemContainer"} key={i} index={i}>
+                                {m.id && m.content && m.author ? <div className={"Chat_ChatLogItemInternalContainer"} logid={m.id} time={m.time} author={m.author} replylogid={(_m$replyLogid = m.replyLogid) !== null && _m$replyLogid !== void 0 ? _m$replyLogid : null} replyusername={m.replyUsername}>
+                                            <div className={"".concat(_ChatModule["default"].chatLogMain, " ").concat(highlightedChat === m.id ? "".concat(_ChatModule["default"].highlightedChat) : '', " Chat_ChatLogMain")}>
+                                                <div className={"".concat(_ChatModule["default"].username, " ").concat(_ChatModule["default"].usernameChat, " Chat_ChatUsername")} username={m.username} author={m.author} onClick={handleSetUserDisplay}>{m.username}</div>
+                                                    {replyOff ? null : <_react.default.Fragment>
+                                                                {m.replyLogid && m.replyUsername ? <div className={"".concat(_ChatModule["default"].replyMeta)}>
+                                                                            <div>Chat is Reply to <b>@{m.replyUsername}</b></div>
+                                                                        </div> : <div className={"".concat(_ChatModule["default"].replyMeta)}>
+                                                                            <div>Reply to <b>@{m.username}</b></div>
+                                                                        </div>}
+                                                            </_react.default.Fragment>}
+                                                    <div className={"Chat_Content"}>{m.content}</div>
+                                                    {replyOff ? null : <_react.default.Fragment>
+                                                                {m.replyLogid ? <div className={"".concat(_ChatModule["default"].viewReplyTo, " Chat_ViewReplyTo")} onClick={handleGoToPost} logid={m.replyLogid} style={{
+                    marginTop: '.25rem'
+                  }}>
+                                                                            <_ArrowUpward.default logid={m.replyLogid}></_ArrowUpward.default>
+                                                                        </div> : null}
+                                                                <div className={"".concat(_ChatModule["default"].replyTo, " Chat_ReplyTo")} onClick={handleReplyTo} logid={m.id} username={m.username} author={m.author} style={{
+                    marginTop: '.25rem'
+                  }}>
+                                                                    <_Reply.default logid={m.id} username={m.username} author={m.author}></_Reply.default>
+                                                                </div>
+                                                            </_react.default.Fragment>}
+                                            </div>
+                                        </div> : _React$Fragment || (_React$Fragment = <_react.default.Fragment></_react.default.Fragment>)}
+                            </div>;
+        }) : _div || (_div = <div></div>)}
+                </div>
+            </div>
+            <div className={"".concat(_ChatModule["default"].chatInputContainer, " ").concat(!props.chatState ? "".concat(_ChatModule["default"].forceHideChat) : null, " Chat_ChatInputContainer")}>
+                <div className={"".concat(_ChatModule["default"].chatInputInternalContainer, " Chat_ChatInputInternalContainer")}>
+                    {recentChatTimeout ? <div className={"".concat(_ChatModule["default"].chatWarningContainer, " Chat_ChatWarningContainer")}>
+                                <div className={"".concat(_ChatModule["default"].warningText, " Chat_WarningText")}>{recentChatTimeout ? 'Timed Out' : ''}</div>
+                                {recentChats !== null && recentChats !== void 0 && recentChats.length ? <div className={"".concat(_ChatModule["default"].warningBody)} style={{
+            fontSize: '.85rem'
+          }}>You have sent {recentChats.length} recent chats</div> : null}
+                            </div> : null}
+                    {replyToId && replyToUsername ? <div>
+                                {replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? <div className={"".concat(_ChatModule["default"].replyToRepliesContainer, " Chat_ReplyToRepliesContainer")} style={{
+            top: "-".concat(replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset, "rem")
+          }}>
+                                            <div className={"".concat(_ChatModule["default"].threadLabel, " Chat_ThreadLabel")}>Thread</div>
+                                            {replyToContent.slice(0).reverse().map(function (m, i) {
+              var _m$username, _m$content;
+              return i < 4 ? <div className={"".concat(_ChatModule["default"].replyToRepliesThread, " Chat_ReplyToRepliesThread")} style={{
+                display: 'flex',
+                gap: '.25rem'
+              }} key={i} index={i}>
+                                                            <div className={"Chat_ReplyToRepliesUsername"}><b>{(_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : ''}</b></div>
+                                                            <div className={"Chat_ReplyToRepliesContent"}>{(_m$content = m.content) !== null && _m$content !== void 0 ? _m$content : ''}</div>
+                                                        </div> : null;
+            })}
+                                        </div> : null}
+                                <div className={"".concat(_ChatModule["default"].replyToContainer, " Chat_ReplyToContainer")} replytoid={replyToId}>
+                                    <div className={"Chat_ReplyingToUsername"}>Replying to <b>@{replyToUsername}</b></div>
+                                    <_Tooltip.default title={"Cancel Reply"} placement='top'>
+                                        <_Close.default onClick={handleCancelReplyTo} className={"".concat(_ChatModule["default"].chatCancelReplyTo)} sx={{
+                height: '17.5px'
+              }}></_Close.default>
+                                    </_Tooltip.default>
+                                </div>
+                            </div> : null}
+                    <div className={"".concat(_ChatModule["default"].chatInputSendContainer, " Chat_ChatInputSendContainer")}>
+                        <_reactTextareaAutosize.default className={"".concat(_ChatModule["default"].textChatInput, " ").concat(_ChatModule["default"].highlightBorder, " Chat_TextChatInput")} ref={chatInputRef} onKeyPress={function (e) {
+            (0, _utility.handleKeyPressChat)(e, handleSendChat);
+          }} onChange={handleChatTextChange} disabled={blockChat || !currentChat} />
+                        <button className={"".concat(_ChatModule["default"].send, " ").concat(_ChatModule["default"].highlightBorder, " Chat_Send")} onClick={handleSendChat} disabled={blockSend || blockSendForce}>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

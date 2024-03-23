@@ -83,67 +83,71 @@ var Module = function Module(props) {
       }]
     };
   };
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " glide_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
-    style: props === null || props === void 0 ? void 0 : props.style
-  }, props.groupLabel ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].GroupLabelContainer, " ").concat(_MarketingSliderModule["default"].GroupLabelContainer, " ").concat(moduleName, "_groupLabelContainer ").concat(props.groupLabelContainerClassName),
-    style: {
-      maxWidth: (_props$sliderMaxWidth = props === null || props === void 0 ? void 0 : props.sliderMaxWidth) !== null && _props$sliderMaxWidth !== void 0 ? _props$sliderMaxWidth : '1800px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].GroupLabel, " ").concat(_MarketingSliderModule["default"].GroupLabel, " ").concat(moduleName, "_groupLabel ").concat(props.groupLabelClassName)
-  }, props.groupLabel)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: "2rem",
-      maxWidth: (_props$sliderMaxWidth2 = props === null || props === void 0 ? void 0 : props.sliderMaxWidth) !== null && _props$sliderMaxWidth2 !== void 0 ? _props$sliderMaxWidth2 : '1800px'
-    },
-    "data-glide-el": "track",
-    className: "".concat(_PresentationModule["default"].GlideTrack, " glide__track")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(moduleName, "_IndexItemsContainer ").concat(props.IndexItemsContainerClassName)
-  }, useItems === null || useItems === void 0 || (_useItems$items = useItems.items) === null || _useItems$items === void 0 ? void 0 : _useItems$items.map(function (content, i) {
-    var useSettings = resolveSettingsConfig(content.length);
-    return /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], useSettings, content !== null && content !== void 0 && content.map ? content.map(function (row, k) {
-      var _row$bg, _props$itemHeight, _row$children;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          margin: '1rem'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(row === null || row === void 0 ? void 0 : row.className),
-        key: k,
-        style: {
-          margin: '1rem'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].bgContainer, " ").concat(props.tall ? "".concat(_MarketingSliderModule["default"].BgContainerTall) : null, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName),
-        style: {
-          background: row !== null && row !== void 0 && row.img ? "url(".concat(row === null || row === void 0 ? void 0 : row.img, ")") : (_row$bg = row === null || row === void 0 ? void 0 : row.bg) !== null && _row$bg !== void 0 ? _row$bg : null,
-          backgroundSize: 'cover !important',
-          backgroundPosition: 'center',
-          height: (_props$itemHeight = props === null || props === void 0 ? void 0 : props.itemHeight) !== null && _props$itemHeight !== void 0 ? _props$itemHeight : '22rem'
-        }
-      }, row !== null && row !== void 0 && row.upperText ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].upperText, " MarketingSlider_UpperText")
-      }, row.upperText) : null, row !== null && row !== void 0 && row.lead ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].lead, " MarketingSlider_Lead")
-      }, row.lead) : null, row !== null && row !== void 0 && row.text ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_MarketingSliderModule["default"].text, " MarketingSlider_Text")
-      }, row.text) : null, row.linkText ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-        href: row.link
-      }, row.linkText) : null, row !== null && row !== void 0 && (_row$children = row.children) !== null && _row$children !== void 0 && _row$children.map ? _react["default"].Children.map(row.children, function (child) {
-        if (child !== null) {
-          if (typeof child.type === 'function') {
-            return /*#__PURE__*/_react["default"].cloneElement(child, props);
-          }
-          return child;
-        }
-        return /*#__PURE__*/_react["default"].createElement('div');
-      }) : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(_PresentationModule["default"].MetaContainer, " ").concat(moduleName, "_MetaContainer ").concat(props.metaContainerClassName)
-      }))));
-    }) : null);
-  })))));
+  return <div>
+			<div className={"".concat(_PresentationModule["default"].IndexHelloContainer, " glide_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className)} style={props === null || props === void 0 ? void 0 : props.style}>
+				{props.groupLabel ? <div className={"".concat(_PresentationModule["default"].GroupLabelContainer, " ").concat(_MarketingSliderModule["default"].GroupLabelContainer, " ").concat(moduleName, "_groupLabelContainer ").concat(props.groupLabelContainerClassName)} style={{
+        maxWidth: (_props$sliderMaxWidth = props === null || props === void 0 ? void 0 : props.sliderMaxWidth) !== null && _props$sliderMaxWidth !== void 0 ? _props$sliderMaxWidth : '1800px'
+      }}>
+							<div className={"".concat(_PresentationModule["default"].GroupLabel, " ").concat(_MarketingSliderModule["default"].GroupLabel, " ").concat(moduleName, "_groupLabel ").concat(props.groupLabelClassName)}>{props.groupLabel}</div>
+						</div> : null}
+				<div style={{
+        marginTop: "2rem",
+        maxWidth: (_props$sliderMaxWidth2 = props === null || props === void 0 ? void 0 : props.sliderMaxWidth) !== null && _props$sliderMaxWidth2 !== void 0 ? _props$sliderMaxWidth2 : '1800px'
+      }} data-glide-el="track" className={"".concat(_PresentationModule["default"].GlideTrack, " glide__track")}>
+					<div className={"".concat(moduleName, "_IndexItemsContainer ").concat(props.IndexItemsContainerClassName)}>
+						{useItems === null || useItems === void 0 || (_useItems$items = useItems.items) === null || _useItems$items === void 0 ? void 0 : _useItems$items.map(function (content, i) {
+            var useSettings = resolveSettingsConfig(content.length);
+            return <_reactSlick.default {...useSettings}>
+											{content !== null && content !== void 0 && content.map ? content.map(function (row, k) {
+                var _row$bg, _props$itemHeight, _row$children;
+                return <div style={{
+                  margin: '1rem'
+                }}>
+																<div className={"".concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(row === null || row === void 0 ? void 0 : row.className)} key={k} style={{
+                    margin: '1rem'
+                  }}>
+																	<div className={"".concat(_MarketingSliderModule["default"].bgContainer, " ").concat(props.tall ? "".concat(_MarketingSliderModule["default"].BgContainerTall) : null, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName)} style={{
+                      background: row !== null && row !== void 0 && row.img ? "url(".concat(row === null || row === void 0 ? void 0 : row.img, ")") : (_row$bg = row === null || row === void 0 ? void 0 : row.bg) !== null && _row$bg !== void 0 ? _row$bg : null,
+                      backgroundSize: 'cover !important',
+                      backgroundPosition: 'center',
+                      height: (_props$itemHeight = props === null || props === void 0 ? void 0 : props.itemHeight) !== null && _props$itemHeight !== void 0 ? _props$itemHeight : '22rem'
+                    }}>
+																		
+																		{row !== null && row !== void 0 && row.upperText ? <div className={"".concat(_MarketingSliderModule["default"].upperText, " MarketingSlider_UpperText")}>
+																					{row.upperText}
+																				</div> : null}
+																		{row !== null && row !== void 0 && row.lead ? <div className={"".concat(_MarketingSliderModule["default"].lead, " MarketingSlider_Lead")}>
+																					{row.lead}
+																				</div> : null}
+																		{row !== null && row !== void 0 && row.text ? <div className={"".concat(_MarketingSliderModule["default"].text, " MarketingSlider_Text")}>
+																					{row.text}
+																				</div> : null}
+																		{row.linkText ? <_link.default href={row.link}>
+																					{row.linkText}
+																				</_link.default> : null}
+																		{row !== null && row !== void 0 && (_row$children = row.children) !== null && _row$children !== void 0 && _row$children.map ? _react["default"].Children.map(row.children, function (child) {
+                        if (child !== null) {
+                          if (typeof child.type === 'function') {
+                            return _react["default"].cloneElement(child, props);
+                          }
+                          return child;
+                        }
+                        return _react["default"].createElement('div');
+                      }) : null}
+																	</div>
+																	<div>
+																		<div className={"".concat(_PresentationModule["default"].MetaContainer, " ").concat(moduleName, "_MetaContainer ").concat(props.metaContainerClassName)}>
+																			
+																		</div>
+																	</div>
+																</div>
+															</div>;
+              }) : null}
+										</_reactSlick.default>;
+          })}
+					</div>
+				</div>
+			</div>
+		</div>;
 };
 var _default = exports["default"] = Module;

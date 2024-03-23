@@ -9,7 +9,6 @@ var _router = require("next/router");
 var _layout = require("/layout");
 var _ManagerModule = _interopRequireDefault(require("../streaming/manager/Manager.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -148,15 +147,15 @@ var Module = function Module(props) {
       props._setManagerOpen(true);
     }
   }, [adminPanelState, props._managerOpen]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement(_layout.Profile, _extends({}, props, {
-    adminAuth: adminAuth,
-    combinedFeed: combinedFeed,
-    adminPanelState: adminPanelState,
-    toggleAdminPanel: toggleAdminPanel,
-    adminPanelContainerRef: adminPanelContainerRef,
-    ManagerStyles: _ManagerModule["default"]
-  })));
+  return <div className={"".concat(props.className)}>
+            <_layout.Profile {...Object.assign({}, props, {
+      adminAuth: adminAuth,
+      combinedFeed: combinedFeed,
+      adminPanelState: adminPanelState,
+      toggleAdminPanel: toggleAdminPanel,
+      adminPanelContainerRef: adminPanelContainerRef,
+      ManagerStyles: _ManagerModule["default"]
+    })} />
+        </div>;
 };
 var _default = exports["default"] = Module;

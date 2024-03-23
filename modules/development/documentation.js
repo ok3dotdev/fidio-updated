@@ -308,136 +308,104 @@ var Module = function Module(props) {
     return o;
   };
   console.log('Menu Items', menu, currentDoc);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " Documentation_Container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex",
-    style: {
+  return <div className={"".concat(props.className, " Documentation_Container")}>
+            {/* <Banner { ...props } /> */}
+            <div className='flex' style={{
       justifyContent: 'space-between',
       alignContent: 'center',
       margin: '.5rem 1.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h5", {
-    className: "Misc_Label",
-    style: {
-      fontSize: '1.5rem'
-    }
-  }, "Tycoon Documentation"), /*#__PURE__*/_react["default"].createElement(_.CompanyLink, props)), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
+    }}>
+                <h5 className={"Misc_Label"} style={{
+        fontSize: '1.5rem'
+      }}>Tycoon Documentation</h5>
+                <_.CompanyLink {...props} />
+            </div>
+            <div style={{
       position: 'sticky',
       top: '.5rem',
       margin: '.5rem 0',
       marginTop: '0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    onChange: handleUpdateSearch,
-    onFocus: handleSetSearchFocus,
-    onBlur: handleSetSearchFocusOff,
-    className: "".concat(_documentationModule["default"].activeSearch),
-    ref: queryRef,
-    style: {
-      border: '0px',
-      borderRadius: '.5rem',
-      width: 'calc(100% - 1rem)',
-      fontSize: '1.25rem',
-      padding: '0 .5rem',
-      margin: '0 .5rem'
-    },
-    placeholder: "How do I?"
-  }), usingQuery ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].activeSearchResults)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      padding: '.25rem 0rem',
-      paddingTop: '.5rem',
-      display: 'grid',
-      gap: '.5rem'
-    }
-  }, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p5",
-      style: {
-        marginLeft: '.5rem',
-        cursor: 'pointer'
-      },
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Misc_Item_Container Misc_Item_DarkContainerHover",
-      style: {
-        padding: '.5rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].lead),
-      onClick: handleSetCurrentRecord,
-      modif: i,
-      currentresults: 'true'
-    }, m.lead)));
-  }) : (queryRef === null || queryRef === void 0 || (_queryRef$current = queryRef.current) === null || _queryRef$current === void 0 ? void 0 : _queryRef$current.value) !== '' ? _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      textAlign: 'center',
-      fontSize: '.95rem'
-    }
-  }, "Try Searching for something"))) : null), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "flex gap-p5 ".concat(_documentationModule["default"].menuContainer)
-  }, Array.isArray(menu) && menu.length > 0 ? menu.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: i,
-      style: {
-        listStyle: 'none'
-      },
-      onClick: handleSetCurrentMenu,
-      modif: m
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.charAt ? "".concat(m.charAt(0).toUpperCase()).concat(m.slice(1, m.length)) : m));
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].mainContainer)
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_documentationModule["default"].menuList)
-  }, Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map(function (m, i) {
-    var _detectFlags, _detectFlags2;
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      className: "flex gap-p2",
-      onClick: handleSetCurrentRecord,
-      modif: i
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m === null || m === void 0 ? void 0 : m.lead), (_detectFlags = detectFlags(m)) !== null && _detectFlags !== void 0 && _detectFlags.manual ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tagSmall)
-    }, "m") : null, (_detectFlags2 = detectFlags(m)) !== null && _detectFlags2 !== void 0 && _detectFlags2.simple ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tagSmall)
-    }, "s") : null);
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].contentContainer)
-  }, currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex ".concat(_documentationModule["default"].quadrant)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Item_Container Misc_Item_DarkContainerHover",
-    style: {
-      padding: '.5rem',
-      width: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].lead)
-  }, currentDoc.lead), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p5"
-  }, (_detectFlags3 = detectFlags(currentDoc)) !== null && _detectFlags3 !== void 0 && _detectFlags3.manual ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tag)
-  }, "manual") : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p5"
-  }, (_detectFlags4 = detectFlags(currentDoc)) !== null && _detectFlags4 !== void 0 && _detectFlags4.simple ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tag)
-  }, "simple") : null), /*#__PURE__*/_react["default"].createElement("pre", null, /*#__PURE__*/_react["default"].createElement("code", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].htmlParseContainer),
-    dangerouslySetInnerHTML: resolvePaint(currentDoc, 'html'),
-    style: {
-      fontSize: '.85rem',
-      lineHeight: 'normal',
-      lineBreak: 'auto',
-      whiteSpace: 'pre-wrap'
-    }
-  }))))) : null), /*#__PURE__*/_react["default"].createElement("div", null, currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex ".concat(_documentationModule["default"].container)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].quadrant2)
-  }, /*#__PURE__*/_react["default"].createElement("pre", null, /*#__PURE__*/_react["default"].createElement("code", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].codePre)
-  }, currentDoc === null || currentDoc === void 0 ? void 0 : currentDoc.code))), /*#__PURE__*/_react["default"].createElement("div", null, currentDoc.response))) : null)));
+    }}>
+                <input onChange={handleUpdateSearch} onFocus={handleSetSearchFocus} onBlur={handleSetSearchFocusOff} className={"".concat(_documentationModule["default"].activeSearch)} ref={queryRef} style={{
+        border: '0px',
+        borderRadius: '.5rem',
+        width: 'calc(100% - 1rem)',
+        fontSize: '1.25rem',
+        padding: '0 .5rem',
+        margin: '0 .5rem'
+      }} placeholder='How do I?'></input>
+                {usingQuery ? <div className={"".concat(_documentationModule["default"].activeSearchResults)}>
+                        <div style={{
+          padding: '.25rem 0rem',
+          paddingTop: '.5rem',
+          display: 'grid',
+          gap: '.5rem'
+        }}>
+                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map(function (m, i) {
+            return <div className={"flex gap-p5"} style={{
+              marginLeft: '.5rem',
+              cursor: 'pointer'
+            }} key={i}>
+                                            <div className={"Misc_Item_Container Misc_Item_DarkContainerHover"} style={{
+                padding: '.5rem'
+              }}>
+                                                <div className={"".concat(_documentationModule["default"].lead)} onClick={handleSetCurrentRecord} modif={i} currentresults={'true'}>{m.lead}</div>
+                                            </div>
+                                        </div>;
+          }) : (queryRef === null || queryRef === void 0 || (_queryRef$current = queryRef.current) === null || _queryRef$current === void 0 ? void 0 : _queryRef$current.value) !== '' ? _div || (_div = <div></div>) : <div style={{
+            textAlign: 'center',
+            fontSize: '.95rem'
+          }}>Try Searching for something</div>}
+                            </div>
+                        </div> : null}
+            </div>
+            <ul className={"flex gap-p5 ".concat(_documentationModule["default"].menuContainer)}>
+                {Array.isArray(menu) && menu.length > 0 ? menu.map(function (m, i) {
+        return <li key={i} style={{
+          listStyle: 'none'
+        }} onClick={handleSetCurrentMenu} modif={m}>
+                                <div>{m !== null && m !== void 0 && m.charAt ? "".concat(m.charAt(0).toUpperCase()).concat(m.slice(1, m.length)) : m}</div>
+                            </li>;
+      }) : null}
+            </ul>
+            <div className={"".concat(_documentationModule["default"].mainContainer)}>
+                <ul className={"".concat(_documentationModule["default"].menuList)}>
+                    {Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map(function (m, i) {
+          var _detectFlags, _detectFlags2;
+          return <li className='flex gap-p2' onClick={handleSetCurrentRecord} modif={i}>
+                                    <div>{m === null || m === void 0 ? void 0 : m.lead}</div>
+                                    {(_detectFlags = detectFlags(m)) !== null && _detectFlags !== void 0 && _detectFlags.manual ? <div className={"".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tagSmall)}>m</div> : null}
+                                    {(_detectFlags2 = detectFlags(m)) !== null && _detectFlags2 !== void 0 && _detectFlags2.simple ? <div className={"".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tagSmall)}>s</div> : null}
+                                </li>;
+        }) : null}
+                </ul>
+                <div className={"".concat(_documentationModule["default"].contentContainer)}>
+                    {currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? <div className={"flex ".concat(_documentationModule["default"].quadrant)}>
+                                <div className={"Misc_Item_Container Misc_Item_DarkContainerHover"} style={{
+            padding: '.5rem',
+            width: '100%'
+          }}>
+                                    <div className={"".concat(_documentationModule["default"].lead)}>{currentDoc.lead}</div>
+                                    <div className='flex gap-p5'>{(_detectFlags3 = detectFlags(currentDoc)) !== null && _detectFlags3 !== void 0 && _detectFlags3.manual ? <div className={"".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tag)}>manual</div> : null}</div>
+                                    <div className='flex gap-p5'>{(_detectFlags4 = detectFlags(currentDoc)) !== null && _detectFlags4 !== void 0 && _detectFlags4.simple ? <div className={"".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tag)}>simple</div> : null}</div>
+                                    <pre><code><div className={"".concat(_documentationModule["default"].htmlParseContainer)} dangerouslySetInnerHTML={resolvePaint(currentDoc, 'html')} style={{
+                  fontSize: '.85rem',
+                  lineHeight: 'normal',
+                  lineBreak: 'auto',
+                  whiteSpace: 'pre-wrap'
+                }}></div></code></pre>
+                                </div>
+                            </div> : null}
+                </div>
+                <div>
+                    {currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? <div className={"flex ".concat(_documentationModule["default"].container)}>
+                                <div className={"".concat(_documentationModule["default"].quadrant2)}>
+                                    <pre><code><div className={"".concat(_documentationModule["default"].codePre)}>{currentDoc === null || currentDoc === void 0 ? void 0 : currentDoc.code}</div></code></pre>
+                                    <div>{currentDoc.response}</div>
+                                </div>
+                            </div> : null}
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

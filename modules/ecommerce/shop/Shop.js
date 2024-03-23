@@ -24,7 +24,6 @@ var _signin = require("../../onboarding/signin");
 var _Functions = require("./Functions");
 var _div, _div2, _div3, _Tooltip, _label, _label2, _div4, _div5, _div6, _div7, _div8, _div9, _div10;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -747,547 +746,394 @@ var Module = function Module(props) {
   var noShop = shop && shop.status && shop.status === 'nonexistent';
   console.log(noShop, editing, tempImagesForCurrentlyEditing, currentDefinePriceCurrency);
   console.log(editingOptionsMeta, currentLineupEditing, selectedStyle, combinedFeed);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ShopModule["default"].container, " ").concat(props.smaller ? "".concat(_ProductImageManagerModule["default"].smallContainer) : null)
-  }, adminAuth && !noShop ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ShopModule["default"].adminContainer)
-  }, _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'heading'
-  }, "Shop")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: 'flex options',
-    style: {
-      gap: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    disabled: !(0, _util.isObjectEmpty)(editing),
-    onClick: createNewProduct
-  }, "Create Product"), editing && !(0, _util.isObjectEmpty)(editing) ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleCancelProduct,
-    modif: "save"
-  }, editing["new"] ? 'Abandon' : 'Cancel') : null)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Product_flex_container"
-  }, editing !== null && editing !== void 0 && editing["new"] ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentlyEditingProductContainer, " ").concat(props !== null && props !== void 0 && props.noFixedPosition ? _ProductImageManagerModule["default"].currentlyEditingNoFixed : '')
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentEditingProductInnerContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentlyEditingProductContent)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImgContainer, " Product_img_container Product_img_container_large")
-  }, /*#__PURE__*/_react["default"].createElement(_product.ProductImageManager, _extends({}, props, {
-    editing: editing,
-    passTempImages: passTempImages
-  }))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productMetaContainer, " Product_meta_container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      height: "calc(100% - ".concat(props._loggedIn ? !(props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.username) ? '100' : '25' : '40', "px)"),
-      maxHeight: '75vh',
-      overflow: 'auto'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Name of Product",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("label", {
-    style: {
-      fontWeight: '600'
-    }
-  }, "Title: ")), /*#__PURE__*/_react["default"].createElement("input", {
-    name: "name",
-    placeholder: "Product Title",
-    style: {
-      fontWeight: '600',
-      width: '100%'
-    },
-    onChange: setCurrentName,
-    ref: nameRef,
-    modif: "product_name"
-  })), pageError.location && pageError.location === 'product_name' ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "error"
-  }, pageError.message) : null), /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Product Description",
-    placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    className: "".concat(_ProductImageManagerModule["default"].textArea),
-    name: "description",
-    placeholder: "Description",
-    defaultValue: editing === null || editing === void 0 || (_editing$detailmeta = editing.detailmeta) === null || _editing$detailmeta === void 0 ? void 0 : _editing$detailmeta.description,
-    onChange: handleUpdateProductDescription,
-    ref: descriptionInputRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Set the price for the currently selected Style",
-    placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600
-    }
-  }, (_currentDefinePriceCu = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.symbol) !== null && _currentDefinePriceCu !== void 0 ? _currentDefinePriceCu : '$')), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "currency",
-    style: {
-      width: '100%'
-    },
-    defaultValue: "10.00",
-    ref: priceInput,
-    onChange: setCurrentPrice
-  }), selectedStyle && (currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) === 'USD' && selectedStyle.price != (priceInput === null || priceInput === void 0 || (_priceInput$current = priceInput.current) === null || _priceInput$current === void 0 ? void 0 : _priceInput$current.value) || (currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== 'USD' && (!selectedStyle.priceTable || selectedStyle.priceTable && !selectedStyle.priceTable[currentDefinePriceCurrency.currency] || currentDefinePriceCurrency !== null && currentDefinePriceCurrency !== void 0 && currentDefinePriceCurrency.currency && selectedStyle.priceTable && Object.prototype.hasOwnProperty.call(selectedStyle.priceTable, currentDefinePriceCurrency.currency) && selectedStyle.priceTable[currentDefinePriceCurrency.currency] != priceInput.current.value) ? /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "The price displayed is currently not set for this product style. Click here to set it"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: setCurrentPrice,
-    value: priceInput === null || priceInput === void 0 || (_priceInput$current2 = priceInput.current) === null || _priceInput$current2 === void 0 ? void 0 : _priceInput$current2.value,
-    style: {
-      whiteSpace: 'nowrap',
-      lineHeight: '.5rem',
-      fontSize: '.75rem'
-    }
-  }, "Set Price")) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null),
-    style: {
-      lineHeight: '.5rem'
-    },
-    onClick: handleSetIsSettingCurrency,
-    ref: currentCurrencyRef
-  }, (_ref2 = (_currentDefinePriceCu2 = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== null && _currentDefinePriceCu2 !== void 0 ? _currentDefinePriceCu2 : editing === null || editing === void 0 || (_editing$meta = editing.meta) === null || _editing$meta === void 0 ? void 0 : _editing$meta.currency) !== null && _ref2 !== void 0 ? _ref2 : 'USD')), isSettingCurrency ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyExternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyContainer)
-  }, /*#__PURE__*/_react["default"].createElement("select", {
-    id: editing.id + '_setCurrency',
-    name: editing.id + '_setCurrency',
-    style: {
-      width: '100%'
-    },
-    onChange: handleChangeCurrentCurrency,
-    ref: setCurrencySelect,
-    defaultValue: (_currentDefinePriceCu3 = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== null && _currentDefinePriceCu3 !== void 0 ? _currentDefinePriceCu3 : 'USD'
-  }, props !== null && props !== void 0 && props.regionsData ? Object.entries(props.regionsData).map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      className: "".concat(_ProductImageManagerModule["default"].setCurrencyOption, " ").concat(m[1].currency !== 'USD' ? selectedStyle !== null && selectedStyle !== void 0 && selectedStyle.priceTable && Object.prototype.hasOwnProperty.call(selectedStyle.priceTable, m[1].currency) ? _ProductImageManagerModule["default"].currencyOptionUsed : m[1].currency === 'USD' ? _ProductImageManagerModule["default"].currencyOptionUsed : null : null),
-      value: m[1].currency,
-      symbol: m[1].symbol
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m[1].currency), _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null, "\xA0")), /*#__PURE__*/_react["default"].createElement("div", null, m[1].name), _div3 || (_div3 = /*#__PURE__*/_react["default"].createElement("div", null, "\xA0")), /*#__PURE__*/_react["default"].createElement("div", null, m[1].symbol));
-  }) : null))) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Set the quantity for the currently selected Style & Option combo"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600,
-      display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
-    }
-  }, "Qty")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    style: {
-      width: '100%',
-      display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
-    },
-    defaultValue: "100",
-    ref: quantityInput,
-    onChange: setCurrentQuantity
-  }), _Tooltip || (_Tooltip = /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Infinite stock"
-  }, /*#__PURE__*/_react["default"].createElement(_AllInclusive["default"], null))), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    onChange: setInfinity,
-    checked: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      border: '1px solid #484848',
-      marginTop: '.125rem',
-      marginBottom: '.25rem'
-    }
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex",
-    style: {
-      flexWrap: 'wrap',
-      gap: '.05rem 0.2rem',
-      marginBottom: '.125rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "If your product has multiple styles, set them here. A style should be an alternate design or color for a single product that you want to track as single product. For example you might have white, black, grey for t-shirts as individual styles.",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600
-    }
-  }, "Style"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "dropdown_input"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    ref: styleInput,
-    onChange: setCurrentStyleName
-  }), /*#__PURE__*/_react["default"].createElement("select", {
-    id: editing.id + '_styles',
-    name: editing.id + '_styles',
-    style: {
-      width: '100%'
-    },
-    onChange: changeCurrentStyle
-  }, (0, _ecommerce.resolveStyles)(editing).map(function (style, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      value: style.sid,
-      className: "style_option",
-      key: i
-    }, style.style);
-  }))))), selectedStyle && selectedStyle.option.length > 0 && selectedStyle.option[0] && Object.hasOwnProperty.call(selectedStyle.option[0], 'option') ? /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "If your product has options, set them here. An option should be a sizing or format choice that exists for all or most styles. For example you might have sizes XS, S, M, L, XL or OS as individual options per style.",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: 600
-    }
-  }, "Option"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "dropdown_input"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    ref: optionInput,
-    onChange: setCurrentOptionName
-  }), /*#__PURE__*/_react["default"].createElement("select", {
-    id: editing.id + '_options',
-    name: editing.id + '_options',
-    style: {
-      width: '100%'
-    },
-    onChange: changeCurrentOption,
-    ref: optionSelect
-  }, editing.styles.find(function (m) {
-    return m.sid === editingSelectedStyle;
-  }).option.map(function (option, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      value: option.sid,
-      className: "option_option",
-      key: i
-    }, option.option);
-  }))))) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 Product_admin_choice_container"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: addStyle
-  }, "Add Style"), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: addOption
-  }, "Add Option"), /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Set the product type",
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      fontSize: '.8rem',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: "flex"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "radio",
-    id: "virtual",
-    name: "fav_language",
-    value: "virtual",
-    defaultChecked: true,
-    onChange: onProductTypeChange
-  }), _label || (_label = /*#__PURE__*/_react["default"].createElement("label", {
-    "for": "virtual"
-  }, "Virtual"))), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "flex"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "radio",
-    id: "physical",
-    name: "fav_language",
-    value: "physical",
-    onChange: onProductTypeChange
-  }), _label2 || (_label2 = /*#__PURE__*/_react["default"].createElement("label", {
-    "for": "physical"
-  }, "Physical")))))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "promptContainer",
-    style: {
-      alignItems: 'center',
-      borderRadius: '.5rem',
-      margin: '.25rem 0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Ticketed Products offer universally unique ids that are unique across the product being sold and can be stamped onto Ticket Images. Virtual Tickets are for Virtual Events. Physical Tickets serve Virtual Tickets for your own In Person Events.",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Is this a ticket?"), /*#__PURE__*/_react["default"].createElement(_ConfirmationNumber["default"], {
-    style: {
-      width: '15px',
-      height: '15px'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    value: editingOptionsMeta.ticket,
-    defaultChecked: editingOptionsMeta.ticket,
-    onChange: setOptionsMetaData,
-    option: "ticket"
-  })), editingOptionsMeta.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates.",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: '600',
-      whiteSpace: 'nowrap'
-    }
-  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    style: {
-      marginBottom: '.125rem',
-      width: '-webkit-fill-available'
-    },
-    placeholder: "Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty",
-    onInput: setOptionsMetaData,
-    option: "eventDateDef",
-    option2: "input",
-    defaultValue: editingOptionsMeta.eventDateDef.input
-  })), editingOptionsMeta.eventDateDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem',
-      marginBottom: '.25rem'
-    }
-  }, editingOptionsMeta.eventDateDef.dates.map(function (d, i) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem",
-      key: i
-    }, d ? (0, _util.getFormattedDate)(d, {
-      pretty: true
-    }) : '') : _div4 || (_div4 = /*#__PURE__*/_react["default"].createElement("div", null));
-  })) : _div5 || (_div5 = /*#__PURE__*/_react["default"].createElement("div", null))) : null), editingOptionsMeta && editingOptionsMeta.productType === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "promptContainer",
-    style: {
-      borderRadius: '.5rem',
-      margin: '.25rem 0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center',
-      height: '20px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "You can use a date to authorize all users that purchase this ticket for access to your livestreams on that day. Or you can use a tag that you must include in the livestream tags field when you create it. Please use this if you want to put your livestream behind this paywalled purchase",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "left",
-    paddin: true
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Is this for a livestream?"), /*#__PURE__*/_react["default"].createElement(_Stadium["default"], {
-    style: {
-      width: '15px'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    value: editingOptionsMeta.livestream,
-    defaultChecked: editingOptionsMeta.livestream,
-    onChange: setOptionsMetaData,
-    option: "livestream"
-  })), editingOptionsMeta.livestream ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM. Time must be input in 24 H military time. Values that do not match dates will be parsed as Tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: '600',
-      whiteSpace: 'nowrap'
-    }
-  }, "Auth Keys | Tags"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    style: {
-      marginBottom: '.125rem',
-      width: '-webkit-fill-available'
-    },
-    placeholder: "Date in DD/MM/YY format or a Tag",
-    onInput: setOptionsMetaData,
-    option: "livestreamDef",
-    option2: "input",
-    defaultValue: editingOptionsMeta.livestreamDef.input
-  })), /*#__PURE__*/_react["default"].createElement("span", {
-    className: "flex gap-p2",
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, editingOptionsMeta.livestreamDef.dates.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, editingOptionsMeta.livestreamDef.dates.map(function (d, i) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem",
-      key: i
-    }, d ? (0, _util.getFormattedDate)(d, {
-      pretty: true
-    }) : '') : _div6 || (_div6 = /*#__PURE__*/_react["default"].createElement("div", null));
-  })) : _div7 || (_div7 = /*#__PURE__*/_react["default"].createElement("div", null)), editingOptionsMeta.livestreamDef.tags.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, editingOptionsMeta.livestreamDef.tags.map(function (d, i) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem",
-      key: i
-    }, d) : _div8 || (_div8 = /*#__PURE__*/_react["default"].createElement("div", null));
-  })) : _div9 || (_div9 = /*#__PURE__*/_react["default"].createElement("div", null)))) : null, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
-    product: editing,
-    editing: editing,
-    editingOptionsMeta: editingOptionsMeta,
-    setOptionsMetaData: setOptionsMetaData,
-    currentLineupEditing: currentLineupEditing,
-    setCurrentLineupEditing: setCurrentLineupEditing,
-    appendFormData: appendFormData
-  })))) : _div10 || (_div10 = /*#__PURE__*/_react["default"].createElement("div", null)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 promptContainer",
-    style: {
-      alignItems: 'center',
-      height: '20px',
-      borderRadius: '.5rem',
-      margin: '.25rem 0'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip2["default"], {
-    title: "Allow for your customers to subscribe to your product. This is a guarantee by your company that you will continue to deliver your Product to any subscribed customers. Subscriptions will charge monthly by default.",
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center'
-    },
-    placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.8rem'
-    }
-  }, "Is this a subscription?"), /*#__PURE__*/_react["default"].createElement(_Inventory["default"], {
-    style: {
-      width: '15px'
-    }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    value: editingOptionsMeta.subscription,
-    defaultChecked: editingOptionsMeta.subscription,
-    onChange: setOptionsMetaData,
-    option: "subscription"
-  }))), !(props !== null && props !== void 0 && props._loggedIn) || !(props !== null && props !== void 0 && (_props$_loggedIn2 = props._loggedIn) !== null && _props$_loggedIn2 !== void 0 && _props$_loggedIn2.username) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_signin.SignIn, props), /*#__PURE__*/_react["default"].createElement(_signin.Username, props)) : /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 Product_admin_choice_container",
-    style: {
-      marginTop: '.125rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handlePublishProduct,
-    modif: "publish"
-  }, "Publish"), !(props !== null && props !== void 0 && props.forceOpenRedirectOnDone) ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handlePublishProduct,
-    modif: "save"
-  }, "Save") : null, editing && !(props !== null && props !== void 0 && props.forceOpenRedirectOnDone) ? /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleCancelProduct,
-    modif: "save"
-  }, editing["new"] ? 'Abandon' : 'Cancel') : null))))) : null, combinedFeed && combinedFeed.map && !props.hideFeed ? combinedFeed.map(function (item, i) {
-    return /*#__PURE__*/_react["default"].createElement(_product.Product, _extends({}, props, {
-      product: item,
-      key: i,
-      apiUrl: props.apiUrl,
-      domainKey: props.domainKey,
-      _loggedIn: props._loggedIn,
-      fetchBusy: fetchBusy,
-      setFetchBusy: setFetchBusy,
-      _setLoggedIn: props._setLoggedIn,
-      handleEdit: handleEdit,
-      editing: editing,
-      setEditing: setEditing,
-      setCurrentName: setCurrentName,
-      pageError: pageError,
-      styleInput: styleInput,
-      setCurrentStyleName: setCurrentStyleName,
-      changeCurrentStyle: changeCurrentStyle,
-      resolveStyles: _ecommerce.resolveStyles,
-      selectedStyle: selectedStyle,
-      setCurrentOptionName: setCurrentOptionName,
-      optionInput: optionInput,
-      changeCurrentOption: changeCurrentOption,
-      optionSelect: optionSelect,
-      editingSelectedStyle: editingSelectedStyle,
-      priceInput: priceInput,
-      setCurrentPrice: setCurrentPrice,
-      selectedOption: selectedOption,
-      quantityInput: quantityInput,
-      setCurrentQuantity: setCurrentQuantity,
-      setInfinity: setInfinity,
-      addStyle: addStyle,
-      addOption: addOption,
-      onProductTypeChange: onProductTypeChange,
-      editingOptionsMeta: editingOptionsMeta,
-      setEditingOptionsMeta: setEditingOptionsMeta,
-      setOptionsMetaData: setOptionsMetaData,
-      handlePublishProduct: handlePublishProduct,
-      publishProduct: publishProduct,
-      handleCancelProduct: handleCancelProduct,
-      nameRef: nameRef,
-      setEditingSelectedStyle: setEditingSelectedStyle,
-      setEditingSelectedOption: setEditingSelectedOption,
-      setCombinedFeed: setCombinedFeed,
-      setCurrentLineupEditing: setCurrentLineupEditing,
-      currentLineupEditing: currentLineupEditing,
-      defaultLineup: defaultLineup,
-      setCurrencySelect: setCurrencySelect,
-      changeCurrentCurrency: changeCurrentCurrency,
-      currentDefinePriceCurrency: currentDefinePriceCurrency,
-      setCurrentDefinePriceCurrency: setCurrentDefinePriceCurrency,
-      setDefaultPriceHtml: setDefaultPriceHtml,
-      appendFormData: appendFormData
-    }));
-  }) : null)));
+  return <div className={"".concat(props.className)}>
+            <div className={"".concat(fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy')}></div>
+            <div className={"".concat(_ShopModule["default"].container, " ").concat(props.smaller ? "".concat(_ProductImageManagerModule["default"].smallContainer) : null)}>
+                {adminAuth && !noShop ? <div className={"".concat(_ShopModule["default"].adminContainer)}>
+                            {_div || (_div = <div className={'heading'}>Shop</div>)}
+                            <div className={'flex options'} style={{
+          gap: '.25rem'
+        }}>
+                                <button disabled={!(0, _util.isObjectEmpty)(editing)} onClick={createNewProduct}>Create Product</button>
+                                {editing && !(0, _util.isObjectEmpty)(editing) ? <button onClick={handleCancelProduct} modif='save'>{editing["new"] ? 'Abandon' : 'Cancel'}</button> : null}
+                            </div>
+                        </div> : null}
+                <div className={"Product_flex_container"}>
+                    {editing !== null && editing !== void 0 && editing["new"] ? <div className={"".concat(_ProductImageManagerModule["default"].currentlyEditingProductContainer, " ").concat(props !== null && props !== void 0 && props.noFixedPosition ? _ProductImageManagerModule["default"].currentlyEditingNoFixed : '')}>
+                                <div className={"".concat(_ProductImageManagerModule["default"].currentEditingProductInnerContainer)}>
+                                    <div className={"".concat(_ProductImageManagerModule["default"].currentlyEditingProductContent)}>
+                                        <div className={"".concat(_ProductImageManagerModule["default"].productImgContainer, " Product_img_container Product_img_container_large")}>
+                                            <_product.ProductImageManager {...Object.assign({}, props, {
+                  editing: editing,
+                  passTempImages: passTempImages
+                })} />
+                                        </div>
+                                        <div className={"".concat(_ProductImageManagerModule["default"].productMetaContainer, " Product_meta_container")}>
+                                            <div style={{
+                  height: "calc(100% - ".concat(props._loggedIn ? !(props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.username) ? '100' : '25' : '40', "px)"),
+                  maxHeight: '75vh',
+                  overflow: 'auto'
+                }}>
+                                                {/* <div className={`${PIMStyles.currentEditingProductCommandBar} ${PIMStyles.commandBar}`}>
+                                                    <div></div>
+                                                    <div>
+                                                        <button onClick={handleCancelProduct} modif='save'>Abandon</button>
+                                                    </div>
+                                                 </div> */}
+                                                <div>
+                                                    <div className='flex gap-p2'>
+                                                        <_Tooltip2.default title="Name of Product" placement='right'>
+                                                            <label style={{
+                          fontWeight: '600'
+                        }}>Title: </label>
+                                                        </_Tooltip2.default>
+                                                        <input name='name' placeholder='Product Title' style={{
+                        fontWeight: '600',
+                        width: '100%'
+                      }} onChange={setCurrentName} ref={nameRef} modif='product_name' />
+                                                    </div>
+                                                    {pageError.location && pageError.location === 'product_name' ? <div className='error'>{pageError.message}</div> : null}
+                                                </div>
+                                                <_Tooltip2.default title="Product Description" placement='left'>
+                                                    <_reactTextareaAutosize.default className={"".concat(_ProductImageManagerModule["default"].textArea)} name='description' placeholder='Description' defaultValue={editing === null || editing === void 0 || (_editing$detailmeta = editing.detailmeta) === null || _editing$detailmeta === void 0 ? void 0 : _editing$detailmeta.description} onChange={handleUpdateProductDescription} ref={descriptionInputRef} />
+                                                </_Tooltip2.default>
+                                                <div className='flex gap-p2' style={{
+                    alignItems: 'center'
+                  }}>
+                                                    <_Tooltip2.default title="Set the price for the currently selected Style" placement='left'>
+                                                        <div style={{
+                        fontSize: '.8rem',
+                        fontWeight: 600
+                      }}>{(_currentDefinePriceCu = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.symbol) !== null && _currentDefinePriceCu !== void 0 ? _currentDefinePriceCu : '$'}</div>
+                                                    </_Tooltip2.default>
+                                                    <input type='currency' style={{
+                      width: '100%'
+                    }} defaultValue='10.00' ref={priceInput} onChange={setCurrentPrice} />
+                                                    {selectedStyle && (currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) === 'USD' && selectedStyle.price != (priceInput === null || priceInput === void 0 || (_priceInput$current = priceInput.current) === null || _priceInput$current === void 0 ? void 0 : _priceInput$current.value) || (currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== 'USD' && (!selectedStyle.priceTable || selectedStyle.priceTable && !selectedStyle.priceTable[currentDefinePriceCurrency.currency] || currentDefinePriceCurrency !== null && currentDefinePriceCurrency !== void 0 && currentDefinePriceCurrency.currency && selectedStyle.priceTable && Object.prototype.hasOwnProperty.call(selectedStyle.priceTable, currentDefinePriceCurrency.currency) && selectedStyle.priceTable[currentDefinePriceCurrency.currency] != priceInput.current.value) ? <_Tooltip2.default title="The price displayed is currently not set for this product style. Click here to set it">
+                                                                <button onClick={setCurrentPrice} value={priceInput === null || priceInput === void 0 || (_priceInput$current2 = priceInput.current) === null || _priceInput$current2 === void 0 ? void 0 : _priceInput$current2.value} style={{
+                        whiteSpace: 'nowrap',
+                        lineHeight: '.5rem',
+                        fontSize: '.75rem'
+                      }}>Set Price</button>
+                                                            </_Tooltip2.default> : null}
+                                                    <_Tooltip2.default title="You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in">
+                                                        <div className={"".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null)} style={{
+                        lineHeight: '.5rem'
+                      }} onClick={handleSetIsSettingCurrency} ref={currentCurrencyRef}>{(_ref2 = (_currentDefinePriceCu2 = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== null && _currentDefinePriceCu2 !== void 0 ? _currentDefinePriceCu2 : editing === null || editing === void 0 || (_editing$meta = editing.meta) === null || _editing$meta === void 0 ? void 0 : _editing$meta.currency) !== null && _ref2 !== void 0 ? _ref2 : 'USD'}</div>
+                                                    </_Tooltip2.default>
+                                                    {isSettingCurrency ? <div className={"".concat(_ProductImageManagerModule["default"].setCurrencyExternalContainer)}>
+                                                                <div className={"".concat(_ProductImageManagerModule["default"].setCurrencyContainer)}>
+                                                                    <select id={editing.id + '_setCurrency'} name={editing.id + '_setCurrency'} style={{
+                          width: '100%'
+                        }} onChange={handleChangeCurrentCurrency} ref={setCurrencySelect} defaultValue={(_currentDefinePriceCu3 = currentDefinePriceCurrency === null || currentDefinePriceCurrency === void 0 ? void 0 : currentDefinePriceCurrency.currency) !== null && _currentDefinePriceCu3 !== void 0 ? _currentDefinePriceCu3 : 'USD'}>
+                                                                        {props !== null && props !== void 0 && props.regionsData ? Object.entries(props.regionsData).map(function (m) {
+                            return <option className={"".concat(_ProductImageManagerModule["default"].setCurrencyOption, " ").concat(m[1].currency !== 'USD' ? selectedStyle !== null && selectedStyle !== void 0 && selectedStyle.priceTable && Object.prototype.hasOwnProperty.call(selectedStyle.priceTable, m[1].currency) ? _ProductImageManagerModule["default"].currencyOptionUsed : m[1].currency === 'USD' ? _ProductImageManagerModule["default"].currencyOptionUsed : null : null)} value={m[1].currency} symbol={m[1].symbol}>
+                                                                                        <div>{m[1].currency}</div>
+                                                                                        {_div2 || (_div2 = <div>&nbsp;</div>)}
+                                                                                        <div>{m[1].name}</div>
+                                                                                        {_div3 || (_div3 = <div>&nbsp;</div>)}
+                                                                                        <div>{m[1].symbol}</div>
+                                                                                    </option>;
+                          }) : null}
+                                                                    </select>
+                                                                </div>
+                                                            </div> : null}
+                                                    <_Tooltip2.default title="Set the quantity for the currently selected Style & Option combo">
+                                                        <div style={{
+                        fontSize: '.8rem',
+                        fontWeight: 600,
+                        display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
+                      }}>Qty</div>
+                                                    </_Tooltip2.default>
+                                                    <input type='number' style={{
+                      width: '100%',
+                      display: selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000 ? 'none' : 'block'
+                    }} defaultValue='100' ref={quantityInput} onChange={setCurrentQuantity} />
+                                                    {_Tooltip || (_Tooltip = <_Tooltip2.default title="Infinite stock">
+                                                        <_AllInclusive.default />
+                                                    </_Tooltip2.default>)}
+                                                    <input type='checkbox' style={{
+                      margin: 0
+                    }} onChange={setInfinity} checked={selectedOption && selectedOption.quantity && selectedOption.quantity === 10000000} />
+                                                </div>
+                                                <div style={{
+                    border: '1px solid #484848',
+                    marginTop: '.125rem',
+                    marginBottom: '.25rem'
+                  }}></div>
+                                                <div className='flex' style={{
+                    flexWrap: 'wrap',
+                    gap: '.05rem 0.2rem',
+                    marginBottom: '.125rem'
+                  }}>
+                                                    <_Tooltip2.default title="If your product has multiple styles, set them here. A style should be an alternate design or color for a single product that you want to track as single product. For example you might have white, black, grey for t-shirts as individual styles." placement='right'>
+                                                        <div className='flex gap-p2' style={{
+                        alignItems: 'center'
+                      }}>
+                                                            <div style={{
+                          fontSize: '.8rem',
+                          fontWeight: 600
+                        }}>Style</div>
+                                                            <div className='dropdown_input'>
+                                                                <input type="text" ref={styleInput} onChange={setCurrentStyleName} />
+                                                                <select id={editing.id + '_styles'} name={editing.id + '_styles'} style={{
+                            width: '100%'
+                          }} onChange={changeCurrentStyle}>{(0, _ecommerce.resolveStyles)(editing).map(function (style, i) {
+                              return <option value={style.sid} className='style_option' key={i}>{style.style}</option>;
+                            })}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </_Tooltip2.default>
+                                                    {selectedStyle && selectedStyle.option.length > 0 && selectedStyle.option[0] && Object.hasOwnProperty.call(selectedStyle.option[0], 'option') ? <_Tooltip2.default title="If your product has options, set them here. An option should be a sizing or format choice that exists for all or most styles. For example you might have sizes XS, S, M, L, XL or OS as individual options per style." placement='right'>
+                                                                <div className='flex gap-p2' style={{
+                        alignItems: 'center'
+                      }}>
+                                                                    <div style={{
+                          fontSize: '.8rem',
+                          fontWeight: 600
+                        }}>Option</div>
+                                                                    <div className='dropdown_input'>
+                                                                        <input type="text" ref={optionInput} onChange={setCurrentOptionName} />
+                                                                        <select id={editing.id + '_options'} name={editing.id + '_options'} style={{
+                            width: '100%'
+                          }} onChange={changeCurrentOption} ref={optionSelect}>{editing.styles.find(function (m) {
+                              return m.sid === editingSelectedStyle;
+                            }).option.map(function (option, i) {
+                              return <option value={option.sid} className='option_option' key={i}>{option.option}</option>;
+                            })}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </_Tooltip2.default> : null}
+                                                </div>
+                                                <div className='flex gap-p2 Product_admin_choice_container'>
+                                                    <button onClick={addStyle}>Add Style</button><button onClick={addOption}>Add Option</button>
+                                                    <_Tooltip2.default title="Set the product type" placement='right'>
+                                                        <div className='flex gap-p2' style={{
+                        fontSize: '.8rem',
+                        alignItems: 'center'
+                      }}>
+                                                            <span className='flex'>
+                                                                <input type="radio" id="virtual" name="fav_language" value="virtual" defaultChecked onChange={onProductTypeChange} />
+                                                                {_label || (_label = <label for="virtual">Virtual</label>)}
+                                                            </span>
+                                                            <span className='flex'>
+                                                                <input type="radio" id="physical" name="fav_language" value="physical" onChange={onProductTypeChange} />
+                                                                {_label2 || (_label2 = <label for="physical">Physical</label>)}
+                                                            </span>
+                                                        </div>
+                                                    </_Tooltip2.default>
+                                                </div>
+                                                <div className='promptContainer' style={{
+                    alignItems: 'center',
+                    borderRadius: '.5rem',
+                    margin: '.25rem 0'
+                  }}>
+                                                    <div className='flex gap-p2'>
+                                                        <_Tooltip2.default title="Ticketed Products offer universally unique ids that are unique across the product being sold and can be stamped onto Ticket Images. Virtual Tickets are for Virtual Events. Physical Tickets serve Virtual Tickets for your own In Person Events." className='flex gap-p2' style={{
+                        alignItems: 'center'
+                      }} placement='left'>
+                                                            <div style={{
+                          fontSize: '.8rem'
+                        }}>Is this a ticket?</div>
+                                                            <_ConfirmationNumber.default style={{
+                          width: '15px',
+                          height: '15px'
+                        }} />
+                                                        </_Tooltip2.default>
+                                                        <input type='checkbox' style={{
+                        margin: 0
+                      }} value={editingOptionsMeta.ticket} defaultChecked={editingOptionsMeta.ticket} onChange={setOptionsMetaData} option='ticket' />
+                                                    </div>
+                                                    {editingOptionsMeta.ticket ? <div>
+                                                                <_Tooltip2.default title="Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates." className='flex gap-p2' style={{
+                        alignItems: 'center'
+                      }} placement='right'>
+                                                                    <span style={{
+                          fontSize: '.8rem',
+                          fontWeight: '600',
+                          whiteSpace: 'nowrap'
+                        }}>Date for Event</span>
+                                                                    <input type='text' style={{
+                          marginBottom: '.125rem',
+                          width: '-webkit-fill-available'
+                        }} placeholder='Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty' onInput={setOptionsMetaData} option='eventDateDef' option2='input' defaultValue={editingOptionsMeta.eventDateDef.input} />
+                                                                </_Tooltip2.default>
+                                                                {editingOptionsMeta.eventDateDef.dates.length > 0 ? <div className='tagContainer' style={{
+                        marginTop: '.25rem',
+                        marginBottom: '.25rem'
+                      }}>
+                                                                            {editingOptionsMeta.eventDateDef.dates.map(function (d, i) {
+                          return d !== '' ? <div className='tagItem' key={i}>{d ? (0, _util.getFormattedDate)(d, {
+                              pretty: true
+                            }) : ''}</div> : _div4 || (_div4 = <div></div>);
+                        })}
+                                                                        </div> : _div5 || (_div5 = <div></div>)}
+                                                            </div> : null}
+                                                </div>
+                                                {editingOptionsMeta && editingOptionsMeta.productType === 'virtual' ? <div>
+                                                            <div className='promptContainer' style={{
+                      borderRadius: '.5rem',
+                      margin: '.25rem 0'
+                    }}>
+                                                                <div className='flex gap-p2' style={{
+                        alignItems: 'center',
+                        height: '20px'
+                      }}>
+                                                                    <_Tooltip2.default title="You can use a date to authorize all users that purchase this ticket for access to your livestreams on that day. Or you can use a tag that you must include in the livestream tags field when you create it. Please use this if you want to put your livestream behind this paywalled purchase" className='flex gap-p2' style={{
+                          alignItems: 'center'
+                        }} placement='left' paddin>
+                                                                        <div style={{
+                            fontSize: '.8rem'
+                          }}>Is this for a livestream?</div>
+                                                                        <_Stadium.default style={{
+                            width: '15px'
+                          }} />
+                                                                    </_Tooltip2.default>
+                                                                    <input type='checkbox' style={{
+                          margin: 0
+                        }} value={editingOptionsMeta.livestream} defaultChecked={editingOptionsMeta.livestream} onChange={setOptionsMetaData} option='livestream' />
+                                                                </div>
+                                                                {editingOptionsMeta.livestream ? <div>
+                                                                            <_Tooltip2.default title="Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM. Time must be input in 24 H military time. Values that do not match dates will be parsed as Tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket" className='flex gap-p2' style={{
+                          alignItems: 'center'
+                        }} placement='right'>
+                                                                                <span style={{
+                            fontSize: '.8rem',
+                            fontWeight: '600',
+                            whiteSpace: 'nowrap'
+                          }}>Auth Keys | Tags</span>
+                                                                                <input type='text' style={{
+                            marginBottom: '.125rem',
+                            width: '-webkit-fill-available'
+                          }} placeholder='Date in DD/MM/YY format or a Tag' onInput={setOptionsMetaData} option='livestreamDef' option2='input' defaultValue={editingOptionsMeta.livestreamDef.input} />
+                                                                            </_Tooltip2.default>
+                                                                            <span className='flex gap-p2' style={{
+                          marginBottom: '.25rem'
+                        }}>
+                                                                                {editingOptionsMeta.livestreamDef.dates.length > 0 ? <div className='tagContainer' style={{
+                            marginTop: '.25rem'
+                          }}>
+                                                                                            {editingOptionsMeta.livestreamDef.dates.map(function (d, i) {
+                              return d !== '' ? <div className='tagItem' key={i}>{d ? (0, _util.getFormattedDate)(d, {
+                                  pretty: true
+                                }) : ''}</div> : _div6 || (_div6 = <div></div>);
+                            })}
+                                                                                        </div> : _div7 || (_div7 = <div></div>)}
+                                                                                {editingOptionsMeta.livestreamDef.tags.length > 0 ? <div className='tagContainer' style={{
+                            marginTop: '.25rem'
+                          }}>
+                                                                                            {editingOptionsMeta.livestreamDef.tags.map(function (d, i) {
+                              return d !== '' ? <div className='tagItem' key={i}>{d}</div> : _div8 || (_div8 = <div></div>);
+                            })}
+                                                                                        </div> : _div9 || (_div9 = <div></div>)}
+                                                                            </span>
+                                                                        </div> : null}
+                                                                <_product.Lineup {...Object.assign({}, props, {
+                        product: editing,
+                        editing: editing,
+                        editingOptionsMeta: editingOptionsMeta,
+                        setOptionsMetaData: setOptionsMetaData,
+                        currentLineupEditing: currentLineupEditing,
+                        setCurrentLineupEditing: setCurrentLineupEditing,
+                        appendFormData: appendFormData
+                      })} />
+                                                            </div>
+                                                        </div> : _div10 || (_div10 = <div></div>)}
+                                                <div className='flex gap-p2 promptContainer' style={{
+                    alignItems: 'center',
+                    height: '20px',
+                    borderRadius: '.5rem',
+                    margin: '.25rem 0'
+                  }}>
+                                                    <_Tooltip2.default title="Allow for your customers to subscribe to your product. This is a guarantee by your company that you will continue to deliver your Product to any subscribed customers. Subscriptions will charge monthly by default." className='flex gap-p2' style={{
+                      alignItems: 'center'
+                    }} placement='left'>
+                                                        <div style={{
+                        fontSize: '.8rem'
+                      }}>Is this a subscription?</div>
+                                                        <_Inventory.default style={{
+                        width: '15px'
+                      }} />
+                                                    </_Tooltip2.default>
+                                                    <input type='checkbox' style={{
+                      margin: 0
+                    }} value={editingOptionsMeta.subscription} defaultChecked={editingOptionsMeta.subscription} onChange={setOptionsMetaData} option='subscription' />
+                                                </div>
+                                            </div>
+                                            {!(props !== null && props !== void 0 && props._loggedIn) || !(props !== null && props !== void 0 && (_props$_loggedIn2 = props._loggedIn) !== null && _props$_loggedIn2 !== void 0 && _props$_loggedIn2.username) ? <div>
+                                                        <_signin.SignIn {...props} />
+                                                        <_signin.Username {...props} />
+                                                    </div> : <div className='flex gap-p2 Product_admin_choice_container' style={{
+                  marginTop: '.125rem'
+                }}>
+                                                        <button onClick={handlePublishProduct} modif='publish'>Publish</button>
+                                                        {!(props !== null && props !== void 0 && props.forceOpenRedirectOnDone) ? <button onClick={handlePublishProduct} modif='save'>Save</button> : null}
+                                                        {editing && !(props !== null && props !== void 0 && props.forceOpenRedirectOnDone) ? <button onClick={handleCancelProduct} modif='save'>{editing["new"] ? 'Abandon' : 'Cancel'}</button> : null}
+                                                    </div>}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> : null}
+                    {combinedFeed && combinedFeed.map && !props.hideFeed ? combinedFeed.map(function (item, i) {
+          return <_product.Product {...Object.assign({}, props, {
+            product: item,
+            key: i,
+            apiUrl: props.apiUrl,
+            domainKey: props.domainKey,
+            _loggedIn: props._loggedIn,
+            fetchBusy: fetchBusy,
+            setFetchBusy: setFetchBusy,
+            _setLoggedIn: props._setLoggedIn,
+            handleEdit: handleEdit,
+            editing: editing,
+            setEditing: setEditing,
+            setCurrentName: setCurrentName,
+            pageError: pageError,
+            styleInput: styleInput,
+            setCurrentStyleName: setCurrentStyleName,
+            changeCurrentStyle: changeCurrentStyle,
+            resolveStyles: _ecommerce.resolveStyles,
+            selectedStyle: selectedStyle,
+            setCurrentOptionName: setCurrentOptionName,
+            optionInput: optionInput,
+            changeCurrentOption: changeCurrentOption,
+            optionSelect: optionSelect,
+            editingSelectedStyle: editingSelectedStyle,
+            priceInput: priceInput,
+            setCurrentPrice: setCurrentPrice,
+            selectedOption: selectedOption,
+            quantityInput: quantityInput,
+            setCurrentQuantity: setCurrentQuantity,
+            setInfinity: setInfinity,
+            addStyle: addStyle,
+            addOption: addOption,
+            onProductTypeChange: onProductTypeChange,
+            editingOptionsMeta: editingOptionsMeta,
+            setEditingOptionsMeta: setEditingOptionsMeta,
+            setOptionsMetaData: setOptionsMetaData,
+            handlePublishProduct: handlePublishProduct,
+            publishProduct: publishProduct,
+            handleCancelProduct: handleCancelProduct,
+            nameRef: nameRef,
+            setEditingSelectedStyle: setEditingSelectedStyle,
+            setEditingSelectedOption: setEditingSelectedOption,
+            setCombinedFeed: setCombinedFeed,
+            setCurrentLineupEditing: setCurrentLineupEditing,
+            currentLineupEditing: currentLineupEditing,
+            defaultLineup: defaultLineup,
+            setCurrencySelect: setCurrencySelect,
+            changeCurrentCurrency: changeCurrentCurrency,
+            currentDefinePriceCurrency: currentDefinePriceCurrency,
+            setCurrentDefinePriceCurrency: setCurrentDefinePriceCurrency,
+            setDefaultPriceHtml: setDefaultPriceHtml,
+            appendFormData: appendFormData
+          })} />;
+        }) : null}
+                </div>
+                {/* <GridList loggedIn={props._loggedIn} _gridItems={combinedFeed} _gridListType={'product'} {...props}></GridList> */}
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

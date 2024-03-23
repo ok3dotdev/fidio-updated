@@ -11,7 +11,6 @@ var _ArticleModule = _interopRequireDefault(require("./Article.module.scss"));
 var _templates = _interopRequireDefault(require("./templates"));
 var _layout = require("/layout");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -96,14 +95,16 @@ var Module = function Module(props) {
   }
   var useTemplates = Object.assign(_templates["default"], (_props$articleTemplat = props === null || props === void 0 ? void 0 : props.articleTemplates) !== null && _props$articleTemplat !== void 0 ? _props$articleTemplat : {}); // Merge Database Server Article Templates with Local Defaults
   var passTemplate = template && useTemplates && useTemplates[template];
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_layout.Article, _extends({}, props, {
-    useTemplates: useTemplates,
-    template: passTemplate,
-    articleHtml: articleHtml,
-    articleData: articleData,
-    createMarkup: createMarkup,
-    htmlRef: htmlRef,
-    ArticleStyles: _ArticleModule["default"]
-  })));
+  return <_react.default.Fragment>
+            <_layout.Article {...Object.assign({}, props, {
+      useTemplates: useTemplates,
+      template: passTemplate,
+      articleHtml: articleHtml,
+      articleData: articleData,
+      createMarkup: createMarkup,
+      htmlRef: htmlRef,
+      ArticleStyles: _ArticleModule["default"]
+    })} />
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

@@ -9,9 +9,10 @@ var _ArticleModule = _interopRequireDefault(require("./Article.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
   var _props$articleData, _props$htmlRef;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props !== null && props !== void 0 && props.articleHtml && props !== null && props !== void 0 && (_props$articleData = props.articleData) !== null && _props$articleData !== void 0 && _props$articleData.approved ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    dangerouslySetInnerHTML: props !== null && props !== void 0 && props.createMarkup ? props.createMarkup() : null,
-    ref: (_props$htmlRef = props === null || props === void 0 ? void 0 : props.htmlRef) !== null && _props$htmlRef !== void 0 ? _props$htmlRef : null
-  })) : null);
+  return <_react.default.Fragment>
+            {props !== null && props !== void 0 && props.articleHtml && props !== null && props !== void 0 && (_props$articleData = props.articleData) !== null && _props$articleData !== void 0 && _props$articleData.approved ? <div>
+                        <div dangerouslySetInnerHTML={props !== null && props !== void 0 && props.createMarkup ? props.createMarkup() : null} ref={(_props$htmlRef = props === null || props === void 0 ? void 0 : props.htmlRef) !== null && _props$htmlRef !== void 0 ? _props$htmlRef : null}></div>
+                    </div> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

@@ -216,93 +216,75 @@ var Module = function Module(props) {
   });
   var askStreamOffsetPages = [askStreamOffset - 2, askStreamOffset - 1, askStreamOffset, askStreamOffset + 1, askStreamOffset + 2];
   var canStreamOffsetPages = [canStreamOffset - 2, canStreamOffset - 1, canStreamOffset, canStreamOffset + 1, canStreamOffset + 2];
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(moduleName, "_Container")
-  }, _h || (_h = /*#__PURE__*/_react["default"].createElement("h3", null, "Stream")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(moduleName, "_InternalContainer")
-  }, /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "The Users below have asked to Stream on ".concat((_props$siteTitle = props.siteTitle) !== null && _props$siteTitle !== void 0 ? _props$siteTitle : 'your Platform'),
-    placement: "bottom"
-  }, _h2 || (_h2 = /*#__PURE__*/_react["default"].createElement("h4", null, "Asking"))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].listContainer),
-    style: {
-      maxHeight: '65vh'
-    }
-  }, askStream !== null && askStream !== void 0 && askStream.map ? askStream.map(function (m, i) {
-    var _m$username, _m$username2;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_AdminModule["default"].itemContainer),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/p?u=".concat((_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : m.id),
-      className: "menuLinkSelector",
-      style: {
-        position: 'relative',
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", null, (_m$username2 = m.username) !== null && _m$username2 !== void 0 ? _m$username2 : m.id)), /*#__PURE__*/_react["default"].createElement("button", {
-      modif: "authorize_streamer",
-      userid: "".concat(m.id),
-      onClick: handleChangeStreamAuth
-    }, "Allow"));
-  }) : null), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "PaginationContainer"
-  }, askStreamOffsetPages.map(function (m, i) {
-    return m > -1 ? /*#__PURE__*/_react["default"].createElement("li", {
-      className: "".concat(m == askStreamOffset ? 'ActivePage' : ''),
-      scope: "askStreamOffset",
-      key: i,
-      i: m,
-      onClick: handleSetPagination
-    }, m + 1) : null;
-  }))), /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-    title: "The Users below currently have access to Stream on ".concat((_props$siteTitle2 = props.siteTitle) !== null && _props$siteTitle2 !== void 0 ? _props$siteTitle2 : 'your Platform'),
-    placement: "bottom"
-  }, _h3 || (_h3 = /*#__PURE__*/_react["default"].createElement("h4", null, "Streamers"))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].listContainer),
-    style: {
-      maxHeight: '65vh'
-    }
-  }, canStream !== null && canStream !== void 0 && canStream.map ? canStream.map(function (m, i) {
-    var _m$username3, _m$username4;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_AdminModule["default"].itemContainer),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/p?u=".concat((_m$username3 = m.username) !== null && _m$username3 !== void 0 ? _m$username3 : m.id),
-      className: "menuLinkSelector",
-      style: {
-        position: 'relative',
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", null, (_m$username4 = m.username) !== null && _m$username4 !== void 0 ? _m$username4 : m.id)), /*#__PURE__*/_react["default"].createElement("button", {
-      modif: "disable_streamer",
-      userid: "".concat(m.id),
-      onClick: handleChangeStreamAuth
-    }, "Disable"));
-  }) : null), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "PaginationContainer"
-  }, canStreamOffsetPages.map(function (m, i) {
-    return m > -1 ? /*#__PURE__*/_react["default"].createElement("li", {
-      className: "".concat(m == canStreamOffset ? 'ActivePage' : ''),
-      scope: "canStreamOffset",
-      key: i,
-      i: m,
-      onClick: handleSetPagination
-    }, m + 1) : null;
-  }))), /*#__PURE__*/_react["default"].createElement("section", null, _h4 || (_h4 = /*#__PURE__*/_react["default"].createElement("h4", null, "Platform Stream Status")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "gradient_style_bg_3",
-    style: {
-      fontSize: '.9rem',
-      fontWeight: 700,
-      width: 'fit-content',
-      padding: '0.125rem 5rem'
-    }
-  }, "LIVE"), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '.75rem',
-      marginTop: '.25rem'
-    }
-  }, "Contact admin@tycoon.systems for any current Livestreaming Issues"))));
+  return <div className={"".concat(props.className, " ").concat(moduleName, "_Container")}>
+            {_h || (_h = <h3>Stream</h3>)}
+            <div className={"".concat(moduleName, "_InternalContainer")}>
+                <section>
+                    <_Tooltip.default title={"The Users below have asked to Stream on ".concat((_props$siteTitle = props.siteTitle) !== null && _props$siteTitle !== void 0 ? _props$siteTitle : 'your Platform')} placement='bottom'>
+                        {_h2 || (_h2 = <h4>Asking</h4>)}
+                    </_Tooltip.default>
+                    <div className={"".concat(_AdminModule["default"].listContainer)} style={{
+          maxHeight: '65vh'
+        }}>
+                        {askStream !== null && askStream !== void 0 && askStream.map ? askStream.map(function (m, i) {
+            var _m$username, _m$username2;
+            return <div className={"".concat(_AdminModule["default"].itemContainer)} key={i}>
+                                        <_link.default href={"/p?u=".concat((_m$username = m.username) !== null && _m$username !== void 0 ? _m$username : m.id)} className={"menuLinkSelector"} style={{
+                position: 'relative',
+                alignSelf: 'center'
+              }}>
+                                            <div>{(_m$username2 = m.username) !== null && _m$username2 !== void 0 ? _m$username2 : m.id}</div>
+                                        </_link.default>
+                                        <button modif='authorize_streamer' userid={"".concat(m.id)} onClick={handleChangeStreamAuth}>Allow</button>
+                                    </div>;
+          }) : null}
+                    </div>
+                    <ul className={"PaginationContainer"}>
+                        {askStreamOffsetPages.map(function (m, i) {
+            return m > -1 ? <li className={"".concat(m == askStreamOffset ? 'ActivePage' : '')} scope='askStreamOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
+          })}
+                    </ul>
+                </section>
+                <section>
+                    <_Tooltip.default title={"The Users below currently have access to Stream on ".concat((_props$siteTitle2 = props.siteTitle) !== null && _props$siteTitle2 !== void 0 ? _props$siteTitle2 : 'your Platform')} placement='bottom'>
+                        {_h3 || (_h3 = <h4>Streamers</h4>)}
+                    </_Tooltip.default>
+                    <div className={"".concat(_AdminModule["default"].listContainer)} style={{
+          maxHeight: '65vh'
+        }}>
+                        {canStream !== null && canStream !== void 0 && canStream.map ? canStream.map(function (m, i) {
+            var _m$username3, _m$username4;
+            return <div className={"".concat(_AdminModule["default"].itemContainer)} key={i}>
+                                        <_link.default href={"/p?u=".concat((_m$username3 = m.username) !== null && _m$username3 !== void 0 ? _m$username3 : m.id)} className={"menuLinkSelector"} style={{
+                position: 'relative',
+                alignSelf: 'center'
+              }}>
+                                            <div>{(_m$username4 = m.username) !== null && _m$username4 !== void 0 ? _m$username4 : m.id}</div>
+                                        </_link.default>
+                                        <button modif='disable_streamer' userid={"".concat(m.id)} onClick={handleChangeStreamAuth}>Disable</button>
+                                    </div>;
+          }) : null}
+                    </div>
+                    <ul className={"PaginationContainer"}>
+                        {canStreamOffsetPages.map(function (m, i) {
+            return m > -1 ? <li className={"".concat(m == canStreamOffset ? 'ActivePage' : '')} scope='canStreamOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
+          })}
+                    </ul>
+                </section>
+                <section>
+                    {_h4 || (_h4 = <h4>Platform Stream Status</h4>)}
+                    <div className='gradient_style_bg_3' style={{
+          fontSize: '.9rem',
+          fontWeight: 700,
+          width: 'fit-content',
+          padding: '0.125rem 5rem'
+        }}>LIVE</div>
+                    <div style={{
+          fontSize: '.75rem',
+          marginTop: '.25rem'
+        }}>Contact admin@tycoon.systems for any current Livestreaming Issues</div>
+                </section>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

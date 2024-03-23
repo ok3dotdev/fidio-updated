@@ -106,8 +106,8 @@ var Module = function Module(props) {
     }();
     f();
   }, [didFetch, fetchBusy, props === null || props === void 0 ? void 0 : props.handlerName, props.handlerArgs, props.domainKey]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  });
+  return <div className={"".concat(props.className)}>
+            
+        </div>;
 };
 var _default = exports["default"] = Module;

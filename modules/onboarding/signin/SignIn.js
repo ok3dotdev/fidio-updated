@@ -291,28 +291,21 @@ var Module = function Module(props) {
     }
   };
   var googleSignInIsLoaded = checkGoogleSignInIsLoaded();
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.classNameAlways, " ").concat(props._loggedIn || !googleSignInIsLoaded ? '' : props.className)
-  }, " ", /*#__PURE__*/_react["default"].createElement("div", {
-    className: hideGoogleSignIn || !googleSignInIsLoaded ? "display-none" : null,
-    style: {
+  return <div className={"".concat(props.classNameAlways, " ").concat(props._loggedIn || !googleSignInIsLoaded ? '' : props.className)}> {/* Do not show styles if Sign In hidden */}
+            {/* <RegisterUsername registerUsernameOn={registerUsernameOn} setRegisterUsernameOn={setRegisterUsernameOn}></RegisterUsername> */}
+            <div className={hideGoogleSignIn || !googleSignInIsLoaded ? "display-none" : null} style={{
       maxWidth: (_props$maxWidth = props.maxWidth) !== null && _props$maxWidth !== void 0 ? _props$maxWidth : '170px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: googleSignInRendered ? "googleSignInContainer googleSignInContainer-padding" : "googleSignInContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "g_id_signin google-sign-in-btn",
-    ref: googleSignIn,
-    "data-size": "medium",
-    "data-logo_alignment": "center",
-    "data-theme": "outline"
-  }))), pageError ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
+    }}>
+                <div className={googleSignInRendered ? "googleSignInContainer googleSignInContainer-padding" : "googleSignInContainer"}>
+                    <div className="g_id_signin google-sign-in-btn" ref={googleSignIn} data-size="medium" data-logo_alignment="center" data-theme="outline"></div>
+                </div>
+            </div>
+            {pageError ? <div style={{
       paddingLeft: 1 + 'rem',
       paddingRight: 1 + 'rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("p", {
-    className: "googleSignInPromptSmall error errorBg"
-  }, pageError)) : null);
+    }}>
+                        <p className={"googleSignInPromptSmall error errorBg"}>{pageError}</p> 
+                    </div> : null}
+        </div>;
 };
 var _default = exports["default"] = Module;

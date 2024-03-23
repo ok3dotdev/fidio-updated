@@ -370,34 +370,34 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         var i, o, r, s, a, u, h;
         if (n.length < 3) return n;
         if (r = n.substr(0, 1), "y" == r && (n = r.toUpperCase() + n.substr(1)), s = f, a = m, s.test(n) ? n = n.replace(s, "$1$2") : a.test(n) && (n = n.replace(a, "$1$2")), s = v, a = g, s.test(n)) {
-          var T = s.exec(n);
-          s = l, s.test(T[1]) && (s = y, n = n.replace(s, ""));
+          var _T = s.exec(n);
+          s = l, s.test(_T[1]) && (s = y, n = n.replace(s, ""));
         } else if (a.test(n)) {
-          var T = a.exec(n);
-          i = T[1], a = p, a.test(i) && (n = i, a = S, u = w, h = x, a.test(n) ? n += "e" : u.test(n) ? (s = y, n = n.replace(s, "")) : h.test(n) && (n += "e"));
+          var _T = a.exec(n);
+          i = _T[1], a = p, a.test(i) && (n = i, a = S, u = w, h = x, a.test(n) ? n += "e" : u.test(n) ? (s = y, n = n.replace(s, "")) : h.test(n) && (n += "e"));
         }
         if (s = k, s.test(n)) {
-          var T = s.exec(n);
-          i = T[1], n = i + "i";
+          var _T = s.exec(n);
+          i = _T[1], n = i + "i";
         }
         if (s = _, s.test(n)) {
-          var T = s.exec(n);
-          i = T[1], o = T[2], s = l, s.test(i) && (n = i + t[o]);
+          var _T = s.exec(n);
+          i = _T[1], o = _T[2], s = l, s.test(i) && (n = i + t[o]);
         }
         if (s = E, s.test(n)) {
-          var T = s.exec(n);
-          i = T[1], o = T[2], s = l, s.test(i) && (n = i + e[o]);
+          var _T = s.exec(n);
+          i = _T[1], o = _T[2], s = l, s.test(i) && (n = i + e[o]);
         }
         if (s = b, a = F, s.test(n)) {
-          var T = s.exec(n);
-          i = T[1], s = c, s.test(i) && (n = i);
+          var _T = s.exec(n);
+          i = _T[1], s = c, s.test(i) && (n = i);
         } else if (a.test(n)) {
-          var T = a.exec(n);
-          i = T[1] + T[2], a = c, a.test(i) && (n = i);
+          var _T = a.exec(n);
+          i = _T[1] + _T[2], a = c, a.test(i) && (n = i);
         }
         if (s = O, s.test(n)) {
-          var T = s.exec(n);
-          i = T[1], s = c, a = d, u = N, (s.test(i) || a.test(i) && !u.test(i)) && (n = i);
+          var _T = s.exec(n);
+          i = _T[1], s = c, a = d, u = N, (s.test(i) || a.test(i) && !u.test(i)) && (n = i);
         }
         return s = P, a = c, s.test(n) && a.test(n) && (s = y, n = n.replace(s, "")), "y" == r && (n = r.toLowerCase() + n.substr(1)), n;
       };
@@ -413,11 +413,11 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
   }, t.TokenStore.load = function (t) {
     var e = new this();
     return e.root = t.root, e.length = t.length, e;
-  }, t.TokenStore.prototype.add = function (t, e, n) {
-    for (var n = n || this.root, i = "", o = 0; o <= t.length - 1;) i = t[o], i in n || (n[i] = {
+  }, t.TokenStore.prototype.add = function (t, e, _n) {
+    for (var _n = _n || this.root, i = "", o = 0; o <= t.length - 1;) i = t[o], i in _n || (_n[i] = {
       docs: {}
-    }), o += 1, n = n[i];
-    n.docs[e.ref] = e, this.length += 1;
+    }), o += 1, _n = _n[i];
+    _n.docs[e.ref] = e, this.length += 1;
   }, t.TokenStore.prototype.has = function (t) {
     if (!t) return !1;
     for (var e = this.root, n = 0; n < t.length; n++) {

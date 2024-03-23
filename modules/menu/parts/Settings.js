@@ -9,16 +9,18 @@ var _link = _interopRequireDefault(require("next/link"));
 var _li;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Module = function Module(props) {
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props._loggedIn ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/settings",
-    className: "menuLinkSelector",
-    onClick: props === null || props === void 0 ? void 0 : props.handleToggleSettings,
-    style: {
-      position: 'relative',
-      alignSelf: 'center'
-    }
-  }, _li || (_li = /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "settings"), /*#__PURE__*/_react["default"].createElement("div", null, "Settings"))))) : null);
+  return <_react.default.Fragment>
+            {props._loggedIn ? <_react.default.Fragment>
+                        <_link.default href="/settings" className={"menuLinkSelector"} onClick={props === null || props === void 0 ? void 0 : props.handleToggleSettings} style={{
+        position: 'relative',
+        alignSelf: 'center'
+      }}>
+                            {_li || (_li = <li>
+                                <div className={"material-icons"}>settings</div>
+                                <div>Settings</div>
+                            </li>)}
+                        </_link.default>
+                    </_react.default.Fragment> : null}
+        </_react.default.Fragment>;
 };
 var _default = exports["default"] = Module;

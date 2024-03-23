@@ -19,7 +19,6 @@ var _event = require("../utility/utility/event");
 var _toolbarOptions = _interopRequireDefault(require("./editor/toolbarOptions"));
 var _h, _span, _span2, _span3, _div, _div2, _div3, _div4, _label;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
@@ -349,231 +348,186 @@ var Module = function Module(props) {
 
   // console.log(recentArticles, meta, inHtmlImages, published)
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(moduleName, "_Container")
-  }, _h || (_h = /*#__PURE__*/_react["default"].createElement("h3", null, "Post")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].containerTwoSmallRight)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Editor_Container Editor_MaxWidth"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    className: "".concat(_AdminModule["default"].millerText),
-    type: "text",
-    placeholder: "Title",
-    style: {
-      fontStyle: 'italic',
-      width: '100%',
-      fontSize: '2rem',
-      fontWeight: '700'
-    },
-    ref: titleRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: '1.125rem',
-      marginBottom: '.25rem',
-      color: '#cccccc',
-      fontWeight: '600'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].millerText),
-    style: {
-      fontStyle: 'italic'
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/p?u=".concat((_ref2 = (_published$authorUser = published === null || published === void 0 ? void 0 : published.authorUsername) !== null && _published$authorUser !== void 0 ? _published$authorUser : props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _ref2 !== void 0 ? _ref2 : ''),
-    style: {
-      alignSelf: 'center'
-    }
-  }, _span || (_span = /*#__PURE__*/_react["default"].createElement("span", null, "by:\xA0")), /*#__PURE__*/_react["default"].createElement("span", null, (_ref3 = (_published$authorUser2 = published === null || published === void 0 ? void 0 : published.authorUsername) !== null && _published$authorUser2 !== void 0 ? _published$authorUser2 : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.username) !== null && _ref3 !== void 0 ? _ref3 : '')))), /*#__PURE__*/_react["default"].createElement("div", null, published !== null && published !== void 0 && published.title ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: _defineProperty(_defineProperty({
-      background: 'rgba(55, 55, 55, 1)',
-      borderRadius: '.5rem',
-      padding: '.25rem',
-      width: '-webkit-fill-available',
-      textAlign: 'center'
-    }, "width", '100%'), "marginBottom", '.25rem')
-  }, _span2 || (_span2 = /*#__PURE__*/_react["default"].createElement("span", null, "Read\xA0")), /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))
-  }, "\"", published === null || published === void 0 ? void 0 : published.title, "\""), _span3 || (_span3 = /*#__PURE__*/_react["default"].createElement("span", null, "\xA0at\xA0")), /*#__PURE__*/_react["default"].createElement("span", {
-    selectValue: "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id)),
-    onClick: _event.selectThisText
-  }, "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id)))) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    id: "".concat(editorElementId),
-    className: "Editor_Platform",
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("p", null, useDefaultText)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].metaContainer, " flex gap-p2"),
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      flexDirection: 'column'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      minWidth: '200px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      whiteSpace: 'nowrap'
-    }
-  }, "Featured Image"), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    placeholder: "Featured Image Url",
-    style: {
-      width: '100%',
-      fontWeight: '600'
-    },
-    defaultValue: "".concat((_meta$featuredImg = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg !== void 0 ? _meta$featuredImg : ''),
-    onChange: handleSetFeaturedImage,
-    ref: featuredImgUrlRef
-  })), /*#__PURE__*/_react["default"].createElement("img", {
-    style: {
-      backgroundImage: "url(".concat((_meta$featuredImg2 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg2 !== void 0 ? _meta$featuredImg2 : null),
-      height: '100px',
-      width: '100%',
-      minWidth: '100px',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    },
-    selectValue: "".concat((_meta$featuredImg3 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg3 !== void 0 ? _meta$featuredImg3 : null),
-    onClick: _event.selectThisText,
-    ref: featuredImgRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      width: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      width: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null, "Groups")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    id: "".concat(moduleName, "_groupingInput"),
-    placeholder: "Post Groups",
-    style: {
-      width: '100%',
-      fontWeight: '600'
-    },
-    onInput: handleUpdateInput,
-    modif: "groups",
-    ref: groupsRef
-  })), (useGroups === null || useGroups === void 0 ? void 0 : useGroups.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, useGroups.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
-    }, d) : _div2 || (_div2 = /*#__PURE__*/_react["default"].createElement("div", null));
-  })) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      width: '100%'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, _div3 || (_div3 = /*#__PURE__*/_react["default"].createElement("div", null, "Tags")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    id: "".concat(moduleName, "_useTagsInput"),
-    placeholder: "Tags",
-    style: {
-      width: '100%',
-      fontWeight: '600'
-    },
-    onInput: handleUpdateInput,
-    modif: "tags",
-    ref: tagsRef
-  })), (useTags === null || useTags === void 0 ? void 0 : useTags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, useTags.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "tagItem"
-    }, d) : _div4 || (_div4 = /*#__PURE__*/_react["default"].createElement("div", null));
-  })) : null))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].forceSafeBreak, " flex gap-p2")
-  }, !published ? /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_AdminModule["default"].actionButton),
-    onClick: handlePublishArticle
-  }, "Post") : /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      minWidth: '200px',
-      maxWidth: '90%'
-    },
-    onClick: handlePublishArticle
-  }, "Update"), /*#__PURE__*/_react["default"].createElement("button", {
-    style: {
-      minWidth: '200px',
-      maxWidth: '90%'
-    },
-    onClick: handleDeleteArticle
-  }, "Delete")), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2",
-    style: {
-      background: 'rgb(55, 55, 55)',
-      borderRadius: '1rem',
-      padding: '0 2rem',
-      justifyContent: 'center'
-    }
-  }, _label || (_label = /*#__PURE__*/_react["default"].createElement("label", null, "Approved")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    ref: approvedRef,
-    defaultChecked: true,
-    onChange: handleSetApproved
-  }))), didPublishThisSession && published !== null && published !== void 0 && published.id ? /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: _defineProperty({
-      background: 'rgba(55, 55, 55, 1)',
-      borderRadius: '.5rem',
-      padding: '.25rem',
-      width: '-webkit-fill-available',
-      textAlign: 'center'
-    }, "width", '100%')
-  }, "Your post was made successsfully. View at\xA0", /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))
-  }, "".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))))) : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginBottom: '.5rem'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("h4", {
-    style: {
-      fontWeight: '600'
-    }
-  }, "Recent Articles"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].simpleList, " ").concat(_AdminModule["default"].simpleListShortText),
-    style: {
-      maxHeight: '200px',
-      overflow: 'auto'
-    }
-  }, (recentArticles === null || recentArticles === void 0 ? void 0 : recentArticles.length) > 0 ? recentArticles.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: {
-        background: 'rgb(53, 53, 53)'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: {
-        cursor: 'pointer'
-      },
-      article: m === null || m === void 0 ? void 0 : m.id,
-      onClick: handleLoadArticle
-    }, m.title), /*#__PURE__*/_react["default"].createElement("span", null, m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? " - ".concat(new Date(Number(m.publish)).toDateString()) : ''));
-  }) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StorageAdmin["default"], _extends({}, props, {
-    vert: true
-  }))))));
+  return <div className={"".concat(props.className, " ").concat(moduleName, "_Container")}>
+            {_h || (_h = <h3>Post</h3>)}
+            <div className={"".concat(_AdminModule["default"].containerTwoSmallRight)}>
+                <div className={"Editor_Container Editor_MaxWidth"}>
+                    <div>
+                        <_reactTextareaAutosize.default className={"".concat(_AdminModule["default"].millerText)} type='text' placeholder='Title' style={{
+            fontStyle: 'italic',
+            width: '100%',
+            fontSize: '2rem',
+            fontWeight: '700'
+          }} ref={titleRef} />
+                    </div>
+                    <div style={{
+          fontSize: '1.125rem',
+          marginBottom: '.25rem',
+          color: '#cccccc',
+          fontWeight: '600'
+        }}>
+                        <div className={"".concat(_AdminModule["default"].millerText)} style={{
+            fontStyle: 'italic'
+          }}>
+                            <_link.default href={"/p?u=".concat((_ref2 = (_published$authorUser = published === null || published === void 0 ? void 0 : published.authorUsername) !== null && _published$authorUser !== void 0 ? _published$authorUser : props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _ref2 !== void 0 ? _ref2 : '')} style={{
+              alignSelf: 'center'
+            }}>
+                                {_span || (_span = <span>by:&nbsp;</span>)}<span>{(_ref3 = (_published$authorUser2 = published === null || published === void 0 ? void 0 : published.authorUsername) !== null && _published$authorUser2 !== void 0 ? _published$authorUser2 : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.username) !== null && _ref3 !== void 0 ? _ref3 : ''}</span>
+                            </_link.default>
+                        </div>
+                    </div>
+                    <div>
+                        {published !== null && published !== void 0 && published.title ? <div style={_defineProperty(_defineProperty({
+            background: 'rgba(55, 55, 55, 1)',
+            borderRadius: '.5rem',
+            padding: '.25rem',
+            width: '-webkit-fill-available',
+            textAlign: 'center'
+          }, "width", '100%'), "marginBottom", '.25rem')}>
+                                    {_span2 || (_span2 = <span>Read&nbsp;</span>)}
+                                    <_link.default href={"".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))}>"{published === null || published === void 0 ? void 0 : published.title}"</_link.default>
+                                    {_span3 || (_span3 = <span>&nbsp;at&nbsp;</span>)}
+                                    <span selectValue={"".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))} onClick={_event.selectThisText}>{"".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))}</span>
+                                </div> : null}
+                    </div>
+                    <div id={"".concat(editorElementId)} className={"Editor_Platform"} style={{
+          marginBottom: '.25rem'
+        }}>
+                        <p>{useDefaultText}</p>
+                    </div>
+                    <div className={"".concat(_AdminModule["default"].metaContainer, " flex gap-p2")} style={{
+          marginBottom: '.25rem'
+        }}>
+                        <div className='flex gap-p2' style={{
+            flexDirection: 'column'
+          }}>
+                            <div style={{
+              minWidth: '200px'
+            }}>
+                                <div style={{
+                whiteSpace: 'nowrap'
+              }}>Featured Image</div>
+                                <input type='text' placeholder='Featured Image Url' style={{
+                width: '100%',
+                fontWeight: '600'
+              }} defaultValue={"".concat((_meta$featuredImg = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg !== void 0 ? _meta$featuredImg : '')} onChange={handleSetFeaturedImage} ref={featuredImgUrlRef} />
+                            </div>
+                            <img style={{
+              backgroundImage: "url(".concat((_meta$featuredImg2 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg2 !== void 0 ? _meta$featuredImg2 : null),
+              height: '100px',
+              width: '100%',
+              minWidth: '100px',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }} selectValue={"".concat((_meta$featuredImg3 = meta === null || meta === void 0 ? void 0 : meta.featuredImg) !== null && _meta$featuredImg3 !== void 0 ? _meta$featuredImg3 : null)} onClick={_event.selectThisText} ref={featuredImgRef} />
+                        </div>
+                        <div className='flex gap-p2' style={{
+            width: '100%'
+          }}>
+                            <div style={{
+              width: '100%'
+            }}>
+                                <div className='flex gap-p2'>
+                                    {_div || (_div = <div>Groups</div>)}
+                                    <input type='text' id={"".concat(moduleName, "_groupingInput")} placeholder='Post Groups' style={{
+                  width: '100%',
+                  fontWeight: '600'
+                }} onInput={handleUpdateInput} modif='groups' ref={groupsRef} />
+                                </div>
+                                {(useGroups === null || useGroups === void 0 ? void 0 : useGroups.length) > 0 ? <div className='tagContainer' style={{
+                marginTop: '.25rem'
+              }}>
+                                        {useGroups.map(function (d) {
+                  return d !== '' ? <div className='tagItem'>{d}</div> : _div2 || (_div2 = <div></div>);
+                })}
+                                    </div> : null}
+                            </div>
+                            <div style={{
+              width: '100%'
+            }}>
+                                <div className='flex gap-p2'>
+                                    {_div3 || (_div3 = <div>Tags</div>)}
+                                    <input type='text' id={"".concat(moduleName, "_useTagsInput")} placeholder='Tags' style={{
+                  width: '100%',
+                  fontWeight: '600'
+                }} onInput={handleUpdateInput} modif='tags' ref={tagsRef} />
+                                </div>
+                                {(useTags === null || useTags === void 0 ? void 0 : useTags.length) > 0 ? <div className='tagContainer' style={{
+                marginTop: '.25rem'
+              }}>
+                                        {useTags.map(function (d) {
+                  return d !== '' ? <div className='tagItem'>{d}</div> : _div4 || (_div4 = <div></div>);
+                })}
+                                    </div> : null}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"".concat(_AdminModule["default"].forceSafeBreak, " flex gap-p2")}>
+                        {!published ? <button className={"".concat(_AdminModule["default"].actionButton)} onClick={handlePublishArticle}>Post</button> : <div className='flex gap-p2'>
+                                    <button style={{
+              minWidth: '200px',
+              maxWidth: '90%'
+            }} onClick={handlePublishArticle}>Update</button>
+                                    <button style={{
+              minWidth: '200px',
+              maxWidth: '90%'
+            }} onClick={handleDeleteArticle}>Delete</button>
+                                </div>}
+                        {<div className='flex gap-p2' style={{
+            background: 'rgb(55, 55, 55)',
+            borderRadius: '1rem',
+            padding: '0 2rem',
+            justifyContent: 'center'
+          }}>
+                                {_label || (_label = <label>Approved</label>)}
+                                <input type='checkbox' ref={approvedRef} defaultChecked={true} onChange={handleSetApproved} />
+                            </div>}
+                    </div>
+                    {didPublishThisSession && published !== null && published !== void 0 && published.id ? <div style={{
+          marginTop: '.5rem'
+        }}>
+                                <div style={_defineProperty({
+            background: 'rgba(55, 55, 55, 1)',
+            borderRadius: '.5rem',
+            padding: '.25rem',
+            width: '-webkit-fill-available',
+            textAlign: 'center'
+          }, "width", '100%')}>Your post was made successsfully. View at&nbsp;
+                                    <_link.default href={"".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "https://".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))}>{"".concat(props.devLocal ? "".concat(props.devAddress, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id) : "".concat(props.domainUrl, "/ar?p=").concat(published === null || published === void 0 ? void 0 : published.id))}</_link.default>
+                                </div>
+                            </div> : null}
+                </div>
+                <div>
+                    <div style={{
+          marginBottom: '.5rem'
+        }}>
+                        <h4 style={{
+            fontWeight: '600'
+          }}>Recent Articles</h4>
+                        <div className={"".concat(_AdminModule["default"].simpleList, " ").concat(_AdminModule["default"].simpleListShortText)} style={{
+            maxHeight: '200px',
+            overflow: 'auto'
+          }}>
+                            {(recentArticles === null || recentArticles === void 0 ? void 0 : recentArticles.length) > 0 ? recentArticles.map(function (m, i) {
+              return <div style={{
+                background: 'rgb(53, 53, 53)'
+              }}>
+                                            <span style={{
+                  cursor: 'pointer'
+                }} article={m === null || m === void 0 ? void 0 : m.id} onClick={handleLoadArticle}>{m.title}</span>
+                                            <span>{m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? " - ".concat(new Date(Number(m.publish)).toDateString()) : ''}</span>
+                                        </div>;
+            }) : null}
+                        </div>
+                    </div>
+                    <div>
+                        <_StorageAdmin.default {...Object.assign({}, props, {
+            vert: true
+          })} />
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

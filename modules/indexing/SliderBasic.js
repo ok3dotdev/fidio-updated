@@ -66,56 +66,41 @@ var Module = function Module(props) {
 
   // console.log(window.Glide)
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "glide_".concat(componentId, " ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    "data-glide-el": "track",
-    className: "glide__track",
-    style: {
+  return <div className={"glide_".concat(componentId, " ").concat(props.className)}>
+            <div data-glide-el="track" className="glide__track" style={{
       height: (_props$height = props.height) !== null && _props$height !== void 0 ? _props$height : '240px'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "glide__slides",
-    style: {
-      height: 'inherit'
-    }
-  }, props.items && props.items.map ? props.items.map(function (m, i) {
-    var _m$buttonLink, _m$width, _m$borderRadius;
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: i,
-      className: "glide_slide"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].textContainer, " glider_text_container"),
-      style: {
-        position: 'absolute'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].textOffsetContainer, " glider_text_offset_container")
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].container1, " glider_container1")
-    }, m.cta ? /*#__PURE__*/_react["default"].createElement("h2", {
-      className: "".concat(_SliderModule["default"].cta, " glider_cta")
-    }, m.cta) : null, m.heading ? /*#__PURE__*/_react["default"].createElement("h5", {
-      className: "".concat(_SliderModule["default"].heading, " glider_heading")
-    }, m.heading) : null, m.description ? /*#__PURE__*/_react["default"].createElement("h6", {
-      className: "".concat(_SliderModule["default"].description, " glider_description")
-    }, m.description) : null), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].container2, " glider_container2")
-    }, m.button ? /*#__PURE__*/_react["default"].createElement("a", {
-      className: "".concat(_SliderModule["default"].button, " glider_button"),
-      href: (_m$buttonLink = m.buttonLink) !== null && _m$buttonLink !== void 0 ? _m$buttonLink : ''
-    }, /*#__PURE__*/_react["default"].createElement("button", null, m.button)) : null, m.status ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].status, " glider_status"),
-      style: {
-        background: 'red'
-      }
-    }, m.status) : null))), /*#__PURE__*/_react["default"].createElement("img", {
-      src: m.img,
-      style: {
-        width: (_m$width = m.width) !== null && _m$width !== void 0 ? _m$width : 'auto',
-        borderRadius: (_m$borderRadius = m.borderRadius) !== null && _m$borderRadius !== void 0 ? _m$borderRadius : '1rem'
-      }
-    }));
-  }) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null)))));
+    }}>
+                <ul className="glide__slides" style={{
+        height: 'inherit'
+      }}>
+                    {props.items && props.items.map ? props.items.map(function (m, i) {
+          var _m$buttonLink, _m$width, _m$borderRadius;
+          return <li key={i} className='glide_slide'>
+                                    <div className={"".concat(_SliderModule["default"].textContainer, " glider_text_container")} style={{
+              position: 'absolute'
+            }}>
+                                        <div className={"".concat(_SliderModule["default"].textOffsetContainer, " glider_text_offset_container")}>
+                                            <div className={"".concat(_SliderModule["default"].container1, " glider_container1")}>
+                                                {m.cta ? <h2 className={"".concat(_SliderModule["default"].cta, " glider_cta")}>{m.cta}</h2> : null}
+                                                {m.heading ? <h5 className={"".concat(_SliderModule["default"].heading, " glider_heading")}>{m.heading}</h5> : null}
+                                                {m.description ? <h6 className={"".concat(_SliderModule["default"].description, " glider_description")}>{m.description}</h6> : null}
+                                            </div>
+                                            <div className={"".concat(_SliderModule["default"].container2, " glider_container2")}>
+                                                {m.button ? <a className={"".concat(_SliderModule["default"].button, " glider_button")} href={(_m$buttonLink = m.buttonLink) !== null && _m$buttonLink !== void 0 ? _m$buttonLink : ''}><button>{m.button}</button></a> : null}
+                                                {m.status ? <div className={"".concat(_SliderModule["default"].status, " glider_status")} style={{
+                    background: 'red'
+                  }}>{m.status}</div> : null}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src={m.img} style={{
+              width: (_m$width = m.width) !== null && _m$width !== void 0 ? _m$width : 'auto',
+              borderRadius: (_m$borderRadius = m.borderRadius) !== null && _m$borderRadius !== void 0 ? _m$borderRadius : '1rem'
+            }} />
+                                </li>;
+        }) : _div || (_div = <div></div>)}
+                </ul>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

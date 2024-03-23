@@ -100,57 +100,60 @@ var Module = function Module(props) {
   var paintCustomAdmin = function paintCustomAdmin(useComponent) {
     if (useComponent && useComponent[1] && typeof useComponent[1] === 'function') {
       var UseComponentDom = useComponent[1];
-      return /*#__PURE__*/_react["default"].createElement(UseComponentDom, props);
+      return <UseComponentDom {...props} />;
     }
-    return _div || (_div = /*#__PURE__*/_react["default"].createElement("div", null));
+    return _div || (_div = <div></div>);
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_AdminModule["default"].container, " Admin_Container")
-  }, _Script || (_Script = /*#__PURE__*/_react["default"].createElement(_script["default"], {
-    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js"
-  })), _link || (_link = /*#__PURE__*/_react["default"].createElement("link", {
-    href: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css",
-    rel: "stylesheet"
-  })), props !== null && props !== void 0 && props._LocalEventEmitter ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(doShowSignIn && !isAdmin ? 'simpleCenter' : '')
-  }, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)) : null, isAdmin ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].internalContainer, " Admin_InternalContainer")
-  }, /*#__PURE__*/_react["default"].createElement(_.Banner, props), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")
-  }, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "stream"
-  }, "Stream")) : null, resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "post"
-  }, "Post")) : null, resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "storage"
-  }, "Storage")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "build"
-  }, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: handleSetPage,
-    modif: "billing"
-  }, "Billing")) : null, _li || (_li = /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", null, /*#__PURE__*/_react["default"].createElement(_link2["default"], {
-    href: "/documentation"
-  }, "Documentation"))))), Object.entries(_admin["default"]).length > 0 ? /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_AdminModule["default"].adminMenuContainer, " ").concat(_AdminModule["default"].adminMenuContainerCustom, " Admin_MenuContainerCustom")
-  }, Object.entries(_admin["default"]).map(function (m, i) {
-    var _m$, _m$2;
-    return /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-      onClick: handleSetPage,
-      modif: m[0]
-    }, (_m$ = m[0]) !== null && _m$ !== void 0 && _m$.slice(1, m[0].length) && ((_m$2 = m[0]) === null || _m$2 === void 0 ? void 0 : _m$2.length) > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0]));
-  })) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
-  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BillingAdmin["default"], props)) : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StorageAdmin["default"], props)) : Object.entries(_admin["default"]).findIndex(function (m) {
-    return m[0] === page;
-  }) > -1 // Leverage Custom Admin Pages
-  ? paintCustomAdmin(Object.entries(_admin["default"]).find(function (m) {
-    return m[0] === page;
-  })) : null : null))) : null);
+  return <div className={"".concat(props.className, " ").concat(_AdminModule["default"].container, " Admin_Container")}>
+            {_Script || (_Script = <_script.default src='https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js' />)}
+            {_link || (_link = <link href="https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css" rel="stylesheet"></link>)}
+            {props !== null && props !== void 0 && props._LocalEventEmitter ? <div className={"".concat(doShowSignIn && !isAdmin ? 'simpleCenter' : '')}>
+                        <_index.SignIn {...props}></_index.SignIn>
+                        <_index.Username {...props}></_index.Username>
+                    </div> : null}
+            {isAdmin ? <div className={"".concat(_AdminModule["default"].internalContainer, " Admin_InternalContainer")}>
+                        <_.Banner {...props} />
+                        <div className={"".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")}>
+                            <div>
+                                <ul className={"".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")}>
+                                    {resolveAuth('StreamAdmin', props._adminAuth) ? <li>
+                                            <button onClick={handleSetPage} modif='stream'>Stream</button>
+                                        </li> : null}
+                                    {resolveAuth('PostAdmin', props._adminAuth) ? <li>
+                                            <button onClick={handleSetPage} modif='post'>Post</button>
+                                        </li> : null}
+                                    {resolveAuth('StorageAdmin', props._adminAuth) ? <li>
+                                                <button onClick={handleSetPage} modif='storage'>Storage</button>
+                                            </li> : null}
+                                    {resolveAuth('BuildAdmin', props._adminAuth) ? <li>
+                                                <button onClick={handleSetPage} modif='build'>Build</button>
+                                            </li> : null}
+                                    {resolveAuth('BillingAdmin', props._adminAuth) ? <li>
+                                                <button onClick={handleSetPage} modif='billing'>Billing</button>
+                                            </li> : null}
+                                    {_li || (_li = <li>
+                                        <button><_link2.default href='/documentation'>Documentation</_link2.default></button>
+                                    </li>)}
+                                </ul>
+                                {Object.entries(_admin["default"]).length > 0 ? <ul className={"".concat(_AdminModule["default"].adminMenuContainer, " ").concat(_AdminModule["default"].adminMenuContainerCustom, " Admin_MenuContainerCustom")}>
+                                            {Object.entries(_admin["default"]).map(function (m, i) {
+              var _m$, _m$2;
+              return <li>
+                                                        <button onClick={handleSetPage} modif={m[0]}>{(_m$ = m[0]) !== null && _m$ !== void 0 && _m$.slice(1, m[0].length) && ((_m$2 = m[0]) === null || _m$2 === void 0 ? void 0 : _m$2.length) > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0]}</button>
+                                                    </li>;
+            })}
+                                        </ul> : null}
+                            </div>
+                            <div className={"".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")}>
+                                {page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? <div><_BuildAdmin.default {...props} /></div> : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? <div><_StreamAdmin.default {...props} /></div> : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? <div><_PostAdmin.default {...props} /></div> : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? <div><_BillingAdmin.default {...props} /></div> : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? <div><_StorageAdmin.default {...props} /></div> : Object.entries(_admin["default"]).findIndex(function (m) {
+            return m[0] === page;
+          }) > -1 // Leverage Custom Admin Pages
+          ? paintCustomAdmin(Object.entries(_admin["default"]).find(function (m) {
+            return m[0] === page;
+          })) : null : null}
+                            </div>
+                        </div>
+                    </div> : null}
+        </div>;
 };
 var _default = exports["default"] = Module;

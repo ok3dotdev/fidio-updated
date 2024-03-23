@@ -17,7 +17,6 @@ var _Functions = require("../ecommerce/shop/Functions");
 var _uuid = require("uuid");
 var _span, _span2;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -582,17 +581,14 @@ var Module = function Module(props) {
       fileToDataUrl(f, m.input["var"]);
     }
     var useFile = "".concat(m.input["var"] === 'featureImg' && bgImg ? "".concat(props === null || props === void 0 || (_props$cdn = props.cdn) === null || _props$cdn === void 0 ? void 0 : _props$cdn["static"], "/").concat(bgImg) : m.input["var"] === 'leadImg' && leadImg ? "".concat(props === null || props === void 0 || (_props$cdn2 = props.cdn) === null || _props$cdn2 === void 0 ? void 0 : _props$cdn2["static"], "/").concat(leadImg) : 'img/default/greythumb.jpg');
-    return /*#__PURE__*/_react["default"].createElement("img", {
-      style: {
-        backgroundImage: "url(".concat(useFile, ")"),
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '100%',
-        height: '100%'
-      },
-      selectimg: m === null || m === void 0 || (_m$input2 = m.input) === null || _m$input2 === void 0 ? void 0 : _m$input2["var"]
-    });
+    return <img style={{
+      backgroundImage: "url(".concat(useFile, ")"),
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      width: '100%',
+      height: '100%'
+    }} selectimg={m === null || m === void 0 || (_m$input2 = m.input) === null || _m$input2 === void 0 ? void 0 : _m$input2["var"]}></img>;
   };
   var appendFormData = function appendFormData(filesRenamed) {
     var modif = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'lineup';
@@ -624,180 +620,110 @@ var Module = function Module(props) {
   var resolveComponent = function resolveComponent(m) {
     if (m !== null && m !== void 0 && m.component && typeof m.component === 'function') {
       var UseComponent = m.component;
-      return /*#__PURE__*/_react["default"].createElement(UseComponent, _extends({}, props, {
+      return <UseComponent {...Object.assign({}, props, {
         m: m
-      }));
+      })}></UseComponent>;
     }
   };
   var resolveStageItem = function resolveStageItem(useStageItem, useAnimatingBack, useStyles, useAnimatingNext, useKeepCurrent, useStage) {
     var _useStageItem$bg, _useStageItem$color, _useStageItem$input, _useStageItem$input2, _useStageItem$input3, _useStageItem$input4, _useStageItem$input5, _useStageItem$input6, _useStageItem$confirm, _answers$useStage, _useStageItem$pipelin, _useStageItem$confirm2, _useStageItem$confirm3, _useStageItem$confirm4;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SurveyModule["default"][useStyles], " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext && useAnimatingNext ? "".concat(_SurveyModule["default"][useAnimatingNext]) : null, " ").concat(animatingBack && useAnimatingBack ? "".concat(_SurveyModule["default"][useAnimatingBack]) : null, " ").concat(keepCurrent && useKeepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.className, " survey_itemContainer"),
-      style: {
-        background: (_useStageItem$bg = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.bg) !== null && _useStageItem$bg !== void 0 ? _useStageItem$bg : null,
-        color: (_useStageItem$color = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.color) !== null && _useStageItem$color !== void 0 ? _useStageItem$color : null
-      }
-    }, /*#__PURE__*/_react["default"].createElement("h1", {
-      className: "".concat(_SurveyModule["default"].title, " survey_title")
-    }, useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label), (useStageItem === null || useStageItem === void 0 || (_useStageItem$input = useStageItem.input) === null || _useStageItem$input === void 0 ? void 0 : _useStageItem$input.type) === 'select' ? /*#__PURE__*/_react["default"].createElement("ul", {
-      className: _SurveyModule["default"].survey__optionsList
-    }, useStageItem === null || useStageItem === void 0 || (_useStageItem$input2 = useStageItem.input) === null || _useStageItem$input2 === void 0 ? void 0 : _useStageItem$input2.options.map(function (option) {
-      return /*#__PURE__*/_react["default"].createElement("li", {
-        key: option.label
-      }, /*#__PURE__*/_react["default"].createElement("button", {
-        className: _SurveyModule["default"].survey__optionButton,
-        onClick: handleOptionClick,
-        "goto": option["goto"],
-        label: option.label,
-        question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
-        value: option.label
-      }, option.label));
-    })) : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input3 = useStageItem.input) === null || _useStageItem$input3 === void 0 ? void 0 : _useStageItem$input3.type) === 'number' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("input", {
-      type: "number",
-      className: "".concat(_SurveyModule["default"].numberInput),
-      defaultValue: useStageItem === null || useStageItem === void 0 || (_useStageItem$input4 = useStageItem.input) === null || _useStageItem$input4 === void 0 ? void 0 : _useStageItem$input4["default"],
-      ref: inputRef
-    })) : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input5 = useStageItem.input) === null || _useStageItem$input5 === void 0 ? void 0 : _useStageItem$input5.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-      type: "text",
-      className: "".concat(_SurveyModule["default"].textInput),
-      placeholder: useStageItem === null || useStageItem === void 0 || (_useStageItem$input6 = useStageItem.input) === null || _useStageItem$input6 === void 0 ? void 0 : _useStageItem$input6["default"],
-      minRows: 3,
-      ref: inputRef,
-      onKeyDown: handleKeyDown,
-      "goto": useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm = useStageItem.confirm) === null || _useStageItem$confirm === void 0 ? void 0 : _useStageItem$confirm["goto"],
-      question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
-      defaultValue: (_answers$useStage = answers[useStage]) === null || _answers$useStage === void 0 ? void 0 : _answers$useStage.answer
-    })) : useStageItem !== null && useStageItem !== void 0 && useStageItem.component && typeof useStageItem.component === 'function' ? /*#__PURE__*/_react["default"].createElement("div", null, resolveComponent(useStageItem)) : null, useStageItem !== null && useStageItem !== void 0 && (_useStageItem$pipelin = useStageItem.pipeline) !== null && _useStageItem$pipelin !== void 0 && _useStageItem$pipelin.map ? useStageItem.pipeline.map(function (m, i) {
-      var _m$label, _m$input3, _m$input4, _m$input5, _m$input$rows, _m$input6, _m$input7, _m$input8, _m$input9, _m$input10, _m$input11, _m$input12, _pipelineDbItem$detai, _m$input13, _m$input14, _m$input15, _m$input16, _m$input17, _m$input18, _m$input19, _m$input20, _m$input21, _m$input22, _m$input23, _m$input24, _m$input25, _m$input26, _m$height, _m$width, _m$input27;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        key: i,
-        className: "survey_pipelineItemContainer",
-        style: {
+    return <div className={"".concat(_SurveyModule["default"][useStyles], " ").concat(_SurveyModule["default"].item, " ").concat(animatingNext && useAnimatingNext ? "".concat(_SurveyModule["default"][useAnimatingNext]) : null, " ").concat(animatingBack && useAnimatingBack ? "".concat(_SurveyModule["default"][useAnimatingBack]) : null, " ").concat(keepCurrent && useKeepCurrent ? "".concat(_SurveyModule["default"].keepCurrent, " ").concat(_SurveyModule["default"].backToOriginal) : null, " ").concat(useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.className, " survey_itemContainer")} style={{
+      background: (_useStageItem$bg = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.bg) !== null && _useStageItem$bg !== void 0 ? _useStageItem$bg : null,
+      color: (_useStageItem$color = useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.color) !== null && _useStageItem$color !== void 0 ? _useStageItem$color : null
+    }}>
+			<h1 className={"".concat(_SurveyModule["default"].title, " survey_title")}>{useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label}</h1>
+			{(useStageItem === null || useStageItem === void 0 || (_useStageItem$input = useStageItem.input) === null || _useStageItem$input === void 0 ? void 0 : _useStageItem$input.type) === 'select' ? <ul className={_SurveyModule["default"].survey__optionsList}>
+						{useStageItem === null || useStageItem === void 0 || (_useStageItem$input2 = useStageItem.input) === null || _useStageItem$input2 === void 0 ? void 0 : _useStageItem$input2.options.map(function (option) {
+          return <li key={option.label}>
+									<button className={_SurveyModule["default"].survey__optionButton} onClick={handleOptionClick} goto={option["goto"]} label={option.label} question={useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label} value={option.label}>{option.label}</button>
+								</li>;
+        })}
+				</ul> : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input3 = useStageItem.input) === null || _useStageItem$input3 === void 0 ? void 0 : _useStageItem$input3.type) === 'number' ? <div>
+						<input type='number' className={"".concat(_SurveyModule["default"].numberInput)} defaultValue={useStageItem === null || useStageItem === void 0 || (_useStageItem$input4 = useStageItem.input) === null || _useStageItem$input4 === void 0 ? void 0 : _useStageItem$input4["default"]} ref={inputRef}></input>
+					</div> : (useStageItem === null || useStageItem === void 0 || (_useStageItem$input5 = useStageItem.input) === null || _useStageItem$input5 === void 0 ? void 0 : _useStageItem$input5.type) === 'text' ? <div>
+						<_reactTextareaAutosize.default type='text' className={"".concat(_SurveyModule["default"].textInput)} placeholder={useStageItem === null || useStageItem === void 0 || (_useStageItem$input6 = useStageItem.input) === null || _useStageItem$input6 === void 0 ? void 0 : _useStageItem$input6["default"]} minRows={3} ref={inputRef} onKeyDown={handleKeyDown} goto={useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm = useStageItem.confirm) === null || _useStageItem$confirm === void 0 ? void 0 : _useStageItem$confirm["goto"]} question={useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label} defaultValue={(_answers$useStage = answers[useStage]) === null || _answers$useStage === void 0 ? void 0 : _answers$useStage.answer}></_reactTextareaAutosize.default>
+					</div> : useStageItem !== null && useStageItem !== void 0 && useStageItem.component && typeof useStageItem.component === 'function' ? <div>{resolveComponent(useStageItem)}</div> : null}
+			{useStageItem !== null && useStageItem !== void 0 && (_useStageItem$pipelin = useStageItem.pipeline) !== null && _useStageItem$pipelin !== void 0 && _useStageItem$pipelin.map ? useStageItem.pipeline.map(function (m, i) {
+        var _m$label, _m$input3, _m$input4, _m$input5, _m$input$rows, _m$input6, _m$input7, _m$input8, _m$input9, _m$input10, _m$input11, _m$input12, _pipelineDbItem$detai, _m$input13, _m$input14, _m$input15, _m$input16, _m$input17, _m$input18, _m$input19, _m$input20, _m$input21, _m$input22, _m$input23, _m$input24, _m$input25, _m$input26, _m$height, _m$width, _m$input27;
+        return <div key={i} className='survey_pipelineItemContainer' style={{
           marginBottom: '.25rem'
-        }
-      }, /*#__PURE__*/_react["default"].createElement("label", {
-        style: {
-          lineHeight: '1.5rem'
-        }
-      }, (_m$label = m === null || m === void 0 ? void 0 : m.label) !== null && _m$label !== void 0 ? _m$label : ''), /*#__PURE__*/_react["default"].createElement("div", null, (m === null || m === void 0 || (_m$input3 = m.input) === null || _m$input3 === void 0 ? void 0 : _m$input3.type) === 'text' ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-      }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-        type: "text",
-        className: "".concat(_SurveyModule["default"].textInput),
-        placeholder: m === null || m === void 0 || (_m$input4 = m.input) === null || _m$input4 === void 0 ? void 0 : _m$input4["default"],
-        onInput: handleKeyDown,
-        "var": m === null || m === void 0 || (_m$input5 = m.input) === null || _m$input5 === void 0 ? void 0 : _m$input5["var"],
-        pipeline: "true",
-        minRows: (_m$input$rows = m === null || m === void 0 || (_m$input6 = m.input) === null || _m$input6 === void 0 ? void 0 : _m$input6.rows) !== null && _m$input$rows !== void 0 ? _m$input$rows : 1,
-        usedefault: pipelineObject[m === null || m === void 0 || (_m$input7 = m.input) === null || _m$input7 === void 0 ? void 0 : _m$input7["var"]],
-        surveyclear: "true"
-      })) : (m === null || m === void 0 || (_m$input8 = m.input) === null || _m$input8 === void 0 ? void 0 : _m$input8.type) === 'datetime-local' ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-      }, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "datetime-local",
-        placeholder: m === null || m === void 0 || (_m$input9 = m.input) === null || _m$input9 === void 0 ? void 0 : _m$input9["default"],
-        onInput: handleKeyDown,
-        "var": m === null || m === void 0 || (_m$input10 = m.input) === null || _m$input10 === void 0 ? void 0 : _m$input10["var"],
-        pipeline: "true",
-        surveyclear: "true",
-        usedefault: pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]]
-      })) : (m === null || m === void 0 || (_m$input12 = m.input) === null || _m$input12 === void 0 ? void 0 : _m$input12.type) === 'lineup' ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-      }, /*#__PURE__*/_react["default"].createElement(_product.Lineup, _extends({}, props, {
-        product: pipelineDbItem,
-        editing: pipelineDbItem,
-        editingOptionsMeta: (_pipelineDbItem$detai = pipelineDbItem === null || pipelineDbItem === void 0 ? void 0 : pipelineDbItem.detailmeta) !== null && _pipelineDbItem$detai !== void 0 ? _pipelineDbItem$detai : null,
-        setOptionsMetaData: setOptionsMetaData,
-        currentLineupEditing: currentLineupEditing,
-        setCurrentLineupEditing: setCurrentLineupEditing,
-        appendFormData: appendFormData
-      }))) : (m === null || m === void 0 || (_m$input13 = m.input) === null || _m$input13 === void 0 ? void 0 : _m$input13.type) === 'price' ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
-      }, _span || (_span = /*#__PURE__*/_react["default"].createElement("span", null, "$")), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        style: {
-          width: '100%'
-        },
-        onChange: setCurrentPrice,
-        "var": m === null || m === void 0 || (_m$input14 = m.input) === null || _m$input14 === void 0 ? void 0 : _m$input14["var"],
-        pipeline: "true",
-        surveyclear: "true",
-        method: m === null || m === void 0 || (_m$input15 = m.input) === null || _m$input15 === void 0 ? void 0 : _m$input15.method,
-        usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input16 = m.input) === null || _m$input16 === void 0 ? void 0 : _m$input16["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input17 = m.input) === null || _m$input17 === void 0 ? void 0 : _m$input17["var"]] !== null ? _ecommerce.westernMoneyFormat.format(pipelineObject[m === null || m === void 0 || (_m$input18 = m.input) === null || _m$input18 === void 0 ? void 0 : _m$input18["var"]]) : '10.00'
-      }))) : (m === null || m === void 0 || (_m$input19 = m.input) === null || _m$input19 === void 0 ? void 0 : _m$input19.type) === 'quantity' ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")
-      }, _span2 || (_span2 = /*#__PURE__*/_react["default"].createElement("span", null, "Qty")), /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        style: {
-          width: '100%'
-        },
-        onChange: setCurrentQuantity,
-        "var": m === null || m === void 0 || (_m$input20 = m.input) === null || _m$input20 === void 0 ? void 0 : _m$input20["var"],
-        pipeline: "true",
-        surveyclear: "true",
-        method: m === null || m === void 0 || (_m$input21 = m.input) === null || _m$input21 === void 0 ? void 0 : _m$input21.method,
-        usedefault: !(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input22 = m.input) === null || _m$input22 === void 0 ? void 0 : _m$input22["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input23 = m.input) === null || _m$input23 === void 0 ? void 0 : _m$input23["var"]] !== null ? pipelineObject[m === null || m === void 0 || (_m$input24 = m.input) === null || _m$input24 === void 0 ? void 0 : _m$input24["var"]] : '100'
-      }))) : (m === null || m === void 0 || (_m$input25 = m.input) === null || _m$input25 === void 0 ? void 0 : _m$input25.type) === 'image' && ['leadImg', 'featureImg'].indexOf(m === null || m === void 0 || (_m$input26 = m.input) === null || _m$input26 === void 0 ? void 0 : _m$input26["var"]) > -1 ? /*#__PURE__*/_react["default"].createElement("div", {
-        className: "".concat(m === null || m === void 0 ? void 0 : m.className)
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        style: {
-          height: (_m$height = m === null || m === void 0 ? void 0 : m.height) !== null && _m$height !== void 0 ? _m$height : '200px',
-          width: (_m$width = m === null || m === void 0 ? void 0 : m.width) !== null && _m$width !== void 0 ? _m$width : '200px'
-        }
-      }, resolveImg(m)), /*#__PURE__*/_react["default"].createElement("div", {
-        className: "flex gap-p2 ".concat(_SurveyModule["default"].pseudoButton),
-        style: {
-          alignItems: 'center',
-          fontSize: '.8rem',
-          marginTop: '.5rem'
-        },
-        onClick: addTempFile,
-        modif: m === null || m === void 0 || (_m$input27 = m.input) === null || _m$input27 === void 0 ? void 0 : _m$input27["var"]
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "material-icons",
-        style: {
-          alignSelf: 'center'
-        }
-      }, "add"), /*#__PURE__*/_react["default"].createElement("div", null, m === null || m === void 0 ? void 0 : m.note)), /*#__PURE__*/_react["default"].createElement("input", {
-        style: {
-          display: 'none'
-        },
-        type: "file",
-        onChange: handleNewFile,
-        selectmodif: m.input["var"]
-      })) : m !== null && m !== void 0 && m.component ? /*#__PURE__*/_react["default"].createElement("div", null, resolveComponent(m)) : null));
-    }) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "survey_errorContainer"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "error",
-      ref: currentError,
-      style: {
-        opacity: 0
-      }
-    }, errorLog[useStage])), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex survey_confirmBackButtonContainer",
-      style: {
+        }}>
+							<label style={{
+            lineHeight: '1.5rem'
+          }}>{(_m$label = m === null || m === void 0 ? void 0 : m.label) !== null && _m$label !== void 0 ? _m$label : ''}</label>
+							<div>
+								{(m === null || m === void 0 || (_m$input3 = m.input) === null || _m$input3 === void 0 ? void 0 : _m$input3.type) === 'text' ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className)}>
+											<_reactTextareaAutosize.default type='text' className={"".concat(_SurveyModule["default"].textInput)} placeholder={m === null || m === void 0 || (_m$input4 = m.input) === null || _m$input4 === void 0 ? void 0 : _m$input4["default"]} onInput={handleKeyDown} var={m === null || m === void 0 || (_m$input5 = m.input) === null || _m$input5 === void 0 ? void 0 : _m$input5["var"]} pipeline='true' minRows={(_m$input$rows = m === null || m === void 0 || (_m$input6 = m.input) === null || _m$input6 === void 0 ? void 0 : _m$input6.rows) !== null && _m$input$rows !== void 0 ? _m$input$rows : 1} usedefault={pipelineObject[m === null || m === void 0 || (_m$input7 = m.input) === null || _m$input7 === void 0 ? void 0 : _m$input7["var"]]} surveyclear='true'></_reactTextareaAutosize.default>
+										</div> : (m === null || m === void 0 || (_m$input8 = m.input) === null || _m$input8 === void 0 ? void 0 : _m$input8.type) === 'datetime-local' ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className)}>
+											<input type='datetime-local' placeholder={m === null || m === void 0 || (_m$input9 = m.input) === null || _m$input9 === void 0 ? void 0 : _m$input9["default"]} onInput={handleKeyDown} var={m === null || m === void 0 || (_m$input10 = m.input) === null || _m$input10 === void 0 ? void 0 : _m$input10["var"]} pipeline='true' surveyclear='true' usedefault={pipelineObject[m === null || m === void 0 || (_m$input11 = m.input) === null || _m$input11 === void 0 ? void 0 : _m$input11["var"]]} />
+										</div> : (m === null || m === void 0 || (_m$input12 = m.input) === null || _m$input12 === void 0 ? void 0 : _m$input12.type) === 'lineup' ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className)}>
+											<_product.Lineup {...Object.assign({}, props, {
+                product: pipelineDbItem,
+                editing: pipelineDbItem,
+                editingOptionsMeta: (_pipelineDbItem$detai = pipelineDbItem === null || pipelineDbItem === void 0 ? void 0 : pipelineDbItem.detailmeta) !== null && _pipelineDbItem$detai !== void 0 ? _pipelineDbItem$detai : null,
+                setOptionsMetaData: setOptionsMetaData,
+                currentLineupEditing: currentLineupEditing,
+                setCurrentLineupEditing: setCurrentLineupEditing,
+                appendFormData: appendFormData
+              })} />
+										</div> : (m === null || m === void 0 || (_m$input13 = m.input) === null || _m$input13 === void 0 ? void 0 : _m$input13.type) === 'price' ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")}>
+											{_span || (_span = <span>$</span>)}
+											<span>
+												<input type='text' style={{
+                  width: '100%'
+                }} onChange={setCurrentPrice} var={m === null || m === void 0 || (_m$input14 = m.input) === null || _m$input14 === void 0 ? void 0 : _m$input14["var"]} pipeline='true' surveyclear='true' method={m === null || m === void 0 || (_m$input15 = m.input) === null || _m$input15 === void 0 ? void 0 : _m$input15.method} usedefault={!(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input16 = m.input) === null || _m$input16 === void 0 ? void 0 : _m$input16["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input17 = m.input) === null || _m$input17 === void 0 ? void 0 : _m$input17["var"]] !== null ? _ecommerce.westernMoneyFormat.format(pipelineObject[m === null || m === void 0 || (_m$input18 = m.input) === null || _m$input18 === void 0 ? void 0 : _m$input18["var"]]) : '10.00'} />
+											</span>
+										</div> : (m === null || m === void 0 || (_m$input19 = m.input) === null || _m$input19 === void 0 ? void 0 : _m$input19.type) === 'quantity' ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className, " flex gap-p2")}>
+											{_span2 || (_span2 = <span>Qty</span>)}
+											<span>
+												<input type='text' style={{
+                  width: '100%'
+                }} onChange={setCurrentQuantity} var={m === null || m === void 0 || (_m$input20 = m.input) === null || _m$input20 === void 0 ? void 0 : _m$input20["var"]} pipeline='true' surveyclear='true' method={m === null || m === void 0 || (_m$input21 = m.input) === null || _m$input21 === void 0 ? void 0 : _m$input21.method} usedefault={!(0, _util.isObjectEmpty)(pipelineObject) && Object.prototype.hasOwnProperty.call(pipelineObject, [m === null || m === void 0 || (_m$input22 = m.input) === null || _m$input22 === void 0 ? void 0 : _m$input22["var"]]) && pipelineObject[m === null || m === void 0 || (_m$input23 = m.input) === null || _m$input23 === void 0 ? void 0 : _m$input23["var"]] !== null ? pipelineObject[m === null || m === void 0 || (_m$input24 = m.input) === null || _m$input24 === void 0 ? void 0 : _m$input24["var"]] : '100'} />
+											</span>
+										</div> : (m === null || m === void 0 || (_m$input25 = m.input) === null || _m$input25 === void 0 ? void 0 : _m$input25.type) === 'image' && ['leadImg', 'featureImg'].indexOf(m === null || m === void 0 || (_m$input26 = m.input) === null || _m$input26 === void 0 ? void 0 : _m$input26["var"]) > -1 ? <div className={"".concat(m === null || m === void 0 ? void 0 : m.className)}>
+											<div style={{
+                height: (_m$height = m === null || m === void 0 ? void 0 : m.height) !== null && _m$height !== void 0 ? _m$height : '200px',
+                width: (_m$width = m === null || m === void 0 ? void 0 : m.width) !== null && _m$width !== void 0 ? _m$width : '200px'
+              }}>
+												{resolveImg(m)}
+											</div>
+											<div className={"flex gap-p2 ".concat(_SurveyModule["default"].pseudoButton)} style={{
+                alignItems: 'center',
+                fontSize: '.8rem',
+                marginTop: '.5rem'
+              }} onClick={addTempFile} modif={m === null || m === void 0 || (_m$input27 = m.input) === null || _m$input27 === void 0 ? void 0 : _m$input27["var"]}>
+												<div className='material-icons' style={{
+                  alignSelf: 'center'
+                }}>add</div>
+												<div>{m === null || m === void 0 ? void 0 : m.note}</div>
+											</div>
+											<input style={{
+                display: 'none'
+              }} type='file' onChange={handleNewFile} selectmodif={m.input["var"]} />
+										</div> : m !== null && m !== void 0 && m.component ? <div>{resolveComponent(m)}</div> : null}
+							</div>
+						</div>;
+      }) : null}
+			<div className='survey_errorContainer'>
+				<div className='error' ref={currentError} style={{
+          opacity: 0
+        }}>{errorLog[useStage]}</div>
+			</div>
+			<div className='flex survey_confirmBackButtonContainer' style={{
         marginTop: '.5rem',
         justifyContent: 'space-between'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: "".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton"),
-      onClick: handleOptionClickConfirm,
-      "goto": useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm2 = useStageItem.confirm) === null || _useStageItem$confirm2 === void 0 ? void 0 : _useStageItem$confirm2["goto"],
-      label: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
-      value: 'confirm',
-      question: useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label,
-      style: {
-        opacity: useStageItem !== null && useStageItem !== void 0 && useStageItem.confirm ? 1 : 0,
-        transition: 0
-      }
-    }, useStageItem !== null && useStageItem !== void 0 && (_useStageItem$confirm3 = useStageItem.confirm) !== null && _useStageItem$confirm3 !== void 0 && _useStageItem$confirm3.label ? useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.confirm.label : (useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm4 = useStageItem.confirm) === null || _useStageItem$confirm4 === void 0 ? void 0 : _useStageItem$confirm4["goto"]) === 'end' ? 'Confirm' : 'Next'), backList && backList.length > 0 && !(useStageItem !== null && useStageItem !== void 0 && useStageItem.submit) && !submitted ? /*#__PURE__*/_react["default"].createElement("button", {
-      onClick: handleGoBack,
-      className: "".concat(_SurveyModule["default"].backButton, " survey_backButton"),
-      style: {
-        transition: 0
-      }
-    }, "Back") : null));
+      }}>
+				<button className={"".concat(_SurveyModule["default"].confirmButton, " survey_confirmButton")} onClick={handleOptionClickConfirm} goto={useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm2 = useStageItem.confirm) === null || _useStageItem$confirm2 === void 0 ? void 0 : _useStageItem$confirm2["goto"]} label={useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label} value={'confirm'} question={useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.label} style={{
+          opacity: useStageItem !== null && useStageItem !== void 0 && useStageItem.confirm ? 1 : 0,
+          transition: 0
+        }}>
+					{useStageItem !== null && useStageItem !== void 0 && (_useStageItem$confirm3 = useStageItem.confirm) !== null && _useStageItem$confirm3 !== void 0 && _useStageItem$confirm3.label ? useStageItem === null || useStageItem === void 0 ? void 0 : useStageItem.confirm.label : (useStageItem === null || useStageItem === void 0 || (_useStageItem$confirm4 = useStageItem.confirm) === null || _useStageItem$confirm4 === void 0 ? void 0 : _useStageItem$confirm4["goto"]) === 'end' ? 'Confirm' : 'Next'}
+				</button>
+				{backList && backList.length > 0 && !(useStageItem !== null && useStageItem !== void 0 && useStageItem.submit) && !submitted ? <button onClick={handleGoBack} className={"".concat(_SurveyModule["default"].backButton, " survey_backButton")} style={{
+          transition: 0
+        }}>Back</button> : null}
+			</div>
+		</div>;
   };
   var bgImg = pipelineDbItem !== null && pipelineDbItem !== void 0 && pipelineDbItem.images ? pipelineDbItem.images.find(function (m) {
     return m === null || m === void 0 ? void 0 : m.bgImg;
@@ -807,11 +733,12 @@ var Module = function Module(props) {
   }) : null;
   console.log(currentStage, answers, backList, next, submitted, props, currentStageItem);
   console.log('Pipeline Object', pipelineObject, pipelineDbItem, back, next);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: _SurveyModule["default"].survey__container,
-    style: {
-      height: props !== null && props !== void 0 && props.height ? "".concat(props.height, "px") : '100vh'
-    }
-  }, back ? resolveStageItem(backStageItem, 'animatingBackBack', 'backItem', null, null, back) : null, resolveStageItem(currentStageItem, 'animatingBackCurrent', 'currentItem', 'animatingNextCurrent', true, currentStage), next ? resolveStageItem(nextStageItem, null, 'nextItem', 'animatingNextNext', null, next) : null);
+  return <div className={_SurveyModule["default"].survey__container} style={{
+    height: props !== null && props !== void 0 && props.height ? "".concat(props.height, "px") : '100vh'
+  }}>
+			{back ? resolveStageItem(backStageItem, 'animatingBackBack', 'backItem', null, null, back) : null}
+			{resolveStageItem(currentStageItem, 'animatingBackCurrent', 'currentItem', 'animatingNextCurrent', true, currentStage)}
+			{next ? resolveStageItem(nextStageItem, null, 'nextItem', 'animatingNextNext', null, next) : null}
+		</div>;
 };
 var _default = exports["default"] = Module;

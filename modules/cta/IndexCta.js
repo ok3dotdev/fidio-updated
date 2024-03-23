@@ -9,7 +9,6 @@ var _utility = require("../utility/utility");
 var _wideFeature = require("../search/wideFeature");
 var _span;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   var AfterSignIn = _react["default"].useRef();
   var Lead2 = _react["default"].useRef();
@@ -33,42 +32,31 @@ var Module = function Module(props) {
       // fail silently
     }
   }, [props._loggedIn]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_ExternalContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_Container"
-  }, props.definition ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_LeadContainer ".concat(props.className)
-  }, props.ctaTopVideos ? /*#__PURE__*/_react["default"].createElement(_wideFeature.WideFeature, _extends({
-    image1: props.ctaTopVideos.image1
-  }, props)) : '', /*#__PURE__*/_react["default"].createElement("img", {
-    src: props.definition.logo,
-    className: "IndexCta_MyLogo"
-  }), /*#__PURE__*/_react["default"].createElement("h1", {
-    className: "IndexCta_Lead1_5 pointer IndexCta_Lead_First"
-  }, (0, _utility.normalizeText)(props.definition.lead)), /*#__PURE__*/_react["default"].createElement("h1", {
-    className: "IndexCta_Lead2 pointer IndexCta_Lead_Second",
-    ref: Lead2
-  }, (0, _utility.normalizeText)(props.definition.lead2), " ", _span || (_span = /*#__PURE__*/_react["default"].createElement("span", {
-    className: "IndexCta_RecordingCircle"
-  }))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_Description"
-  }, props.definition.description), props.children, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_AfterSignIn",
-    ref: AfterSignIn
-  }, props.definition.afterSignIn) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: 'flex',
-      gap: '.5rem',
-      alignItems: 'center'
-    }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "IndexCta_ButtonStyle ButtonGlowing",
-    ref: ButtonAction
-  }, props.definition.buttonAfterSignIn))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_DetailContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_Detail"
-  }, props.definition.detail))) : null));
+  return <div className='IndexCta_ExternalContainer'>
+            <div className='IndexCta_Container'>
+                {props.definition ? <_react.default.Fragment>
+                        <div className={"IndexCta_LeadContainer ".concat(props.className)}>
+                            {props.ctaTopVideos ? <_wideFeature.WideFeature {...Object.assign({
+            image1: props.ctaTopVideos.image1
+          }, props)} /> : ''}
+                            <img src={props.definition.logo} className='IndexCta_MyLogo' />
+                            <h1 className='IndexCta_Lead1_5 pointer IndexCta_Lead_First'>{(0, _utility.normalizeText)(props.definition.lead)}</h1>
+                            <h1 className='IndexCta_Lead2 pointer IndexCta_Lead_Second' ref={Lead2}>{(0, _utility.normalizeText)(props.definition.lead2)} {_span || (_span = <span className='IndexCta_RecordingCircle'></span>)}</h1>
+                            <div className='IndexCta_Description'>{props.definition.description}</div>
+                            {props.children}
+                            {!props._loggedIn ? <div className='IndexCta_AfterSignIn' ref={AfterSignIn}>{props.definition.afterSignIn}</div> : <div style={{
+            display: 'flex',
+            gap: '.5rem',
+            alignItems: 'center'
+          }}>
+                                        <button className='IndexCta_ButtonStyle ButtonGlowing' ref={ButtonAction}>{props.definition.buttonAfterSignIn}</button>
+                                    </div>}
+                        </div>
+                        <div className='IndexCta_DetailContainer'>
+                            <div className='IndexCta_Detail'>{props.definition.detail}</div>
+                        </div>
+                    </_react.default.Fragment> : null}
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;

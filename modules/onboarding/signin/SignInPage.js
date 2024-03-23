@@ -9,32 +9,31 @@ var _index = require("./index");
 var _cta = require("../../cta");
 var _div;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Module = function Module(props) {
   console.log(props);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "",
-    style: {
+  return <div className={"".concat(props.className)}>
+            <div className='' style={{
       background: "url(".concat(props.backgroundUrl, ")")
-    }
-  }, props.children, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex sign-in-page-container"
-  }, props.imageSplash && props.imageSplash.url ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "SignIn_ImageSplashContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "SignIn_ImageSplash",
-    style: {
-      background: "url(".concat(props.imageSplash.url, ") no-repeat center center / cover")
-    }
-  })) : _div || (_div = /*#__PURE__*/_react["default"].createElement("div", {
-    className: "SignIn_ImageSplashContainer"
-  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_cta.IndexCta, _extends({}, props, {
-    marginTop: '7rem',
-    definition: props.OnboardCta,
-    children: /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)),
-    ctaTopVideos: props.ctaTopVideos
-  }))))));
+    }}>
+                {props.children}
+                <div className='flex sign-in-page-container'>
+                    {props.imageSplash && props.imageSplash.url ? <div className='SignIn_ImageSplashContainer'>
+                            <div className='SignIn_ImageSplash' style={{
+            background: "url(".concat(props.imageSplash.url, ") no-repeat center center / cover")
+          }}>
+
+                            </div>
+                        </div> : _div || (_div = <div className='SignIn_ImageSplashContainer'></div>)}
+                    <div>
+                        <_cta.IndexCta {...Object.assign({}, props, {
+            marginTop: '7rem',
+            definition: props.OnboardCta,
+            children: <div><_index.SignIn {...props} /><_index.Username {...props} /></div>,
+            ctaTopVideos: props.ctaTopVideos
+          })}></_cta.IndexCta>
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 var _default = exports["default"] = Module;
