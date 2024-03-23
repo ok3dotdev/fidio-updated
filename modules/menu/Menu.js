@@ -5,7 +5,7 @@ import menuStyle from './Menu.module.scss';
 import Link from 'next/link';
 import { checkSignedInAndPrompt, logout } from '/modules/utility/onboarding/SignIn.js';
 import { addToCart, calculateTotal, performPurchase, updateCart } from '/modules/utility/ecommerce/ecommerce.js';
-import { Cart } from '../ecommerce/cart/';
+import { CartInternal } from '../ecommerce/cart/';
 import { Notifications } from '../notifications';
 import { Help } from '../help/index.js';
 import Tooltip from '@mui/material/Tooltip';
@@ -223,7 +223,7 @@ const Module = props => {
                             </ul>
                         </div>
                         <Help {...props} open={helpOpen} setHelpOpen={setHelpOpen}></Help>
-                        <Cart {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
+                        <CartInternal {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
                         <Notifications {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
                         <SurveyContainer {...props} handleName='feedback' survey={props?.feedbackConfig?.surveyData} />
                         <SurveyContainer {...props} handleName='bugReport' survey={props?.feedbackConfig?.bugReportData} />

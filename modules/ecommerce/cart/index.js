@@ -1,4 +1,4 @@
-import Cart from './Cart';
+import CartInternal from './CartInternal';
 import CartCc from './CartCc';
 import CartDisclaimer from './CartDisclaimer';
 import CartItems from './CartItems';
@@ -7,4 +7,4 @@ import ItemsRemaining from './ItemsRemaining';
 import ItemsTotal from './ItemsTotal';
 import PurchaseButton from './PurchaseButton';
 import CartMessages from './CartMessages';
-export { Cart, CartCc, CartDisclaimer, CartItems, CartMessages, CartTotal, ItemsRemaining, ItemsTotal, PurchaseButton };
+export { CartInternal, CartCc, CartDisclaimer, CartItems, CartMessages, CartTotal, ItemsRemaining, ItemsTotal, PurchaseButton };
