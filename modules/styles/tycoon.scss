@@ -1057,3 +1057,16 @@ button:not(:disabled):active {
 .documentationObject td {
     padding: .5rem 1rem;
 }
+
+.Documentation_Container code {
+    font-size: .85rem !important;
+}
+
+code[class*=language-], pre[class*=language-] {
+    white-space: pre-wrap !important;
+    line-height: 1rem !important;
+}
+
+:not(pre)>code[class*=language-], pre[class*=language-] {
+    background: #0e0e0e !important;
+}

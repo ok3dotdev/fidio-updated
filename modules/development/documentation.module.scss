@@ -4,6 +4,16 @@
     }
 }
 
+.codeContainer {
+    max-width: 100%;
+    .quadrant2 {
+        max-width: 100%;
+        pre {
+            margin: 0;
+        }
+    }
+}
+
 .menuContainer {
     display: flex;
     padding: 0 .5rem;
