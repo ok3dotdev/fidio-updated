@@ -1,45 +1,39 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _link = _interopRequireDefault(require("next/link"));
-var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
-var Module = function Module(props) {
-  var _props$_loggedIn$user, _props$_loggedIn, _props$_loggedIn2, _props$_loggedIn$user2, _props$_loggedIn3, _props$_loggedIn4, _props$_adminAuth, _props$_adminAuth2;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].adminBannerContainer, " Admin_BannerContainer"),
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Link from 'next/link';
+import AdminStyles from './Admin.module.scss';
+const Module = props => {
+  return /*#__PURE__*/_jsx("div", {
+    className: `${AdminStyles.adminBannerContainer} Admin_BannerContainer`,
     style: {
       fontSize: '.85rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].adminBannerInternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${AdminStyles.adminBannerInternalContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       textWrap: 'nowrap'
     }
-  }, "Welcome ", /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "/p?u=".concat((_props$_loggedIn$user = props === null || props === void 0 || (_props$_loggedIn = props._loggedIn) === null || _props$_loggedIn === void 0 ? void 0 : _props$_loggedIn.username) !== null && _props$_loggedIn$user !== void 0 ? _props$_loggedIn$user : props === null || props === void 0 || (_props$_loggedIn2 = props._loggedIn) === null || _props$_loggedIn2 === void 0 ? void 0 : _props$_loggedIn2.identifier),
+  }, void 0, "Welcome ", /*#__PURE__*/_jsx(Link, {
+    href: `/p?u=${props?._loggedIn?.username ?? props?._loggedIn?.identifier}`,
     style: {
       fontWeight: '600'
     }
-  }, (_props$_loggedIn$user2 = props === null || props === void 0 || (_props$_loggedIn3 = props._loggedIn) === null || _props$_loggedIn3 === void 0 ? void 0 : _props$_loggedIn3.username) !== null && _props$_loggedIn$user2 !== void 0 ? _props$_loggedIn$user2 : props === null || props === void 0 || (_props$_loggedIn4 = props._loggedIn) === null || _props$_loggedIn4 === void 0 ? void 0 : _props$_loggedIn4.identifier))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props?._loggedIn?.username ?? props?._loggedIn?.identifier))), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p5",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Link, {
     href: "/",
     style: {
       fontWeight: '600'
     }
-  }, props.domainUrl), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props.domainUrl), /*#__PURE__*/_jsx("div", {
     style: {
       textWrap: 'nowrap'
     }
-  }, props !== null && props !== void 0 && (_props$_adminAuth = props._adminAuth) !== null && _props$_adminAuth !== void 0 && (_props$_adminAuth = _props$_adminAuth.adminc) !== null && _props$_adminAuth !== void 0 && _props$_adminAuth.access ? "(admin access: ".concat(props === null || props === void 0 || (_props$_adminAuth2 = props._adminAuth) === null || _props$_adminAuth2 === void 0 || (_props$_adminAuth2 = _props$_adminAuth2.adminc) === null || _props$_adminAuth2 === void 0 ? void 0 : _props$_adminAuth2.access, ")") : ''))));
+  }, void 0, props?._adminAuth?.adminc?.access ? `(admin access: ${props?._adminAuth?.adminc?.access})` : ''))));
 };
-var _default = exports["default"] = Module;
+export default Module;

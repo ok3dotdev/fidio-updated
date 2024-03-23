@@ -1,92 +1,47 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _router = require("next/router.js");
-var _SignIn = require("../../utility/onboarding/SignIn.js");
-var registerUsername = function registerUsername(props) {
-  var _props$prompt, _props$confirm;
-  var router = (0, _router.useRouter)();
-  var query = router.query,
-    asPath = router.asPath;
-  var proposed = _react["default"].useRef();
-  var _React$useState = _react["default"].useState(null),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    pageError = _React$useState2[0],
-    setPageError = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(true),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    registerUsernameOn = _React$useState4[0],
-    setRegisterUsernameOn = _React$useState4[1];
-  var handleSaveUsername = /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e) {
-      var data, res;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            if (!(proposed && proposed.current && proposed.current.value)) {
-              _context.next = 24;
-              break;
-            }
-            data = {
-              proposedUsername: proposed.current.value
-            };
-            _context.next = 4;
-            return (0, _SignIn.grabUsername)(props.apiUrl, props.domainKey, data, _SignIn.checkSignedIn, props._setLoggedIn);
-          case 4:
-            res = _context.sent;
-            if (!res) {
-              _context.next = 23;
-              break;
-            }
-            if (!(res == "disauthenticated")) {
-              _context.next = 12;
-              break;
-            }
-            setLoggedIn(false);
-            setRegisterUsernameOn(false);
-            setPageError(null);
-            _context.next = 21;
-            break;
-          case 12:
-            if (!(res == "username taken")) {
-              _context.next = 17;
-              break;
-            }
-            setPageError("Sorry, that username is already taken. Please try another one or contact admin@minipost.app");
-            return _context.abrupt("return");
-          case 17:
-            setRegisterUsernameOn(false);
-            setPageError(null);
-            if (props.redirectOnAuth && asPath !== props.redirectOnAuth) {
-              router.push(props.redirectOnAuth);
-            }
-            if (props.setRegistered) {
-              props.setRegistered(true);
-            }
-          case 21:
-            _context.next = 24;
-            break;
-          case 23:
-            setPageError("Sorry, that username is already taken. Please try another one or contact admin@minipost.app");
-          case 24:
-          case "end":
-            return _context.stop();
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { useRouter } from 'next/router.js';
+import { checkSignedIn, grabUsername } from '../../utility/onboarding/SignIn.js';
+const registerUsername = props => {
+  const router = useRouter();
+  const {
+    query,
+    asPath
+  } = router;
+  let proposed = React.useRef();
+  let [pageError, setPageError] = React.useState(null);
+  let [registerUsernameOn, setRegisterUsernameOn] = React.useState(true);
+  const handleSaveUsername = async e => {
+    if (proposed && proposed.current && proposed.current.value) {
+      const data = {
+        proposedUsername: proposed.current.value
+      };
+      let res = await grabUsername(props.apiUrl, props.domainKey, data, checkSignedIn, props._setLoggedIn);
+      if (res) {
+        if (res == "disauthenticated") {
+          setLoggedIn(false);
+          setRegisterUsernameOn(false);
+          setPageError(null);
+        } else if (res == "username taken") {
+          setPageError("Sorry, that username is already taken. Please try another one or contact admin@minipost.app");
+          return;
+        } else {
+          setRegisterUsernameOn(false);
+          setPageError(null);
+          if (props.redirectOnAuth && asPath !== props.redirectOnAuth) {
+            router.push(props.redirectOnAuth);
+          }
+          if (props.setRegistered) {
+            props.setRegistered(true);
+          }
         }
-      }, _callee);
-    }));
-    return function handleSaveUsername(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  _react["default"].useEffect(function () {
+      } else {
+        setPageError("Sorry, that username is already taken. Please try another one or contact admin@minipost.app");
+      }
+    }
+  };
+  React.useEffect(() => {
     if (props._loggedIn) {
       if (!props._loggedIn.username && !registerUsernameOn) {
         setRegisterUsernameOn(true);
@@ -97,38 +52,33 @@ var registerUsername = function registerUsername(props) {
       setRegisterUsernameOn(false);
     }
   }, [props._loggedIn, registerUsernameOn]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
-  }, props._loggedIn && !props._loggedIn.username && registerUsernameOn ? /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className}`
+  }, void 0, props._loggedIn && !props._loggedIn.username && registerUsernameOn ? /*#__PURE__*/_jsx("div", {
     className: "Username_Container Username_ContainerBg"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "Username_ItemsContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "Username_PromptContainer"
-  }, /*#__PURE__*/_react["default"].createElement("h4", {
+  }, void 0, /*#__PURE__*/_jsx("h4", {
     style: {
       margin: 0
     }
-  }, (_props$prompt = props.prompt) !== null && _props$prompt !== void 0 ? _props$prompt : 'What username do you want?'), /*#__PURE__*/_react["default"].createElement("span", {
+  }, void 0, props.prompt ?? 'What username do you want?'), /*#__PURE__*/_jsx("span", {
     style: {
       margin: 0 + " auto"
     }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    ref: proposed,
-    type: "text",
-    placeholder: "Username",
-    className: "simpleTextInput"
-  }), /*#__PURE__*/_react["default"].createElement("button", {
-    onClick: function onClick(e) {
+  }, void 0, <input ref={proposed} type="text" placeholder="Username" className='simpleTextInput' />, /*#__PURE__*/_jsx("button", {
+    onClick: e => {
       handleSaveUsername(e);
     },
     style: {
       borderRadius: '0'
     }
-  }, (_props$confirm = props.confirm) !== null && _props$confirm !== void 0 ? _props$confirm : 'Give me that one!'))), pageError ? /*#__PURE__*/_react["default"].createElement("p", {
+  }, void 0, props.confirm ?? 'Give me that one!'))), pageError ? /*#__PURE__*/_jsx("p", {
     style: {
       marginTop: '.5rem'
     }
-  }, pageError) : null)) : null);
+  }, void 0, pageError) : null)) : null);
 };
-var _default = exports["default"] = registerUsername;
+export default registerUsername;

@@ -1,42 +1,18 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
-var _InternalModule = _interopRequireDefault(require("./Internal.module.scss"));
-var Module = function Module(props) {
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    fetchBusy = _React$useState2[0],
-    setFetchBusy = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState({}),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    currentSelected = _React$useState4[0],
-    setCurrentSelected = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState([]),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    paymentIssues = _React$useState6[0],
-    setPaymentIssues = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState([]),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    helpIssues = _React$useState8[0],
-    setHelpIssues = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState([]),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    settingsIssues = _React$useState10[0],
-    setSettingsIssues = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState([]),
-    _React$useState12 = (0, _slicedToArray2["default"])(_React$useState11, 2),
-    allIssues = _React$useState12[0],
-    setAllIssues = _React$useState12[1];
-  _react["default"].useEffect(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Tooltip from '@mui/material/Tooltip';
+import InternalStyles from './Internal.module.scss';
+const Module = props => {
+  const [fetchBusy, setFetchBusy] = React.useState(false);
+  const [currentSelected, setCurrentSelected] = React.useState({});
+  const [paymentIssues, setPaymentIssues] = React.useState([]);
+  const [helpIssues, setHelpIssues] = React.useState([]);
+  const [settingsIssues, setSettingsIssues] = React.useState([]);
+  const [allIssues, setAllIssues] = React.useState([]);
+  React.useEffect(() => {
     if (props.paymentConfig) {
-      var issues = [];
+      let issues = [];
       if (props.paymentConfig.keys) {
         if (!props.paymentConfig.keys.stripe) {
           issues.push({
@@ -58,10 +34,10 @@ var Module = function Module(props) {
         s: 'In order for the payment processor to function properly you must add Payment Configurations to resolveVariables as paymentConfig {Object}'
       }]);
     }
-  }, [props === null || props === void 0 ? void 0 : props.paymentConfig]);
-  _react["default"].useEffect(function () {
+  }, [props?.paymentConfig]);
+  React.useEffect(() => {
     if (props.helpIndex) {
-      var issues = [];
+      let issues = [];
       if (!Array.isArray(props.helpIndex)) {
         issues.push({
           m: 'The Help Index is not of an Array type. Please ensure that it is of an array type.',
@@ -75,10 +51,10 @@ var Module = function Module(props) {
         s: 'In order for leverage quick FAQ capabilities for your business you must add Help Index to resolveVariables as helpIndex [ ...{Object} ]'
       }]);
     }
-  }, [props === null || props === void 0 ? void 0 : props.helpIndex]);
-  _react["default"].useEffect(function () {
+  }, [props?.helpIndex]);
+  React.useEffect(() => {
     if (props.settingsConfig) {
-      var issues = [];
+      let issues = [];
       if (!props.settingsConfig.tabs) {
         issues.push({
           m: 'The Settings Config does not have a tabs property. Please ensure that it has a tabs property under settingsConfig.tabs of type Array[ ...{Object} ]. Each tab must have an items Array[ ...{Object} ]. It may have an label {String} and avatar {Boolean}',
@@ -90,13 +66,10 @@ var Module = function Module(props) {
           s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object} and then create an array at settingsConfig.tabs Array[ ...{Object} ]'
         });
       } else {
-        var badItem = props.settingsConfig.tabs.findIndex(function (m) {
-          var _m$items;
-          return (_m$items = !m.items) !== null && _m$items !== void 0 ? _m$items : false;
-        });
+        const badItem = props.settingsConfig.tabs.findIndex(m => !m.items ?? false);
         if (badItem > -1) {
           issues.push({
-            m: "A tab in the settingsConfig.tabs array does not have an appropriate config. Please ensure that the tab ".concat(badItem, " has a property of type Array[ ...{Object} ]."),
+            m: `A tab in the settingsConfig.tabs array does not have an appropriate config. Please ensure that the tab ${badItem} has a property of type Array[ ...{Object} ].`,
             s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object} and then create an array at settingsConfig.tabs Array[ ...{Object} ]'
           });
         }
@@ -108,10 +81,10 @@ var Module = function Module(props) {
         s: 'In order for users to access the settings page for your business you must add Settings Config to resolveVariables as settingsConfig {Object}'
       }]);
     }
-  }, [props === null || props === void 0 ? void 0 : props.settingsConfig]);
-  _react["default"].useEffect(function () {
+  }, [props?.settingsConfig]);
+  React.useEffect(() => {
     if (props.menuConfig) {
-      var issues = [];
+      let issues = [];
       if (!Object.prototype.hasOwnProperty.call(props.menuConfig, 'height')) {
         issues.push({
           m: 'The Menu Config does not have a height property. Setting a height property on your Menu Config will ensure that all floating and static elements load at the correct height such that they do not block the users interaction height {Number}',
@@ -137,26 +110,24 @@ var Module = function Module(props) {
         s: 'The internal menu allows for the users to easily navigate the platform using proprietary modules. You must add the Menu Config to resolveVariables as menuConfig {Object}'
       }]);
     }
-  }, [props === null || props === void 0 ? void 0 : props.menuConfig]);
-  _react["default"].useEffect(function () {
+  }, [props?.menuConfig]);
+  React.useEffect(() => {
     setAllIssues([].concat(paymentIssues, settingsIssues, helpIssues));
   }, [paymentIssues, settingsIssues, helpIssues]);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props !== null && props !== void 0 && props.dev && allIssues.length > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devContainer, " ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devInternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, props?.dev && allIssues.length > 0 ? /*#__PURE__*/_jsx("div", {
+    className: `${InternalStyles.devContainer} ${props.className}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${InternalStyles.devInternalContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       marginBottom: '.5rem',
       fontSize: '.85rem'
     }
-  }, "Developer"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_InternalModule["default"].devLogContainer)
-  }, allIssues.map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
-      title: m.s,
-      placement: "right"
-    }, /*#__PURE__*/_react["default"].createElement("div", null, "* ", m.m)));
-  })))) : null);
+  }, void 0, "Developer"), /*#__PURE__*/_jsx("div", {
+    className: `${InternalStyles.devLogContainer}`
+  }, void 0, allIssues.map(m => /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
+    title: m.s,
+    placement: "right"
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, "* ", m.m))))))) : null);
 };
-var _default = exports["default"] = Module;
+export default Module;

@@ -1,13 +1,2 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "IndexCta", {
-  enumerable: true,
-  get: function get() {
-    return _IndexCta["default"];
-  }
-});
-var _IndexCta = _interopRequireDefault(require("./IndexCta"));
+import IndexCta from './IndexCta';
+export { IndexCta };

@@ -1,112 +1,105 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _ecommerce = require("/modules/utility/ecommerce/ecommerce.js");
-var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
-var Module = function Module(props) {
-  var _props$cart, _props$cart2, _props$useCartOfCurre;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, !(props !== null && props !== void 0 && props.cart) || props !== null && props !== void 0 && props.cart && !(props !== null && props !== void 0 && (_props$cart = props.cart) !== null && _props$cart !== void 0 && _props$cart.items) || props !== null && props !== void 0 && (_props$cart2 = props.cart) !== null && _props$cart2 !== void 0 && _props$cart2.items && props.cart.items.length === 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+var _div, _span;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { resolveCurrentStyle, resolveCurrentOption, resolveMoneyFormat, resolveRegionBasedPrice, resolveImg } from '/modules/utility/ecommerce/ecommerce.js';
+import Inventory from '@mui/icons-material/Inventory';
+const Module = props => {
+  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, !props?.cart || props?.cart && !props?.cart?.items || props?.cart?.items && props.cart.items.length === 0 ? _div || (_div = /*#__PURE__*/_jsx("div", {
     className: "Ecommerce_Prompt"
-  }, "Your cart is empty.") : /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, "Your cart is empty.")) : /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p3",
     style: {
       flexDirection: 'column',
       marginTop: '.3rem',
       marginBottom: '.3rem'
     }
-  }, props !== null && props !== void 0 && (_props$useCartOfCurre = props.useCartOfCurrency) !== null && _props$useCartOfCurre !== void 0 && (_props$useCartOfCurre = _props$useCartOfCurre.items) !== null && _props$useCartOfCurre !== void 0 && _props$useCartOfCurre.map ? props.useCartOfCurrency.items.map(function (item, i) {
-    var _item$product, _props$cdn;
-    var current = (0, _ecommerce.resolveCurrentStyle)(item.product, item.style);
-    var currentOption = (0, _ecommerce.resolveCurrentOption)(current, item.option);
-    var priceObject = (0, _ecommerce.resolveRegionBasedPrice)(props, current);
-    var price = priceObject.price;
-    var symbol = priceObject.symbol;
-    var useImage = item !== null && item !== void 0 && (_item$product = item.product) !== null && _item$product !== void 0 && _item$product.images && item.product.images[0] && item.product.images[0].name ? item.product.images[0].name : null;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "gap-p2 Ecommerce_Item_Container",
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props?.useCartOfCurrency?.items?.map ? props.useCartOfCurrency.items.map((item, i) => {
+    const current = resolveCurrentStyle(item.product, item.style);
+    const currentOption = resolveCurrentOption(current, item.option);
+    const priceObject = resolveRegionBasedPrice(props, current);
+    const price = priceObject.price;
+    const symbol = priceObject.symbol;
+    const useImage = item?.product?.images && item.product.images[0] && item.product.images[0].name ? item.product.images[0].name : null;
+    return /*#__PURE__*/_jsx("div", {
+      className: "gap-p2 Ecommerce_Item_Container"
+    }, i, /*#__PURE__*/_jsx("div", {
       style: {
         display: 'flex',
         gap: '.5rem'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Ecommerce_Item_Image_Container",
+    }, void 0, /*#__PURE__*/_jsx("div", {
+      className: `Ecommerce_Item_Image_Container`,
       style: {
-        backgroundImage: useImage && props !== null && props !== void 0 && (_props$cdn = props.cdn) !== null && _props$cdn !== void 0 && _props$cdn["static"] ? "url(".concat(props.cdn["static"], "/").concat(useImage, ")") : null
+        backgroundImage: useImage && props?.cdn?.static ? `url(${props.cdn.static}/${useImage})` : null
       }
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      src: (0, _ecommerce.resolveImg)(props.editing, props.cdn),
+    }, void 0, /*#__PURE__*/_jsx("img", {
+      src: resolveImg(props.editing, props.cdn),
       className: "Product_img",
       style: {
         width: '45px',
         opacity: useImage ? 0 : 1
       }
-    })), /*#__PURE__*/_react["default"].createElement("div", {
+    })), /*#__PURE__*/_jsx("div", {
       style: {
         width: '100%'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {
       className: "flex gap-p2 Ecommerce_Cart_Title_Main_Container"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Title"
-    }, item.product.name), /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, item.product.name), /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Cart_Price_Container"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Price"
-    }, symbol, (0, _ecommerce.resolveMoneyFormat)(price)))), /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, symbol, resolveMoneyFormat(price)))), /*#__PURE__*/_jsx("div", {
       className: "flex",
       style: {
         justifyContent: 'space-between'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("span", {
+    }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("span", {
       className: "flex",
       style: {
         fontSize: '.7rem',
         color: 'grey'
       }
-    }, /*#__PURE__*/_react["default"].createElement("div", null, current && current.style ? current.style : ''), /*#__PURE__*/_react["default"].createElement("span", null, "\xA0~\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, currentOption && currentOption.option ? "".concat(currentOption.option) : '')), /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, current && current.style ? current.style : ''), _span || (_span = /*#__PURE__*/_jsx("span", {}, void 0, "\xA0~\xA0")), /*#__PURE__*/_jsx("div", {}, void 0, currentOption && currentOption.option ? `${currentOption.option}` : '')), /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Cart_Quantity_Container"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {
       style: {
         display: 'flex',
         alignSelf: 'center'
       }
-    }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], {
+    }, void 0, /*#__PURE__*/_jsx(Inventory, {
       sx: {
         width: '.85rem',
         height: '.9rem',
         marginRight: '.25rem'
       }
-    })), /*#__PURE__*/_react["default"].createElement("input", {
+    })), /*#__PURE__*/_jsx("input", {
       type: "number",
       value: item.quantity,
       style: {
         height: '1.125rem',
         maxWidth: '3rem'
       },
-      onChange: props === null || props === void 0 ? void 0 : props.handleUpdateQuantity,
+      onChange: props?.handleUpdateQuantity,
       styleId: item.style,
       optionId: item.option,
       productId: item.product.id,
       quantity: item.quantity
-    }))), /*#__PURE__*/_react["default"].createElement("div", {
+    }))), /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Cart_Side_Meta_Container"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, /*#__PURE__*/_jsx("div", {
       style: {
         color: 'grey',
         fontSize: '.7rem',
         height: '17px',
         textAlign: 'right'
       }
-    }, "Subtotal:"), /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, "Subtotal:"), /*#__PURE__*/_jsx("div", {
       className: "Ecommerce_Price"
-    }, symbol, (0, _ecommerce.resolveMoneyFormat)(item.quantity * price)))))));
+    }, void 0, symbol, resolveMoneyFormat(item.quantity * price)))))));
   }) : null)));
 };
-var _default = exports["default"] = Module;
+export default Module;

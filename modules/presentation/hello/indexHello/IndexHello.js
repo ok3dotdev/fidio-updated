@@ -1,72 +1,41 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _router = require("next/router");
-var _reactSlick = _interopRequireDefault(require("react-slick"));
-var _PresentationModule = _interopRequireDefault(require("../../Presentation.module.scss"));
-var _uuid = require("uuid");
-var _utility = require("../../../utility/utility");
-var _image = _interopRequireDefault(require("next/image"));
-var _link = _interopRequireDefault(require("next/link"));
-var _fetch = require("../../../utility/fetch");
-var _utility2 = require("../../utility");
-var _date = require("../../../utility/utility/date");
-var _iconsMaterial = require("@mui/icons-material");
-var moduleName = 'IndexHello';
-var RESET_CTA_TIMER = 180000;
-var Module = function Module(props) {
-  var _props$request;
-  var router = (0, _router.useRouter)();
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentId = _React$useState4[0],
-    setComponentId = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(null),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    useCountdown = _React$useState6[0],
-    setUseCountdown = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(0),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    currentSlide = _React$useState8[0],
-    setCurrentSlide = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState(false),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    ctaClickedOnce = _React$useState10[0],
-    setCtaClickedOnce = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState(false),
-    _React$useState12 = (0, _slicedToArray2["default"])(_React$useState11, 2),
-    useHandler = _React$useState12[0],
-    setUseHandler = _React$useState12[1];
-  var _React$useState13 = _react["default"].useState(null),
-    _React$useState14 = (0, _slicedToArray2["default"])(_React$useState13, 2),
-    resolvedUseItems = _React$useState14[0],
-    setResolvedUseItems = _React$useState14[1];
-  var ctaRef = _react["default"].useRef();
-  var currentSlider = _react["default"].useRef();
-  var sliderTrackRef = _react["default"].useRef();
+var _span;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { useRouter } from 'next/router';
+import Slider from 'react-slick';
+import Styles from '../../Presentation.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { fireGlobalEvent, getTimeRemaining } from '../../../utility/utility';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FetchHandler } from '../../../utility/fetch';
+import { normalizeData, resolveMainLink, datePassed, resolveGoodDate, handleSliderLinkClick, handleSliderLinkClickDown, handleSliderLinkClickUp } from '../../utility';
+import { retrieveDay, retrieveMonth } from '../../../utility/utility/date';
+import { ConfirmationNumber } from '@mui/icons-material';
+const moduleName = 'IndexHello';
+const RESET_CTA_TIMER = 180000;
+const Module = props => {
+  const router = useRouter();
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [componentId, setComponentId] = React.useState(null);
+  const [useCountdown, setUseCountdown] = React.useState(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [ctaClickedOnce, setCtaClickedOnce] = React.useState(false);
+  const [useHandler, setUseHandler] = React.useState(false);
+  const [resolvedUseItems, setResolvedUseItems] = React.useState(null);
+  const ctaRef = React.useRef();
+  const currentSlider = React.useRef();
+  const sliderTrackRef = React.useRef();
   props._LocalEventEmitter.unsubscribe(componentId);
-  props._LocalEventEmitter.subscribe(componentId, function (d) {
+  props._LocalEventEmitter.subscribe(componentId, d => {
     if (d && d.dispatch) {
       if (d.dispatch === 'updateCountdown') {
-        var useCurrentTime = props.items && props.items[currentSlide] ? props.items[currentSlide].date : null;
+        const useCurrentTime = props.items && props.items[currentSlide] ? props.items[currentSlide].date : null;
         if (useCurrentTime !== null) {
-          var useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : (0, _typeof2["default"])(useCurrentTime) === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
+          const useTime = typeof useCurrentTime === 'string' ? new Date(Number(useCurrentTime)) : typeof useCurrentTime === 'object' ? new Date(useCurrentTime) : new Date(useCurrentTime);
           if (!isNaN(useTime)) {
-            var timeRemaining = (0, _utility.getTimeRemaining)(useTime, new Date());
+            const timeRemaining = getTimeRemaining(useTime, new Date());
             if (timeRemaining) {
               setUseCountdown(timeRemaining);
             }
@@ -75,25 +44,25 @@ var Module = function Module(props) {
       }
     }
   });
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     if (!componentDidMount) {
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
       if (props.request) {
         setUseHandler(true);
       }
-      setInterval(function () {
+      setInterval(() => {
         props._LocalEventEmitter.dispatch(id, {
           dispatch: 'updateCountdown'
         });
       }, 1000);
-      setTimeout(function () {
-        var slickTracks = document.getElementsByClassName("slider_slides_".concat(id));
+      setTimeout(() => {
+        const slickTracks = document.getElementsByClassName(`slider_slides_${id}`);
         if (slickTracks && slickTracks[0] && slickTracks[0].childNodes && slickTracks[0].childNodes[0] && slickTracks[0].childNodes[0].childNodes && slickTracks[0].childNodes[0].childNodes[0]) {
-          var useContainer = slickTracks[0].childNodes[0].childNodes[0];
+          const useContainer = slickTracks[0].childNodes[0].childNodes[0];
           useContainer.style.transition = '500ms';
           useContainer.style.left = '-25px';
-          setTimeout(function () {
+          setTimeout(() => {
             useContainer ? useContainer.style.left = '0' : null;
           }, 2000);
         }
@@ -101,56 +70,40 @@ var Module = function Module(props) {
       setComponentDidMount(true);
     }
   }, [componentDidMount, props.request]);
-  var handleFireGlobalEvent = _react["default"].useCallback( /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e) {
-      var _e$currentTarget;
-      var cta, tempRef;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            setCtaClickedOnce(true);
-            if (e !== null && e !== void 0 && (_e$currentTarget = e.currentTarget) !== null && _e$currentTarget !== void 0 && _e$currentTarget.getAttribute('ctaAfter')) {
-              e.currentTarget.innerHTML = e.currentTarget.getAttribute('ctaAfter');
-              cta = e.currentTarget.getAttribute('cta');
-              tempRef = e.currentTarget;
-              setTimeout(function () {
-                try {
-                  tempRef.innerHTML = cta;
-                } catch (err) {
-                  // fail silently
-                }
-              }, RESET_CTA_TIMER);
-            }
-            (0, _utility.fireGlobalEvent)(e, props._LocalEventEmitter);
-          case 3:
-          case "end":
-            return _context.stop();
+  const handleFireGlobalEvent = React.useCallback(async e => {
+    setCtaClickedOnce(true);
+    if (e?.currentTarget?.getAttribute('ctaAfter')) {
+      e.currentTarget.innerHTML = e.currentTarget.getAttribute('ctaAfter');
+      const cta = e.currentTarget.getAttribute('cta');
+      const tempRef = e.currentTarget;
+      setTimeout(() => {
+        try {
+          tempRef.innerHTML = cta;
+        } catch (err) {
+          // fail silently
         }
-      }, _callee);
-    }));
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  var resolveImage = function resolveImage(item, img, type) {
-    if (item !== null && item !== void 0 && item.rawBg && type === 'bg') {
+      }, RESET_CTA_TIMER);
+    }
+    fireGlobalEvent(e, props._LocalEventEmitter);
+  });
+  const resolveImage = (item, img, type) => {
+    if (item?.rawBg && type === 'bg') {
       return img;
-    } else if (item !== null && item !== void 0 && item.raw && type === 'icon') {
+    } else if (item?.raw && type === 'icon') {
       return img;
-    } else if (props.cdn && props.cdn["static"] && props.cdn["static"].length > 0 && img) {
-      return "".concat(props.cdn["static"], "/").concat(img);
+    } else if (props.cdn && props.cdn.static && props.cdn.static.length > 0 && img) {
+      return `${props.cdn.static}/${img}`;
     }
     return 'img/default/greythumb.jpg';
   };
-  var receiveData = function receiveData(res) {
-    var _res$data;
-    if (res !== null && res !== void 0 && (_res$data = res.data) !== null && _res$data !== void 0 && _res$data.fetchedData) {
-      var items = [];
-      var validGroups = res.data.fetchedData.map(function (m) {
-        return Object.entries(m).map(function (n) {
-          return n[1].map(function (o) {
+  const receiveData = res => {
+    if (res?.data?.fetchedData) {
+      const items = [];
+      const validGroups = res.data.fetchedData.map(m => {
+        return Object.entries(m).map(n => {
+          return n[1].map(o => {
             if (Array.isArray(o)) {
-              return o.map(function (p) {
+              return o.map(p => {
                 if (p.id) {
                   items.push(p);
                   return p;
@@ -167,28 +120,27 @@ var Module = function Module(props) {
           });
         });
       });
-      var flattened = validGroups.flat(3);
+      const flattened = validGroups.flat(3);
       if (flattened) {
-        var _useItems = flattened.filter(Boolean);
-        setResolvedUseItems(_useItems);
+        const useItems = flattened.filter(Boolean);
+        setResolvedUseItems(useItems);
       }
     }
     // Use Received data instead props.items. Can set to useItems. Use useItems as state
     // Must set image based on if feature image present. if no feature image present use 1st image (if tall view, look for tall image first)
     // Use Name for title. Use author username for author
   };
-  var useItems = _react["default"].useMemo(function () {
-    var _props$items;
+  const useItems = React.useMemo(() => {
     if (resolvedUseItems && useHandler) {
-      var useData = (0, _utility2.normalizeData)(resolvedUseItems);
+      const useData = normalizeData(resolvedUseItems);
       return useData;
     }
-    if (props !== null && props !== void 0 && (_props$items = props.items) !== null && _props$items !== void 0 && _props$items.map) {
-      return (0, _utility2.normalizeData)(props.items);
+    if (props?.items?.map) {
+      return normalizeData(props.items);
     }
     return [{}, {}, {}, {}, {}, {}];
-  }, [resolvedUseItems, useHandler, props === null || props === void 0 ? void 0 : props.items]);
-  var useSettings = {
+  }, [resolvedUseItems, useHandler, props?.items]);
+  const useSettings = {
     infinite: false,
     speed: 500,
     swipeToSlide: true,
@@ -233,163 +185,148 @@ var Module = function Module(props) {
       }
     }]
   };
-  var handleSliderLinkClickUpProxy = _react["default"].useCallback(function (e) {
-    (0, _utility2.handleSliderLinkClickUp)(e, router);
+  const handleSliderLinkClickUpProxy = React.useCallback(e => {
+    handleSliderLinkClickUp(e, router);
   });
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexHelloContainer, " sliderContainer_").concat(componentId, " ").concat(moduleName, "_IndexHelloContainer ").concat(props.className),
-    ref: sliderTrackRef
-  }, props.groupLabel ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].GroupLabelContainer, " ").concat(moduleName, "_groupLabelContainer ").concat(props.groupLabelContainerClassName)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].GroupLabel, " ").concat(moduleName, "_groupLabel ").concat(props.groupLabelClassName)
-  }, props.groupLabel)) : null, useHandler && props !== null && props !== void 0 && (_props$request = props.request) !== null && _props$request !== void 0 && _props$request.handlerArgs ? /*#__PURE__*/_react["default"].createElement(_fetch.FetchHandler, (0, _extends2["default"])({
-    handlerArgs: props.request.handlerArgs,
-    receiveData: receiveData
-  }, props)) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "swipe slider_".concat(componentId)
-  }, /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], (0, _extends2["default"])({}, useSettings, {
-    className: "".concat(_PresentationModule["default"].IndexItemsContainer, " swiper-wrapper slider_slides ").concat(moduleName, "_IndexItemsContainer slider_slides_").concat(componentId, " ").concat(props.IndexItemsContainerClassName)
-  }), useItems !== null && useItems !== void 0 && useItems.map ? useItems.map(function (m, i) {
-    var _m$leadBg, _m$item, _m$author, _m$icon2, _m$author2, _m$iconWidth, _m$iconHeight, _m$title, _m$author3, _m$item2, _m$item3, _m$item4, _m$item5, _m$item6, _m$item7;
-    var useDate = m !== null && m !== void 0 && m.date && !isNaN(new Date(m.date)) ? new Date(m.date) : '';
-    console.log(useDate, useDate.getMonth, m);
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "swiper-slide ".concat(_PresentationModule["default"].IndexItemUpperContainer, " ").concat(props.tall ? "".concat(_PresentationModule["default"].IndexItemsUpperContainerTall) : null, " ").concat(moduleName, "_Container ").concat(componentId, "_IndexItemUpperContainer ").concat(m.important ? "slider_item_important" : ''),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: (0, _utility2.resolveMainLink)(m),
-      onClick: _utility2.handleSliderLinkClick,
-      onMouseDown: _utility2.handleSliderLinkClickDown,
-      onMouseUp: handleSliderLinkClickUpProxy,
-      draggable: false,
-      style: {
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].BgContainer, " ").concat(props.tall ? "".concat(_PresentationModule["default"].BgContainerTall) : null, " ").concat(moduleName, "_BgContainer ").concat(props.bgClassName),
-      style: {
-        backgroundImage: "url(".concat(resolveImage(m, (_m$leadBg = m === null || m === void 0 ? void 0 : m.leadBg) !== null && _m$leadBg !== void 0 ? _m$leadBg : null, 'bg'), ")"),
-        position: 'relative'
-      }
-    }, props.children, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].FillPageContainer, " ").concat(moduleName, "_FillPageContainer")
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].TimeContainer, " ").concat(moduleName, "_TimeContainer ").concat(props.timeContainerClassName)
-    }, m !== null && m !== void 0 && m.showSimpleDate && useDate !== null && useDate !== void 0 && useDate.getMonth && useDate !== null && useDate !== void 0 && useDate.getDate ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].TimeSimple, " ").concat(moduleName, "_TimeSimple ").concat(props.timeSimpleClassName, " ").concat((0, _utility2.datePassed)(m.date) ? "".concat(_PresentationModule["default"].DatePassed) : '')
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].TimeShowContainer, " flex gap-p5")
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].dateIconContainer)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].dateIconMonth)
-    }, (0, _date.retrieveMonth)(useDate.getMonth())), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].dateIconDate)
-    }, useDate.getDate())), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].dateMetaContainer)
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].dateText)
-    }, (0, _date.retrieveDay)(useDate.getDay()), ", ", useDate.toLocaleString('en-US', {
-      month: 'long'
-    }), " ", useDate.toLocaleDateString('en-US', {
-      day: '2-digit'
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].timeMeta, " flex gap-p2"),
-      style: {
-        alignContent: 'center'
-      }
-    }, m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "newItem",
-      style: {
-        fontSize: '.7rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("span", null, "New"), /*#__PURE__*/_react["default"].createElement("span", {
-      style: {
-        fontSize: '.7rem'
-      },
-      className: "star material-icons"
-    }, "star")) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].timeText)
-    }, useDate.toLocaleString('en-US', {
-      hour12: true,
-      hour: '2-digit',
-      minute: '2-digit'
-    })), (m === null || m === void 0 || (_m$item = m.item) === null || _m$item === void 0 ? void 0 : _m$item.type) === 'ticket' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].ticketIcon),
-      style: {
-        height: '1rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement(_iconsMaterial.ConfirmationNumber, {
-      style: {
-        fontSize: '1rem',
-        height: '1rem'
-      }
-    })) : null)))) : null)))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].MetaContainer, " ").concat(moduleName, "_MetaContainer ").concat(props.metaContainerClassName)
-    }, (m === null || m === void 0 ? void 0 : m.icon) !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].IconContainer, " ").concat(moduleName, "_IconContainer ").concat(props.iconContainerClassName)
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/p?u=".concat((_m$author = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author !== void 0 ? _m$author : ''),
-      onClick: _utility2.handleSliderLinkClick,
-      onMouseDown: _utility2.handleSliderLinkClickDown,
-      onMouseUp: handleSliderLinkClickUpProxy,
-      draggable: false,
-      style: {
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-      loader: function loader() {
-        var _m$icon;
-        return resolveImage(m, (_m$icon = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon !== void 0 ? _m$icon : null, 'icon');
-      },
-      src: resolveImage(m, (_m$icon2 = m === null || m === void 0 ? void 0 : m.icon) !== null && _m$icon2 !== void 0 ? _m$icon2 : null, 'icon'),
-      style: {
-        maxWidth: '60px',
-        borderRadius: '4rem',
-        minHeight: '50px'
-      },
-      alt: (_m$author2 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author2 !== void 0 ? _m$author2 : '',
-      width: (_m$iconWidth = m === null || m === void 0 ? void 0 : m.iconWidth) !== null && _m$iconWidth !== void 0 ? _m$iconWidth : '50',
-      height: (_m$iconHeight = m === null || m === void 0 ? void 0 : m.iconHeight) !== null && _m$iconHeight !== void 0 ? _m$iconHeight : '50',
-      layout: "responsive"
-    }))) : null, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].DataContainer, " ").concat(moduleName, "_DataContainer ").concat(props.DataContainerClassName)
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: (0, _utility2.resolveMainLink)(m),
-      onClick: _utility2.handleSliderLinkClick,
-      onMouseDown: _utility2.handleSliderLinkClickDown,
-      onMouseUp: handleSliderLinkClickUpProxy,
-      draggable: false,
-      style: {
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props.leadClassName)
-    }, (_m$title = m === null || m === void 0 ? void 0 : m.title) !== null && _m$title !== void 0 ? _m$title : '')), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].CtaHolder, " ").concat(moduleName, "_CtaHolder ").concat(props.CtaHolderClassName)
-    }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/p?u=".concat(m === null || m === void 0 ? void 0 : m.author),
-      onClick: _utility2.handleSliderLinkClick,
-      onMouseDown: _utility2.handleSliderLinkClickDown,
-      onMouseUp: handleSliderLinkClickUpProxy,
-      draggable: false,
-      style: {
-        alignSelf: 'center'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].Author, " ").concat(moduleName, "_Author ").concat(props.authorClassName)
-    }, (_m$author3 = m === null || m === void 0 ? void 0 : m.author) !== null && _m$author3 !== void 0 ? _m$author3 : '')), m !== null && m !== void 0 && (_m$item2 = m.item) !== null && _m$item2 !== void 0 && _m$item2.id && m !== null && m !== void 0 && (_m$item3 = m.item) !== null && _m$item3 !== void 0 && _m$item3.style && m !== null && m !== void 0 && (_m$item4 = m.item) !== null && _m$item4 !== void 0 && _m$item4.option ? /*#__PURE__*/_react["default"].createElement("button", {
-      className: "".concat(_PresentationModule["default"].CtaButton, " ").concat(moduleName, "_Cta ").concat(props.ctaClassName),
-      onClick: handleFireGlobalEvent,
-      action: ['add_to_cart', 'buy'].indexOf(m === null || m === void 0 ? void 0 : m.action) > -1 ? m.action : 'add_to_cart',
-      item: m === null || m === void 0 || (_m$item5 = m.item) === null || _m$item5 === void 0 ? void 0 : _m$item5.id,
-      selectedstyle: m === null || m === void 0 || (_m$item6 = m.item) === null || _m$item6 === void 0 ? void 0 : _m$item6.style,
-      currentoption: m === null || m === void 0 || (_m$item7 = m.item) === null || _m$item7 === void 0 ? void 0 : _m$item7.option,
-      ref: ctaRef,
-      ctaAfter: m.ctaAfter,
-      cta: m.cta
-    }, m.cta) : null)))));
-  }) : null)));
+  return <div className={`${Styles.IndexHelloContainer} sliderContainer_${componentId} ${moduleName}_IndexHelloContainer ${props.className}`} ref={sliderTrackRef}>
+            {props.groupLabel ? /*#__PURE__*/_jsx("div", {
+      className: `${Styles.GroupLabelContainer} ${moduleName}_groupLabelContainer ${props.groupLabelContainerClassName}`
+    }, void 0, /*#__PURE__*/_jsx("div", {
+      className: `${Styles.GroupLabel} ${moduleName}_groupLabel ${props.groupLabelClassName}`
+    }, void 0, props.groupLabel)) : null}
+            {useHandler && props?.request?.handlerArgs ? <FetchHandler handlerArgs={props.request.handlerArgs} receiveData={receiveData} {...props} /> : null}
+            /*#__PURE__*/_jsx("div", {
+      className: `swipe slider_${componentId}`
+    }, void 0, <Slider {...useSettings} className={`${Styles.IndexItemsContainer} swiper-wrapper slider_slides ${moduleName}_IndexItemsContainer slider_slides_${componentId} ${props.IndexItemsContainerClassName}`}>
+                    {useItems?.map ? useItems.map((m, i) => {
+        const useDate = m?.date && !isNaN(new Date(m.date)) ? new Date(m.date) : '';
+        console.log(useDate, useDate.getMonth, m);
+        return /*#__PURE__*/_jsx("div", {
+          className: `swiper-slide ${Styles.IndexItemUpperContainer} ${props.tall ? `${Styles.IndexItemsUpperContainerTall}` : null} ${moduleName}_Container ${componentId}_IndexItemUpperContainer ${m.important ? `slider_item_important` : ''}`
+        }, i, /*#__PURE__*/_jsx(Link, {
+          href: resolveMainLink(m),
+          onClick: handleSliderLinkClick,
+          onMouseDown: handleSliderLinkClickDown,
+          onMouseUp: handleSliderLinkClickUpProxy,
+          draggable: false,
+          style: {
+            alignSelf: 'center'
+          }
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.BgContainer} ${props.tall ? `${Styles.BgContainerTall}` : null} ${moduleName}_BgContainer ${props.bgClassName}`,
+          style: {
+            backgroundImage: `url(${resolveImage(m, m?.leadBg ?? null, 'bg')})`,
+            position: 'relative'
+          }
+        }, void 0, props.children, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.FillPageContainer} ${moduleName}_FillPageContainer`
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.TimeContainer} ${moduleName}_TimeContainer ${props.timeContainerClassName}`
+        }, void 0, m?.showSimpleDate && useDate?.getMonth && useDate?.getDate ? /*#__PURE__*/_jsx("div", {
+          className: `${Styles.TimeSimple} ${moduleName}_TimeSimple ${props.timeSimpleClassName} ${datePassed(m.date) ? `${Styles.DatePassed}` : ''}`
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.TimeShowContainer} flex gap-p5`
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.dateIconContainer}`
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.dateIconMonth}`
+        }, void 0, retrieveMonth(useDate.getMonth())), /*#__PURE__*/_jsx("div", {
+          className: `${Styles.dateIconDate}`
+        }, void 0, useDate.getDate())), /*#__PURE__*/_jsx("div", {
+          className: `${Styles.dateMetaContainer}`
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.dateText}`
+        }, void 0, retrieveDay(useDate.getDay()), ", ", useDate.toLocaleString('en-US', {
+          month: 'long'
+        }), " ", useDate.toLocaleDateString('en-US', {
+          day: '2-digit'
+        })), /*#__PURE__*/_jsx("div", {
+          className: `${Styles.timeMeta} flex gap-p2`,
+          style: {
+            alignContent: 'center'
+          }
+        }, void 0, m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/_jsx("div", {
+          className: "newItem",
+          style: {
+            fontSize: '.7rem'
+          }
+        }, void 0, _span || (_span = /*#__PURE__*/_jsx("span", {}, void 0, "New")), /*#__PURE__*/_jsx("span", {
+          style: {
+            fontSize: '.7rem'
+          },
+          className: `star material-icons`
+        }, void 0, "star")) : null, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.timeText}`
+        }, void 0, useDate.toLocaleString('en-US', {
+          hour12: true,
+          hour: '2-digit',
+          minute: '2-digit'
+        })), m?.item?.type === 'ticket' ? /*#__PURE__*/_jsx("div", {
+          className: `${Styles.ticketIcon}`,
+          style: {
+            height: '1rem'
+          }
+        }, void 0, /*#__PURE__*/_jsx(ConfirmationNumber, {
+          style: {
+            fontSize: '1rem',
+            height: '1rem'
+          }
+        })) : null)))) : null)))), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.MetaContainer} ${moduleName}_MetaContainer ${props.metaContainerClassName}`
+        }, void 0, m?.icon !== '' ? /*#__PURE__*/_jsx("div", {
+          className: `${Styles.IconContainer} ${moduleName}_IconContainer ${props.iconContainerClassName}`
+        }, void 0, /*#__PURE__*/_jsx(Link, {
+          href: `/p?u=${m?.author ?? ''}`,
+          onClick: handleSliderLinkClick,
+          onMouseDown: handleSliderLinkClickDown,
+          onMouseUp: handleSliderLinkClickUpProxy,
+          draggable: false,
+          style: {
+            alignSelf: 'center'
+          }
+        }, void 0, /*#__PURE__*/_jsx(Image, {
+          loader: () => {
+            return resolveImage(m, m?.icon ?? null, 'icon');
+          },
+          src: resolveImage(m, m?.icon ?? null, 'icon'),
+          style: {
+            maxWidth: '60px',
+            borderRadius: '4rem',
+            minHeight: '50px'
+          },
+          alt: m?.author ?? '',
+          width: m?.iconWidth ?? '50',
+          height: m?.iconHeight ?? '50',
+          layout: "responsive"
+        }))) : null, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.DataContainer} ${moduleName}_DataContainer ${props.DataContainerClassName}`
+        }, void 0, /*#__PURE__*/_jsx(Link, {
+          href: resolveMainLink(m),
+          onClick: handleSliderLinkClick,
+          onMouseDown: handleSliderLinkClickDown,
+          onMouseUp: handleSliderLinkClickUpProxy,
+          draggable: false,
+          style: {
+            alignSelf: 'center'
+          }
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.Lead} ${moduleName}_Lead ${props.leadClassName}`
+        }, void 0, m?.title ?? '')), /*#__PURE__*/_jsx("div", {
+          className: `${Styles.CtaHolder} ${moduleName}_CtaHolder ${props.CtaHolderClassName}`
+        }, void 0, /*#__PURE__*/_jsx(Link, {
+          href: `/p?u=${m?.author}`,
+          onClick: handleSliderLinkClick,
+          onMouseDown: handleSliderLinkClickDown,
+          onMouseUp: handleSliderLinkClickUpProxy,
+          draggable: false,
+          style: {
+            alignSelf: 'center'
+          }
+        }, void 0, /*#__PURE__*/_jsx("div", {
+          className: `${Styles.Author} ${moduleName}_Author ${props.authorClassName}`
+        }, void 0, m?.author ?? '')), m?.item?.id && m?.item?.style && m?.item?.option ? <button className={`${Styles.CtaButton} ${moduleName}_Cta ${props.ctaClassName}`} onClick={handleFireGlobalEvent} action={['add_to_cart', 'buy'].indexOf(m?.action) > -1 ? m.action : 'add_to_cart'} item={m?.item?.id} selectedstyle={m?.item?.style} currentoption={m?.item?.option} ref={ctaRef} ctaAfter={m.ctaAfter} cta={m.cta}>{m.cta}</button> : null)))));
+      }) : null}
+                </Slider>)
+        </div>;
 };
-var _default = exports["default"] = Module;
+export default Module;

@@ -1,29 +1,23 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _link = _interopRequireDefault(require("next/link"));
-var _react = _interopRequireDefault(require("react"));
-var _documentationModule = _interopRequireDefault(require("./documentation.module.scss"));
-var Module = function Module(props) {
-  var _props$_adminAuth, _props$dborigin;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " CompanyLink_Container"),
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import Link from 'next/link';
+import React from 'react';
+import styles from './documentation.module.scss';
+const Module = props => {
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className} CompanyLink_Container`,
     style: {
       alignSelf: 'center'
     }
-  }, props !== null && props !== void 0 && (_props$_adminAuth = props._adminAuth) !== null && _props$_adminAuth !== void 0 && (_props$_adminAuth = _props$_adminAuth.adminc) !== null && _props$_adminAuth !== void 0 && _props$_adminAuth.admin && props !== null && props !== void 0 && props._loggedIn ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].companyLink),
+  }, void 0, props?._adminAuth?.adminc?.admin && props?._loggedIn ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.companyLink}`,
     style: {
       background: 'grey',
       borderRadius: '1rem',
       padding: '.25rem 2rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props.devLocal ? "".concat(props.devAddress, "/admin") : "https://".concat(props.domainUrl, "/admin"))
-  }, props !== null && props !== void 0 && props.dborigin && props !== null && props !== void 0 && (_props$dborigin = props.dborigin) !== null && _props$dborigin !== void 0 && _props$dborigin.charAt ? "".concat(props.dborigin.charAt(0).toUpperCase()).concat(props.dborigin.slice(1, props.dborigin.length)) : null)) : null);
+  }, void 0, /*#__PURE__*/_jsx(Link, {
+    href: `${props.devLocal ? `${props.devAddress}/admin` : `https://${props.domainUrl}/admin`}`
+  }, void 0, props?.dborigin && props?.dborigin?.charAt ? `${props.dborigin.charAt(0).toUpperCase()}${props.dborigin.slice(1, props.dborigin.length)}` : null)) : null);
 };
-var _default = exports["default"] = Module;
+export default Module;

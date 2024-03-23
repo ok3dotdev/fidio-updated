@@ -1,82 +1,52 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _ecommerce = require("../../utility/ecommerce");
-var _util = require("../../util");
-var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
-var _ProductImageManagerModule = _interopRequireDefault(require("./ProductImageManager.module.scss"));
-var _uuid = require("uuid");
-var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-var Module = function Module(props) {
-  var _props$product3, _props$product4;
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    warning = _React$useState4[0],
-    setWarning = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(null),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    useImage = _React$useState6[0],
-    setUseImage = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(null),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    itemId = _React$useState8[0],
-    setItemId = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState(0),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    currentlySelectedImage = _React$useState10[0],
-    setCurrentlySelectedImage = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState([]),
-    _React$useState12 = (0, _slicedToArray2["default"])(_React$useState11, 2),
-    imageThumbnailFeed = _React$useState12[0],
-    setImageThumbnailFeed = _React$useState12[1];
-  var fileInput = _react["default"].useRef();
-  var productImageRef = _react["default"].useRef();
-  _react["default"].useEffect(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { resolveImg, doUploadImageForProduct } from '../../utility/ecommerce';
+import { isObjectEmpty } from '../../util';
+import Tooltip from '@mui/material/Tooltip';
+import PIMStyles from './ProductImageManager.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+const Module = props => {
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [warning, setWarning] = React.useState(null);
+  const [useImage, setUseImage] = React.useState(null);
+  const [itemId, setItemId] = React.useState(null);
+  const [currentlySelectedImage, setCurrentlySelectedImage] = React.useState(0);
+  const [imageThumbnailFeed, setImageThumbnailFeed] = React.useState([]);
+  const fileInput = React.useRef();
+  const productImageRef = React.useRef();
+  React.useEffect(() => {
     if (!componentDidMount) {
       setComponentDidMount(true);
     }
   }, [componentDidMount, setComponentDidMount, props.product]);
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     if (props.product && props.product.id !== itemId) {
       setItemId(props.product.id);
       setUseImage(null);
       setCurrentlySelectedImage(0);
     }
   }, [props.product]);
-  var handleUploadImage = _react["default"].useCallback(function (e) {
+  const handleUploadImage = React.useCallback(e => {
     setWarning(null);
     if (fileInput.current) {
       fileInput.current.click(); // Prompt file upload
     }
   });
-  var handleNewFile = _react["default"].useCallback(function (e) {
+  const handleNewFile = React.useCallback(e => {
     try {
       if (e && e.target && e.target.files) {
-        var files = e.target.files;
+        const files = e.target.files;
         if (files && files.length > 0) {
-          var filesRenamed = Array.from(files).slice(0, files.length > 4 ? 4 : files.length).filter(function (m) {
-            return m.type && allowedTypes.indexOf(m.type) > -1;
-          }).map(function (m) {
+          const filesRenamed = Array.from(files).slice(0, files.length > 4 ? 4 : files.length).filter(m => m.type && allowedTypes.indexOf(m.type) > -1).map(m => {
             var blob = m.slice(0, m.size, m.type);
-            var ext = allowedTypes[allowedTypes.indexOf(m.type)].match(/\/([a-zA-Z0-9].*)/)[1];
-            return new File([blob], "".concat((0, _uuid.v4)(), ".").concat(ext), {
+            const ext = allowedTypes[allowedTypes.indexOf(m.type)].match(/\/([a-zA-Z0-9].*)/)[1];
+            return new File([blob], `${uuidv4()}.${ext}`, {
               type: m.type
             });
           });
-          var n = props.editing && props.editing["new"];
+          const n = props.editing && props.editing.new;
           if (n && props.passTempImages) {
             // Product not created yet, do not upload image. We can load image as temp image to show user
             props.passTempImages(filesRenamed);
@@ -88,69 +58,48 @@ var Module = function Module(props) {
           } else {
             // Product created already, immediately upload
             try {
-              var f = /*#__PURE__*/function () {
-                var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-                  var formData, imgNames, data, _f;
-                  return _regenerator["default"].wrap(function _callee$(_context) {
-                    while (1) switch (_context.prev = _context.next) {
-                      case 0:
-                        if (!(!props.fetchBusy && props.apiUrl && props.domainKey && props._loggedIn && props.editing)) {
-                          _context.next = 14;
-                          break;
+              const f = async () => {
+                if (!props.fetchBusy && props.apiUrl && props.domainKey && props._loggedIn && props.editing) {
+                  const formData = new FormData();
+                  const imgNames = [];
+                  if (filesRenamed) {
+                    filesRenamed.forEach(img => {
+                      formData.append("image", img);
+                      imgNames.push({
+                        name: img.name,
+                        modif: 'productImage'
+                      });
+                    });
+                    formData.append('imgNames', JSON.stringify(imgNames));
+                  }
+                  formData.append('domainKey', props.domainKey);
+                  formData.append('hash', props._loggedIn.hash);
+                  formData.append('identifier', props._loggedIn.identifier);
+                  formData.append('product', props.editing.id);
+                  if (props.setFetchBusy) {
+                    props.setFetchBusy(true);
+                    setTimeout(() => {
+                      props.setFetchBusy(false);
+                    }, 10000);
+                  }
+                  console.log(formData.get('image'), filesRenamed);
+                  const data = await doUploadImageForProduct(props.apiUrl, props.domainKey, props.editing.id, props._loggedIn, formData);
+                  if (data && data.product && data.product.products) {
+                    if (props.setCombinedFeed) {
+                      props.setCombinedFeed(data.product.products);
+                      if (props.setEditing) {
+                        const f = data.product.products.find(m => m.id === props.editing.id);
+                        if (f) {
+                          props.setEditing(f);
                         }
-                        formData = new FormData();
-                        imgNames = [];
-                        if (filesRenamed) {
-                          filesRenamed.forEach(function (img) {
-                            formData.append("image", img);
-                            imgNames.push({
-                              name: img.name,
-                              modif: 'productImage'
-                            });
-                          });
-                          formData.append('imgNames', JSON.stringify(imgNames));
-                        }
-                        formData.append('domainKey', props.domainKey);
-                        formData.append('hash', props._loggedIn.hash);
-                        formData.append('identifier', props._loggedIn.identifier);
-                        formData.append('product', props.editing.id);
-                        if (props.setFetchBusy) {
-                          props.setFetchBusy(true);
-                          setTimeout(function () {
-                            props.setFetchBusy(false);
-                          }, 10000);
-                        }
-                        console.log(formData.get('image'), filesRenamed);
-                        _context.next = 12;
-                        return (0, _ecommerce.doUploadImageForProduct)(props.apiUrl, props.domainKey, props.editing.id, props._loggedIn, formData);
-                      case 12:
-                        data = _context.sent;
-                        if (data && data.product && data.product.products) {
-                          if (props.setCombinedFeed) {
-                            props.setCombinedFeed(data.product.products);
-                            if (props.setEditing) {
-                              _f = data.product.products.find(function (m) {
-                                return m.id === props.editing.id;
-                              });
-                              if (_f) {
-                                props.setEditing(_f);
-                              }
-                            }
-                          }
-                          if (props.setFetchBusy) {
-                            props.setFetchBusy(false);
-                          }
-                        }
-                      case 14:
-                      case "end":
-                        return _context.stop();
+                      }
                     }
-                  }, _callee);
-                }));
-                return function f() {
-                  return _ref.apply(this, arguments);
-                };
-              }();
+                    if (props.setFetchBusy) {
+                      props.setFetchBusy(false);
+                    }
+                  }
+                }
+              };
               f();
             } catch (err) {
               // fail silently
@@ -165,23 +114,23 @@ var Module = function Module(props) {
       });
     }
   });
-  _react["default"].useEffect(function () {
-    if (props.editing && !props.editing["new"]) {
+  React.useEffect(() => {
+    if (props.editing && !props.editing.new) {
       if (!useImage) {
-        if (props.editing.images && props.editing.images[0] && props.editing.images[0].name && props.cdn && props.cdn["static"]) {
-          setUseImage(props.cdn["static"] + '/' + props.editing.images[0].name);
+        if (props.editing.images && props.editing.images[0] && props.editing.images[0].name && props.cdn && props.cdn.static) {
+          setUseImage(props.cdn.static + '/' + props.editing.images[0].name);
         }
       }
     }
     if (props.product) {
       if (!useImage) {
-        if (props.product.images && props.product.images[0] && props.product.images[0].name && props.cdn && props.cdn["static"]) {
-          setUseImage(props.cdn["static"] + '/' + props.product.images[0].name);
+        if (props.product.images && props.product.images[0] && props.product.images[0].name && props.cdn && props.cdn.static) {
+          setUseImage(props.cdn.static + '/' + props.product.images[0].name);
         }
       }
     }
   }, [props.editing, useImage, props.product]);
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     console.log(props.editing, props.product);
     if (props.editing) {
       setImageThumbnailFeed(props.editing.images);
@@ -212,16 +161,13 @@ var Module = function Module(props) {
   //           "%"
   //       });
 
-  var setUseImageThumbnail = _react["default"].useCallback(function (e) {
-    if (e !== null && e !== void 0 && e.target) {
-      var _e$target$getAttribut, _props$product, _props$cdn;
-      var selector = (_e$target$getAttribut = e.target.getAttribute('selector')) !== null && _e$target$getAttribut !== void 0 ? _e$target$getAttribut : e.target.parentElement.getAttribute('selector');
-      if (selector && props !== null && props !== void 0 && (_props$product = props.product) !== null && _props$product !== void 0 && _props$product.images && props !== null && props !== void 0 && (_props$cdn = props.cdn) !== null && _props$cdn !== void 0 && _props$cdn["static"]) {
-        var image = props.product.images.find(function (m) {
-          return m.name === selector;
-        });
+  const setUseImageThumbnail = React.useCallback(e => {
+    if (e?.target) {
+      const selector = e.target.getAttribute('selector') ?? e.target.parentElement.getAttribute('selector');
+      if (selector && props?.product?.images && props?.cdn?.static) {
+        const image = props.product.images.find(m => m.name === selector);
         if (image) {
-          setUseImage(props.cdn["static"] + '/' + image.name);
+          setUseImage(props.cdn.static + '/' + image.name);
         }
       }
     }
@@ -233,24 +179,21 @@ var Module = function Module(props) {
    * @param {*} value // Value to set property to
    * @param {*} single // Ensure that set image is only with property value
    */
-  var setImgProp = function setImgProp(property, value, single) {
+  const setImgProp = (property, value, single) => {
     if (useImage) {
-      var _props$product2;
       console.log(useImage);
-      var imgName = useImage.match(/\.[^\/]+\/(.+)$/) && useImage.match(/\.[^\/]+\/(.+)$/)[1] ? useImage.match(/\.[^\/]+\/(.+)$/)[1] : null;
-      if (imgName && props !== null && props !== void 0 && (_props$product2 = props.product) !== null && _props$product2 !== void 0 && _props$product2.images && Array.isArray(props.product.images) && props !== null && props !== void 0 && props.setEditing) {
-        var images = (0, _toConsumableArray2["default"])(props.product.images);
-        var index = images.findIndex(function (m) {
-          return m.name === imgName;
-        });
+      const imgName = useImage.match(/\.[^\/]+\/(.+)$/) && useImage.match(/\.[^\/]+\/(.+)$/)[1] ? useImage.match(/\.[^\/]+\/(.+)$/)[1] : null;
+      if (imgName && props?.product?.images && Array.isArray(props.product.images) && props?.setEditing) {
+        const images = [...props.product.images];
+        const index = images.findIndex(m => m.name === imgName);
         if (single) {
-          images.map(function (m) {
+          images.map(m => {
             delete m[property];
           });
         }
         if (index > -1) {
           images[index][property] = value;
-          var product = Object.assign(props.product, {
+          const product = Object.assign(props.product, {
             images: images
           });
           props.setEditing(product);
@@ -258,47 +201,38 @@ var Module = function Module(props) {
       }
     }
   };
-  var setCurrentImageAsBackground = _react["default"].useCallback(function (e) {
+  const setCurrentImageAsBackground = React.useCallback(e => {
     setImgProp('bgImg', true, true);
   });
-  var setCurrentImageAsLead = _react["default"].useCallback(function (e) {
+  const setCurrentImageAsLead = React.useCallback(e => {
     setImgProp('leadImg', true, true);
   });
-  var bgImg = props !== null && props !== void 0 && (_props$product3 = props.product) !== null && _props$product3 !== void 0 && _props$product3.images ? props.product.images.find(function (m) {
-    return m === null || m === void 0 ? void 0 : m.bgImg;
-  }) : null;
-  var leadImg = props !== null && props !== void 0 && (_props$product4 = props.product) !== null && _props$product4 !== void 0 && _props$product4.images ? props.product.images.find(function (m) {
-    return m === null || m === void 0 ? void 0 : m.leadImg;
-  }) : null;
-  var currentIsBgImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (bgImg === null || bgImg === void 0 ? void 0 : bgImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
-  var currentIsLeadImage = (useImage === null || useImage === void 0 ? void 0 : useImage.match) && useImage.match(/\.[^\/]+\/(.+)$/) && (leadImg === null || leadImg === void 0 ? void 0 : leadImg.name) && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_ProductImageManagerModule["default"].productImageManagerContainer, " ProductImageManager_container"),
+  const bgImg = props?.product?.images ? props.product.images.find(m => m?.bgImg) : null;
+  const leadImg = props?.product?.images ? props.product.images.find(m => m?.leadImg) : null;
+  const currentIsBgImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && bgImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
+  const currentIsLeadImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && leadImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className} ${PIMStyles.productImageManagerContainer} ProductImageManager_container`,
     style: {
       position: 'relative'
     }
-  }, props.editing && !(0, _util.isObjectEmpty)(props.editing) ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "file",
-    style: {
-      display: 'none'
-    },
-    ref: fileInput,
-    onChange: handleNewFile
-  }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, props.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, <input type='file' style={{
+    display: 'none'
+  }} ref={fileInput} onChange={handleNewFile} />, /*#__PURE__*/_jsx(Tooltip, {
     title: "Click here to upload an image for your product",
     placement: "bottom"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].changeImageButton, " image material-icons"),
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.changeImageButton} image material-icons`,
     onClick: handleUploadImage
-  }, "image")), warning && warning.message ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warning)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItemContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItem)
-  }, warning.message))) : null) : null, props !== null && props !== void 0 && props.editing && !(0, _util.isObjectEmpty)(props.editing) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].buttonSetAsBackground)
-  }, currentIsLeadImage ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "image")), warning && warning.message ? /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warning}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warningItemContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warningItem}`
+  }, void 0, warning.message))) : null) : null, props?.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.buttonSetAsBackground}`
+  }, void 0, currentIsLeadImage ? /*#__PURE__*/_jsx("button", {
     className: "gradient_style_bg_1 gradient_style_bg_drop",
     style: {
       fontWeight: 600,
@@ -309,9 +243,9 @@ var Module = function Module(props) {
       padding: '0.125rem 1.5rem',
       color: 'white'
     }
-  }, "Current Lead Image") : /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Current Lead Image") : /*#__PURE__*/_jsx("button", {
     onClick: setCurrentImageAsLead
-  }, "Tag As Lead Image"), currentIsBgImage ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Tag As Lead Image"), currentIsBgImage ? /*#__PURE__*/_jsx("button", {
     className: "gradient_style_bg_2 gradient_style_bg_2_drop",
     style: {
       fontWeight: 600,
@@ -322,38 +256,34 @@ var Module = function Module(props) {
       padding: '0.125rem 1.5rem',
       color: 'white'
     }
-  }, "Current Feature Image") : /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Current Feature Image") : /*#__PURE__*/_jsx("button", {
     onClick: setCurrentImageAsBackground
-  }, "Tag As Feature Image")) : null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImageListContainer)
-  }, imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn["static"] ? imageThumbnailFeed.map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ProductImageManagerModule["default"].productImageListThumbnailContainer),
-      style: {
-        backgroundImage: "url(".concat(props.cdn["static"], "/").concat(m.name, ")")
-      },
-      onClick: setUseImageThumbnail,
-      selector: m.name
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      src: (0, _ecommerce.resolveImg)(props.editing, props.cdn),
-      className: "Product_img",
-      style: {
-        width: '45px',
-        opacity: useImage ? 0 : 1
-      }
-    }));
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImageContainer),
-    ref: productImageRef,
+  }, void 0, "Tag As Feature Image")) : null, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productImageListContainer}`
+  }, void 0, imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn.static ? imageThumbnailFeed.map(m => /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productImageListThumbnailContainer}`,
     style: {
-      backgroundImage: useImage ? "url(".concat(useImage, ")") : ''
-    }
-  }, /*#__PURE__*/_react["default"].createElement("img", {
-    src: (0, _ecommerce.resolveImg)(props.editing, props.cdn),
-    style: {
-      opacity: useImage ? 0 : 1
+      backgroundImage: `url(${props.cdn.static}/${m.name})`
     },
-    className: "Product_img"
-  })));
+    onClick: setUseImageThumbnail,
+    selector: m.name
+  }, void 0, /*#__PURE__*/_jsx("img", {
+    src: resolveImg(props.editing, props.cdn),
+    className: "Product_img",
+    style: {
+      width: '45px',
+      opacity: useImage ? 0 : 1
+    }
+  }))) : null), <div className={`${PIMStyles.productImageContainer}`} ref={productImageRef} style={{
+    backgroundImage: useImage ? `url(${useImage})` : ''
+  }}>
+                /*#__PURE__*/_jsx("img", {
+      src: resolveImg(props.editing, props.cdn),
+      style: {
+        opacity: useImage ? 0 : 1
+      },
+      className: "Product_img"
+    })
+            </div>);
 };
-var _default = exports["default"] = Module;
+export default Module;

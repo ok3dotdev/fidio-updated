@@ -1,48 +1,30 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _uuid = require("uuid");
-var _SliderModule = _interopRequireDefault(require("./Slider.module.scss"));
-var Module = function Module(props) {
-  var _props$height;
-  var _React$useState = _react["default"].useState(null),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentId = _React$useState2[0],
-    setComponentId = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(false),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentDidMount = _React$useState4[0],
-    setComponentDidMount = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(false),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    stagger = _React$useState6[0],
-    setStagger = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(false),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    fetching = _React$useState8[0],
-    setFetching = _React$useState8[1];
-  var staggerRef = _react["default"].useRef();
-  _react["default"].useEffect(function () {
+var _div;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import SliderStyles from './Slider.module.scss';
+const Module = props => {
+  const [componentId, setComponentId] = React.useState(null);
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [stagger, setStagger] = React.useState(false);
+  const [fetching, setFetching] = React.useState(false);
+  const staggerRef = React.useRef();
+  React.useEffect(() => {
     if (!componentDidMount) {
       if (props.stagger) {
-        staggerRef.current = setTimeout(function () {
+        staggerRef.current = setTimeout(() => {
           setStagger(true);
         }, props.stagger);
       }
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
       setComponentDidMount(true);
     }
   }, [componentDidMount, props.stagger]);
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     if (componentId && window && window.Glide) {
-      new window.Glide(".glide_".concat(componentId), {
+      new window.Glide(`.glide_${componentId}`, {
         type: 'carousel',
         perView: 3,
         focusAt: 'center',
@@ -60,56 +42,52 @@ var Module = function Module(props) {
 
   // console.log(window.Glide)
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "glide_".concat(componentId, " ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_jsx("div", {
+    className: `glide_${componentId} ${props.className}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
     "data-glide-el": "track",
     className: "glide__track",
     style: {
-      height: (_props$height = props.height) !== null && _props$height !== void 0 ? _props$height : '240px'
+      height: props.height ?? '240px'
     }
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
+  }, void 0, /*#__PURE__*/_jsx("ul", {
     className: "glide__slides",
     style: {
       height: 'inherit'
     }
-  }, props.items && props.items.map ? props.items.map(function (m, i) {
-    var _m$buttonLink, _m$width, _m$borderRadius;
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: i,
-      className: "glide_slide"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].textContainer, " glider_text_container"),
-      style: {
-        position: 'absolute'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].textOffsetContainer, " glider_text_offset_container")
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].container1, " glider_container1")
-    }, m.cta ? /*#__PURE__*/_react["default"].createElement("h2", {
-      className: "".concat(_SliderModule["default"].cta, " glider_cta")
-    }, m.cta) : null, m.heading ? /*#__PURE__*/_react["default"].createElement("h5", {
-      className: "".concat(_SliderModule["default"].heading, " glider_heading")
-    }, m.heading) : null, m.description ? /*#__PURE__*/_react["default"].createElement("h6", {
-      className: "".concat(_SliderModule["default"].description, " glider_description")
-    }, m.description) : null), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].container2, " glider_container2")
-    }, m.button ? /*#__PURE__*/_react["default"].createElement("a", {
-      className: "".concat(_SliderModule["default"].button, " glider_button"),
-      href: (_m$buttonLink = m.buttonLink) !== null && _m$buttonLink !== void 0 ? _m$buttonLink : ''
-    }, /*#__PURE__*/_react["default"].createElement("button", null, m.button)) : null, m.status ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_SliderModule["default"].status, " glider_status"),
-      style: {
-        background: 'red'
-      }
-    }, m.status) : null))), /*#__PURE__*/_react["default"].createElement("img", {
-      src: m.img,
-      style: {
-        width: (_m$width = m.width) !== null && _m$width !== void 0 ? _m$width : 'auto',
-        borderRadius: (_m$borderRadius = m.borderRadius) !== null && _m$borderRadius !== void 0 ? _m$borderRadius : '1rem'
-      }
-    }));
-  }) : /*#__PURE__*/_react["default"].createElement("div", null))));
+  }, void 0, props.items && props.items.map ? props.items.map((m, i) => /*#__PURE__*/_jsx("li", {
+    className: "glide_slide"
+  }, i, /*#__PURE__*/_jsx("div", {
+    className: `${SliderStyles.textContainer} glider_text_container`,
+    style: {
+      position: 'absolute'
+    }
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${SliderStyles.textOffsetContainer} glider_text_offset_container`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${SliderStyles.container1} glider_container1`
+  }, void 0, m.cta ? /*#__PURE__*/_jsx("h2", {
+    className: `${SliderStyles.cta} glider_cta`
+  }, void 0, m.cta) : null, m.heading ? /*#__PURE__*/_jsx("h5", {
+    className: `${SliderStyles.heading} glider_heading`
+  }, void 0, m.heading) : null, m.description ? /*#__PURE__*/_jsx("h6", {
+    className: `${SliderStyles.description} glider_description`
+  }, void 0, m.description) : null), /*#__PURE__*/_jsx("div", {
+    className: `${SliderStyles.container2} glider_container2`
+  }, void 0, m.button ? /*#__PURE__*/_jsx("a", {
+    className: `${SliderStyles.button} glider_button`,
+    href: m.buttonLink ?? ''
+  }, void 0, /*#__PURE__*/_jsx("button", {}, void 0, m.button)) : null, m.status ? /*#__PURE__*/_jsx("div", {
+    className: `${SliderStyles.status} glider_status`,
+    style: {
+      background: 'red'
+    }
+  }, void 0, m.status) : null))), /*#__PURE__*/_jsx("img", {
+    src: m.img,
+    style: {
+      width: m.width ?? 'auto',
+      borderRadius: m.borderRadius ?? '1rem'
+    }
+  }))) : _div || (_div = /*#__PURE__*/_jsx("div", {})))));
 };
-var _default = exports["default"] = Module;
+export default Module;

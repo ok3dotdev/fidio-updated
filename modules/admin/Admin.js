@@ -1,148 +1,105 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _script = _interopRequireDefault(require("next/script"));
-var _link = _interopRequireDefault(require("next/link"));
-var _uuid = require("uuid");
-var _AdminModule = _interopRequireDefault(require("./Admin.module.scss"));
-var _BuildAdmin = _interopRequireDefault(require("./BuildAdmin"));
-var _StreamAdmin = _interopRequireDefault(require("./StreamAdmin"));
-var _PostAdmin = _interopRequireDefault(require("./PostAdmin"));
-var _BillingAdmin = _interopRequireDefault(require("./BillingAdmin"));
-var _StorageAdmin = _interopRequireDefault(require("./StorageAdmin"));
-var _index = require("/modules/onboarding/signin/index.js");
-var _util = require("/modules/util");
-var _ = require(".");
-var _admin = _interopRequireDefault(require("/customModules/admin"));
-var Module = function Module(props) {
-  var _props$_adminAuth;
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentId = _React$useState4[0],
-    setComponentId = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(false),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    fetchBusy = _React$useState6[0],
-    setFetchBusy = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(null),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    page = _React$useState8[0],
-    setPage = _React$useState8[1];
-  var Auth_Table = {
+var _div, _Script, _link, _li;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Script from 'next/script';
+import Link from 'next/link';
+import { v4 as uuidv4 } from 'uuid';
+import AdminStyles from './Admin.module.scss';
+import BuildAdmin from './BuildAdmin';
+import StreamAdmin from './StreamAdmin';
+import PostAdmin from './PostAdmin';
+import BillingAdmin from './BillingAdmin';
+import StorageAdmin from './StorageAdmin';
+import { SignIn, Username } from '/modules/onboarding/signin/index.js';
+import { isObjectEmpty } from '/modules/util';
+import { Banner } from '.';
+import customAdmin from '/customModules/admin';
+const Module = props => {
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [componentId, setComponentId] = React.useState(null);
+  const [fetchBusy, setFetchBusy] = React.useState(false);
+  const [page, setPage] = React.useState(null);
+  const Auth_Table = {
     BuildAdmin: ['full'],
     StreamAdmin: ['full', 'administrative'],
     PostAdmin: ['full', 'administrative', 'marketing', 'writer'],
     BillingAdmin: ['full', 'administrative'],
     StorageAdmin: ['full', 'administrative', 'marketing', 'writer']
   };
-  var resolveAuth = function resolveAuth(page, auth) {
-    var _auth$adminc;
-    if (auth !== null && auth !== void 0 && (_auth$adminc = auth.adminc) !== null && _auth$adminc !== void 0 && _auth$adminc.access && Auth_Table[page].indexOf(auth.adminc.access) > -1) {
+  const resolveAuth = (page, auth) => {
+    if (auth?.adminc?.access && Auth_Table[page].indexOf(auth.adminc.access) > -1) {
       return true;
     }
     return false;
   };
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     if (!componentDidMount) {
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
       setComponentDidMount(true);
     }
   }, [componentDidMount]);
-  var handleSetPage = _react["default"].useCallback( /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e) {
-      var _e$target;
-      var page, _e$children$;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            page = e === null || e === void 0 || (_e$target = e.target) === null || _e$target === void 0 ? void 0 : _e$target.getAttribute('modif');
-            if (!page && e !== null && e !== void 0 && e.children && e !== null && e !== void 0 && e.children[0]) {
-              page = e === null || e === void 0 || (_e$children$ = e.children[0]) === null || _e$children$ === void 0 ? void 0 : _e$children$.getAttribute('modif');
-            }
-            if (page) {
-              setPage(page);
-            }
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }));
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  console.log(page, props);
-  var doShowSignIn = !props || !props._loggedIn || (0, _util.isObjectEmpty)(props === null || props === void 0 ? void 0 : props._loggedIn) || !(props !== null && props !== void 0 && props._loggedIn.identifier);
-  var isAdmin = (props === null || props === void 0 || (_props$_adminAuth = props._adminAuth) === null || _props$_adminAuth === void 0 || (_props$_adminAuth = _props$_adminAuth.adminc) === null || _props$_adminAuth === void 0 ? void 0 : _props$_adminAuth.admin) && (props === null || props === void 0 ? void 0 : props._loggedIn);
-  console.log(isAdmin);
-  var paintCustomAdmin = function paintCustomAdmin(useComponent) {
-    if (useComponent && useComponent[1] && typeof useComponent[1] === 'function') {
-      var UseComponentDom = useComponent[1];
-      return /*#__PURE__*/_react["default"].createElement(UseComponentDom, props);
+  const handleSetPage = React.useCallback(async e => {
+    let page = e?.target?.getAttribute('modif');
+    if (!page && e?.children && e?.children[0]) {
+      page = e?.children[0]?.getAttribute('modif');
     }
-    return /*#__PURE__*/_react["default"].createElement("div", null);
+    if (page) {
+      setPage(page);
+    }
+  });
+  console.log(page, props);
+  const doShowSignIn = !props || !props._loggedIn || isObjectEmpty(props?._loggedIn) || !props?._loggedIn.identifier;
+  const isAdmin = props?._adminAuth?.adminc?.admin && props?._loggedIn;
+  console.log(isAdmin);
+  const paintCustomAdmin = useComponent => {
+    if (useComponent && useComponent[1] && typeof useComponent[1] === 'function') {
+      const UseComponentDom = useComponent[1];
+      return <UseComponentDom {...props} />;
+    }
+    return _div || (_div = /*#__PURE__*/_jsx("div", {}));
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " ").concat(_AdminModule["default"].container, " Admin_Container")
-  }, /*#__PURE__*/_react["default"].createElement(_script["default"], {
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className} ${AdminStyles.container} Admin_Container`
+  }, void 0, _Script || (_Script = /*#__PURE__*/_jsx(Script, {
     src: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js"
-  }), /*#__PURE__*/_react["default"].createElement("link", {
+  })), _link || (_link = /*#__PURE__*/_jsx("link", {
     href: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css",
     rel: "stylesheet"
-  }), props !== null && props !== void 0 && props._LocalEventEmitter ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(doShowSignIn && !isAdmin ? 'simpleCenter' : '')
-  }, /*#__PURE__*/_react["default"].createElement(_index.SignIn, props), /*#__PURE__*/_react["default"].createElement(_index.Username, props)) : null, isAdmin ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].internalContainer, " Admin_InternalContainer")
-  }, /*#__PURE__*/_react["default"].createElement(_.Banner, props), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].bodyContainer, " Admin_BodyContainer")
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_AdminModule["default"].adminMenuContainer, " Admin_MenuContainer")
-  }, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  })), props?._LocalEventEmitter ? /*#__PURE__*/_jsx("div", {
+    className: `${doShowSignIn && !isAdmin ? 'simpleCenter' : ''}`
+  }, void 0, <SignIn {...props}></SignIn>, <Username {...props}></Username>) : null, isAdmin ? /*#__PURE__*/_jsx("div", {
+    className: `${AdminStyles.internalContainer} Admin_InternalContainer`
+  }, void 0, <Banner {...props} />, /*#__PURE__*/_jsx("div", {
+    className: `${AdminStyles.bodyContainer} Admin_BodyContainer`
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("ul", {
+    className: `${AdminStyles.adminMenuContainer} Admin_MenuContainer`
+  }, void 0, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleSetPage,
     modif: "stream"
-  }, "Stream")) : null, resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Stream")) : null, resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleSetPage,
     modif: "post"
-  }, "Post")) : null, resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Post")) : null, resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleSetPage,
     modif: "storage"
-  }, "Storage")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Storage")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleSetPage,
     modif: "build"
-  }, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleSetPage,
     modif: "billing"
-  }, "Billing")) : null, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+  }, void 0, "Billing")) : null, _li || (_li = /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {}, void 0, /*#__PURE__*/_jsx(Link, {
     href: "/documentation"
-  }, "Documentation")))), Object.entries(_admin["default"]).length > 0 ? /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_AdminModule["default"].adminMenuContainer, " ").concat(_AdminModule["default"].adminMenuContainerCustom, " Admin_MenuContainerCustom")
-  }, Object.entries(_admin["default"]).map(function (m, i) {
-    var _m$, _m$2;
-    return /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("button", {
-      onClick: handleSetPage,
-      modif: m[0]
-    }, (_m$ = m[0]) !== null && _m$ !== void 0 && _m$.slice(1, m[0].length) && ((_m$2 = m[0]) === null || _m$2 === void 0 ? void 0 : _m$2.length) > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0]));
-  })) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_AdminModule["default"].contentBodyContainer, " Admin_ContentBodyContainer")
-  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BuildAdmin["default"], props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StreamAdmin["default"], props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_PostAdmin["default"], props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_BillingAdmin["default"], props)) : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_StorageAdmin["default"], props)) : Object.entries(_admin["default"]).findIndex(function (m) {
-    return m[0] === page;
-  }) > -1 // Leverage Custom Admin Pages
-  ? paintCustomAdmin(Object.entries(_admin["default"]).find(function (m) {
-    return m[0] === page;
-  })) : null : null))) : null);
+  }, void 0, "Documentation"))))), Object.entries(customAdmin).length > 0 ? /*#__PURE__*/_jsx("ul", {
+    className: `${AdminStyles.adminMenuContainer} ${AdminStyles.adminMenuContainerCustom} Admin_MenuContainerCustom`
+  }, void 0, Object.entries(customAdmin).map((m, i) => /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("button", {
+    onClick: handleSetPage,
+    modif: m[0]
+  }, void 0, m[0]?.slice(1, m[0].length) && m[0]?.length > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0])))) : null), /*#__PURE__*/_jsx("div", {
+    className: `${AdminStyles.contentBodyContainer} Admin_ContentBodyContainer`
+  }, void 0, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("div", {}, void 0, <BuildAdmin {...props} />) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("div", {}, void 0, <StreamAdmin {...props} />) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("div", {}, void 0, <PostAdmin {...props} />) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("div", {}, void 0, <BillingAdmin {...props} />) : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/_jsx("div", {}, void 0, <StorageAdmin {...props} />) : Object.entries(customAdmin).findIndex(m => m[0] === page) > -1 // Leverage Custom Admin Pages
+  ? paintCustomAdmin(Object.entries(customAdmin).find(m => m[0] === page)) : null : null))) : null);
 };
-var _default = exports["default"] = Module;
+export default Module;

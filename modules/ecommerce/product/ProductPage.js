@@ -1,67 +1,40 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _image = _interopRequireDefault(require("next/image"));
-var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
-var _ecommerce = require("../../utility/ecommerce");
-var _utility = require("../../utility/utility");
-var _util = require("../../util");
-var _AllInclusive = _interopRequireDefault(require("@mui/icons-material/AllInclusive"));
-var _ConfirmationNumber = _interopRequireDefault(require("@mui/icons-material/ConfirmationNumber"));
-var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
-var _Stadium = _interopRequireDefault(require("@mui/icons-material/Stadium"));
-var _ = require(".");
-var _reactSlick = _interopRequireDefault(require("react-slick"));
-var _ProductImageManagerModule = _interopRequireDefault(require("./ProductImageManager.module.scss"));
-var _uuid = require("uuid");
-var _localImports = require("../../internal/localImports");
-var Module = function Module(props) {
-  var _props$productData$pr, _props$productData, _product$name, _product$detailmeta$d, _product$detailmeta, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _product$detailmeta2;
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentId = _React$useState4[0],
-    setComponentId = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(0),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    currentSlide = _React$useState6[0],
-    setCurrentSlide = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState({}),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    selectedStyle = _React$useState8[0],
-    setSelectedStyle = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState(null),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    currentOption = _React$useState10[0],
-    setCurrentOption = _React$useState10[1];
-  var sliderTrackRef = _react["default"].useRef();
-  var currency = '$';
-  _react["default"].useEffect(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Image from 'next/image';
+import Tooltip from '@mui/material/Tooltip';
+import { addToCart, resolveDefaultStyle, resolveImg, resolveStyles, resolveRegionBasedPrice, updateCart, doUploadImageForLineupParticipant } from '../../utility/ecommerce';
+import { fireGlobalEvent } from '../../utility/utility';
+import { getFormattedDate, getFormattedTime, isObjectEmpty } from '../../util';
+import AllInclusive from '@mui/icons-material/AllInclusive';
+import ConfirmationNumber from '@mui/icons-material/ConfirmationNumber';
+import Inventory from '@mui/icons-material/Inventory';
+import Stadium from '@mui/icons-material/Stadium';
+import { ProductImageManager } from '.';
+import Slider from 'react-slick';
+import PIMStyles from './ProductImageManager.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { ReactCarouselCss } from '../../internal/localImports';
+const Module = props => {
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [componentId, setComponentId] = React.useState(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [selectedStyle, setSelectedStyle] = React.useState({});
+  const [currentOption, setCurrentOption] = React.useState(null);
+  const sliderTrackRef = React.useRef();
+  const currency = '$';
+  React.useEffect(() => {
     if (!componentDidMount) {
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
       setComponentDidMount(true);
     }
   }, [componentDidMount, setComponentDidMount, props.product]);
-  var setSelectedStyleHandler = _react["default"].useCallback(function (e) {
+  const setSelectedStyleHandler = React.useCallback(e => {
     if (e && e.currentTarget) {
       if (e.currentTarget.value) {
         setSelectedStyle(e.currentTarget.value);
-        var currentStyleObject = props.product.styles.find(function (m) {
-          return m.sid === e.currentTarget.value;
-        });
+        const currentStyleObject = props.product.styles.find(m => m.sid === e.currentTarget.value);
         console.log(currentStyleObject);
         if (currentStyleObject && currentStyleObject.option && currentStyleObject.option[0] && currentStyleObject.option[0].sid) {
           setCurrentOption(currentStyleObject.option[0].sid);
@@ -69,119 +42,90 @@ var Module = function Module(props) {
       }
     }
   });
-  var changeCurrentOption = _react["default"].useCallback(function (e) {
+  const changeCurrentOption = React.useCallback(e => {
     setCurrentOption(e.currentTarget.value);
   });
-  var handleFireGlobalEvent = _react["default"].useCallback( /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e) {
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            (0, _utility.fireGlobalEvent)(e, props._LocalEventEmitter);
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }));
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  var product = (_props$productData$pr = props === null || props === void 0 || (_props$productData = props.productData) === null || _props$productData === void 0 ? void 0 : _props$productData.product) !== null && _props$productData$pr !== void 0 ? _props$productData$pr : null;
-  (0, _ecommerce.resolveDefaultStyle)(product, selectedStyle, setSelectedStyle, currentOption, setCurrentOption);
-  var validStyleObject = selectedStyle && product !== null && product !== void 0 && product.styles && product.styles.find(function (m) {
-    return m.sid === selectedStyle;
-  }) ? product.styles.find(function (m) {
-    return m.sid === selectedStyle;
-  }) : null;
-  var validOptionObject = validStyleObject && validStyleObject.option ? currentOption ? validStyleObject.option.find(function (m) {
-    return m.sid === currentOption;
-  }) : validStyleObject.option[0] ? validStyleObject.option[0] : null : null;
+  const handleFireGlobalEvent = React.useCallback(async e => {
+    fireGlobalEvent(e, props._LocalEventEmitter);
+  });
+  const product = props?.productData?.product ?? null;
+  resolveDefaultStyle(product, selectedStyle, setSelectedStyle, currentOption, setCurrentOption);
+  const validStyleObject = selectedStyle && product?.styles && product.styles.find(m => m.sid === selectedStyle) ? product.styles.find(m => m.sid === selectedStyle) : null;
+  const validOptionObject = validStyleObject && validStyleObject.option ? currentOption ? validStyleObject.option.find(m => m.sid === currentOption) : validStyleObject.option[0] ? validStyleObject.option[0] : null : null;
   console.log(validStyleObject, product, selectedStyle);
 
   // console.log(props.product, props._loggedIn, currentOption, selectedStyle, props)
-  var isAdmin = props.product && props.product.owner && props._loggedIn && props._loggedIn.identifier && props._loggedIn.identifier === props.product.owner;
+  const isAdmin = props.product && props.product.owner && props._loggedIn && props._loggedIn.identifier && props._loggedIn.identifier === props.product.owner;
   console.log(props.product, props.editingOptionsMeta, selectedStyle, currency, props.currentDefinePriceCurrency, props.priceInput, validStyleObject, props.editing, props);
-  var currentPrice = _react["default"].useMemo(function () {
-    return (0, _ecommerce.resolveRegionBasedPrice)(props, validStyleObject);
+  const currentPrice = React.useMemo(() => {
+    return resolveRegionBasedPrice(props, validStyleObject);
   }, [props.product, validStyleObject, currency]);
-  var useSettings = {
+  const useSettings = {
     infinite: false,
     speed: 500,
     swipeToSlide: true,
     touchThreshold: 60,
     arrows: false,
-    beforeChange: function beforeChange(current, next) {
+    beforeChange: (current, next) => {
       if (next !== currentSlide) {
         setCurrentSlide(next);
       }
     }
   };
-  var handleSetSlide = _react["default"].useCallback(function (e) {
-    var _e$currentTarget;
-    if (e !== null && e !== void 0 && (_e$currentTarget = e.currentTarget) !== null && _e$currentTarget !== void 0 && _e$currentTarget.getAttribute) {
-      var i = e.currentTarget.getAttribute('i');
+  const handleSetSlide = React.useCallback(e => {
+    if (e?.currentTarget?.getAttribute) {
+      const i = e.currentTarget.getAttribute('i');
       sliderTrackRef.current.slickGoTo(i);
     }
   });
   console.log(product, currentPrice);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _localImports.ReactCarouselCss, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].container, " ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].innerContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].leadProductContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].singleProductCarouselProvider)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productSliderThumbnailListContainer)
-  }, product !== null && product !== void 0 && product.images ? product.images.map(function (image, i) {
-    var _props$cdn2;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      slide: i,
-      key: i,
-      className: "".concat(_ProductImageManagerModule["default"].productSliderThumbSelectMin),
-      onClick: handleSetSlide,
-      i: i
-    }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-      className: "".concat(_ProductImageManagerModule["default"].sliderThumbSelectMinImg),
-      loader: function loader() {
-        var _props$cdn;
-        return props !== null && props !== void 0 && (_props$cdn = props.cdn) !== null && _props$cdn !== void 0 && _props$cdn["static"] ? "".concat(props.cdn["static"], "/").concat(image.name) : null;
-      },
-      src: props !== null && props !== void 0 && (_props$cdn2 = props.cdn) !== null && _props$cdn2 !== void 0 && _props$cdn2["static"] ? "".concat(props.cdn["static"], "/").concat(image.name) : null,
-      alt: "Title",
-      width: 35,
-      height: 45,
-      layout: "responsive"
-    }));
-  }) : null), /*#__PURE__*/_react["default"].createElement(_reactSlick["default"], (0, _extends2["default"])({}, useSettings, {
-    className: "".concat(_ProductImageManagerModule["default"].productSliderProductContainer),
-    ref: sliderTrackRef
-  }), product !== null && product !== void 0 && product.images ? product.images.map(function (image, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      index: i,
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_ProductImageManagerModule["default"].productSliderProductImg),
+  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, ReactCarouselCss, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.container} ${props.className}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.innerContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.leadProductContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.singleProductCarouselProvider}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productSliderThumbnailListContainer}`
+  }, void 0, product?.images ? product.images.map((image, i) => /*#__PURE__*/_jsx("div", {
+    slide: i,
+    className: `${PIMStyles.productSliderThumbSelectMin}`,
+    onClick: handleSetSlide,
+    i: i
+  }, i, /*#__PURE__*/_jsx(Image, {
+    className: `${PIMStyles.sliderThumbSelectMinImg}`,
+    loader: () => {
+      return props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null;
+    },
+    src: props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null,
+    alt: "Title",
+    width: 35,
+    height: 45,
+    layout: "responsive"
+  }))) : null), <Slider {...useSettings} className={`${PIMStyles.productSliderProductContainer}`} ref={sliderTrackRef}>
+                                {product?.images ? product.images.map((image, i) => /*#__PURE__*/_jsx("div", {
+      index: i
+    }, i, /*#__PURE__*/_jsx("div", {
+      className: `${PIMStyles.productSliderProductImg}`,
       style: {
-        backgroundImage: "url(".concat(props.cdn["static"], "/").concat(image.name, ")")
+        backgroundImage: `url(${props.cdn.static}/${image.name})`
       }
-    }));
-  }) : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("h1", {
-    className: "".concat(_ProductImageManagerModule["default"].productPageTitle)
-  }, (_product$name = product === null || product === void 0 ? void 0 : product.name) !== null && _product$name !== void 0 ? _product$name : null), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", null, (_product$detailmeta$d = product === null || product === void 0 || (_product$detailmeta = product.detailmeta) === null || _product$detailmeta === void 0 ? void 0 : _product$detailmeta.description) !== null && _product$detailmeta$d !== void 0 ? _product$detailmeta$d : null)), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    }))) : null}
+                            </Slider>), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("h1", {
+    className: `${PIMStyles.productPageTitle}`
+  }, void 0, product?.name ?? null), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {}, void 0, product?.detailmeta?.description ?? null)), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       margin: '.125rem 0'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '1.5rem',
       fontWeight: 600
     }
-  }, /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$symbol = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.symbol) !== null && _currentPrice$symbol !== void 0 ? _currentPrice$symbol : null), /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$price = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.price) !== null && _currentPrice$price !== void 0 ? _currentPrice$price : null)), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.symbol ?? null), /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.price ?? null)), /*#__PURE__*/_jsx("div", {
     className: "Product_CurrencyLabel",
     style: {
       fontSize: '1.3rem',
@@ -190,23 +134,23 @@ var Module = function Module(props) {
       padding: '.075rem',
       borderRadius: '.25rem'
     }
-  }, (_currentPrice$currenc = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.currency) !== null && _currentPrice$currenc !== void 0 ? _currentPrice$currenc : 'USD'))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 wrap",
+  }, void 0, currentPrice?.currency ?? 'USD'))), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `flex gap-p2 wrap`,
     style: {
       marginTop: '.5rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleFireGlobalEvent,
-    item: product === null || product === void 0 ? void 0 : product.id,
+    item: product?.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart"
-  }, "Add To Cart"), product !== null && product !== void 0 && (_product$detailmeta2 = product.detailmeta) !== null && _product$detailmeta2 !== void 0 && _product$detailmeta2.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Add To Cart"), product?.detailmeta?.subscription ? /*#__PURE__*/_jsx("button", {
     onClick: handleFireGlobalEvent,
-    item: product === null || product === void 0 ? void 0 : product.id,
+    item: product?.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart_subscribe"
-  }, "Subscribe") : null)))))));
+  }, void 0, "Subscribe") : null)))))));
 };
-var _default = exports["default"] = Module;
+export default Module;

@@ -1,101 +1,54 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _util = require("../../util.js");
-var _gridListModule = _interopRequireDefault(require("./gridList.module.scss"));
-var _videoItem = _interopRequireDefault(require("./videoItem.js"));
-var GridList = function GridList(props) {
-  var isMounted = _react["default"].useRef(false);
-  var _React$useState = _react["default"].useState(-1),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    activeItem = _React$useState2[0],
-    setActiveItem = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    activeItemData = _React$useState4[0],
-    setActiveItemData = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(null),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    previousActiveItemData = _React$useState6[0],
-    setPreviousActiveItemData = _React$useState6[1];
-  var ACTIVE_ITEM_DELAY = 1000;
-  _react["default"].useEffect(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { debounce } from '../../util.js';
+import GridListStyles from './gridList.module.scss';
+import VideoItem from './videoItem.js';
+import { detectAllowEditingFlag } from '../../util.js';
+const GridList = props => {
+  let isMounted = React.useRef(false);
+  let [activeItem, setActiveItem] = React.useState(-1);
+  let [activeItemData, setActiveItemData] = React.useState(null);
+  let [previousActiveItemData, setPreviousActiveItemData] = React.useState(null);
+  const ACTIVE_ITEM_DELAY = 1000;
+  React.useEffect(() => {
     if (!isMounted.current && props.cdn) {
       isMounted.current = true;
     }
-    return function () {};
+    return () => {};
   }, [props.cdn]);
-  var delayedSetActiveItem = _react["default"].useCallback((0, _util.debounce)(function (e, i, d, p) {
-    return handleSetActiveItem(e, i, d, p);
-  }, ACTIVE_ITEM_DELAY), []); // Debounce activation of highlighted list item after mouseover
-  var handleSetActiveItem = /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e, i, d, p) {
-      var gc, mvc, allowPlayback, r;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            setActiveItemData(d);
-            gc = getGhostContainerOfIndex(i, 'ghostVideoItem');
-            if (!(gc && moveableVideoComponent && moveableVideoComponent.current && d && videoComponent && videoComponent.current)) {
-              _context.next = 19;
-              break;
-            }
-            gc.appendChild(moveableVideoComponent.current);
-            mvc = document && document.getElementsByClassName('moveableVideoContainer') && document.getElementsByClassName('moveableVideoContainer')[0] ? document.getElementsByClassName('moveableVideoContainer')[0] : null;
-            if (!mvc) {
-              _context.next = 19;
-              break;
-            }
-            mvc.style.display = "block";
-            if (p != d) {
-              videoContainer.current.style.transition = 0 + "ms";
-              mvc.style.opacity = "0";
-            }
-            setPreviousActiveItemData(d);
-            videoContainer.current.style.transition = 200 + "ms";
-            setTimeout(function () {
-              setActiveItem(i); // Sets active grid item for highlight and playback
-              mvc.style.opacity = "1";
-            }, 750);
-            allowPlayback = checkAllowedPlayback(d);
-            if (allowPlayback) {
-              _context.next = 15;
-              break;
-            }
-            return _context.abrupt("return");
-          case 15:
-            _context.next = 17;
-            return videoPlayer.current.loadMedia(d, cdnData.videoCdn, "/video/", true, true);
-          case 17:
-            r = _context.sent;
-            // Get config: videoPlayer.current.player.getConfiguration()
-            videoComponent.current.play();
-          case 19:
-            _context.next = 23;
-            break;
-          case 21:
-            _context.prev = 21;
-            _context.t0 = _context["catch"](0);
-          case 23:
-          case "end":
-            return _context.stop();
+  const delayedSetActiveItem = React.useCallback(debounce((e, i, d, p) => handleSetActiveItem(e, i, d, p), ACTIVE_ITEM_DELAY), []); // Debounce activation of highlighted list item after mouseover
+  const handleSetActiveItem = async (e, i, d, p) => {
+    try {
+      setActiveItemData(d);
+      let gc = getGhostContainerOfIndex(i, 'ghostVideoItem');
+      if (gc && moveableVideoComponent && moveableVideoComponent.current && d && videoComponent && videoComponent.current) {
+        gc.appendChild(moveableVideoComponent.current);
+        let mvc = document && document.getElementsByClassName('moveableVideoContainer') && document.getElementsByClassName('moveableVideoContainer')[0] ? document.getElementsByClassName('moveableVideoContainer')[0] : null;
+        if (mvc) {
+          mvc.style.display = "block";
+          if (p != d) {
+            videoContainer.current.style.transition = 0 + "ms";
+            mvc.style.opacity = "0";
+          }
+          setPreviousActiveItemData(d);
+          videoContainer.current.style.transition = 200 + "ms";
+          setTimeout(() => {
+            setActiveItem(i); // Sets active grid item for highlight and playback
+            mvc.style.opacity = "1";
+          }, 750);
+          const allowPlayback = checkAllowedPlayback(d);
+          if (!allowPlayback) {
+            return;
+          }
+          let r = await videoPlayer.current.loadMedia(d, cdnData.videoCdn, "/video/", true, true); // Get config: videoPlayer.current.player.getConfiguration()
+          videoComponent.current.play();
         }
-      }, _callee, null, [[0, 21]]);
-    }));
-    return function handleSetActiveItem(_x, _x2, _x3, _x4) {
-      return _ref.apply(this, arguments);
-    };
-  }();
+      }
+    } catch (err) {
+      // Component was unmounted. Fail silently
+    }
+  };
 
   // transition in opacity slowly during playback
   // stop, freeze, disappear on mouseout
@@ -104,79 +57,39 @@ var GridList = function GridList(props) {
    * Initialize moveable Video Component
    * @param {*} cdn 
    */
-  var initializeVideoPlayer = /*#__PURE__*/function () {
-    var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(cdn) {
-      return _regenerator["default"].wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
-          case 0:
-            videoPlayer.current = new VideoPlayer();
-            videoPlayer.current.initPlayer(videoComponent.current).then( /*#__PURE__*/function () {
-              var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(data) {
-                return _regenerator["default"].wrap(function _callee2$(_context2) {
-                  while (1) switch (_context2.prev = _context2.next) {
-                    case 0:
-                      if (videoComponent && videoPlayer && videoPlayer.current) {
-                        videoPlayer.current.cdn = cdn;
-                        //let a = await videoPlayer.current.player.configure('abr.defaultBandwidthEstimate', 1);
-                        // const uiConfig = {};
-                        // uiConfig['controlPanelElements'] = ['time_and_duration', 'spacer'];
-                        // const ui = new videoPlayer.current.shaka.ui.Overlay(videoPlayer.current.player, videoContainer.current, videoComponent.current);
-                        // ui.configure(uiConfig);
-                        // ui.getControls();
-                        // let r = await videoPlayer.current.loadMedia({
-                        //     mpd: '847f6af4d6454924ae606335143bfc74-mpd.mpd',
-                        //     hls: "847f6af4d6454924ae606335143bfc74-hls.m3u8"
-                        // }, cdnData.videoCdn, "/video/");
-                        // videoComponent.current.play();
-                        moveableVideoComponent.current = videoContainer.current;
-                        videoContainer.current.style.opacity = "0";
-                        videoContainer.current.remove();
-                      }
-                    case 1:
-                    case "end":
-                      return _context2.stop();
-                  }
-                }, _callee2);
-              }));
-              return function (_x6) {
-                return _ref3.apply(this, arguments);
-              };
-            }());
-          case 2:
-          case "end":
-            return _context3.stop();
-        }
-      }, _callee3);
-    }));
-    return function initializeVideoPlayer(_x5) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_gridListModule["default"].leadContainer)
-  }, props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map(function (item, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_gridListModule["default"].col),
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement(_videoItem["default"], (0, _extends2["default"])({
-      item: item,
-      index: i,
-      setActive: function setActive(e, i, d, p) {
-        delayedSetActiveItem(e, i, d, p);
-      },
-      unsetActiveItem: function unsetActiveItem(i) {
-        // setActiveItem(-1);
-        setActiveItemData(null);
-      },
-      activeItem: activeItem,
-      previousActiveItemData: previousActiveItemData,
-      allowEditingFlag: (0, _util.detectAllowEditingFlag)(item, props._loggedIn)
-    }, props)));
-  }) : props._gridListType == 'product' ? props._gridItems.map(function (item, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_gridListModule["default"].col),
-      key: i
-    }, "Product");
-  }) : null : null);
+  const initializeVideoPlayer = async cdn => {
+    videoPlayer.current = new VideoPlayer();
+    videoPlayer.current.initPlayer(videoComponent.current).then(async data => {
+      if (videoComponent && videoPlayer && videoPlayer.current) {
+        videoPlayer.current.cdn = cdn;
+        //let a = await videoPlayer.current.player.configure('abr.defaultBandwidthEstimate', 1);
+        // const uiConfig = {};
+        // uiConfig['controlPanelElements'] = ['time_and_duration', 'spacer'];
+        // const ui = new videoPlayer.current.shaka.ui.Overlay(videoPlayer.current.player, videoContainer.current, videoComponent.current);
+        // ui.configure(uiConfig);
+        // ui.getControls();
+        // let r = await videoPlayer.current.loadMedia({
+        //     mpd: '847f6af4d6454924ae606335143bfc74-mpd.mpd',
+        //     hls: "847f6af4d6454924ae606335143bfc74-hls.m3u8"
+        // }, cdnData.videoCdn, "/video/");
+        // videoComponent.current.play();
+        moveableVideoComponent.current = videoContainer.current;
+        videoContainer.current.style.opacity = "0";
+        videoContainer.current.remove();
+      }
+    });
+  };
+  return /*#__PURE__*/_jsx("div", {
+    className: `${GridListStyles.leadContainer}`
+  }, void 0, props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map((item, i) => /*#__PURE__*/_jsx("div", {
+    className: `${GridListStyles.col}`
+  }, i, <VideoItem item={item} index={i} setActive={(e, i, d, p) => {
+    delayedSetActiveItem(e, i, d, p);
+  }} unsetActiveItem={i => {
+    // setActiveItem(-1);
+    setActiveItemData(null);
+  }} activeItem={activeItem} previousActiveItemData={previousActiveItemData} allowEditingFlag={detectAllowEditingFlag(item, props._loggedIn)} {...props}></VideoItem>)) : props._gridListType == 'product' ? props._gridItems.map((item, i) => /*#__PURE__*/_jsx("div", {
+    className: `${GridListStyles.col}`
+  }, i, "Product")) : null : null);
 };
-var _default = exports["default"] = GridList;
+export default GridList;

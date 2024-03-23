@@ -1,106 +1,54 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _fetch = require("./fetch");
-var Module = function Module(props) {
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    fetchBusy = _React$useState2[0],
-    setFetchBusy = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(false),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    didFetch = _React$useState4[0],
-    setDidFetch = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(-1),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    lastFetch = _React$useState6[0],
-    setLastFetch = _React$useState6[1];
-  _react["default"].useEffect(function () {
-    var f = /*#__PURE__*/function () {
-      var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var _props$handlerName, fetchBody, res;
-        return _regenerator["default"].wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              if (!props.apiUrl) {
-                _context.next = 24;
-                break;
-              }
-              if (!(!fetchBusy && props.handlerArgs && props.domainKey && props.apiUrl && !didFetch)) {
-                _context.next = 24;
-                break;
-              }
-              setFetchBusy(true);
-              setTimeout(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { fetchPost } from './fetch';
+const Module = props => {
+  const [fetchBusy, setFetchBusy] = React.useState(false);
+  const [didFetch, setDidFetch] = React.useState(false);
+  const [lastFetch, setLastFetch] = React.useState(-1);
+  React.useEffect(() => {
+    const f = async () => {
+      try {
+        if (props.apiUrl) {
+          if (!fetchBusy && props.handlerArgs && props.domainKey && props.apiUrl && !didFetch) {
+            setFetchBusy(true);
+            setTimeout(() => {
+              setFetchBusy(false);
+            }, 15000);
+            setLastFetch(new Date().getTime());
+            setDidFetch(true);
+            let fetchBody = {
+              domainKey: props.domainKey,
+              handlerName: props.handlerName ?? null,
+              handlerArgs: props.handlerArgs
+            };
+            let res = await fetchPost(props.apiUrl + '/m/fetchhandler', null, null, fetchBody);
+            console.log('Handler', res);
+            if (!res) {
+              setFetchBusy(false);
+              return false;
+            } else if (res.hasOwnProperty('status')) {
+              if (res.status == "failed") {
                 setFetchBusy(false);
-              }, 15000);
-              setLastFetch(new Date().getTime());
-              setDidFetch(true);
-              fetchBody = {
-                domainKey: props.domainKey,
-                handlerName: (_props$handlerName = props.handlerName) !== null && _props$handlerName !== void 0 ? _props$handlerName : null,
-                handlerArgs: props.handlerArgs
-              };
-              _context.next = 10;
-              return (0, _fetch.fetchPost)(props.apiUrl + '/m/fetchhandler', null, null, fetchBody);
-            case 10:
-              res = _context.sent;
-              console.log('Handler', res);
-              if (res) {
-                _context.next = 17;
-                break;
-              }
-              setFetchBusy(false);
-              return _context.abrupt("return", false);
-            case 17:
-              if (!res.hasOwnProperty('status')) {
-                _context.next = 24;
-                break;
-              }
-              if (!(res.status == "failed")) {
-                _context.next = 23;
-                break;
-              }
-              setFetchBusy(false);
-              return _context.abrupt("return", false);
-            case 23:
-              if (res.status == "success") {
+                return false;
+              } else if (res.status == "success") {
                 setFetchBusy(false);
                 if (props.receiveData) {
                   props.receiveData(res);
                 }
               }
-            case 24:
-              _context.next = 30;
-              break;
-            case 26:
-              _context.prev = 26;
-              _context.t0 = _context["catch"](0);
-              console.log(_context.t0);
-              setFetchBusy(false);
-            case 30:
-            case "end":
-              return _context.stop();
+            }
           }
-        }, _callee, null, [[0, 26]]);
-      }));
-      return function f() {
-        return _ref.apply(this, arguments);
-      };
-    }();
+        }
+      } catch (err) {
+        console.log(err);
+        setFetchBusy(false);
+      }
+    };
     f();
-  }, [didFetch, fetchBusy, props === null || props === void 0 ? void 0 : props.handlerName, props.handlerArgs, props.domainKey]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className)
+  }, [didFetch, fetchBusy, props?.handlerName, props.handlerArgs, props.domainKey]);
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className}`
   });
 };
-var _default = exports["default"] = Module;
+export default Module;

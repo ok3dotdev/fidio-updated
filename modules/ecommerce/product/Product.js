@@ -1,74 +1,45 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _link = _interopRequireDefault(require("next/link"));
-var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
-var _ecommerce = require("../../utility/ecommerce");
-var _utility = require("../../utility/utility");
-var _util = require("../../util");
-var _AllInclusive = _interopRequireDefault(require("@mui/icons-material/AllInclusive"));
-var _ConfirmationNumber = _interopRequireDefault(require("@mui/icons-material/ConfirmationNumber"));
-var _Inventory = _interopRequireDefault(require("@mui/icons-material/Inventory"));
-var _Stadium = _interopRequireDefault(require("@mui/icons-material/Stadium"));
-var _ = require(".");
-var _ProductImageManagerModule = _interopRequireDefault(require("./ProductImageManager.module.scss"));
-var _reactTextareaAutosize = _interopRequireDefault(require("react-textarea-autosize"));
-var _event = require("../../utility/utility/event");
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2["default"])(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-var Module = function Module(props) {
-  var _props$editing, _props$product2, _props$editing2, _props$editing3, _props$currentDefineP, _props$currentDefineP2, _props$currentDefineP3, _props$priceInput, _props$currentDefineP4, _props$currentDefineP5, _props$priceInput2, _ref2, _props$currentDefineP6, _props$currentDefineP7, _isEditing$meta, _props$currentDefineP8, _props$currentDefineP9, _props$product3, _props$product4, _props$editingOptions, _props$product5, _props$product6, _props$product7, _props$product8, _props$product9, _props$product10, _props$classes$produc, _props$classes, _currentPrice$symbol, _currentPrice$price, _currentPrice$currenc, _props$product11;
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState({}),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    selectedStyle = _React$useState4[0],
-    setSelectedStyle = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(null),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    currentOption = _React$useState6[0],
-    setCurrentOption = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(null),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    warning = _React$useState8[0],
-    setWarning = _React$useState8[1];
-  var optionSelect = _react["default"].useRef();
-  var styleSelect = _react["default"].useRef();
-  var isTicketRef = _react["default"].useRef();
-  var isLivestreamRef = _react["default"].useRef();
-  var _React$useState9 = _react["default"].useState(false),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    isSettingCurrency = _React$useState10[0],
-    setIsSettingCurrency = _React$useState10[1];
-  var descriptionInputRef = _react["default"].useRef();
-  var currentCurrencyRef = _react["default"].useRef();
-  var currency = '$';
-  _react["default"].useEffect(function () {
+var _div, _div2, _Tooltip, _label, _label2, _div3, _div4, _div5, _div6, _div7, _div8, _div9, _Inventory, _div10, _div11;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Link from 'next/link';
+import Tooltip from '@mui/material/Tooltip';
+import { resolveDefaultStyle, resolveStyles, resolveRegionBasedPrice } from '../../utility/ecommerce';
+import { fireGlobalEvent } from '../../utility/utility';
+import { getFormattedDate } from '../../util';
+import AllInclusive from '@mui/icons-material/AllInclusive';
+import ConfirmationNumber from '@mui/icons-material/ConfirmationNumber';
+import Inventory from '@mui/icons-material/Inventory';
+import Stadium from '@mui/icons-material/Stadium';
+import { Lineup, ProductImageManager } from '.';
+import PIMStyles from './ProductImageManager.module.scss';
+import TextareaAutosize from 'react-textarea-autosize';
+import { selectThisText } from '../../utility/utility/event';
+const Module = props => {
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [selectedStyle, setSelectedStyle] = React.useState({});
+  const [currentOption, setCurrentOption] = React.useState(null);
+  const [warning, setWarning] = React.useState(null);
+  const optionSelect = React.useRef();
+  const styleSelect = React.useRef();
+  const isTicketRef = React.useRef();
+  const isLivestreamRef = React.useRef();
+  const [isSettingCurrency, setIsSettingCurrency] = React.useState(false);
+  const descriptionInputRef = React.useRef();
+  const currentCurrencyRef = React.useRef();
+  const currency = '$';
+  React.useEffect(() => {
     if (!componentDidMount) {
       props.setDefaultPriceHtml();
       setComponentDidMount(true);
     }
   }, [componentDidMount, setComponentDidMount, props.product]);
-  (0, _ecommerce.resolveDefaultStyle)(props.product, selectedStyle, setSelectedStyle, currentOption, setCurrentOption);
-  var setSelectedStyleHandler = _react["default"].useCallback(function (e) {
+  resolveDefaultStyle(props.product, selectedStyle, setSelectedStyle, currentOption, setCurrentOption);
+  const setSelectedStyleHandler = React.useCallback(e => {
     if (e && e.currentTarget) {
       if (e.currentTarget.value) {
         setSelectedStyle(e.currentTarget.value);
-        var currentStyleObject = props.product.styles.find(function (m) {
-          return m.sid === e.currentTarget.value;
-        });
+        const currentStyleObject = props.product.styles.find(m => m.sid === e.currentTarget.value);
         console.log(currentStyleObject);
         if (currentStyleObject && currentStyleObject.option && currentStyleObject.option[0] && currentStyleObject.option[0].sid) {
           setCurrentOption(currentStyleObject.option[0].sid);
@@ -76,24 +47,22 @@ var Module = function Module(props) {
       }
     }
   });
-  var changeCurrentOption = _react["default"].useCallback(function (e) {
+  const changeCurrentOption = React.useCallback(e => {
     setCurrentOption(e.currentTarget.value);
   });
-  var handleEdit = _react["default"].useCallback(function (e) {
+  const handleEdit = React.useCallback(e => {
     console.log(e, 'edit');
     if (e && e.currentTarget && e.currentTarget.getAttribute && e.currentTarget.getAttribute('modif')) {
-      var modif = e.currentTarget.getAttribute('modif');
-      var saveTarget = e.currentTarget;
+      const modif = e.currentTarget.getAttribute('modif');
+      const saveTarget = e.currentTarget;
       if (modif === 'edit' && props.handleEdit) {
         props.handleEdit(props.product);
-        setTimeout(function () {
-          var _props$product;
-          props.nameRef.current.value = props === null || props === void 0 || (_props$product = props.product) === null || _props$product === void 0 ? void 0 : _props$product.name;
+        setTimeout(() => {
+          props.nameRef.current.value = props?.product?.name;
           if (props.product.styles && props.product.styles[0]) {
             props.styleInput.current.value = props.product.styles[0].style;
             props.setEditingSelectedStyle(props.product.styles[0].sid);
-            setTimeout(function () {
-              var _window;
+            setTimeout(() => {
               console.log(props, props.product.styles[0].option && props.product.styles[0].option[0]);
               if (props.product.styles[0].option && props.product.styles[0].option[0]) {
                 if (props.optionInput.current) {
@@ -113,8 +82,8 @@ var Module = function Module(props) {
                 }
                 props.setEditingOptionsMeta(props.product.detailmeta);
               }
-              var currentProduct = document.getElementById(props.product.id);
-              if (currentProduct !== null && currentProduct !== void 0 && currentProduct.offsetTop && (_window = window) !== null && _window !== void 0 && _window.scrollTo && props._isMobile) {
+              const currentProduct = document.getElementById(props.product.id);
+              if (currentProduct?.offsetTop && window?.scrollTo && props._isMobile) {
                 window.scrollTo({
                   behavior: 'smooth',
                   top: currentProduct.offsetTop - 5
@@ -126,23 +95,10 @@ var Module = function Module(props) {
       }
     }
   });
-  var handleFireGlobalEvent = _react["default"].useCallback( /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(e) {
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            (0, _utility.fireGlobalEvent)(e, props._LocalEventEmitter);
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }));
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  var handleSetIsSettingCurrency = _react["default"].useCallback(function (e) {
+  const handleFireGlobalEvent = React.useCallback(async e => {
+    fireGlobalEvent(e, props._LocalEventEmitter);
+  });
+  const handleSetIsSettingCurrency = React.useCallback(e => {
     if (isSettingCurrency) {
       setIsSettingCurrency(false);
       return false;
@@ -150,28 +106,30 @@ var Module = function Module(props) {
     setIsSettingCurrency(true);
     return true;
   });
-  var handleChangeCurrentCurrency = _react["default"].useCallback(function (e) {
-    var v = props.changeCurrentCurrency(props.editing, e.currentTarget.value);
+  const handleChangeCurrentCurrency = React.useCallback(e => {
+    const v = props.changeCurrentCurrency(props.editing, e.currentTarget.value);
     if (v) {
       currentCurrencyRef.current.innerHTML = v;
-      var f = Object.entries(props.regionsData).find(function (m) {
-        return m[1].currency === v;
-      });
+      const f = Object.entries(props.regionsData).find(m => m[1].currency === v);
       if (f && f[1]) {
         props.setCurrentDefinePriceCurrency(f[1]);
         props.setDefaultPriceHtml(f[1]);
       }
     }
   });
-  var handleUpdateProductDescription = _react["default"].useCallback(function (e) {
-    var value = e.currentTarget.value;
+  const handleUpdateProductDescription = React.useCallback(e => {
+    const value = e.currentTarget.value;
     console.log(value, props.editing, props.editingOptionsMeta);
     if (props.editing) {
-      var temp = _objectSpread({}, props.editingOptionsMeta);
+      const temp = {
+        ...props.editingOptionsMeta
+      };
       console.log(temp, props.editingOptionsMeta, props.editing);
       if (temp && props.setEditing) {
         temp.description = value;
-        var newEditing = _objectSpread({}, props.editing);
+        const newEditing = {
+          ...props.editing
+        };
         newEditing.detailmeta = temp;
         props.setEditing(newEditing);
         if (temp && props.setEditingOptionsMeta) {
@@ -180,323 +138,253 @@ var Module = function Module(props) {
       }
     }
   });
-  var validStyleObject = selectedStyle && props.product && props.product.styles && props.product.styles.find(function (m) {
-    return m.sid === selectedStyle;
-  }) ? props.product.styles.find(function (m) {
-    return m.sid === selectedStyle;
-  }) : null;
-  var validOptionObject = validStyleObject && validStyleObject.option ? currentOption ? validStyleObject.option.find(function (m) {
-    return m.sid === currentOption;
-  }) : validStyleObject.option[0] ? validStyleObject.option[0] : null : null;
+  const validStyleObject = selectedStyle && props.product && props.product.styles && props.product.styles.find(m => m.sid === selectedStyle) ? props.product.styles.find(m => m.sid === selectedStyle) : null;
+  const validOptionObject = validStyleObject && validStyleObject.option ? currentOption ? validStyleObject.option.find(m => m.sid === currentOption) : validStyleObject.option[0] ? validStyleObject.option[0] : null : null;
 
   // console.log(props.product, props._loggedIn, currentOption, selectedStyle, props)
-  var isAdmin = props.product && props.product.owner && props._loggedIn && props._loggedIn.identifier && props._loggedIn.identifier === props.product.owner;
+  const isAdmin = props.product && props.product.owner && props._loggedIn && props._loggedIn.identifier && props._loggedIn.identifier === props.product.owner;
   console.log(props.product, props.editingOptionsMeta, selectedStyle, currency, props.currentDefinePriceCurrency, props.priceInput, validStyleObject, props.editing);
-  var currentPrice = _react["default"].useMemo(function () {
-    return (0, _ecommerce.resolveRegionBasedPrice)(props, validStyleObject);
+  const currentPrice = React.useMemo(() => {
+    return resolveRegionBasedPrice(props, validStyleObject);
   }, [props.product, validStyleObject, currency]);
-  var isEditing = (props === null || props === void 0 || (_props$editing = props.editing) === null || _props$editing === void 0 ? void 0 : _props$editing.id) && (props === null || props === void 0 || (_props$product2 = props.product) === null || _props$product2 === void 0 ? void 0 : _props$product2.id) && props.editing.id === props.product.id;
-  var useEditingOptions = isEditing && (props === null || props === void 0 ? void 0 : props.editingOptionsMeta) || !isEditing && props.product.detailmeta;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(isEditing ? _ProductImageManagerModule["default"].currentlyEditingProductContainer : 'Product_col', " ").concat(props.className),
+  const isEditing = props?.editing?.id && props?.product?.id && props.editing.id === props.product.id;
+  const useEditingOptions = isEditing && props?.editingOptionsMeta || !isEditing && props.product.detailmeta;
+  return /*#__PURE__*/_jsx("div", {
+    className: `${isEditing ? PIMStyles.currentlyEditingProductContainer : 'Product_col'} ${props.className}`,
     id: props.product && props.product.id ? props.product.id : '',
-    selectedstyle: validStyleObject !== null && validStyleObject !== void 0 && validStyleObject.sid ? validStyleObject.sid : '',
-    currentoption: validOptionObject !== null && validOptionObject !== void 0 && validOptionObject.sid ? validOptionObject.sid : ''
-  }, isEditing ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentEditingProductInnerContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currentlyEditingProductContent)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImgContainer, " ").concat(!isEditing ? 'Product_img_container' : '', " Product_img_container_large")
-  }, /*#__PURE__*/_react["default"].createElement(_.ProductImageManager, props)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productMetaContainer, " Product_meta_container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+    selectedstyle: validStyleObject?.sid ? validStyleObject.sid : '',
+    currentoption: validOptionObject?.sid ? validOptionObject.sid : ''
+  }, void 0, isEditing ? /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.currentEditingProductInnerContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.currentlyEditingProductContent}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productImgContainer} ${!isEditing ? 'Product_img_container' : ''} Product_img_container_large`
+  }, void 0, <ProductImageManager {...props} />), /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productMetaContainer} Product_meta_container`
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
-      height: "calc(100% - ".concat(props._loggedIn ? '25' : '40', "px)"),
+      height: `calc(100% - ${props._loggedIn ? '25' : '40'}px)`,
       maxHeight: '75vh',
       overflow: 'auto'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Name of Product",
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("label", {
+  }, void 0, /*#__PURE__*/_jsx("label", {
     style: {
       fontWeight: '600'
     }
-  }, "Title: ")), /*#__PURE__*/_react["default"].createElement("input", {
-    name: "name",
-    placeholder: "Product Title",
-    style: {
-      fontWeight: '600',
-      width: '100%'
-    },
-    onChange: props.setCurrentName,
-    ref: props.nameRef,
-    modif: "product_name",
-    defaultValue: props === null || props === void 0 || (_props$editing2 = props.editing) === null || _props$editing2 === void 0 ? void 0 : _props$editing2.name
-  })), props.pageError.location && props.pageError.location === 'product_name' ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, "Title: ")), <input name='name' placeholder='Product Title' style={{
+    fontWeight: '600',
+    width: '100%'
+  }} onChange={props.setCurrentName} ref={props.nameRef} modif='product_name' defaultValue={props?.editing?.name} />), props.pageError.location && props.pageError.location === 'product_name' ? /*#__PURE__*/_jsx("div", {
     className: "error"
-  }, props.pageError.message) : null), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, props.pageError.message) : null), /*#__PURE__*/_jsx(Tooltip, {
     title: "Product Description",
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement(_reactTextareaAutosize["default"], {
-    className: "".concat(_ProductImageManagerModule["default"].textArea),
-    name: "description",
-    placeholder: "Description",
-    defaultValue: props === null || props === void 0 || (_props$editing3 = props.editing) === null || _props$editing3 === void 0 || (_props$editing3 = _props$editing3.detailmeta) === null || _props$editing3 === void 0 ? void 0 : _props$editing3.description,
-    onChange: handleUpdateProductDescription,
-    ref: descriptionInputRef
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <TextareaAutosize className={`${PIMStyles.textArea}`} name='description' placeholder='Description' defaultValue={props?.editing?.detailmeta?.description} onChange={handleUpdateProductDescription} ref={descriptionInputRef} />), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Set the price for the currently selected Style",
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, (_props$currentDefineP = (_props$currentDefineP2 = props.currentDefinePriceCurrency) === null || _props$currentDefineP2 === void 0 ? void 0 : _props$currentDefineP2.symbol) !== null && _props$currentDefineP !== void 0 ? _props$currentDefineP : '$')), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "currency",
-    style: {
-      width: '100%'
-    },
-    defaultValue: "10.00",
-    ref: props.priceInput,
-    onChange: props.setCurrentPrice
-  }), validStyleObject && ((_props$currentDefineP3 = props.currentDefinePriceCurrency) === null || _props$currentDefineP3 === void 0 ? void 0 : _props$currentDefineP3.currency) === 'USD' && (validStyleObject === null || validStyleObject === void 0 ? void 0 : validStyleObject.price) != (props === null || props === void 0 || (_props$priceInput = props.priceInput) === null || _props$priceInput === void 0 || (_props$priceInput = _props$priceInput.current) === null || _props$priceInput === void 0 ? void 0 : _props$priceInput.value) || ((_props$currentDefineP4 = props.currentDefinePriceCurrency) === null || _props$currentDefineP4 === void 0 ? void 0 : _props$currentDefineP4.currency) !== 'USD' && (!validStyleObject.priceTable || validStyleObject.priceTable && !validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] || props !== null && props !== void 0 && (_props$currentDefineP5 = props.currentDefinePriceCurrency) !== null && _props$currentDefineP5 !== void 0 && _props$currentDefineP5.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, props.currentDefinePriceCurrency.currency) && validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] != props.priceInput.current.value) ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, props.currentDefinePriceCurrency?.symbol ?? '$')), <input type='currency' style={{
+    width: '100%'
+  }} defaultValue='10.00' ref={props.priceInput} onChange={props.setCurrentPrice} />, validStyleObject && props.currentDefinePriceCurrency?.currency === 'USD' && validStyleObject?.price != props?.priceInput?.current?.value || props.currentDefinePriceCurrency?.currency !== 'USD' && (!validStyleObject.priceTable || validStyleObject.priceTable && !validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] || props?.currentDefinePriceCurrency?.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, props.currentDefinePriceCurrency.currency) && validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] != props.priceInput.current.value) ? /*#__PURE__*/_jsx(Tooltip, {
     title: "The price displayed is currently not set for this product style. Click here to set it"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, /*#__PURE__*/_jsx("button", {
     onClick: props.setCurrentPrice,
-    value: (_props$priceInput2 = props.priceInput) === null || _props$priceInput2 === void 0 || (_props$priceInput2 = _props$priceInput2.current) === null || _props$priceInput2 === void 0 ? void 0 : _props$priceInput2.value,
+    value: props.priceInput?.current?.value,
     style: {
       whiteSpace: 'nowrap',
       lineHeight: '.5rem',
       fontSize: '.75rem'
     }
-  }, "Set Price")) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, "Set Price")) : null, /*#__PURE__*/_jsx(Tooltip, {
     title: "You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].currencyLabel, " ").concat(isSettingCurrency ? "".concat(_ProductImageManagerModule["default"].currencyLabelActive) : null),
-    style: {
-      lineHeight: '.5rem'
-    },
-    onClick: handleSetIsSettingCurrency,
-    ref: currentCurrencyRef
-  }, (_ref2 = (_props$currentDefineP6 = (_props$currentDefineP7 = props.currentDefinePriceCurrency) === null || _props$currentDefineP7 === void 0 ? void 0 : _props$currentDefineP7.currency) !== null && _props$currentDefineP6 !== void 0 ? _props$currentDefineP6 : isEditing === null || isEditing === void 0 || (_isEditing$meta = isEditing.meta) === null || _isEditing$meta === void 0 ? void 0 : _isEditing$meta.currency) !== null && _ref2 !== void 0 ? _ref2 : 'USD')), isSettingCurrency ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyExternalContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].setCurrencyContainer)
-  }, /*#__PURE__*/_react["default"].createElement("select", {
-    id: props.editing.id + '_setCurrency',
-    name: props.editing.id + '_setCurrency',
-    style: {
-      width: '100%'
-    },
-    onChange: handleChangeCurrentCurrency,
-    ref: props.setCurrencySelect,
-    defaultValue: (_props$currentDefineP8 = (_props$currentDefineP9 = props.currentDefinePriceCurrency) === null || _props$currentDefineP9 === void 0 ? void 0 : _props$currentDefineP9.currency) !== null && _props$currentDefineP8 !== void 0 ? _props$currentDefineP8 : 'USD'
-  }, props !== null && props !== void 0 && props.regionsData ? Object.entries(props.regionsData).map(function (m) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      className: "".concat(_ProductImageManagerModule["default"].setCurrencyOption, " ").concat(m[1].currency !== 'USD' && validStyleObject !== null && validStyleObject !== void 0 && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, m[1].currency) ? _ProductImageManagerModule["default"].currencyOptionUsed : null, " ").concat(m[1].currency === 'USD' ? _ProductImageManagerModule["default"].currencyOptionUsed : null),
+  }, void 0, <div className={`${PIMStyles.currencyLabel} ${isSettingCurrency ? `${PIMStyles.currencyLabelActive}` : null}`} style={{
+    lineHeight: '.5rem'
+  }} onClick={handleSetIsSettingCurrency} ref={currentCurrencyRef}>{props.currentDefinePriceCurrency?.currency ?? isEditing?.meta?.currency ?? 'USD'}</div>), isSettingCurrency ? /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.setCurrencyExternalContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.setCurrencyContainer}`
+  }, void 0, <select id={props.editing.id + '_setCurrency'} name={props.editing.id + '_setCurrency'} style={{
+    width: '100%'
+  }} onChange={handleChangeCurrentCurrency} ref={props.setCurrencySelect} defaultValue={props.currentDefinePriceCurrency?.currency ?? 'USD'}>
+                                                            {props?.regionsData ? Object.entries(props.regionsData).map(m => /*#__PURE__*/_jsx("option", {
+      className: `${PIMStyles.setCurrencyOption} ${m[1].currency !== 'USD' && validStyleObject?.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, m[1].currency) ? PIMStyles.currencyOptionUsed : null} ${m[1].currency === 'USD' ? PIMStyles.currencyOptionUsed : null}`,
       value: m[1].currency
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m[1].currency), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].name), /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"), /*#__PURE__*/_react["default"].createElement("div", null, m[1].symbol));
-  }) : null))) : null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+    }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, m[1].currency), _div || (_div = /*#__PURE__*/_jsx("div", {}, void 0, "\xA0")), /*#__PURE__*/_jsx("div", {}, void 0, m[1].name), _div2 || (_div2 = /*#__PURE__*/_jsx("div", {}, void 0, "\xA0")), /*#__PURE__*/_jsx("div", {}, void 0, m[1].symbol))) : null}
+                                                        </select>)) : null, /*#__PURE__*/_jsx(Tooltip, {
     title: "Set the quantity for the currently selected Style & Option combo"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem',
       fontWeight: 600,
       display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
     }
-  }, "Qty")), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "number",
-    style: {
-      width: '100%',
-      display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
-    },
-    defaultValue: "10",
-    ref: props.quantityInput,
-    onChange: props.setCurrentQuantity
-  }), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, "Qty")), <input type='number' style={{
+    width: '100%',
+    display: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000 ? 'none' : 'block'
+  }} defaultValue='10' ref={props.quantityInput} onChange={props.setCurrentQuantity} />, _Tooltip || (_Tooltip = /*#__PURE__*/_jsx(Tooltip, {
     title: "Infinite stock"
-  }, /*#__PURE__*/_react["default"].createElement(_AllInclusive["default"], null)), /*#__PURE__*/_react["default"].createElement("input", {
+  }, void 0, /*#__PURE__*/_jsx(AllInclusive, {}))), /*#__PURE__*/_jsx("input", {
     type: "checkbox",
     style: {
       margin: 0
     },
     onChange: props.setInfinity,
     checked: props.selectedOption && props.selectedOption.quantity && props.selectedOption.quantity === 10000000
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  })), /*#__PURE__*/_jsx("div", {
     style: {
       border: '1px solid #484848',
       marginTop: '.125rem',
       marginBottom: '.25rem'
     }
-  }), /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_jsx("div", {
     className: "flex",
     style: {
       flexWrap: 'wrap',
       gap: '.05rem 0.2rem',
       marginBottom: '.125rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "If your product has multiple styles, set them here. A style should be an alternate design or color for a single product that you want to track as single product. For example you might have white, black, grey for t-shirts as individual styles.",
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, "Style"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, "Style"), /*#__PURE__*/_jsx("div", {
     className: "dropdown_input"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    ref: props.styleInput,
-    onChange: props.setCurrentStyleName
-  }), /*#__PURE__*/_react["default"].createElement("select", {
+  }, void 0, <input type="text" ref={props.styleInput} onChange={props.setCurrentStyleName} />, /*#__PURE__*/_jsx("select", {
     id: props.editing.id + '_styles',
     name: props.editing.id + '_styles',
     style: {
       width: '100%'
     },
     onChange: props.changeCurrentStyle
-  }, props.resolveStyles(props.editing).map(function (style, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
+  }, void 0, props.resolveStyles(props.editing).map((style, i) => {
+    return /*#__PURE__*/_jsx("option", {
       value: style.sid,
-      className: "style_option",
-      key: i
-    }, style.style);
-  }))))), props.selectedStyle && props.selectedStyle.option.length > 0 && props.selectedStyle.option[0] && Object.hasOwnProperty.call(props.selectedStyle.option[0], 'option') ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+      className: "style_option"
+    }, i, style.style);
+  }))))), props.selectedStyle && props.selectedStyle.option.length > 0 && props.selectedStyle.option[0] && Object.hasOwnProperty.call(props.selectedStyle.option[0], 'option') ? /*#__PURE__*/_jsx(Tooltip, {
     title: "If your product has options, set them here. An option should be a sizing or format choice that exists for all or most styles. For example you might have sizes XS, S, M, L, XL or OS as individual options per style.",
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, "Option"), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, "Option"), /*#__PURE__*/_jsx("div", {
     className: "dropdown_input"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    type: "text",
-    ref: props.optionInput,
-    onChange: props.setCurrentOptionName
-  }), /*#__PURE__*/_react["default"].createElement("select", {
-    id: props.editing.id + '_options',
-    name: props.editing.id + '_options',
-    style: {
-      width: '100%'
-    },
-    onChange: props.changeCurrentOption,
-    ref: props.optionSelect
-  }, props.editing.styles.find(function (m) {
-    return m.sid === props.editingSelectedStyle;
-  }).option.map(function (option, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      value: option.sid,
-      className: "option_option",
-      key: i
-    }, option.option);
-  }))))) : null), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <input type="text" ref={props.optionInput} onChange={props.setCurrentOptionName} />, <select id={props.editing.id + '_options'} name={props.editing.id + '_options'} style={{
+    width: '100%'
+  }} onChange={props.changeCurrentOption} ref={props.optionSelect}>{props.editing.styles.find(m => m.sid === props.editingSelectedStyle).option.map((option, i) => {
+      return /*#__PURE__*/_jsx("option", {
+        value: option.sid,
+        className: "option_option"
+      }, i, option.option);
+    })}
+                                                            </select>))) : null), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2 Product_admin_choice_container"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, /*#__PURE__*/_jsx("button", {
     onClick: props.addStyle
-  }, "Add Style"), /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Add Style"), /*#__PURE__*/_jsx("button", {
     onClick: props.addOption
-  }, "Add Option"), /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, "Add Option"), /*#__PURE__*/_jsx(Tooltip, {
     title: "Set the product type",
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       fontSize: '.8rem',
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("span", {
+  }, void 0, /*#__PURE__*/_jsx("span", {
     className: "flex"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, void 0, /*#__PURE__*/_jsx("input", {
     type: "radio",
     id: "virtual",
     name: "fav_language",
     value: "virtual",
     defaultChecked: true,
     onChange: props.onProductTypeChange
-  }), /*#__PURE__*/_react["default"].createElement("label", {
-    "for": "virtual"
-  }, "Virtual")), /*#__PURE__*/_react["default"].createElement("span", {
+  }), _label || (_label = /*#__PURE__*/_jsx("label", {
+    for: "virtual"
+  }, void 0, "Virtual"))), /*#__PURE__*/_jsx("span", {
     className: "flex"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, void 0, /*#__PURE__*/_jsx("input", {
     type: "radio",
     id: "physical",
     name: "fav_language",
     value: "physical",
     onChange: props.onProductTypeChange
-  }), /*#__PURE__*/_react["default"].createElement("label", {
-    "for": "physical"
-  }, "Physical"))))), /*#__PURE__*/_react["default"].createElement("div", {
+  }), _label2 || (_label2 = /*#__PURE__*/_jsx("label", {
+    for: "physical"
+  }, void 0, "Physical")))))), /*#__PURE__*/_jsx("div", {
     className: "promptContainer",
     style: {
       alignItems: 'center',
       borderRadius: '.5rem',
       margin: '.25rem 0'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Ticketed Products offer universally unique ids that are unique across the product being sold and can be stamped onto Ticket Images. Virtual Tickets are for Virtual Events. Physical Tickets serve Virtual Tickets for your own In Person Events.",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem'
     }
-  }, "Is this a ticket?"), /*#__PURE__*/_react["default"].createElement(_ConfirmationNumber["default"], {
+  }, void 0, "Is this a ticket?"), /*#__PURE__*/_jsx(ConfirmationNumber, {
     style: {
       width: '15px',
       height: '15px'
     }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    value: props.product.detailmeta.ticket,
-    defaultChecked: props.product.detailmeta.ticket,
-    onChange: props.setOptionsMetaData,
-    option: "ticket",
-    ref: isTicketRef
-  })), useEditingOptions.ticket ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  })), <input type='checkbox' style={{
+    margin: 0
+  }} value={props.product.detailmeta.ticket} defaultChecked={props.product.detailmeta.ticket} onChange={props.setOptionsMetaData} option='ticket' ref={isTicketRef} />), useEditingOptions.ticket ? /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates.",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
+  }, void 0, /*#__PURE__*/_jsx("span", {
     style: {
       fontSize: '.8rem',
       fontWeight: '600',
       whiteSpace: 'nowrap'
     }
-  }, "Date for Event"), /*#__PURE__*/_react["default"].createElement("input", {
+  }, void 0, "Date for Event"), /*#__PURE__*/_jsx("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',
@@ -506,70 +394,62 @@ var Module = function Module(props) {
     onInput: props.setOptionsMetaData,
     option: "eventDateDef",
     option2: "input",
-    defaultValue: props === null || props === void 0 || (_props$product3 = props.product) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.detailmeta) === null || _props$product3 === void 0 || (_props$product3 = _props$product3.eventDateDef) === null || _props$product3 === void 0 ? void 0 : _props$product3.input
-  })), (props === null || props === void 0 || (_props$product4 = props.product) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.detailmeta) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.eventDateDef) === null || _props$product4 === void 0 || (_props$product4 = _props$product4.dates) === null || _props$product4 === void 0 ? void 0 : _props$product4.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    defaultValue: props?.product?.detailmeta?.eventDateDef?.input
+  })), props?.product?.detailmeta?.eventDateDef?.dates?.length > 0 ? /*#__PURE__*/_jsx("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem',
       marginBottom: '.25rem'
     }
-  }, props.product.detailmeta.eventDateDef.dates.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props.product.detailmeta.eventDateDef.dates.map(d => {
+    return d !== '' ? /*#__PURE__*/_jsx("div", {
       className: "tagItem"
-    }, d ? (0, _util.getFormattedDate)(d, {
+    }, void 0, d ? getFormattedDate(d, {
       pretty: true
-    }) : '') : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null)) : null), (props === null || props === void 0 || (_props$editingOptions = props.editingOptionsMeta) === null || _props$editingOptions === void 0 ? void 0 : _props$editingOptions.productType) === 'virtual' ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    }) : '') : _div3 || (_div3 = /*#__PURE__*/_jsx("div", {}));
+  })) : _div4 || (_div4 = /*#__PURE__*/_jsx("div", {}))) : null), props?.editingOptionsMeta?.productType === 'virtual' ? /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
     className: "promptContainer",
     style: {
       borderRadius: '.5rem',
       margin: '.25rem 0'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center',
       height: '20px'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "You can use a date to authorize all users that purchase this ticket for access to your livestreams on that day. Or you can use a tag that you must include in the livestream tags field when you create it. Please use this if you want to put your livestream behind this paywalled purchase",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem'
     }
-  }, "Is this for a livestream?"), /*#__PURE__*/_react["default"].createElement(_Stadium["default"], {
+  }, void 0, "Is this for a livestream?"), /*#__PURE__*/_jsx(Stadium, {
     style: {
       width: '15px'
     }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
-    type: "checkbox",
-    style: {
-      margin: 0
-    },
-    value: props.product.detailmeta.livestream,
-    defaultChecked: props.product.detailmeta.livestream,
-    onChange: props.setOptionsMetaData,
-    option: "livestream",
-    ref: isLivestreamRef
-  })), useEditingOptions.livestream ? /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  })), <input type='checkbox' style={{
+    margin: 0
+  }} value={props.product.detailmeta.livestream} defaultChecked={props.product.detailmeta.livestream} onChange={props.setOptionsMetaData} option='livestream' ref={isLivestreamRef} />), useEditingOptions.livestream ? /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM. Time must be input in 24 H military time. Values that do not match dates will be parsed as Tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "right"
-  }, /*#__PURE__*/_react["default"].createElement("span", {
+  }, void 0, /*#__PURE__*/_jsx("span", {
     style: {
       fontSize: '.8rem',
       fontWeight: '600',
       whiteSpace: 'nowrap'
     }
-  }, "Auth Keys | Tags"), /*#__PURE__*/_react["default"].createElement("input", {
+  }, void 0, "Auth Keys | Tags"), /*#__PURE__*/_jsx("input", {
     type: "text",
     style: {
       marginBottom: '.125rem',
@@ -579,43 +459,39 @@ var Module = function Module(props) {
     onInput: props.setOptionsMetaData,
     option: "livestreamDef",
     option2: "input",
-    defaultValue: props === null || props === void 0 || (_props$product5 = props.product) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.detailmeta) === null || _props$product5 === void 0 || (_props$product5 = _props$product5.livestreamDef) === null || _props$product5 === void 0 ? void 0 : _props$product5.input
-  })), /*#__PURE__*/_react["default"].createElement("span", {
+    defaultValue: props?.product?.detailmeta?.livestreamDef?.input
+  })), /*#__PURE__*/_jsx("span", {
     className: "flex gap-p2",
     style: {
       marginBottom: '.25rem'
     }
-  }, (props === null || props === void 0 || (_props$product6 = props.product) === null || _props$product6 === void 0 || (_props$product6 = _props$product6.detailmeta) === null || _props$product6 === void 0 || (_props$product6 = _props$product6.livestreamDef) === null || _props$product6 === void 0 ? void 0 : _props$product6.dates.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props?.product?.detailmeta?.livestreamDef?.dates.length > 0 ? /*#__PURE__*/_jsx("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
     }
-  }, props.product.detailmeta.livestreamDef.dates.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props.product.detailmeta.livestreamDef.dates.map(d => {
+    return d !== '' ? /*#__PURE__*/_jsx("div", {
       className: "tagItem"
-    }, d ? (0, _util.getFormattedDate)(d, {
+    }, void 0, d ? getFormattedDate(d, {
       pretty: true
-    }) : '') : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null), (props === null || props === void 0 || (_props$product7 = props.product) === null || _props$product7 === void 0 || (_props$product7 = _props$product7.detailmeta) === null || _props$product7 === void 0 || (_props$product7 = _props$product7.livestreamDef) === null || _props$product7 === void 0 ? void 0 : _props$product7.tags.length) > 0 ? /*#__PURE__*/_react["default"].createElement("div", {
+    }) : '') : _div5 || (_div5 = /*#__PURE__*/_jsx("div", {}));
+  })) : _div6 || (_div6 = /*#__PURE__*/_jsx("div", {})), props?.product?.detailmeta?.livestreamDef?.tags.length > 0 ? /*#__PURE__*/_jsx("div", {
     className: "tagContainer",
     style: {
       marginTop: '.25rem'
     }
-  }, props.product.detailmeta.livestreamDef.tags.map(function (d) {
-    return d !== '' ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props.product.detailmeta.livestreamDef.tags.map(d => {
+    return d !== '' ? /*#__PURE__*/_jsx("div", {
       className: "tagItem"
-    }, d) : /*#__PURE__*/_react["default"].createElement("div", null);
-  })) : /*#__PURE__*/_react["default"].createElement("div", null))) : null, /*#__PURE__*/_react["default"].createElement(_.Lineup, (0, _extends2["default"])({}, props, {
-    product: props.product,
-    setWarning: setWarning,
-    appendFormData: props === null || props === void 0 ? void 0 : props.appendFormData
-  }))), warning && warning.message ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warning)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItemContainer)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].warningItem)
-  }, warning.message))) : null) : /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("div", {
+    }, void 0, d) : _div7 || (_div7 = /*#__PURE__*/_jsx("div", {}));
+  })) : _div8 || (_div8 = /*#__PURE__*/_jsx("div", {})))) : null, <Lineup {...props} product={props.product} setWarning={setWarning} appendFormData={props?.appendFormData} />), warning && warning.message ? /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warning}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warningItemContainer}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.warningItem}`
+  }, void 0, warning.message))) : null) : _div9 || (_div9 = /*#__PURE__*/_jsx("div", {})), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2 promptContainer",
     style: {
       alignItems: 'center',
@@ -623,22 +499,22 @@ var Module = function Module(props) {
       borderRadius: '.5rem',
       margin: '.25rem 0'
     }
-  }, /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
     title: "Allow for your customers to subscribe to your product. This is a guarantee by your company that you will continue to deliver your Product to any subscribed customers. Subscriptions will charge monthly by default.",
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     },
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '.8rem'
     }
-  }, "Is this a subscription?"), /*#__PURE__*/_react["default"].createElement(_Inventory["default"], {
+  }, void 0, "Is this a subscription?"), /*#__PURE__*/_jsx(Inventory, {
     style: {
       width: '15px'
     }
-  })), /*#__PURE__*/_react["default"].createElement("input", {
+  })), /*#__PURE__*/_jsx("input", {
     type: "checkbox",
     style: {
       margin: 0
@@ -647,51 +523,51 @@ var Module = function Module(props) {
     defaultChecked: props.product.detailmeta.subscription,
     onChange: props.setOptionsMetaData,
     option: "subscription"
-  })), props !== null && props !== void 0 && (_props$product8 = props.product) !== null && _props$product8 !== void 0 && _props$product8.published ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), props?.product?.published ? /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 shareButton",
-    selectValue: "".concat(props !== null && props !== void 0 && (_props$product9 = props.product) !== null && _props$product9 !== void 0 && _props$product9.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null),
-    onClick: _event.selectThisText
-  }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "Share")), /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props !== null && props !== void 0 && (_props$product10 = props.product) !== null && _props$product10 !== void 0 && _props$product10.id ? "".concat(props.dev ? props.devAddress : props === null || props === void 0 ? void 0 : props.domainUrl, "/pr?p=").concat(props.product.id) : null)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 shareButton"
-  }, /*#__PURE__*/_react["default"].createElement(_Inventory["default"], null), /*#__PURE__*/_react["default"].createElement("div", null, "View")))) : null), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `flex gap-p2 shareButton`,
+    selectValue: `${props?.product?.id ? `${props.dev ? props.devAddress : props?.domainUrl}/pr?p=${props.product.id}` : null}`,
+    onClick: selectThisText
+  }, void 0, _Inventory || (_Inventory = /*#__PURE__*/_jsx(Inventory, {})), _div10 || (_div10 = /*#__PURE__*/_jsx("div", {}, void 0, "Share"))), /*#__PURE__*/_jsx(Link, {
+    href: `${props?.product?.id ? `${props.dev ? props.devAddress : props?.domainUrl}/pr?p=${props.product.id}` : null}`
+  }, void 0, _div11 || (_div11 = /*#__PURE__*/_jsx("div", {
+    className: `flex gap-p2 shareButton`
+  }, void 0, /*#__PURE__*/_jsx(Inventory, {}), /*#__PURE__*/_jsx("div", {}, void 0, "View"))))) : null), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2 Product_admin_choice_container",
     style: {
       marginTop: '.125rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, /*#__PURE__*/_jsx("button", {
     onClick: props.handlePublishProduct,
     modif: "publish",
     existing: "true"
-  }, "Publish"), /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Publish"), /*#__PURE__*/_jsx("button", {
     onClick: props.handlePublishProduct,
     modif: "save",
     existing: "true"
-  }, "Save"), props.editing ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Save"), props.editing ? /*#__PURE__*/_jsx("button", {
     onClick: props.handleCancelProduct,
     modif: "save"
-  }, props.editing["new"] ? 'Abandon' : 'Cancel') : null)))) : /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_ProductImageManagerModule["default"].productImgContainer, " Product_img_container"),
+  }, void 0, props.editing.new ? 'Abandon' : 'Cancel') : null)))) : /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${PIMStyles.productImgContainer} Product_img_container`,
     style: {
       position: 'relative'
     }
-  }, isAdmin ? /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], {
+  }, void 0, isAdmin ? /*#__PURE__*/_jsx(Tooltip, {
     title: "Edit Product",
     placement: "left"
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "".concat(_ProductImageManagerModule["default"].editProductButton, " ").concat(props._isMobile ? "".concat(_ProductImageManagerModule["default"].editProductButtonMobile) : null),
+  }, void 0, /*#__PURE__*/_jsx("button", {
+    className: `${PIMStyles.editProductButton} ${props._isMobile ? `${PIMStyles.editProductButtonMobile}` : null}`,
     onClick: handleEdit,
     modif: "edit",
     alt: "edit"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "edit material-icons",
     style: {
       fontSize: '.85rem'
     }
-  }, "edit"))) : null, /*#__PURE__*/_react["default"].createElement(_.ProductImageManager, {
+  }, void 0, "edit"))) : null, /*#__PURE__*/_jsx(ProductImageManager, {
     cdn: props.cdn,
     product: props.product,
     _loggedIn: props._loggedIn,
@@ -699,69 +575,55 @@ var Module = function Module(props) {
     apiUrl: props.apiUrl,
     setEditing: props.setEditing,
     setCombinedFeed: props.setCombinedFeed
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Product_meta_container"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat((_props$classes$produc = props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.productName) !== null && _props$classes$produc !== void 0 ? _props$classes$produc : '')
-  }, props.product.name)), props.product && props.product.styles && props.product.styles.length > 1 ? /*#__PURE__*/_react["default"].createElement("div", {
+  })), /*#__PURE__*/_jsx("div", {
+    className: `Product_meta_container`
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${props?.classes?.productName ?? ''}`
+  }, void 0, props.product.name)), props.product && props.product.styles && props.product.styles.length > 1 ? /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("select", {
-    id: props.product.id + '_styles',
-    name: props.product.id + '_styles',
-    style: {
-      width: '100%'
-    },
-    onChange: setSelectedStyleHandler,
-    ref: styleSelect
-  }, (0, _ecommerce.resolveStyles)(props.product).map(function (style, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      value: style.sid,
-      className: "style_option",
-      key: i
-    }, style.style);
-  }))) : null, validStyleObject && validStyleObject.option && validStyleObject.option[0] && validStyleObject.option[0].option // Only show if base option is named (non default option for tracking quantity)
-  ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <select id={props.product.id + '_styles'} name={props.product.id + '_styles'} style={{
+    width: '100%'
+  }} onChange={setSelectedStyleHandler} ref={styleSelect}>{resolveStyles(props.product).map((style, i) => {
+      return /*#__PURE__*/_jsx("option", {
+        value: style.sid,
+        className: "style_option"
+      }, i, style.style);
+    })}
+                                        </select>) : null, validStyleObject && validStyleObject.option && validStyleObject.option[0] && validStyleObject.option[0].option // Only show if base option is named (non default option for tracking quantity)
+  ? /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "dropdown_input"
-  }, /*#__PURE__*/_react["default"].createElement("select", {
-    id: props.product.id + '_options',
-    name: props.product.id + '_options',
-    style: {
-      width: '100%'
-    },
-    onChange: changeCurrentOption,
-    ref: optionSelect
-  }, props.product.styles.find(function (m) {
-    return m.sid === selectedStyle;
-  }).option.map(function (option, i) {
-    return /*#__PURE__*/_react["default"].createElement("option", {
-      value: option.sid,
-      className: "option_option",
-      key: i
-    }, option.option);
-  })))) : null, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <select id={props.product.id + '_options'} name={props.product.id + '_options'} style={{
+    width: '100%'
+  }} onChange={changeCurrentOption} ref={optionSelect}>{props.product.styles.find(m => m.sid === selectedStyle).option.map((option, i) => {
+      return /*#__PURE__*/_jsx("option", {
+        value: option.sid,
+        className: "option_option"
+      }, i, option.option);
+    })}
+                                            </select>)) : null, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex gap-p2",
     style: {
       margin: '.125rem 0'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       fontSize: '1rem',
       fontWeight: 600
     }
-  }, /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$symbol = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.symbol) !== null && _currentPrice$symbol !== void 0 ? _currentPrice$symbol : null), /*#__PURE__*/_react["default"].createElement("span", null, (_currentPrice$price = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.price) !== null && _currentPrice$price !== void 0 ? _currentPrice$price : null)), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.symbol ?? null), /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.price ?? null)), /*#__PURE__*/_jsx("div", {
     className: "Product_CurrencyLabel",
     style: {
       fontSize: '.8rem',
@@ -770,29 +632,29 @@ var Module = function Module(props) {
       padding: '.075rem',
       borderRadius: '.25rem'
     }
-  }, (_currentPrice$currenc = currentPrice === null || currentPrice === void 0 ? void 0 : currentPrice.currency) !== null && _currentPrice$currenc !== void 0 ? _currentPrice$currenc : 'USD')), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, currentPrice?.currency ?? 'USD')), /*#__PURE__*/_jsx("div", {
     style: {
       display: 'none',
       fontSize: '.8rem',
       fontWeight: 600
     }
-  }, validOptionObject && validOptionObject.quantity ? validOptionObject.quantity : '')), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex gap-p2 Product_admin_choice_container wrap",
+  }, void 0, validOptionObject && validOptionObject.quantity ? validOptionObject.quantity : '')), /*#__PURE__*/_jsx("div", {
+    className: `flex gap-p2 Product_admin_choice_container wrap`,
     style: {
       marginTop: '.125rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, /*#__PURE__*/_jsx("button", {
     onClick: handleFireGlobalEvent,
     item: props.product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart"
-  }, "Add To Cart"), props !== null && props !== void 0 && (_props$product11 = props.product) !== null && _props$product11 !== void 0 && (_props$product11 = _props$product11.detailmeta) !== null && _props$product11 !== void 0 && _props$product11.subscription ? /*#__PURE__*/_react["default"].createElement("button", {
+  }, void 0, "Add To Cart"), props?.product?.detailmeta?.subscription ? /*#__PURE__*/_jsx("button", {
     onClick: handleFireGlobalEvent,
     item: props.product.id,
     selectedstyle: selectedStyle,
     currentoption: currentOption,
     action: "add_to_cart_subscribe"
-  }, "Subscribe") : null))));
+  }, void 0, "Subscribe") : null))));
 };
-var _default = exports["default"] = Module;
+export default Module;

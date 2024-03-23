@@ -1,25 +1,20 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _react = _interopRequireDefault(require("react"));
-var _utility = require("../utility/utility");
-var _wideFeature = require("../search/wideFeature");
-var Module = function Module(props) {
-  var AfterSignIn = _react["default"].useRef();
-  var Lead2 = _react["default"].useRef();
-  var ButtonAction = _react["default"].useRef();
-  _react["default"].useEffect(function () {
+var _span;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { normalizeText } from '../utility/utility';
+import { WideFeature } from '../search/wideFeature';
+const Module = props => {
+  const AfterSignIn = React.useRef();
+  const Lead2 = React.useRef();
+  const ButtonAction = React.useRef();
+  React.useEffect(() => {
     try {
-      setTimeout(function () {
+      setTimeout(() => {
         if (Lead2.current && !Lead2.current.classList.contains('IndexCta_Lead2Trans')) {
           Lead2.current.classList.add('IndexCta_Lead2Trans');
         }
-        setTimeout(function () {
+        setTimeout(() => {
           if (AfterSignIn.current && !AfterSignIn.current.classList.contains('IndexCta_AfterSignInTrans')) {
             AfterSignIn.current.classList.add('IndexCta_AfterSignInTrans');
           }
@@ -32,42 +27,31 @@ var Module = function Module(props) {
       // fail silently
     }
   }, [props._loggedIn]);
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_jsx("div", {
     className: "IndexCta_ExternalContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "IndexCta_Container"
-  }, props.definition ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_LeadContainer ".concat(props.className)
-  }, props.ctaTopVideos ? /*#__PURE__*/_react["default"].createElement(_wideFeature.WideFeature, (0, _extends2["default"])({
-    image1: props.ctaTopVideos.image1
-  }, props)) : '', /*#__PURE__*/_react["default"].createElement("img", {
+  }, void 0, props.definition ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `IndexCta_LeadContainer ${props.className}`
+  }, void 0, props.ctaTopVideos ? <WideFeature image1={props.ctaTopVideos.image1} {...props} /> : '', /*#__PURE__*/_jsx("img", {
     src: props.definition.logo,
     className: "IndexCta_MyLogo"
-  }), /*#__PURE__*/_react["default"].createElement("h1", {
+  }), /*#__PURE__*/_jsx("h1", {
     className: "IndexCta_Lead1_5 pointer IndexCta_Lead_First"
-  }, (0, _utility.normalizeText)(props.definition.lead)), /*#__PURE__*/_react["default"].createElement("h1", {
-    className: "IndexCta_Lead2 pointer IndexCta_Lead_Second",
-    ref: Lead2
-  }, (0, _utility.normalizeText)(props.definition.lead2), " ", /*#__PURE__*/_react["default"].createElement("span", {
-    className: "IndexCta_RecordingCircle"
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, normalizeText(props.definition.lead)), <h1 className='IndexCta_Lead2 pointer IndexCta_Lead_Second' ref={Lead2}>{normalizeText(props.definition.lead2)} {_span || (_span = /*#__PURE__*/_jsx("span", {
+      className: "IndexCta_RecordingCircle"
+    }))}</h1>, /*#__PURE__*/_jsx("div", {
     className: "IndexCta_Description"
-  }, props.definition.description), props.children, !props._loggedIn ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "IndexCta_AfterSignIn",
-    ref: AfterSignIn
-  }, props.definition.afterSignIn) : /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, props.definition.description), props.children, !props._loggedIn ? <div className='IndexCta_AfterSignIn' ref={AfterSignIn}>{props.definition.afterSignIn}</div> : /*#__PURE__*/_jsx("div", {
     style: {
       display: 'flex',
       gap: '.5rem',
       alignItems: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: "IndexCta_ButtonStyle ButtonGlowing",
-    ref: ButtonAction
-  }, props.definition.buttonAfterSignIn))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <button className='IndexCta_ButtonStyle ButtonGlowing' ref={ButtonAction}>{props.definition.buttonAfterSignIn}</button>)), /*#__PURE__*/_jsx("div", {
     className: "IndexCta_DetailContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "IndexCta_Detail"
-  }, props.definition.detail))) : null));
+  }, void 0, props.definition.detail))) : null));
 };
-var _default = exports["default"] = Module;
+export default Module;

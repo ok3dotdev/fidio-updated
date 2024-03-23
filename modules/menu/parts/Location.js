@@ -1,24 +1,19 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _react = _interopRequireDefault(require("react"));
-var _link = _interopRequireDefault(require("next/link"));
-var Module = function Module(props) {
-  var _props$_loggedIn, _props$_loggedIn2;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.meta) !== null && _props$_loggedIn !== void 0 && (_props$_loggedIn = _props$_loggedIn.locationMeta) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.city && (_props$_loggedIn2 = props._loggedIn) !== null && _props$_loggedIn2 !== void 0 && (_props$_loggedIn2 = _props$_loggedIn2.meta) !== null && _props$_loggedIn2 !== void 0 && (_props$_loggedIn2 = _props$_loggedIn2.locationMeta) !== null && _props$_loggedIn2 !== void 0 && _props$_loggedIn2.country ? /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_link["default"], {
+var _div;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Link from 'next/link';
+const Module = props => {
+  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, props._loggedIn?.meta?.locationMeta?.city && props._loggedIn?.meta?.locationMeta?.country ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx(Link, {
     href: "/settings?t=location",
-    className: "menuLinkSelector",
-    onClick: props === null || props === void 0 ? void 0 : props.handleToggleSettings,
+    className: `menuLinkSelector`,
+    onClick: props?.handleToggleSettings,
     style: {
       position: 'relative',
       alignSelf: 'center'
     }
-  }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "material-icons"
-  }, "flag"), /*#__PURE__*/_react["default"].createElement("div", null, "Location:\xA0", /*#__PURE__*/_react["default"].createElement("span", null, props === null || props === void 0 ? void 0 : props.resolvedCountry))))) : null);
+  }, void 0, /*#__PURE__*/_jsx("li", {}, void 0, _div || (_div = /*#__PURE__*/_jsx("div", {
+    className: `material-icons`
+  }, void 0, "flag")), /*#__PURE__*/_jsx("div", {}, void 0, "Location:\xA0", /*#__PURE__*/_jsx("span", {}, void 0, props?.resolvedCountry))))) : null);
 };
-var _default = exports["default"] = Module;
+export default Module;

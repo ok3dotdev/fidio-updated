@@ -1,111 +1,96 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _router = require("next/router");
-var _link = _interopRequireDefault(require("next/link"));
-var _PresentationModule = _interopRequireDefault(require("../../Presentation.module.scss"));
-var _uuid = require("uuid");
-var moduleName = 'BannerHello';
-var Module = function Module(props) {
-  var _props$classes4, _props$img, _props$img2;
-  var router = (0, _router.useRouter)();
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentId = _React$useState4[0],
-    setComponentId = _React$useState4[1];
-  var bgContainerRef = _react["default"].useRef();
-  var typeContainerRef = _react["default"].useRef();
-  _react["default"].useEffect(function () {
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Styles from '../../Presentation.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+const moduleName = 'BannerHello';
+const Module = props => {
+  const router = useRouter();
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [componentId, setComponentId] = React.useState(null);
+  const bgContainerRef = React.useRef();
+  const typeContainerRef = React.useRef();
+  React.useEffect(() => {
     if (!componentDidMount) {
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
       setComponentDidMount(true);
     }
   }, [componentDidMount]);
-  var resolveImage = function resolveImage(img, type) {
-    if (props !== null && props !== void 0 && props.raw && type === 'img') {
+  const resolveImage = (img, type) => {
+    if (props?.raw && type === 'img') {
       return img;
-    } else if (props.cdn && props.cdn["static"] && props.cdn["static"].length > 0 && img) {
-      return "".concat(props.cdn["static"], "/").concat(img);
+    } else if (props.cdn && props.cdn.static && props.cdn.static.length > 0 && img) {
+      return `${props.cdn.static}/${img}`;
     }
     return 'img/default/greythumb.jpg';
   };
-  var resolveType = function resolveType() {
-    var _props$classes, _props$classes2, _props$classes3, _props$childrenBefore, _props$children;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].TypeContainer),
-      ref: typeContainerRef
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].TypeContainerEnforceSpace) : null)
-    }, props.lead ? /*#__PURE__*/_react["default"].createElement("h2", {
-      className: "".concat(_PresentationModule["default"].Lead, " ").concat(moduleName, "_Lead ").concat(props === null || props === void 0 || (_props$classes = props.classes) === null || _props$classes === void 0 ? void 0 : _props$classes.Lead)
-    }, props.lead) : null, props.leadImg ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].leadImgContainer, " ").concat(moduleName, "_LeadImg")
-    }, /*#__PURE__*/_react["default"].createElement("img", {
-      className: "".concat(_PresentationModule["default"].leadImg, " ").concat(moduleName, "_LeadImg_img ").concat(props === null || props === void 0 || (_props$classes2 = props.classes) === null || _props$classes2 === void 0 ? void 0 : _props$classes2.Lead),
-      src: "".concat(props.leadImg)
-    })) : null, props.text ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_PresentationModule["default"].Text, " ").concat(moduleName, "_Text ").concat(props === null || props === void 0 || (_props$classes3 = props.classes) === null || _props$classes3 === void 0 ? void 0 : _props$classes3.Text)
-    }, props.text) : null, props !== null && props !== void 0 && (_props$childrenBefore = props.childrenBefore) !== null && _props$childrenBefore !== void 0 && _props$childrenBefore.map ? _react["default"].Children.map(props.childrenBefore, function (child) {
-      if (child !== null) {
-        if (typeof child.type === 'function') {
-          var cpProps = {
-            bgContainerRef: bgContainerRef,
-            typeContainerRef: typeContainerRef
-          };
-          return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+  const resolveType = () => {
+    return <div className={`${Styles.TypeContainer}`} ref={typeContainerRef}>
+                /*#__PURE__*/_jsx("div", {
+        className: `${props?.tall ? `${Styles.TypeContainerEnforceSpace}` : null}`
+      }, void 0, props.lead ? /*#__PURE__*/_jsx("h2", {
+        className: `${Styles.Lead} ${moduleName}_Lead ${props?.classes?.Lead}`
+      }, void 0, props.lead) : null, props.leadImg ? /*#__PURE__*/_jsx("div", {
+        className: `${Styles.leadImgContainer} ${moduleName}_LeadImg`
+      }, void 0, /*#__PURE__*/_jsx("img", {
+        className: `${Styles.leadImg} ${moduleName}_LeadImg_img ${props?.classes?.Lead}`,
+        src: `${props.leadImg}`
+      })) : null, props.text ? /*#__PURE__*/_jsx("div", {
+        className: `${Styles.Text} ${moduleName}_Text ${props?.classes?.Text}`
+      }, void 0, props.text) : null, props?.childrenBefore?.map ? React.Children.map(props.childrenBefore, function (child) {
+        if (child !== null) {
+          if (typeof child.type === 'function') {
+            const cpProps = {
+              bgContainerRef: bgContainerRef,
+              typeContainerRef: typeContainerRef
+            };
+            return React.cloneElement(child, cpProps);
+          }
+          return child;
         }
-        return child;
-      }
-      return /*#__PURE__*/_react["default"].createElement('div');
-    }) : null), /*#__PURE__*/_react["default"].createElement("div", null, props !== null && props !== void 0 && (_props$children = props.children) !== null && _props$children !== void 0 && _props$children.map ? _react["default"].Children.map(props.children, function (child) {
-      if (child !== null) {
-        if (typeof child.type === 'function') {
-          var cpProps = {
-            bgContainerRef: bgContainerRef,
-            typeContainerRef: typeContainerRef
-          };
-          return /*#__PURE__*/_react["default"].cloneElement(child, cpProps);
+        return React.createElement('div');
+      }) : null)
+                /*#__PURE__*/_jsx("div", {}, void 0, props?.children?.map ? React.Children.map(props.children, function (child) {
+        if (child !== null) {
+          if (typeof child.type === 'function') {
+            const cpProps = {
+              bgContainerRef: bgContainerRef,
+              typeContainerRef: typeContainerRef
+            };
+            return React.cloneElement(child, cpProps);
+          }
+          return child;
         }
-        return child;
-      }
-      return /*#__PURE__*/_react["default"].createElement('div');
-    }) : null));
+        return React.createElement('div');
+      }) : null)
+            </div>;
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].BannerHello, " ").concat(moduleName, "_Container ").concat(props.className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_PresentationModule["default"].IndexBgContainerAd, " ").concat(moduleName, "_IndexBgContainerAd ").concat(props === null || props === void 0 || (_props$classes4 = props.classes) === null || _props$classes4 === void 0 ? void 0 : _props$classes4.IndexBgContainerAd, " ").concat(props !== null && props !== void 0 && props.tall ? "".concat(_PresentationModule["default"].IndexBgContainerAdTall) : '', " ").concat(props !== null && props !== void 0 && props.center ? "".concat(_PresentationModule["default"].IndexBgContainerCenter) : ''),
-    ref: bgContainerRef
-  }, props.href ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-    href: "".concat(props.href),
-    draggable: false
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      backgroundImage: "url(".concat(resolveImage((_props$img = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img !== void 0 ? _props$img : null, 'img'), ")"),
-      height: '100%',
-      backgroundSize: 'cover',
-      borderRadius: '1rem',
-      position: 'relative'
-    }
-  }, resolveType())) : /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      backgroundImage: "url(".concat(resolveImage((_props$img2 = props === null || props === void 0 ? void 0 : props.img) !== null && _props$img2 !== void 0 ? _props$img2 : null, 'img'), ")"),
-      height: '100%',
-      backgroundSize: 'cover',
-      borderRadius: '1rem',
-      position: 'relative'
-    }
-  }, resolveType())));
+  return /*#__PURE__*/_jsx("div", {
+    className: `${Styles.BannerHello} ${moduleName}_Container ${props.className}`
+  }, void 0, <div className={`${Styles.IndexBgContainerAd} ${moduleName}_IndexBgContainerAd ${props?.classes?.IndexBgContainerAd} ${props?.tall ? `${Styles.IndexBgContainerAdTall}` : ''} ${props?.center ? `${Styles.IndexBgContainerCenter}` : ''}`} ref={bgContainerRef}>
+                {props.href ? /*#__PURE__*/_jsx(Link, {
+      href: `${props.href}`,
+      draggable: false
+    }, void 0, /*#__PURE__*/_jsx("div", {
+      style: {
+        backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
+        height: '100%',
+        backgroundSize: 'cover',
+        borderRadius: '1rem',
+        position: 'relative'
+      }
+    }, void 0, resolveType())) : /*#__PURE__*/_jsx("div", {
+      style: {
+        backgroundImage: `url(${resolveImage(props?.img ?? null, 'img')})`,
+        height: '100%',
+        backgroundSize: 'cover',
+        borderRadius: '1rem',
+        position: 'relative'
+      }
+    }, void 0, resolveType())}
+            </div>);
 };
-var _default = exports["default"] = Module;
+export default Module;

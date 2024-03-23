@@ -1,160 +1,80 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _uuid = require("uuid");
-var _router = require("next/router");
-var _admin = require("../admin");
-var _elasticlunr = _interopRequireDefault(require("../utility/utility/elasticlunr"));
-var _documentationModule = _interopRequireDefault(require("./documentation.module.scss"));
-var _fetch = require("../utility/fetch");
-var _dompurify = _interopRequireDefault(require("dompurify"));
-var _util = require("../util");
-var _ = require(".");
-var Module = function Module(props) {
-  var _queryRef$current, _detectFlags3, _detectFlags4;
-  var router = (0, _router.useRouter)();
-  var query = router.query,
-    asPath = router.asPath;
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(null),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    componentId = _React$useState4[0],
-    setComponentId = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(false),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    fetchBusy = _React$useState6[0],
-    setFetchBusy = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(null),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    currentIndex = _React$useState8[0],
-    setCurrentIndex = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState([]),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    currentResults = _React$useState10[0],
-    setCurrentResults = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState([]),
-    _React$useState12 = (0, _slicedToArray2["default"])(_React$useState11, 2),
-    devIndex = _React$useState12[0],
-    setDevIndex = _React$useState12[1];
-  var _React$useState13 = _react["default"].useState(-1),
-    _React$useState14 = (0, _slicedToArray2["default"])(_React$useState13, 2),
-    firstInput = _React$useState14[0],
-    setFirstInput = _React$useState14[1];
-  var _React$useState15 = _react["default"].useState({}),
-    _React$useState16 = (0, _slicedToArray2["default"])(_React$useState15, 2),
-    currentDoc = _React$useState16[0],
-    setCurrentDoc = _React$useState16[1];
-  var _React$useState17 = _react["default"].useState(0),
-    _React$useState18 = (0, _slicedToArray2["default"])(_React$useState17, 2),
-    currentMenu = _React$useState18[0],
-    setCurrentMenu = _React$useState18[1];
-  var _React$useState19 = _react["default"].useState([]),
-    _React$useState20 = (0, _slicedToArray2["default"])(_React$useState19, 2),
-    menu = _React$useState20[0],
-    setMenu = _React$useState20[1];
-  var _React$useState21 = _react["default"].useState(null),
-    _React$useState22 = (0, _slicedToArray2["default"])(_React$useState21, 2),
-    currentMenuDocsList = _React$useState22[0],
-    setCurrentMenuDocsList = _React$useState22[1];
-  var _React$useState23 = _react["default"].useState([]),
-    _React$useState24 = (0, _slicedToArray2["default"])(_React$useState23, 2),
-    currentMenuResults = _React$useState24[0],
-    setCurrentMenuResults = _React$useState24[1];
-  var _React$useState25 = _react["default"].useState(false),
-    _React$useState26 = (0, _slicedToArray2["default"])(_React$useState25, 2),
-    usingQuery = _React$useState26[0],
-    setUsingQuery = _React$useState26[1];
-  var queryRef = _react["default"].useRef();
-  var searchWillClose = _react["default"].useRef();
-  var resolveDefault = /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(useData) {
-      var allJustMenu, menuItems, res, _allJustMenu, _menuItems;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            if (!(props !== null && props !== void 0 && props.apiUrl)) {
-              _context.next = 12;
-              break;
-            }
-            if (!useData) {
-              _context.next = 7;
-              break;
-            }
-            setDevIndex(useData);
-            allJustMenu = useData.map(function (m) {
-              return m.menu;
-            });
-            menuItems = allJustMenu.filter(function (m, i) {
-              return allJustMenu.indexOf(m) === i;
-            });
-            setMenu(menuItems);
-            return _context.abrupt("return", 1);
-          case 7:
-            _context.next = 9;
-            return (0, _fetch.fetchPost)(props.apiUrl + '/m/getdocumentation', null, null, {
-              spec: 'all'
-            });
-          case 9:
-            res = _context.sent;
-            if (res.hasOwnProperty('status')) {
-              if (res.status == "success" && res.data) {
-                setDevIndex(res.data);
-                _allJustMenu = res.data.map(function (m) {
-                  return m.menu;
-                });
-                _menuItems = _allJustMenu.filter(function (m, i) {
-                  return _allJustMenu.indexOf(m) === i;
-                });
-                setMenu(_menuItems);
-              }
-            }
-            return _context.abrupt("return", false);
-          case 12:
-          case "end":
-            return _context.stop();
+var _div;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/router';
+import { Banner } from '../admin';
+import lunr from '../utility/utility/elasticlunr';
+import styles from './documentation.module.scss';
+import { fetchPost } from '../utility/fetch';
+import DOMPurify from 'dompurify';
+import { isObjectEmpty } from '../util';
+import { CompanyLink } from '.';
+const Module = props => {
+  const router = useRouter();
+  const {
+    query,
+    asPath
+  } = router;
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [componentId, setComponentId] = React.useState(null);
+  const [fetchBusy, setFetchBusy] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(null);
+  const [currentResults, setCurrentResults] = React.useState([]);
+  const [devIndex, setDevIndex] = React.useState([]);
+  const [firstInput, setFirstInput] = React.useState(-1);
+  const [currentDoc, setCurrentDoc] = React.useState({});
+  const [currentMenu, setCurrentMenu] = React.useState(0);
+  const [menu, setMenu] = React.useState([]);
+  const [currentMenuDocsList, setCurrentMenuDocsList] = React.useState(null);
+  const [currentMenuResults, setCurrentMenuResults] = React.useState([]);
+  const [usingQuery, setUsingQuery] = React.useState(false);
+  const queryRef = React.useRef();
+  const searchWillClose = React.useRef();
+  const resolveDefault = async useData => {
+    if (props?.apiUrl) {
+      if (useData) {
+        setDevIndex(useData);
+        const allJustMenu = useData.map(m => m.menu);
+        const menuItems = allJustMenu.filter((m, i) => allJustMenu.indexOf(m) === i);
+        setMenu(menuItems);
+        return 1;
+      }
+      const res = await fetchPost(props.apiUrl + '/m/getdocumentation', null, null, {
+        spec: 'all'
+      });
+      if (res.hasOwnProperty('status')) {
+        if (res.status == "success" && res.data) {
+          setDevIndex(res.data);
+          const allJustMenu = res.data.map(m => m.menu);
+          const menuItems = allJustMenu.filter((m, i) => allJustMenu.indexOf(m) === i);
+          setMenu(menuItems);
         }
-      }, _callee);
-    }));
-    return function resolveDefault(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  _react["default"].useEffect(function () {
+      }
+      return false;
+    }
+  };
+  React.useEffect(() => {
     if (!componentDidMount) {
-      var id = (0, _uuid.v4)();
+      const id = uuidv4();
       setComponentId(id);
-      resolveDefault(props === null || props === void 0 ? void 0 : props.documentationData);
+      resolveDefault(props?.documentationData);
       setComponentDidMount(true);
     }
   }, [componentDidMount]);
-  var runSearch = function runSearch(query, passedIndex) {
+  const runSearch = (query, passedIndex) => {
     if (currentIndex || passedIndex) {
-      var results = passedIndex ? passedIndex.search(query, {
+      const results = passedIndex ? passedIndex.search(query, {
         expand: true
       }) : currentIndex.search(query, {
         expand: true
       });
-      var useIndex = devIndex.map(function (doc, i) {
+      const useIndex = devIndex.map((doc, i) => {
         doc.id = i;
         return doc;
       });
-      var resultRecords = results.map(function (result) {
-        return useIndex.find(function (doc) {
-          return doc.id == result.ref;
-        });
-      }); // Id may or may not be number depending on user definition. Soft comparison
+      const resultRecords = results.map(result => useIndex.find(doc => doc.id == result.ref)); // Id may or may not be number depending on user definition. Soft comparison
       setCurrentResults(resultRecords);
       if (resultRecords && resultRecords[0]) {
         if (resultRecords[0].menu) {
@@ -164,12 +84,10 @@ var Module = function Module(props) {
       }
     }
   };
-  _react["default"].useEffect(function () {
-    if (componentDidMount && (devIndex === null || devIndex === void 0 ? void 0 : devIndex.length) > 0) {
-      if (_elasticlunr["default"] && devIndex && !currentIndex) {
-        var _router$query;
-        var fullTextSearchIndex = (0, _elasticlunr["default"])(function () {
-          var _this = this;
+  React.useEffect(() => {
+    if (componentDidMount && devIndex?.length > 0) {
+      if (lunr && devIndex && !currentIndex) {
+        const fullTextSearchIndex = lunr(function () {
           this.ref('id');
           this.field('lead');
           this.field('html');
@@ -177,63 +95,57 @@ var Module = function Module(props) {
           this.field('response');
           this.field('meta');
           if (Array.isArray(devIndex)) {
-            devIndex.forEach(function (doc, i) {
+            devIndex.forEach((doc, i) => {
               doc.id = i;
-              _this.add(doc);
+              this.add(doc);
             });
           }
         });
         setCurrentIndex(fullTextSearchIndex);
-        if (router !== null && router !== void 0 && (_router$query = router.query) !== null && _router$query !== void 0 && _router$query.q) {
+        if (router?.query?.q) {
           queryRef.current.value = router.query.q;
           runSearch(router.query.q, fullTextSearchIndex);
         }
       }
     }
   }, [devIndex, componentDidMount]);
-  _react["default"].useEffect(function () {
-    if (componentDidMount && (devIndex === null || devIndex === void 0 ? void 0 : devIndex.length) > 0) {
-      if (_elasticlunr["default"] && devIndex) {
-        var useIndex = devIndex.filter(function (m) {
-          return m.menu === menu[currentMenu];
-        });
+  React.useEffect(() => {
+    if (componentDidMount && devIndex?.length > 0) {
+      if (lunr && devIndex) {
+        const useIndex = devIndex.filter(m => m.menu === menu[currentMenu]);
         console.log(useIndex);
         setCurrentMenuDocsList(useIndex);
       }
     }
   }, [currentMenu, menu, devIndex, componentDidMount]);
-  var handleUpdateSearch = _react["default"].useCallback(function (e) {
-    var _e$currentTarget;
+  const handleUpdateSearch = React.useCallback(e => {
     setFirstInput(new Date().getTime());
-    var query = e === null || e === void 0 || (_e$currentTarget = e.currentTarget) === null || _e$currentTarget === void 0 ? void 0 : _e$currentTarget.value;
+    const query = e?.currentTarget?.value;
     if (query !== null && query !== '' && currentIndex && devIndex) {
       runSearch(query);
     } else {
       setPinned();
     }
   });
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     setPinned();
   }, [currentIndex]);
-  var setPinned = function setPinned() {
-    if (queryRef !== null && queryRef !== void 0 && queryRef.current && devIndex !== null && devIndex !== void 0 && devIndex.filter) {
-      var value = queryRef.current.value;
+  const setPinned = () => {
+    if (queryRef?.current && devIndex?.filter) {
+      const value = queryRef.current.value;
       if (!value || value === '') {
-        var pinned = devIndex === null || devIndex === void 0 ? void 0 : devIndex.filter(function (m) {
-          return m.pinned;
-        });
+        const pinned = devIndex?.filter(m => m.pinned);
         if (pinned.length > 0) {
           setCurrentResults(pinned);
         }
       }
     }
   };
-  var resolvePaint = function resolvePaint(m, field) {
+  const resolvePaint = (m, field) => {
     try {
       if (m && m[field]) {
-        var _m$field;
         return {
-          __html: _dompurify["default"].sanitize((_m$field = m[field]) !== null && _m$field !== void 0 ? _m$field : '')
+          __html: DOMPurify.sanitize(m[field] ?? '')
         };
       }
       return '';
@@ -241,12 +153,11 @@ var Module = function Module(props) {
       return '';
     }
   };
-  var handleSetCurrentMenu = _react["default"].useCallback(function (e) {
-    var _e$currentTarget2;
-    if (e !== null && e !== void 0 && (_e$currentTarget2 = e.currentTarget) !== null && _e$currentTarget2 !== void 0 && _e$currentTarget2.getAttribute('modif')) {
-      var modif = e.currentTarget.getAttribute('modif');
+  const handleSetCurrentMenu = React.useCallback(e => {
+    if (e?.currentTarget?.getAttribute('modif')) {
+      const modif = e.currentTarget.getAttribute('modif');
       if (modif) {
-        var i = menu.indexOf(modif);
+        const i = menu.indexOf(modif);
         if (i > -1) {
           setCurrentDoc({});
           setCurrentMenu(i);
@@ -254,15 +165,13 @@ var Module = function Module(props) {
       }
     }
   });
-  var handleSetCurrentRecord = _react["default"].useCallback(function (e) {
-    var _e$currentTarget3;
-    if (e !== null && e !== void 0 && (_e$currentTarget3 = e.currentTarget) !== null && _e$currentTarget3 !== void 0 && _e$currentTarget3.getAttribute) {
+  const handleSetCurrentRecord = React.useCallback(e => {
+    if (e?.currentTarget?.getAttribute) {
       // Is number cannot resolve true 
-      var modif = e.currentTarget.getAttribute('modif');
+      const modif = e.currentTarget.getAttribute('modif');
       if (modif > -1) {
-        var _e$currentTarget4;
         console.log(currentMenuDocsList, modif);
-        if (e !== null && e !== void 0 && (_e$currentTarget4 = e.currentTarget) !== null && _e$currentTarget4 !== void 0 && _e$currentTarget4.getAttribute('currentresults')) {
+        if (e?.currentTarget?.getAttribute('currentresults')) {
           setCurrentDoc(currentResults[modif]);
         } else {
           setCurrentDoc(currentMenuDocsList[modif]);
@@ -270,154 +179,134 @@ var Module = function Module(props) {
       }
     }
   });
-  var handleSetSearchFocus = _react["default"].useCallback(function (e) {
-    if (searchWillClose !== null && searchWillClose !== void 0 && searchWillClose.current) {
+  const handleSetSearchFocus = React.useCallback(e => {
+    if (searchWillClose?.current) {
       clearTimeout(searchWillClose.current);
     }
     setUsingQuery(true);
   });
-  var handleSetSearchFocusOff = _react["default"].useCallback(function (e) {
+  const handleSetSearchFocusOff = React.useCallback(e => {
     try {
-      searchWillClose.current = setTimeout(function () {
+      searchWillClose.current = setTimeout(() => {
         setUsingQuery(false);
       }, 500);
     } catch (err) {
       // fail silently
     }
   });
-  var detectFlags = function detectFlags(doc) {
-    var o = {};
-    var flags = ['manual', 'simple'];
-    console.log(devIndex, doc, (0, _typeof2["default"])(doc));
+  const detectFlags = doc => {
+    const o = {};
+    const flags = ['manual', 'simple'];
+    console.log(devIndex, doc, typeof doc);
     if (typeof doc === 'string') {
-      doc = devIndex.find(function (m) {
-        return m.lead === doc;
-      });
+      doc = devIndex.find(m => m.lead === doc);
     }
-    flags.map(function (m) {
-      var _doc;
-      o[m] = ((_doc = doc) === null || _doc === void 0 ? void 0 : _doc.meta.indexOf(m)) > -1;
+    flags.map(m => {
+      o[m] = doc?.meta.indexOf(m) > -1;
     });
     return o;
   };
   console.log('Menu Items', menu, currentDoc);
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.className, " Documentation_Container")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.className} Documentation_Container`
+  }, void 0, /*#__PURE__*/_jsx("div", {
     className: "flex",
     style: {
       justifyContent: 'space-between',
       alignContent: 'center',
       margin: '.5rem 1.5rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("h5", {
-    className: "Misc_Label",
+  }, void 0, /*#__PURE__*/_jsx("h5", {
+    className: `Misc_Label`,
     style: {
       fontSize: '1.5rem'
     }
-  }, "Tycoon Documentation"), /*#__PURE__*/_react["default"].createElement(_.CompanyLink, props)), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, "Tycoon Documentation"), <CompanyLink {...props} />), /*#__PURE__*/_jsx("div", {
     style: {
       position: 'sticky',
       top: '.5rem',
       margin: '.5rem 0',
       marginTop: '0'
     }
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    onChange: handleUpdateSearch,
-    onFocus: handleSetSearchFocus,
-    onBlur: handleSetSearchFocusOff,
-    className: "".concat(_documentationModule["default"].activeSearch),
-    ref: queryRef,
-    style: {
-      border: '0px',
-      borderRadius: '.5rem',
-      width: 'calc(100% - 1rem)',
-      fontSize: '1.25rem',
-      padding: '0 .5rem',
-      margin: '0 .5rem'
-    },
-    placeholder: "How do I?"
-  }), usingQuery ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].activeSearchResults)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, <input onChange={handleUpdateSearch} onFocus={handleSetSearchFocus} onBlur={handleSetSearchFocusOff} className={`${styles.activeSearch}`} ref={queryRef} style={{
+    border: '0px',
+    borderRadius: '.5rem',
+    width: 'calc(100% - 1rem)',
+    fontSize: '1.25rem',
+    padding: '0 .5rem',
+    margin: '0 .5rem'
+  }} placeholder='How do I?'></input>, usingQuery ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.activeSearchResults}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
     style: {
       padding: '.25rem 0rem',
       paddingTop: '.5rem',
       display: 'grid',
       gap: '.5rem'
     }
-  }, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: "flex gap-p5",
-      style: {
-        marginLeft: '.5rem',
-        cursor: 'pointer'
-      },
-      key: i
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "Misc_Item_Container Misc_Item_DarkContainerHover",
-      style: {
-        padding: '.5rem'
-      }
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].lead),
-      onClick: handleSetCurrentRecord,
-      modif: i,
-      currentresults: 'true'
-    }, m.lead)));
-  }) : (queryRef === null || queryRef === void 0 || (_queryRef$current = queryRef.current) === null || _queryRef$current === void 0 ? void 0 : _queryRef$current.value) !== '' ? /*#__PURE__*/_react["default"].createElement("div", null) : /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => /*#__PURE__*/_jsx("div", {
+    className: `flex gap-p5`,
+    style: {
+      marginLeft: '.5rem',
+      cursor: 'pointer'
+    }
+  }, i, /*#__PURE__*/_jsx("div", {
+    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
+    style: {
+      padding: '.5rem'
+    }
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${styles.lead}`,
+    onClick: handleSetCurrentRecord,
+    modif: i,
+    currentresults: 'true'
+  }, void 0, m.lead)))) : queryRef?.current?.value !== '' ? _div || (_div = /*#__PURE__*/_jsx("div", {})) : /*#__PURE__*/_jsx("div", {
     style: {
       textAlign: 'center',
       fontSize: '.95rem'
     }
-  }, "Try Searching for something"))) : null), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "flex gap-p5 ".concat(_documentationModule["default"].menuContainer)
-  }, Array.isArray(menu) && menu.length > 0 ? menu.map(function (m, i) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: i,
-      style: {
-        listStyle: 'none'
-      },
-      onClick: handleSetCurrentMenu,
-      modif: m
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m !== null && m !== void 0 && m.charAt ? "".concat(m.charAt(0).toUpperCase()).concat(m.slice(1, m.length)) : m));
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].mainContainer)
-  }, /*#__PURE__*/_react["default"].createElement("ul", {
-    className: "".concat(_documentationModule["default"].menuList)
-  }, Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map(function (m, i) {
-    var _detectFlags, _detectFlags2;
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      className: "flex gap-p2",
-      onClick: handleSetCurrentRecord,
-      modif: i
-    }, /*#__PURE__*/_react["default"].createElement("div", null, m === null || m === void 0 ? void 0 : m.lead), (_detectFlags = detectFlags(m)) !== null && _detectFlags !== void 0 && _detectFlags.manual ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tagSmall)
-    }, "m") : null, (_detectFlags2 = detectFlags(m)) !== null && _detectFlags2 !== void 0 && _detectFlags2.simple ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tagSmall)
-    }, "s") : null);
-  }) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].contentContainer)
-  }, currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex ".concat(_documentationModule["default"].quadrant)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "Misc_Item_Container Misc_Item_DarkContainerHover",
+  }, void 0, "Try Searching for something"))) : null), /*#__PURE__*/_jsx("ul", {
+    className: `flex gap-p5 ${styles.menuContainer}`
+  }, void 0, Array.isArray(menu) && menu.length > 0 ? menu.map((m, i) => /*#__PURE__*/_jsx("li", {
+    style: {
+      listStyle: 'none'
+    },
+    onClick: handleSetCurrentMenu,
+    modif: m
+  }, i, /*#__PURE__*/_jsx("div", {}, void 0, m?.charAt ? `${m.charAt(0).toUpperCase()}${m.slice(1, m.length)}` : m))) : null), /*#__PURE__*/_jsx("div", {
+    className: `${styles.mainContainer}`
+  }, void 0, /*#__PURE__*/_jsx("ul", {
+    className: `${styles.menuList}`
+  }, void 0, Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map((m, i) => /*#__PURE__*/_jsx("li", {
+    className: "flex gap-p2",
+    onClick: handleSetCurrentRecord,
+    modif: i
+  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, m?.lead), detectFlags(m)?.manual ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.tagUnmanaged} ${styles.tagSmall}`
+  }, void 0, "m") : null, detectFlags(m)?.simple ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.tagSimple} ${styles.tagSmall}`
+  }, void 0, "s") : null)) : null), /*#__PURE__*/_jsx("div", {
+    className: `${styles.contentContainer}`
+  }, void 0, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/_jsx("div", {
+    className: `flex ${styles.quadrant}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
     style: {
       padding: '.5rem',
       width: '100%'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].lead)
-  }, currentDoc.lead), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${styles.lead}`
+  }, void 0, currentDoc.lead), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p5"
-  }, (_detectFlags3 = detectFlags(currentDoc)) !== null && _detectFlags3 !== void 0 && _detectFlags3.manual ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].tagUnmanaged, " ").concat(_documentationModule["default"].tag)
-  }, "manual") : null), /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, detectFlags(currentDoc)?.manual ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.tagUnmanaged} ${styles.tag}`
+  }, void 0, "manual") : null), /*#__PURE__*/_jsx("div", {
     className: "flex gap-p5"
-  }, (_detectFlags4 = detectFlags(currentDoc)) !== null && _detectFlags4 !== void 0 && _detectFlags4.simple ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].tagSimple, " ").concat(_documentationModule["default"].tag)
-  }, "simple") : null), /*#__PURE__*/_react["default"].createElement("pre", null, /*#__PURE__*/_react["default"].createElement("code", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].htmlParseContainer),
+  }, void 0, detectFlags(currentDoc)?.simple ? /*#__PURE__*/_jsx("div", {
+    className: `${styles.tagSimple} ${styles.tag}`
+  }, void 0, "simple") : null), /*#__PURE__*/_jsx("pre", {}, void 0, /*#__PURE__*/_jsx("code", {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${styles.htmlParseContainer}`,
     dangerouslySetInnerHTML: resolvePaint(currentDoc, 'html'),
     style: {
       fontSize: '.85rem',
@@ -425,12 +314,12 @@ var Module = function Module(props) {
       lineBreak: 'auto',
       whiteSpace: 'pre-wrap'
     }
-  }))))) : null), /*#__PURE__*/_react["default"].createElement("div", null, currentDoc && !(0, _util.isObjectEmpty)(currentDoc) ? /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flex ".concat(_documentationModule["default"].container)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].quadrant2)
-  }, /*#__PURE__*/_react["default"].createElement("pre", null, /*#__PURE__*/_react["default"].createElement("code", null, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(_documentationModule["default"].codePre)
-  }, currentDoc === null || currentDoc === void 0 ? void 0 : currentDoc.code))), /*#__PURE__*/_react["default"].createElement("div", null, currentDoc.response))) : null)));
+  }))))) : null), /*#__PURE__*/_jsx("div", {}, void 0, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/_jsx("div", {
+    className: `flex ${styles.container}`
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${styles.quadrant2}`
+  }, void 0, /*#__PURE__*/_jsx("pre", {}, void 0, /*#__PURE__*/_jsx("code", {}, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${styles.codePre}`
+  }, void 0, currentDoc?.code))), /*#__PURE__*/_jsx("div", {}, void 0, currentDoc.response))) : null)));
 };
-var _default = exports["default"] = Module;
+export default Module;

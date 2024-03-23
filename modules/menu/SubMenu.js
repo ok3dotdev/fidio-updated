@@ -1,124 +1,111 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-var _react = _interopRequireDefault(require("react"));
-var _link = _interopRequireDefault(require("next/link"));
-var _image = _interopRequireDefault(require("next/image"));
-var _MenuModule = _interopRequireDefault(require("./Menu.module.scss"));
-var _excluded = ["loggedIn"];
-var SubMenu = function SubMenu(props) {
-  var loggedIn = props.loggedIn,
-    rest = (0, _objectWithoutProperties2["default"])(props, _excluded);
-  var myLoader = function myLoader(_ref) {
-    var src = _ref.src;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import menuStyle from './Menu.module.scss';
+const SubMenu = props => {
+  let {
+    loggedIn,
+    ...rest
+  } = props;
+  const myLoader = ({
+    src
+  }) => {
     if (src.match(/greythumb/)) {
-      return "".concat(src);
-    } else if (props.cdn && props.cdn["static"] && props.cdn["static"].length > 0) {
-      return "".concat(props.cdn["static"], "/").concat(src);
+      return `${src}`;
+    } else if (props.cdn && props.cdn.static && props.cdn.static.length > 0) {
+      return `${props.cdn.static}/${src}`;
     }
   };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props._loggedIn ? "".concat(_MenuModule["default"].subMenu) : "".concat(_MenuModule["default"].subMenu, " ").concat(_MenuModule["default"].subMenuBottomPadding, " subMenuContainer"), " ").concat(props.className)
-  }, props.menuConfig && props.menuConfig.left ? props.menuConfig.left.map(function (c, i) {
-    var _props$handleToggleMe, _props$handleToggleMe2, _props$handleToggleMe3, _c$width, _c$height, _c$width2, _c$height2, _props$handleToggleMe4;
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, {
-      key: i
-    }, c.type ? c.type === 'home' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/",
-      style: {
-        alignSelf: 'center'
-      },
-      className: "menuLinkSelector ".concat(c.className),
-      key: i,
-      onClick: (_props$handleToggleMe = props.handleToggleMenuOff) !== null && _props$handleToggleMe !== void 0 ? _props$handleToggleMe : null
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      href: "/",
-      className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
-      alt: "Home",
-      title: "Home"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].itemName, " home.itemName")
-    }, "Home"), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " home material-icons")
-    }, "home"))) : c.type === 'watch' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: "/w",
-      className: "".concat(_MenuModule["default"].menuLink, " menuLinkSelector ").concat(c.className),
-      style: {
-        alignSelf: 'center'
-      },
-      key: i,
-      onClick: (_props$handleToggleMe2 = props.handleToggleMenuOff) !== null && _props$handleToggleMe2 !== void 0 ? _props$handleToggleMe2 : null
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      href: "/w",
-      className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
-      alt: "Watch",
-      title: "Watch"
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].itemName, " home.itemName")
-    }, "Watch"), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " tv material-icons")
-    }, "tv"))) : c.type === 'img'
-    //     ? <img src={props.cdn.static ? `${props.cdn.static}/${c.src}` : ''} alt={c.name} style={{ width: c.width, height: c.height }} />
-    ? /*#__PURE__*/_react["default"].createElement("div", {
-      className: "img_control menuLinkSelector ".concat(c.className),
-      style: {
-        width: c.width ? c.width + 'px' : '40px',
-        height: c.height ? c.height + 'px' : '20px',
-        alignSelf: 'center'
-      },
-      key: i
-    }, c.href ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: c.href,
-      onClick: (_props$handleToggleMe3 = props.handleToggleMenuOff) !== null && _props$handleToggleMe3 !== void 0 ? _props$handleToggleMe3 : null
-    }, /*#__PURE__*/_react["default"].createElement(_image["default"], {
-      loader: function loader() {
-        if (c.src.match(/greythumb/) || c.local) {
-          return "".concat(c.src);
-        } else if (props.cdn && props.cdn["static"] && props.cdn["static"].length > 0) {
-          return "".concat(props.cdn["static"], "/").concat(c.src);
-        }
-      },
-      src: c.src && props.cdn && props.cdn["static"] ? c.src : 'img/default/greythumb.jpg',
-      alt: c.name ? c.name : "",
-      width: (_c$width = c.width) !== null && _c$width !== void 0 ? _c$width : '80',
-      height: (_c$height = c.height) !== null && _c$height !== void 0 ? _c$height : '40',
-      layout: "responsive"
-    })) : /*#__PURE__*/_react["default"].createElement(_image["default"], {
-      loader: function loader() {
-        if (c.src.match(/greythumb/) || c.local) {
-          return "".concat(c.src);
-        } else if (props.cdn && props.cdn["static"] && props.cdn["static"].length > 0) {
-          return "".concat(props.cdn["static"], "/").concat(c.src);
-        }
-      },
-      src: c.src && props.cdn && props.cdn["static"] ? c.src : 'img/default/greythumb.jpg',
-      alt: c.name ? c.name : "",
-      width: (_c$width2 = c.width) !== null && _c$width2 !== void 0 ? _c$width2 : '80',
-      height: (_c$height2 = c.height) !== null && _c$height2 !== void 0 ? _c$height2 : '40',
-      layout: "responsive"
-    })) : c.type === 'link' ? /*#__PURE__*/_react["default"].createElement(_link["default"], {
-      href: c.href,
-      className: "".concat(_MenuModule["default"].menuLink, " menuLinkSelector ").concat(c.className),
-      style: {
-        alignSelf: 'center'
-      },
-      key: i,
-      onClick: (_props$handleToggleMe4 = props.handleToggleMenuOff) !== null && _props$handleToggleMe4 !== void 0 ? _props$handleToggleMe4 : null
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      href: c.href,
-      className: "".concat(_MenuModule["default"].subMenuItemContainer, " darkModeHoverEnforce"),
-      alt: c.name,
-      title: c.name
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].itemName, " home.itemName")
-    }, c.name), /*#__PURE__*/_react["default"].createElement("div", {
-      className: "".concat(_MenuModule["default"].subMenuItem, " ").concat(_MenuModule["default"].maxIconWidth, " material-icons")
-    }, c.muiIcon))) : null : null);
-  }) : null);
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props._loggedIn ? `${menuStyle.subMenu}` : `${menuStyle.subMenu} ${menuStyle.subMenuBottomPadding} subMenuContainer`} ${props.className}`
+  }, void 0, props.menuConfig && props.menuConfig.left ? props.menuConfig.left.map((c, i) => /*#__PURE__*/_jsx(React.Fragment, {}, i, c.type ? c.type === 'home' ? /*#__PURE__*/_jsx(Link, {
+    href: "/",
+    style: {
+      alignSelf: 'center'
+    },
+    className: `menuLinkSelector ${c.className}`,
+    onClick: props.handleToggleMenuOff ?? null
+  }, i, /*#__PURE__*/_jsx("span", {
+    href: "/",
+    className: `${menuStyle.subMenuItemContainer} darkModeHoverEnforce`,
+    alt: "Home",
+    title: "Home"
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.itemName} home.itemName`
+  }, void 0, "Home"), /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.subMenuItem} ${menuStyle.maxIconWidth} home material-icons`
+  }, void 0, "home"))) : c.type === 'watch' ? /*#__PURE__*/_jsx(Link, {
+    href: "/w",
+    className: `${menuStyle.menuLink} menuLinkSelector ${c.className}`,
+    style: {
+      alignSelf: 'center'
+    },
+    onClick: props.handleToggleMenuOff ?? null
+  }, i, /*#__PURE__*/_jsx("span", {
+    href: "/w",
+    className: `${menuStyle.subMenuItemContainer} darkModeHoverEnforce`,
+    alt: "Watch",
+    title: "Watch"
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.itemName} home.itemName`
+  }, void 0, "Watch"), /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.subMenuItem} ${menuStyle.maxIconWidth} tv material-icons`
+  }, void 0, "tv"))) : c.type === 'img'
+  //     ? <img src={props.cdn.static ? `${props.cdn.static}/${c.src}` : ''} alt={c.name} style={{ width: c.width, height: c.height }} />
+  ? /*#__PURE__*/_jsx("div", {
+    className: `img_control menuLinkSelector ${c.className}`,
+    style: {
+      width: c.width ? c.width + 'px' : '40px',
+      height: c.height ? c.height + 'px' : '20px',
+      alignSelf: 'center'
+    }
+  }, i, c.href ? /*#__PURE__*/_jsx(Link, {
+    href: c.href,
+    onClick: props.handleToggleMenuOff ?? null
+  }, void 0, /*#__PURE__*/_jsx(Image, {
+    loader: () => {
+      if (c.src.match(/greythumb/) || c.local) {
+        return `${c.src}`;
+      } else if (props.cdn && props.cdn.static && props.cdn.static.length > 0) {
+        return `${props.cdn.static}/${c.src}`;
+      }
+    },
+    src: c.src && props.cdn && props.cdn.static ? c.src : 'img/default/greythumb.jpg',
+    alt: c.name ? c.name : "",
+    width: c.width ?? '80',
+    height: c.height ?? '40',
+    layout: "responsive"
+  })) : /*#__PURE__*/_jsx(Image, {
+    loader: () => {
+      if (c.src.match(/greythumb/) || c.local) {
+        return `${c.src}`;
+      } else if (props.cdn && props.cdn.static && props.cdn.static.length > 0) {
+        return `${props.cdn.static}/${c.src}`;
+      }
+    },
+    src: c.src && props.cdn && props.cdn.static ? c.src : 'img/default/greythumb.jpg',
+    alt: c.name ? c.name : "",
+    width: c.width ?? '80',
+    height: c.height ?? '40',
+    layout: "responsive"
+  })) : c.type === 'link' ? /*#__PURE__*/_jsx(Link, {
+    href: c.href,
+    className: `${menuStyle.menuLink} menuLinkSelector ${c.className}`,
+    style: {
+      alignSelf: 'center'
+    },
+    onClick: props.handleToggleMenuOff ?? null
+  }, i, /*#__PURE__*/_jsx("span", {
+    href: c.href,
+    className: `${menuStyle.subMenuItemContainer} darkModeHoverEnforce`,
+    alt: c.name,
+    title: c.name
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.itemName} home.itemName`
+  }, void 0, c.name), /*#__PURE__*/_jsx("div", {
+    className: `${menuStyle.subMenuItem} ${menuStyle.maxIconWidth} material-icons`
+  }, void 0, c.muiIcon))) : null : null)) : null);
 };
-var _default = exports["default"] = SubMenu;
+export default SubMenu;

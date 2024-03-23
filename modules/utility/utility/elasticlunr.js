@@ -1,7 +1,3 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 /**
  * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 0.5.10
  * Copyright (C) 2015 Oliver Nightingale
@@ -9,7 +5,7 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
  * @license
  */
 !function () {
-  var t = function t(e) {
+  var t = function (e) {
     var n = new t.Index();
     return n.pipeline.add(t.trimmer, t.stopWordFilter, t.stemmer), e && e.call(n, n), n;
   };
@@ -367,7 +363,7 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
       O = /^(.+?)e$/,
       P = /ll$/,
       N = new RegExp("^" + o + i + "[^aeiouwxy]$"),
-      T = function T(n) {
+      T = function (n) {
         var i, o, r, s, a, u, h;
         if (n.length < 3) return n;
         if (r = n.substr(0, 1), "y" == r && (n = r.toUpperCase() + n.substr(1)), s = f, a = m, s.test(n) ? n = n.replace(s, "$1$2") : a.test(n) && (n = n.replace(a, "$1$2")), s = v, a = g, s.test(n)) {
@@ -458,7 +454,7 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
       length: this.length
     };
   }, function (t, e) {
-    "function" == typeof define && define.amd ? define(e) : "object" == (typeof exports === "undefined" ? "undefined" : (0, _typeof2["default"])(exports)) ? module.exports = e() : t.lunr = e();
+    "function" == typeof define && define.amd ? define(e) : "object" == typeof exports ? module.exports = e() : t.lunr = e();
   }(this, function () {
     return t;
   });

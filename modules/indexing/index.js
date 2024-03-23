@@ -1,13 +1,2 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "SliderBasic", {
-  enumerable: true,
-  get: function get() {
-    return _SliderBasic["default"];
-  }
-});
-var _SliderBasic = _interopRequireDefault(require("./SliderBasic"));
+import SliderBasic from './SliderBasic';
+export { SliderBasic };

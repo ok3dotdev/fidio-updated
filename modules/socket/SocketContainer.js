@@ -1,108 +1,96 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-var _typeof = require("@babel/runtime/helpers/typeof");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _index = require("../utility/socket/index");
-var _react = _interopRequireWildcard(require("react"));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
-var SocketContainer = function SocketContainer(props) {
-  var _socket = props._socket;
-  var socketRef = (0, _react.useRef)(false);
-  var initializeTimer = (0, _react.useRef)(null);
-  var _React$useState = _react["default"].useState(null),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    reconnectScheduled = _React$useState2[0],
-    setReconnectScheduled = _React$useState2[1];
-  (0, _react.useEffect)(function () {
+var _div;
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import { initialize } from '../utility/socket/index';
+import React, { useRef, useEffect } from 'react';
+const SocketContainer = props => {
+  const {
+    _socket
+  } = props;
+  let socketRef = useRef(false);
+  let initializeTimer = useRef(null);
+  const [reconnectScheduled, setReconnectScheduled] = React.useState(null);
+  useEffect(() => {
     if (!socketRef.current && props._loggedIn && props.dborigin) {
       buildConnection();
     }
   }, [_socket, socketRef.current, props._loggedIn, props.dborigin]);
-  var buildConnection = function buildConnection() {
-    return new Promise(function (resolve, reject) {
-      /* Sometimes no explicit Connect event fired. Run if connected true */
-      if (_socket.connected && props._loggedIn && props.dborigin) {
-        (0, _index.initialize)(_socket, props._loggedIn, props.dborigin);
-      }
-      _socket.on('connect', function (data) {
-        console.log('Connected to socket ∞¦∞', _socket);
-        socketRef.current = true;
-        setTimeout(function () {
-          (0, _index.initialize)(_socket, props._loggedIn, props.dborigin);
-        }, 300);
-      }, {
-        'reconnectionAttempts': 5
-      });
-      _socket.on("disconnect", function (reason) {
-        // Handles disconnects
-        console.log('Disconnected from socket', _socket);
-        if (!reconnectScheduled) {
-          if (reason === "io server disconnect") {
-            socketRef.current = false;
-            var temp = setTimeout(function () {
-              // disconnect initiated by server. Manually reconnect
-              _socket.connect();
-              setReconnectScheduled(null);
-            }, 5000);
-            setReconnectScheduled(temp);
-          }
-        }
-      });
-      _socket.on("connect_error", function (err) {
-        console.log('Connection failed', err);
-        socketRef.current = false;
-        var temp = setTimeout(function () {
-          reconnect();
-          setReconnectScheduled(null);
-        }, 5000);
-        setReconnectScheduled(temp);
-      });
-      var reconnect = function reconnect() {
-        var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5000;
-        setTimeout(function () {
-          _socket.connect();
-        }, time);
-      };
-      return resolve();
+  const buildConnection = () => new Promise((resolve, reject) => {
+    /* Sometimes no explicit Connect event fired. Run if connected true */
+    if (_socket.connected && props._loggedIn && props.dborigin) {
+      initialize(_socket, props._loggedIn, props.dborigin);
+    }
+    _socket.on('connect', data => {
+      console.log('Connected to socket ∞¦∞', _socket);
+      socketRef.current = true;
+      setTimeout(() => {
+        initialize(_socket, props._loggedIn, props.dborigin);
+      }, 300);
+    }, {
+      'reconnectionAttempts': 5
     });
-  };
-  (0, _react.useEffect)(function () {
+    _socket.on("disconnect", reason => {
+      // Handles disconnects
+      console.log('Disconnected from socket', _socket);
+      if (!reconnectScheduled) {
+        if (reason === "io server disconnect") {
+          socketRef.current = false;
+          const temp = setTimeout(() => {
+            // disconnect initiated by server. Manually reconnect
+            _socket.connect();
+            setReconnectScheduled(null);
+          }, 5000);
+          setReconnectScheduled(temp);
+        }
+      }
+    });
+    _socket.on("connect_error", err => {
+      console.log('Connection failed', err);
+      socketRef.current = false;
+      const temp = setTimeout(() => {
+        reconnect();
+        setReconnectScheduled(null);
+      }, 5000);
+      setReconnectScheduled(temp);
+    });
+    let reconnect = (time = 5000) => {
+      setTimeout(() => {
+        _socket.connect();
+      }, time);
+    };
+    return resolve();
+  });
+  useEffect(() => {
     if (_socket) {
-      var returnInitialize = function returnInitialize(payload) {
+      const returnInitialize = payload => {
         console.log(payload);
         if (props.setRooms) {
           props.setRooms(payload);
         }
       };
-      var returnNotify = function returnNotify(payload) {
+      const returnNotify = payload => {
         console.log(payload);
       };
-      var joinChat = function joinChat(payload) {
+      const joinChat = payload => {
         if (props.setRooms) {
           console.log('Rooms', payload);
           props.setRooms(payload);
         }
-        setTimeout(function () {
-          if (payload !== null && payload !== void 0 && payload.log) {
+        setTimeout(() => {
+          if (payload?.log) {
             props._LocalEventEmitter.dispatch('receive_chat', payload.log);
           }
         }, 250);
       };
-      var receiveChat = function receiveChat(payload) {
+      const receiveChat = payload => {
         console.log('Receive', payload);
-        if (payload !== null && payload !== void 0 && payload.log) {
+        if (payload?.log) {
           props._LocalEventEmitter.dispatch('receive_chat', payload.log);
         }
       };
-      var receiveBanTable = function receiveBanTable(payload) {
+      const receiveBanTable = payload => {
         console.log(payload);
-        if (payload !== null && payload !== void 0 && payload.tables) {
+        if (payload?.tables) {
           props._LocalEventEmitter.dispatch('receive_ban_table', payload.tables);
         }
       };
@@ -111,7 +99,7 @@ var SocketContainer = function SocketContainer(props) {
       _socket.on('joinChat', joinChat);
       _socket.on('receiveChat', receiveChat);
       _socket.on('receiveBanTable', receiveBanTable);
-      return function () {
+      return () => {
         _socket.off('returnInitialize', returnInitialize);
         _socket.off('returnNotify', returnNotify);
         _socket.off('joinChat', joinChat);
@@ -120,6 +108,6 @@ var SocketContainer = function SocketContainer(props) {
       };
     }
   }, [props._loggedIn, props.setRooms]);
-  return /*#__PURE__*/_react["default"].createElement("div", null);
+  return _div || (_div = /*#__PURE__*/_jsx("div", {}));
 };
-var _default = exports["default"] = SocketContainer;
+export default SocketContainer;

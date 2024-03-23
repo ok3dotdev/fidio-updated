@@ -1,151 +1,109 @@
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _react = _interopRequireDefault(require("react"));
-var _router = require("next/router");
-var _SignIn = require("../../utility/onboarding/SignIn");
-var _index = require("../../utility/payment/index");
-var _fetch = require("../../utility/fetch");
+var REACT_ELEMENT_TYPE;
+function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
+import React from 'react';
+import { useRouter } from 'next/router';
+import { checkSignedIn, attemptThirdPartySignIn } from '../../utility/onboarding/SignIn';
+import { setStripeSecretData } from '../../utility/payment/index';
+import { fetchPost } from '../../utility/fetch';
 // import RegisterUsername from './RegisterUsername.js'
 
-var Module = function Module(props) {
-  var _props$maxWidth;
-  var router = (0, _router.useRouter)();
-  var query = router.query,
-    asPath = router.asPath;
-  var googleSignIn = _react["default"].useRef();
-  var _React$useState = _react["default"].useState(false),
-    _React$useState2 = (0, _slicedToArray2["default"])(_React$useState, 2),
-    componentDidMount = _React$useState2[0],
-    setComponentDidMount = _React$useState2[1];
-  var _React$useState3 = _react["default"].useState(false),
-    _React$useState4 = (0, _slicedToArray2["default"])(_React$useState3, 2),
-    didCheckAdminAuth = _React$useState4[0],
-    setDidCheckAdminAuth = _React$useState4[1];
-  var _React$useState5 = _react["default"].useState(false),
-    _React$useState6 = (0, _slicedToArray2["default"])(_React$useState5, 2),
-    registerUsernameOn = _React$useState6[0],
-    setRegisterUsernameOn = _React$useState6[1];
-  var _React$useState7 = _react["default"].useState(false),
-    _React$useState8 = (0, _slicedToArray2["default"])(_React$useState7, 2),
-    googleSignInRendered = _React$useState8[0],
-    googleSignInRenderedSet = _React$useState8[1];
-  var _React$useState9 = _react["default"].useState(false),
-    _React$useState10 = (0, _slicedToArray2["default"])(_React$useState9, 2),
-    hideGoogleSignIn = _React$useState10[0],
-    setHideGoogleSignIn = _React$useState10[1];
-  var _React$useState11 = _react["default"].useState(null),
-    _React$useState12 = (0, _slicedToArray2["default"])(_React$useState11, 2),
-    pageError = _React$useState12[0],
-    setPageError = _React$useState12[1];
-  _react["default"].useEffect(function () {
+const Module = props => {
+  const router = useRouter();
+  const {
+    query,
+    asPath
+  } = router;
+  let googleSignIn = React.useRef();
+  const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const [didCheckAdminAuth, setDidCheckAdminAuth] = React.useState(false);
+  let [registerUsernameOn, setRegisterUsernameOn] = React.useState(false);
+  let [googleSignInRendered, googleSignInRenderedSet] = React.useState(false);
+  let [hideGoogleSignIn, setHideGoogleSignIn] = React.useState(false);
+  let [pageError, setPageError] = React.useState(null);
+  React.useEffect(() => {
     setComponentDidMount(true);
   }, [componentDidMount]);
   props._LocalEventEmitter.unsubscribe('showSignIn');
-  props._LocalEventEmitter.subscribe('showSignIn', function (e) {
+  props._LocalEventEmitter.subscribe('showSignIn', e => {
     setHideGoogleSignIn(false);
     buildButtonAndTryPrompt(500);
   });
   props._LocalEventEmitter.unsubscribe('checkAdminAuth');
-  props._LocalEventEmitter.subscribe('checkAdminAuth', function (e) {
+  props._LocalEventEmitter.subscribe('checkAdminAuth', e => {
     handleGetAdminAuth(true);
   });
-  _react["default"].useEffect(function () {
-    var muteLoginErr = function muteLoginErr() {
+  React.useEffect(() => {
+    const muteLoginErr = () => {
       setPageError(null);
     };
     document.addEventListener('mute-login-error', muteLoginErr, {
       once: true
     });
   }, []);
-  var buildLoginAndUpdate = /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(data) {
-      var status;
-      return _regenerator["default"].wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0, _SignIn.attemptThirdPartySignIn)(data, props.apiUrl, props.domainKey, props._LocalEventEmitter, props._setAdminAuth);
-          case 2:
-            status = _context.sent;
-            if (status && status.hasOwnProperty('username')) {
-              if (!status.username) {
-                setRegisterUsernameOn(true);
-              }
-            }
-            console.log(status);
-            if (typeof status !== 'error') {
-              (0, _index.setStripeSecretData)(props.apiUrl, props.domainKey, status, props._setStripeSecret);
-              props._setLoggedIn(status);
-              console.log(props.redirectOnAuth, status.username);
-              if (asPath === '/admin') {
-                setTimeout(function () {
-                  props._LocalEventEmitter.dispatch('checkAdminAuth', {});
-                }, 1000);
-              }
-              if (props.redirectOnAuth && status.username && asPath !== props.redirectOnAuth) {
-                router.push(props.redirectOnAuth);
-              } else if (props.redirectOnAuth && status.username && asPath === props.redirectOnAuth) {
-                router.reload(props.redirectOnAuth);
-              }
-              setTimeout(function () {
-                setPageError(null);
-              }, 20000);
-              setTimeout(function () {
-                setHideGoogleSignIn(true);
-              });
-            }
-          case 6:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }));
-    return function buildLoginAndUpdate(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  var buildButtonAndTryPrompt = function buildButtonAndTryPrompt(delay) {
+  const buildLoginAndUpdate = async data => {
+    let status = await attemptThirdPartySignIn(data, props.apiUrl, props.domainKey, props._LocalEventEmitter, props._setAdminAuth);
+    if (status && status.hasOwnProperty('username')) {
+      if (!status.username) {
+        setRegisterUsernameOn(true);
+      }
+    }
+    console.log(status);
+    if (typeof status !== 'error') {
+      setStripeSecretData(props.apiUrl, props.domainKey, status, props._setStripeSecret);
+      props._setLoggedIn(status);
+      console.log(props.redirectOnAuth, status.username);
+      if (asPath === '/admin') {
+        setTimeout(() => {
+          props._LocalEventEmitter.dispatch('checkAdminAuth', {});
+        }, 1000);
+      }
+      if (props.redirectOnAuth && status.username && asPath !== props.redirectOnAuth) {
+        router.push(props.redirectOnAuth);
+      } else if (props.redirectOnAuth && status.username && asPath === props.redirectOnAuth) {
+        router.reload(props.redirectOnAuth);
+      }
+      setTimeout(() => {
+        setPageError(null);
+      }, 20000);
+      setTimeout(() => {
+        setHideGoogleSignIn(true);
+      });
+    }
+  };
+  const buildButtonAndTryPrompt = delay => {
     try {
       if (!googleSignInRendered) {
-        var googleBtn = {
+        const googleBtn = {
           theme: 'outline',
           size: 'medium',
           logo_alignment: 'center'
         };
-        setTimeout(function () {
+        setTimeout(() => {
           try {
-            var signInStatus = (0, _SignIn.checkSignedIn)();
+            let signInStatus = checkSignedIn();
             if (!signInStatus) {
               google.accounts.id.renderButton(googleSignIn.current, googleBtn);
               googleSignInRenderedSet(true);
-              google.accounts.id.prompt(function (notification) {
+              google.accounts.id.prompt(notification => {
                 console.log('on prompt notification', notification);
               });
             } else {
               props._setLoggedIn(signInStatus);
             }
           } catch (err) {
-            setTimeout(function () {
+            setTimeout(() => {
               try {
-                var _signInStatus = (0, _SignIn.checkSignedIn)();
-                if (!_signInStatus) {
+                let signInStatus = checkSignedIn();
+                if (!signInStatus) {
                   // @ts-ignore
                   google.accounts.id.renderButton(googleSignIn.current, googleBtn);
                   googleSignInRenderedSet(true);
                   // @ts-ignore
-                  google.accounts.id.prompt(function (notification) {
+                  google.accounts.id.prompt(notification => {
                     console.log('on prompt notification', notification);
                   });
                 } else {
-                  props._setLoggedIn(_signInStatus);
+                  props._setLoggedIn(signInStatus);
                 }
               } catch (err) {
                 console.log(err); // fail silently
@@ -160,115 +118,58 @@ var Module = function Module(props) {
   };
 
   // Register google sign in button. Necessary for register CC and login
-  _react["default"].useEffect(function () {
+  React.useEffect(() => {
     document.removeEventListener('thirdparty-signin', buildLoginAndUpdate); // Without this a request for Sign in can fire multiple times
     document.addEventListener('thirdparty-signin', buildLoginAndUpdate);
     buildButtonAndTryPrompt(500);
   }, []);
-  var getAdminAuth = /*#__PURE__*/function () {
-    var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(uri, identifier, hash, domainKey) {
-      var res;
-      return _regenerator["default"].wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
-          case 0:
-            if (!identifier) {
-              _context2.next = 20;
-              break;
-            }
-            _context2.next = 3;
-            return (0, _fetch.fetchPost)(uri + '/m/checkadminauth', null, null, {
-              identifier: identifier,
-              hash: hash,
-              domainKey: domainKey
-            });
-          case 3:
-            res = _context2.sent;
-            if (res) {
-              _context2.next = 8;
-              break;
-            }
-            return _context2.abrupt("return", false);
-          case 8:
-            if (!res.hasOwnProperty('status')) {
-              _context2.next = 20;
-              break;
-            }
-            if (!(res.status == "disauthenticated")) {
-              _context2.next = 14;
-              break;
-            }
-            logout();
-            return _context2.abrupt("return", "disauthenticated");
-          case 14:
-            if (!(res.status == "failed")) {
-              _context2.next = 18;
-              break;
-            }
-            return _context2.abrupt("return", false);
-          case 18:
-            if (!(res.status == "success")) {
-              _context2.next = 20;
-              break;
-            }
-            return _context2.abrupt("return", res);
-          case 20:
-          case "end":
-            return _context2.stop();
+  const getAdminAuth = async (uri, identifier, hash, domainKey) => {
+    if (identifier) {
+      let res = await fetchPost(uri + '/m/checkadminauth', null, null, {
+        identifier: identifier,
+        hash: hash,
+        domainKey: domainKey
+      });
+      if (!res) {
+        return false;
+      } else if (res.hasOwnProperty('status')) {
+        if (res.status == "disauthenticated") {
+          logout();
+          return "disauthenticated";
+        } else if (res.status == "failed") {
+          return false;
+        } else if (res.status == "success") {
+          return res;
         }
-      }, _callee2);
-    }));
-    return function getAdminAuth(_x2, _x3, _x4, _x5) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+      }
+    }
+  };
 
   /**
    * Handles check to see if user is admin
    * @param {*} force 
    */
-  var handleGetAdminAuth = /*#__PURE__*/function () {
-    var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(force) {
-      var _props$_loggedIn, _props$_loggedIn2, res;
-      return _regenerator["default"].wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
-          case 0:
-            if (!(props !== null && props !== void 0 && props.path.match(/\/admin/) && !didCheckAdminAuth || force)) {
-              _context3.next = 8;
-              break;
-            }
-            console.log(props);
-            if (!(props !== null && props !== void 0 && (_props$_loggedIn = props._loggedIn) !== null && _props$_loggedIn !== void 0 && _props$_loggedIn.identifier && props !== null && props !== void 0 && (_props$_loggedIn2 = props._loggedIn) !== null && _props$_loggedIn2 !== void 0 && _props$_loggedIn2.hash && props !== null && props !== void 0 && props.domainKey && !props._adminAuth && props !== null && props !== void 0 && props._setAdminAuth)) {
-              _context3.next = 8;
-              break;
-            }
-            setDidCheckAdminAuth(true);
-            _context3.next = 6;
-            return getAdminAuth(props.apiUrl, props._loggedIn.identifier, props._loggedIn.hash, props.domainKey);
-          case 6:
-            res = _context3.sent;
-            if (res !== null && res !== void 0 && res.admin) {
-              props._setAdminAuth(res.admin);
-            }
-          case 8:
-          case "end":
-            return _context3.stop();
+  const handleGetAdminAuth = async force => {
+    if (props?.path.match(/\/admin/) && !didCheckAdminAuth || force) {
+      console.log(props);
+      if (props?._loggedIn?.identifier && props?._loggedIn?.hash && props?.domainKey && !props._adminAuth && props?._setAdminAuth) {
+        setDidCheckAdminAuth(true);
+        const res = await getAdminAuth(props.apiUrl, props._loggedIn.identifier, props._loggedIn.hash, props.domainKey);
+        if (res?.admin) {
+          props._setAdminAuth(res.admin);
         }
-      }, _callee3);
-    }));
-    return function handleGetAdminAuth(_x6) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-  _react["default"].useEffect(function () {
-    var _props$_loggedIn3, _props$_adminAuth;
-    if (props !== null && props !== void 0 && (_props$_loggedIn3 = props._loggedIn) !== null && _props$_loggedIn3 !== void 0 && _props$_loggedIn3.identifier && props !== null && props !== void 0 && (_props$_adminAuth = props._adminAuth) !== null && _props$_adminAuth !== void 0 && _props$_adminAuth.userid && props._loggedIn.identifier !== props._adminAuth.userid) {
+      }
+    }
+  };
+  React.useEffect(() => {
+    if (props?._loggedIn?.identifier && props?._adminAuth?.userid && props._loggedIn.identifier !== props._adminAuth.userid) {
       props._setAdminAuth(null);
     }
   }, [props._loggedIn, props._adminAuth]);
   handleGetAdminAuth();
-  var checkGoogleSignInIsLoaded = function checkGoogleSignInIsLoaded() {
+  const checkGoogleSignInIsLoaded = () => {
     try {
-      var container = document.getElementsByClassName('google-sign-in-btn');
+      const container = document.getElementsByClassName('google-sign-in-btn');
       if (container && container[0]) {
         if (container[0].children.length > 0) {
           if (container[0].children[0]) {
@@ -283,29 +184,23 @@ var Module = function Module(props) {
       return false;
     }
   };
-  var googleSignInIsLoaded = checkGoogleSignInIsLoaded();
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "".concat(props.classNameAlways, " ").concat(props._loggedIn || !googleSignInIsLoaded ? '' : props.className)
-  }, " ", /*#__PURE__*/_react["default"].createElement("div", {
-    className: hideGoogleSignIn || !googleSignInIsLoaded ? "display-none" : null,
+  const googleSignInIsLoaded = checkGoogleSignInIsLoaded();
+  return /*#__PURE__*/_jsx("div", {
+    className: `${props.classNameAlways} ${props._loggedIn || !googleSignInIsLoaded ? '' : props.className}`
+  }, void 0, " ", /*#__PURE__*/_jsx("div", {
+    className: hideGoogleSignIn || !googleSignInIsLoaded ? `display-none` : null,
     style: {
-      maxWidth: (_props$maxWidth = props.maxWidth) !== null && _props$maxWidth !== void 0 ? _props$maxWidth : '170px'
+      maxWidth: props.maxWidth ?? '170px'
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: googleSignInRendered ? "googleSignInContainer googleSignInContainer-padding" : "googleSignInContainer"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "g_id_signin google-sign-in-btn",
-    ref: googleSignIn,
-    "data-size": "medium",
-    "data-logo_alignment": "center",
-    "data-theme": "outline"
-  }))), pageError ? /*#__PURE__*/_react["default"].createElement("div", {
+  }, void 0, /*#__PURE__*/_jsx("div", {
+    className: googleSignInRendered ? `googleSignInContainer googleSignInContainer-padding` : `googleSignInContainer`
+  }, void 0, <div className="g_id_signin google-sign-in-btn" ref={googleSignIn} data-size="medium" data-logo_alignment="center" data-theme="outline"></div>)), pageError ? /*#__PURE__*/_jsx("div", {
     style: {
       paddingLeft: 1 + 'rem',
       paddingRight: 1 + 'rem'
     }
-  }, /*#__PURE__*/_react["default"].createElement("p", {
-    className: "googleSignInPromptSmall error errorBg"
-  }, pageError)) : null);
+  }, void 0, /*#__PURE__*/_jsx("p", {
+    className: `googleSignInPromptSmall error errorBg`
+  }, void 0, pageError)) : null);
 };
-var _default = exports["default"] = Module;
+export default Module;
