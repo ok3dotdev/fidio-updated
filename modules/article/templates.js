@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var basic = {
+const basic = {
   container: {
     margin: '0 1rem'
   },
@@ -13,6 +7,6 @@ var basic = {
     maxWidth: '800px'
   }
 };
-var _default = exports["default"] = {
-  basic: basic
+export default {
+  basic
 };
