@@ -1,6 +1,4 @@
 var _h, _h2, _div, _section, _PhotoCamera, _div2;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { debounce } from '../util';
 import { v4 as uuidv4 } from 'uuid';
@@ -269,143 +267,120 @@ const Module = props => {
   }, DO_SEARCH_DELAY), []); // Debounce Search
 
   console.log(storageFiles, folders, props, currentDir, currentImage);
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className} ${moduleName}_Container`
-  }, void 0, pageError ? /*#__PURE__*/_jsx("p", {
-    className: "error",
-    style: {
+  return <div className={`${props.className} ${moduleName}_Container`}>
+            {pageError ? <p className='error' style={{
       marginTop: '.5rem'
-    },
-    onClick: handleCloseError
-  }, void 0, pageError) : null, !props?.vert ? _h || (_h = /*#__PURE__*/_jsx("h3", {}, void 0, "Storage")) : null, /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.containerTwoSmallRight} ${props?.vert ? `${AdminStyles.vertView}` : null}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${moduleName}_InternalContainer`
-  }, void 0, /*#__PURE__*/_jsx("section", {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: `See Storage for ${props.siteTitle ?? 'your Platform'} below`,
-    placement: "bottom"
-  }, void 0, _h2 || (_h2 = /*#__PURE__*/_jsx("h4", {}, void 0, "Files"))), /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.storageActionContainer} flex gap-p2`,
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, void 0, currentDir !== '' ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Go back"
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `flex gap-p2 al-cen pointer ${AdminStyles.itemContainer}`,
-    onClick: handleGoBack,
-    style: {
-      width: 'fit-content',
-      fontWeight: '600'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "material-icons",
-    style: {
-      fontSize: '1rem'
-    }
-  }, void 0, "arrow_back"), _div || (_div = /*#__PURE__*/_jsx("div", {}, void 0, "back")))), /*#__PURE__*/_jsx(Tooltip, {
-    title: "Upload New File to this Directory"
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    onClick: handleSelectUploadFile,
-    modif: "img"
-  }, void 0, "Upload New Image"))) : null, <input placeholder='Search' ref={searchRef} style={{
-    borderRadius: '1rem',
-    borderWidth: 0,
-    padding: '.0rem .5rem'
-  }} onChange={handleDoSearch} />), <input type='file' modif='image' style={{
-    display: 'none'
-  }} ref={uploadFile} onChange={handleUploadFile} />, /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.listContainer}`,
-    style: {
-      maxHeight: `${props.vert ? '200px' : '65vh'}`
-    }
-  }, void 0, folders?.map ? folders.map((m, i) => /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.itemContainer} pointer`,
-    modif: "goto",
-    usekey: `${m.Prefix}`,
-    onClick: handleItemInteraction
-  }, i, /*#__PURE__*/_jsx("div", {}, void 0, m.Prefix), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    className: "material-icons",
-    style: {
-      fontSize: '1rem'
-    }
-  }, void 0, "arrow_forward")))) : null, storageFiles?.map ? storageFiles.map((m, i) => {
-    return m.Key !== currentDir ? /*#__PURE__*/_jsx("div", {
-      className: `${AdminStyles.itemContainer}`
-    }, i, /*#__PURE__*/_jsx("div", {
-      className: `${props?.vert ? `${AdminStyles.shortened}` : null}`,
-      selectValue: `${props?.cdn?.static ?? ''}/${m.Key}`,
-      onClick: handleDoLoad,
-      useKey: `${m.Key}`,
-      style: {
-        cursor: 'pointer'
-      }
-    }, void 0, m.Key), /*#__PURE__*/_jsx("div", {
-      className: "flex gap-p2"
-    }, void 0, /*#__PURE__*/_jsx(Tooltip, {
-      title: "Copy URL",
-      placement: "left"
-    }, void 0, /*#__PURE__*/_jsx("button", {
-      className: "material-icons",
-      modif: "copy_url",
-      usekey: `${m.Key}`,
-      selectValue: `${props?.cdn?.static ?? ''}/${m.Key}`,
-      onClick: selectThisText,
-      style: {
-        fontSize: '1rem'
-      }
-    }, void 0, "link")), /*#__PURE__*/_jsx(Tooltip, {
-      title: "Delete",
-      placement: "left"
-    }, void 0, /*#__PURE__*/_jsx("button", {
-      className: "material-icons",
-      modif: "delete",
-      usekey: `${m.Key}`,
-      onClick: handleItemInteraction,
-      style: {
-        fontSize: '1rem'
-      }
-    }, void 0, "delete")))) : null;
-  }) : null), /*#__PURE__*/_jsx("ul", {
-    className: `PaginationContainer`
-  }, void 0, itemOffsetPages.map((m, i) => {
-    return m > -1 ? /*#__PURE__*/_jsx("li", {
-      className: `${m == itemOffset ? 'ActivePage' : ''}`,
-      scope: "itemOffset",
-      i: m,
-      onClick: handleSetPagination
-    }, i, m + 1) : null;
-  }))), !props?.vert ? _section || (_section = /*#__PURE__*/_jsx("section", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, "Platform Storage Status:"), /*#__PURE__*/_jsx("div", {}, void 0, "Good")), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, "Platform Content Delivery Network Status:"), /*#__PURE__*/_jsx("div", {}, void 0, "Good")))) : null), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontWeight: '600'
-    }
-  }, void 0, "View"), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Click to Copy URL"
-  }, void 0, /*#__PURE__*/_jsx("img", {
-    style: {
-      backgroundImage: `url(${currentImage?.location ?? null}`,
-      height: `${props.vert ? '200px' : '400px'}`,
-      width: '100%',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    },
-    selectValue: `${currentImage?.location ?? null}`,
-    onClick: selectThisText
-  })), /*#__PURE__*/_jsx("div", {
-    style: {
-      display: 'flex'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `flex gap-p2 shareButton`,
-    selectValue: `${currentImage?.location ?? null}`,
-    onClick: selectThisText
-  }, void 0, _PhotoCamera || (_PhotoCamera = /*#__PURE__*/_jsx(PhotoCamera, {})), _div2 || (_div2 = /*#__PURE__*/_jsx("div", {}, void 0, "Copy URL"))))))));
+    }} onClick={handleCloseError}>{pageError}</p> : null}
+            {!props?.vert ? _h || (_h = <h3>Storage</h3>) : null}
+            <div className={`${AdminStyles.containerTwoSmallRight} ${props?.vert ? `${AdminStyles.vertView}` : null}`}>
+                <div className={`${moduleName}_InternalContainer`}>
+                    <section>
+                        <Tooltip title={`See Storage for ${props.siteTitle ?? 'your Platform'} below`} placement='bottom'>
+                            {_h2 || (_h2 = <h4>Files</h4>)}
+                        </Tooltip>
+                        <div className={`${AdminStyles.storageActionContainer} flex gap-p2`} style={{
+            marginBottom: '.25rem'
+          }}>
+                            {currentDir !== '' ? <React.Fragment>
+                                        <Tooltip title='Go back'>
+                                            <div className={`flex gap-p2 al-cen pointer ${AdminStyles.itemContainer}`} onClick={handleGoBack} style={{
+                  width: 'fit-content',
+                  fontWeight: '600'
+                }}>
+                                                <div className='material-icons' style={{
+                    fontSize: '1rem'
+                  }}>arrow_back</div>
+                                                {_div || (_div = <div>back</div>)}
+                                            </div>
+                                        </Tooltip>
+                                        <Tooltip title='Upload New File to this Directory'>
+                                            <button onClick={handleSelectUploadFile} modif='img'>Upload New Image</button>
+                                        </Tooltip>
+                                </React.Fragment> : null}
+                            <input placeholder='Search' ref={searchRef} style={{
+              borderRadius: '1rem',
+              borderWidth: 0,
+              padding: '.0rem .5rem'
+            }} onChange={handleDoSearch} />
+                        </div>
+                        <input type='file' modif='image' style={{
+            display: 'none'
+          }} ref={uploadFile} onChange={handleUploadFile} />
+                        <div className={`${AdminStyles.listContainer}`} style={{
+            maxHeight: `${props.vert ? '200px' : '65vh'}`
+          }}>
+                            {folders?.map ? folders.map((m, i) => <div className={`${AdminStyles.itemContainer} pointer`} key={i} modif='goto' usekey={`${m.Prefix}`} onClick={handleItemInteraction}>
+                                            <div>{m.Prefix}</div>
+                                            <div className='flex gap-p2'>
+                                                <button className='material-icons' style={{
+                  fontSize: '1rem'
+                }}>arrow_forward</button>
+                                                {/* Dont allow deletion of folders. Users cannot create folders for now. Deletion of top level folders will fault app */}
+                                            </div>
+                                        </div>) : null}
+                            {storageFiles?.map ? storageFiles.map((m, i) => {
+              return m.Key !== currentDir ? <div className={`${AdminStyles.itemContainer}`} key={i}>
+                                                    <div className={`${props?.vert ? `${AdminStyles.shortened}` : null}`} selectValue={`${props?.cdn?.static ?? ''}/${m.Key}`} onClick={handleDoLoad} useKey={`${m.Key}`} style={{
+                  cursor: 'pointer'
+                }}>{m.Key}</div>
+                                                    <div className='flex gap-p2'>
+                                                        <Tooltip title='Copy URL' placement='left'>
+                                                            <button className='material-icons' modif='copy_url' usekey={`${m.Key}`} selectValue={`${props?.cdn?.static ?? ''}/${m.Key}`} onClick={selectThisText} style={{
+                      fontSize: '1rem'
+                    }}>link</button>
+                                                        </Tooltip>
+                                                        <Tooltip title='Delete' placement='left'>
+                                                            <button className='material-icons' modif='delete' usekey={`${m.Key}`} onClick={handleItemInteraction} style={{
+                      fontSize: '1rem'
+                    }}>delete</button>
+                                                        </Tooltip>
+                                                    </div>
+                                                </div> : null;
+            }) : null}
+                        </div>
+                        <ul className={`PaginationContainer`}>
+                            {itemOffsetPages.map((m, i) => {
+              return m > -1 ? <li className={`${m == itemOffset ? 'ActivePage' : ''}`} scope='itemOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
+            })}
+                        </ul>
+                    </section>
+                    {!props?.vert ? _section || (_section = <section>
+                                <div className='flex gap-p2'>
+                                    <div>Platform Storage Status:</div>
+                                    <div>Good</div>
+                                </div>
+                                <div className='flex gap-p2'>
+                                    <div>Platform Content Delivery Network Status:</div>
+                                    <div>Good</div>
+                                </div>
+                            </section>) : null}
+                </div>
+                <div>
+                    <div style={{
+          fontWeight: '600'
+        }}>View</div>
+                    <div>
+                        <Tooltip title='Click to Copy URL'>
+                            <img style={{
+              backgroundImage: `url(${currentImage?.location ?? null}`,
+              height: `${props.vert ? '200px' : '400px'}`,
+              width: '100%',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }} selectValue={`${currentImage?.location ?? null}`} onClick={selectThisText} />
+                        </Tooltip>
+                        <div style={{
+            display: 'flex'
+          }}>
+                            <div className={`flex gap-p2 shareButton`} selectValue={`${currentImage?.location ?? null}`} onClick={selectThisText}>
+                                {_PhotoCamera || (_PhotoCamera = <PhotoCamera></PhotoCamera>)}
+                                {_div2 || (_div2 = <div>Copy URL</div>)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 export default Module;

@@ -1,6 +1,4 @@
 var _React$Fragment, _div;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
@@ -390,144 +388,98 @@ const Module = props => {
   // Chat should have 1000 last chats
 
   console.log('Chat Log', chatLog, Array.isArray(chatLog), props.className, recentChats, props, userDisplay, currentBanTable, useThreadOffset, blockSend, blockChat);
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`,
-    onClick: handleRunTasks
-  }, void 0, userDisplay ? /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.userDisplayContainer} Chat_UserDisplayContainer`
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Chat_UserDisplayInternalContainer`,
-    style: {
-      display: 'flex',
-      gap: '.25rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Chat_UserDisplayUser`
-  }, void 0, /*#__PURE__*/_jsx(Link, {
-    href: `/p?u=${userDisplay.user}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, userDisplay.user)), modPower?.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? /*#__PURE__*/_jsx("button", {
-    style: {
-      fontSize: '.75rem',
-      padding: '.125rem .25rem'
-    },
-    onClick: handleAttemptUnBanUser,
-    userid: `${userDisplay.id}`
-  }, void 0, "Unban User") : /*#__PURE__*/_jsx("button", {
-    style: {
-      fontSize: '.75rem',
-      padding: '.125rem .25rem'
-    },
-    onClick: handleAttemptBanUser,
-    userid: `${userDisplay.id}`
-  }, void 0, "Ban User") : null)), /*#__PURE__*/_jsx(Close, {
-    className: `${ChatStyles.close}`,
-    onClick: handleSetUserDisplayOff,
-    modif: "close"
-  })) : null, <div className={`${ChatStyles.chatLogExternalContainer} ${mobileStyleConfigs ? `${ChatStyles.mobileChatLogExternalContainer}` : null} Chat_ChatLogExternalContainer`} ref={scrollChatRef}>
+  return <div className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`} onClick={handleRunTasks}>
+            {userDisplay ? <div className={`${ChatStyles.userDisplayContainer} Chat_UserDisplayContainer`}>
+                        <div>
+                            <div className={`Chat_UserDisplayInternalContainer`} style={{
+          display: 'flex',
+          gap: '.25rem'
+        }}>
+                                <div className={`Chat_UserDisplayUser`}>
+                                    <Link href={`/p?u=${userDisplay.user}`} style={{
+              alignSelf: 'center'
+            }}>{userDisplay.user}</Link>
+                                </div>
+                                {modPower?.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? <button style={{
+            fontSize: '.75rem',
+            padding: '.125rem .25rem'
+          }} onClick={handleAttemptUnBanUser} userid={`${userDisplay.id}`}>Unban User</button> : <button style={{
+            fontSize: '.75rem',
+            padding: '.125rem .25rem'
+          }} onClick={handleAttemptBanUser} userid={`${userDisplay.id}`}>Ban User</button> : null}
+                            </div>
+                        </div>
+                        <Close className={`${ChatStyles.close}`} onClick={handleSetUserDisplayOff} modif='close'></Close>
+                    </div> : null}
+            <div className={`${ChatStyles.chatLogExternalContainer} ${mobileStyleConfigs ? `${ChatStyles.mobileChatLogExternalContainer}` : null} Chat_ChatLogExternalContainer`} ref={scrollChatRef}>
                 <div className={`${ChatStyles.chatLogContainer} Chat_ChatLogContainer`} ref={scrollChatInnerRef}>
-                {chatLog && Array.isArray(chatLog) ? chatLog.map((m, i) => /*#__PURE__*/_jsx("div", {
-        className: `Chat_ChatLogItemContainer`,
-        index: i
-      }, i, m.id && m.content && m.author ? /*#__PURE__*/_jsx("div", {
-        className: `Chat_ChatLogItemInternalContainer`,
-        logid: m.id,
-        time: m.time,
-        author: m.author,
-        replylogid: m.replyLogid ?? null,
-        replyusername: m.replyUsername
-      }, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.chatLogMain} ${highlightedChat === m.id ? `${ChatStyles.highlightedChat}` : ''} Chat_ChatLogMain`
-      }, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername`,
-        username: m.username,
-        author: m.author,
-        onClick: handleSetUserDisplay
-      }, void 0, m.username), replyOff ? null : /*#__PURE__*/_jsx(React.Fragment, {}, void 0, m.replyLogid && m.replyUsername ? /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.replyMeta}`
-      }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, "Chat is Reply to ", /*#__PURE__*/_jsx("b", {}, void 0, "@", m.replyUsername))) : /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.replyMeta}`
-      }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, "Reply to ", /*#__PURE__*/_jsx("b", {}, void 0, "@", m.username)))), /*#__PURE__*/_jsx("div", {
-        className: `Chat_Content`
-      }, void 0, m.content), replyOff ? null : /*#__PURE__*/_jsx(React.Fragment, {}, void 0, m.replyLogid ? /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.viewReplyTo} Chat_ViewReplyTo`,
-        onClick: handleGoToPost,
-        logid: m.replyLogid,
-        style: {
-          marginTop: '.25rem'
-        }
-      }, void 0, /*#__PURE__*/_jsx(ArrowUpward, {
-        logid: m.replyLogid
-      })) : null, /*#__PURE__*/_jsx("div", {
-        className: `${ChatStyles.replyTo} Chat_ReplyTo`,
-        onClick: handleReplyTo,
-        logid: m.id,
-        username: m.username,
-        author: m.author,
-        style: {
-          marginTop: '.25rem'
-        }
-      }, void 0, /*#__PURE__*/_jsx(Reply, {
-        logid: m.id,
-        username: m.username,
-        author: m.author
-      }))))) : _React$Fragment || (_React$Fragment = /*#__PURE__*/_jsx(React.Fragment, {})))) : _div || (_div = /*#__PURE__*/_jsx("div", {}))}
+                {chatLog && Array.isArray(chatLog) ? chatLog.map((m, i) => <div className={`Chat_ChatLogItemContainer`} key={i} index={i}>
+                                {m.id && m.content && m.author ? <div className={`Chat_ChatLogItemInternalContainer`} logid={m.id} time={m.time} author={m.author} replylogid={m.replyLogid ?? null} replyusername={m.replyUsername}>
+                                            <div className={`${ChatStyles.chatLogMain} ${highlightedChat === m.id ? `${ChatStyles.highlightedChat}` : ''} Chat_ChatLogMain`}>
+                                                <div className={`${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername`} username={m.username} author={m.author} onClick={handleSetUserDisplay}>{m.username}</div>
+                                                    {replyOff ? null : <React.Fragment>
+                                                                {m.replyLogid && m.replyUsername ? <div className={`${ChatStyles.replyMeta}`}>
+                                                                            <div>Chat is Reply to <b>@{m.replyUsername}</b></div>
+                                                                        </div> : <div className={`${ChatStyles.replyMeta}`}>
+                                                                            <div>Reply to <b>@{m.username}</b></div>
+                                                                        </div>}
+                                                            </React.Fragment>}
+                                                    <div className={`Chat_Content`}>{m.content}</div>
+                                                    {replyOff ? null : <React.Fragment>
+                                                                {m.replyLogid ? <div className={`${ChatStyles.viewReplyTo} Chat_ViewReplyTo`} onClick={handleGoToPost} logid={m.replyLogid} style={{
+                  marginTop: '.25rem'
+                }}>
+                                                                            <ArrowUpward logid={m.replyLogid}></ArrowUpward>
+                                                                        </div> : null}
+                                                                <div className={`${ChatStyles.replyTo} Chat_ReplyTo`} onClick={handleReplyTo} logid={m.id} username={m.username} author={m.author} style={{
+                  marginTop: '.25rem'
+                }}>
+                                                                    <Reply logid={m.id} username={m.username} author={m.author}></Reply>
+                                                                </div>
+                                                            </React.Fragment>}
+                                            </div>
+                                        </div> : _React$Fragment || (_React$Fragment = <React.Fragment></React.Fragment>)}
+                            </div>) : _div || (_div = <div></div>)}
                 </div>
-            </div>, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.chatInputContainer} ${!props.chatState ? `${ChatStyles.forceHideChat}` : null} Chat_ChatInputContainer`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.chatInputInternalContainer} Chat_ChatInputInternalContainer`
-  }, void 0, recentChatTimeout ? /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.chatWarningContainer} Chat_ChatWarningContainer`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.warningText} Chat_WarningText`
-  }, void 0, recentChatTimeout ? 'Timed Out' : ''), recentChats?.length ? /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.warningBody}`,
-    style: {
-      fontSize: '.85rem'
-    }
-  }, void 0, "You have sent ", recentChats.length, " recent chats") : null) : null, replyToId && replyToUsername ? /*#__PURE__*/_jsx("div", {}, void 0, replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.replyToRepliesContainer} Chat_ReplyToRepliesContainer`,
-    style: {
-      top: `-${replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset}rem`
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.threadLabel} Chat_ThreadLabel`
-  }, void 0, "Thread"), replyToContent.slice(0).reverse().map((m, i) => i < 4 ? /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.replyToRepliesThread} Chat_ReplyToRepliesThread`,
-    style: {
-      display: 'flex',
-      gap: '.25rem'
-    },
-    index: i
-  }, i, /*#__PURE__*/_jsx("div", {
-    className: `Chat_ReplyToRepliesUsername`
-  }, void 0, /*#__PURE__*/_jsx("b", {}, void 0, m.username ?? '')), /*#__PURE__*/_jsx("div", {
-    className: `Chat_ReplyToRepliesContent`
-  }, void 0, m.content ?? '')) : null)) : null, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.replyToContainer} Chat_ReplyToContainer`,
-    replytoid: replyToId
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Chat_ReplyingToUsername`
-  }, void 0, "Replying to ", /*#__PURE__*/_jsx("b", {}, void 0, "@", replyToUsername)), /*#__PURE__*/_jsx(Tooltip, {
-    title: `Cancel Reply`,
-    placement: "top"
-  }, void 0, /*#__PURE__*/_jsx(Close, {
-    onClick: handleCancelReplyTo,
-    className: `${ChatStyles.chatCancelReplyTo}`,
-    sx: {
-      height: '17.5px'
-    }
-  })))) : null, /*#__PURE__*/_jsx("div", {
-    className: `${ChatStyles.chatInputSendContainer} Chat_ChatInputSendContainer`
-  }, void 0, <TextareaAutosize className={`${ChatStyles.textChatInput} ${ChatStyles.highlightBorder} Chat_TextChatInput`} ref={chatInputRef} onKeyPress={e => {
-    handleKeyPressChat(e, handleSendChat);
-  }} onChange={handleChatTextChange} disabled={blockChat || !currentChat} />, /*#__PURE__*/_jsx("button", {
-    className: `${ChatStyles.send} ${ChatStyles.highlightBorder} Chat_Send`,
-    onClick: handleSendChat,
-    disabled: blockSend || blockSendForce
-  }, void 0, "Send")))));
+            </div>
+            <div className={`${ChatStyles.chatInputContainer} ${!props.chatState ? `${ChatStyles.forceHideChat}` : null} Chat_ChatInputContainer`}>
+                <div className={`${ChatStyles.chatInputInternalContainer} Chat_ChatInputInternalContainer`}>
+                    {recentChatTimeout ? <div className={`${ChatStyles.chatWarningContainer} Chat_ChatWarningContainer`}>
+                                <div className={`${ChatStyles.warningText} Chat_WarningText`}>{recentChatTimeout ? 'Timed Out' : ''}</div>
+                                {recentChats?.length ? <div className={`${ChatStyles.warningBody}`} style={{
+            fontSize: '.85rem'
+          }}>You have sent {recentChats.length} recent chats</div> : null}
+                            </div> : null}
+                    {replyToId && replyToUsername ? <div>
+                                {replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? <div className={`${ChatStyles.replyToRepliesContainer} Chat_ReplyToRepliesContainer`} style={{
+            top: `-${replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset}rem`
+          }}>
+                                            <div className={`${ChatStyles.threadLabel} Chat_ThreadLabel`}>Thread</div>
+                                            {replyToContent.slice(0).reverse().map((m, i) => i < 4 ? <div className={`${ChatStyles.replyToRepliesThread} Chat_ReplyToRepliesThread`} style={{
+              display: 'flex',
+              gap: '.25rem'
+            }} key={i} index={i}>
+                                                            <div className={`Chat_ReplyToRepliesUsername`}><b>{m.username ?? ''}</b></div>
+                                                            <div className={`Chat_ReplyToRepliesContent`}>{m.content ?? ''}</div>
+                                                        </div> : null)}
+                                        </div> : null}
+                                <div className={`${ChatStyles.replyToContainer} Chat_ReplyToContainer`} replytoid={replyToId}>
+                                    <div className={`Chat_ReplyingToUsername`}>Replying to <b>@{replyToUsername}</b></div>
+                                    <Tooltip title={`Cancel Reply`} placement='top'>
+                                        <Close onClick={handleCancelReplyTo} className={`${ChatStyles.chatCancelReplyTo}`} sx={{
+                height: '17.5px'
+              }}></Close>
+                                    </Tooltip>
+                                </div>
+                            </div> : null}
+                    <div className={`${ChatStyles.chatInputSendContainer} Chat_ChatInputSendContainer`}>
+                        <TextareaAutosize className={`${ChatStyles.textChatInput} ${ChatStyles.highlightBorder} Chat_TextChatInput`} ref={chatInputRef} onKeyPress={e => {
+            handleKeyPressChat(e, handleSendChat);
+          }} onChange={handleChatTextChange} disabled={blockChat || !currentChat} />
+                        <button className={`${ChatStyles.send} ${ChatStyles.highlightBorder} Chat_Send`} onClick={handleSendChat} disabled={blockSend || blockSendForce}>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 export default Module;

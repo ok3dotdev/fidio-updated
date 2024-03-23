@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { useRouter } from 'next/router';
 import resolveConfig, { pageDefaults } from '/app.config';
@@ -45,13 +43,10 @@ const PageContainer = props => {
   const cpProps = Object.assign({}, useProps);
   cpProps.useMenu = useMenu; // Determines if we useMenu based on definition app.config.js
   cpProps.useAppConfigLayout = useAppConfigLayout; // Determines if we use appConfigLayout based on definition app.config.js
-  const componentsContainer = /*#__PURE__*/_jsx("div", {
-    className: `${useProps.pageName}_Body ${props.pageClass ?? ''}`,
-    style: {
-      top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
-      position: 'relative'
-    }
-  }, void 0, components);
+  const componentsContainer = <div className={`${useProps.pageName}_Body ${props.pageClass ?? ''}`} style={{
+    top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
+    position: 'relative'
+  }}>{components}</div>;
   if (cpProps.useAppConfigLayout) {
     cpProps.appConfigLayout = componentsContainer;
   }
@@ -65,8 +60,10 @@ const PageContainer = props => {
     return React.createElement('div');
   });
   const articlePage = resolvedPage?.url === '/ar';
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${articlePage ? `Article_SafeStyles` : ''}`
-  }, void 0, propChildren));
+  return <React.Fragment>
+                <div className={`${articlePage ? `Article_SafeStyles` : ''}`}>
+                    {propChildren}
+                </div>
+            </React.Fragment>;
 };
 export default PageContainer;

@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Image from 'next/image';
 import Tooltip from '@mui/material/Tooltip';
@@ -79,78 +77,62 @@ const Module = props => {
     }
   });
   console.log(product, currentPrice);
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, ReactCarouselCss, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.container} ${props.className}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.innerContainer}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.leadProductContainer}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.singleProductCarouselProvider}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.productSliderThumbnailListContainer}`
-  }, void 0, product?.images ? product.images.map((image, i) => /*#__PURE__*/_jsx("div", {
-    slide: i,
-    className: `${PIMStyles.productSliderThumbSelectMin}`,
-    onClick: handleSetSlide,
-    i: i
-  }, i, /*#__PURE__*/_jsx(Image, {
-    className: `${PIMStyles.sliderThumbSelectMinImg}`,
-    loader: () => {
-      return props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null;
-    },
-    src: props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null,
-    alt: "Title",
-    width: 35,
-    height: 45,
-    layout: "responsive"
-  }))) : null), <Slider {...useSettings} className={`${PIMStyles.productSliderProductContainer}`} ref={sliderTrackRef}>
-                                {product?.images ? product.images.map((image, i) => /*#__PURE__*/_jsx("div", {
-      index: i
-    }, i, /*#__PURE__*/_jsx("div", {
-      className: `${PIMStyles.productSliderProductImg}`,
-      style: {
-        backgroundImage: `url(${props.cdn.static}/${image.name})`
-      }
-    }))) : null}
-                            </Slider>), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("h1", {
-    className: `${PIMStyles.productPageTitle}`
-  }, void 0, product?.name ?? null), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {}, void 0, product?.detailmeta?.description ?? null)), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      margin: '.125rem 0'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '1.5rem',
-      fontWeight: 600
-    }
-  }, void 0, /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.symbol ?? null), /*#__PURE__*/_jsx("span", {}, void 0, currentPrice?.price ?? null)), /*#__PURE__*/_jsx("div", {
-    className: "Product_CurrencyLabel",
-    style: {
-      fontSize: '1.3rem',
-      fontWeight: 600,
-      background: 'rgba(150, 150, 150, .5)',
-      padding: '.075rem',
-      borderRadius: '.25rem'
-    }
-  }, void 0, currentPrice?.currency ?? 'USD'))), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `flex gap-p2 wrap`,
-    style: {
-      marginTop: '.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    onClick: handleFireGlobalEvent,
-    item: product?.id,
-    selectedstyle: selectedStyle,
-    currentoption: currentOption,
-    action: "add_to_cart"
-  }, void 0, "Add To Cart"), product?.detailmeta?.subscription ? /*#__PURE__*/_jsx("button", {
-    onClick: handleFireGlobalEvent,
-    item: product?.id,
-    selectedstyle: selectedStyle,
-    currentoption: currentOption,
-    action: "add_to_cart_subscribe"
-  }, void 0, "Subscribe") : null)))))));
+  return <React.Fragment>
+            {ReactCarouselCss}
+            <div className={`${PIMStyles.container} ${props.className}`}>
+                <div className={`${PIMStyles.innerContainer}`}>
+                    <div className={`${PIMStyles.leadProductContainer}`}>
+                        <div className={`${PIMStyles.singleProductCarouselProvider}`}>
+                            <div className={`${PIMStyles.productSliderThumbnailListContainer}`}>
+                                {product?.images ? product.images.map((image, i) => <div slide={i} key={i} className={`${PIMStyles.productSliderThumbSelectMin}`} onClick={handleSetSlide} i={i}>
+                                            <Image className={`${PIMStyles.sliderThumbSelectMinImg}`} loader={() => {
+                  return props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null;
+                }} src={props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null} alt='Title' width={35} height={45} layout="responsive" />
+                                        </div>) : null}
+                            </div>
+                            <Slider {...useSettings} className={`${PIMStyles.productSliderProductContainer}`} ref={sliderTrackRef}>
+                                {product?.images ? product.images.map((image, i) => <div index={i} key={i}>
+                                                <div className={`${PIMStyles.productSliderProductImg}`} style={{
+                  backgroundImage: `url(${props.cdn.static}/${image.name})`
+                }}></div>
+                                            </div>) : null}
+                            </Slider>
+                        </div>
+                        <div>
+                            <h1 className={`${PIMStyles.productPageTitle}`}>{product?.name ?? null}</h1>
+                            <div>
+                                <div>{product?.detailmeta?.description ?? null}</div>
+                            </div>
+                            <div>
+                                <div className='flex gap-p2' style={{
+                margin: '.125rem 0'
+              }}>
+                                    <div style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 600
+                }}><span>{currentPrice?.symbol ?? null}</span><span>{currentPrice?.price ?? null}</span></div>
+                                    <div className='Product_CurrencyLabel' style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 600,
+                  background: 'rgba(150, 150, 150, .5)',
+                  padding: '.075rem',
+                  borderRadius: '.25rem'
+                }}>{currentPrice?.currency ?? 'USD'}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className={`flex gap-p2 wrap`} style={{
+                marginTop: '.5rem'
+              }}>
+                                    {/* <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='buy'>Buy Now</button> */}
+                                    <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='add_to_cart'>Add To Cart</button>
+                                    {product?.detailmeta?.subscription ? <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='add_to_cart_subscribe'>Subscribe</button> : null}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </React.Fragment>;
 };
 export default Module;

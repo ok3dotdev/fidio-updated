@@ -1,6 +1,4 @@
 var _div;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/router';
@@ -207,119 +205,97 @@ const Module = props => {
     return o;
   };
   console.log('Menu Items', menu, currentDoc);
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className} Documentation_Container`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex",
-    style: {
+  return <div className={`${props.className} Documentation_Container`}>
+            {/* <Banner { ...props } /> */}
+            <div className='flex' style={{
       justifyContent: 'space-between',
       alignContent: 'center',
       margin: '.5rem 1.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("h5", {
-    className: `Misc_Label`,
-    style: {
-      fontSize: '1.5rem'
-    }
-  }, void 0, "Tycoon Documentation"), <CompanyLink {...props} />), /*#__PURE__*/_jsx("div", {
-    style: {
+    }}>
+                <h5 className={`Misc_Label`} style={{
+        fontSize: '1.5rem'
+      }}>Tycoon Documentation</h5>
+                <CompanyLink {...props} />
+            </div>
+            <div style={{
       position: 'sticky',
       top: '.5rem',
       margin: '.5rem 0',
       marginTop: '0'
-    }
-  }, void 0, <input onChange={handleUpdateSearch} onFocus={handleSetSearchFocus} onBlur={handleSetSearchFocusOff} className={`${styles.activeSearch}`} ref={queryRef} style={{
-    border: '0px',
-    borderRadius: '.5rem',
-    width: 'calc(100% - 1rem)',
-    fontSize: '1.25rem',
-    padding: '0 .5rem',
-    margin: '0 .5rem'
-  }} placeholder='How do I?'></input>, usingQuery ? /*#__PURE__*/_jsx("div", {
-    className: `${styles.activeSearchResults}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      padding: '.25rem 0rem',
-      paddingTop: '.5rem',
-      display: 'grid',
-      gap: '.5rem'
-    }
-  }, void 0, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => /*#__PURE__*/_jsx("div", {
-    className: `flex gap-p5`,
-    style: {
-      marginLeft: '.5rem',
-      cursor: 'pointer'
-    }
-  }, i, /*#__PURE__*/_jsx("div", {
-    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
-    style: {
-      padding: '.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${styles.lead}`,
-    onClick: handleSetCurrentRecord,
-    modif: i,
-    currentresults: 'true'
-  }, void 0, m.lead)))) : queryRef?.current?.value !== '' ? _div || (_div = /*#__PURE__*/_jsx("div", {})) : /*#__PURE__*/_jsx("div", {
-    style: {
-      textAlign: 'center',
-      fontSize: '.95rem'
-    }
-  }, void 0, "Try Searching for something"))) : null), /*#__PURE__*/_jsx("ul", {
-    className: `flex gap-p5 ${styles.menuContainer}`
-  }, void 0, Array.isArray(menu) && menu.length > 0 ? menu.map((m, i) => /*#__PURE__*/_jsx("li", {
-    style: {
-      listStyle: 'none'
-    },
-    onClick: handleSetCurrentMenu,
-    modif: m
-  }, i, /*#__PURE__*/_jsx("div", {}, void 0, m?.charAt ? `${m.charAt(0).toUpperCase()}${m.slice(1, m.length)}` : m))) : null), /*#__PURE__*/_jsx("div", {
-    className: `${styles.mainContainer}`
-  }, void 0, /*#__PURE__*/_jsx("ul", {
-    className: `${styles.menuList}`
-  }, void 0, Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map((m, i) => /*#__PURE__*/_jsx("li", {
-    className: "flex gap-p2",
-    onClick: handleSetCurrentRecord,
-    modif: i
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, m?.lead), detectFlags(m)?.manual ? /*#__PURE__*/_jsx("div", {
-    className: `${styles.tagUnmanaged} ${styles.tagSmall}`
-  }, void 0, "m") : null, detectFlags(m)?.simple ? /*#__PURE__*/_jsx("div", {
-    className: `${styles.tagSimple} ${styles.tagSmall}`
-  }, void 0, "s") : null)) : null), /*#__PURE__*/_jsx("div", {
-    className: `${styles.contentContainer}`
-  }, void 0, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/_jsx("div", {
-    className: `flex ${styles.quadrant}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
-    style: {
-      padding: '.5rem',
-      width: '100%'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${styles.lead}`
-  }, void 0, currentDoc.lead), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p5"
-  }, void 0, detectFlags(currentDoc)?.manual ? /*#__PURE__*/_jsx("div", {
-    className: `${styles.tagUnmanaged} ${styles.tag}`
-  }, void 0, "manual") : null), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p5"
-  }, void 0, detectFlags(currentDoc)?.simple ? /*#__PURE__*/_jsx("div", {
-    className: `${styles.tagSimple} ${styles.tag}`
-  }, void 0, "simple") : null), /*#__PURE__*/_jsx("pre", {}, void 0, /*#__PURE__*/_jsx("code", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${styles.htmlParseContainer}`,
-    dangerouslySetInnerHTML: resolvePaint(currentDoc, 'html'),
-    style: {
-      fontSize: '.85rem',
-      lineHeight: 'normal',
-      lineBreak: 'auto',
-      whiteSpace: 'pre-wrap'
-    }
-  }))))) : null), /*#__PURE__*/_jsx("div", {}, void 0, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/_jsx("div", {
-    className: `flex ${styles.container}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${styles.quadrant2}`
-  }, void 0, /*#__PURE__*/_jsx("pre", {}, void 0, /*#__PURE__*/_jsx("code", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${styles.codePre}`
-  }, void 0, currentDoc?.code))), /*#__PURE__*/_jsx("div", {}, void 0, currentDoc.response))) : null)));
+    }}>
+                <input onChange={handleUpdateSearch} onFocus={handleSetSearchFocus} onBlur={handleSetSearchFocusOff} className={`${styles.activeSearch}`} ref={queryRef} style={{
+        border: '0px',
+        borderRadius: '.5rem',
+        width: 'calc(100% - 1rem)',
+        fontSize: '1.25rem',
+        padding: '0 .5rem',
+        margin: '0 .5rem'
+      }} placeholder='How do I?'></input>
+                {usingQuery ? <div className={`${styles.activeSearchResults}`}>
+                        <div style={{
+          padding: '.25rem 0rem',
+          paddingTop: '.5rem',
+          display: 'grid',
+          gap: '.5rem'
+        }}>
+                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => <div className={`flex gap-p5`} style={{
+            marginLeft: '.5rem',
+            cursor: 'pointer'
+          }} key={i}>
+                                            <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
+              padding: '.5rem'
+            }}>
+                                                <div className={`${styles.lead}`} onClick={handleSetCurrentRecord} modif={i} currentresults={'true'}>{m.lead}</div>
+                                            </div>
+                                        </div>) : queryRef?.current?.value !== '' ? _div || (_div = <div></div>) : <div style={{
+            textAlign: 'center',
+            fontSize: '.95rem'
+          }}>Try Searching for something</div>}
+                            </div>
+                        </div> : null}
+            </div>
+            <ul className={`flex gap-p5 ${styles.menuContainer}`}>
+                {Array.isArray(menu) && menu.length > 0 ? menu.map((m, i) => <li key={i} style={{
+        listStyle: 'none'
+      }} onClick={handleSetCurrentMenu} modif={m}>
+                                <div>{m?.charAt ? `${m.charAt(0).toUpperCase()}${m.slice(1, m.length)}` : m}</div>
+                            </li>) : null}
+            </ul>
+            <div className={`${styles.mainContainer}`}>
+                <ul className={`${styles.menuList}`}>
+                    {Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map((m, i) => <li className='flex gap-p2' onClick={handleSetCurrentRecord} modif={i}>
+                                    <div>{m?.lead}</div>
+                                    {detectFlags(m)?.manual ? <div className={`${styles.tagUnmanaged} ${styles.tagSmall}`}>m</div> : null}
+                                    {detectFlags(m)?.simple ? <div className={`${styles.tagSimple} ${styles.tagSmall}`}>s</div> : null}
+                                </li>) : null}
+                </ul>
+                <div className={`${styles.contentContainer}`}>
+                    {currentDoc && !isObjectEmpty(currentDoc) ? <div className={`flex ${styles.quadrant}`}>
+                                <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
+            padding: '.5rem',
+            width: '100%'
+          }}>
+                                    <div className={`${styles.lead}`}>{currentDoc.lead}</div>
+                                    <div className='flex gap-p5'>{detectFlags(currentDoc)?.manual ? <div className={`${styles.tagUnmanaged} ${styles.tag}`}>manual</div> : null}</div>
+                                    <div className='flex gap-p5'>{detectFlags(currentDoc)?.simple ? <div className={`${styles.tagSimple} ${styles.tag}`}>simple</div> : null}</div>
+                                    <pre><code><div className={`${styles.htmlParseContainer}`} dangerouslySetInnerHTML={resolvePaint(currentDoc, 'html')} style={{
+                  fontSize: '.85rem',
+                  lineHeight: 'normal',
+                  lineBreak: 'auto',
+                  whiteSpace: 'pre-wrap'
+                }}></div></code></pre>
+                                </div>
+                            </div> : null}
+                </div>
+                <div>
+                    {currentDoc && !isObjectEmpty(currentDoc) ? <div className={`flex ${styles.container}`}>
+                                <div className={`${styles.quadrant2}`}>
+                                    <pre><code><div className={`${styles.codePre}`}>{currentDoc?.code}</div></code></pre>
+                                    <div>{currentDoc.response}</div>
+                                </div>
+                            </div> : null}
+                </div>
+            </div>
+        </div>;
 };
 export default Module;

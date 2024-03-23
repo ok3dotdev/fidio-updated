@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -157,151 +155,115 @@ const Module = props => {
   console.log(editedInputs, currentTab, resolvedOrders);
   const resolveCurrentItem = itemType => {
     if (itemType === 'firstNameLastName') {
-      return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${Styles.FirstName_LastName_Container}`
-      }, void 0, /*#__PURE__*/_jsx("div", {
-        style: {
-          maxWidth: '100%',
-          width: '100%'
-        }
-      }, void 0, props?._loggedIn ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.label}`
-      }, void 0, "First Name"), !editedInputs['firstName'] ? /*#__PURE__*/_jsx("div", {
-        className: `${Styles.hoverHighlight}`,
-        modif: "firstName",
-        onClick: handleChange
-      }, void 0, props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.firstName !== '' ? props._loggedIn.meta.firstName : props?._loggedIn ? 'Add First Name' : '') : /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("input", {
-        type: "text",
-        placeholder: "First Name",
-        className: `${Styles.input}`,
-        id: `Settings_${componentId}_firstName_Input`
-      }), /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Save_Button}`,
-        modif: 'firstName',
-        onClick: saveChange
-      }, void 0, "Save"))) : null), /*#__PURE__*/_jsx("div", {
-        style: {
-          maxWidth: '100%',
-          width: '100%'
-        }
-      }, void 0, props?._loggedIn ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.label}`
-      }, void 0, "Last Name"), !editedInputs['lastName'] ? /*#__PURE__*/_jsx("div", {
-        className: `${Styles.hoverHighlight}`,
-        modif: "lastName",
-        onClick: handleChange
-      }, void 0, props?._loggedIn?.meta?.lastName && props?._loggedIn?.meta?.lastName !== '' ? props._loggedIn.meta.lastName : props?._loggedIn ? 'Add Last Name' : '') : /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("input", {
-        type: "text",
-        placeholder: "Last Name",
-        className: `${Styles.input}`,
-        id: `Settings_${componentId}_lastName_Input`
-      }), /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Save_Button}`,
-        modif: 'lastName',
-        onClick: saveChange
-      }, void 0, "Save"))) : null)));
+      return <React.Fragment>
+					<div className={`${Styles.FirstName_LastName_Container}`}>
+						<div style={{
+            maxWidth: '100%',
+            width: '100%'
+          }}>
+							{props?._loggedIn ? <React.Fragment>
+										<label className={`${Styles.label}`}>First Name</label>
+										{!editedInputs['firstName'] ? <div className={`${Styles.hoverHighlight}`} modif='firstName' onClick={handleChange}>{props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.firstName !== '' ? props._loggedIn.meta.firstName : props?._loggedIn ? 'Add First Name' : ''}</div> : <React.Fragment>
+													<input type='text' placeholder='First Name' className={`${Styles.input}`} id={`Settings_${componentId}_firstName_Input`} />
+													<button className={`${Styles.Save_Button}`} modif={'firstName'} onClick={saveChange}>Save</button>
+												</React.Fragment>}
+									</React.Fragment> : null}
+						</div>
+						<div style={{
+            maxWidth: '100%',
+            width: '100%'
+          }}>
+							{props?._loggedIn ? <React.Fragment>
+										<label className={`${Styles.label}`}>Last Name</label>
+										{!editedInputs['lastName'] ? <div className={`${Styles.hoverHighlight}`} modif='lastName' onClick={handleChange}>{props?._loggedIn?.meta?.lastName && props?._loggedIn?.meta?.lastName !== '' ? props._loggedIn.meta.lastName : props?._loggedIn ? 'Add Last Name' : ''}</div> : <React.Fragment>
+													<input type='text' placeholder='Last Name' className={`${Styles.input}`} id={`Settings_${componentId}_lastName_Input`} />
+													<button className={`${Styles.Save_Button}`} modif={'lastName'} onClick={saveChange}>Save</button>
+												</React.Fragment>}
+									</React.Fragment> : null}
+						</div>
+					</div>
+				</React.Fragment>;
     } else if (itemType === 'username') {
-      return /*#__PURE__*/_jsx("div", {}, void 0, props?._loggedIn ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.label} ${Styles.fullWidth}`
-      }, void 0, "Username"), editingUsername ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${Styles.ItemsFlex}`
-      }, void 0, /*#__PURE__*/_jsx("input", {
-        type: "text",
-        placeholder: "Username",
-        className: `${Styles.input}`,
-        modif: 'username',
-        id: `Settings_${componentId}_Username_Input`,
-        onChange: handleChange
-      }), /*#__PURE__*/_jsx(Close, {
-        className: `${Styles.Close}`,
-        onClick: handleChangeUsername
-      })), editedInputs['username'] ? /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Save_Button}`,
-        modif: 'username',
-        onClick: saveChange
-      }, void 0, "Save") : null) : /*#__PURE__*/_jsx("div", {
-        className: `${Styles.ItemsFlex}`
-      }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, props?._loggedIn?.username ?? null), /*#__PURE__*/_jsx("button", {
-        className: `${Styles.LowProfileButton}`,
-        onClick: handleChangeUsername
-      }, void 0, "Get New Username"))) : null);
+      return <div>
+					{props?._loggedIn ? <React.Fragment>
+							<label className={`${Styles.label} ${Styles.fullWidth}`}>Username</label>
+							{editingUsername ? <React.Fragment>
+										<div className={`${Styles.ItemsFlex}`}>
+											<input type='text' placeholder='Username' className={`${Styles.input}`} modif={'username'} id={`Settings_${componentId}_Username_Input`} onChange={handleChange} />
+											<Close className={`${Styles.Close}`} onClick={handleChangeUsername}></Close>
+										</div>
+										{editedInputs['username'] ? <button className={`${Styles.Save_Button}`} modif={'username'} onClick={saveChange}>Save</button> : null}
+									</React.Fragment> : <div className={`${Styles.ItemsFlex}`}>
+										<div>{props?._loggedIn?.username ?? null}</div>
+										<button className={`${Styles.LowProfileButton}`} onClick={handleChangeUsername}>Get New Username</button>
+									</div>}
+							</React.Fragment> : null}
+				</div>;
     } else if (itemType === 'handleCreditCard') {
-      return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.label} ${Styles.fullWidth}`
-      }, void 0, "Payment"), <CreditCard {...props}></CreditCard>);
+      return <React.Fragment>
+					<label className={`${Styles.label} ${Styles.fullWidth}`}>Payment</label>
+					<CreditCard {...props}></CreditCard>
+				</React.Fragment>;
     } else if (itemType === 'location') {
-      return /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.Read_Only_Label}`
-      }, void 0, "Location"), /*#__PURE__*/_jsx("div", {
-        className: `${Styles.Read_Only_Field}`
-      }, void 0, /*#__PURE__*/_jsx("span", {}, void 0, props?._loggedIn?.meta?.locationMeta?.city ?? null), /*#__PURE__*/_jsx("span", {}, void 0, resolvedCountry ? ', ' : null), _span || (_span = /*#__PURE__*/_jsx("span", {}, void 0, resolvedCountry))));
+      return <div>
+					<label className={`${Styles.Read_Only_Label}`}>Location</label>
+					<div className={`${Styles.Read_Only_Field}`}>
+                        <span>{props?._loggedIn?.meta?.locationMeta?.city ?? null}</span><span>{resolvedCountry ? ', ' : null}</span>
+						{_span || (_span = <span>{resolvedCountry}</span>)}
+					</div>
+				</div>;
     } else if (itemType === 'keepSubscriptionsPrivate') {
-      return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${Styles.Settings_Checkbox_Container}`
-      }, void 0, /*#__PURE__*/_jsx("input", {
-        type: "checkbox",
-        name: "keepSubscriptionsPrivate",
-        className: `${Styles.Settings_Checkbox}`,
-        id: `Settings_${componentId}_keepSubscriptionsPrivate_Input`,
-        modif: 'keepSubscriptionsPrivate',
-        onChange: saveChange,
-        defaultChecked: props?._loggedIn?.meta?.keepSubscriptionsPrivate
-      }), /*#__PURE__*/_jsx("label", {
-        htmlFor: "keepSubscriptionsPrivate",
-        className: `${Styles.Checkbox_Label}`
-      }, void 0, "Keep Subscriptions Private")));
+      return <React.Fragment>
+					<div className={`${Styles.Settings_Checkbox_Container}`}>
+						<input type='checkbox' name='keepSubscriptionsPrivate' className={`${Styles.Settings_Checkbox}`} id={`Settings_${componentId}_keepSubscriptionsPrivate_Input`} modif={'keepSubscriptionsPrivate'} onChange={saveChange} defaultChecked={props?._loggedIn?.meta?.keepSubscriptionsPrivate} />
+						<label htmlFor='keepSubscriptionsPrivate' className={`${Styles.Checkbox_Label}`}>Keep Subscriptions Private</label>
+					</div>
+				</React.Fragment>;
     } else if (itemType === 'closeAccount') {
-      return /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-        className: `${Styles.Close_Account_Button_Container}`
-      }, void 0, !editedInputs['closeAccount'] ? /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Warning_Button}`,
-        modif: 'closeAccount',
-        onClick: handleChange
-      }, void 0, "Close Account") : /*#__PURE__*/_jsx("div", {
-        style: {
-          textAlign: 'center',
-          marginTop: '1rem'
-        }
-      }, void 0, /*#__PURE__*/_jsx("div", {
-        style: {
-          fontWeight: '600'
-        }
-      }, void 0, "Are you sure you want to close your ", props?.siteTitle, " account?"), /*#__PURE__*/_jsx("div", {
-        style: {
-          fontSize: '.8rem',
-          marginTop: '.5rem'
-        }
-      }, void 0, "This action is not reversible. All your data will be deleted and forgotten."), /*#__PURE__*/_jsx("div", {
-        style: {
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '10rem',
-          marginTop: '1rem'
-        }
-      }, void 0, /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Save_Button}`,
-        style: {
-          fontWeight: '600'
-        }
-      }, void 0, "Yes"), /*#__PURE__*/_jsx("button", {
-        className: `${Styles.Save_Button}`,
-        onClick: cancelCloseAccount,
-        style: {
-          fontWeight: '600'
-        }
-      }, void 0, "No")))));
+      return <div>
+					<div className={`${Styles.Close_Account_Button_Container}`}>
+						{!editedInputs['closeAccount'] ? <button className={`${Styles.Warning_Button}`} modif={'closeAccount'} onClick={handleChange}>Close Account</button> : <div style={{
+            textAlign: 'center',
+            marginTop: '1rem'
+          }}>
+									<div style={{
+              fontWeight: '600'
+            }}>Are you sure you want to close your {props?.siteTitle} account?</div>
+									<div style={{
+              fontSize: '.8rem',
+              marginTop: '.5rem'
+            }}>This action is not reversible. All your data will be deleted and forgotten.</div>
+									<div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '10rem',
+              marginTop: '1rem'
+            }}>
+										<button className={`${Styles.Save_Button}`} style={{
+                fontWeight: '600'
+              }}>Yes</button>
+										<button className={`${Styles.Save_Button}`} onClick={cancelCloseAccount} style={{
+                fontWeight: '600'
+              }}>No</button>
+									</div>
+								</div>}
+					</div>
+				</div>;
     } else if (itemType === 'orders') {
-      return /*#__PURE__*/_jsx("div", {}, void 0, props?._loggedIn ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("label", {
-        className: `${Styles.label} ${Styles.fullWidth}`
-      }, void 0, "Orders"), /*#__PURE__*/_jsx("div", {
-        style: {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem'
-        }
-      }, void 0, resolvedOrders?.orders?.map ? resolvedOrders.orders.map((m, i) => <Order order={m} {...props} />) : null)) : null);
+      return <div>
+					{props?._loggedIn ? <React.Fragment>
+								<label className={`${Styles.label} ${Styles.fullWidth}`}>Orders</label>
+								<div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem'
+          }}>
+									{resolvedOrders?.orders?.map ? resolvedOrders.orders.map((m, i) => <Order order={m} {...props} />) : null}
+								</div>
+							</React.Fragment> : null}
+				</div>;
     } else {
-      return /*#__PURE__*/_jsx("div", {}, void 0, itemType);
+      return <div>{itemType}</div>;
     }
   };
   const handleSetTab = React.useCallback(e => {
@@ -312,44 +274,42 @@ const Module = props => {
   });
   const resolveInitials = props?._loggedIn?.meta?.firstName && props?._loggedIn?.meta?.lastName && props._loggedIn.meta.firstName.length > 0 && props._loggedIn.meta.lastName.length > 0 ? props._loggedIn.meta.firstName.charAt(0) + props._loggedIn.meta.lastName.charAt(0) : 'AV';
   console.log('Curr', currentTab, settingsConfig.tabs, props);
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
-  }), /*#__PURE__*/_jsx("div", {
-    className: `${Styles.Settings_Container}`,
-    style: {
+  return <React.Fragment>
+			<div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
+			<div className={`${Styles.Settings_Container}`} style={{
       margin: '0 auto',
       width: '70vw',
       display: 'flex'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${Styles.Settings_InternalContainer}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${Styles.Settings_Menu}`
-  }, void 0, settingsConfig?.tabs ? settingsConfig.tabs.map(tab => /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${Styles.tab} ${settingsConfig?.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === tab?.label ? Styles.currentTab : ''}`,
-    onClick: handleSetTab,
-    modif: tab?.label
-  }, void 0, tab?.label ?? ''))) : null), /*#__PURE__*/_jsx("div", {
-    className: `${Styles.Settings_Data}`
-  }, void 0, settingsConfig?.tabs && settingsConfig?.tabs[currentTab]?.avatar ? /*#__PURE__*/_jsx("div", {
-    className: `${Styles.Settings_Profile_Picture}`,
-    style: {
-      background: `url(${props?._loggedIn?.icon ?? null})`,
-      backgroundSize: 'contain'
-    }
-  }, void 0, !props?._loggedIn?.icon ? /*#__PURE__*/_jsx("span", {
-    className: `${Styles.Avatar_Placeholder_Text}`
-  }, void 0, resolveInitials) : null) : null, /*#__PURE__*/_jsx("div", {
-    className: `${Styles.settingsItemContainer}`
-  }, void 0, pageError ? /*#__PURE__*/_jsx("p", {
-    className: "error",
-    style: {
-      marginTop: '.5rem'
-    },
-    onClick: handleCloseError
-  }, void 0, pageError) : null, settingsConfig?.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab]?.items && Array.isArray(settingsConfig.tabs[currentTab]?.items) ? settingsConfig.tabs[currentTab].items.map(item => {
-    const avatar = settingsConfig.tabs[currentTab].avatar;
-    return /*#__PURE__*/_jsx("div", {}, item.type, resolveCurrentItem(item.type));
-  }) : null)))));
+    }}>
+				<div className={`${Styles.Settings_InternalContainer}`}>
+					<div className={`${Styles.Settings_Menu}`}>
+						{settingsConfig?.tabs ? settingsConfig.tabs.map(tab => <React.Fragment>
+										<div className={`${Styles.tab} ${settingsConfig?.tabs && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab].label === tab?.label ? Styles.currentTab : ''}`} onClick={handleSetTab} modif={tab?.label}>{tab?.label ?? ''}</div>
+									</React.Fragment>) : null}
+					</div>
+					<div className={`${Styles.Settings_Data}`}>
+						{settingsConfig?.tabs && settingsConfig?.tabs[currentTab]?.avatar ? <div className={`${Styles.Settings_Profile_Picture}`} style={{
+            background: `url(${props?._loggedIn?.icon ?? null})`,
+            backgroundSize: 'contain'
+          }}>
+									{!props?._loggedIn?.icon ? <span className={`${Styles.Avatar_Placeholder_Text}`}>{resolveInitials}</span> : null}
+									{/* <img src='/img/default/editIcon.svg' alt='Circular edit icon with white pencil in the middle' className={`${Styles.Edit_Icon}`} /> */}
+								</div> : null}
+						<div className={`${Styles.settingsItemContainer}`}>
+							{pageError ? <p className='error' style={{
+              marginTop: '.5rem'
+            }} onClick={handleCloseError}>{pageError}</p> : null}
+							{settingsConfig?.tabs && currentTab !== null && settingsConfig.tabs[currentTab] && settingsConfig.tabs[currentTab]?.items && Array.isArray(settingsConfig.tabs[currentTab]?.items) ? settingsConfig.tabs[currentTab].items.map(item => {
+              const avatar = settingsConfig.tabs[currentTab].avatar;
+              return <div key={item.type}>
+													{resolveCurrentItem(item.type)}
+												</div>;
+            }) : null}
+						</div>
+					</div>
+				</div>
+			</div>	
+
+		</React.Fragment>;
 };
 export default Module;

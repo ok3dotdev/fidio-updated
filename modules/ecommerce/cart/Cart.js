@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { CreditCard } from '../../payment/index.js';
 import { logout } from '/modules/utility/onboarding/SignIn.js';
@@ -297,6 +295,8 @@ const Module = props => {
 
   // console.log('Cart', cart, total, validCc, useCartOfCurrency)
 
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, <Cart {...props} fetchBusy={fetchBusy} menuOpen={menuOpen} closing={closing} cart={cart} useCartOfCurrency={useCartOfCurrency} handleUpdateQuantity={handleUpdateQuantity} handlePerformPurchase={handlePerformPurchase} handleClearError={handleClearError} pageError={pageError} free={free} validCc={validCc} setValidCc={setValidCc} cartMessages={cartMessages} handleToggleSettings={handleToggleSettings} showContent={showContent} setShowContent={setShowContent} setSolution={setSolution} ccChildren={props?.ccChildren} container={container} />);
+  return <React.Fragment>
+            <Cart {...props} fetchBusy={fetchBusy} menuOpen={menuOpen} closing={closing} cart={cart} useCartOfCurrency={useCartOfCurrency} handleUpdateQuantity={handleUpdateQuantity} handlePerformPurchase={handlePerformPurchase} handleClearError={handleClearError} pageError={pageError} free={free} validCc={validCc} setValidCc={setValidCc} cartMessages={cartMessages} handleToggleSettings={handleToggleSettings} showContent={showContent} setShowContent={setShowContent} setSolution={setSolution} ccChildren={props?.ccChildren} container={container} />
+        </React.Fragment>;
 };
 export default Module;

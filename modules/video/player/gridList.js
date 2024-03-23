@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { debounce } from '../../util.js';
 import GridListStyles from './gridList.module.scss';
@@ -79,17 +77,17 @@ const GridList = props => {
       }
     });
   };
-  return /*#__PURE__*/_jsx("div", {
-    className: `${GridListStyles.leadContainer}`
-  }, void 0, props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map((item, i) => /*#__PURE__*/_jsx("div", {
-    className: `${GridListStyles.col}`
-  }, i, <VideoItem item={item} index={i} setActive={(e, i, d, p) => {
-    delayedSetActiveItem(e, i, d, p);
-  }} unsetActiveItem={i => {
-    // setActiveItem(-1);
-    setActiveItemData(null);
-  }} activeItem={activeItem} previousActiveItemData={previousActiveItemData} allowEditingFlag={detectAllowEditingFlag(item, props._loggedIn)} {...props}></VideoItem>)) : props._gridListType == 'product' ? props._gridItems.map((item, i) => /*#__PURE__*/_jsx("div", {
-    className: `${GridListStyles.col}`
-  }, i, "Product")) : null : null);
+  return <div className={`${GridListStyles.leadContainer}`}>
+            {props._gridItems && props._gridItems.map ? props._gridListType == 'video' ? props._gridItems.map((item, i) => <div className={`${GridListStyles.col}`} key={i}>
+                                <VideoItem item={item} index={i} setActive={(e, i, d, p) => {
+        delayedSetActiveItem(e, i, d, p);
+      }} unsetActiveItem={i => {
+        // setActiveItem(-1);
+        setActiveItemData(null);
+      }} activeItem={activeItem} previousActiveItemData={previousActiveItemData} allowEditingFlag={detectAllowEditingFlag(item, props._loggedIn)} {...props}></VideoItem>
+                            </div>) : props._gridListType == 'product' ? props._gridItems.map((item, i) => <div className={`${GridListStyles.col}`} key={i}>
+                            Product
+                        </div>) : null : null}
+        </div>;
 };
 export default GridList;

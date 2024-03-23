@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { useRouter } from 'next/router';
 import { checkSignedIn, attemptThirdPartySignIn } from '../../utility/onboarding/SignIn';
@@ -185,22 +183,21 @@ const Module = props => {
     }
   };
   const googleSignInIsLoaded = checkGoogleSignInIsLoaded();
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.classNameAlways} ${props._loggedIn || !googleSignInIsLoaded ? '' : props.className}`
-  }, void 0, " ", /*#__PURE__*/_jsx("div", {
-    className: hideGoogleSignIn || !googleSignInIsLoaded ? `display-none` : null,
-    style: {
+  return <div className={`${props.classNameAlways} ${props._loggedIn || !googleSignInIsLoaded ? '' : props.className}`}> {/* Do not show styles if Sign In hidden */}
+            {/* <RegisterUsername registerUsernameOn={registerUsernameOn} setRegisterUsernameOn={setRegisterUsernameOn}></RegisterUsername> */}
+            <div className={hideGoogleSignIn || !googleSignInIsLoaded ? `display-none` : null} style={{
       maxWidth: props.maxWidth ?? '170px'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: googleSignInRendered ? `googleSignInContainer googleSignInContainer-padding` : `googleSignInContainer`
-  }, void 0, <div className="g_id_signin google-sign-in-btn" ref={googleSignIn} data-size="medium" data-logo_alignment="center" data-theme="outline"></div>)), pageError ? /*#__PURE__*/_jsx("div", {
-    style: {
+    }}>
+                <div className={googleSignInRendered ? `googleSignInContainer googleSignInContainer-padding` : `googleSignInContainer`}>
+                    <div className="g_id_signin google-sign-in-btn" ref={googleSignIn} data-size="medium" data-logo_alignment="center" data-theme="outline"></div>
+                </div>
+            </div>
+            {pageError ? <div style={{
       paddingLeft: 1 + 'rem',
       paddingRight: 1 + 'rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("p", {
-    className: `googleSignInPromptSmall error errorBg`
-  }, void 0, pageError)) : null);
+    }}>
+                        <p className={`googleSignInPromptSmall error errorBg`}>{pageError}</p> 
+                    </div> : null}
+        </div>;
 };
 export default Module;

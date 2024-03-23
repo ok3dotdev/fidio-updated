@@ -1,6 +1,4 @@
 var _div;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import lunr from '../utility/utility/elasticlunr';
 import Styles from '../settings/Settings.module.scss';
@@ -105,96 +103,81 @@ const Module = props => {
       props.setHelpOpen(false);
     }
   }, [props?._openMenu?.currentMenu]);
-  return /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Misc_Container ${props.className} ${menuOpen && closing ? 'Misc_Container_Visible' : ''}`,
-    style: {
+  return <div>
+            {<div className={`Misc_Container ${props.className} ${menuOpen && closing ? 'Misc_Container_Visible' : ''}`} style={{
       top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "Misc_Internal_Container",
-    style: {
-      paddingTop: '.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      position: 'sticky',
-      top: '.5rem',
-      right: 0,
-      zIndex: 10
-    }
-  }, void 0, /*#__PURE__*/_jsx(Close, {
-    className: `${Styles.Close}`,
-    style: {
-      margin: '0rem 0',
-      float: 'right'
-    },
-    onClick: handleClose
-  })), /*#__PURE__*/_jsx("h5", {
-    className: `Misc_Label`,
-    style: {
-      marginTop: 0
-    }
-  }, void 0, "Help"), /*#__PURE__*/_jsx("div", {
-    style: {
-      position: 'sticky',
-      top: '.5rem',
-      margin: '.5rem 0',
-      marginTop: '0'
-    }
-  }, void 0, <input onChange={handleUpdateSearch} ref={queryRef} style={{
-    border: '0px',
-    borderRadius: '.5rem',
-    width: '87.5%',
-    fontSize: '1.25rem',
-    padding: '0 .5rem'
-  }} placeholder='How can we help?'></input>), /*#__PURE__*/_jsx("div", {
-    style: {
-      padding: '.25rem 0rem',
-      display: 'grid',
-      gap: '.5rem'
-    }
-  }, void 0, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => m?.a ? /*#__PURE__*/_jsx("a", {
-    href: m.a,
-    style: {
-      cursor: 'pointer'
-    }
-  }, i, /*#__PURE__*/_jsx("div", {
-    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
-    style: {
-      padding: '.5rem',
-      display: 'grid',
-      gap: '.25rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontWeight: '500'
-    }
-  }, void 0, m.question), /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '.85rem',
-      lineHeight: 'normal'
-    }
-  }, void 0, m.answer))) : /*#__PURE__*/_jsx("div", {
-    className: `Misc_Item_Container`,
-    style: {
-      padding: '.5rem',
-      display: 'grid',
-      gap: '.25rem'
-    }
-  }, i, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontWeight: '500'
-    }
-  }, void 0, m.question), /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '.85rem',
-      lineHeight: 'normal'
-    }
-  }, void 0, m.answer))) : queryRef?.current?.value !== '' ? _div || (_div = /*#__PURE__*/_jsx("div", {})) : /*#__PURE__*/_jsx("div", {
-    style: {
-      textAlign: 'center',
-      fontSize: '.95rem'
-    }
-  }, void 0, "Try Searching for something")))));
+    }}>
+                    <div className='Misc_Internal_Container' style={{
+        paddingTop: '.5rem'
+      }}>
+                        <div style={{
+          position: 'sticky',
+          top: '.5rem',
+          right: 0,
+          zIndex: 10
+        }}>
+                            <Close className={`${Styles.Close}`} style={{
+            margin: '0rem 0',
+            float: 'right'
+          }} onClick={handleClose}></Close>
+                        </div>
+                        <h5 className={`Misc_Label`} style={{
+          marginTop: 0
+        }}>Help</h5>
+                        <div style={{
+          position: 'sticky',
+          top: '.5rem',
+          margin: '.5rem 0',
+          marginTop: '0'
+        }}>
+                            <input onChange={handleUpdateSearch} ref={queryRef} style={{
+            border: '0px',
+            borderRadius: '.5rem',
+            width: '87.5%',
+            fontSize: '1.25rem',
+            padding: '0 .5rem'
+          }} placeholder='How can we help?'></input>
+                        </div>
+                        <div style={{
+          padding: '.25rem 0rem',
+          display: 'grid',
+          gap: '.5rem'
+        }}>
+                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => m?.a ? <a href={m.a} style={{
+            cursor: 'pointer'
+          }} key={i}>
+                                            <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
+              padding: '.5rem',
+              display: 'grid',
+              gap: '.25rem'
+            }}>
+                                                <div style={{
+                fontWeight: '500'
+              }}>{m.question}</div>
+                                                <div style={{
+                fontSize: '.85rem',
+                lineHeight: 'normal'
+              }}>{m.answer}</div>
+                                            </div>
+                                        </a> : <div className={`Misc_Item_Container`} style={{
+            padding: '.5rem',
+            display: 'grid',
+            gap: '.25rem'
+          }} key={i}>
+                                            <div style={{
+              fontWeight: '500'
+            }}>{m.question}</div>
+                                            <div style={{
+              fontSize: '.85rem',
+              lineHeight: 'normal'
+            }}>{m.answer}</div>
+                                        </div>) : queryRef?.current?.value !== '' ? _div || (_div = <div></div>) : <div style={{
+            textAlign: 'center',
+            fontSize: '.95rem'
+          }}>Try Searching for something</div>}
+                        </div>
+                    </div>
+                </div>}
+        </div>;
 };
 export default Module;

@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import { resolveImg, doUploadImageForProduct } from '../../utility/ecommerce';
 import { isObjectEmpty } from '../../util';
@@ -211,79 +209,59 @@ const Module = props => {
   const leadImg = props?.product?.images ? props.product.images.find(m => m?.leadImg) : null;
   const currentIsBgImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && bgImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === bgImg.name;
   const currentIsLeadImage = useImage?.match && useImage.match(/\.[^\/]+\/(.+)$/) && leadImg?.name && useImage.match(/\.[^\/]+\/(.+)$/)[1] === leadImg.name;
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className} ${PIMStyles.productImageManagerContainer} ProductImageManager_container`,
-    style: {
-      position: 'relative'
-    }
-  }, void 0, props.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/_jsx(React.Fragment, {}, void 0, <input type='file' style={{
-    display: 'none'
-  }} ref={fileInput} onChange={handleNewFile} />, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Click here to upload an image for your product",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.changeImageButton} image material-icons`,
-    onClick: handleUploadImage
-  }, void 0, "image")), warning && warning.message ? /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.warning}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.warningItemContainer}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.warningItem}`
-  }, void 0, warning.message))) : null) : null, props?.editing && !isObjectEmpty(props.editing) ? /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.buttonSetAsBackground}`
-  }, void 0, currentIsLeadImage ? /*#__PURE__*/_jsx("button", {
-    className: "gradient_style_bg_1 gradient_style_bg_drop",
-    style: {
-      fontWeight: 600,
-      border: '1px solid #b8ff00',
-      borderRadius: '1rem',
-      fontSize: '.7rem',
-      textAlign: 'center',
-      padding: '0.125rem 1.5rem',
-      color: 'white'
-    }
-  }, void 0, "Current Lead Image") : /*#__PURE__*/_jsx("button", {
-    onClick: setCurrentImageAsLead
-  }, void 0, "Tag As Lead Image"), currentIsBgImage ? /*#__PURE__*/_jsx("button", {
-    className: "gradient_style_bg_2 gradient_style_bg_2_drop",
-    style: {
-      fontWeight: 600,
-      border: '1px solid #fe4c4c',
-      borderRadius: '1rem',
-      fontSize: '.7rem',
-      textAlign: 'center',
-      padding: '0.125rem 1.5rem',
-      color: 'white'
-    }
-  }, void 0, "Current Feature Image") : /*#__PURE__*/_jsx("button", {
-    onClick: setCurrentImageAsBackground
-  }, void 0, "Tag As Feature Image")) : null, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.productImageListContainer}`
-  }, void 0, imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn.static ? imageThumbnailFeed.map(m => /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.productImageListThumbnailContainer}`,
-    style: {
-      backgroundImage: `url(${props.cdn.static}/${m.name})`
-    },
-    onClick: setUseImageThumbnail,
-    selector: m.name
-  }, void 0, /*#__PURE__*/_jsx("img", {
-    src: resolveImg(props.editing, props.cdn),
-    className: "Product_img",
-    style: {
-      width: '45px',
-      opacity: useImage ? 0 : 1
-    }
-  }))) : null), <div className={`${PIMStyles.productImageContainer}`} ref={productImageRef} style={{
-    backgroundImage: useImage ? `url(${useImage})` : ''
+  return <div className={`${props.className} ${PIMStyles.productImageManagerContainer} ProductImageManager_container`} style={{
+    position: 'relative'
   }}>
-                /*#__PURE__*/_jsx("img", {
-      src: resolveImg(props.editing, props.cdn),
-      style: {
+            {props.editing && !isObjectEmpty(props.editing) ? <React.Fragment>
+                        <input type='file' style={{
+        display: 'none'
+      }} ref={fileInput} onChange={handleNewFile} />
+                        <Tooltip title="Click here to upload an image for your product" placement='bottom'>
+                            <div className={`${PIMStyles.changeImageButton} image material-icons`} onClick={handleUploadImage}>image</div>
+                        </Tooltip>
+                        {warning && warning.message ? <div className={`${PIMStyles.warning}`}>
+                                    <div className={`${PIMStyles.warningItemContainer}`}>
+                                        <div className={`${PIMStyles.warningItem}`}>{warning.message}</div>
+                                    </div>
+                                </div> : null}
+                    </React.Fragment> : null}
+            {props?.editing && !isObjectEmpty(props.editing) ? <div className={`${PIMStyles.buttonSetAsBackground}`}>
+                        {currentIsLeadImage ? <button className='gradient_style_bg_1 gradient_style_bg_drop' style={{
+        fontWeight: 600,
+        border: '1px solid #b8ff00',
+        borderRadius: '1rem',
+        fontSize: '.7rem',
+        textAlign: 'center',
+        padding: '0.125rem 1.5rem',
+        color: 'white'
+      }}>Current Lead Image</button> : <button onClick={setCurrentImageAsLead}>Tag As Lead Image</button>}
+                        {currentIsBgImage ? <button className='gradient_style_bg_2 gradient_style_bg_2_drop' style={{
+        fontWeight: 600,
+        border: '1px solid #fe4c4c',
+        borderRadius: '1rem',
+        fontSize: '.7rem',
+        textAlign: 'center',
+        padding: '0.125rem 1.5rem',
+        color: 'white'
+      }}>Current Feature Image</button> : <button onClick={setCurrentImageAsBackground}>Tag As Feature Image</button>}
+                    </div> : null}
+            <div className={`${PIMStyles.productImageListContainer}`}>
+                    {imageThumbnailFeed && imageThumbnailFeed.map && props.cdn && props.cdn.static ? imageThumbnailFeed.map(m => <div className={`${PIMStyles.productImageListThumbnailContainer}`} style={{
+        backgroundImage: `url(${props.cdn.static}/${m.name})`
+      }} onClick={setUseImageThumbnail} selector={m.name}>
+                                    <img src={resolveImg(props.editing, props.cdn)} className='Product_img' style={{
+          width: '45px',
+          opacity: useImage ? 0 : 1
+        }} />
+                                </div>) : null}
+            </div>
+            <div className={`${PIMStyles.productImageContainer}`} ref={productImageRef} style={{
+      backgroundImage: useImage ? `url(${useImage})` : ''
+    }}>
+                <img src={resolveImg(props.editing, props.cdn)} style={{
         opacity: useImage ? 0 : 1
-      },
-      className: "Product_img"
-    })
-            </div>);
+      }} className='Product_img'></img>
+            </div>
+        </div>;
 };
 export default Module;

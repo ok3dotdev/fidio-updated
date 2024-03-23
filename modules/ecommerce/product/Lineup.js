@@ -1,6 +1,4 @@
 var _div;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import { resolveDefaultStyle, resolveImg, doUploadImageForLineupParticipant } from '../../utility/ecommerce';
@@ -189,139 +187,105 @@ const Module = props => {
   console.log(props.product, props.editingOptionsMeta, selectedStyle, currency, props.currentDefinePriceCurrency, props.priceInput, validStyleObject, props.editing, props.currentLineupEditing);
   const isEditing = props?.editing?.id && props?.product?.id && props.editing.id === props.product.id;
   const useEditingOptions = isEditing && props?.editingOptionsMeta || !isEditing && props.product.detailmeta;
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className}`,
-    id: props.product && props.product.id ? props.product.id : '',
-    selectedstyle: validStyleObject?.sid ? validStyleObject.sid : '',
-    currentoption: validOptionObject?.sid ? validOptionObject.sid : ''
-  }, void 0, props?.editingOptionsMeta?.productType === 'virtual' ? /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {}, void 0, useEditingOptions.livestream ? /*#__PURE__*/_jsx("div", {
-    style: {
-      background: '#222222',
-      marginTop: '.25rem',
-      marginBottom: '.25rem',
-      borderRadius: '.25rem',
-      padding: '.25rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '.8rem',
-      fontWeight: '600'
-    }
-  }, void 0, "Lineup"), /*#__PURE__*/_jsx("div", {}, void 0, <div style={{
-    fontSize: '.6rem'
-  }} ref={lineupIdRef}>{currentLineupId ?? ''}</div>, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Enter participants name",
-    placement: "right"
-  }, void 0, <input type='text' placeholder='Name' style={{
-    fontSize: '.8rem',
-    width: '100%'
-  }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='title' ref={lineupNameRef} />), /*#__PURE__*/_jsx(Tooltip, {
-    title: "Optional: Enter description of participant",
-    placement: "right"
-  }, void 0, <input type='text' placeholder='Description' style={{
-    fontSize: '.8rem',
-    width: '100%'
-  }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='description' ref={lineupDescriptionRef} />), /*#__PURE__*/_jsx(Tooltip, {
-    title: "Optional: Enter expected time for lineup participant to be performing",
-    placement: "right"
-  }, void 0, <input type='time' placeholder='Time' style={{
-    fontSize: '.8rem',
-    width: '100%'
-  }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='time' ref={lineupTimeRef} />), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      alignItems: 'center',
-      marginTop: '.125rem'
-    }
-  }, void 0, props.product.detailmeta.lineup && props.product.detailmeta.lineup.length < 10 && props.product.detailmeta.lineup.length > -1 ? /*#__PURE__*/_jsx(Tooltip, {
-    title: "Add another Lineup Participant",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    style: {
-      width: '100%',
-      padding: '.125rem 0'
-    },
-    onClick: updateLineup,
-    option: "add"
-  }, void 0, "Add")) : null, props.product.detailmeta.lineup && props.product.detailmeta.lineup[props.currentLineupEditing] ? /*#__PURE__*/_jsx(Tooltip, {
-    title: "Remove this Lineup Participant",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    style: {
-      width: '100%',
-      padding: '.125rem 0'
-    },
-    onClick: updateLineup,
-    option: "remove"
-  }, void 0, "Remove")) : null), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      overflowX: 'auto',
-      overflowY: 'hidden',
-      marginTop: '.125rem'
-    }
-  }, void 0, props.product.detailmeta.lineup && props.product.detailmeta.lineup.map ? props.product.detailmeta.lineup.map((m, i) => /*#__PURE__*/_jsx("div", {
-    className: `lineupItem_editing ${m.id === currentLineupId ? 'lineupItem_current' : ''}`,
-    style: {
-      maxWidth: '75px'
-    },
-    onClick: updateLineup,
-    option: 'setSelected',
-    index: i
-  }, i, /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '.7rem',
-      fontWeight: '600',
-      overflowWrap: 'anywhere'
-    }
-  }, void 0, m.title !== '' ? m.title : /*#__PURE__*/_jsx("div", {
-    style: {
-      opacity: '.7'
-    }
-  }, void 0, "Participant")), /*#__PURE__*/_jsx("div", {
-    style: {
-      marginTop: '.125rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `ProductImageManager_container`,
-    style: {
-      position: 'relative',
-      width: '68px',
-      height: '68px'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.productImageListThumbnailContainer}`,
-    style: {
-      backgroundImage: `url(${props.cdn.static}/${m.image})`,
-      height: '68px',
-      backgroundSize: 'cover',
-      borderRadius: '1rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Click here to upload an image for your lineup participant",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${PIMStyles.changeImageButtonSmall} image material-icons`,
-    onClick: handleUploadImage,
-    lineupid: m.id
-  }, void 0, "image")), /*#__PURE__*/_jsx("img", {
-    src: `${resolveImg(null)}`,
-    className: "Product_img",
-    style: {
-      width: '68px',
-      height: '68px',
-      borderRadius: '1rem',
-      opacity: m.image ? 0 : 1
-    }
-  })))), m.time ? /*#__PURE__*/_jsx("div", {
-    className: "lineupItem_time",
-    style: {
-      fontSize: '1rem'
-    }
-  }, void 0, getFormattedTime(m.time, {
-    simple: true
-  })) : null)) : null)), <input type='file' style={{
-    display: 'none'
-  }} ref={fileInput} onChange={handleNewFile} />) : null)) : _div || (_div = /*#__PURE__*/_jsx("div", {})));
+  return <div className={`${props.className}`} id={props.product && props.product.id ? props.product.id : ''} selectedstyle={validStyleObject?.sid ? validStyleObject.sid : ''} currentoption={validOptionObject?.sid ? validOptionObject.sid : ''}>
+            {props?.editingOptionsMeta?.productType === 'virtual' ? <div>
+                        <div>
+                            {useEditingOptions.livestream ? <div style={{
+          background: '#222222',
+          marginTop: '.25rem',
+          marginBottom: '.25rem',
+          borderRadius: '.25rem',
+          padding: '.25rem'
+        }}>
+                                        <div style={{
+            fontSize: '.8rem',
+            fontWeight: '600'
+          }}>Lineup</div>
+                                        <div>
+                                            <div style={{
+              fontSize: '.6rem'
+            }} ref={lineupIdRef}>{currentLineupId ?? ''}</div>
+                                            <Tooltip title='Enter participants name' placement='right'><input type='text' placeholder='Name' style={{
+                fontSize: '.8rem',
+                width: '100%'
+              }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='title' ref={lineupNameRef} /></Tooltip>
+                                            <Tooltip title='Optional: Enter description of participant' placement='right'><input type='text' placeholder='Description' style={{
+                fontSize: '.8rem',
+                width: '100%'
+              }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='description' ref={lineupDescriptionRef} /></Tooltip>
+                                            <Tooltip title='Optional: Enter expected time for lineup participant to be performing' placement='right'><input type='time' placeholder='Time' style={{
+                fontSize: '.8rem',
+                width: '100%'
+              }} onInput={props.setOptionsMetaData} option='lineupTemp' option2='time' ref={lineupTimeRef} /></Tooltip>
+                                            <div className='flex gap-p2' style={{
+              alignItems: 'center',
+              marginTop: '.125rem'
+            }}>
+                                                {props.product.detailmeta.lineup && props.product.detailmeta.lineup.length < 10 && props.product.detailmeta.lineup.length > -1 ? <Tooltip title='Add another Lineup Participant' placement='bottom'><button style={{
+                  width: '100%',
+                  padding: '.125rem 0'
+                }} onClick={updateLineup} option='add'>Add</button></Tooltip> : null}
+                                                {props.product.detailmeta.lineup && props.product.detailmeta.lineup[props.currentLineupEditing] ? <Tooltip title='Remove this Lineup Participant' placement='bottom'><button style={{
+                  width: '100%',
+                  padding: '.125rem 0'
+                }} onClick={updateLineup} option='remove'>Remove</button></Tooltip> : null}
+                                            </div>
+                                            <div className='flex gap-p2' style={{
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              marginTop: '.125rem'
+            }}>
+                                                {props.product.detailmeta.lineup && props.product.detailmeta.lineup.map ? props.product.detailmeta.lineup.map((m, i) => <div className={`lineupItem_editing ${m.id === currentLineupId ? 'lineupItem_current' : ''}`} style={{
+                maxWidth: '75px'
+              }} onClick={updateLineup} option={'setSelected'} index={i} key={i}>
+                                                                <div style={{
+                  fontSize: '.7rem',
+                  fontWeight: '600',
+                  overflowWrap: 'anywhere'
+                }}>{m.title !== '' ? m.title : <div style={{
+                    opacity: '.7'
+                  }}>Participant</div>}</div>
+                                                                <div style={{
+                  marginTop: '.125rem'
+                }}>
+                                                                    <div className={`ProductImageManager_container`} style={{
+                    position: 'relative',
+                    width: '68px',
+                    height: '68px'
+                  }}>
+                                                                        <div className={`${PIMStyles.productImageListThumbnailContainer}`} style={{
+                      backgroundImage: `url(${props.cdn.static}/${m.image})`,
+                      height: '68px',
+                      backgroundSize: 'cover',
+                      borderRadius: '1rem'
+                    }}>
+                                                                            <Tooltip title="Click here to upload an image for your lineup participant" placement='bottom'>
+                                                                                <div className={`${PIMStyles.changeImageButtonSmall} image material-icons`} onClick={handleUploadImage} lineupid={m.id}>image</div>
+                                                                            </Tooltip>
+                                                                            <img src={`${resolveImg(null)}`} className='Product_img' style={{
+                        width: '68px',
+                        height: '68px',
+                        borderRadius: '1rem',
+                        opacity: m.image ? 0 : 1
+                      }} />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {m.time ? <div className='lineupItem_time' style={{
+                  fontSize: '1rem'
+                }}>{getFormattedTime(m.time, {
+                    simple: true
+                  })}</div> : null}
+                                                                {/* <div className='lineupItem_id' style={{ fontSize: '.5rem', overflow: 'hidden', whiteSpace: 'nowrap' }}>{m.id}</div> */}
+                                                            </div>) : null}
+                                            </div>
+                                        </div>
+                                        <input type='file' style={{
+            display: 'none'
+          }} ref={fileInput} onChange={handleNewFile} />
+                                    </div> : null}
+                        </div>
+                    </div> : _div || (_div = <div></div>)}
+        </div>;
 };
 export default Module;

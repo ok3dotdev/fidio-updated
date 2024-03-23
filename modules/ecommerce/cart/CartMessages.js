@@ -1,27 +1,29 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 const Module = props => {
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, props?.cartMessages?.length > 0 ? /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p3",
-    style: {
+  return <React.Fragment>
+            {props?.cartMessages?.length > 0 ? <div className='flex gap-p3' style={{
       paddingBottom: '.25rem'
-    }
-  }, void 0, props.cartMessages.map(m => /*#__PURE__*/_jsx("div", {
-    style: {
-      background: 'rgba(34, 34, 34, 1)',
-      borderRadius: '.5rem',
-      padding: '.25rem',
-      width: '-webkit-fill-available',
-      textAlign: 'center',
-      width: '100%'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, m.message), m.href ? /*#__PURE__*/_jsx("span", {}, void 0, "\xA0", /*#__PURE__*/_jsx("span", {}, void 0, /*#__PURE__*/_jsx("a", {
-    href: m.href
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    style: {
-      padding: '.25rem 1rem'
-    }
-  }, void 0, m.hrefCta)))) : null))) : null);
+    }}>
+                        {props.cartMessages.map(m => <div style={{
+        background: 'rgba(34, 34, 34, 1)',
+        borderRadius: '.5rem',
+        padding: '.25rem',
+        width: '-webkit-fill-available',
+        textAlign: 'center',
+        width: '100%'
+      }}>
+                                    <div>{m.message}</div>
+                                    {m.href ? <span>&nbsp;
+                                                <span>
+                                                    <a href={m.href}>
+                                                        <button style={{
+                padding: '.25rem 1rem'
+              }}>{m.hrefCta}</button>
+                                                    </a>
+                                                </span>
+                                            </span> : null}
+                                </div>)}
+                    </div> : null}
+        </React.Fragment>;
 };
 export default Module;

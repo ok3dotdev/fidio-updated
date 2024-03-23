@@ -1,6 +1,4 @@
 var _h, _span, _span2, _span3, _div, _div2, _div3, _div4, _label;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
@@ -249,191 +247,185 @@ const Module = props => {
 
   // console.log(recentArticles, meta, inHtmlImages, published)
 
-  return /*#__PURE__*/_jsx("div", {
-    className: `${props.className} ${moduleName}_Container`
-  }, void 0, _h || (_h = /*#__PURE__*/_jsx("h3", {}, void 0, "Post")), /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.containerTwoSmallRight}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `Editor_Container Editor_MaxWidth`
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, <TextareaAutosize className={`${AdminStyles.millerText}`} type='text' placeholder='Title' style={{
-    fontStyle: 'italic',
-    width: '100%',
-    fontSize: '2rem',
-    fontWeight: '700'
-  }} ref={titleRef} />), /*#__PURE__*/_jsx("div", {
-    style: {
-      fontSize: '1.125rem',
-      marginBottom: '.25rem',
-      color: '#cccccc',
-      fontWeight: '600'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.millerText}`,
-    style: {
-      fontStyle: 'italic'
-    }
-  }, void 0, /*#__PURE__*/_jsx(Link, {
-    href: `/p?u=${published?.authorUsername ?? props?._loggedIn?.username ?? ''}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, _span || (_span = /*#__PURE__*/_jsx("span", {}, void 0, "by:\xA0")), /*#__PURE__*/_jsx("span", {}, void 0, published?.authorUsername ?? props?._loggedIn?.username ?? '')))), /*#__PURE__*/_jsx("div", {}, void 0, published?.title ? /*#__PURE__*/_jsx("div", {
-    style: {
-      background: 'rgba(55, 55, 55, 1)',
-      borderRadius: '.5rem',
-      padding: '.25rem',
-      width: '-webkit-fill-available',
-      textAlign: 'center',
-      width: '100%',
-      marginBottom: '.25rem'
-    }
-  }, void 0, _span2 || (_span2 = /*#__PURE__*/_jsx("span", {}, void 0, "Read\xA0")), /*#__PURE__*/_jsx(Link, {
-    href: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`
-  }, void 0, "\"", published?.title, "\""), _span3 || (_span3 = /*#__PURE__*/_jsx("span", {}, void 0, "\xA0at\xA0")), /*#__PURE__*/_jsx("span", {
-    selectValue: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`,
-    onClick: selectThisText
-  }, void 0, `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`)) : null), /*#__PURE__*/_jsx("div", {
-    id: `${editorElementId}`,
-    className: `Editor_Platform`,
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("p", {}, void 0, useDefaultText)), /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.metaContainer} flex gap-p2`,
-    style: {
-      marginBottom: '.25rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      flexDirection: 'column'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      minWidth: '200px'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      whiteSpace: 'nowrap'
-    }
-  }, void 0, "Featured Image"), <input type='text' placeholder='Featured Image Url' style={{
-    width: '100%',
-    fontWeight: '600'
-  }} defaultValue={`${meta?.featuredImg ?? ''}`} onChange={handleSetFeaturedImage} ref={featuredImgUrlRef} />), <img style={{
-    backgroundImage: `url(${meta?.featuredImg ?? null}`,
-    height: '100px',
-    width: '100%',
-    minWidth: '100px',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center'
-  }} selectValue={`${meta?.featuredImg ?? null}`} onClick={selectThisText} ref={featuredImgRef} />), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      width: '100%'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      width: '100%'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, _div || (_div = /*#__PURE__*/_jsx("div", {}, void 0, "Groups")), <input type='text' id={`${moduleName}_groupingInput`} placeholder='Post Groups' style={{
-    width: '100%',
-    fontWeight: '600'
-  }} onInput={handleUpdateInput} modif='groups' ref={groupsRef} />), useGroups?.length > 0 ? /*#__PURE__*/_jsx("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, void 0, useGroups.map(d => {
-    return d !== '' ? /*#__PURE__*/_jsx("div", {
-      className: "tagItem"
-    }, void 0, d) : _div2 || (_div2 = /*#__PURE__*/_jsx("div", {}));
-  })) : null), /*#__PURE__*/_jsx("div", {
-    style: {
-      width: '100%'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, _div3 || (_div3 = /*#__PURE__*/_jsx("div", {}, void 0, "Tags")), <input type='text' id={`${moduleName}_useTagsInput`} placeholder='Tags' style={{
-    width: '100%',
-    fontWeight: '600'
-  }} onInput={handleUpdateInput} modif='tags' ref={tagsRef} />), useTags?.length > 0 ? /*#__PURE__*/_jsx("div", {
-    className: "tagContainer",
-    style: {
-      marginTop: '.25rem'
-    }
-  }, void 0, useTags.map(d => {
-    return d !== '' ? /*#__PURE__*/_jsx("div", {
-      className: "tagItem"
-    }, void 0, d) : _div4 || (_div4 = /*#__PURE__*/_jsx("div", {}));
-  })) : null))), /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.forceSafeBreak} flex gap-p2`
-  }, void 0, !published ? /*#__PURE__*/_jsx("button", {
-    className: `${AdminStyles.actionButton}`,
-    onClick: handlePublishArticle
-  }, void 0, "Post") : /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2"
-  }, void 0, /*#__PURE__*/_jsx("button", {
-    style: {
-      minWidth: '200px',
-      maxWidth: '90%'
-    },
-    onClick: handlePublishArticle
-  }, void 0, "Update"), /*#__PURE__*/_jsx("button", {
-    style: {
-      minWidth: '200px',
-      maxWidth: '90%'
-    },
-    onClick: handleDeleteArticle
-  }, void 0, "Delete")), /*#__PURE__*/_jsx("div", {
-    className: "flex gap-p2",
-    style: {
-      background: 'rgb(55, 55, 55)',
-      borderRadius: '1rem',
-      padding: '0 2rem',
-      justifyContent: 'center'
-    }
-  }, void 0, _label || (_label = /*#__PURE__*/_jsx("label", {}, void 0, "Approved")), <input type='checkbox' ref={approvedRef} defaultChecked={true} onChange={handleSetApproved} />)), didPublishThisSession && published?.id ? /*#__PURE__*/_jsx("div", {
-    style: {
-      marginTop: '.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      background: 'rgba(55, 55, 55, 1)',
-      borderRadius: '.5rem',
-      padding: '.25rem',
-      width: '-webkit-fill-available',
-      textAlign: 'center',
-      width: '100%'
-    }
-  }, void 0, "Your post was made successsfully. View at\xA0", /*#__PURE__*/_jsx(Link, {
-    href: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`
-  }, void 0, `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`))) : null), /*#__PURE__*/_jsx("div", {}, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      marginBottom: '.5rem'
-    }
-  }, void 0, /*#__PURE__*/_jsx("h4", {
-    style: {
-      fontWeight: '600'
-    }
-  }, void 0, "Recent Articles"), /*#__PURE__*/_jsx("div", {
-    className: `${AdminStyles.simpleList} ${AdminStyles.simpleListShortText}`,
-    style: {
-      maxHeight: '200px',
-      overflow: 'auto'
-    }
-  }, void 0, recentArticles?.length > 0 ? recentArticles.map((m, i) => /*#__PURE__*/_jsx("div", {
-    style: {
-      background: 'rgb(53, 53, 53)'
-    }
-  }, void 0, /*#__PURE__*/_jsx("span", {
-    style: {
-      cursor: 'pointer'
-    },
-    article: m?.id,
-    onClick: handleLoadArticle
-  }, void 0, m.title), /*#__PURE__*/_jsx("span", {}, void 0, m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? ` - ${new Date(Number(m.publish)).toDateString()}` : ''))) : null)), /*#__PURE__*/_jsx("div", {}, void 0, <StorageAdmin {...props} vert={true} />))));
+  return <div className={`${props.className} ${moduleName}_Container`}>
+            {_h || (_h = <h3>Post</h3>)}
+            <div className={`${AdminStyles.containerTwoSmallRight}`}>
+                <div className={`Editor_Container Editor_MaxWidth`}>
+                    <div>
+                        <TextareaAutosize className={`${AdminStyles.millerText}`} type='text' placeholder='Title' style={{
+            fontStyle: 'italic',
+            width: '100%',
+            fontSize: '2rem',
+            fontWeight: '700'
+          }} ref={titleRef} />
+                    </div>
+                    <div style={{
+          fontSize: '1.125rem',
+          marginBottom: '.25rem',
+          color: '#cccccc',
+          fontWeight: '600'
+        }}>
+                        <div className={`${AdminStyles.millerText}`} style={{
+            fontStyle: 'italic'
+          }}>
+                            <Link href={`/p?u=${published?.authorUsername ?? props?._loggedIn?.username ?? ''}`} style={{
+              alignSelf: 'center'
+            }}>
+                                {_span || (_span = <span>by:&nbsp;</span>)}<span>{published?.authorUsername ?? props?._loggedIn?.username ?? ''}</span>
+                            </Link>
+                        </div>
+                    </div>
+                    <div>
+                        {published?.title ? <div style={{
+            background: 'rgba(55, 55, 55, 1)',
+            borderRadius: '.5rem',
+            padding: '.25rem',
+            width: '-webkit-fill-available',
+            textAlign: 'center',
+            width: '100%',
+            marginBottom: '.25rem'
+          }}>
+                                    {_span2 || (_span2 = <span>Read&nbsp;</span>)}
+                                    <Link href={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`}>"{published?.title}"</Link>
+                                    {_span3 || (_span3 = <span>&nbsp;at&nbsp;</span>)}
+                                    <span selectValue={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`} onClick={selectThisText}>{`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`}</span>
+                                </div> : null}
+                    </div>
+                    <div id={`${editorElementId}`} className={`Editor_Platform`} style={{
+          marginBottom: '.25rem'
+        }}>
+                        <p>{useDefaultText}</p>
+                    </div>
+                    <div className={`${AdminStyles.metaContainer} flex gap-p2`} style={{
+          marginBottom: '.25rem'
+        }}>
+                        <div className='flex gap-p2' style={{
+            flexDirection: 'column'
+          }}>
+                            <div style={{
+              minWidth: '200px'
+            }}>
+                                <div style={{
+                whiteSpace: 'nowrap'
+              }}>Featured Image</div>
+                                <input type='text' placeholder='Featured Image Url' style={{
+                width: '100%',
+                fontWeight: '600'
+              }} defaultValue={`${meta?.featuredImg ?? ''}`} onChange={handleSetFeaturedImage} ref={featuredImgUrlRef} />
+                            </div>
+                            <img style={{
+              backgroundImage: `url(${meta?.featuredImg ?? null}`,
+              height: '100px',
+              width: '100%',
+              minWidth: '100px',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }} selectValue={`${meta?.featuredImg ?? null}`} onClick={selectThisText} ref={featuredImgRef} />
+                        </div>
+                        <div className='flex gap-p2' style={{
+            width: '100%'
+          }}>
+                            <div style={{
+              width: '100%'
+            }}>
+                                <div className='flex gap-p2'>
+                                    {_div || (_div = <div>Groups</div>)}
+                                    <input type='text' id={`${moduleName}_groupingInput`} placeholder='Post Groups' style={{
+                  width: '100%',
+                  fontWeight: '600'
+                }} onInput={handleUpdateInput} modif='groups' ref={groupsRef} />
+                                </div>
+                                {useGroups?.length > 0 ? <div className='tagContainer' style={{
+                marginTop: '.25rem'
+              }}>
+                                        {useGroups.map(d => {
+                  return d !== '' ? <div className='tagItem'>{d}</div> : _div2 || (_div2 = <div></div>);
+                })}
+                                    </div> : null}
+                            </div>
+                            <div style={{
+              width: '100%'
+            }}>
+                                <div className='flex gap-p2'>
+                                    {_div3 || (_div3 = <div>Tags</div>)}
+                                    <input type='text' id={`${moduleName}_useTagsInput`} placeholder='Tags' style={{
+                  width: '100%',
+                  fontWeight: '600'
+                }} onInput={handleUpdateInput} modif='tags' ref={tagsRef} />
+                                </div>
+                                {useTags?.length > 0 ? <div className='tagContainer' style={{
+                marginTop: '.25rem'
+              }}>
+                                        {useTags.map(d => {
+                  return d !== '' ? <div className='tagItem'>{d}</div> : _div4 || (_div4 = <div></div>);
+                })}
+                                    </div> : null}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`${AdminStyles.forceSafeBreak} flex gap-p2`}>
+                        {!published ? <button className={`${AdminStyles.actionButton}`} onClick={handlePublishArticle}>Post</button> : <div className='flex gap-p2'>
+                                    <button style={{
+              minWidth: '200px',
+              maxWidth: '90%'
+            }} onClick={handlePublishArticle}>Update</button>
+                                    <button style={{
+              minWidth: '200px',
+              maxWidth: '90%'
+            }} onClick={handleDeleteArticle}>Delete</button>
+                                </div>}
+                        {<div className='flex gap-p2' style={{
+            background: 'rgb(55, 55, 55)',
+            borderRadius: '1rem',
+            padding: '0 2rem',
+            justifyContent: 'center'
+          }}>
+                                {_label || (_label = <label>Approved</label>)}
+                                <input type='checkbox' ref={approvedRef} defaultChecked={true} onChange={handleSetApproved} />
+                            </div>}
+                    </div>
+                    {didPublishThisSession && published?.id ? <div style={{
+          marginTop: '.5rem'
+        }}>
+                                <div style={{
+            background: 'rgba(55, 55, 55, 1)',
+            borderRadius: '.5rem',
+            padding: '.25rem',
+            width: '-webkit-fill-available',
+            textAlign: 'center',
+            width: '100%'
+          }}>Your post was made successsfully. View at&nbsp;
+                                    <Link href={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`}>{`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`}</Link>
+                                </div>
+                            </div> : null}
+                </div>
+                <div>
+                    <div style={{
+          marginBottom: '.5rem'
+        }}>
+                        <h4 style={{
+            fontWeight: '600'
+          }}>Recent Articles</h4>
+                        <div className={`${AdminStyles.simpleList} ${AdminStyles.simpleListShortText}`} style={{
+            maxHeight: '200px',
+            overflow: 'auto'
+          }}>
+                            {recentArticles?.length > 0 ? recentArticles.map((m, i) => <div style={{
+              background: 'rgb(53, 53, 53)'
+            }}>
+                                            <span style={{
+                cursor: 'pointer'
+              }} article={m?.id} onClick={handleLoadArticle}>{m.title}</span>
+                                            <span>{m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? ` - ${new Date(Number(m.publish)).toDateString()}` : ''}</span>
+                                        </div>) : null}
+                        </div>
+                    </div>
+                    <div>
+                        <StorageAdmin {...props} vert={true} />
+                    </div>
+                </div>
+            </div>
+        </div>;
 };
 export default Module;

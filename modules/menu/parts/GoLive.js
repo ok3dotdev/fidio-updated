@@ -1,20 +1,18 @@
 var _li;
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import Link from 'next/link';
 import menuStyle from '../Menu.module.scss';
 const Module = props => {
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, /*#__PURE__*/_jsx(Link, {
-    href: "/p?a=golive",
-    className: `menuLinkSelector slideGradient`,
-    onClick: props?.handleToggleSettings,
-    style: {
+  return <React.Fragment>
+            <Link href="/p?a=golive" className={`menuLinkSelector slideGradient`} onClick={props?.handleToggleSettings} style={{
       position: 'relative',
       alignSelf: 'center'
-    }
-  }, void 0, _li || (_li = /*#__PURE__*/_jsx("li", {}, void 0, /*#__PURE__*/_jsx("div", {
-    className: `material-icons`
-  }, void 0, "stream"), /*#__PURE__*/_jsx("div", {}, void 0, "Go Live")))));
+    }}>
+                {_li || (_li = <li>
+                    <div className={`material-icons`}>stream</div>
+                    <div>Go Live</div>
+                </li>)}
+            </Link>
+        </React.Fragment>;
 };
 export default Module;

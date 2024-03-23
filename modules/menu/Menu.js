@@ -1,5 +1,3 @@
-var REACT_ELEMENT_TYPE;
-function _jsx(e, r, E, l) { REACT_ELEMENT_TYPE || (REACT_ELEMENT_TYPE = "function" == typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103); var o = e && e.defaultProps, n = arguments.length - 3; if (r || 0 === n || (r = { children: void 0 }), 1 === n) r.children = l;else if (n > 1) { for (var t = new Array(n), f = 0; f < n; f++) t[f] = arguments[f + 3]; r.children = t; } if (r && o) for (var i in o) void 0 === r[i] && (r[i] = o[i]);else r || (r = o || {}); return { $$typeof: REACT_ELEMENT_TYPE, type: e, key: void 0 === E ? null : "" + E, ref: null, props: r, _owner: null }; }
 import React from 'react';
 import SubMenu from './SubMenu.js';
 // import brand from '../../styles/Brand.module.scss';
@@ -155,101 +153,81 @@ const Module = props => {
     setHelpOpen(false);
   });
   const resolvedCountry = props?.regionsData && props?._loggedIn?.meta?.locationMeta?.country && props.regionsData[props._loggedIn.meta.locationMeta.country] && props.regionsData[props._loggedIn.meta.locationMeta.country].name ? props.regionsData[props._loggedIn.meta.locationMeta.country].name : props?._loggedIn?.meta?.locationMeta?.country ?? null;
-  return /*#__PURE__*/_jsx(React.Fragment, {}, void 0, props?.useMenu ? /*#__PURE__*/_jsx("div", {
-    style: {
+  return <React.Fragment>
+            {props?.useMenu ? <div style={{
       width: 100 + "%",
       height: props?.menuConfig?.height ? props.menuConfig.height + 'px' : '',
       padding: props?.menuConfig?.padding ? props.menuConfig.padding : ''
-    },
-    className: `leadMenuContainer ${menuStyle.container} darkModeEnforce Menu_LeadContainer ${props.className}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    style: {
-      paddingBottom: 0,
-      paddingTop: 0,
-      maxHeight: '100%'
-    },
-    className: `margin1600 menuContainer`
-  }, void 0, <SubMenu {...props} handleToggleMenuOff={handleToggleMenuOff}></SubMenu>, /*#__PURE__*/_jsx("ul", {
-    className: !props._loggedIn ? `${menuStyle.menu} ${menuStyle.menuClosed}` : menuStyle.menu
-  }, void 0, props?.menuConfig?.right ? props.menuConfig.right.map((c, i) => /*#__PURE__*/_jsx(React.Fragment, {}, i, c.type ? c.type === 'user' ? <DropMenu {...props} resolvedCountry={resolvedCountry} handleToggleSettings={handleToggleSettings} handleLogout={handleLogout} fireHelp={fireHelp} fireShareFeedback={fireShareFeedback} fireShareBug={fireShareBug} fireShowSignIn={fireShowSignIn} /> : c.type === 'cart' ? /*#__PURE__*/_jsx("div", {
-    className: `${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`
-  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Cart",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("li", {
-    className: `${menuStyle.menuLink} darkMenuLink menuLinkSelector`,
-    onClick: handleToggleCart,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, /*#__PURE__*/_jsx("span", {
-    className: `${menuStyle.menuLinkText}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuText}`
-  }, void 0, "Cart"), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} cart material-icons`
-  }, void 0, "shopping_cart")), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} cart material-icons`
-  }, void 0, "shopping_cart")))) : c.type === 'stream' ? /*#__PURE__*/_jsx(Link, {
-    href: c.href,
-    className: `menuLinkSelector ${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Livestream Now",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("li", {
-    className: `${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`,
-    style: {
-      alignSelf: 'center'
-    },
-    onClick: handleToggleMenuOff
-  }, void 0, /*#__PURE__*/_jsx("span", {
-    className: `${menuStyle.menuLinkText}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuText}`
-  }, void 0, "Stream"), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} live_tv material-icons`
-  }, void 0, "live_tv")), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} live_tv material-icons`
-  }, void 0, "live_tv")))) : c.type === 'notifications' ? /*#__PURE__*/_jsx("div", {
-    className: `menuLinkSelector ${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, /*#__PURE__*/_jsx(Tooltip, {
-    title: "Notifications",
-    placement: "bottom"
-  }, void 0, /*#__PURE__*/_jsx("li", {
-    className: `${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`,
-    style: {
-      alignSelf: 'center'
-    },
-    onClick: handleToggleNotifications
-  }, void 0, /*#__PURE__*/_jsx("span", {
-    className: `${menuStyle.menuLinkText}`
-  }, void 0, /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuText}`
-  }, void 0, "Notifications"), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} live_tv material-icons`
-  }, void 0, "notifications")), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} live_tv material-icons`
-  }, void 0, "notifications")))) : c.type === 'link' ? /*#__PURE__*/_jsx(Link, {
-    href: c.href,
-    className: `menuLinkSelector ${c.className}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, /*#__PURE__*/_jsx("li", {
-    className: `${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`,
-    style: {
-      alignSelf: 'center'
-    }
-  }, void 0, /*#__PURE__*/_jsx("span", {
-    className: `${menuStyle.menuLinkText}`
-  }, void 0, /*#__PURE__*/_jsx("div", {}, void 0, c.name)), /*#__PURE__*/_jsx("div", {
-    className: `${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} material-icons`
-  }, void 0, c.name))) : null : null)) : null)), <Help {...props} open={helpOpen} setHelpOpen={setHelpOpen}></Help>, <Cart {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />, <Notifications {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />, <SurveyContainer {...props} handleName='feedback' survey={props?.feedbackConfig?.surveyData} />, <SurveyContainer {...props} handleName='bugReport' survey={props?.feedbackConfig?.bugReportData} />) : null);
+    }} className={`leadMenuContainer ${menuStyle.container} darkModeEnforce Menu_LeadContainer ${props.className}`}>
+                        <div style={{
+        paddingBottom: 0,
+        paddingTop: 0,
+        maxHeight: '100%'
+      }} className={`margin1600 menuContainer`}>
+                            <SubMenu {...props} handleToggleMenuOff={handleToggleMenuOff}></SubMenu>
+                            <ul className={!props._loggedIn ? `${menuStyle.menu} ${menuStyle.menuClosed}` : menuStyle.menu}>
+                                {props?.menuConfig?.right ? props.menuConfig.right.map((c, i) => <React.Fragment key={i}>
+                                                {c.type ? c.type === 'user' ? <DropMenu {...props} resolvedCountry={resolvedCountry} handleToggleSettings={handleToggleSettings} handleLogout={handleLogout} fireHelp={fireHelp} fireShareFeedback={fireShareFeedback} fireShareBug={fireShareBug} fireShowSignIn={fireShowSignIn} /> : c.type === 'cart' ? <div className={`${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`}>
+                                                                <Tooltip title='Cart' placement='bottom'>
+                                                                    <li className={`${menuStyle.menuLink} darkMenuLink menuLinkSelector`} onClick={handleToggleCart} style={{
+                  alignSelf: 'center'
+                }}>
+                                                                        <span className={`${menuStyle.menuLinkText}`}>
+                                                                            <div className={`${menuStyle.menuText}`}>Cart</div>
+                                                                            <div className={`${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} cart material-icons`}>shopping_cart</div>
+                                                                        </span>
+                                                                        <div className={`${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} cart material-icons`}>shopping_cart</div>
+                                                                    </li>
+                                                                </Tooltip>
+                                                            </div> : c.type === 'stream' ? <Link href={c.href} className={`menuLinkSelector ${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`} style={{
+              alignSelf: 'center'
+            }}>
+                                                                    <Tooltip title='Livestream Now' placement='bottom'>
+                                                                        <li className={`${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`} style={{
+                  alignSelf: 'center'
+                }} onClick={handleToggleMenuOff}>
+                                                                            <span className={`${menuStyle.menuLinkText}`}>
+                                                                                <div className={`${menuStyle.menuText}`}>Stream</div>
+                                                                                <div className={`${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} live_tv material-icons`}>live_tv</div>
+                                                                            </span>
+                                                                            <div className={`${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} live_tv material-icons`}>live_tv</div>
+                                                                        </li>
+                                                                    </Tooltip>
+                                                                </Link> : c.type === 'notifications' ? <div className={`menuLinkSelector ${c.className} ${c.smallUntilHover ? `${menuStyle.smallUntilHover}` : null}`} style={{
+              alignSelf: 'center'
+            }}>
+                                                                <Tooltip title='Notifications' placement='bottom'>
+                                                                    <li className={`${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`} style={{
+                  alignSelf: 'center'
+                }} onClick={handleToggleNotifications}>
+                                                                        <span className={`${menuStyle.menuLinkText}`}>
+                                                                            <div className={`${menuStyle.menuText}`}>Notifications</div>
+                                                                            <div className={`${menuStyle.menuLinkIconPair} ${menuStyle.maxIconWidth} live_tv material-icons`}>notifications</div>
+                                                                        </span>
+                                                                        <div className={`${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} live_tv material-icons`}>notifications</div>
+                                                                    </li>
+                                                                </Tooltip>
+                                                            </div> : c.type === 'link' ? <Link href={c.href} className={`menuLinkSelector ${c.className}`} style={{
+              alignSelf: 'center'
+            }}>
+                                                                <li className={`${menuStyle.menuLink} darkMenuLink menuLinkSelector ${c.className}`} style={{
+                alignSelf: 'center'
+              }}>
+                                                                    <span className={`${menuStyle.menuLinkText}`}>
+                                                                        <div>{c.name}</div>
+                                                                    </span>
+                                                                    <div className={`${menuStyle.menuLinkIcon} ${menuStyle.maxIconWidth} material-icons`}>{c.name}</div>
+                                                                </li>
+                                                            </Link> : null : null}
+                                            </React.Fragment>) : null}
+                            </ul>
+                        </div>
+                        <Help {...props} open={helpOpen} setHelpOpen={setHelpOpen}></Help>
+                        <Cart {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
+                        <Notifications {...props} passOveride={passOveride} forceShowCc={props?.paymentConfig?.forceShowCc} />
+                        <SurveyContainer {...props} handleName='feedback' survey={props?.feedbackConfig?.surveyData} />
+                        <SurveyContainer {...props} handleName='bugReport' survey={props?.feedbackConfig?.bugReportData} />
+                    </div> : null}
+        </React.Fragment>;
 };
 export default Module;
