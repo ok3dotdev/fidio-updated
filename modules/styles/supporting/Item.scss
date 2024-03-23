@@ -1,0 +1,60 @@
+.Item_GhostMetaItemContainer .Item_GhostMetaContainer {
+    opacity: 0;
+}
+
+.Item_GhostMetaItemContainer:hover .Item_GhostMetaContainer {
+    transition: 100ms;
+    opacity: 1;
+}
+
+.Item_GhostMeta {
+    position: absolute;
+    bottom: 0;
+    font-size: .8rem;
+    width: -webkit-fill-available;
+    margin: .5rem;
+}
+
+.Item_ContainerMetaController {
+    .Item_GhostMeta {
+        transition: 100ms;
+        opacity: 0;
+        bottom: 19px;
+        left: 0px;
+        margin: 0;
+        padding: .35rem .6rem;
+        .Item_GhostMetaContainerInternal {
+            border-radius: 0 0 .5rem .5rem;
+        }
+    }
+}
+
+.Item_ContainerMetaController:hover {
+    .Item_GhostMeta {
+        opacity: 1;
+    }
+}
+
+.Item_ContainerMetaControllerFeature_medium {
+    .Item_GhostMeta {
+        bottom: 20px;
+        font-size: .7rem;
+        margin: 0;
+        padding: .125rem .5rem;
+    }
+}
+
+.Item_ContainerMetaControllerFeature {
+    
+}
+
+.Item_GhostMetaContainerInternal {
+    background: rgb(128, 128, 128, .75);
+    padding: .25rem;
+    font-weight: 600;
+}
+
+.Item_TinyMetaText {
+    font-size: .7rem;
+    font-weight: 600;
+}
