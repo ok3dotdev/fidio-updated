@@ -1,3 +1,9 @@
+.container {
+    pre {
+        margin: 0;
+    }
+}
+
 .menuContainer {
     display: flex;
     padding: 0 .5rem;
@@ -117,4 +123,15 @@
     background: #4fffb3;
     color: black;
     border: 1px solid white;
+}
+
+.htmlParseContainer > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.htmlParseContainer {
+    h1, h2, h3, h4, h5 {
+        margin: 0;
+    }
 }
