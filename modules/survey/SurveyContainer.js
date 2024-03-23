@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import Close from '@mui/icons-material/Close';
 import { Survey } from '.';
@@ -57,29 +58,33 @@ const Module = props => {
     setClosing(true);
     props._toggleSingleOpenMenu(null, props?.handleName, false);
   });
-  return <React.Fragment>
-            <div className={`Misc_Container Misc_Container_Bigger ${props.className} ${props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''}`} ref={container} style={{
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Container Misc_Container_Bigger ${props.className} ${props.open || menuOpen && !closing ? 'Misc_Container_Visible' : ''}`,
+    ref: container,
+    style: {
       top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }}>
-                {props.open || menuOpen ? <React.Fragment>
-                            <div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-                            <div style={{
-          position: 'sticky',
-          top: '.5rem',
-          right: 0,
-          zIndex: 10
-        }}>
-                                    <Close className={'Misc_Icon_Button'} style={{
-            margin: '0rem 0',
-            position: 'absolute',
-            right: '.5rem'
-          }} onClick={handleClose}></Close>
-                                </div>
-                            <div>
-                                <Survey survey={props?.survey} height={250} close={handleClose} {...props}></Survey>
-                            </div>
-                        </React.Fragment> : null}
-            </div>
-        </React.Fragment>;
+    }
+  }, props.open || menuOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'sticky',
+      top: '.5rem',
+      right: 0,
+      zIndex: 10
+    }
+  }, /*#__PURE__*/React.createElement(Close, {
+    className: 'Misc_Icon_Button',
+    style: {
+      margin: '0rem 0',
+      position: 'absolute',
+      right: '.5rem'
+    },
+    onClick: handleClose
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Survey, _extends({
+    survey: props?.survey,
+    height: 250,
+    close: handleClose
+  }, props)))) : null));
 };
 export default Module;

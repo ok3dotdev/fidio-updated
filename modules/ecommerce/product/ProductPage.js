@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import Image from 'next/image';
 import Tooltip from '@mui/material/Tooltip';
@@ -77,62 +78,81 @@ const Module = props => {
     }
   });
   console.log(product, currentPrice);
-  return <React.Fragment>
-            {ReactCarouselCss}
-            <div className={`${PIMStyles.container} ${props.className}`}>
-                <div className={`${PIMStyles.innerContainer}`}>
-                    <div className={`${PIMStyles.leadProductContainer}`}>
-                        <div className={`${PIMStyles.singleProductCarouselProvider}`}>
-                            <div className={`${PIMStyles.productSliderThumbnailListContainer}`}>
-                                {product?.images ? product.images.map((image, i) => <div slide={i} key={i} className={`${PIMStyles.productSliderThumbSelectMin}`} onClick={handleSetSlide} i={i}>
-                                            <Image className={`${PIMStyles.sliderThumbSelectMinImg}`} loader={() => {
-                  return props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null;
-                }} src={props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null} alt='Title' width={35} height={45} layout="responsive" />
-                                        </div>) : null}
-                            </div>
-                            <Slider {...useSettings} className={`${PIMStyles.productSliderProductContainer}`} ref={sliderTrackRef}>
-                                {product?.images ? product.images.map((image, i) => <div index={i} key={i}>
-                                                <div className={`${PIMStyles.productSliderProductImg}`} style={{
-                  backgroundImage: `url(${props.cdn.static}/${image.name})`
-                }}></div>
-                                            </div>) : null}
-                            </Slider>
-                        </div>
-                        <div>
-                            <h1 className={`${PIMStyles.productPageTitle}`}>{product?.name ?? null}</h1>
-                            <div>
-                                <div>{product?.detailmeta?.description ?? null}</div>
-                            </div>
-                            <div>
-                                <div className='flex gap-p2' style={{
-                margin: '.125rem 0'
-              }}>
-                                    <div style={{
-                  fontSize: '1.5rem',
-                  fontWeight: 600
-                }}><span>{currentPrice?.symbol ?? null}</span><span>{currentPrice?.price ?? null}</span></div>
-                                    <div className='Product_CurrencyLabel' style={{
-                  fontSize: '1.3rem',
-                  fontWeight: 600,
-                  background: 'rgba(150, 150, 150, .5)',
-                  padding: '.075rem',
-                  borderRadius: '.25rem'
-                }}>{currentPrice?.currency ?? 'USD'}</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className={`flex gap-p2 wrap`} style={{
-                marginTop: '.5rem'
-              }}>
-                                    {/* <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='buy'>Buy Now</button> */}
-                                    <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='add_to_cart'>Add To Cart</button>
-                                    {product?.detailmeta?.subscription ? <button onClick={handleFireGlobalEvent} item={product?.id} selectedstyle={selectedStyle} currentoption={currentOption} action='add_to_cart_subscribe'>Subscribe</button> : null}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, ReactCarouselCss, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.container} ${props.className}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.innerContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.leadProductContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.singleProductCarouselProvider}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.productSliderThumbnailListContainer}`
+  }, product?.images ? product.images.map((image, i) => /*#__PURE__*/React.createElement("div", {
+    slide: i,
+    key: i,
+    className: `${PIMStyles.productSliderThumbSelectMin}`,
+    onClick: handleSetSlide,
+    i: i
+  }, /*#__PURE__*/React.createElement(Image, {
+    className: `${PIMStyles.sliderThumbSelectMinImg}`,
+    loader: () => {
+      return props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null;
+    },
+    src: props?.cdn?.static ? `${props.cdn.static}/${image.name}` : null,
+    alt: "Title",
+    width: 35,
+    height: 45,
+    layout: "responsive"
+  }))) : null), /*#__PURE__*/React.createElement(Slider, _extends({}, useSettings, {
+    className: `${PIMStyles.productSliderProductContainer}`,
+    ref: sliderTrackRef
+  }), product?.images ? product.images.map((image, i) => /*#__PURE__*/React.createElement("div", {
+    index: i,
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${PIMStyles.productSliderProductImg}`,
+    style: {
+      backgroundImage: `url(${props.cdn.static}/${image.name})`
+    }
+  }))) : null)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+    className: `${PIMStyles.productPageTitle}`
+  }, product?.name ?? null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, product?.detailmeta?.description ?? null)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      margin: '.125rem 0'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '1.5rem',
+      fontWeight: 600
+    }
+  }, /*#__PURE__*/React.createElement("span", null, currentPrice?.symbol ?? null), /*#__PURE__*/React.createElement("span", null, currentPrice?.price ?? null)), /*#__PURE__*/React.createElement("div", {
+    className: "Product_CurrencyLabel",
+    style: {
+      fontSize: '1.3rem',
+      fontWeight: 600,
+      background: 'rgba(150, 150, 150, .5)',
+      padding: '.075rem',
+      borderRadius: '.25rem'
+    }
+  }, currentPrice?.currency ?? 'USD'))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: `flex gap-p2 wrap`,
+    style: {
+      marginTop: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: handleFireGlobalEvent,
+    item: product?.id,
+    selectedstyle: selectedStyle,
+    currentoption: currentOption,
+    action: "add_to_cart"
+  }, "Add To Cart"), product?.detailmeta?.subscription ? /*#__PURE__*/React.createElement("button", {
+    onClick: handleFireGlobalEvent,
+    item: product?.id,
+    selectedstyle: selectedStyle,
+    currentoption: currentOption,
+    action: "add_to_cart_subscribe"
+  }, "Subscribe") : null)))))));
 };
 export default Module;

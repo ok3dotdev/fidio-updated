@@ -7,11 +7,9 @@ const Module = props => {
     day: 'numeric',
     year: 'numeric'
   }) : null;
-  return <React.Fragment>
-            {dateFormatted ? <div>{dateFormatted} at {useDate.toLocaleString('en-US', {
-        hour: 'numeric',
-        minute: 'numeric'
-      })}</div> : null}
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, dateFormatted ? /*#__PURE__*/React.createElement("div", null, dateFormatted, " at ", useDate.toLocaleString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric'
+  })) : null);
 };
 export default Module;

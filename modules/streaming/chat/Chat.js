@@ -388,98 +388,154 @@ const Module = props => {
   // Chat should have 1000 last chats
 
   console.log('Chat Log', chatLog, Array.isArray(chatLog), props.className, recentChats, props, userDisplay, currentBanTable, useThreadOffset, blockSend, blockChat);
-  return <div className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`} onClick={handleRunTasks}>
-            {userDisplay ? <div className={`${ChatStyles.userDisplayContainer} Chat_UserDisplayContainer`}>
-                        <div>
-                            <div className={`Chat_UserDisplayInternalContainer`} style={{
-          display: 'flex',
-          gap: '.25rem'
-        }}>
-                                <div className={`Chat_UserDisplayUser`}>
-                                    <Link href={`/p?u=${userDisplay.user}`} style={{
-              alignSelf: 'center'
-            }}>{userDisplay.user}</Link>
-                                </div>
-                                {modPower?.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? <button style={{
-            fontSize: '.75rem',
-            padding: '.125rem .25rem'
-          }} onClick={handleAttemptUnBanUser} userid={`${userDisplay.id}`}>Unban User</button> : <button style={{
-            fontSize: '.75rem',
-            padding: '.125rem .25rem'
-          }} onClick={handleAttemptBanUser} userid={`${userDisplay.id}`}>Ban User</button> : null}
-                            </div>
-                        </div>
-                        <Close className={`${ChatStyles.close}`} onClick={handleSetUserDisplayOff} modif='close'></Close>
-                    </div> : null}
-            <div className={`${ChatStyles.chatLogExternalContainer} ${mobileStyleConfigs ? `${ChatStyles.mobileChatLogExternalContainer}` : null} Chat_ChatLogExternalContainer`} ref={scrollChatRef}>
-                <div className={`${ChatStyles.chatLogContainer} Chat_ChatLogContainer`} ref={scrollChatInnerRef}>
-                {chatLog && Array.isArray(chatLog) ? chatLog.map((m, i) => <div className={`Chat_ChatLogItemContainer`} key={i} index={i}>
-                                {m.id && m.content && m.author ? <div className={`Chat_ChatLogItemInternalContainer`} logid={m.id} time={m.time} author={m.author} replylogid={m.replyLogid ?? null} replyusername={m.replyUsername}>
-                                            <div className={`${ChatStyles.chatLogMain} ${highlightedChat === m.id ? `${ChatStyles.highlightedChat}` : ''} Chat_ChatLogMain`}>
-                                                <div className={`${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername`} username={m.username} author={m.author} onClick={handleSetUserDisplay}>{m.username}</div>
-                                                    {replyOff ? null : <React.Fragment>
-                                                                {m.replyLogid && m.replyUsername ? <div className={`${ChatStyles.replyMeta}`}>
-                                                                            <div>Chat is Reply to <b>@{m.replyUsername}</b></div>
-                                                                        </div> : <div className={`${ChatStyles.replyMeta}`}>
-                                                                            <div>Reply to <b>@{m.username}</b></div>
-                                                                        </div>}
-                                                            </React.Fragment>}
-                                                    <div className={`Chat_Content`}>{m.content}</div>
-                                                    {replyOff ? null : <React.Fragment>
-                                                                {m.replyLogid ? <div className={`${ChatStyles.viewReplyTo} Chat_ViewReplyTo`} onClick={handleGoToPost} logid={m.replyLogid} style={{
-                  marginTop: '.25rem'
-                }}>
-                                                                            <ArrowUpward logid={m.replyLogid}></ArrowUpward>
-                                                                        </div> : null}
-                                                                <div className={`${ChatStyles.replyTo} Chat_ReplyTo`} onClick={handleReplyTo} logid={m.id} username={m.username} author={m.author} style={{
-                  marginTop: '.25rem'
-                }}>
-                                                                    <Reply logid={m.id} username={m.username} author={m.author}></Reply>
-                                                                </div>
-                                                            </React.Fragment>}
-                                            </div>
-                                        </div> : _React$Fragment || (_React$Fragment = <React.Fragment></React.Fragment>)}
-                            </div>) : _div || (_div = <div></div>)}
-                </div>
-            </div>
-            <div className={`${ChatStyles.chatInputContainer} ${!props.chatState ? `${ChatStyles.forceHideChat}` : null} Chat_ChatInputContainer`}>
-                <div className={`${ChatStyles.chatInputInternalContainer} Chat_ChatInputInternalContainer`}>
-                    {recentChatTimeout ? <div className={`${ChatStyles.chatWarningContainer} Chat_ChatWarningContainer`}>
-                                <div className={`${ChatStyles.warningText} Chat_WarningText`}>{recentChatTimeout ? 'Timed Out' : ''}</div>
-                                {recentChats?.length ? <div className={`${ChatStyles.warningBody}`} style={{
-            fontSize: '.85rem'
-          }}>You have sent {recentChats.length} recent chats</div> : null}
-                            </div> : null}
-                    {replyToId && replyToUsername ? <div>
-                                {replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? <div className={`${ChatStyles.replyToRepliesContainer} Chat_ReplyToRepliesContainer`} style={{
-            top: `-${replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset}rem`
-          }}>
-                                            <div className={`${ChatStyles.threadLabel} Chat_ThreadLabel`}>Thread</div>
-                                            {replyToContent.slice(0).reverse().map((m, i) => i < 4 ? <div className={`${ChatStyles.replyToRepliesThread} Chat_ReplyToRepliesThread`} style={{
-              display: 'flex',
-              gap: '.25rem'
-            }} key={i} index={i}>
-                                                            <div className={`Chat_ReplyToRepliesUsername`}><b>{m.username ?? ''}</b></div>
-                                                            <div className={`Chat_ReplyToRepliesContent`}>{m.content ?? ''}</div>
-                                                        </div> : null)}
-                                        </div> : null}
-                                <div className={`${ChatStyles.replyToContainer} Chat_ReplyToContainer`} replytoid={replyToId}>
-                                    <div className={`Chat_ReplyingToUsername`}>Replying to <b>@{replyToUsername}</b></div>
-                                    <Tooltip title={`Cancel Reply`} placement='top'>
-                                        <Close onClick={handleCancelReplyTo} className={`${ChatStyles.chatCancelReplyTo}`} sx={{
-                height: '17.5px'
-              }}></Close>
-                                    </Tooltip>
-                                </div>
-                            </div> : null}
-                    <div className={`${ChatStyles.chatInputSendContainer} Chat_ChatInputSendContainer`}>
-                        <TextareaAutosize className={`${ChatStyles.textChatInput} ${ChatStyles.highlightBorder} Chat_TextChatInput`} ref={chatInputRef} onKeyPress={e => {
-            handleKeyPressChat(e, handleSendChat);
-          }} onChange={handleChatTextChange} disabled={blockChat || !currentChat} />
-                        <button className={`${ChatStyles.send} ${ChatStyles.highlightBorder} Chat_Send`} onClick={handleSendChat} disabled={blockSend || blockSendForce}>Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`,
+    onClick: handleRunTasks
+  }, userDisplay ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.userDisplayContainer} Chat_UserDisplayContainer`
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: `Chat_UserDisplayInternalContainer`,
+    style: {
+      display: 'flex',
+      gap: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Chat_UserDisplayUser`
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${userDisplay.user}`,
+    style: {
+      alignSelf: 'center'
+    }
+  }, userDisplay.user)), modPower?.canBan && userDisplay.id !== props._loggedIn.identifier ? currentBanTable && currentBanTable[userDisplay.id] ? /*#__PURE__*/React.createElement("button", {
+    style: {
+      fontSize: '.75rem',
+      padding: '.125rem .25rem'
+    },
+    onClick: handleAttemptUnBanUser,
+    userid: `${userDisplay.id}`
+  }, "Unban User") : /*#__PURE__*/React.createElement("button", {
+    style: {
+      fontSize: '.75rem',
+      padding: '.125rem .25rem'
+    },
+    onClick: handleAttemptBanUser,
+    userid: `${userDisplay.id}`
+  }, "Ban User") : null)), /*#__PURE__*/React.createElement(Close, {
+    className: `${ChatStyles.close}`,
+    onClick: handleSetUserDisplayOff,
+    modif: "close"
+  })) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatLogExternalContainer} ${mobileStyleConfigs ? `${ChatStyles.mobileChatLogExternalContainer}` : null} Chat_ChatLogExternalContainer`,
+    ref: scrollChatRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatLogContainer} Chat_ChatLogContainer`,
+    ref: scrollChatInnerRef
+  }, chatLog && Array.isArray(chatLog) ? chatLog.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: `Chat_ChatLogItemContainer`,
+    key: i,
+    index: i
+  }, m.id && m.content && m.author ? /*#__PURE__*/React.createElement("div", {
+    className: `Chat_ChatLogItemInternalContainer`,
+    logid: m.id,
+    time: m.time,
+    author: m.author,
+    replylogid: m.replyLogid ?? null,
+    replyusername: m.replyUsername
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatLogMain} ${highlightedChat === m.id ? `${ChatStyles.highlightedChat}` : ''} Chat_ChatLogMain`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername`,
+    username: m.username,
+    author: m.author,
+    onClick: handleSetUserDisplay
+  }, m.username), replyOff ? null : /*#__PURE__*/React.createElement(React.Fragment, null, m.replyLogid && m.replyUsername ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyMeta}`
+  }, /*#__PURE__*/React.createElement("div", null, "Chat is Reply to ", /*#__PURE__*/React.createElement("b", null, "@", m.replyUsername))) : /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyMeta}`
+  }, /*#__PURE__*/React.createElement("div", null, "Reply to ", /*#__PURE__*/React.createElement("b", null, "@", m.username)))), /*#__PURE__*/React.createElement("div", {
+    className: `Chat_Content`
+  }, m.content), replyOff ? null : /*#__PURE__*/React.createElement(React.Fragment, null, m.replyLogid ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.viewReplyTo} Chat_ViewReplyTo`,
+    onClick: handleGoToPost,
+    logid: m.replyLogid,
+    style: {
+      marginTop: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement(ArrowUpward, {
+    logid: m.replyLogid
+  })) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyTo} Chat_ReplyTo`,
+    onClick: handleReplyTo,
+    logid: m.id,
+    username: m.username,
+    author: m.author,
+    style: {
+      marginTop: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement(Reply, {
+    logid: m.id,
+    username: m.username,
+    author: m.author
+  }))))) : _React$Fragment || (_React$Fragment = /*#__PURE__*/React.createElement(React.Fragment, null)))) : _div || (_div = /*#__PURE__*/React.createElement("div", null)))), /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatInputContainer} ${!props.chatState ? `${ChatStyles.forceHideChat}` : null} Chat_ChatInputContainer`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatInputInternalContainer} Chat_ChatInputInternalContainer`
+  }, recentChatTimeout ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatWarningContainer} Chat_ChatWarningContainer`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.warningText} Chat_WarningText`
+  }, recentChatTimeout ? 'Timed Out' : ''), recentChats?.length ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.warningBody}`,
+    style: {
+      fontSize: '.85rem'
+    }
+  }, "You have sent ", recentChats.length, " recent chats") : null) : null, replyToId && replyToUsername ? /*#__PURE__*/React.createElement("div", null, replyToContent && Array.isArray(replyToContent) && replyToContent.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyToRepliesContainer} Chat_ReplyToRepliesContainer`,
+    style: {
+      top: `-${replyToContent.length > 4 ? 4 + useThreadOffset : replyToContent.length + useThreadOffset}rem`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.threadLabel} Chat_ThreadLabel`
+  }, "Thread"), replyToContent.slice(0).reverse().map((m, i) => i < 4 ? /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyToRepliesThread} Chat_ReplyToRepliesThread`,
+    style: {
+      display: 'flex',
+      gap: '.25rem'
+    },
+    key: i,
+    index: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Chat_ReplyToRepliesUsername`
+  }, /*#__PURE__*/React.createElement("b", null, m.username ?? '')), /*#__PURE__*/React.createElement("div", {
+    className: `Chat_ReplyToRepliesContent`
+  }, m.content ?? '')) : null)) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.replyToContainer} Chat_ReplyToContainer`,
+    replytoid: replyToId
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Chat_ReplyingToUsername`
+  }, "Replying to ", /*#__PURE__*/React.createElement("b", null, "@", replyToUsername)), /*#__PURE__*/React.createElement(Tooltip, {
+    title: `Cancel Reply`,
+    placement: "top"
+  }, /*#__PURE__*/React.createElement(Close, {
+    onClick: handleCancelReplyTo,
+    className: `${ChatStyles.chatCancelReplyTo}`,
+    sx: {
+      height: '17.5px'
+    }
+  })))) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${ChatStyles.chatInputSendContainer} Chat_ChatInputSendContainer`
+  }, /*#__PURE__*/React.createElement(TextareaAutosize, {
+    className: `${ChatStyles.textChatInput} ${ChatStyles.highlightBorder} Chat_TextChatInput`,
+    ref: chatInputRef,
+    onKeyPress: e => {
+      handleKeyPressChat(e, handleSendChat);
+    },
+    onChange: handleChatTextChange,
+    disabled: blockChat || !currentChat
+  }), /*#__PURE__*/React.createElement("button", {
+    className: `${ChatStyles.send} ${ChatStyles.highlightBorder} Chat_Send`,
+    onClick: handleSendChat,
+    disabled: blockSend || blockSendForce
+  }, "Send")))));
 };
 export default Module;

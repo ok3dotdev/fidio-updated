@@ -114,69 +114,87 @@ const Module = props => {
   });
   const askStreamOffsetPages = [askStreamOffset - 2, askStreamOffset - 1, askStreamOffset, askStreamOffset + 1, askStreamOffset + 2];
   const canStreamOffsetPages = [canStreamOffset - 2, canStreamOffset - 1, canStreamOffset, canStreamOffset + 1, canStreamOffset + 2];
-  return <div className={`${props.className} ${moduleName}_Container`}>
-            {_h || (_h = <h3>Stream</h3>)}
-            <div className={`${moduleName}_InternalContainer`}>
-                <section>
-                    <Tooltip title={`The Users below have asked to Stream on ${props.siteTitle ?? 'your Platform'}`} placement='bottom'>
-                        {_h2 || (_h2 = <h4>Asking</h4>)}
-                    </Tooltip>
-                    <div className={`${AdminStyles.listContainer}`} style={{
-          maxHeight: '65vh'
-        }}>
-                        {askStream?.map ? askStream.map((m, i) => <div className={`${AdminStyles.itemContainer}`} key={i}>
-                                        <Link href={`/p?u=${m.username ?? m.id}`} className={`menuLinkSelector`} style={{
-              position: 'relative',
-              alignSelf: 'center'
-            }}>
-                                            <div>{m.username ?? m.id}</div>
-                                        </Link>
-                                        <button modif='authorize_streamer' userid={`${m.id}`} onClick={handleChangeStreamAuth}>Allow</button>
-                                    </div>) : null}
-                    </div>
-                    <ul className={`PaginationContainer`}>
-                        {askStreamOffsetPages.map((m, i) => {
-            return m > -1 ? <li className={`${m == askStreamOffset ? 'ActivePage' : ''}`} scope='askStreamOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
-          })}
-                    </ul>
-                </section>
-                <section>
-                    <Tooltip title={`The Users below currently have access to Stream on ${props.siteTitle ?? 'your Platform'}`} placement='bottom'>
-                        {_h3 || (_h3 = <h4>Streamers</h4>)}
-                    </Tooltip>
-                    <div className={`${AdminStyles.listContainer}`} style={{
-          maxHeight: '65vh'
-        }}>
-                        {canStream?.map ? canStream.map((m, i) => <div className={`${AdminStyles.itemContainer}`} key={i}>
-                                        <Link href={`/p?u=${m.username ?? m.id}`} className={`menuLinkSelector`} style={{
-              position: 'relative',
-              alignSelf: 'center'
-            }}>
-                                            <div>{m.username ?? m.id}</div>
-                                        </Link>
-                                        <button modif='disable_streamer' userid={`${m.id}`} onClick={handleChangeStreamAuth}>Disable</button>
-                                    </div>) : null}
-                    </div>
-                    <ul className={`PaginationContainer`}>
-                        {canStreamOffsetPages.map((m, i) => {
-            return m > -1 ? <li className={`${m == canStreamOffset ? 'ActivePage' : ''}`} scope='canStreamOffset' key={i} i={m} onClick={handleSetPagination}>{m + 1}</li> : null;
-          })}
-                    </ul>
-                </section>
-                <section>
-                    {_h4 || (_h4 = <h4>Platform Stream Status</h4>)}
-                    <div className='gradient_style_bg_3' style={{
-          fontSize: '.9rem',
-          fontWeight: 700,
-          width: 'fit-content',
-          padding: '0.125rem 5rem'
-        }}>LIVE</div>
-                    <div style={{
-          fontSize: '.75rem',
-          marginTop: '.25rem'
-        }}>Contact admin@tycoon.systems for any current Livestreaming Issues</div>
-                </section>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} ${moduleName}_Container`
+  }, _h || (_h = /*#__PURE__*/React.createElement("h3", null, "Stream")), /*#__PURE__*/React.createElement("div", {
+    className: `${moduleName}_InternalContainer`
+  }, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(Tooltip, {
+    title: `The Users below have asked to Stream on ${props.siteTitle ?? 'your Platform'}`,
+    placement: "bottom"
+  }, _h2 || (_h2 = /*#__PURE__*/React.createElement("h4", null, "Asking"))), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.listContainer}`,
+    style: {
+      maxHeight: '65vh'
+    }
+  }, askStream?.map ? askStream.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.itemContainer}`,
+    key: i
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${m.username ?? m.id}`,
+    className: `menuLinkSelector`,
+    style: {
+      position: 'relative',
+      alignSelf: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, m.username ?? m.id)), /*#__PURE__*/React.createElement("button", {
+    modif: "authorize_streamer",
+    userid: `${m.id}`,
+    onClick: handleChangeStreamAuth
+  }, "Allow"))) : null), /*#__PURE__*/React.createElement("ul", {
+    className: `PaginationContainer`
+  }, askStreamOffsetPages.map((m, i) => {
+    return m > -1 ? /*#__PURE__*/React.createElement("li", {
+      className: `${m == askStreamOffset ? 'ActivePage' : ''}`,
+      scope: "askStreamOffset",
+      key: i,
+      i: m,
+      onClick: handleSetPagination
+    }, m + 1) : null;
+  }))), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(Tooltip, {
+    title: `The Users below currently have access to Stream on ${props.siteTitle ?? 'your Platform'}`,
+    placement: "bottom"
+  }, _h3 || (_h3 = /*#__PURE__*/React.createElement("h4", null, "Streamers"))), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.listContainer}`,
+    style: {
+      maxHeight: '65vh'
+    }
+  }, canStream?.map ? canStream.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.itemContainer}`,
+    key: i
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${m.username ?? m.id}`,
+    className: `menuLinkSelector`,
+    style: {
+      position: 'relative',
+      alignSelf: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, m.username ?? m.id)), /*#__PURE__*/React.createElement("button", {
+    modif: "disable_streamer",
+    userid: `${m.id}`,
+    onClick: handleChangeStreamAuth
+  }, "Disable"))) : null), /*#__PURE__*/React.createElement("ul", {
+    className: `PaginationContainer`
+  }, canStreamOffsetPages.map((m, i) => {
+    return m > -1 ? /*#__PURE__*/React.createElement("li", {
+      className: `${m == canStreamOffset ? 'ActivePage' : ''}`,
+      scope: "canStreamOffset",
+      key: i,
+      i: m,
+      onClick: handleSetPagination
+    }, m + 1) : null;
+  }))), /*#__PURE__*/React.createElement("section", null, _h4 || (_h4 = /*#__PURE__*/React.createElement("h4", null, "Platform Stream Status")), /*#__PURE__*/React.createElement("div", {
+    className: "gradient_style_bg_3",
+    style: {
+      fontSize: '.9rem',
+      fontWeight: 700,
+      width: 'fit-content',
+      padding: '0.125rem 5rem'
+    }
+  }, "LIVE"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '.75rem',
+      marginTop: '.25rem'
+    }
+  }, "Contact admin@tycoon.systems for any current Livestreaming Issues"))));
 };
 export default Module;

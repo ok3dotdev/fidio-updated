@@ -1,9 +1,7 @@
 import React from 'react';
 const Module = props => {
-  return <React.Fragment>
-            <div>
-                <div><div className='ProfilePage_ProfileName'>{props.profileData.user.username}</div></div>
-            </div>
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "ProfilePage_ProfileName"
+  }, props.profileData.user.username))));
 };
 export default Module;

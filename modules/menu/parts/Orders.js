@@ -2,18 +2,16 @@ var _li;
 import React from 'react';
 import Link from 'next/link';
 const Module = props => {
-  return <React.Fragment>
-            {props._loggedIn ? <React.Fragment>
-                        <Link href="/settings?t=orders" className={`menuLinkSelector`} onClick={props?.handleToggleSettings} style={{
-        position: 'relative',
-        alignSelf: 'center'
-      }}>
-                            {_li || (_li = <li>
-                                <div className={`material-icons`}>receipt</div>
-                                <div>Orders</div>
-                            </li>)}
-                        </Link>
-                    </React.Fragment> : null}
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, props._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Link, {
+    href: "/settings?t=orders",
+    className: `menuLinkSelector`,
+    onClick: props?.handleToggleSettings,
+    style: {
+      position: 'relative',
+      alignSelf: 'center'
+    }
+  }, _li || (_li = /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("div", {
+    className: `material-icons`
+  }, "receipt"), /*#__PURE__*/React.createElement("div", null, "Orders"))))) : null);
 };
 export default Module;

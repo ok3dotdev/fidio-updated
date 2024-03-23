@@ -183,21 +183,28 @@ const Module = props => {
     }
   };
   const googleSignInIsLoaded = checkGoogleSignInIsLoaded();
-  return <div className={`${props.classNameAlways} ${props._loggedIn || !googleSignInIsLoaded ? '' : props.className}`}> {/* Do not show styles if Sign In hidden */}
-            {/* <RegisterUsername registerUsernameOn={registerUsernameOn} setRegisterUsernameOn={setRegisterUsernameOn}></RegisterUsername> */}
-            <div className={hideGoogleSignIn || !googleSignInIsLoaded ? `display-none` : null} style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.classNameAlways} ${props._loggedIn || !googleSignInIsLoaded ? '' : props.className}`
+  }, " ", /*#__PURE__*/React.createElement("div", {
+    className: hideGoogleSignIn || !googleSignInIsLoaded ? `display-none` : null,
+    style: {
       maxWidth: props.maxWidth ?? '170px'
-    }}>
-                <div className={googleSignInRendered ? `googleSignInContainer googleSignInContainer-padding` : `googleSignInContainer`}>
-                    <div className="g_id_signin google-sign-in-btn" ref={googleSignIn} data-size="medium" data-logo_alignment="center" data-theme="outline"></div>
-                </div>
-            </div>
-            {pageError ? <div style={{
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: googleSignInRendered ? `googleSignInContainer googleSignInContainer-padding` : `googleSignInContainer`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "g_id_signin google-sign-in-btn",
+    ref: googleSignIn,
+    "data-size": "medium",
+    "data-logo_alignment": "center",
+    "data-theme": "outline"
+  }))), pageError ? /*#__PURE__*/React.createElement("div", {
+    style: {
       paddingLeft: 1 + 'rem',
       paddingRight: 1 + 'rem'
-    }}>
-                        <p className={`googleSignInPromptSmall error errorBg`}>{pageError}</p> 
-                    </div> : null}
-        </div>;
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    className: `googleSignInPromptSmall error errorBg`
+  }, pageError)) : null);
 };
 export default Module;

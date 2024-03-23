@@ -112,22 +112,20 @@ const Module = props => {
   React.useEffect(() => {
     setAllIssues([].concat(paymentIssues, settingsIssues, helpIssues));
   }, [paymentIssues, settingsIssues, helpIssues]);
-  return <React.Fragment>
-            {props?.dev && allIssues.length > 0 ? <div className={`${InternalStyles.devContainer} ${props.className}`}>
-                        <div className={`${InternalStyles.devInternalContainer}`}>
-                            <div style={{
-          marginBottom: '.5rem',
-          fontSize: '.85rem'
-        }}>Developer</div>
-                            <div className={`${InternalStyles.devLogContainer}`}>
-                                {allIssues.map(m => <div>
-                                            <Tooltip title={m.s} placement='right'>
-                                                <div>* {m.m}</div>
-                                            </Tooltip>
-                                        </div>)}
-                            </div>
-                        </div>
-                    </div> : null}
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, props?.dev && allIssues.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${InternalStyles.devContainer} ${props.className}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${InternalStyles.devInternalContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.5rem',
+      fontSize: '.85rem'
+    }
+  }, "Developer"), /*#__PURE__*/React.createElement("div", {
+    className: `${InternalStyles.devLogContainer}`
+  }, allIssues.map(m => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Tooltip, {
+    title: m.s,
+    placement: "right"
+  }, /*#__PURE__*/React.createElement("div", null, "* ", m.m))))))) : null);
 };
 export default Module;

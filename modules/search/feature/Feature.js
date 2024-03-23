@@ -165,61 +165,81 @@ const Module = props => {
       return false;
     }
   };
-  return <div className={`${FeatureStyles.featureExternalContainer} ${combinedFeed.length > 0 ? featureState.size === 'thin' ? `FeatureContainerOpen` : featureState.size === 'medium' ? `FeatureContainerOpen ${FeatureStyles.featureContainerOpen} FeatureContainerOpenMedium` : featureState.size === 'large' ? `FeatureContainerOpen ${FeatureStyles.featureContainerOpen} FeatureContainerOpenLarge` : '' : ''} ${props.className}`}>
-            {!props.hideToggle && combinedFeed.length > 0 ? <div className={`${FeatureStyles.sizeExpandContainer}`}>
-                        <div className={`${FeatureStyles.sizeExpand}`} onClick={cycleFeatureSize}></div>
-                    </div> : _div || (_div = <div></div>)}
-            {combinedFeed.length > 0 ? <div className={`${FeatureStyles.featureContainer} ${featureState && featureState.size ? featureState.size === 'medium' ? FeatureStyles.featureContainerMedium : featureState.size === 'large' ? FeatureStyles.featureContainerLarge : '' : ''} ${useOverflown ? featureState.size === 'medium' ? 'featureContainerOverflown featureContainerOverflown_medium' : featureState.size === 'large' ? 'featureContainerOverflown featureContainerOverflown_large' : '' : ''}`} ref={featureContainerRef}>
-                        <div className={`${FeatureStyles.itemContainer} ${featureState.size === 'thin' ? FeatureStyles.itemContainerThin : ''}`}>
-                            {combinedFeed.map((item, i) => <div className={`${FeatureStyles.item} ${featureState.size === 'thin' ? FeatureStyles.itemThin : `Item_ContainerMetaController Item_ContainerMetaControllerFeature`} Item_ContainerMetaControllerFeature_${featureState?.size ?? ''} Feature_Item`} key={i}>
-                                        <Link href={`w?v=${item.id}`}>
-                                            {item.status === 'live' && featureState.size !== 'thin' ? <div className={`LiveTag ${FeatureStyles.statusContainer}`}>LIVE{_div2 || (_div2 = <div className='RecordingCircle RecordingCircle_Small'></div>)}</div> : ''}
-                                            {featureState.size !== 'thin' ? <React.Fragment>
-                                                        <Image loader={myLoader} src={item.thumbnail && props.cdn && props.cdn.static ? item.thumbnail : 'img/default/greythumb.jpg'} alt={item.title ? item.title : ""} width={60} height={30} layout="responsive" className='Feature_Img Feature_Img_Border' />
-                                                        <div className='Item_GhostMeta Item_GhostMetaFeature'>
-                                                            {item.creation && !isNaN(item.creation) && !isNaN(new Date(Number(item.creation))) ? <div className='Item_TinyMetaText Item_TinyMetaTextFeature' style={{
-                  marginBottom: '.25rem',
-                  textShadow: '1px 2px 6px rgb(0 0 0 / 75%)'
-                }}>Stream started {new Date(Number(item.creation)).toTimeString()}</div> : null}
-                                                            <div className='Item_GhostMetaContainerInternal'>
-                                                                <div>{item.description ? item.description : `Watch Livestream Now`}</div>
-                                                            </div>
-                                                        </div>
-                                                    </React.Fragment> : null}
-                                            <div className={`${FeatureStyles.itemMetaContainer} ${featureState.size === 'thin' ? FeatureStyles.thinMetaContainerSize : ''}`}>
-                                                <div className={`${FeatureStyles.itemMetaContainerPadding}`}>
-                                                    <div className={`${FeatureStyles.itemMetaText}`}>
-                                                        {item.status === 'live' && featureState.size === 'thin' ? <div className={`LiveTag ${FeatureStyles.statusContainerInline} LiveTag_Thin }`}>{_div3 || (_div3 = <div className='RecordingCircle RecordingCircle_Small'></div>)}</div> : ''}
-                                                        <div className={`flex gap-p2 ${(item.title.length ? item.title.length : `${item.author_username} is Streaming Now`.length) + item.author_username.length > 20 ? 'marquee' : ''} ${featureState.size === 'thin' ? FeatureStyles.thinMeta : ''} ${FeatureStyles.itemMarqueeContainer}`}>
-                                                            {(item.title.length ? item.title.length : `${item.author_username} is Streaming Now`.length) + item.author_username.length > 20 ? <div className={`marqueeContainer ${featureState?.size === 'thin' ? `${FeatureStyles.marqueeContainerThin}` : ''}`}>
-                                                                    <div className='marquee1'>
-                                                                        <div className={`${FeatureStyles.titleText}`}>{item.title ? item.title : `${item.author_username} is Streaming Now`}</div>
-                                                                        {_span || (_span = <span> - </span>)}
-                                                                        <div className={`${FeatureStyles.authorUser}`}>{item.author_username}</div>
-                                                                    </div>
-                                                                    <div className='marquee2'>
-                                                                        <div className={`${FeatureStyles.titleText}`}>{item.title ? item.title : `${item.author_username} is Streaming Now`}</div>
-                                                                        {_span2 || (_span2 = <span> - </span>)}
-                                                                        <div className={`${FeatureStyles.authorUser}`}>{item.author_username}</div>
-                                                                    </div>
-                                                                    <div className='marquee3'>
-                                                                        <div className={`${FeatureStyles.titleText}`}>{item.title ? item.title : `${item.author_username} is Streaming Now`}</div>
-                                                                        {_span3 || (_span3 = <span> - </span>)}
-                                                                        <div className={`${FeatureStyles.authorUser}`}>{item.author_username}</div>
-                                                                    </div>
-                                                                </div> : <React.Fragment>
-                                                                    <div className={`${FeatureStyles.titleText}`}>{item.title ? item.title : `${item.author_username} is Streaming Now`}</div>
-                                                                    {_span4 || (_span4 = <span> - </span>)}
-                                                                    <div className={`${FeatureStyles.authorUser}`}>{item.author_username}</div>
-                                                                </React.Fragment>}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>)}
-                        </div>
-                    </div> : null}
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.featureExternalContainer} ${combinedFeed.length > 0 ? featureState.size === 'thin' ? `FeatureContainerOpen` : featureState.size === 'medium' ? `FeatureContainerOpen ${FeatureStyles.featureContainerOpen} FeatureContainerOpenMedium` : featureState.size === 'large' ? `FeatureContainerOpen ${FeatureStyles.featureContainerOpen} FeatureContainerOpenLarge` : '' : ''} ${props.className}`
+  }, !props.hideToggle && combinedFeed.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.sizeExpandContainer}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.sizeExpand}`,
+    onClick: cycleFeatureSize
+  })) : _div || (_div = /*#__PURE__*/React.createElement("div", null)), combinedFeed.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.featureContainer} ${featureState && featureState.size ? featureState.size === 'medium' ? FeatureStyles.featureContainerMedium : featureState.size === 'large' ? FeatureStyles.featureContainerLarge : '' : ''} ${useOverflown ? featureState.size === 'medium' ? 'featureContainerOverflown featureContainerOverflown_medium' : featureState.size === 'large' ? 'featureContainerOverflown featureContainerOverflown_large' : '' : ''}`,
+    ref: featureContainerRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.itemContainer} ${featureState.size === 'thin' ? FeatureStyles.itemContainerThin : ''}`
+  }, combinedFeed.map((item, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.item} ${featureState.size === 'thin' ? FeatureStyles.itemThin : `Item_ContainerMetaController Item_ContainerMetaControllerFeature`} Item_ContainerMetaControllerFeature_${featureState?.size ?? ''} Feature_Item`,
+    key: i
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `w?v=${item.id}`
+  }, item.status === 'live' && featureState.size !== 'thin' ? /*#__PURE__*/React.createElement("div", {
+    className: `LiveTag ${FeatureStyles.statusContainer}`
+  }, "LIVE", _div2 || (_div2 = /*#__PURE__*/React.createElement("div", {
+    className: "RecordingCircle RecordingCircle_Small"
+  }))) : '', featureState.size !== 'thin' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Image, {
+    loader: myLoader,
+    src: item.thumbnail && props.cdn && props.cdn.static ? item.thumbnail : 'img/default/greythumb.jpg',
+    alt: item.title ? item.title : "",
+    width: 60,
+    height: 30,
+    layout: "responsive",
+    className: "Feature_Img Feature_Img_Border"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "Item_GhostMeta Item_GhostMetaFeature"
+  }, item.creation && !isNaN(item.creation) && !isNaN(new Date(Number(item.creation))) ? /*#__PURE__*/React.createElement("div", {
+    className: "Item_TinyMetaText Item_TinyMetaTextFeature",
+    style: {
+      marginBottom: '.25rem',
+      textShadow: '1px 2px 6px rgb(0 0 0 / 75%)'
+    }
+  }, "Stream started ", new Date(Number(item.creation)).toTimeString()) : null, /*#__PURE__*/React.createElement("div", {
+    className: "Item_GhostMetaContainerInternal"
+  }, /*#__PURE__*/React.createElement("div", null, item.description ? item.description : `Watch Livestream Now`)))) : null, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.itemMetaContainer} ${featureState.size === 'thin' ? FeatureStyles.thinMetaContainerSize : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.itemMetaContainerPadding}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.itemMetaText}`
+  }, item.status === 'live' && featureState.size === 'thin' ? /*#__PURE__*/React.createElement("div", {
+    className: `LiveTag ${FeatureStyles.statusContainerInline} LiveTag_Thin }`
+  }, _div3 || (_div3 = /*#__PURE__*/React.createElement("div", {
+    className: "RecordingCircle RecordingCircle_Small"
+  }))) : '', /*#__PURE__*/React.createElement("div", {
+    className: `flex gap-p2 ${(item.title.length ? item.title.length : `${item.author_username} is Streaming Now`.length) + item.author_username.length > 20 ? 'marquee' : ''} ${featureState.size === 'thin' ? FeatureStyles.thinMeta : ''} ${FeatureStyles.itemMarqueeContainer}`
+  }, (item.title.length ? item.title.length : `${item.author_username} is Streaming Now`.length) + item.author_username.length > 20 ? /*#__PURE__*/React.createElement("div", {
+    className: `marqueeContainer ${featureState?.size === 'thin' ? `${FeatureStyles.marqueeContainerThin}` : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "marquee1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.titleText}`
+  }, item.title ? item.title : `${item.author_username} is Streaming Now`), _span || (_span = /*#__PURE__*/React.createElement("span", null, " - ")), /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.authorUser}`
+  }, item.author_username)), /*#__PURE__*/React.createElement("div", {
+    className: "marquee2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.titleText}`
+  }, item.title ? item.title : `${item.author_username} is Streaming Now`), _span2 || (_span2 = /*#__PURE__*/React.createElement("span", null, " - ")), /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.authorUser}`
+  }, item.author_username)), /*#__PURE__*/React.createElement("div", {
+    className: "marquee3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.titleText}`
+  }, item.title ? item.title : `${item.author_username} is Streaming Now`), _span3 || (_span3 = /*#__PURE__*/React.createElement("span", null, " - ")), /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.authorUser}`
+  }, item.author_username))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.titleText}`
+  }, item.title ? item.title : `${item.author_username} is Streaming Now`), _span4 || (_span4 = /*#__PURE__*/React.createElement("span", null, " - ")), /*#__PURE__*/React.createElement("div", {
+    className: `${FeatureStyles.authorUser}`
+  }, item.author_username))))))))))) : null);
 };
 export default Module;

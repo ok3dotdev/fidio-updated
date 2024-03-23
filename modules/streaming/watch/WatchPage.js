@@ -1,4 +1,5 @@
 var _Script;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import Script from 'next/script';
 import WatchPageStyles from './WatchPage.module.scss';
@@ -250,9 +251,18 @@ const Module = props => {
   console.log(props, chatState);
   const menuHeight = props.menuConfig && props.menuConfig.height ? props.menuConfig.height + 2 + 'px' : '35px'; // Handles user menuConfig height for height of video page
 
-  return <div className={`${props.className} WatchPage_Container`}>
-            {_Script || (_Script = <Script src='https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js' />)}
-            <Watch {...props} chatState={chatState} handleSetMobileStyleConfigs={handleSetMobileStyleConfigs} menuHeight={menuHeight} currentPoster={currentPoster} streamLeadPrompt={streamLeadPrompt} authContainer={authContainer} WatchPageStyles={WatchPageStyles} />
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} WatchPage_Container`
+  }, _Script || (_Script = /*#__PURE__*/React.createElement(Script, {
+    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/videojs/8.9.0/video.min.js"
+  })), /*#__PURE__*/React.createElement(Watch, _extends({}, props, {
+    chatState: chatState,
+    handleSetMobileStyleConfigs: handleSetMobileStyleConfigs,
+    menuHeight: menuHeight,
+    currentPoster: currentPoster,
+    streamLeadPrompt: streamLeadPrompt,
+    authContainer: authContainer,
+    WatchPageStyles: WatchPageStyles
+  })));
 };
 export default Module;

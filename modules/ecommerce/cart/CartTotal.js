@@ -1,19 +1,23 @@
 import React from 'react';
 import { calculateTotal, resolveMoneyFormat } from '/modules/utility/ecommerce/ecommerce.js';
 const Module = props => {
-  return <div className='flex Ecommerce_Price'>
-            {props?.free ? <div className='Ecommerce_FreeBanner' style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: "flex Ecommerce_Price"
+  }, props?.free ? /*#__PURE__*/React.createElement("div", {
+    className: "Ecommerce_FreeBanner",
+    style: {
       fontSize: '1.25rem'
-    }}>Free</div> : <React.Fragment>
-                    <div style={{
-        lineHeight: '1.4rem'
-      }}>Cart Total:&nbsp;</div>
-                    <div style={{
-        fontSize: '1.25rem'
-      }}>{props?.useCartOfCurrency?.currency?.symbol ?? null}{resolveMoneyFormat(calculateTotal(props?.useCartOfCurrency, null, {
-          region: props?.useCartOfCurrency?.currency ?? null
-        }, props))}</div>
-                </React.Fragment>}
-        </div>;
+    }
+  }, "Free") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      lineHeight: '1.4rem'
+    }
+  }, "Cart Total:\xA0"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '1.25rem'
+    }
+  }, props?.useCartOfCurrency?.currency?.symbol ?? null, resolveMoneyFormat(calculateTotal(props?.useCartOfCurrency, null, {
+    region: props?.useCartOfCurrency?.currency ?? null
+  }, props)))));
 };
 export default Module;

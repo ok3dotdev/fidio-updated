@@ -103,81 +103,103 @@ const Module = props => {
       props.setHelpOpen(false);
     }
   }, [props?._openMenu?.currentMenu]);
-  return <div>
-            {<div className={`Misc_Container ${props.className} ${menuOpen && closing ? 'Misc_Container_Visible' : ''}`} style={{
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Container ${props.className} ${menuOpen && closing ? 'Misc_Container_Visible' : ''}`,
+    style: {
       top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : ''
-    }}>
-                    <div className='Misc_Internal_Container' style={{
-        paddingTop: '.5rem'
-      }}>
-                        <div style={{
-          position: 'sticky',
-          top: '.5rem',
-          right: 0,
-          zIndex: 10
-        }}>
-                            <Close className={`${Styles.Close}`} style={{
-            margin: '0rem 0',
-            float: 'right'
-          }} onClick={handleClose}></Close>
-                        </div>
-                        <h5 className={`Misc_Label`} style={{
-          marginTop: 0
-        }}>Help</h5>
-                        <div style={{
-          position: 'sticky',
-          top: '.5rem',
-          margin: '.5rem 0',
-          marginTop: '0'
-        }}>
-                            <input onChange={handleUpdateSearch} ref={queryRef} style={{
-            border: '0px',
-            borderRadius: '.5rem',
-            width: '87.5%',
-            fontSize: '1.25rem',
-            padding: '0 .5rem'
-          }} placeholder='How can we help?'></input>
-                        </div>
-                        <div style={{
-          padding: '.25rem 0rem',
-          display: 'grid',
-          gap: '.5rem'
-        }}>
-                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => m?.a ? <a href={m.a} style={{
-            cursor: 'pointer'
-          }} key={i}>
-                                            <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
-              padding: '.5rem',
-              display: 'grid',
-              gap: '.25rem'
-            }}>
-                                                <div style={{
-                fontWeight: '500'
-              }}>{m.question}</div>
-                                                <div style={{
-                fontSize: '.85rem',
-                lineHeight: 'normal'
-              }}>{m.answer}</div>
-                                            </div>
-                                        </a> : <div className={`Misc_Item_Container`} style={{
-            padding: '.5rem',
-            display: 'grid',
-            gap: '.25rem'
-          }} key={i}>
-                                            <div style={{
-              fontWeight: '500'
-            }}>{m.question}</div>
-                                            <div style={{
-              fontSize: '.85rem',
-              lineHeight: 'normal'
-            }}>{m.answer}</div>
-                                        </div>) : queryRef?.current?.value !== '' ? _div || (_div = <div></div>) : <div style={{
-            textAlign: 'center',
-            fontSize: '.95rem'
-          }}>Try Searching for something</div>}
-                        </div>
-                    </div>
-                </div>}
-        </div>;
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "Misc_Internal_Container",
+    style: {
+      paddingTop: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'sticky',
+      top: '.5rem',
+      right: 0,
+      zIndex: 10
+    }
+  }, /*#__PURE__*/React.createElement(Close, {
+    className: `${Styles.Close}`,
+    style: {
+      margin: '0rem 0',
+      float: 'right'
+    },
+    onClick: handleClose
+  })), /*#__PURE__*/React.createElement("h5", {
+    className: `Misc_Label`,
+    style: {
+      marginTop: 0
+    }
+  }, "Help"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'sticky',
+      top: '.5rem',
+      margin: '.5rem 0',
+      marginTop: '0'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    onChange: handleUpdateSearch,
+    ref: queryRef,
+    style: {
+      border: '0px',
+      borderRadius: '.5rem',
+      width: '87.5%',
+      fontSize: '1.25rem',
+      padding: '0 .5rem'
+    },
+    placeholder: "How can we help?"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '.25rem 0rem',
+      display: 'grid',
+      gap: '.5rem'
+    }
+  }, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => m?.a ? /*#__PURE__*/React.createElement("a", {
+    href: m.a,
+    style: {
+      cursor: 'pointer'
+    },
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
+    style: {
+      padding: '.5rem',
+      display: 'grid',
+      gap: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: '500'
+    }
+  }, m.question), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '.85rem',
+      lineHeight: 'normal'
+    }
+  }, m.answer))) : /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Item_Container`,
+    style: {
+      padding: '.5rem',
+      display: 'grid',
+      gap: '.25rem'
+    },
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: '500'
+    }
+  }, m.question), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '.85rem',
+      lineHeight: 'normal'
+    }
+  }, m.answer))) : queryRef?.current?.value !== '' ? _div || (_div = /*#__PURE__*/React.createElement("div", null)) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      fontSize: '.95rem'
+    }
+  }, "Try Searching for something")))));
 };
 export default Module;

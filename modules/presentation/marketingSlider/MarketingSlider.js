@@ -62,68 +62,64 @@ const Module = props => {
       }]
     };
   };
-  return <div>
-			<div className={`${presentationStyles.IndexHelloContainer} glide_${componentId} ${moduleName}_IndexHelloContainer ${props.className}`} style={props?.style}>
-				{props.groupLabel ? <div className={`${presentationStyles.GroupLabelContainer} ${Styles.GroupLabelContainer} ${moduleName}_groupLabelContainer ${props.groupLabelContainerClassName}`} style={{
-        maxWidth: props?.sliderMaxWidth ?? '1800px'
-      }}>
-							<div className={`${presentationStyles.GroupLabel} ${Styles.GroupLabel} ${moduleName}_groupLabel ${props.groupLabelClassName}`}>{props.groupLabel}</div>
-						</div> : null}
-				<div style={{
-        marginTop: "2rem",
-        maxWidth: props?.sliderMaxWidth ?? '1800px'
-      }} data-glide-el="track" className={`${presentationStyles.GlideTrack} glide__track`}>
-					<div className={`${moduleName}_IndexItemsContainer ${props.IndexItemsContainerClassName}`}>
-						{useItems?.items?.map((content, i) => {
-            const useSettings = resolveSettingsConfig(content.length);
-            return <Slider {...useSettings}>
-											{content?.map ? content.map((row, k) => <div style={{
-                margin: '1rem'
-              }}>
-																<div className={`${props.tall ? `${presentationStyles.IndexItemsUpperContainerTall}` : null} ${moduleName}_Container ${row?.className}`} key={k} style={{
-                  margin: '1rem'
-                }}>
-																	<div className={`${Styles.bgContainer} ${props.tall ? `${Styles.BgContainerTall}` : null} ${moduleName}_BgContainer ${props.bgClassName}`} style={{
-                    background: row?.img ? `url(${row?.img})` : row?.bg ?? null,
-                    backgroundSize: 'cover !important',
-                    backgroundPosition: 'center',
-                    height: props?.itemHeight ?? '22rem'
-                  }}>
-																		
-																		{row?.upperText ? <div className={`${Styles.upperText} MarketingSlider_UpperText`}>
-																					{row.upperText}
-																				</div> : null}
-																		{row?.lead ? <div className={`${Styles.lead} MarketingSlider_Lead`}>
-																					{row.lead}
-																				</div> : null}
-																		{row?.text ? <div className={`${Styles.text} MarketingSlider_Text`}>
-																					{row.text}
-																				</div> : null}
-																		{row.linkText ? <Link href={row.link}>
-																					{row.linkText}
-																				</Link> : null}
-																		{row?.children?.map ? React.Children.map(row.children, function (child) {
-                      if (child !== null) {
-                        if (typeof child.type === 'function') {
-                          return React.cloneElement(child, props);
-                        }
-                        return child;
-                      }
-                      return React.createElement('div');
-                    }) : null}
-																	</div>
-																	<div>
-																		<div className={`${presentationStyles.MetaContainer} ${moduleName}_MetaContainer ${props.metaContainerClassName}`}>
-																			
-																		</div>
-																	</div>
-																</div>
-															</div>) : null}
-										</Slider>;
-          })}
-					</div>
-				</div>
-			</div>
-		</div>;
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: `${presentationStyles.IndexHelloContainer} glide_${componentId} ${moduleName}_IndexHelloContainer ${props.className}`,
+    style: props?.style
+  }, props.groupLabel ? /*#__PURE__*/React.createElement("div", {
+    className: `${presentationStyles.GroupLabelContainer} ${Styles.GroupLabelContainer} ${moduleName}_groupLabelContainer ${props.groupLabelContainerClassName}`,
+    style: {
+      maxWidth: props?.sliderMaxWidth ?? '1800px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${presentationStyles.GroupLabel} ${Styles.GroupLabel} ${moduleName}_groupLabel ${props.groupLabelClassName}`
+  }, props.groupLabel)) : null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "2rem",
+      maxWidth: props?.sliderMaxWidth ?? '1800px'
+    },
+    "data-glide-el": "track",
+    className: `${presentationStyles.GlideTrack} glide__track`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${moduleName}_IndexItemsContainer ${props.IndexItemsContainerClassName}`
+  }, useItems?.items?.map((content, i) => {
+    const useSettings = resolveSettingsConfig(content.length);
+    return /*#__PURE__*/React.createElement(Slider, useSettings, content?.map ? content.map((row, k) => /*#__PURE__*/React.createElement("div", {
+      style: {
+        margin: '1rem'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${props.tall ? `${presentationStyles.IndexItemsUpperContainerTall}` : null} ${moduleName}_Container ${row?.className}`,
+      key: k,
+      style: {
+        margin: '1rem'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.bgContainer} ${props.tall ? `${Styles.BgContainerTall}` : null} ${moduleName}_BgContainer ${props.bgClassName}`,
+      style: {
+        background: row?.img ? `url(${row?.img})` : row?.bg ?? null,
+        backgroundSize: 'cover !important',
+        backgroundPosition: 'center',
+        height: props?.itemHeight ?? '22rem'
+      }
+    }, row?.upperText ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.upperText} MarketingSlider_UpperText`
+    }, row.upperText) : null, row?.lead ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.lead} MarketingSlider_Lead`
+    }, row.lead) : null, row?.text ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.text} MarketingSlider_Text`
+    }, row.text) : null, row.linkText ? /*#__PURE__*/React.createElement(Link, {
+      href: row.link
+    }, row.linkText) : null, row?.children?.map ? React.Children.map(row.children, function (child) {
+      if (child !== null) {
+        if (typeof child.type === 'function') {
+          return /*#__PURE__*/React.cloneElement(child, props);
+        }
+        return child;
+      }
+      return /*#__PURE__*/React.createElement('div');
+    }) : null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: `${presentationStyles.MetaContainer} ${moduleName}_MetaContainer ${props.metaContainerClassName}`
+    }))))) : null);
+  })))));
 };
 export default Module;
