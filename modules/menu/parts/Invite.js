@@ -39,41 +39,52 @@ const Module = props => {
       clearTimeout(resetRef.current);
     }
   });
-  return <React.Fragment>
-            {props._loggedIn ? <React.Fragment>
-                        {props._loggedIn?.username ? <div className={`menuLinkSelector`} onClick={handleInviteFriend} style={{
-        position: 'relative',
-        alignSelf: 'center'
-      }}>
-                                        {submitted ? <li>
-                                                {_div || (_div = <div className={`material-icons`}>send</div>)}
-                                                <div onClick={handleSendAnother} className='max-width-dropdown'>Sent request to <span style={{
-              fontWeight: 600
-            }}>{submitted}</span></div>
-                                            </li> : !inputField ? <li>
-                                                    {_div2 || (_div2 = <div className={`material-icons`}>send</div>)}
-                                                    <div onClick={handleInviteFriend}>Invite Friend</div>
-                                                </li> : <li style={{
-          padding: '0'
-        }}>
-                                                    <div className='flex gap-p05' style={{
-            flex: 'auto',
-            height: '29px'
-          }}>
-                                                        <input type='text' style={{
-              borderRadius: '.5rem',
-              borderWidth: '0',
-              marginLeft: '.5rem'
-            }} placeholder={`Friend's Email`} ref={inputFieldRef} />
-                                                        <button onClick={handleSubmitFriendRequest} style={{
-              width: '-webkit-fill-available',
-              maxWidth: '85px',
-              marginRight: '.5rem'
-            }}>Invite</button>
-                                                    </div>
-                                                </li>}
-                                </div> : null}
-                    </React.Fragment> : null}
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, props._loggedIn ? /*#__PURE__*/React.createElement(React.Fragment, null, props._loggedIn?.username ? /*#__PURE__*/React.createElement("div", {
+    className: `menuLinkSelector`,
+    onClick: handleInviteFriend,
+    style: {
+      position: 'relative',
+      alignSelf: 'center'
+    }
+  }, submitted ? /*#__PURE__*/React.createElement("li", null, _div || (_div = /*#__PURE__*/React.createElement("div", {
+    className: `material-icons`
+  }, "send")), /*#__PURE__*/React.createElement("div", {
+    onClick: handleSendAnother,
+    className: "max-width-dropdown"
+  }, "Sent request to ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 600
+    }
+  }, submitted))) : !inputField ? /*#__PURE__*/React.createElement("li", null, _div2 || (_div2 = /*#__PURE__*/React.createElement("div", {
+    className: `material-icons`
+  }, "send")), /*#__PURE__*/React.createElement("div", {
+    onClick: handleInviteFriend
+  }, "Invite Friend")) : /*#__PURE__*/React.createElement("li", {
+    style: {
+      padding: '0'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p05",
+    style: {
+      flex: 'auto',
+      height: '29px'
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    style: {
+      borderRadius: '.5rem',
+      borderWidth: '0',
+      marginLeft: '.5rem'
+    },
+    placeholder: `Friend's Email`,
+    ref: inputFieldRef
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: handleSubmitFriendRequest,
+    style: {
+      width: '-webkit-fill-available',
+      maxWidth: '85px',
+      marginRight: '.5rem'
+    }
+  }, "Invite")))) : null) : null);
 };
 export default Module;

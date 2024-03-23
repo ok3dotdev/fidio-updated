@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import io from 'socket.io-client';
 import { SocketContainer } from '/modules/socket';
@@ -169,11 +170,11 @@ const Internal = usePageProps => {
   }, [router.events, pageProps._loggedIn, pageProps.apiUrl, pageProps.domainKey]);
   pageProps._socket = _socket;
   console.log('Socket', _socket, pageProps);
-  return <div>
-            <SocketContainer _socket={_socket} setRooms={_setRooms} {...pageProps}></SocketContainer>
-            <div className={`${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`}></div>
-            <UseMiddleware {...pageProps} />
-			{pageProps?.dev ? <DeveloperHelp {...pageProps} /> : null}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(SocketContainer, _extends({
+    _socket: _socket,
+    setRooms: _setRooms
+  }, pageProps)), /*#__PURE__*/React.createElement("div", {
+    className: `${fetchBusy ? 'fetchNotBusy fetchBusy' : 'fetchNotBusy'}`
+  }), /*#__PURE__*/React.createElement(UseMiddleware, pageProps), pageProps?.dev ? /*#__PURE__*/React.createElement(DeveloperHelp, pageProps) : null);
 };
 export default Internal;

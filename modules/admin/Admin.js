@@ -54,53 +54,50 @@ const Module = props => {
   const paintCustomAdmin = useComponent => {
     if (useComponent && useComponent[1] && typeof useComponent[1] === 'function') {
       const UseComponentDom = useComponent[1];
-      return <UseComponentDom {...props} />;
+      return /*#__PURE__*/React.createElement(UseComponentDom, props);
     }
-    return _div || (_div = <div></div>);
+    return _div || (_div = /*#__PURE__*/React.createElement("div", null));
   };
-  return <div className={`${props.className} ${AdminStyles.container} Admin_Container`}>
-            {_Script || (_Script = <Script src='https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js' />)}
-            {_link || (_link = <link href="https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css" rel="stylesheet"></link>)}
-            {props?._LocalEventEmitter ? <div className={`${doShowSignIn && !isAdmin ? 'simpleCenter' : ''}`}>
-                        <SignIn {...props}></SignIn>
-                        <Username {...props}></Username>
-                    </div> : null}
-            {isAdmin ? <div className={`${AdminStyles.internalContainer} Admin_InternalContainer`}>
-                        <Banner {...props} />
-                        <div className={`${AdminStyles.bodyContainer} Admin_BodyContainer`}>
-                            <div>
-                                <ul className={`${AdminStyles.adminMenuContainer} Admin_MenuContainer`}>
-                                    {resolveAuth('StreamAdmin', props._adminAuth) ? <li>
-                                            <button onClick={handleSetPage} modif='stream'>Stream</button>
-                                        </li> : null}
-                                    {resolveAuth('PostAdmin', props._adminAuth) ? <li>
-                                            <button onClick={handleSetPage} modif='post'>Post</button>
-                                        </li> : null}
-                                    {resolveAuth('StorageAdmin', props._adminAuth) ? <li>
-                                                <button onClick={handleSetPage} modif='storage'>Storage</button>
-                                            </li> : null}
-                                    {resolveAuth('BuildAdmin', props._adminAuth) ? <li>
-                                                <button onClick={handleSetPage} modif='build'>Build</button>
-                                            </li> : null}
-                                    {resolveAuth('BillingAdmin', props._adminAuth) ? <li>
-                                                <button onClick={handleSetPage} modif='billing'>Billing</button>
-                                            </li> : null}
-                                    {_li || (_li = <li>
-                                        <button><Link href='/documentation'>Documentation</Link></button>
-                                    </li>)}
-                                </ul>
-                                {Object.entries(customAdmin).length > 0 ? <ul className={`${AdminStyles.adminMenuContainer} ${AdminStyles.adminMenuContainerCustom} Admin_MenuContainerCustom`}>
-                                            {Object.entries(customAdmin).map((m, i) => <li>
-                                                        <button onClick={handleSetPage} modif={m[0]}>{m[0]?.slice(1, m[0].length) && m[0]?.length > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0]}</button>
-                                                    </li>)}
-                                        </ul> : null}
-                            </div>
-                            <div className={`${AdminStyles.contentBodyContainer} Admin_ContentBodyContainer`}>
-                                {page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? <div><BuildAdmin {...props} /></div> : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? <div><StreamAdmin {...props} /></div> : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? <div><PostAdmin {...props} /></div> : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? <div><BillingAdmin {...props} /></div> : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? <div><StorageAdmin {...props} /></div> : Object.entries(customAdmin).findIndex(m => m[0] === page) > -1 // Leverage Custom Admin Pages
-          ? paintCustomAdmin(Object.entries(customAdmin).find(m => m[0] === page)) : null : null}
-                            </div>
-                        </div>
-                    </div> : null}
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} ${AdminStyles.container} Admin_Container`
+  }, _Script || (_Script = /*#__PURE__*/React.createElement(Script, {
+    src: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.min.js"
+  })), _link || (_link = /*#__PURE__*/React.createElement("link", {
+    href: "https://d2zsu4v7czjhvo.cloudfront.net/all/quill/1.3.6/quill.snow.css",
+    rel: "stylesheet"
+  })), props?._LocalEventEmitter ? /*#__PURE__*/React.createElement("div", {
+    className: `${doShowSignIn && !isAdmin ? 'simpleCenter' : ''}`
+  }, /*#__PURE__*/React.createElement(SignIn, props), /*#__PURE__*/React.createElement(Username, props)) : null, isAdmin ? /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.internalContainer} Admin_InternalContainer`
+  }, /*#__PURE__*/React.createElement(Banner, props), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.bodyContainer} Admin_BodyContainer`
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", {
+    className: `${AdminStyles.adminMenuContainer} Admin_MenuContainer`
+  }, resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: "stream"
+  }, "Stream")) : null, resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: "post"
+  }, "Post")) : null, resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: "storage"
+  }, "Storage")) : null, resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: "build"
+  }, "Build")) : null, resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: "billing"
+  }, "Billing")) : null, _li || (_li = /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", null, /*#__PURE__*/React.createElement(Link, {
+    href: "/documentation"
+  }, "Documentation"))))), Object.entries(customAdmin).length > 0 ? /*#__PURE__*/React.createElement("ul", {
+    className: `${AdminStyles.adminMenuContainer} ${AdminStyles.adminMenuContainerCustom} Admin_MenuContainerCustom`
+  }, Object.entries(customAdmin).map((m, i) => /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("button", {
+    onClick: handleSetPage,
+    modif: m[0]
+  }, m[0]?.slice(1, m[0].length) && m[0]?.length > 1 ? m[0].charAt(0).toUpperCase() + m[0].slice(1, m[0].length) : m[0])))) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.contentBodyContainer} Admin_ContentBodyContainer`
+  }, page ? page === 'build' && resolveAuth('BuildAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BuildAdmin, props)) : page === 'stream' && resolveAuth('StreamAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(StreamAdmin, props)) : page === 'post' && resolveAuth('PostAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(PostAdmin, props)) : page === 'billing' && resolveAuth('BillingAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(BillingAdmin, props)) : page === 'storage' && resolveAuth('StorageAdmin', props._adminAuth) ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(StorageAdmin, props)) : Object.entries(customAdmin).findIndex(m => m[0] === page) > -1 // Leverage Custom Admin Pages
+  ? paintCustomAdmin(Object.entries(customAdmin).find(m => m[0] === page)) : null : null))) : null);
 };
 export default Module;

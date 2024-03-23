@@ -43,27 +43,28 @@ const PageContainer = props => {
   const cpProps = Object.assign({}, useProps);
   cpProps.useMenu = useMenu; // Determines if we useMenu based on definition app.config.js
   cpProps.useAppConfigLayout = useAppConfigLayout; // Determines if we use appConfigLayout based on definition app.config.js
-  const componentsContainer = <div className={`${useProps.pageName}_Body ${props.pageClass ?? ''}`} style={{
-    top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
-    position: 'relative'
-  }}>{components}</div>;
+  const componentsContainer = /*#__PURE__*/React.createElement("div", {
+    className: `${useProps.pageName}_Body ${props.pageClass ?? ''}`,
+    style: {
+      top: useProps.menuConfig.height ? useProps.menuConfig.height + 'px' : '',
+      position: 'relative'
+    }
+  }, components);
   if (cpProps.useAppConfigLayout) {
     cpProps.appConfigLayout = componentsContainer;
   }
   const propChildren = React.Children.map(props.children, function (child) {
     if (child !== null) {
       if (typeof child.type === 'function') {
-        return React.cloneElement(child, cpProps);
+        return /*#__PURE__*/React.cloneElement(child, cpProps);
       }
       return child;
     }
-    return React.createElement('div');
+    return /*#__PURE__*/React.createElement('div');
   });
   const articlePage = resolvedPage?.url === '/ar';
-  return <React.Fragment>
-                <div className={`${articlePage ? `Article_SafeStyles` : ''}`}>
-                    {propChildren}
-                </div>
-            </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${articlePage ? `Article_SafeStyles` : ''}`
+  }, propChildren));
 };
 export default PageContainer;

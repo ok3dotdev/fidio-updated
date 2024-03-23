@@ -1,4 +1,5 @@
 var _div, _div2, _span, _div3, _div4;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
@@ -155,143 +156,199 @@ const Module = props => {
     handleSliderLinkClickUp(e, router);
   });
   console.log(useItems, resolvedUseItems);
-  return <div className={`${Styles.IndexBgContainer} glide_${componentId} ${props.className} ${props.medium ? `${Styles.IndexBgContainerMedium}` : null}`}>
-            <div className={`${Styles.SliderBulletsContainer} ${moduleName}_SliderBulletsContainer ${props.sliderBulletsContainerClassName}`}>
-                <div className={`${Styles.SliderBullets} glide__bullets`} data-glide-el="controls[nav]">
-                    {props.items && props.items.map && props.items.length > 1 ? props.items.map((m, i) => <button className={`${Styles.SliderBullet} glide__bullet`} data-glide-dir={`=${i}`} key={i}></button>) : null}
-                </div>
-            </div>
-            {useHandler && props?.request?.handlerArgs ? <FetchHandler handlerArgs={props.request.handlerArgs} receiveData={receiveData} {...props} /> : null}
-            <div className={`swipe slick-full slider_${componentId}`}>
-                <Slider {...useSettings} className={`${Styles.sliderContainer} swiper-wrapper slider_slides`} style={{
-        height: 'inherit'
-      }}>
-                    {useItems?.map ? useItems.map((m, i) => <div className={`${Styles.BgUpperContainer} ${moduleName}_Container`} key={i}>
-                                        <div className={`${Styles.BgContainer} ${moduleName}_BgContainer ${props.bgClassName}`} style={{
-            backgroundImage: `url(${resolveImage(m, m?.leadBg ?? null, 'bg')})`
-          }}>
-                                            {props.children}
-                                            <div className={`${Styles.FillPageContainer} ${moduleName}_FillPageContainer`}>
-                                                <div className={`${Styles.TimeContainer} ${moduleName}_TimeContainer ${props.timeContainerClassName}`}>
-                                                    <div className={`${Styles.TimeCountdown} ${moduleName}_TimeCountdown ${props.timeCountdownClassName} ${useCountdown ? `${Styles.TimeCountdownVisible}` : null}`}>
-                                                        {useCountdown && setDisplayTime ? useCountdown === 'nodate' ? _div || (_div = <div></div>) : <React.Fragment>
-                                                                        {useCountdown.days > 0 ? <div className={`${Styles.TimeSection} ${moduleName}_TimeSection ${Styles.TimeSectionDay} ${props.timeSectionClassName}`}><div className={`${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`}>{useCountdown.days}</div><div className={`${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`}>Days</div></div> : null}
-                                                                        {useCountdown.days > 0 ? <div className={`${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`}>:</div> : null}
-                                                                        {useCountdown.hours === 0 && useCountdown.minutes === 0 && useCountdown.seconds === 0 ? _div2 || (_div2 = <div></div>) : <React.Fragment>
-                                                                                <div className={`${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`}>
-                                                                                    <div className={`${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`}>{useCountdown.hours}</div>
-                                                                                    <div className={`${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`}>Hours</div>
-                                                                                </div>
-                                                                                <div className={`${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`}>:</div>
-                                                                                <div className={`${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`}>
-                                                                                    <div className={`${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`}>{useCountdown.minutes}</div>
-                                                                                    <div className={`${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`}>Minutes</div>
-                                                                                </div>
-                                                                                <div className={`${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`}>:</div>
-                                                                                <div className={`${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`}>
-                                                                                    <div className={`${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`}>{useCountdown.seconds}</div>
-                                                                                    <div className={`${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`}>Seconds</div>
-                                                                                </div>
-                                                                            </React.Fragment>}
-                                                                    </React.Fragment> : null}
-                                                    </div>
-                                                    {m.showSimpleDate && useCountdown ? <div className={`${Styles.TimeSimple} ${moduleName}_TimeSimple ${props.timeSimpleClassName}`}>
-                                                                <div>{m?.date ? resolveGoodDate(m.date) : ''}</div>
-                                                            </div> : null}
-                                                </div>
-                                                <div className={`${Styles.DataContainer} ${moduleName}_DataContainer ${props.DataContainerClassName}`}>
-                                                    <div className={`${Styles.AuthorContainer} ${moduleName}_AuthorContainer ${props.authorContainerClassName}`}>
-                                                        {m?.icon !== '' ? <div className={`${Styles.IconContainer} ${moduleName}_IconContainer ${props.iconContainerClassName}`}>
-                                                                    <Link href={`/p?u=${m?.author ?? ''}`} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                      alignSelf: 'center'
-                    }}>
-                                                                        <Image loader={() => {
-                        return resolveImage(m, m?.icon ?? null, 'icon');
-                      }} src={resolveImage(m, m?.icon ?? null, 'icon')} style={{
-                        maxWidth: '50px',
-                        borderRadius: '4rem'
-                      }} alt={m?.author ?? ''} width={m.iconWidth ?? '50'} height={m.iconHeight ?? '50'} layout="responsive" />
-                                                                    </Link>
-                                                                </div> : null}
-                                                        <Link href={`/p?u=${m?.author ?? ''}`} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                    alignSelf: 'center'
-                  }}>
-                                                            <div className={`${Styles.Author} ${moduleName}_Author ${props.authorClassName}`}>{m?.author ?? ''}</div>
-                                                        </Link>
-                                                    </div>
-                                                    <Link href={resolveMainLink(m)} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                  alignSelf: 'center',
-                  position: 'relative'
-                }}>
-                                                        <div className={`${Styles.Lead} ${moduleName}_Lead ${props.leadClassName}`}>{m?.title ?? ''}</div>
-                                                        {m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? <div className='newItem' style={{
-                    position: 'absolute',
-                    top: '-25px',
-                    right: '100px',
-                    fontSize: '.7rem'
-                  }}>
-                                                                    {_span || (_span = <span>New</span>)}
-                                                                    <span style={{
-                      fontSize: '.7rem'
-                    }} className={`star material-icons`}>star</span>
-                                                                </div> : null}
-                                                    </Link>
-                                                    {m.description && m.description !== '' ? <div className={`${Styles.Description} ${moduleName}_Description ${props.descriptionClassName}`}>{m?.description ?? ''}</div> : null}
-                                                    {m?.item?.id && m?.item?.style && m?.item?.option ? <div style={{
-                  display: 'flex',
-                  columnGap: '1rem',
-                  rowGap: '.25rem',
-                  flexWrap: 'wrap'
-                }}>
-                                                                <button className={`${Styles.CtaButton} ${moduleName}_Cta ${props.ctaClassName}`} onClick={handleFireGlobalEvent} action={['add_to_cart', 'buy'].indexOf(m?.action) > -1 ? m.action : 'add_to_cart'} item={m?.item?.id} selectedstyle={m?.item?.style} currentoption={m?.item?.option} ref={ctaRef} ctaAfter={m.ctaAfter} cta={m.cta}>{m.cta}</button>
-                                                                {(() => {
-                    const style = m?.styles?.find ? m.styles.find(n => n.sid === m.item.style) : null;
-                    const price = resolveRegionBasedPrice(props, style, m?.item?.useCustom ?? null);
-                    if (price?.price == 0) {
-                      return <div className='flex' style={{
-                        fontSize: '1.5rem',
-                        fontWeight: '600'
-                      }}>
-                                                                                    {_div3 || (_div3 = <div>Free</div>)}
-                                                                                </div>;
-                    } else if (price?.currency && price?.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {
-                      return <div className='flex' style={{
-                        fontSize: '1.25rem',
-                        fontWeight: '600'
-                      }}>
-                                                                                    <div>{price.symbol}</div>
-                                                                                    <div style={{
-                          marginRight: '.25rem'
-                        }}>{resolveMoneyFormat(price.price)}</div>
-                                                                                    <div>{price.currency}</div>
-                                                                                </div>;
-                    }
-                    return _div4 || (_div4 = <div></div>);
-                  })()}
-                                                                {(() => {
-                    const option = resolveOption(m, m.item.style, m.item.option, true);
-                    const paint = option?.quantity && option.quantity > 300 ? '' : option?.quantity && option.quantity <= 300 ? `Not much left in stock` : '';
-                    return paint !== '' ? <div style={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      fontSize: '.75rem',
-                      fontWeight: '700',
-                      gap: '.25rem',
-                      color: '#ff8686'
-                    }}>
-                                                                                <span>{paint}</span>
-                                                                                <span style={{
-                        fontSize: '1.15rem'
-                      }} className={`inventory material-icons`}>inventory</span>
-                                                                            </div> : null;
-                  })()}
-                                                            </div> : null}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>) : null}
-                </Slider>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.IndexBgContainer} glide_${componentId} ${props.className} ${props.medium ? `${Styles.IndexBgContainerMedium}` : null}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.SliderBulletsContainer} ${moduleName}_SliderBulletsContainer ${props.sliderBulletsContainerClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.SliderBullets} glide__bullets`,
+    "data-glide-el": "controls[nav]"
+  }, props.items && props.items.map && props.items.length > 1 ? props.items.map((m, i) => /*#__PURE__*/React.createElement("button", {
+    className: `${Styles.SliderBullet} glide__bullet`,
+    "data-glide-dir": `=${i}`,
+    key: i
+  })) : null)), useHandler && props?.request?.handlerArgs ? /*#__PURE__*/React.createElement(FetchHandler, _extends({
+    handlerArgs: props.request.handlerArgs,
+    receiveData: receiveData
+  }, props)) : null, /*#__PURE__*/React.createElement("div", {
+    className: `swipe slick-full slider_${componentId}`
+  }, /*#__PURE__*/React.createElement(Slider, _extends({}, useSettings, {
+    className: `${Styles.sliderContainer} swiper-wrapper slider_slides`,
+    style: {
+      height: 'inherit'
+    }
+  }), useItems?.map ? useItems.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.BgUpperContainer} ${moduleName}_Container`,
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.BgContainer} ${moduleName}_BgContainer ${props.bgClassName}`,
+    style: {
+      backgroundImage: `url(${resolveImage(m, m?.leadBg ?? null, 'bg')})`
+    }
+  }, props.children, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.FillPageContainer} ${moduleName}_FillPageContainer`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeContainer} ${moduleName}_TimeContainer ${props.timeContainerClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeCountdown} ${moduleName}_TimeCountdown ${props.timeCountdownClassName} ${useCountdown ? `${Styles.TimeCountdownVisible}` : null}`
+  }, useCountdown && setDisplayTime ? useCountdown === 'nodate' ? _div || (_div = /*#__PURE__*/React.createElement("div", null)) : /*#__PURE__*/React.createElement(React.Fragment, null, useCountdown.days > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSection} ${moduleName}_TimeSection ${Styles.TimeSectionDay} ${props.timeSectionClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`
+  }, useCountdown.days), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`
+  }, "Days")) : null, useCountdown.days > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`
+  }, ":") : null, useCountdown.hours === 0 && useCountdown.minutes === 0 && useCountdown.seconds === 0 ? _div2 || (_div2 = /*#__PURE__*/React.createElement("div", null)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`
+  }, useCountdown.hours), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`
+  }, "Hours")), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`
+  }, ":"), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`
+  }, useCountdown.minutes), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`
+  }, "Minutes")), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionColon} ${moduleName}_TimeSectionColon ${props.timeSectionColonClassName}`
+  }, ":"), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSection} ${moduleName}_TimeSection ${props.timeSectionClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionValue} ${moduleName}_TimeSectionValue ${props.timeSectionValueClassName}`
+  }, useCountdown.seconds), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSectionLabel} ${moduleName}_TimeSectionLabel ${props.TimeSectionLabelClassName}`
+  }, "Seconds")))) : null), m.showSimpleDate && useCountdown ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.TimeSimple} ${moduleName}_TimeSimple ${props.timeSimpleClassName}`
+  }, /*#__PURE__*/React.createElement("div", null, m?.date ? resolveGoodDate(m.date) : '')) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.DataContainer} ${moduleName}_DataContainer ${props.DataContainerClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.AuthorContainer} ${moduleName}_AuthorContainer ${props.authorContainerClassName}`
+  }, m?.icon !== '' ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.IconContainer} ${moduleName}_IconContainer ${props.iconContainerClassName}`
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${m?.author ?? ''}`,
+    onClick: handleSliderLinkClick,
+    onMouseDown: handleSliderLinkClickDown,
+    onMouseUp: handleSliderLinkClickUpProxy,
+    draggable: false,
+    style: {
+      alignSelf: 'center'
+    }
+  }, /*#__PURE__*/React.createElement(Image, {
+    loader: () => {
+      return resolveImage(m, m?.icon ?? null, 'icon');
+    },
+    src: resolveImage(m, m?.icon ?? null, 'icon'),
+    style: {
+      maxWidth: '50px',
+      borderRadius: '4rem'
+    },
+    alt: m?.author ?? '',
+    width: m.iconWidth ?? '50',
+    height: m.iconHeight ?? '50',
+    layout: "responsive"
+  }))) : null, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${m?.author ?? ''}`,
+    onClick: handleSliderLinkClick,
+    onMouseDown: handleSliderLinkClickDown,
+    onMouseUp: handleSliderLinkClickUpProxy,
+    draggable: false,
+    style: {
+      alignSelf: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Author} ${moduleName}_Author ${props.authorClassName}`
+  }, m?.author ?? ''))), /*#__PURE__*/React.createElement(Link, {
+    href: resolveMainLink(m),
+    onClick: handleSliderLinkClick,
+    onMouseDown: handleSliderLinkClickDown,
+    onMouseUp: handleSliderLinkClickUpProxy,
+    draggable: false,
+    style: {
+      alignSelf: 'center',
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Lead} ${moduleName}_Lead ${props.leadClassName}`
+  }, m?.title ?? ''), m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/React.createElement("div", {
+    className: "newItem",
+    style: {
+      position: 'absolute',
+      top: '-25px',
+      right: '100px',
+      fontSize: '.7rem'
+    }
+  }, _span || (_span = /*#__PURE__*/React.createElement("span", null, "New")), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: '.7rem'
+    },
+    className: `star material-icons`
+  }, "star")) : null), m.description && m.description !== '' ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.Description} ${moduleName}_Description ${props.descriptionClassName}`
+  }, m?.description ?? '') : null, m?.item?.id && m?.item?.style && m?.item?.option ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      columnGap: '1rem',
+      rowGap: '.25rem',
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `${Styles.CtaButton} ${moduleName}_Cta ${props.ctaClassName}`,
+    onClick: handleFireGlobalEvent,
+    action: ['add_to_cart', 'buy'].indexOf(m?.action) > -1 ? m.action : 'add_to_cart',
+    item: m?.item?.id,
+    selectedstyle: m?.item?.style,
+    currentoption: m?.item?.option,
+    ref: ctaRef,
+    ctaAfter: m.ctaAfter,
+    cta: m.cta
+  }, m.cta), (() => {
+    const style = m?.styles?.find ? m.styles.find(n => n.sid === m.item.style) : null;
+    const price = resolveRegionBasedPrice(props, style, m?.item?.useCustom ?? null);
+    if (price?.price == 0) {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "flex",
+        style: {
+          fontSize: '1.5rem',
+          fontWeight: '600'
+        }
+      }, _div3 || (_div3 = /*#__PURE__*/React.createElement("div", null, "Free")));
+    } else if (price?.currency && price?.symbol && Object.prototype.hasOwnProperty.call(price, 'price')) {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "flex",
+        style: {
+          fontSize: '1.25rem',
+          fontWeight: '600'
+        }
+      }, /*#__PURE__*/React.createElement("div", null, price.symbol), /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginRight: '.25rem'
+        }
+      }, resolveMoneyFormat(price.price)), /*#__PURE__*/React.createElement("div", null, price.currency));
+    }
+    return _div4 || (_div4 = /*#__PURE__*/React.createElement("div", null));
+  })(), (() => {
+    const option = resolveOption(m, m.item.style, m.item.option, true);
+    const paint = option?.quantity && option.quantity > 300 ? '' : option?.quantity && option.quantity <= 300 ? `Not much left in stock` : '';
+    return paint !== '' ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        alignItems: 'center',
+        display: 'flex',
+        fontSize: '.75rem',
+        fontWeight: '700',
+        gap: '.25rem',
+        color: '#ff8686'
+      }
+    }, /*#__PURE__*/React.createElement("span", null, paint), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: '1.15rem'
+      },
+      className: `inventory material-icons`
+    }, "inventory")) : null;
+  })()) : null))))) : null)));
 };
 export default Module;

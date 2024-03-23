@@ -6,10 +6,11 @@ const Module = props => {
       menu: 'stream'
     });
   });
-  return <React.Fragment>
-            {props._adminAuth && props?.profileData?.user?.id === props?._loggedIn?.identifier && !props._currentlyStreaming ? <div className={`${props?.className ?? ''}`}>
-                        <button className={`${props?.ManagerStyles?.streamingButton} ${props?.ManagerStyles?.streamingButtonMini} ${props._managerOpen ? `${props?.ManagerStyles?.streamingButtonOff}` : ''}`} onClick={handleOpenBeginStream}>Begin Stream</button>
-                    </div> : null}
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, props._adminAuth && props?.profileData?.user?.id === props?._loggedIn?.identifier && !props._currentlyStreaming ? /*#__PURE__*/React.createElement("div", {
+    className: `${props?.className ?? ''}`
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `${props?.ManagerStyles?.streamingButton} ${props?.ManagerStyles?.streamingButtonMini} ${props._managerOpen ? `${props?.ManagerStyles?.streamingButtonOff}` : ''}`,
+    onClick: handleOpenBeginStream
+  }, "Begin Stream")) : null);
 };
 export default Module;

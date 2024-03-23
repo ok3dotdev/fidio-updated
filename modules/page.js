@@ -36,7 +36,7 @@ export const page = props => {
   resolvedPage = resolvePage(config, useProps.path);
   resolvedDefinition = resolvedPage && resolvedPage.data; // Access the `data` property
   const components = generateComponent(resolvedDefinition);
-  return <div>{components}</div>;
+  return /*#__PURE__*/React.createElement("div", null, components);
 };
 export const getServerSideProps = async context => {
   return await getServerSidePropsDefault(context);

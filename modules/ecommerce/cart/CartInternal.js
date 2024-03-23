@@ -1,3 +1,4 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { CreditCard } from '../../payment/index.js';
 import { logout } from '/modules/utility/onboarding/SignIn.js';
@@ -295,8 +296,26 @@ const Module = props => {
 
   // console.log('Cart', cart, total, validCc, useCartOfCurrency)
 
-  return <React.Fragment>
-            <Cart {...props} fetchBusy={fetchBusy} menuOpen={menuOpen} closing={closing} cart={cart} useCartOfCurrency={useCartOfCurrency} handleUpdateQuantity={handleUpdateQuantity} handlePerformPurchase={handlePerformPurchase} handleClearError={handleClearError} pageError={pageError} free={free} validCc={validCc} setValidCc={setValidCc} cartMessages={cartMessages} handleToggleSettings={handleToggleSettings} showContent={showContent} setShowContent={setShowContent} setSolution={setSolution} ccChildren={props?.ccChildren} container={container} />
-        </React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Cart, _extends({}, props, {
+    fetchBusy: fetchBusy,
+    menuOpen: menuOpen,
+    closing: closing,
+    cart: cart,
+    useCartOfCurrency: useCartOfCurrency,
+    handleUpdateQuantity: handleUpdateQuantity,
+    handlePerformPurchase: handlePerformPurchase,
+    handleClearError: handleClearError,
+    pageError: pageError,
+    free: free,
+    validCc: validCc,
+    setValidCc: setValidCc,
+    cartMessages: cartMessages,
+    handleToggleSettings: handleToggleSettings,
+    showContent: showContent,
+    setShowContent: setShowContent,
+    setSolution: setSolution,
+    ccChildren: props?.ccChildren,
+    container: container
+  })));
 };
 export default Module;

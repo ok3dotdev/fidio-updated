@@ -205,97 +205,129 @@ const Module = props => {
     return o;
   };
   console.log('Menu Items', menu, currentDoc);
-  return <div className={`${props.className} Documentation_Container`}>
-            {/* <Banner { ...props } /> */}
-            <div className='flex' style={{
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} Documentation_Container`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex",
+    style: {
       justifyContent: 'space-between',
       alignContent: 'center',
       margin: '.5rem 1.5rem'
-    }}>
-                <h5 className={`Misc_Label`} style={{
-        fontSize: '1.5rem'
-      }}>Tycoon Documentation</h5>
-                <CompanyLink {...props} />
-            </div>
-            <div style={{
+    }
+  }, /*#__PURE__*/React.createElement("h5", {
+    className: `Misc_Label`,
+    style: {
+      fontSize: '1.5rem'
+    }
+  }, "Tycoon Documentation"), /*#__PURE__*/React.createElement(CompanyLink, props)), /*#__PURE__*/React.createElement("div", {
+    style: {
       position: 'sticky',
       top: '.5rem',
       margin: '.5rem 0',
       marginTop: '0'
-    }}>
-                <input onChange={handleUpdateSearch} onFocus={handleSetSearchFocus} onBlur={handleSetSearchFocusOff} className={`${styles.activeSearch}`} ref={queryRef} style={{
-        border: '0px',
-        borderRadius: '.5rem',
-        width: 'calc(100% - 1rem)',
-        fontSize: '1.25rem',
-        padding: '0 .5rem',
-        margin: '0 .5rem'
-      }} placeholder='How do I?'></input>
-                {usingQuery ? <div className={`${styles.activeSearchResults}`}>
-                        <div style={{
-          padding: '.25rem 0rem',
-          paddingTop: '.5rem',
-          display: 'grid',
-          gap: '.5rem'
-        }}>
-                            {Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => <div className={`flex gap-p5`} style={{
-            marginLeft: '.5rem',
-            cursor: 'pointer'
-          }} key={i}>
-                                            <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
-              padding: '.5rem'
-            }}>
-                                                <div className={`${styles.lead}`} onClick={handleSetCurrentRecord} modif={i} currentresults={'true'}>{m.lead}</div>
-                                            </div>
-                                        </div>) : queryRef?.current?.value !== '' ? _div || (_div = <div></div>) : <div style={{
-            textAlign: 'center',
-            fontSize: '.95rem'
-          }}>Try Searching for something</div>}
-                            </div>
-                        </div> : null}
-            </div>
-            <ul className={`flex gap-p5 ${styles.menuContainer}`}>
-                {Array.isArray(menu) && menu.length > 0 ? menu.map((m, i) => <li key={i} style={{
-        listStyle: 'none'
-      }} onClick={handleSetCurrentMenu} modif={m}>
-                                <div>{m?.charAt ? `${m.charAt(0).toUpperCase()}${m.slice(1, m.length)}` : m}</div>
-                            </li>) : null}
-            </ul>
-            <div className={`${styles.mainContainer}`}>
-                <ul className={`${styles.menuList}`}>
-                    {Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map((m, i) => <li className='flex gap-p2' onClick={handleSetCurrentRecord} modif={i}>
-                                    <div>{m?.lead}</div>
-                                    {detectFlags(m)?.manual ? <div className={`${styles.tagUnmanaged} ${styles.tagSmall}`}>m</div> : null}
-                                    {detectFlags(m)?.simple ? <div className={`${styles.tagSimple} ${styles.tagSmall}`}>s</div> : null}
-                                </li>) : null}
-                </ul>
-                <div className={`${styles.contentContainer}`}>
-                    {currentDoc && !isObjectEmpty(currentDoc) ? <div className={`flex ${styles.quadrant}`}>
-                                <div className={`Misc_Item_Container Misc_Item_DarkContainerHover`} style={{
-            padding: '.5rem',
-            width: '100%'
-          }}>
-                                    <div className={`${styles.lead}`}>{currentDoc.lead}</div>
-                                    <div className='flex gap-p5'>{detectFlags(currentDoc)?.manual ? <div className={`${styles.tagUnmanaged} ${styles.tag}`}>manual</div> : null}</div>
-                                    <div className='flex gap-p5'>{detectFlags(currentDoc)?.simple ? <div className={`${styles.tagSimple} ${styles.tag}`}>simple</div> : null}</div>
-                                    <pre><code><div className={`${styles.htmlParseContainer}`} dangerouslySetInnerHTML={resolvePaint(currentDoc, 'html')} style={{
-                  fontSize: '.85rem',
-                  lineHeight: 'normal',
-                  lineBreak: 'auto',
-                  whiteSpace: 'pre-wrap'
-                }}></div></code></pre>
-                                </div>
-                            </div> : null}
-                </div>
-                <div>
-                    {currentDoc && !isObjectEmpty(currentDoc) ? <div className={`flex ${styles.container}`}>
-                                <div className={`${styles.quadrant2}`}>
-                                    <pre><code><div className={`${styles.codePre}`}>{currentDoc?.code}</div></code></pre>
-                                    <div>{currentDoc.response}</div>
-                                </div>
-                            </div> : null}
-                </div>
-            </div>
-        </div>;
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    onChange: handleUpdateSearch,
+    onFocus: handleSetSearchFocus,
+    onBlur: handleSetSearchFocusOff,
+    className: `${styles.activeSearch}`,
+    ref: queryRef,
+    style: {
+      border: '0px',
+      borderRadius: '.5rem',
+      width: 'calc(100% - 1rem)',
+      fontSize: '1.25rem',
+      padding: '0 .5rem',
+      margin: '0 .5rem'
+    },
+    placeholder: "How do I?"
+  }), usingQuery ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles.activeSearchResults}`
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '.25rem 0rem',
+      paddingTop: '.5rem',
+      display: 'grid',
+      gap: '.5rem'
+    }
+  }, Array.isArray(currentResults) && currentResults.length > 0 ? currentResults.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: `flex gap-p5`,
+    style: {
+      marginLeft: '.5rem',
+      cursor: 'pointer'
+    },
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
+    style: {
+      padding: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles.lead}`,
+    onClick: handleSetCurrentRecord,
+    modif: i,
+    currentresults: 'true'
+  }, m.lead)))) : queryRef?.current?.value !== '' ? _div || (_div = /*#__PURE__*/React.createElement("div", null)) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: 'center',
+      fontSize: '.95rem'
+    }
+  }, "Try Searching for something"))) : null), /*#__PURE__*/React.createElement("ul", {
+    className: `flex gap-p5 ${styles.menuContainer}`
+  }, Array.isArray(menu) && menu.length > 0 ? menu.map((m, i) => /*#__PURE__*/React.createElement("li", {
+    key: i,
+    style: {
+      listStyle: 'none'
+    },
+    onClick: handleSetCurrentMenu,
+    modif: m
+  }, /*#__PURE__*/React.createElement("div", null, m?.charAt ? `${m.charAt(0).toUpperCase()}${m.slice(1, m.length)}` : m))) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${styles.mainContainer}`
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: `${styles.menuList}`
+  }, Array.isArray(currentMenuDocsList) && currentMenuDocsList.length > 0 ? currentMenuDocsList.map((m, i) => /*#__PURE__*/React.createElement("li", {
+    className: "flex gap-p2",
+    onClick: handleSetCurrentRecord,
+    modif: i
+  }, /*#__PURE__*/React.createElement("div", null, m?.lead), detectFlags(m)?.manual ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles.tagUnmanaged} ${styles.tagSmall}`
+  }, "m") : null, detectFlags(m)?.simple ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles.tagSimple} ${styles.tagSmall}`
+  }, "s") : null)) : null), /*#__PURE__*/React.createElement("div", {
+    className: `${styles.contentContainer}`
+  }, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/React.createElement("div", {
+    className: `flex ${styles.quadrant}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Misc_Item_Container Misc_Item_DarkContainerHover`,
+    style: {
+      padding: '.5rem',
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles.lead}`
+  }, currentDoc.lead), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p5"
+  }, detectFlags(currentDoc)?.manual ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles.tagUnmanaged} ${styles.tag}`
+  }, "manual") : null), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p5"
+  }, detectFlags(currentDoc)?.simple ? /*#__PURE__*/React.createElement("div", {
+    className: `${styles.tagSimple} ${styles.tag}`
+  }, "simple") : null), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", null, /*#__PURE__*/React.createElement("div", {
+    className: `${styles.htmlParseContainer}`,
+    dangerouslySetInnerHTML: resolvePaint(currentDoc, 'html'),
+    style: {
+      fontSize: '.85rem',
+      lineHeight: 'normal',
+      lineBreak: 'auto',
+      whiteSpace: 'pre-wrap'
+    }
+  }))))) : null), /*#__PURE__*/React.createElement("div", null, currentDoc && !isObjectEmpty(currentDoc) ? /*#__PURE__*/React.createElement("div", {
+    className: `flex ${styles.container}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${styles.quadrant2}`
+  }, /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", null, /*#__PURE__*/React.createElement("div", {
+    className: `${styles.codePre}`
+  }, currentDoc?.code))), /*#__PURE__*/React.createElement("div", null, currentDoc.response))) : null)));
 };
 export default Module;

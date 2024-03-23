@@ -1,4 +1,5 @@
 var _h, _span, _span2, _span3, _div, _div2, _div3, _div4, _label;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
@@ -247,185 +248,232 @@ const Module = props => {
 
   // console.log(recentArticles, meta, inHtmlImages, published)
 
-  return <div className={`${props.className} ${moduleName}_Container`}>
-            {_h || (_h = <h3>Post</h3>)}
-            <div className={`${AdminStyles.containerTwoSmallRight}`}>
-                <div className={`Editor_Container Editor_MaxWidth`}>
-                    <div>
-                        <TextareaAutosize className={`${AdminStyles.millerText}`} type='text' placeholder='Title' style={{
-            fontStyle: 'italic',
-            width: '100%',
-            fontSize: '2rem',
-            fontWeight: '700'
-          }} ref={titleRef} />
-                    </div>
-                    <div style={{
-          fontSize: '1.125rem',
-          marginBottom: '.25rem',
-          color: '#cccccc',
-          fontWeight: '600'
-        }}>
-                        <div className={`${AdminStyles.millerText}`} style={{
-            fontStyle: 'italic'
-          }}>
-                            <Link href={`/p?u=${published?.authorUsername ?? props?._loggedIn?.username ?? ''}`} style={{
-              alignSelf: 'center'
-            }}>
-                                {_span || (_span = <span>by:&nbsp;</span>)}<span>{published?.authorUsername ?? props?._loggedIn?.username ?? ''}</span>
-                            </Link>
-                        </div>
-                    </div>
-                    <div>
-                        {published?.title ? <div style={{
-            background: 'rgba(55, 55, 55, 1)',
-            borderRadius: '.5rem',
-            padding: '.25rem',
-            width: '-webkit-fill-available',
-            textAlign: 'center',
-            width: '100%',
-            marginBottom: '.25rem'
-          }}>
-                                    {_span2 || (_span2 = <span>Read&nbsp;</span>)}
-                                    <Link href={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`}>"{published?.title}"</Link>
-                                    {_span3 || (_span3 = <span>&nbsp;at&nbsp;</span>)}
-                                    <span selectValue={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`} onClick={selectThisText}>{`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`}</span>
-                                </div> : null}
-                    </div>
-                    <div id={`${editorElementId}`} className={`Editor_Platform`} style={{
-          marginBottom: '.25rem'
-        }}>
-                        <p>{useDefaultText}</p>
-                    </div>
-                    <div className={`${AdminStyles.metaContainer} flex gap-p2`} style={{
-          marginBottom: '.25rem'
-        }}>
-                        <div className='flex gap-p2' style={{
-            flexDirection: 'column'
-          }}>
-                            <div style={{
-              minWidth: '200px'
-            }}>
-                                <div style={{
-                whiteSpace: 'nowrap'
-              }}>Featured Image</div>
-                                <input type='text' placeholder='Featured Image Url' style={{
-                width: '100%',
-                fontWeight: '600'
-              }} defaultValue={`${meta?.featuredImg ?? ''}`} onChange={handleSetFeaturedImage} ref={featuredImgUrlRef} />
-                            </div>
-                            <img style={{
-              backgroundImage: `url(${meta?.featuredImg ?? null}`,
-              height: '100px',
-              width: '100%',
-              minWidth: '100px',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center'
-            }} selectValue={`${meta?.featuredImg ?? null}`} onClick={selectThisText} ref={featuredImgRef} />
-                        </div>
-                        <div className='flex gap-p2' style={{
-            width: '100%'
-          }}>
-                            <div style={{
-              width: '100%'
-            }}>
-                                <div className='flex gap-p2'>
-                                    {_div || (_div = <div>Groups</div>)}
-                                    <input type='text' id={`${moduleName}_groupingInput`} placeholder='Post Groups' style={{
-                  width: '100%',
-                  fontWeight: '600'
-                }} onInput={handleUpdateInput} modif='groups' ref={groupsRef} />
-                                </div>
-                                {useGroups?.length > 0 ? <div className='tagContainer' style={{
-                marginTop: '.25rem'
-              }}>
-                                        {useGroups.map(d => {
-                  return d !== '' ? <div className='tagItem'>{d}</div> : _div2 || (_div2 = <div></div>);
-                })}
-                                    </div> : null}
-                            </div>
-                            <div style={{
-              width: '100%'
-            }}>
-                                <div className='flex gap-p2'>
-                                    {_div3 || (_div3 = <div>Tags</div>)}
-                                    <input type='text' id={`${moduleName}_useTagsInput`} placeholder='Tags' style={{
-                  width: '100%',
-                  fontWeight: '600'
-                }} onInput={handleUpdateInput} modif='tags' ref={tagsRef} />
-                                </div>
-                                {useTags?.length > 0 ? <div className='tagContainer' style={{
-                marginTop: '.25rem'
-              }}>
-                                        {useTags.map(d => {
-                  return d !== '' ? <div className='tagItem'>{d}</div> : _div4 || (_div4 = <div></div>);
-                })}
-                                    </div> : null}
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`${AdminStyles.forceSafeBreak} flex gap-p2`}>
-                        {!published ? <button className={`${AdminStyles.actionButton}`} onClick={handlePublishArticle}>Post</button> : <div className='flex gap-p2'>
-                                    <button style={{
-              minWidth: '200px',
-              maxWidth: '90%'
-            }} onClick={handlePublishArticle}>Update</button>
-                                    <button style={{
-              minWidth: '200px',
-              maxWidth: '90%'
-            }} onClick={handleDeleteArticle}>Delete</button>
-                                </div>}
-                        {<div className='flex gap-p2' style={{
-            background: 'rgb(55, 55, 55)',
-            borderRadius: '1rem',
-            padding: '0 2rem',
-            justifyContent: 'center'
-          }}>
-                                {_label || (_label = <label>Approved</label>)}
-                                <input type='checkbox' ref={approvedRef} defaultChecked={true} onChange={handleSetApproved} />
-                            </div>}
-                    </div>
-                    {didPublishThisSession && published?.id ? <div style={{
-          marginTop: '.5rem'
-        }}>
-                                <div style={{
-            background: 'rgba(55, 55, 55, 1)',
-            borderRadius: '.5rem',
-            padding: '.25rem',
-            width: '-webkit-fill-available',
-            textAlign: 'center',
-            width: '100%'
-          }}>Your post was made successsfully. View at&nbsp;
-                                    <Link href={`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`}>{`${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`}</Link>
-                                </div>
-                            </div> : null}
-                </div>
-                <div>
-                    <div style={{
-          marginBottom: '.5rem'
-        }}>
-                        <h4 style={{
-            fontWeight: '600'
-          }}>Recent Articles</h4>
-                        <div className={`${AdminStyles.simpleList} ${AdminStyles.simpleListShortText}`} style={{
-            maxHeight: '200px',
-            overflow: 'auto'
-          }}>
-                            {recentArticles?.length > 0 ? recentArticles.map((m, i) => <div style={{
-              background: 'rgb(53, 53, 53)'
-            }}>
-                                            <span style={{
-                cursor: 'pointer'
-              }} article={m?.id} onClick={handleLoadArticle}>{m.title}</span>
-                                            <span>{m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? ` - ${new Date(Number(m.publish)).toDateString()}` : ''}</span>
-                                        </div>) : null}
-                        </div>
-                    </div>
-                    <div>
-                        <StorageAdmin {...props} vert={true} />
-                    </div>
-                </div>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${props.className} ${moduleName}_Container`
+  }, _h || (_h = /*#__PURE__*/React.createElement("h3", null, "Post")), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.containerTwoSmallRight}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `Editor_Container Editor_MaxWidth`
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(TextareaAutosize, {
+    className: `${AdminStyles.millerText}`,
+    type: "text",
+    placeholder: "Title",
+    style: {
+      fontStyle: 'italic',
+      width: '100%',
+      fontSize: '2rem',
+      fontWeight: '700'
+    },
+    ref: titleRef
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '1.125rem',
+      marginBottom: '.25rem',
+      color: '#cccccc',
+      fontWeight: '600'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.millerText}`,
+    style: {
+      fontStyle: 'italic'
+    }
+  }, /*#__PURE__*/React.createElement(Link, {
+    href: `/p?u=${published?.authorUsername ?? props?._loggedIn?.username ?? ''}`,
+    style: {
+      alignSelf: 'center'
+    }
+  }, _span || (_span = /*#__PURE__*/React.createElement("span", null, "by:\xA0")), /*#__PURE__*/React.createElement("span", null, published?.authorUsername ?? props?._loggedIn?.username ?? '')))), /*#__PURE__*/React.createElement("div", null, published?.title ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: 'rgba(55, 55, 55, 1)',
+      borderRadius: '.5rem',
+      padding: '.25rem',
+      width: '-webkit-fill-available',
+      textAlign: 'center',
+      width: '100%',
+      marginBottom: '.25rem'
+    }
+  }, _span2 || (_span2 = /*#__PURE__*/React.createElement("span", null, "Read\xA0")), /*#__PURE__*/React.createElement(Link, {
+    href: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`
+  }, "\"", published?.title, "\""), _span3 || (_span3 = /*#__PURE__*/React.createElement("span", null, "\xA0at\xA0")), /*#__PURE__*/React.createElement("span", {
+    selectValue: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`,
+    onClick: selectThisText
+  }, `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`)) : null), /*#__PURE__*/React.createElement("div", {
+    id: `${editorElementId}`,
+    className: `Editor_Platform`,
+    style: {
+      marginBottom: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement("p", null, useDefaultText)), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.metaContainer} flex gap-p2`,
+    style: {
+      marginBottom: '.25rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      flexDirection: 'column'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      minWidth: '200px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      whiteSpace: 'nowrap'
+    }
+  }, "Featured Image"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Featured Image Url",
+    style: {
+      width: '100%',
+      fontWeight: '600'
+    },
+    defaultValue: `${meta?.featuredImg ?? ''}`,
+    onChange: handleSetFeaturedImage,
+    ref: featuredImgUrlRef
+  })), /*#__PURE__*/React.createElement("img", {
+    style: {
+      backgroundImage: `url(${meta?.featuredImg ?? null}`,
+      height: '100px',
+      width: '100%',
+      minWidth: '100px',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+    },
+    selectValue: `${meta?.featuredImg ?? null}`,
+    onClick: selectThisText,
+    ref: featuredImgRef
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2"
+  }, _div || (_div = /*#__PURE__*/React.createElement("div", null, "Groups")), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: `${moduleName}_groupingInput`,
+    placeholder: "Post Groups",
+    style: {
+      width: '100%',
+      fontWeight: '600'
+    },
+    onInput: handleUpdateInput,
+    modif: "groups",
+    ref: groupsRef
+  })), useGroups?.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "tagContainer",
+    style: {
+      marginTop: '.25rem'
+    }
+  }, useGroups.map(d => {
+    return d !== '' ? /*#__PURE__*/React.createElement("div", {
+      className: "tagItem"
+    }, d) : _div2 || (_div2 = /*#__PURE__*/React.createElement("div", null));
+  })) : null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '100%'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2"
+  }, _div3 || (_div3 = /*#__PURE__*/React.createElement("div", null, "Tags")), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: `${moduleName}_useTagsInput`,
+    placeholder: "Tags",
+    style: {
+      width: '100%',
+      fontWeight: '600'
+    },
+    onInput: handleUpdateInput,
+    modif: "tags",
+    ref: tagsRef
+  })), useTags?.length > 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "tagContainer",
+    style: {
+      marginTop: '.25rem'
+    }
+  }, useTags.map(d => {
+    return d !== '' ? /*#__PURE__*/React.createElement("div", {
+      className: "tagItem"
+    }, d) : _div4 || (_div4 = /*#__PURE__*/React.createElement("div", null));
+  })) : null))), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.forceSafeBreak} flex gap-p2`
+  }, !published ? /*#__PURE__*/React.createElement("button", {
+    className: `${AdminStyles.actionButton}`,
+    onClick: handlePublishArticle
+  }, "Post") : /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2"
+  }, /*#__PURE__*/React.createElement("button", {
+    style: {
+      minWidth: '200px',
+      maxWidth: '90%'
+    },
+    onClick: handlePublishArticle
+  }, "Update"), /*#__PURE__*/React.createElement("button", {
+    style: {
+      minWidth: '200px',
+      maxWidth: '90%'
+    },
+    onClick: handleDeleteArticle
+  }, "Delete")), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-p2",
+    style: {
+      background: 'rgb(55, 55, 55)',
+      borderRadius: '1rem',
+      padding: '0 2rem',
+      justifyContent: 'center'
+    }
+  }, _label || (_label = /*#__PURE__*/React.createElement("label", null, "Approved")), /*#__PURE__*/React.createElement("input", {
+    type: "checkbox",
+    ref: approvedRef,
+    defaultChecked: true,
+    onChange: handleSetApproved
+  }))), didPublishThisSession && published?.id ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: 'rgba(55, 55, 55, 1)',
+      borderRadius: '.5rem',
+      padding: '.25rem',
+      width: '-webkit-fill-available',
+      textAlign: 'center',
+      width: '100%'
+    }
+  }, "Your post was made successsfully. View at\xA0", /*#__PURE__*/React.createElement(Link, {
+    href: `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `https://${props.domainUrl}/ar?p=${published?.id}`}`
+  }, `${props.devLocal ? `${props.devAddress}/ar?p=${published?.id}` : `${props.domainUrl}/ar?p=${published?.id}`}`))) : null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: '.5rem'
+    }
+  }, /*#__PURE__*/React.createElement("h4", {
+    style: {
+      fontWeight: '600'
+    }
+  }, "Recent Articles"), /*#__PURE__*/React.createElement("div", {
+    className: `${AdminStyles.simpleList} ${AdminStyles.simpleListShortText}`,
+    style: {
+      maxHeight: '200px',
+      overflow: 'auto'
+    }
+  }, recentArticles?.length > 0 ? recentArticles.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: 'rgb(53, 53, 53)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      cursor: 'pointer'
+    },
+    article: m?.id,
+    onClick: handleLoadArticle
+  }, m.title), /*#__PURE__*/React.createElement("span", null, m.publish && !isNaN(Number(m.publish)) && !isNaN(new Date(Number(m.publish))) ? ` - ${new Date(Number(m.publish)).toDateString()}` : ''))) : null)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(StorageAdmin, _extends({}, props, {
+    vert: true
+  }))))));
 };
 export default Module;

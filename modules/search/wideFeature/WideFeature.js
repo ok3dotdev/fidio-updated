@@ -16,16 +16,23 @@ const Module = props => {
     }
   };
   console.log(props, props.image1);
-  return <div className={`WideFeatureContainer ${props.className}`}>
-            <div className='WideFeatureInnerContainer'>
-                <div style={{
-        maxHeight: '200px'
-      }}>
-                    <Image loader={myLoader} src={props.image1 && props.cdn && props.cdn.static ? props.image1 : 'img/default/greythumb.jpg'} width={320} height={180} layout="responsive" style={{
-          borderRadius: '1rem'
-        }} />
-                </div>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `WideFeatureContainer ${props.className}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "WideFeatureInnerContainer"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxHeight: '200px'
+    }
+  }, /*#__PURE__*/React.createElement(Image, {
+    loader: myLoader,
+    src: props.image1 && props.cdn && props.cdn.static ? props.image1 : 'img/default/greythumb.jpg',
+    width: 320,
+    height: 180,
+    layout: "responsive",
+    style: {
+      borderRadius: '1rem'
+    }
+  }))));
 };
 export default Module;

@@ -1,4 +1,5 @@
 var _span;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 import React from 'react';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
@@ -186,110 +187,158 @@ const Module = props => {
   const handleSliderLinkClickUpProxy = React.useCallback(e => {
     handleSliderLinkClickUp(e, router);
   });
-  return <div className={`${Styles.IndexHelloContainer} sliderContainer_${componentId} ${moduleName}_IndexHelloContainer ${props.className}`} ref={sliderTrackRef}>
-            {props.groupLabel ? <div className={`${Styles.GroupLabelContainer} ${moduleName}_groupLabelContainer ${props.groupLabelContainerClassName}`}>
-                        <div className={`${Styles.GroupLabel} ${moduleName}_groupLabel ${props.groupLabelClassName}`}>{props.groupLabel}</div>
-                    </div> : null}
-            {useHandler && props?.request?.handlerArgs ? <FetchHandler handlerArgs={props.request.handlerArgs} receiveData={receiveData} {...props} /> : null}
-            <div className={`swipe slider_${componentId}`}>
-                <Slider {...useSettings} className={`${Styles.IndexItemsContainer} swiper-wrapper slider_slides ${moduleName}_IndexItemsContainer slider_slides_${componentId} ${props.IndexItemsContainerClassName}`}>
-                    {useItems?.map ? useItems.map((m, i) => {
-          const useDate = m?.date && !isNaN(new Date(m.date)) ? new Date(m.date) : '';
-          console.log(useDate, useDate.getMonth, m);
-          return <div className={`swiper-slide ${Styles.IndexItemUpperContainer} ${props.tall ? `${Styles.IndexItemsUpperContainerTall}` : null} ${moduleName}_Container ${componentId}_IndexItemUpperContainer ${m.important ? `slider_item_important` : ''}`} key={i}>
-                                            <Link href={resolveMainLink(m)} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-              alignSelf: 'center'
-            }}>
-                                                <div className={`${Styles.BgContainer} ${props.tall ? `${Styles.BgContainerTall}` : null} ${moduleName}_BgContainer ${props.bgClassName}`} style={{
-                backgroundImage: `url(${resolveImage(m, m?.leadBg ?? null, 'bg')})`,
-                position: 'relative'
-              }}>
-                                                    {props.children}
-                                                    <div className={`${Styles.FillPageContainer} ${moduleName}_FillPageContainer`}>
-                                                        <div className={`${Styles.TimeContainer} ${moduleName}_TimeContainer ${props.timeContainerClassName}`}>
-                                                            {m?.showSimpleDate && useDate?.getMonth && useDate?.getDate ? <div className={`${Styles.TimeSimple} ${moduleName}_TimeSimple ${props.timeSimpleClassName} ${datePassed(m.date) ? `${Styles.DatePassed}` : ''}`}>
-                                                                        <div className={`${Styles.TimeShowContainer} flex gap-p5`}>
-                                                                            <div className={`${Styles.dateIconContainer}`}>
-                                                                                <div className={`${Styles.dateIconMonth}`}>{retrieveMonth(useDate.getMonth())}</div>
-                                                                                <div className={`${Styles.dateIconDate}`}>{useDate.getDate()}</div>
-                                                                            </div>
-                                                                            <div className={`${Styles.dateMetaContainer}`}>
-                                                                                <div className={`${Styles.dateText}`}>{retrieveDay(useDate.getDay())}, {useDate.toLocaleString('en-US', {
-                              month: 'long'
-                            })} {useDate.toLocaleDateString('en-US', {
-                              day: '2-digit'
-                            })}</div>
-                                                                                <div className={`${Styles.timeMeta} flex gap-p2`} style={{
-                            alignContent: 'center'
-                          }}>
-                                                                                    {m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? <div className='newItem' style={{
-                              fontSize: '.7rem'
-                            }}>
-                                                                                                {_span || (_span = <span>New</span>)}
-                                                                                                <span style={{
-                                fontSize: '.7rem'
-                              }} className={`star material-icons`}>star</span>
-                                                                                            </div> : null}
-                                                                                    <div className={`${Styles.timeText}`}>{useDate.toLocaleString('en-US', {
-                                hour12: true,
-                                hour: '2-digit',
-                                minute: '2-digit'
-                              })}</div>
-                                                                                    {m?.item?.type === 'ticket' ? <div className={`${Styles.ticketIcon}`} style={{
-                              height: '1rem'
-                            }}><ConfirmationNumber style={{
-                                fontSize: '1rem',
-                                height: '1rem'
-                              }} /></div> : null}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> : null}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                            <div>
-                                                <div className={`${Styles.MetaContainer} ${moduleName}_MetaContainer ${props.metaContainerClassName}`}>
-                                                    {m?.icon !== '' ? <div className={`${Styles.IconContainer} ${moduleName}_IconContainer ${props.iconContainerClassName}`}>
-                                                                <Link href={`/p?u=${m?.author ?? ''}`} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                    alignSelf: 'center'
-                  }}>
-                                                                    <Image loader={() => {
-                      return resolveImage(m, m?.icon ?? null, 'icon');
-                    }} src={resolveImage(m, m?.icon ?? null, 'icon')} style={{
-                      maxWidth: '60px',
-                      borderRadius: '4rem',
-                      minHeight: '50px'
-                    }} alt={m?.author ?? ''} width={m?.iconWidth ?? '50'} height={m?.iconHeight ?? '50'} layout="responsive" />
-                                                                </Link>
-                                                            </div> : null}
-                                                    <div className={`${Styles.DataContainer} ${moduleName}_DataContainer ${props.DataContainerClassName}`}>
-                                                        <Link href={resolveMainLink(m)} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                    alignSelf: 'center'
-                  }}>
-                                                            <div className={`${Styles.Lead} ${moduleName}_Lead ${props.leadClassName}`}>{m?.title ?? ''}</div>
-                                                        </Link>
-                                                        <div className={`${Styles.CtaHolder} ${moduleName}_CtaHolder ${props.CtaHolderClassName}`}>
-                                                            <Link href={`/p?u=${m?.author}`} onClick={handleSliderLinkClick} onMouseDown={handleSliderLinkClickDown} onMouseUp={handleSliderLinkClickUpProxy} draggable={false} style={{
-                      alignSelf: 'center'
-                    }}>
-                                                                <div className={`${Styles.Author} ${moduleName}_Author ${props.authorClassName}`}>{m?.author ?? ''}</div>
-                                                            </Link>
-                                                            {/* {
-                                                                m.description && m.description !== ''
-                                                                    ? <div className={`${Styles.Description} ${moduleName}_Description ${props.descriptionClassName}`}>{m.description}</div>
-                                                                    : null
-                                                             } */}
-                                                            {m?.item?.id && m?.item?.style && m?.item?.option ? <button className={`${Styles.CtaButton} ${moduleName}_Cta ${props.ctaClassName}`} onClick={handleFireGlobalEvent} action={['add_to_cart', 'buy'].indexOf(m?.action) > -1 ? m.action : 'add_to_cart'} item={m?.item?.id} selectedstyle={m?.item?.style} currentoption={m?.item?.option} ref={ctaRef} ctaAfter={m.ctaAfter} cta={m.cta}>{m.cta}</button> : null}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>;
-        }) : null}
-                </Slider>
-            </div>
-        </div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.IndexHelloContainer} sliderContainer_${componentId} ${moduleName}_IndexHelloContainer ${props.className}`,
+    ref: sliderTrackRef
+  }, props.groupLabel ? /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.GroupLabelContainer} ${moduleName}_groupLabelContainer ${props.groupLabelContainerClassName}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `${Styles.GroupLabel} ${moduleName}_groupLabel ${props.groupLabelClassName}`
+  }, props.groupLabel)) : null, useHandler && props?.request?.handlerArgs ? /*#__PURE__*/React.createElement(FetchHandler, _extends({
+    handlerArgs: props.request.handlerArgs,
+    receiveData: receiveData
+  }, props)) : null, /*#__PURE__*/React.createElement("div", {
+    className: `swipe slider_${componentId}`
+  }, /*#__PURE__*/React.createElement(Slider, _extends({}, useSettings, {
+    className: `${Styles.IndexItemsContainer} swiper-wrapper slider_slides ${moduleName}_IndexItemsContainer slider_slides_${componentId} ${props.IndexItemsContainerClassName}`
+  }), useItems?.map ? useItems.map((m, i) => {
+    const useDate = m?.date && !isNaN(new Date(m.date)) ? new Date(m.date) : '';
+    console.log(useDate, useDate.getMonth, m);
+    return /*#__PURE__*/React.createElement("div", {
+      className: `swiper-slide ${Styles.IndexItemUpperContainer} ${props.tall ? `${Styles.IndexItemsUpperContainerTall}` : null} ${moduleName}_Container ${componentId}_IndexItemUpperContainer ${m.important ? `slider_item_important` : ''}`,
+      key: i
+    }, /*#__PURE__*/React.createElement(Link, {
+      href: resolveMainLink(m),
+      onClick: handleSliderLinkClick,
+      onMouseDown: handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
+      style: {
+        alignSelf: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.BgContainer} ${props.tall ? `${Styles.BgContainerTall}` : null} ${moduleName}_BgContainer ${props.bgClassName}`,
+      style: {
+        backgroundImage: `url(${resolveImage(m, m?.leadBg ?? null, 'bg')})`,
+        position: 'relative'
+      }
+    }, props.children, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.FillPageContainer} ${moduleName}_FillPageContainer`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.TimeContainer} ${moduleName}_TimeContainer ${props.timeContainerClassName}`
+    }, m?.showSimpleDate && useDate?.getMonth && useDate?.getDate ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.TimeSimple} ${moduleName}_TimeSimple ${props.timeSimpleClassName} ${datePassed(m.date) ? `${Styles.DatePassed}` : ''}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.TimeShowContainer} flex gap-p5`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.dateIconContainer}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.dateIconMonth}`
+    }, retrieveMonth(useDate.getMonth())), /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.dateIconDate}`
+    }, useDate.getDate())), /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.dateMetaContainer}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.dateText}`
+    }, retrieveDay(useDate.getDay()), ", ", useDate.toLocaleString('en-US', {
+      month: 'long'
+    }), " ", useDate.toLocaleDateString('en-US', {
+      day: '2-digit'
+    })), /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.timeMeta} flex gap-p2`,
+      style: {
+        alignContent: 'center'
+      }
+    }, m.created && !isNaN(new Date(m.created)) && new Date(m.created).getTime() > new Date().getTime() - 1296000000 ? /*#__PURE__*/React.createElement("div", {
+      className: "newItem",
+      style: {
+        fontSize: '.7rem'
+      }
+    }, _span || (_span = /*#__PURE__*/React.createElement("span", null, "New")), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: '.7rem'
+      },
+      className: `star material-icons`
+    }, "star")) : null, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.timeText}`
+    }, useDate.toLocaleString('en-US', {
+      hour12: true,
+      hour: '2-digit',
+      minute: '2-digit'
+    })), m?.item?.type === 'ticket' ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.ticketIcon}`,
+      style: {
+        height: '1rem'
+      }
+    }, /*#__PURE__*/React.createElement(ConfirmationNumber, {
+      style: {
+        fontSize: '1rem',
+        height: '1rem'
+      }
+    })) : null)))) : null)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.MetaContainer} ${moduleName}_MetaContainer ${props.metaContainerClassName}`
+    }, m?.icon !== '' ? /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.IconContainer} ${moduleName}_IconContainer ${props.iconContainerClassName}`
+    }, /*#__PURE__*/React.createElement(Link, {
+      href: `/p?u=${m?.author ?? ''}`,
+      onClick: handleSliderLinkClick,
+      onMouseDown: handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
+      style: {
+        alignSelf: 'center'
+      }
+    }, /*#__PURE__*/React.createElement(Image, {
+      loader: () => {
+        return resolveImage(m, m?.icon ?? null, 'icon');
+      },
+      src: resolveImage(m, m?.icon ?? null, 'icon'),
+      style: {
+        maxWidth: '60px',
+        borderRadius: '4rem',
+        minHeight: '50px'
+      },
+      alt: m?.author ?? '',
+      width: m?.iconWidth ?? '50',
+      height: m?.iconHeight ?? '50',
+      layout: "responsive"
+    }))) : null, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.DataContainer} ${moduleName}_DataContainer ${props.DataContainerClassName}`
+    }, /*#__PURE__*/React.createElement(Link, {
+      href: resolveMainLink(m),
+      onClick: handleSliderLinkClick,
+      onMouseDown: handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
+      style: {
+        alignSelf: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.Lead} ${moduleName}_Lead ${props.leadClassName}`
+    }, m?.title ?? '')), /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.CtaHolder} ${moduleName}_CtaHolder ${props.CtaHolderClassName}`
+    }, /*#__PURE__*/React.createElement(Link, {
+      href: `/p?u=${m?.author}`,
+      onClick: handleSliderLinkClick,
+      onMouseDown: handleSliderLinkClickDown,
+      onMouseUp: handleSliderLinkClickUpProxy,
+      draggable: false,
+      style: {
+        alignSelf: 'center'
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `${Styles.Author} ${moduleName}_Author ${props.authorClassName}`
+    }, m?.author ?? '')), m?.item?.id && m?.item?.style && m?.item?.option ? /*#__PURE__*/React.createElement("button", {
+      className: `${Styles.CtaButton} ${moduleName}_Cta ${props.ctaClassName}`,
+      onClick: handleFireGlobalEvent,
+      action: ['add_to_cart', 'buy'].indexOf(m?.action) > -1 ? m.action : 'add_to_cart',
+      item: m?.item?.id,
+      selectedstyle: m?.item?.style,
+      currentoption: m?.item?.option,
+      ref: ctaRef,
+      ctaAfter: m.ctaAfter,
+      cta: m.cta
+    }, m.cta) : null)))));
+  }) : null)));
 };
 export default Module;
