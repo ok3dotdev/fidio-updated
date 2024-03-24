@@ -284,8 +284,8 @@ const Create = (props) => {
                 </p>
               </div>
               <p className='text-dashtext text-sm mt-2'>
-                Don't worry if you need a break! Your event details are saved as
-                a draft. Come back and complete it anytime.
+                Don&apos;t worry if you need a break! Your event details are
+                saved as a draft. Come back and complete it anytime.
               </p>
             </div>
             <Card className=' dark:bg-transparent mt-8'>
@@ -466,8 +466,8 @@ const Create = (props) => {
                 </p>
               </div>
               <p className='text-dashtext text-sm mt-2'>
-                Don't worry if you need a break! Your event details are saved as
-                a draft. Come back and complete it anytime.
+                Don&apos;t worry if you need a break! Your event details are
+                saved as a draft. Come back and complete it anytime.
               </p>
             </div>
             <Card className=' dark:bg-transparent mt-8'>

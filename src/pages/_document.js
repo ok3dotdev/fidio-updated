@@ -43,7 +43,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <div
-            version='0.4.21'
+            version='1.5.0'
             business='Tycoon Systems Corp.'
             style={{ display: 'none' }}
           ></div>

@@ -1036,3 +1036,37 @@ button:not(:disabled):active {
       transform: rotate(1turn);
     }
 }
+
+// Documentation 
+
+.documentationObject {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background: black;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+.documentationObject table,
+.documentationObject td,
+.documentationObject th {
+    border: 1px solid rgb(67, 67, 67);
+}
+
+.documentationObject td {
+    padding: .5rem 1rem;
+}
+
+.Documentation_Container code {
+    font-size: .85rem !important;
+}
+
+code[class*=language-], pre[class*=language-] {
+    white-space: pre-wrap !important;
+    line-height: 1rem !important;
+}
+
+:not(pre)>code[class*=language-], pre[class*=language-] {
+    background: #0e0e0e !important;
+}

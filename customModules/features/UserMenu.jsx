@@ -63,9 +63,25 @@ const UserMenu = (props) => {
       {isMenuOpen && (
         <div
           ref={menuRef}
-          className='absolute right-0 mt-2 py-2 w-48 bg-white border border-gray-200 shadow-lg rounded-lg z-10 top-[54px]'
+          className='absolute right-0 mt-2 py-2 w-48 bg-white border border-gray-200 shadow-lg rounded-lg z-10 top-[54px] font-bold'
         >
           <ul className='divide-y divide-gray-100'>
+            <li>
+              <Link
+                href={'/blog'}
+                className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
+              >
+                blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={'/studio'}
+                className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
+              >
+                studio
+              </Link>
+            </li>
             <li>
               <Link
                 href={'/p'}
@@ -120,13 +136,29 @@ const UserIconSkeleton = (props) => {
           <ul className='divide-y divide-gray-100'>
             <li>
               <Link
-                href={'/p'}
+                href={'/blog'}
                 className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
               >
-                Settings
+                blog
               </Link>
             </li>
             <li>
+              <Link
+                href={'/studio'}
+                className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
+              >
+                Studio
+              </Link>
+            </li>
+            <li>
+              <li>
+                <Link
+                  href={'/p'}
+                  className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
+                >
+                  Settings
+                </Link>
+              </li>
               <button
                 onClick={handleLogout}
                 className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
