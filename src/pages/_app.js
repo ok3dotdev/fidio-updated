@@ -2,16 +2,12 @@
 
 import React from 'react'
 import '../styles/globals.scss' // Place style import declarations in /styles/styles.scss and actual style css files under /styles/appstyles/
-import Head from 'next/head'
 import { Internal } from '/modules/internal/'
 
 
 function MyApp({ Component, pageProps }) {
   	return (
 		<div>
-			<Head>
-				<title>{pageProps.siteTitle}</title>
-			</Head>
     		<Internal {...pageProps} _MasterPageComponent={Component} /> {/* Application Start */}
 		</div>
   	)

@@ -53,6 +53,7 @@ customModules/*
 !*customModules/middleware
 customModules/middleware/*
 !*customModules/middleware/Middleware_backup.js
+!*customModules/middleware/MiddlewareFunctions_backup.js
 !*customModules/middleware/index.js
 public/font/internal
 public/img/internal
@@ -77,11 +78,6 @@ layout/*
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
-
-customModules/pages
-customModules/pages/*
-!*customModules/pages
-!*customModules/pages/defaults
 !*customModules/admin
 customModules/admin/*
 !*customModules/admin/index_backup.js
