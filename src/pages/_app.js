@@ -1,4 +1,4 @@
-/* AVOID EDITING THIS FILE. DEFAULT APPLICATION ENTRY. MANIPULATE customModules/middleware/Middleware.js FILE FOR MIDDLEWARE LOGIC. If files missing run node init_app.js */
+/* Avoid editing this file. Manipulate customModules/middleware/Middleware.js for middleware logic. If files missing run node init_app.js */
 
 import React from 'react'
 import '../styles/globals.scss' // Place style import declarations in /styles/styles.scss and actual style css files under /styles/appstyles/
