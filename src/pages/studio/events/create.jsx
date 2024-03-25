@@ -263,6 +263,13 @@ const Create = (props) => {
         'Congrats! Your event has been created successfully. You can share a link to the events page, or add it to your marketing.',
       action: <ToastAction altText='Goto schedule to undo'>Undo</ToastAction>,
     });
+    reset();
+    setEventDetails({});
+    setStep(1);
+    setSelectedImage(null);
+    setLineUpInfo([]);
+    setbannerImage('');
+    setSent(false);
     router.push('/studio');
   };
 

@@ -23,19 +23,31 @@ const Ticket = ({ info, ticketData }) => {
       </h3>
       <div className='text-dashtext flex gap-4 text-sm'>
         <div className='flex items-center gap-1'>
-          <CalendarTodayOutlinedIcon className='w-3' />
+          <div className='w-3'>
+            <CalendarTodayOutlinedIcon
+              classes={'w-3'}
+              style={{ width: '0.75rem' }}
+            />
+          </div>
           <p className='text-black font-sans text-dashtext'>
             {created?.split(' ')[0]}
           </p>
         </div>
         <div className='flex items-center gap-1'>
-          <AccessTimeOutlinedIcon className='w-3' />
+          <div className='w-3'>
+            <AccessTimeOutlinedIcon
+              className='w-3'
+              style={{ width: '0.75rem' }}
+            />
+          </div>
           <p className='text-black font-sans text-dashtext'>
             {detailmeta?.eventDateDef?.dates[0]?.split('T')[1]}
           </p>
         </div>
         <div className='flex items-center gap-1'>
-          <FmdGoodOutlinedIcon className='w-3' />
+          <div className='w-3'>
+            <FmdGoodOutlinedIcon className='w-3' style={{ width: '0.75rem' }} />
+          </div>
           <p className='text-black font-sans text-dashtext'>{meta?.venue}</p>
         </div>
         <span className='border-r-[1px] border-dashtext w-1 '></span>
