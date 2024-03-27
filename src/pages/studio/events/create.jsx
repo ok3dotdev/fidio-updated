@@ -109,29 +109,58 @@ const Create = (props) => {
 
   const allowedTypes = ['image/jpeg', 'image/png'];
 
-  const handleNewFile = React.useCallback((files) => {
-    console.log('files', files);
-    const useForm = imgCache;
-    const useImgName = uuidv4();
-    useForm.append(
-      'image',
-      Array.from(files)
-        .filter((m) => allowedTypes.indexOf(m.type) > -1)
-        .map((m) => {
-          var blob = m.slice(0, m.size, m.type);
-          const ext =
-            allowedTypes[allowedTypes.indexOf(m.type)].match(
-              /\/([a-zA-Z0-9].*)/
-            )[1];
-          return new File([blob], `${useImgName}.${ext}`, { type: m.type });
-        })[0]
-    );
-    const modif = 'featureImg'; // Valid in 'featureImg', 'leadImg'
-    const useTempImgFor = imgFor;
-    useTempImgFor.push({ name: useImgName, modif: modif });
-    setImgFor(useTempImgFor);
-    setImgCache(useForm);
-  });
+  // const handleNewFile = React.useCallback((files) => {
+  //   console.log('files', files);
+  //   const useForm = imgCache;
+  //   const useImgName = uuidv4();
+  //   useForm.append(
+  //     'image',
+  //     Array.from(files)
+  //       .filter((m) => allowedTypes.indexOf(m.type) > -1)
+  //       .map((m) => {
+  //         var blob = m.slice(0, m.size, m.type);
+  //         const ext =
+  //           allowedTypes[allowedTypes.indexOf(m.type)].match(
+  //             /\/([a-zA-Z0-9].*)/
+  //           )[1];
+  //         return new File([blob], `${useImgName}.${ext}`, { type: m.type });
+  //       })[0]
+  //   );
+  //   const modif = 'featureImg'; // Valid in 'featureImg', 'leadImg'
+  //   const useTempImgFor = imgFor;
+  //   useTempImgFor.push({ name: useImgName, modif: modif });
+  //   setImgFor(useTempImgFor);
+  //   setImgCache(useForm);
+  // });
+  
+  const handleNewFile = React.useCallback(files => {
+      const useForm = imgCache
+      const useImgName = uuidv4()
+      const modif = 'featureImg' // Valid names are 'featureImg', 'leadImg', 'productImg', 'lineup'
+      let ext
+      // Option 1: Use the method below to apply to shared imgCache and imgFor
+      useForm.append('image', Array.from(files).filter(m => allowedTypes.indexOf(m.type) > -1).map(m => {
+          var blob = m.slice(0, m.size, m.type)
+          ext = allowedTypes[allowedTypes.indexOf(m.type)].match(/\/([a-zA-Z0-9].*)/)[1]
+          return new File([blob], `${useImgName}.${ext}`, {type: m.type})
+      })[0])
+      const useTempImgFor = imgFor
+      const imageObject = { name: `${useImgName}.${ext}`, modif: modif, id: uuidv4() }
+      if (modif === 'lineup') {
+          imageObject.title = 'Lineup Artist Title'
+          imageObject.description = 'Lineup Description'
+          imageObject.time = '14:30'
+      }
+      useTempImgFor.push(imageObject)
+      setImgFor(useTempImgFor)
+
+      //// Option 2: If you want to merge the temporary file cache "imgCache" and image info "surveyState.imgFor" into surveyState.pipelineObject keys for simpler transformation during input you can do the following
+      // const ext = allowedTypes.indexOf(e.target.files[0].type) > -1 ? e.target.files[0].type : null
+      // temp.pipelineObject.lineup = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
+      //// The same works with product images
+      // temp.pipelineObject.images = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
+      setImgCache(useForm)
+  })
 
   const handleImageUpload = (e) => {
     console.log('EEE', e);
@@ -224,8 +253,8 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    console.log('fdhggdgrh');
-    setSurveyStateDefault();
+    console.log('Run', pipelineDbItem);
+    imgCache.getAll('image').map(m => console.log(m))
     try {
       const res = await apiReq('/product/createProduct', {
         apiUrl: props?.apiUrl,

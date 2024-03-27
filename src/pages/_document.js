@@ -1,20 +1,10 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import {
-  SliderStyles,
-  SliderTheme,
-  GoogleFontsLink,
-  PaystackScript,
-} from '/modules/internal/localImports';
 
 class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          {SliderStyles}
-          {SliderTheme}
-          {GoogleFontsLink}
-          {PaystackScript}
           <script
             id='google-analytics-script'
             dangerouslySetInnerHTML={{
@@ -42,11 +32,6 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
-          <div
-            version='1.5.0'
-            business='Tycoon Systems Corp.'
-            style={{ display: 'none' }}
-          ></div>
           <Main />
           <NextScript />
         </body>

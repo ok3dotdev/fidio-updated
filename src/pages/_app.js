@@ -5,10 +5,6 @@ import '../styles/globals.scss'; // Place style import declarations in /styles/s
 import '../styles/features/tailwind.css';
 import Head from 'next/head';
 import { Internal } from '/modules/internal/';
-import {
-  GoogleGsiClient,
-  GoogleSignInRegister,
-} from '/modules/internal/localImports';
 import { ThemeProvider } from '../components/provider';
 
 function MyApp({ Component, pageProps }) {
@@ -19,13 +15,7 @@ function MyApp({ Component, pageProps }) {
           name='google-signin-client_id'
           content='169701902623-9a74mqcbqr38uj87qm8tm3190cicaa7m.apps.googleusercontent.com'
         />
-        <title>{pageProps.siteTitle}</title>
       </Head>
-      <>
-        {GoogleGsiClient}
-        {GoogleSignInRegister}
-      </>
-
       <ThemeProvider attribute='class' defaultTheme='dark'>
         <Internal {...pageProps} _MasterPageComponent={Component} />
       </ThemeProvider>

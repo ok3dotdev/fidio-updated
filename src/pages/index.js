@@ -7,7 +7,7 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 // import Hero from '../../customModules/features/Hero';
 import HomeLayout from '../../customModules/features/HomeLayout';
 import { homePageData } from '../../customModules/features/seo-data';
-import Hero from '../../customModules/features/Hero.new';
+import Hero from '../../customModules/features/Hero';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
