@@ -55,10 +55,8 @@ const ShowGrid = () => {
           <div className='bg-[#181818] rounded-[20px] p-4 relative' key={index}>
             <div className=''>
               <div className='relative rounded-[20px] h-[320px] w-[252px]'>
-                <Image
-                  width={500}
-                  height={500}
-                  className='h-full object-cover rounded-[20px]'
+                <img
+                  className=' object-cover rounded-[20px] w-[300px] h-[300px]'
                   src={event.img}
                   alt=''
                 />

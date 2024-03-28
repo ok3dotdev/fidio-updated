@@ -45,24 +45,7 @@ const Sidebar = (props) => {
       icon: <SettingsOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
     },
   ];
-  // return (
-  //   <ResizablePanelGroup
-  //     direction='horizontal'
-  //     className='min-h-[200px] max-w-md rounded-lg border'
-  //   >
-  //     <ResizablePanel defaultSize={250}>
-  //       <div className='flex h-full items-center justify-center p-6'>
-  //         <span className='font-semibold'>Sidebar</span>
-  //       </div>
-  //     </ResizablePanel>
-  //     <ResizableHandle withHandle />
-  //     <ResizablePanel defaultSize={75}>
-  //       <div className='flex h-full items-center justify-center p-6'>
-  //         <span className='font-semibold'>Content</span>
-  //       </div>
-  //     </ResizablePanel>
-  //   </ResizablePanelGroup>
-  // );
+
   return (
     <div className='bg-dashSides w-[220px] hidden md:block py-8 relative font-lexend'>
       <div className='px-4'>

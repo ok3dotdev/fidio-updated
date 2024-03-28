@@ -64,7 +64,7 @@ const StudioDash = (props) => {
   };
   return (
     <div className='mt-[2rem] mb-12'>
-      <div className='mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2'>
+      <div className='mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
         <Card className='rounded-[8px] font-lexend font-normal text-dashtext dark:bg-dashSides'>
           <CardHeader>
             <CardTitle className='font-lexend font-normal text-dashtext'>
