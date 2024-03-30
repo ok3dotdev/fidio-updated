@@ -62,6 +62,8 @@ public/doc/internal
 !*public/doc
 public/favicon.ico
 /public/doc/internal/*
+/public/favicon.ico
+/public/vercel.svg
 /public/font/internal/*
 !*public/img
 public/favicon.ico
