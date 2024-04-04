@@ -1,6 +1,6 @@
 {
   "name": "@tycoonsystems/tycoon-video",
-  "version": "0.5.53",
+  "version": "0.5.54",
   "scripts": {
     "dev": "next dev -p 3020",
     "build": "next build",
