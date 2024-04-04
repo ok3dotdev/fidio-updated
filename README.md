@@ -1,3 +1,9 @@
+# Start developing your Video Platform
+npm init @tycoonsystems/tycoon-video
+
+# Documentation
+www.tv.tycoon.systems/documentation
+
 # Setup
 If you see a bunch of errors in VS Code while developing try:
 1. Ctrl+Shift+P -or- ⌘+shift+P
@@ -57,7 +63,7 @@ pnpm dev
 
 ANALYZE=true npm run build
 
-# Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Open [http://localhost:3020](http://localhost:3020) with your browser to see the result.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

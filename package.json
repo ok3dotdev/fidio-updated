@@ -1,7 +1,6 @@
 {
-  "name": "tycoon-systems-video-client-business",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@tycoonsystems/tycoon-video",
+  "version": "0.5.53",
   "scripts": {
     "dev": "next dev -p 3020",
     "build": "next build",
@@ -40,5 +39,27 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0"
-  }
+  },
+  "description": "www.tv.tycoon.systems/documentation",
+  "main": "app.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tycoon-Systems-Corp/video-streaming-client.git"
+  },
+  "keywords": [
+    "livestremaing",
+    "video",
+    "VAST",
+    "VMAP",
+    "MPEG-DASH",
+    "HLS",
+    "FFMPEG",
+    "RTMPS"
+  ],
+  "author": "Tycoon Systems Corp.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tycoon-Systems-Corp/video-streaming-client/issues"
+  },
+  "homepage": "https://github.com/Tycoon-Systems-Corp/video-streaming-client#readme"
 }
