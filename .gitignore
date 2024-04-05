@@ -52,9 +52,9 @@ src/styles/custom/*
 customModules/*
 !*customModules/middleware
 customModules/middleware/*
-!*customModules/middleware/Middleware_backup.js
-!*customModules/middleware/MiddlewareFunctions_backup.js
-!*customModules/middleware/index.js
+!*customModules/middleware
+!*customModules/middleware/defaults
+!*customModules/middleware/defaults/*
 public/font/internal
 public/img/internal
 public/doc/internal
