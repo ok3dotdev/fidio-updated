@@ -38,22 +38,31 @@ next-env.d.ts
 .env
 env.local
 credentials.js
+
+# Tycoon Systems - Script Ignore
 daemonclient
 pulls3buildpublic
+servebuild.bat
 app.config.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
-styles/styles.scss
-styles/custom
-styles/custom/*
+
+# Tycoon Systems - Custom Modules
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
 customModules/*
+!*customModules/admin
+customModules/admin/*
+!*customModules/admin/index_backup.js
+
+# Tycoon Systems - Custom Modules Middleware
 customModules/middleware/*
 !*customModules/middleware
 !*customModules/middleware/defaults
 !*customModules/middleware/defaults/*
+
+# Tycoon Systems - Public Files
 public/font/internal
 public/img/internal
 public/doc/internal
@@ -62,21 +71,23 @@ public/doc/internal
 /public/doc/internal/*
 /public/font/internal/*
 !*public/img
+
+# Tycoon Systems - Styles Ignore
+styles/custom
+styles/custom/*
 styles/styles.scss
 styles/appstyles/*
+
+# Tycoon Systems - Build ignore
 .next.tar.gz
 public.tar.gz
-servebuild.bat
-.next.tar.gz
 
+# Tycoon Systems - Layout defualts ignore
 layout/*
 !*/layout/defaults/*
 !*layout/defaults
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
-!*customModules/admin
-customModules/admin/*
-!*customModules/admin/index_backup.js
 
 # Extra Ignore Files Here
