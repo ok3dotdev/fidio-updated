@@ -1,4 +1,4 @@
 git fetch upstream master
-yes | git checkout -p upstream/master -- modules makebuild init_app.js documentation.md extract_modules_dist README.md tycoon-client-modules-dist.tar.gz customModules/middleware/index customModules/middleware/Middleware_backup.js customModules/middleware/MiddlewareFunctions_backup.js update_version init_app.js
+yes | git checkout -p upstream/master -- modules makebuild init_app.js documentation.md extract_modules_dist README.md tycoon-client-modules-dist.tar.gz customModules/middleware/defaults update_version init_app.js
 git commit --amend --date="$(date)" -m "Modules Update ${date}"
 git pull upstream master
