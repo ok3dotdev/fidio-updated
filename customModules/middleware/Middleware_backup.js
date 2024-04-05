@@ -5,7 +5,6 @@ const Middleware = pageProps => {
 	const [ passProps, setPassProps ] = React.useState({})
 
     /* Add Middleware Logic Here */
-	console.log('TESTTTT')
 
   	return (
 		<div className='Middleware_Container'>
