@@ -50,7 +50,6 @@ src/styles/custom/*
 /customModules/index.js
 !*/customModules/index_backup.js
 customModules/*
-!*customModules/middleware
 customModules/middleware/*
 !*customModules/middleware
 !*customModules/middleware/defaults
