@@ -90,4 +90,7 @@ appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
 
-# Extra Ignore Files Here
+# Extra Ignore Files Here. Uncomment after initialization
+# !*customModules/middleware/*
+
+# Project Ignore Files
