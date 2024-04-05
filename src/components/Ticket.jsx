@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Ticket = ({ info, ticketData }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
-  // console.log('Ddd', ticketData);
+  console.log('Ddd', ticketData);
 
   return (
     <div
@@ -19,42 +19,51 @@ const Ticket = ({ info, ticketData }) => {
         backgroundSize: 'cover',
       }}
     >
-      <Link href={`/studio/events/${id}`}>
-        <h3 className='font-bold text-2xl text-white'>
+      <Link className='cursor-pointer' href={`/studio/events/${id}`}>
+        <h3 className='font-bold text-2xl text-white mb-2'>
           {name ? name : 'No title'}
         </h3>
       </Link>
-      <div className='text-dashtext flex gap-4 text-sm'>
-        <div className='flex items-center gap-1'>
-          <div className='w-3'>
-            <CalendarTodayOutlinedIcon
-              classes={'w-3'}
-              style={{ width: '0.75rem' }}
-            />
+      <div className='text-neutralBg font-semibold flex gap-4 text-sm flex-col md:flex-row'>
+        <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-1'>
+            <div className='w-3'>
+              <CalendarTodayOutlinedIcon
+                classes={'w-3'}
+                style={{ width: '0.75rem' }}
+              />
+            </div>
+            <p className=' font-sans text-neutralBg font-semibold'>
+              {created?.split(' ')[0]}
+            </p>
           </div>
-          <p className='text-black font-sans text-dashtext'>
-            {created?.split(' ')[0]}
-          </p>
-        </div>
-        <div className='flex items-center gap-1'>
-          <div className='w-3'>
-            <AccessTimeOutlinedIcon
-              className='w-3'
-              style={{ width: '0.75rem' }}
-            />
+          <div className='flex items-center gap-1'>
+            <div className='w-3'>
+              <AccessTimeOutlinedIcon
+                className='w-3'
+                style={{ width: '0.75rem' }}
+              />
+            </div>
+            <p className=' font-sans text-neutralBg font-semibold'>
+              {meta?.startTime || '00'} - {meta?.endTime || '00'}
+            </p>
           </div>
-          <p className='text-black font-sans text-dashtext'>
-            {meta?.startTime} - {meta?.endTime}
-          </p>
         </div>
-        <div className='flex items-center gap-1'>
-          <div className='w-3'>
-            <FmdGoodOutlinedIcon className='w-3' style={{ width: '0.75rem' }} />
+        <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-1'>
+            <div className='w-3'>
+              <FmdGoodOutlinedIcon
+                className='w-3'
+                style={{ width: '0.75rem' }}
+              />
+            </div>
+            <p className=' font-sans text-neutralBg font-semibold'>
+              {meta?.venue || 'Not set'}
+            </p>
           </div>
-          <p className='text-black font-sans text-dashtext'>{meta?.venue}</p>
+          <span className='border-r-[1px] border-white w-1 h-[50%]'></span>
+          <p className='text-sm'>{meta?.status || 'Not set'}</p>
         </div>
-        <span className='border-r-[1px] border-dashtext w-1 '></span>
-        <p className='text-sm'>Upcoming event</p>
       </div>
     </div>
   );

@@ -88,8 +88,9 @@ const Create = (props) => {
     setStep(3);
   };
 
-  const allowedTypes = ['image/jpeg', 'image/png'];
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
 
+  /* Handles banner image */
   const handleNewFile = React.useCallback((files) => {
     const useForm = imgCache;
     const useImgName = uuidv4();
@@ -120,6 +121,51 @@ const Create = (props) => {
       imageObject.description = 'Lineup Description';
       imageObject.time = '14:30';
     }
+    useTempImgFor.push(imageObject);
+    setImgFor(useTempImgFor);
+
+    // // Option 2: If you want to merge the temporary file cache "imgCache" and image info "surveyState.imgFor" into surveyState.pipelineObject keys for simpler transformation during input you can do the following
+    // const ext = allowedTypes.indexOf(e.target.files[0].type) > -1 ? e.target.files[0].type : null
+    // temp.pipelineObject.lineup = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
+    // // The same works with product images
+    // temp.pipelineObject.images = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
+    setImgCache(useForm);
+  });
+
+  /*This handles line up image */
+  const handleLineupImage = React.useCallback((files, i) => {
+    const useForm = imgCache;
+    const useImgName = uuidv4();
+    const modif = 'lineup'; // Valid names are 'featureImg', 'leadImg', 'productImg', 'lineup'
+    let ext;
+    // Option 1: Use the method below to apply to shared imgCache and imgFor
+    useForm.append(
+      'image',
+      Array.from(files)
+        .filter((m) => allowedTypes.indexOf(m.type) > -1)
+        .map((m) => {
+          var blob = m.slice(0, m.size, m.type);
+          ext =
+            allowedTypes[allowedTypes.indexOf(m.type)].match(
+              /\/([a-zA-Z0-9].*)/
+            )[1];
+          return new File([blob], `${useImgName}.${ext}`, { type: m.type });
+        })[0]
+    );
+    const useTempImgFor = imgFor;
+    const imageObject = {
+      name: `${useImgName}.${ext}`,
+      modif: modif,
+      id: uuidv4(),
+    };
+
+    /* We might not need this */
+    // if (modif === 'lineup') {
+    //   console.log('helooooo', lineUpInfo);
+    //   imageObject.title = lineUpInfo[i].title;
+    //   // imageObject.description = 'Lineup Description';
+    //   // imageObject.time = '14:30';
+    // }
     useTempImgFor.push(imageObject);
     setImgFor(useTempImgFor);
 
@@ -231,6 +277,7 @@ const Create = (props) => {
   };
 
   const handleButtonClick = async (e) => {
+    console.log(imgCache, imgFor, pipelineDbItem, pipelineObject);
     e.preventDefault();
     await doFunc();
     setSent(true);
@@ -530,6 +577,7 @@ const Create = (props) => {
                               onChange={(e) => {
                                 onChange(e.target.files[0]);
                                 handleLineupUpload(e, index);
+                                handleLineupImage(e.target.files);
                               }}
                               type='file'
                               id={`picture-${index}`}

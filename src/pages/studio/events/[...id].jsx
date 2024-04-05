@@ -37,14 +37,16 @@ const EventView = (props) => {
         },
         id: router.query.id,
       });
-      setTicket(res.products[0] || []);
+      if (res && res.products) {
+        setTicket(res.products[0] || []);
+      }
       setLoading(false);
     }
   };
 
-  // if (!loading && ticket) {
-  //   console.log('values', ticket);
-  // }
+  if (!loading && ticket) {
+    console.log('values', ticket);
+  }
 
   return (
     <StudioLayout {...props}>
@@ -73,10 +75,7 @@ const EventView = (props) => {
                     <h1 className='text-2xl font-bold '>{ticket.name}</h1>
                     <div>
                       <div className='bg-dashSides rounded-full p-1 flex justify-center items-center'>
-                        <DriveFileRenameOutlineIcon
-                          className='w-8'
-                          style={{ width: '0.75rem' }}
-                        />
+                        <DriveFileRenameOutlineIcon className='w-8' />
                       </div>
                     </div>
                   </div>

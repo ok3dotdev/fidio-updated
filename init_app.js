@@ -6,7 +6,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/middleware/Middleware_backup.js', 'customModules/middleware/Middleware.js')
+    fs.copyFileSync('customModules/middleware/defaults/Middleware_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -15,7 +15,16 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/middleware/MiddlewareFunctions_backup.js', useFile)
+    fs.copyFileSync('customModules/middleware/defaults/MiddlewareFunctions_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'customModules/middleware/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('customModules/middleware/defaults/index_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 

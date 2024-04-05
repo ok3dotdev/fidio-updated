@@ -1,6 +1,6 @@
 const path = require('path');
 
-const website = 'https://development.fidio.ca/'; // You must set this line to your own website for PRODUCTION builds
+const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

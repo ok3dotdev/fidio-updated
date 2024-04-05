@@ -71,7 +71,7 @@ export const page = (props) => {
           </h1>
           {!isLoading && data && (
             <div className='flex justify-center'>
-              <div className='grid grid-cols-2 lg:grid-cols-3'>
+              <div className='grid grid-cols-1 lg:grid-cols-3'>
                 {data.fetchedData[0].articleReq[0].map((articleReq, index) => (
                   <Link key={index} href={`/ar?p=${articleReq?.id}`}>
                     <div key={index} className='p-4'>
