@@ -1,5 +1,5 @@
 
-import UseMiddleware from '../Middleware'
+import UseMiddleware from './Middleware'
 
 export {
     UseMiddleware

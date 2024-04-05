@@ -43,9 +43,9 @@ pulls3buildpublic
 app.config.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
-src/styles/styles.scss
-src/styles/custom
-src/styles/custom/*
+styles/styles.scss
+styles/custom
+styles/custom/*
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
@@ -78,8 +78,5 @@ appServer/*
 !*customModules/admin
 customModules/admin/*
 !*customModules/admin/index_backup.js
-
-# Uncomment After Init
-# !*customModules/middleware/*
 
 # Extra Ignore Files Here
