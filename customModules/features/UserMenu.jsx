@@ -107,7 +107,7 @@ const UserMenu = (props) => {
 
 export default UserMenu;
 
-const UserIconSkeleton = (props) => {
+export const UserIconSkeleton = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 

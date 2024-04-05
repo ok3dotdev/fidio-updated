@@ -21,6 +21,9 @@ import Ticket from '../Ticket';
 const StudioDash = (props) => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [term, setTerm] = useState('');
+  const [sort, setSort] = useState('');
+
   const ticketSales = {
     title: 'Tickets Sold',
     amount: '$1234.00',
@@ -38,15 +41,44 @@ const StudioDash = (props) => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
 
-  const fetchTickets = async () => {
+  const handleSearch = async () => {
     setLoading(true);
+    await fetchTickets(term);
+    setTerm('');
+  };
+
+  const handleSort = async (value) => {
+    console.log('doing', value);
+    if (value && value.length) {
+      setLoading(true);
+      await fetchTickets(null, value);
+      setSort('');
+    }
+  };
+
+  const fetchTickets = async (SearchTerm, status) => {
+    setLoading(true);
+
     if (props && props?._loggedIn?.identifier) {
+      let extraObject = {
+        owner: props?._loggedIn?.identifier,
+      };
+
+      if (SearchTerm) {
+        extraObject.name = SearchTerm;
+      }
+      if (!extraObject.meta) {
+        extraObject.meta = {};
+      }
+
+      if (status) {
+        extraObject.meta.status = status;
+      }
+
       const res = await apiReq('/product/getProducts', {
         apiUrl: props?.apiUrl,
         pagination: 0,
-        extra: {
-          owner: props?._loggedIn?.identifier,
-        },
+        extra: extraObject,
       });
       if (res && res.products) {
         const tix = res.products.sort((a, b) => {
@@ -64,7 +96,7 @@ const StudioDash = (props) => {
   };
   return (
     <div className='mt-[2rem] mb-12'>
-      <div className='mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
+      <div className='mb-[2rem] md:mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
         <Card className='rounded-[8px] font-lexend font-normal text-dashtext dark:bg-dashSides'>
           <CardHeader>
             <CardTitle className='font-lexend font-normal text-dashtext'>
@@ -113,10 +145,10 @@ const StudioDash = (props) => {
         </Card>
       </div>
       <div className='grid xl:grid-cols-2 gap-2'>
-        <div className='dark:bg-dashSides h-[300px] p-4 font-lexend rounded-[8px]'>
+        <div className='dark:bg-dashSides h-[200px] md:h-[300px] p-4 font-lexend rounded-[8px]'>
           Revenue growth
         </div>
-        <div className='dark:bg-dashSides h-[300px] p-4 font-lexend rounded-[8px] '>
+        <div className='dark:bg-dashSides h-[200px] md:h-[300px] p-4 font-lexend rounded-[8px] '>
           Audience growth
         </div>
       </div>
@@ -125,36 +157,83 @@ const StudioDash = (props) => {
         <div className='flex items-center gap-2'>
           <p className='font-lexend'>Sort by:</p>
           <div className='flex gap-2'>
-            <Select className='font-lexend'>
-              <SelectTrigger className='w-[180px]'>
-                <SelectValue placeholder='Please choose' />
+            <Select
+              className='font-lexend'
+              onValueChange={(e) => {
+                setSort(e);
+                handleSort(e);
+              }}
+            >
+              <SelectTrigger className='w-[180px] dark:bg-dashSides'>
+                <SelectValue
+                  className='dark:bg:dashSides'
+                  placeholder='Please choose'
+                />
               </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value='apple'>Most recent</SelectItem>
-                  <SelectItem value='banana'>Banana</SelectItem>
-                  <SelectItem value='blueberry'>Blueberry</SelectItem>
-                  <SelectItem value='grapes'>Grapes</SelectItem>
-                  <SelectItem value='pineapple'>Pineapple</SelectItem>
+              <SelectContent className='bg-dashBg'>
+                <SelectGroup onChange={handleSearch}>
+                  <SelectItem value='pending'>Pending</SelectItem>
+                  <SelectItem value='approved'>Approved</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <div className='relative'>
-              <Input
-                placeholder='Search'
-                className='text-muted-foreground font-lexend'
+            <div className='relative hidden md:block'>
+              <form
+                action=''
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch();
+                }}
+              >
+                <Input
+                  placeholder='Search'
+                  className='text-muted-foreground font-lexend'
+                  onChange={(e) => setTerm(e?.target?.value)}
+                  value={term}
+                  onSubmit={handleSearch}
+                />
+              </form>
+              <SearchOutlinedIcon
+                className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground cursor-pointer'
+                onClick={handleSearch}
               />
-              <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' />
             </div>
           </div>
         </div>
       </div>
-      {!loading && tickets.length && (
+      <div className='relative block md:hidden mt-2'>
+        <form
+          action=''
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch();
+          }}
+        >
+          <Input
+            placeholder='Search'
+            className='text-muted-foreground font-lexend'
+            onChange={(e) => setTerm(e?.target?.value)}
+            value={term}
+            onSubmit={handleSearch}
+          />
+        </form>
+        <SearchOutlinedIcon
+          className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground cursor-pointer'
+          onClick={handleSearch}
+        />
+      </div>
+      {!loading && tickets.length > 0 ? (
         <div className='my-8 space-y-2 mb-12'>
           {tickets.map((m, index) => (
             <Ticket info={props} ticketData={m} key={index} />
           ))}
         </div>
+      ) : (
+        !loading && (
+          <div className='my-8 space-y-2 mb-12'>
+            <h3>Sorry, No results match...</h3>
+          </div>
+        )
       )}
       {loading && (
         <div className='mt-12 space-y-4'>
