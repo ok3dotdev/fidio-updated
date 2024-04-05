@@ -80,4 +80,7 @@ appServer/*
 customModules/admin/*
 !*customModules/admin/index_backup.js
 
+# Uncomment After Init
+# !*customModules/middleware/*
+
 # Extra Ignore Files Here
