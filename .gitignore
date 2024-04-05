@@ -33,48 +33,57 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-<<<<<<< HEAD
 .next.zip
-=======
 
 # Tycoon Systems Ignore Files
->>>>>>> 2a6f47676326f739e4eae6454c8279b5d1036c07
 .env
 env.local
 credentials.js
-daemonclients
+
+# Tycoon Systems - Script Ignore
+daemonclient
 pulls3buildpublic
+servebuild.bat
 app.config.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
-src/styles/styles.scss
-src/styles/custom
-src/styles/custom/*
+
+# Tycoon Systems - Custom Modules
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
 customModules/*
-!*customModules/middleware
+!*customModules/admin
+customModules/admin/*
+!*customModules/admin/index_backup.js
+
+# Tycoon Systems - Custom Modules Middleware
 customModules/middleware/*
-!*customModules/middleware/Middleware_backup.js
-!*customModules/middleware/index.js
+!*customModules/middleware
+!*customModules/middleware/defaults
+!*customModules/middleware/defaults/*
+
+# Tycoon Systems - Public Files
 public/font/internal
 public/img/internal
 public/doc/internal
 !*public/img
 !*public/doc
-public/favicon.ico
 /public/doc/internal/*
 /public/font/internal/*
 !*public/img
-public/favicon.ico
+
+# Tycoon Systems - Styles Ignore
+styles/custom
+styles/custom/*
 styles/styles.scss
 styles/appstyles/*
+
+# Tycoon Systems - Build ignore
 .next.tar.gz
 public.tar.gz
-servebuild.bat
-.next.tar.gz
 
+# Tycoon Systems - Layout defualts ignore
 layout/*
 !*/layout/defaults/*
 !*layout/defaults
@@ -82,12 +91,8 @@ appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
 
-customModules/pages
-customModules/pages/*
-!*customModules/pages
-!*customModules/pages/defaults
-!*customModules/admin
-customModules/admin/*
-!*customModules/admin/index_backup.js
+# Extra Ignore Files Here. Uncomment after initialization
+!*customModules/middleware/*
 
-# Extra Ignore Files Here
+# Project Ignore Files
+public/favicon.ico

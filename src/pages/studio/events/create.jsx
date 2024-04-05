@@ -247,8 +247,12 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    console.log('Run', pipelineDbItem);
+    console.log('Run', pipelineDbItem, eventDetails);
     imgCache.getAll('image').map((m) => console.log(m));
+    eventDetails.lineup = eventDetails.detailmeta.lineup
+    for (let i = 0; i < imgFor.length; i++) {
+      console.log(imgFor[i], pipelineObject.lineup)
+    }
     try {
       const res = await apiReq('/product/createProduct', {
         apiUrl: props?.apiUrl,
