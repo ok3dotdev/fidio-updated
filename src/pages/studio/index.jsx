@@ -12,7 +12,7 @@ const pageName = 'studio';
 
 const Page = (props) => {
   return (
-    <StudioLayout {...props}>
+    <StudioLayout {...props} showNav showButtons={true}>
       <StudioDash {...props} />
     </StudioLayout>
   );

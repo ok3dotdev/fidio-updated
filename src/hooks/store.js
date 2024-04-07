@@ -3,7 +3,9 @@ import { create } from 'zustand';
 const useSurveyStore = create((set) => ({
   imgCache: new FormData(),
   step: 1,
-  eventDetails: {},
+  eventDetails: {
+    status: 'pending',
+  },
   currentStage: null,
   pipelineDbItem: {},
   pipelineObject: {},

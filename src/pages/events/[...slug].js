@@ -114,6 +114,7 @@ export const Page = (props) => {
                         <div key={idx} className='flex gap-1 items-center'>
                           <img
                             alt=''
+                            src={`${props?.cdn?.static}/${art?.image}`}
                             className='w-8 h-8 bg-red-200 rounded-full'
                           />
                           <p>{art?.title || 'No name'}</p>

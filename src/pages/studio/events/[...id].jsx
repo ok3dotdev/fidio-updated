@@ -50,7 +50,7 @@ const EventView = (props) => {
 
   return (
     <StudioLayout {...props}>
-      <div className=''>
+      <div className='px-2 md:px-8'>
         {!loading && ticket && (
           <div>
             <div className='relative  mb-[12rem]'>
@@ -69,17 +69,19 @@ const EventView = (props) => {
                 }}
               ></div>
 
-              <div className='grid grid-cols-1 md:grid-cols-2 w-full  gap-4 mt-4 gap-y-4'>
-                <div className=''>
-                  <div className='mb-2 flex justify-between'>
-                    <h1 className='text-2xl font-bold '>{ticket.name}</h1>
+              <div className='grid grid-cols-1 xl:grid-cols-3 w-full  xl:gap-x-12 xl:space-y-8 mt-8 gap-y-4 md:items-start'>
+                <div className='col-span-2'>
+                  <div className='mb-4 flex justify-between xl:w-[80%]'>
+                    <h1 className='text-3xl md:text-4xl font-bold '>
+                      {ticket.name}
+                    </h1>
                     <div>
                       <div className='bg-dashSides rounded-full p-1 flex justify-center items-center'>
-                        <DriveFileRenameOutlineIcon className='w-8' />
+                        <DriveFileRenameOutlineIcon className='w-8 h-8 p-1' />
                       </div>
                     </div>
                   </div>
-                  <p className='text-dashtext mb-8'>
+                  <p className='text-dashtext mb-8 md:w-[80%]'>
                     {ticket?.detailmeta?.description}
                   </p>
                   <div className='mb-8'>
@@ -113,32 +115,70 @@ const EventView = (props) => {
                     </div>
                   </div>
                   <div>
-                    <p className='mb-2 font-semibold'>Performers</p>
-                    <div className='text-white flex gap-4 text-sm'>
+                    <p className='mb-4 font-semibold'>Performers</p>
+                    <div className='text-white grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 space-y-4 text-sm'>
                       {ticket?.detailmeta?.lineup?.map((art, idx) => (
-                        <div key={idx} className='flex gap-1 items-center'>
-                          <img
-                            alt=''
-                            className='w-8 h-8 bg-red-200 rounded-full'
-                          />
-                          <p>{art?.title || 'No name'}</p>
+                        <div
+                          key={idx}
+                          className='flex flex-col gap-2 items-center max-w-[12rem]'
+                        >
+                          <div className='w-full rounded-full'>
+                            <img
+                              alt=''
+                              src={`${props?.cdn?.static}/${art?.image}`}
+                              className='w-full h-full rounded-[50%] object-cover aspect-square'
+                            />
+                          </div>
+                          <p className='text-lg'>{art?.title || 'No name'}</p>
                         </div>
                       ))}
                     </div>
                   </div>
+                  {ticket?.meta?.host && (
+                    <div className='mt-8'>
+                      <p className='mb-4 font-semibold'>About the host</p>
+                      <div className='text-white space-y-2 text-sm bg-dashSides p-4 px-4 rounded-[6px] md:max-w-[70%]'>
+                        <p className='font-semibold'>
+                          {ticket?.meta?.host?.title}
+                        </p>
+                        <p className='text-dashtext'>
+                          {ticket?.meta?.host?.bio}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0 mt-8'>
-                  <p className='text-dashtext font-medium'>
-                    TICKET INFORMATION
-                  </p>
-                  <div className='flex justify-between mt-8 items-center border-b-[1px] border-dashed py-4 mb-4 border-dashBorder'>
-                    <p className='font-semibold'>Price</p>
-                    <p className='font-bold text-xl'>
-                      $
-                      {ticket?.styles &&
-                        ticket?.styles[0] &&
-                        ticket?.styles[0]?.price}
+                <div className=''>
+                  <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0 mt-8 md:h-[50%]'>
+                    <p className='text-dashtext font-medium'>
+                      TICKET INFORMATION
                     </p>
+                    <div className='flex justify-between mt-8 items-center border-b-[1px] border-dashed py-4 mb-4 border-dashBorder'>
+                      <p className='font-semibold'>Price</p>
+                      <p className='font-bold text-xl'>
+                        $
+                        {ticket?.styles &&
+                          ticket?.styles[0] &&
+                          ticket?.styles[0]?.price}
+                      </p>
+                    </div>
+                  </div>
+                  <div className='mt-8 mx-auto'>
+                    <div className='flex flex-col space-y-4 items-center bg-dashSides rounded-[8px] p-8'>
+                      <p className='text-dashtext font-semibold'>
+                        THIS EVENT BEGINS IN
+                      </p>
+                      <p className='text-3xl font-semibold'>45mins 29s</p>
+                      <button className='bg-dashBorder py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none opacity-[0.3] font-semibold'>
+                        Start stream
+                      </button>
+                      <p className='text-dashtext text-sm'>
+                        You can go live on your event{' '}
+                        <span className='text-white'>1 hour </span>before the
+                        official start time. For more details, check out our
+                        <span className='text-white '>Terms of Use.</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

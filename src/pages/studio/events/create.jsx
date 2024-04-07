@@ -35,7 +35,7 @@ const Create = (props) => {
   const { register, handleSubmit, reset, control, setValue } = useForm();
   const [selectedImage, setSelectedImage] = useState(null);
   const [bannerImage, setbannerImage] = useState(null);
-  const [lineUpInfo, setLineUpInfo] = useState([{ title: '', image: null }]);
+  const [lineUpInfo, setLineUpInfo] = useState([]);
   const [componentDidMount, setComponentDidMount] = React.useState(false);
   const [sent, setSent] = useState(false);
   const router = useRouter();
@@ -63,14 +63,23 @@ const Create = (props) => {
     }
   }, [componentDidMount]);
 
+  useEffect(() => {
+    if (imgFor) {
+      console.log('imgForqq', imgFor);
+    }
+  }, [imgFor]);
+
   const onSubmit = (data) => {
     console.log('DATA', data);
+    console.log('info', lineUpInfo);
     setSurveyStateDefault();
     const updatedLineup = lineUpInfo.map((performer, index) => ({
       id: performer.id || uuidv4(),
       title: data.detailmeta?.lineup[index]?.title || '',
       image: performer.image || eventDetails?.detailmeta?.lineup[index]?.image,
+      bio: data?.detailmeta?.lineup[index]?.bio,
     }));
+    console.log('updated event', updatedLineup);
 
     const updatedEventDetails = {
       ...eventDetails,
@@ -80,6 +89,8 @@ const Create = (props) => {
         lineup: updatedLineup,
       },
     };
+    console.log('updated event dets', updatedEventDetails);
+
     const temp = { ...pipelineDbItem };
     temp.detailmeta.lineup = updatedLineup;
     setPipelineDbItem(temp);
@@ -116,11 +127,6 @@ const Create = (props) => {
       modif: modif,
       id: uuidv4(),
     };
-    if (modif === 'lineup') {
-      imageObject.title = 'Lineup Artist Title';
-      imageObject.description = 'Lineup Description';
-      imageObject.time = '14:30';
-    }
     useTempImgFor.push(imageObject);
     setImgFor(useTempImgFor);
 
@@ -177,13 +183,13 @@ const Create = (props) => {
     setImgCache(useForm);
   });
 
+  //Handles headliner image set
   const handleImageUpload = (e) => {
     console.log('EEE', e);
     const file = e?.target?.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        console.log('lll', event);
         setSelectedImage(event?.target?.result);
       };
       reader.readAsDataURL(file);
@@ -232,12 +238,14 @@ const Create = (props) => {
   };
 
   const handleLineupUpload = (e, index) => {
+    console.log('index', index);
     const file = e?.target?.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
         console.log('fillee', e?.target?.result);
-        const updatedLineUp = [...lineUpInfo];
+        const updatedLineUp =
+          index === 0 ? [{ title: '', image: null, bio: '' }] : [...lineUpInfo];
         updatedLineUp[index].image = file;
         updatedLineUp[index].file = event?.target?.result;
         setLineUpInfo(updatedLineUp);
@@ -247,11 +255,11 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    console.log('Run', pipelineDbItem, eventDetails);
-    imgCache.getAll('image').map((m) => console.log(m));
-    eventDetails.lineup = eventDetails.detailmeta.lineup
+    // console.log('Run', pipelineDbItem, eventDetails);
+    // imgCache.getAll('image').map((m) => console.log(m));
+    eventDetails.lineup = eventDetails.detailmeta.lineup;
     for (let i = 0; i < imgFor.length; i++) {
-      console.log(imgFor[i], pipelineObject.lineup)
+      console.log(imgFor[i], pipelineObject.lineup);
     }
     try {
       const res = await apiReq('/product/createProduct', {
@@ -277,11 +285,17 @@ const Create = (props) => {
   };
 
   const addPerformer = () => {
-    setLineUpInfo([...lineUpInfo, { title: '', image: null }]);
+    setLineUpInfo([...lineUpInfo, { title: '', image: null, bio: '' }]);
   };
 
   const handleButtonClick = async (e) => {
-    console.log(imgCache, imgFor, pipelineDbItem, pipelineObject);
+    console.log(
+      'CREATEBUTTON',
+      imgCache,
+      imgFor,
+      pipelineDbItem,
+      pipelineObject
+    );
     e.preventDefault();
     await doFunc();
     setSent(true);
@@ -298,11 +312,14 @@ const Create = (props) => {
     setLineUpInfo([]);
     setbannerImage('');
     setSent(false);
+    setImgCache(new FormData());
+    setImgFor([]);
     router.push('/studio');
+    console.log('imgfor', imgFor);
   };
 
   return (
-    <StudioLayout {...props}>
+    <StudioLayout {...props} showNav>
       {step === 1 && (
         <div className='max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]'>
           <form className='relative' action='' onSubmit={() => setStep(2)}>
@@ -502,15 +519,15 @@ const Create = (props) => {
                   <label htmlFor='title'>Performer name and photo</label>
                   <div className='flex items-center gap-x-2'>
                     <Input
-                      name='headliner.name'
+                      name='detailmeta.lineup[0].title'
                       placeholder='Asake'
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       ref={register}
-                      {...register('headliner.name')}
+                      {...register('detailmeta.lineup[0].title')}
                     />
                     <Controller
                       control={control}
-                      name={'headliner.image'}
+                      name={'detailmeta.lineup[0].image'}
                       render={({ field: { value, onChange, ...field } }) => {
                         return (
                           <Input
@@ -522,6 +539,8 @@ const Create = (props) => {
                             onChange={(event) => {
                               onChange(event.target.files[0]);
                               handleImageUpload(event);
+                              handleLineupUpload(event, 0);
+                              handleLineupImage(event.target.files);
                             }}
                             type='file'
                             id='picture'
@@ -534,11 +553,11 @@ const Create = (props) => {
                     <label htmlFor='title'>Bio</label>
                     <div className='flex items-center gap-x-2'>
                       <Input
-                        name='headliner.bio'
+                        name='detailmeta.lineup[0].bio'
                         placeholder='Enter bio'
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         ref={register}
-                        {...register('headliner.bio')}
+                        {...register('detailmeta.lineup[0].bio')}
                       />
                     </div>
                   </div>
@@ -553,34 +572,34 @@ const Create = (props) => {
                   )}
                 </div>
                 <hr className='w-full' />
-                <h3 className='text-dashtext'>OTHER PERFORMERS</h3>
+                <h3 className=''>OTHER PERFORMERS</h3>
                 <div className='space-y-4'>
-                  {lineUpInfo.map((performer, index) => (
+                  {lineUpInfo.slice(1).map((performer, index) => (
                     <div key={index} className='space-y-2'>
                       <label htmlFor='title'>Performer name and photo</label>
                       <div className='flex gap-2 mb-2'>
                         <Input
-                          name={`detailmeta.lineup[${index}].title`}
+                          name={`detailmeta.lineup[${index + 1}].title`}
                           placeholder='Enter artist, performer or band name'
                           className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                          {...register(`detailmeta.lineup[${index}].title`)}
+                          {...register(`detailmeta.lineup[${index + 1}].title`)}
                         />
                         <Controller
                           control={control}
-                          name={`detailmeta.lineup[${index}].image`}
+                          name={`detailmeta.lineup[${index + 1}].image`}
                           render={({
                             field: { onChange, value, ...field },
                           }) => (
                             <Input
                               {...field}
                               value={value?.fileName}
-                              name={`detailmeta.lineup[${index}].image`}
+                              name={`detailmeta.lineup[${index + 1}].image`}
                               placeholder='Upload image'
                               accept='image/*'
                               className='w-36'
                               onChange={(e) => {
                                 onChange(e.target.files[0]);
-                                handleLineupUpload(e, index);
+                                handleLineupUpload(e, index + 1);
                                 handleLineupImage(e.target.files);
                               }}
                               type='file'
@@ -589,7 +608,7 @@ const Create = (props) => {
                           )}
                         />
                       </div>
-                      {performer.image && (
+                      {performer.file && (
                         <div className='flex gap-x-2'>
                           <img
                             src={performer.file}
@@ -598,7 +617,7 @@ const Create = (props) => {
                           />
                           <Button
                             className='text-red-500 ml-2'
-                            onClick={() => deletePerformer(index)}
+                            onClick={() => deletePerformer(index + 1)}
                             type='button'
                           >
                             Delete
@@ -615,6 +634,32 @@ const Create = (props) => {
                     >
                       Add another performer{' '}
                     </Button>
+                  </div>
+                </div>
+                <hr className='w-full' />
+                <div className=''>
+                  <p className='mb-8'>HOST</p>
+                  <label htmlFor='host.title'>Name</label>
+                  <div className='flex flex-col items-center gap-y-2 mb-2 mt-2'>
+                    <Input
+                      name='host.title'
+                      placeholder='Mc Big Timer'
+                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      ref={register}
+                      {...register('host.title')}
+                    />
+                  </div>
+                  <label className='mt-2' htmlFor='title'>
+                    Bio
+                  </label>
+                  <div className='flex items-center gap-x-2 mt-2'>
+                    <Input
+                      name='detailmeta.lineup[0].bio'
+                      placeholder='Host with the most'
+                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      ref={register}
+                      {...register('host.bio')}
+                    />
                   </div>
                 </div>
                 <hr className='w-full' />
@@ -689,33 +734,47 @@ const Create = (props) => {
                 {!sent ? `Preview your event` : 'Event created successfuly'}
               </h3>
               <div className='bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto'>
-                <div className='space-y-4'>
-                  <p>Performers</p>
-                  <p className='text-dashtext'>HEADLINER</p>
-                  <div className='flex items-center gap-x-2'>
-                    <img
-                      src={selectedImage}
-                      alt=''
-                      className='w-14 h-14 object-cover rounded-full'
-                    />
-                    <p>{eventDetails.headliner.name}</p>
+                {eventDetails.detailmeta.lineup.length > 0 && (
+                  <div className='space-y-4'>
+                    <p>Performers</p>
+                    <p className='text-dashtext'>HEADLINER</p>
+                    <div className='flex items-center gap-x-2'>
+                      <div className='flex flex-col items-center'>
+                        <img
+                          src={selectedImage}
+                          alt=''
+                          className='w-14 h-14 object-cover rounded-full'
+                        />
+                        <p>{eventDetails.detailmeta.lineup[0].title}</p>
+                      </div>
+                      <p>{eventDetails.detailmeta.lineup[0].bio}</p>
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className='mt-5'>
                   <p className='text-dashtext'>OTHER PERFORMERS</p>
                   <div className='flex flex-wrap gap-x-4 mt-4'>
-                    {eventDetails.detailmeta.lineup.map((performer, index) => (
-                      <div key={index} className='flex'>
-                        <div className='flex items-center gap-x-2'>
-                          <img
-                            src={lineUpInfo[index]?.file}
-                            alt=''
-                            className='w-14 h-14 rounded-full object-cover'
-                          />
-                          <p>{performer.name}</p>
+                    {eventDetails.detailmeta.lineup
+                      .slice(1)
+                      .map((performer, index) => (
+                        <div key={index} className='flex flex-col'>
+                          <div className='flex items-center gap-x-2'>
+                            <img
+                              src={lineUpInfo[index + 1]?.file}
+                              alt=''
+                              className='w-14 h-14 rounded-full object-cover'
+                            />
+                            <p>{performer.title}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
+                  <p className='text-dashtext mt-5'>ABOUT THE HOST</p>
+                  <div className='bg-black rounded-[8px] p-4 mt-2'>
+                    <p className='font-semibold text-lg'>
+                      {eventDetails?.host?.title}
+                    </p>
+                    <p className='text-dashtext'>{eventDetails?.host?.bio}</p>
                   </div>
                 </div>
               </div>

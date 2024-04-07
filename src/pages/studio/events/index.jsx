@@ -104,7 +104,7 @@ const Events = (props) => {
   };
 
   return (
-    <StudioLayout {...props}>
+    <StudioLayout {...props} showNav>
       <div className='font-lexend mt-[2rem]' key={props?.key}>
         <div>
           <h1 className='font-bold text-lg'>Manage your events</h1>

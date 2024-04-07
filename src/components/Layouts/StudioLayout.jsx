@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StudioNav from '@/components/Layouts/StudioNav';
 import { Toaster } from '@/components/ui/toaster';
 import Sidebar from '@/components/Layouts/Sidebar';
@@ -15,13 +15,31 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const StudioLayout = (props) => {
+  // console.log('rppsp=s', props);
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  useEffect(() => {
+    // Check screen size on component mount and window resize
+    const handleResize = () => {
+      setIsMobileScreen(window.innerWidth <= 768); // Assuming 768px is your breakpoint for mobile
+    };
+
+    handleResize(); // Check on component mount
+
+    window.addEventListener('resize', handleResize); // Check on window resize
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup
+    };
+  }, []);
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { username } = props?._loggedIn;
+  const { showNav, showButtons } = props;
   const capitalizedUsername = username
     ? username.charAt(0).toUpperCase() + username.slice(1)
     : '';
-
+  // console.log('Shoow', showNav);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -55,7 +73,13 @@ const StudioLayout = (props) => {
     <div className='flex h-screen w-full font-lexend relative'>
       <Sidebar {...props} />
       <div className='flex flex-1 flex-col'>
-        <StudioNav toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+        {(isMobileScreen || showNav) && (
+          <StudioNav
+            toggleMenu={toggleMenu}
+            isMenuOpen={isMenuOpen}
+            showButtons={showButtons}
+          />
+        )}
         <div className='flex-1 bg-dashBg overflow-y-scroll h-full scroll-smooth'>
           <div style={{ margin: '2rem 1rem' }}>
             {props.children}
