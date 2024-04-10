@@ -1,5 +1,5 @@
 import resolveConfig, { resolveVariables } from '/app.config';
-import { resolvePage } from '/modules/utility';
+import { getPropDefaults, resolvePage } from '/modules/utility';
 
 /**
  * Empowers you to get server side props before page load. Use conditionals to determine which pages to run specific requests
@@ -15,6 +15,8 @@ const getServerSidePropsFunc = async (data, context) => {
   // if (resolvedPage && resolvedPage.url === '/p') { // Resolve profile page
   // ... Fetch meta data for p page
   // ... When you're done, add the data to props
+  await getPropDefaults(data, context, [ 'default' ], { u: 'username' }) // This runs without any access to state so you must use query params either as an argument as shown here or in the url e.g http://localhost:3000/privacy?u=theusername
+
   // data['my_data'] = res.data
   // }
   // Now your data will appear in props on any component!
