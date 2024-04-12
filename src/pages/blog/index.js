@@ -8,10 +8,11 @@ import { pageDefaults } from '../../../app.config';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getServerSidePropsDefault } from '../../../modules/utility';
+import { getServerSidePropsFunc } from '/appServer/serverProps';
 import HomeLayout from '../../../customModules/features/HomeLayout';
 import { homePageData } from '../../../customModules/features/seo-data';
 
-const pageName = 'Blog';
+const pageName = 'blog';
 
 export const page = (props) => {
   const [data, setData] = useState(null);
@@ -55,25 +56,33 @@ export const page = (props) => {
       .catch((error) => console.log('hereee', error));
   }, []);
 
-  // if (!isLoading) {
-  //   console.log('data222', data.fetchedData[0].articleReq[0]);
-  //   console.log('data2225', data)
-  // }
+  if (!isLoading) {
+    console.log('data222', data.fetchedData[0].articleReq[0]);
+    console.log('data2225', data);
+  }
 
   const useMenu = true;
   const useAppConfigLayout = true;
   return (
     <HomeLayout pageName={pageName} pageData={homePageData} props={props}>
-      <div className='pt-[74px] max-w-7xl mx-auto'>
+      <div className=' max-w-7xl mx-auto font-lexend px-3 lg:px-5'>
         <div className=''>
-          <h1 className='text-left text-4xl mt-12 mb-4 px-4'>
-            Latest Articles
-          </h1>
+          <div className='flex justify-between'>
+            <h1 className='text-4xl'>Fidio blog</h1>
+            <p>
+              Explore the stories and insights that will transform the way you
+              design and experience the future of live events
+            </p>
+          </div>
+          <div className='flex'>
+            <p>All posts</p>
+            <input type='text' />
+          </div>
           {!isLoading && data && (
             <div className='flex justify-center'>
               <div className='grid grid-cols-1 lg:grid-cols-3'>
                 {data.fetchedData[0].articleReq[0].map((articleReq, index) => (
-                  <Link key={index} href={`/ar?p=${articleReq?.id}`}>
+                  <a key={index} href={`/ar?p=${articleReq?.id}`}>
                     <div key={index} className='p-4'>
                       <div className='w-full min-h-[250px]'>
                         <img
@@ -87,7 +96,7 @@ export const page = (props) => {
                         <h2>{articleReq.title}</h2>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
@@ -99,7 +108,11 @@ export const page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
+  let currentProps = await getServerSidePropsDefault(
+    context,
+    pageDefaults[pageName]
+  );
+  return await getServerSidePropsFunc(currentProps, context);
 };
 
 export default page;

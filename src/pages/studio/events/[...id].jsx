@@ -54,20 +54,21 @@ const EventView = (props) => {
         {!loading && ticket && (
           <div>
             <div className='relative  mb-[12rem]'>
-              <div
-                className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-52 items-center justify-center bg-red-100'
-                style={{
-                  backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0)) ,url(${
-                    props?.cdn?.static
-                  }/${
-                    ticket?.images &&
-                    ticket?.images[0] &&
-                    ticket?.images[0]?.name
-                  })`,
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              ></div>
+              <div className='relative'>
+                <div
+                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[350px] items-center justify-center bg-red-100'
+                  style={{
+                    backgroundImage: `url(${props?.cdn?.static}/${
+                      ticket?.images &&
+                      ticket?.images[0] &&
+                      ticket?.images[0]?.name
+                    })`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                ></div>
+                <div className='absolute bg-gradient-to-t from-gradientLight to-gradientDark right-0 top-0  w-full h-full'></div>
+              </div>
 
               <div className='grid grid-cols-1 xl:grid-cols-3 w-full  xl:gap-x-12 xl:space-y-8 mt-8 gap-y-4 md:items-start'>
                 <div className='col-span-2'>

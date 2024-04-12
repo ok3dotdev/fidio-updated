@@ -68,21 +68,11 @@ const Create = (props) => {
       console.log('imgForqq', imgFor);
     }
   }, [imgFor]);
-  useEffect(() => {
-    if (pipelineDbItem) {
-      console.log('pipelineDbItem', pipelineDbItem);
-    }
-  }, [pipelineDbItem]);
-  useEffect(() => {
-    if (eventDetails) {
-      console.log('eventDetails', eventDetails);
-    }
-  }, [eventDetails]);
 
   const onSubmit = (data) => {
     console.log('DATA', data);
     console.log('info', lineUpInfo);
-    // setSurveyStateDefault();
+    setSurveyStateDefault();
     const updatedLineup = lineUpInfo.map((performer, index) => ({
       id: performer.id || uuidv4(),
       title: data.detailmeta?.lineup[index]?.title || '',
@@ -99,7 +89,7 @@ const Create = (props) => {
         lineup: updatedLineup,
       },
     };
-    console.log('updated event dets', updatedEventDetails, updatedLineup);
+    console.log('updated event dets', updatedEventDetails);
 
     const temp = { ...pipelineDbItem };
     temp.detailmeta.lineup = updatedLineup;
@@ -146,7 +136,6 @@ const Create = (props) => {
     // // The same works with product images
     // temp.pipelineObject.images = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
     setImgCache(useForm);
-    console.log('imgFor after handleNewFile:', imgFor);
   });
 
   /*This handles line up image */
@@ -192,7 +181,6 @@ const Create = (props) => {
     //// The same works with product images
     // temp.pipelineObject.images = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
     setImgCache(useForm);
-    console.log('imgFor after handleLineupImage:', imgFor);
   });
 
   //Handles headliner image set
@@ -209,7 +197,7 @@ const Create = (props) => {
   };
 
   const setSurveyStateDefault = () => {
-    const localPipelineDbItem = {
+    const pipelineDbItem = {
       id: uuidv4(),
       shop: props?.shop?.id ?? null,
       name: '',
@@ -232,7 +220,7 @@ const Create = (props) => {
       files: {},
       new: true,
     };
-    setPipelineDbItem(localPipelineDbItem);
+    setPipelineDbItem(pipelineDbItem);
   };
 
   const deletePerformer = (index) => {
@@ -267,7 +255,7 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    console.log('Run', pipelineDbItem, eventDetails);
+    // console.log('Run', pipelineDbItem, eventDetails);
     // imgCache.getAll('image').map((m) => console.log(m));
     eventDetails.lineup = eventDetails.detailmeta.lineup;
     for (let i = 0; i < imgFor.length; i++) {
@@ -306,8 +294,7 @@ const Create = (props) => {
       imgCache,
       imgFor,
       pipelineDbItem,
-      pipelineObject,
-      eventDetails
+      pipelineObject
     );
     e.preventDefault();
     await doFunc();
@@ -327,6 +314,8 @@ const Create = (props) => {
     setSent(false);
     setImgCache(new FormData());
     setImgFor([]);
+    setPipelineObject({});
+    setPipelineDbItem({});
     router.push('/studio');
     console.log('imgfor', imgFor);
   };
@@ -747,7 +736,7 @@ const Create = (props) => {
                 {!sent ? `Preview your event` : 'Event created successfuly'}
               </h3>
               <div className='bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto'>
-                {eventDetails?.detailmeta?.lineup?.length > 0 && (
+                {eventDetails.detailmeta.lineup.length > 0 && (
                   <div className='space-y-4'>
                     <p>Performers</p>
                     <p className='text-dashtext'>HEADLINER</p>
@@ -767,7 +756,7 @@ const Create = (props) => {
                 <div className='mt-5'>
                   <p className='text-dashtext'>OTHER PERFORMERS</p>
                   <div className='flex flex-wrap gap-x-4 mt-4'>
-                    {eventDetails?.detailmeta?.lineup
+                    {eventDetails.detailmeta.lineup
                       .slice(1)
                       .map((performer, index) => (
                         <div key={index} className='flex flex-col'>

@@ -6,7 +6,7 @@ const Menu = (props) => {
 
   return (
     <div className='bg-transparent absolute top-0 z-40 flex justify-center w-full'>
-      <div className='max-w-8xl mx-auto flex justify-between p-2 pt-4 lg:p-4 items-center w-full'>
+      <div className='max-w-7xl mx-auto flex justify-between p-2 pt-4 lg:p-4 items-center w-full'>
         <div>
           <Link href='/'>
             <img
