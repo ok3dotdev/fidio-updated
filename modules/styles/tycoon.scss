@@ -701,8 +701,10 @@ button:not(:disabled):active {
     margin-top: .125rem;
     font-size: 1rem;
     background: grey;
-    width: max-content;
     padding: 0 .125rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 1rem;
 }
 
 .lineupItem_current {
@@ -1069,4 +1071,8 @@ code[class*=language-], pre[class*=language-] {
 
 :not(pre)>code[class*=language-], pre[class*=language-] {
     background: #0e0e0e !important;
+}
+
+.lineup_uuid {
+    display: none;
 }

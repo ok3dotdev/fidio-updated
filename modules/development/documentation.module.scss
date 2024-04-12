@@ -132,6 +132,7 @@
     width: 20px;
     text-align: center;
     line-height: 1.125;
+    padding-bottom: .125rem;
 }
 
 .tagUnmanaged {
@@ -139,10 +140,14 @@
     border: 1px solid #ff71ff;
 }
 
-.tagSimple {
+.tagSimple, .tagEasy {
     background: #4fff97;
     color: black;
     border: 1px solid white;
+}
+
+.tagEasy {
+    background: rgb(181, 255, 246);
 }
 
 .htmlParseContainer > div {
