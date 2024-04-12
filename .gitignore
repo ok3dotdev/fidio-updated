@@ -92,7 +92,6 @@ appServer/*
 !*appServer/defaults/
 
 # Extra Ignore Files Here. Uncomment after initialization
-!*customModules/middleware/*
+# !*customModules/middleware/*
 
 # Project Ignore Files
-public/favicon.ico

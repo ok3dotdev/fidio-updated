@@ -63,8 +63,28 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.1.0",
-    "tailwindcss": "^3.4.1",
-    "zustand": "^4.4.3"
-  }
+    "@next/bundle-analyzer": "^14.1.0"
+  },
+  "description": "www.tv.tycoon.systems/documentation",
+  "main": "app.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tycoon-Systems-Corp/video-streaming-client.git"
+  },
+  "keywords": [
+    "livestremaing",
+    "video",
+    "VAST",
+    "VMAP",
+    "MPEG-DASH",
+    "HLS",
+    "FFMPEG",
+    "RTMPS"
+  ],
+  "author": "Tycoon Systems Corp.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tycoon-Systems-Corp/video-streaming-client/issues"
+  },
+  "homepage": "https://github.com/Tycoon-Systems-Corp/video-streaming-client#readme"
 }
