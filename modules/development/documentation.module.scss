@@ -62,7 +62,7 @@
 .mainContainer {
     width: 98%;
     display: grid;
-    grid-template-columns: 15% 40% 45%;
+    grid-template-columns: 20% 35% 45%;
     grid-gap: .5rem; /* Adjust gap between columns as needed */
 }
 
@@ -81,13 +81,18 @@
 .menuList {
     font-size: .85rem;
     background: #171717;
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
     list-style: none;
     margin-top: 0;
+    border-radius: .5rem;
 
     li {
         cursor: pointer;
         padding: .25rem .25rem;
+        border-radius: .25rem;
+    }
+    li:hover {
+        background-color: #393939;
     }
 }
 
