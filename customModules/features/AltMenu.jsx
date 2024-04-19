@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '../../src/components/ui/sheet';
+} from '../../components/ui/sheet';
 
 const AltMenu = (props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);

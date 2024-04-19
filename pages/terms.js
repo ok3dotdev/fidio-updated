@@ -4,9 +4,9 @@ import React from 'react';
 import { PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import HomeLayout from '../../customModules/features/HomeLayout';
-import { termsOfServicePageData } from '../../customModules/features/seo-data';
-import Menu from '../../customModules/features/Menu';
+import HomeLayout from '/customModules/features/HomeLayout';
+import { termsOfServicePageData } from '/customModules/features/seo-data';
+import Menu from '/customModules/features/Menu';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import dir from '/customModules/pages/';
 
@@ -31,4 +31,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default page
+export default page;

@@ -14,9 +14,9 @@ import {
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
 import { Menu } from '/modules/menu/';
-import Layout from '../../customModules/features/Layout';
-import HomeLayout from '../../customModules/features/HomeLayout';
-import HomeDash from '../../customModules/features/HomeDash';
+import Layout from '/customModules/features/Layout';
+import HomeLayout from '/customModules/features/HomeLayout';
+import HomeDash from '/customModules/features/HomeDash';
 
 const pageName = 'home';
 

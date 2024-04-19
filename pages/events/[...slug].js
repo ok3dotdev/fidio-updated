@@ -6,7 +6,7 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 
-import HomeLayout from '../../../customModules/features/HomeLayout';
+import HomeLayout from '/customModules/features/HomeLayout';
 import apiReq from '/modules/utility/api/apiReq';
 import EventPageHero from '../../components/common/EventPageHero';
 

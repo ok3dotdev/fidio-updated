@@ -13,8 +13,8 @@ import {
   resolveDefaults,
 } from '/modules/utility.js';
 import { isObjectEmpty } from '/modules/util';
-import HomeLayout from '../../customModules/features/HomeLayout';
-import { privacyPolicyPageData } from '../../customModules/features/seo-data';
+import HomeLayout from '/customModules/features/HomeLayout';
+import { privacyPolicyPageData } from '/customModules/features/seo-data';
 
 const pageName = 'Faq';
 

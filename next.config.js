@@ -22,6 +22,8 @@ const nextConfig = {
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/');
     config.resolve.alias['/appServer'] = path.join(__dirname, 'appServer/');
     config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js');
+    config.resolve.alias['@/lib'] = path.join(__dirname, 'lib/');
+    config.resolve.alias['@/components'] = path.join(__dirname, 'components/');
     config.resolve.alias['/customModules'] = path.join(
       __dirname,
       'customModules'

@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/router';
-import { UserIconSkeleton } from '../../../customModules/features/UserMenu';
+import { UserIconSkeleton } from '/customModules/features/UserMenu';
 
 import { logout } from 'modules/utility/onboarding/SignIn.js';
 

@@ -22,7 +22,7 @@ const HomeLayout = ({
   const showMainMenu = ['Index', 'Privacy', 'Faq', 'Terms', 'Blog'].includes(
     pageName
   );
-  const showFooter = ['Index', 'Privacy', 'Faq', 'Terms', 'Blog'].includes(
+  const showFooter = ['Index', 'Privacy', 'Faq', 'Terms', 'blog'].includes(
     pageName
   );
   return (

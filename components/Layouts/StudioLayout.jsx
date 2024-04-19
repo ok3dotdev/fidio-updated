@@ -3,7 +3,7 @@ import StudioNav from '@/components/Layouts/StudioNav';
 import { Toaster } from '@/components/ui/toaster';
 import Sidebar from '@/components/Layouts/Sidebar';
 import Link from 'next/link';
-// import UserMenu from '../../../customModules/features/UserMenu';
+// import UserMenu from '/customModules/features/UserMenu';
 import UserMenu from './UserMenu';
 
 import { Wave } from '../icons';

@@ -4,9 +4,9 @@
 import React from 'react';
 // import { PageContainer } from '/modules/internal';
 import { pageDefaults } from '../../../app.config';
-import { getServerSidePropsDefault } from '../../../modules/utility';
-import HomeLayout from '../../../customModules/features/HomeLayout';
-import { homePageData } from '../../../customModules/features/seo-data';
+import { getServerSidePropsDefault } from '/modules/utility';
+import HomeLayout from '/customModules/features/HomeLayout';
+import { homePageData } from '/customModules/features/seo-data';
 
 const pageName = 'Blog';
 
