@@ -33,7 +33,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('customModules/index_backup.js', 'customModules/index.js')
+    fs.copyFileSync('customModules/index_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -46,7 +46,7 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'src/styles/styles.scss'
+useFile = 'styles/styles.scss'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
@@ -104,18 +104,13 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('appServer/defaults/serverProps_backup.js', 'appServer/serverProps.js')
+    fs.copyFileSync('appServer/defaults/serverProps_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
 useFile = 'layout/index.js'
-if (fs.existsSync(useFile)) {
-    // Add your commands here
-    console.log(useFile, 'File exists on', process.platform)
-} else {
-    fs.copyFileSync('layout/defaults/index_backup.js', useFile)
-    console.log(useFile, 'File does not exist on', process.platform)
-}
+fs.copyFileSync('layout/defaults/index_backup.js', useFile)
+console.log(useFile, 'File does not exist on', process.platform)
 
 useFile = 'layout/Cart.js'
 if (fs.existsSync(useFile)) {
@@ -159,5 +154,14 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File exists on', process.platform)
 } else {
     fs.copyFileSync('layout/defaults/DropMenu_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Menu.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Menu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }

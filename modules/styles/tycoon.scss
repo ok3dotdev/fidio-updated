@@ -675,6 +675,8 @@ button:not(:disabled):active {
 
 .img_control img {
     height: inherit;
+    width: -webkit-fill-available !important;
+    width: revert-layer !important;
 }
 
 .lineupItem_editing {
