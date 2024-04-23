@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
+import Cart from '/modules/ecommerce/cart/CartInternal';
 
 import HomeLayout from '/customModules/features/HomeLayout';
 import apiReq from '/modules/utility/api/apiReq';
@@ -15,6 +16,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import ShareIcon from '@mui/icons-material/Share';
+import { fireGlobalEvent } from '/modules/utility/utility';
 
 import Button from '@/components/ui/button';
 const pageName = 'events';
@@ -24,10 +26,13 @@ export const Page = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const router = useRouter();
+  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
+
+  // props._toggleSingleOpenMenu(e, 'cart');
 
   console.log('slug', router.query.slug);
 
@@ -48,14 +53,24 @@ export const Page = (props) => {
       }
     }
   };
-
-  // if (!loading && ticket) {
-  //   console.log('values', ticket);
-  // }
+  const handleAddProduct = (e) => {
+    props._toggleSingleOpenMenu(e, 'cart');
+  };
+  const handleFireGlobalEvent = React.useCallback(async (e) => {
+    fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
+  });
+  if (!loading && ticket) {
+    console.log('values', ticket);
+  }
 
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>
+        {
+          // <div className='bg-black inset-0 absolute w-full z-50 opacity-[0.3]'>
+          <Cart {...props} />
+          // </div>
+        }
         {error && (
           <h1>There was an error with this page. We are looking into it.</h1>
         )}
@@ -109,18 +124,55 @@ export const Page = (props) => {
                   </div>
                   <div>
                     <p className='mb-2 font-semibold'>Performers</p>
-                    <div className='text-white flex gap-4 text-sm'>
-                      {ticket?.detailmeta?.lineup?.map((art, idx) => (
-                        <div key={idx} className='flex gap-1 items-center'>
-                          <img
-                            alt=''
-                            src={`${props?.cdn?.static}/${art?.image}`}
-                            className='w-8 h-8 bg-red-200 rounded-full'
-                          />
-                          <p>{art?.title || 'No name'}</p>
+                    <p className='text-dashtext mb-4'>HEADLINER</p>
+                    {ticket?.detailmeta?.lineup?.length && (
+                      <div className='flex gap-4 items-center w-[8rem] mb-4'>
+                        <img
+                          alt='headliner'
+                          src={`${props?.cdn?.static}/${ticket?.detailmeta?.lineup[0].image}`}
+                          className='w-full h-full rounded-[50%] object-cover aspect-square'
+                        />
+                        <div>
+                          <p className='text-lg'>
+                            {ticket?.detailmeta?.lineup[0].title || 'No name'}
+                          </p>
+                          <p className='text-dashtext text-sm'>
+                            {ticket?.detailmeta?.lineup[0].bio || 'No bio'}
+                          </p>
                         </div>
-                      ))}
+                      </div>
+                    )}
+                    <p className='text-dashtext mt-8  mb-4'>OTHER PERFORMERS</p>
+                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm '>
+                      {ticket?.detailmeta?.lineup
+                        ?.slice(1, ticket?.detailmeta?.lineup?.length)
+                        .map((art, idx) => (
+                          <div
+                            key={idx}
+                            className='flex flex-col gap-2 items-center w-[8rem]'
+                          >
+                            <img
+                              alt=''
+                              src={`${props?.cdn?.static}/${art?.image}`}
+                              className='w-full h-full rounded-[50%] object-cover aspect-square'
+                            />
+                            <p className='text-lg'>{art?.title || 'No name'}</p>
+                          </div>
+                        ))}
                     </div>
+                    {ticket?.meta?.host && (
+                      <div className='mt-8'>
+                        <p className='mb-4 font-semibold'>About the host</p>
+                        <div className='text-white space-y-2 text-sm bg-dashSides p-4 px-4 rounded-[6px] md:max-w-[70%]'>
+                          <p className='font-semibold'>
+                            {ticket?.meta?.host?.title}
+                          </p>
+                          <p className='text-dashtext'>
+                            {ticket?.meta?.host?.bio}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0  md:w-[300px] h-full mt-8'>
@@ -133,9 +185,21 @@ export const Page = (props) => {
                         ticket?.styles[0]?.price}
                     </p>
                   </div>
-                  <button className='bg-accentY w-full p-2 rounded-[6px] font-semibold mt-4'>
+                  <button
+                    className='bg-accentY w-full p-2 rounded-[6px] font-semibold mt-4'
+                    onClick={handleAddProduct}
+                  >
                     Get ticket
                   </button>
+                  {/* <button
+                    onClick={handleFireGlobalEvent}
+                    item={ticket?.id}
+                    selectedstyle={ticket?.style}
+                    currentoption={ticket?.style?.opetion[0]}
+                    action='add_to_cart'
+                  >
+                    Add To Cart
+                  </button> */}
                 </div>
               </div>
             </div>

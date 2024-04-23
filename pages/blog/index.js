@@ -28,23 +28,23 @@ export const page = (props) => {
 
   function handleSubscribe() {}
 
-  const scrollContainerRef = useRef(null); // Ref to the scroll container
+  const scrollContainerRef = useRef(null);
 
   const loadMore = () => {
-    setOffset(offset + 12); // Increment the offset by 12 to load 6 more articles
+    setOffset(offset + 12);
   };
 
   // Function to scroll backward
   const scrollBack = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 432; // Adjust the scroll amount as needed
+      scrollContainerRef.current.scrollLeft -= 432;
     }
   };
 
   // Function to scroll forward
   const scrollForward = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 432; // Adjust the scroll amount as needed
+      scrollContainerRef.current.scrollLeft += 432;
     }
   };
 
@@ -113,11 +113,12 @@ export const page = (props) => {
 
   const handleSearch = async () => {
     setLoading(true);
+    console.log('term', term);
     try {
       const res = await apiReq('/fetch/fetchhandler', {
         handlerArgs: [
           {
-            title: term,
+            articleReq: [{ title: term }],
           },
         ],
       });
@@ -228,7 +229,7 @@ export const page = (props) => {
                           {articleReq.title}
                         </p>
                         <h2 className='mt-2 text-dashtext text-sm'>
-                          By {articleReq.author}
+                          by {articleReq.author}
                         </h2>
                       </div>
                     </div>
@@ -319,13 +320,7 @@ export const page = (props) => {
                   onClick={handleSubscribe}
                 />
               </div>
-              {/* <input
-            className='p-1 border-b bg-transparent border-dashBorder w-[300px]'
-            type='text'
-            placeholder='Enter your email address'
-          /> */}
             </div>
-            <img src='' alt='' />
           </div>
         </div>
       </div>

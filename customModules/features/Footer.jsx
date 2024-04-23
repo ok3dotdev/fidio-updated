@@ -9,7 +9,7 @@ const Footer = (props) => {
         pageName === 'Index' ? '' : ''
       }`}
     >
-      <hr className='border-gray-[#333333] mb-4 max-w-7xl mx-auto' />
+      {/* <hr className='border-gray-[#333333] mb-4 max-w-7xl mx-auto' /> */}
       <div className='flex flex-wrap justify-between pt-8 w-full pb-1 lg:grid-cols-5 md:pb-14 order-0 sm:gap-6 sm:grid sm:grid-cols-4 max-w-7xl mx-auto px-4 text-gray-400 gap-y-12 text-xs'>
         {/* <div className='text-center col-span-1 lg:col-span-2 w-full flex justify-center lg:block'>
           <img

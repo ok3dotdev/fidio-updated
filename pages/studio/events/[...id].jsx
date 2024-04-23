@@ -117,22 +117,43 @@ const EventView = (props) => {
                   </div>
                   <div>
                     <p className='mb-4 font-semibold'>Performers</p>
-                    <div className='text-white grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 space-y-4 text-sm'>
-                      {ticket?.detailmeta?.lineup?.map((art, idx) => (
-                        <div
-                          key={idx}
-                          className='flex flex-col gap-2 items-center max-w-[12rem]'
-                        >
-                          <div className='w-full rounded-full'>
+                    <p className='text-dashtext mb-4'>HEADLINER</p>
+                    {ticket?.detailmeta?.lineup?.length && (
+                      <div className='flex gap-8 items-center max-w-[12rem] mb-4'>
+                        <div className='w-full rounded-full'>
+                          <img
+                            alt='headliner'
+                            src={`${props?.cdn?.static}/${ticket?.detailmeta?.lineup[0].image}`}
+                            className='w-full h-full rounded-[50%] object-cover aspect-square'
+                          />
+                        </div>
+                        <div>
+                          <p className='text-lg'>
+                            {ticket?.detailmeta?.lineup[0].title || 'No name'}
+                          </p>
+                          <p className='text-dashtext text-sm'>
+                            {ticket?.detailmeta?.lineup[0].bio || 'No bio'}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                    <p className='text-dashtext mt-8  mb-4'>OTHER PERFORMERS</p>
+                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm '>
+                      {ticket?.detailmeta?.lineup
+                        ?.slice(1, ticket?.detailmeta?.lineup?.length)
+                        .map((art, idx) => (
+                          <div
+                            key={idx}
+                            className='flex flex-col gap-2 items-center w-[12rem]'
+                          >
                             <img
                               alt=''
                               src={`${props?.cdn?.static}/${art?.image}`}
                               className='w-full h-full rounded-[50%] object-cover aspect-square'
                             />
+                            <p className='text-lg'>{art?.title || 'No name'}</p>
                           </div>
-                          <p className='text-lg'>{art?.title || 'No name'}</p>
-                        </div>
-                      ))}
+                        ))}
                     </div>
                   </div>
                   {ticket?.meta?.host && (
