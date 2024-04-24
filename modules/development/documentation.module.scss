@@ -94,6 +94,11 @@
     li:hover {
         background-color: #393939;
     }
+    .subMenuLabel {
+        h4 {
+            margin: .125rem 0;
+        }
+    }
 }
 
 .activeSearchResults {
