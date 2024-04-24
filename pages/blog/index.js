@@ -25,6 +25,10 @@ export const page = (props) => {
   const [term, setTerm] = useState('');
   const [offset, setOffset] = useState(0); // Track the number of articles already fetched
   const [totalArticles, setTotalArticles] = useState(0);
+  const [disable, setDisable] = useState({
+    left: true,
+    right: false,
+  });
 
   function handleSubscribe() {}
 
@@ -37,14 +41,33 @@ export const page = (props) => {
   // Function to scroll backward
   const scrollBack = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 432;
+      const container = scrollContainerRef.current;
+      container.scrollLeft -= 432;
+
+      const scrollLeft = container.scrollLeft;
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
+      console.log('widhth', scrollLeft, scrollWidth, clientWidth);
+      if (scrollLeft === 0) {
+        setDisable({ ...disable, left: false });
+      }
     }
   };
 
   // Function to scroll forward
   const scrollForward = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 432;
+      setDisable({ ...disable, left: false });
+      const container = scrollContainerRef.current;
+      container.scrollLeft += 432;
+
+      const scrollLeft = container.scrollLeft;
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
+      console.log('widhth', scrollLeft, scrollWidth, clientWidth);
+      if (scrollLeft + clientWidth === scrollWidth) {
+        setDisable({ ...disable, right: false });
+      }
     }
   };
 
@@ -166,7 +189,7 @@ export const page = (props) => {
 
   if (!isLoading && data) {
     // console.log('data222', data.fetchedData[0].articleReq[0]);
-    console.log('data2225', data.articleReq[0][0]);
+    console.log('data2225', data.articleReq[0]);
   }
   return (
     <HomeLayout
@@ -229,7 +252,7 @@ export const page = (props) => {
                           {articleReq.title}
                         </p>
                         <h2 className='mt-2 text-dashtext text-sm'>
-                          by {articleReq.author}
+                          by {articleReq?.authorData?.username}
                         </h2>
                       </div>
                     </div>
@@ -253,12 +276,16 @@ export const page = (props) => {
               <p className='text-2xl font-bold'>Popular posts</p>
               <div className='flex w-[150px] justify-between items-center'>
                 <ArrowBackIcon
-                  className=' h-4 w-4 cursor-pointer text-accentY'
+                  className={`${
+                    disable.left ? 'text-dashtext opacity-[0.4]' : 'text-white'
+                  } h-4 w-4 cursor-pointer `}
                   onClick={scrollBack}
                 />
                 <ArrowForwardIcon
                   onClick={scrollForward}
-                  className=' h-4 w-4 cursor-pointer text-accentY'
+                  className={`${
+                    disable.right ? 'text-dashtext opacity-[0.4]' : 'text-white'
+                  } h-4 w-4 cursor-pointer `}
                 />
               </div>
             </div>

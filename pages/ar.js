@@ -9,16 +9,17 @@ import Menu from '/customModules/features/AltMenu';
 import HomeLayout from '/customModules/features/HomeLayout';
 import { Input } from '@/components/ui/input';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { createMarkup } from '/modules/article/utility';
 
 const pageName = 'ar';
 
 export const page = (props) => {
   const [term, setTerm] = React.useState('');
-  function createMarkup() {
-    const fixedContent = props?.articleData?.contents.replace(/"/g, '');
+  // function createMarkup() {
+  //   const fixedContent = props?.articleData?.contents.replace(/"/g, '');
 
-    return { __html: fixedContent };
-  }
+  //   return { __html: fixedContent };
+  // }
   function calculateReadingTime(articleContent) {
     const averageReadingSpeed = 200;
 
@@ -129,7 +130,7 @@ export const page = (props) => {
                 <div className='flex space-y-2'>
                   <div
                     className=' font-lexend text-dashtext '
-                    dangerouslySetInnerHTML={createMarkup()}
+                    dangerouslySetInnerHTML={createMarkup(props.articleData)}
                   ></div>
                 </div>
               </div>
