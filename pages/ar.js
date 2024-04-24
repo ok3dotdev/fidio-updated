@@ -15,11 +15,11 @@ const pageName = 'ar';
 
 export const page = (props) => {
   const [term, setTerm] = React.useState('');
-  // function createMarkup() {
-  //   const fixedContent = props?.articleData?.contents.replace(/"/g, '');
+  function createMarkupAlt() {
+    const fixedContent = props?.articleData?.contents.replace(/"/g, '');
 
-  //   return { __html: fixedContent };
-  // }
+    return { __html: fixedContent };
+  }
   function calculateReadingTime(articleContent) {
     const averageReadingSpeed = 200;
 
@@ -130,7 +130,7 @@ export const page = (props) => {
                 <div className='flex space-y-2'>
                   <div
                     className=' font-lexend text-dashtext '
-                    dangerouslySetInnerHTML={createMarkup(props.articleData)}
+                    dangerouslySetInnerHTML={createMarkupAlt()}
                   ></div>
                 </div>
               </div>
