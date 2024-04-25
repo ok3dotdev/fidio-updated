@@ -116,8 +116,8 @@ export const page = (props) => {
                     </p>
                   </>
                 )}
-              <span className='w-1 h-1 bg-dashtext rounded-full'></span>
-              <p className='text-dashtext font-medium'>
+              <span className='w-1 h-1 bg-dashtext rounded-full hidden md:block'></span>
+              <p className='text-dashtext font-medium hidden md:block'>
                 {calculateReadingTime(props?.articleData?.contents) +
                   ' minutes'}
               </p>

@@ -70,7 +70,7 @@ const Module = (props) => {
   const handleNewFile = React.useCallback((e) => {
     const useForm = imgCache;
     const useImgName = uuidv4();
-    console.log('eee', e?.target?.files);
+    //console.log('eee', e?.target?.files);
     useForm.append(
       'image',
       Array.from(e?.target?.files)
@@ -111,7 +111,7 @@ const Module = (props) => {
   };
 
   const publishProduct = async () => {
-    console.log('Run', surveyState);
+    //console.log('Run', surveyState);
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
       pipelineDbItem: surveyState.pipelineDbItem,
@@ -120,7 +120,7 @@ const Module = (props) => {
       imgFor: surveyState.imgFor,
       _loggedIn: props?._loggedIn, // Requires Authentication
     });
-    console.log('Published!', res);
+    //console.log('Published!', res);
   };
 
   const run = () => {

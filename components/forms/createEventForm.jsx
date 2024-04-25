@@ -7,7 +7,7 @@ const CreateForm = () => {
   const [step, setStep] = useState(1);
 
   const onSubmit = (data) => {
-    // console.log(data);
+    // //console.log(data);
   };
 
   const nextStep = () => {

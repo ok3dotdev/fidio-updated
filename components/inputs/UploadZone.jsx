@@ -9,7 +9,7 @@ const UploadZone = ({ setbannerImage, bannerImage, handleNewFile }) => {
       'image/jpeg': ['.jpg', '.jpeg'],
     },
     onDrop: (acceptedFiles) => {
-      console.log('Dropped files:', acceptedFiles);
+      //console.log('Dropped files:', acceptedFiles);
       acceptedFiles.forEach((file) => {
         if (file.type && file.type.startsWith('image/')) {
           const reader = new FileReader();

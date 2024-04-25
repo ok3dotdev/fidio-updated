@@ -65,13 +65,13 @@ const Create = (props) => {
 
   useEffect(() => {
     if (imgFor) {
-      console.log('imgForqq', imgFor);
+      // //console.log('imgForqq', imgFor);
     }
   }, [imgFor]);
 
   const onSubmit = (data) => {
-    console.log('DATA', data);
-    console.log('info', lineUpInfo);
+    //console.log('DATA', data);
+    //console.log('info', lineUpInfo);
     setSurveyStateDefault();
     const updatedLineup = lineUpInfo.map((performer, index) => ({
       id: performer.id || uuidv4(),
@@ -79,7 +79,7 @@ const Create = (props) => {
       image: performer.image || eventDetails?.detailmeta?.lineup[index]?.image,
       bio: data?.detailmeta?.lineup[index]?.bio,
     }));
-    console.log('updated event', updatedLineup);
+    //console.log('updated event', updatedLineup);
 
     const updatedEventDetails = {
       ...eventDetails,
@@ -89,7 +89,7 @@ const Create = (props) => {
         lineup: updatedLineup,
       },
     };
-    console.log('updated event dets', updatedEventDetails);
+    //console.log('updated event dets', updatedEventDetails);
 
     const temp = { ...pipelineDbItem };
     temp.detailmeta.lineup = updatedLineup;
@@ -167,7 +167,7 @@ const Create = (props) => {
 
     /* We might not need this */
     // if (modif === 'lineup') {
-    //   console.log('helooooo', lineUpInfo);
+    //   //console.log('helooooo', lineUpInfo);
     //   imageObject.title = lineUpInfo[i].title;
     //   // imageObject.description = 'Lineup Description';
     //   // imageObject.time = '14:30';
@@ -185,7 +185,7 @@ const Create = (props) => {
 
   //Handles headliner image set
   const handleImageUpload = (e) => {
-    console.log('EEE', e);
+    //console.log('EEE', e);
     const file = e?.target?.files[0];
     if (file) {
       const reader = new FileReader();
@@ -238,12 +238,12 @@ const Create = (props) => {
   };
 
   const handleLineupUpload = (e, index) => {
-    console.log('index', index);
+    //console.log('index', index);
     const file = e?.target?.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        console.log('fillee', e?.target?.result);
+        //console.log('fillee', e?.target?.result);
         const updatedLineUp =
           index === 0 ? [{ title: '', image: null, bio: '' }] : [...lineUpInfo];
         updatedLineUp[index].image = file;
@@ -255,11 +255,11 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    // console.log('Run', pipelineDbItem, eventDetails);
-    // imgCache.getAll('image').map((m) => console.log(m));
+    // //console.log('Run', pipelineDbItem, eventDetails);
+    // imgCache.getAll('image').map((m) => //console.log(m));
     eventDetails.lineup = eventDetails.detailmeta.lineup;
     for (let i = 0; i < imgFor.length; i++) {
-      console.log(imgFor[i], pipelineObject.lineup);
+      //console.log(imgFor[i], pipelineObject.lineup);
     }
     try {
       const res = await apiReq('/product/createProduct', {
@@ -271,7 +271,7 @@ const Create = (props) => {
         _loggedIn: props?._loggedIn,
       });
       if (res) {
-        console.log(res);
+        //console.log(res);
       }
     } catch (error) {
       console.error('Error creating product:', error);
@@ -289,13 +289,13 @@ const Create = (props) => {
   };
 
   const handleButtonClick = async (e) => {
-    console.log(
-      'CREATEBUTTON',
-      imgCache,
-      imgFor,
-      pipelineDbItem,
-      pipelineObject
-    );
+    // console.log(
+    //   'CREATEBUTTON',
+    //   imgCache,
+    //   imgFor,
+    //   pipelineDbItem,
+    //   pipelineObject
+    // );
     e.preventDefault();
     await doFunc();
     setSent(true);
@@ -317,7 +317,7 @@ const Create = (props) => {
     setPipelineObject({});
     setPipelineDbItem({});
     router.push('/studio');
-    console.log('imgfor', imgFor);
+    //console.log('imgfor', imgFor);
   };
 
   return (

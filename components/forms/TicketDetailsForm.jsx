@@ -13,12 +13,12 @@ const TicketDetailsForm = ({
   imgCache,
 }) => {
   const router = useRouter();
-  console.log('pipeline', pipelineDbItem, info);
+  //console.log('pipeline', pipelineDbItem, info);
 
   const nextStep = async () => {
     const temp = pipelineObject;
     temp.status = 'pending';
-    console.log('dbitem', pipelineObject, pipelineDbItem);
+    //console.log('dbitem', pipelineObject, pipelineDbItem);
     // const res = await apiReq('/product/createProduct', {
     //   apiUrl: info?.apiUrl,
     //   pipelineDbItem: pipelineDbItem,
@@ -27,7 +27,7 @@ const TicketDetailsForm = ({
     //   imgFor: imgFor,
     //   _loggedIn: info?._loggedIn, // Requires Authentication
     // });
-    // console.log('resp', res);
+    // //console.log('resp', res);
     // router.push('/studio');
   };
   const useSurvey = {

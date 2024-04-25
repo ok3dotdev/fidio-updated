@@ -42,7 +42,7 @@ const Events = (props) => {
   };
 
   const handleSort = async (value) => {
-    console.log('doing', value);
+    //console.log('doing', value);
     if (value && value.length) {
       setLoading(true);
       await fetchTickets(null, value);
@@ -82,7 +82,7 @@ const Events = (props) => {
         });
         setTickets(tix || []);
         if (tickets) {
-          console.log('tix', tickets);
+          //console.log('tix', tickets);
           setLoading(false);
         }
       }

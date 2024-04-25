@@ -47,7 +47,7 @@ export const page = (props) => {
       const scrollLeft = container.scrollLeft;
       const scrollWidth = container.scrollWidth;
       const clientWidth = container.clientWidth;
-      console.log('widhth', scrollLeft, scrollWidth, clientWidth);
+      // //console.log('widhth', scrollLeft, scrollWidth, clientWidth);
       if (scrollLeft === 0) {
         setDisable({ ...disable, left: false });
       }
@@ -64,7 +64,7 @@ export const page = (props) => {
       const scrollLeft = container.scrollLeft;
       const scrollWidth = container.scrollWidth;
       const clientWidth = container.clientWidth;
-      console.log('widhth', scrollLeft, scrollWidth, clientWidth);
+      // //console.log('widhth', scrollLeft, scrollWidth, clientWidth);
       if (scrollLeft + clientWidth === scrollWidth) {
         setDisable({ ...disable, right: false });
       }
@@ -136,7 +136,7 @@ export const page = (props) => {
 
   const handleSearch = async () => {
     setLoading(true);
-    console.log('term', term);
+    // //console.log('term', term);
     try {
       const res = await apiReq('/fetch/fetchhandler', {
         handlerArgs: [
@@ -149,10 +149,10 @@ export const page = (props) => {
         setData(res.data.fetchedData[0]);
         setTerm('');
         setLoading(false);
-        console.log('res', data);
+        // //console.log('res', data);
       }
     } catch (error) {
-      console.log('error', error);
+      // //console.log('error', error);
     }
   };
 
@@ -176,10 +176,10 @@ export const page = (props) => {
       if (res) {
         setData(res.data.fetchedData[0]);
         setLoading(false);
-        console.log('res', data);
+        // //console.log('res', data);
       }
     } catch (error) {
-      console.log('error', error);
+      // //console.log('error', error);
     }
   };
 
@@ -188,8 +188,8 @@ export const page = (props) => {
   }, []);
 
   if (!isLoading && data) {
-    // console.log('data222', data.fetchedData[0].articleReq[0]);
-    console.log('data2225', data.articleReq[0]);
+    // //console.log('data222', data.fetchedData[0].articleReq[0]);
+    // //console.log('data2225', data.articleReq[0]);
   }
   return (
     <HomeLayout

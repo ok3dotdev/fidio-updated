@@ -65,7 +65,7 @@ const Create = (props) => {
   }, [componentDidMount]);
 
   const onSubmit = (data) => {
-    console.log('DATA', data);
+    //console.log('DATA', data);
     setSurveyStateDefault();
     const updatedLineup = lineUpInfo.map((performer, index) => ({
       id: performer.id || uuidv4(),
@@ -89,29 +89,29 @@ const Create = (props) => {
     setStep(3);
   };
 
-  useEffect(() => {
-    if (eventDetails) {
-      console.log(
-        'dataaaaaa3',
-        eventDetails,
-        pipelineDbItem,
-        pipelineObject,
-        imgCache,
-        imgFor
-      );
-    }
-  }, [eventDetails]);
+  // useEffect(() => {
+  //   if (eventDetails) {
+  //     console.log(
+  //       'dataaaaaa3',
+  //       eventDetails,
+  //       pipelineDbItem,
+  //       pipelineObject,
+  //       imgCache,
+  //       imgFor
+  //     );
+  //   }
+  // }, [eventDetails]);
 
   useEffect(() => {
     if (pipelineDbItem) {
-      console.log('dataaaaaa3', pipelineDbItem);
+      //console.log('dataaaaaa3', pipelineDbItem);
     }
   }, [pipelineDbItem]);
 
   const allowedTypes = ['image/jpeg', 'image/png'];
 
   const handleNewFile = React.useCallback((files) => {
-    console.log('files', files);
+    //console.log('files', files);
     const useForm = imgCache;
     const useImgName = uuidv4();
     useForm.append(
@@ -135,12 +135,12 @@ const Create = (props) => {
   });
 
   const handleImageUpload = (e) => {
-    console.log('EEE', e);
+    //console.log('EEE', e);
     const file = e?.target?.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        console.log('lll', event);
+        //console.log('lll', event);
         setSelectedImage(event?.target?.result);
       };
       reader.readAsDataURL(file);
@@ -193,7 +193,7 @@ const Create = (props) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        console.log('fillee', e?.target?.result);
+        //console.log('fillee', e?.target?.result);
         const updatedLineUp = [...lineUpInfo];
         updatedLineUp[index].image = file;
         updatedLineUp[index].file = event?.target?.result;
@@ -204,7 +204,7 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    console.log('fdhggdgrh');
+    //console.log('fdhggdgrh');
     setSurveyStateDefault();
     try {
       const res = await apiReq('/product/createProduct', {
@@ -216,7 +216,7 @@ const Create = (props) => {
         _loggedIn: props?._loggedIn,
       });
       if (res) {
-        console.log(res);
+        //console.log(res);
       }
     } catch (error) {
       console.error('Error creating product:', error);

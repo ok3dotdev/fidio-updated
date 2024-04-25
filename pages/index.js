@@ -10,7 +10,7 @@ import { homePageData } from '/customModules/features/seo-data';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
-import { Menu } from '/modules/menu/';
+// import { Menu } from '/modules/menu/';
 
 const pageName = 'Index';
 

@@ -38,7 +38,7 @@ const EventStatusSteps = (props) => {
   //       },
   //     });
   //     setTickets(res.products || []);
-  //     // console.log('tix', tickets);
+  //     // //console.log('tix', tickets);
   //     setLoading(false);
   //   }
   // };
@@ -109,7 +109,6 @@ const EventStatusSteps = (props) => {
               <Link
                 href='/studio/events/create'
                 className='bg-dashFg rounded-[4rem] mt-4 px-3 py-2 text-black font-sans inline-flex justify-center gap-1'
-                onClick={() => console.log('Creating event...')}
               >
                 <AddCircleRoundedIcon />
                 Create event

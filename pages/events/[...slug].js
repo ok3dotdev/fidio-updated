@@ -34,7 +34,7 @@ export const Page = (props) => {
 
   // props._toggleSingleOpenMenu(e, 'cart');
 
-  console.log('slug', router.query.slug);
+  // //console.log('slug', router.query.slug);
 
   const fetchTickets = async () => {
     setLoading(true);
@@ -60,7 +60,7 @@ export const Page = (props) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
   });
   if (!loading && ticket) {
-    console.log('values', ticket);
+    // //console.log('values', ticket);
   }
 
   return (
