@@ -55,6 +55,7 @@ customModules/*
 !*customModules/admin
 customModules/admin/*
 !*customModules/admin/index_backup.js
+!*customModules/admin/components
 
 # Tycoon Systems - Custom Modules Middleware
 customModules/middleware/*
@@ -95,5 +96,6 @@ appServer/*
 # !*customModules/admin/components/*
 # !*customModules/admin/components
 # !*customModules/admin/index.js
+# !*layout/*
 
 # Project Ignore Files
