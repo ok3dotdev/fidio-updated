@@ -92,9 +92,9 @@ appServer/*
 !*appServer/defaults/
 
 # Extra Ignore Files Here. Uncomment after initialization (node init_app.js)
-# !*customModules/middleware/*
-# !*customModules/admin/components/*
-# !*customModules/admin/components
-# !*customModules/admin/index.js
+!*customModules/middleware/*
+!*customModules/admin/components/*
+!*customModules/admin/components
+!*customModules/admin/index.js
 
 # Project Ignore Files
