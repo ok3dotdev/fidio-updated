@@ -18,7 +18,7 @@ const ResourceLayout = (props) => {
             <div className='relative  md:block'>
               <form
                 action=''
-                onSubmit={(e) => {
+                onSubmit={(e) => { 
                   e.preventDefault();
                   handleSearch();
                 }}
