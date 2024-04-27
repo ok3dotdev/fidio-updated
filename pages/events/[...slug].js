@@ -19,6 +19,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import { fireGlobalEvent } from '/modules/utility/utility';
 
 import Button from '@/components/ui/button';
+import { fontFamily } from '@mui/system';
 const pageName = 'events';
 
 export const Page = (props) => {
@@ -51,8 +52,8 @@ export const Page = (props) => {
       }
     }
   };
-  const handleAddProduct = (e) => {
-    fireGlobalEvent(e, props._LocalEventEmitter);
+  const handleOpenCart = (e) => {
+    handleAddProduct(e);
     props._toggleSingleOpenMenu(e, 'cart');
     if (props?._openMenu?.currentMenu === 'cart') {
       setCartOpen(false);
@@ -62,7 +63,7 @@ export const Page = (props) => {
       }, 150);
     }
   };
-  const handleFireGlobalEvent = React.useCallback(async (e) => {
+  const handleAddProduct = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
   });
   if (!loading && ticket) {
@@ -72,7 +73,12 @@ export const Page = (props) => {
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>
-        <div style={{ display: cartOpen ? 'block' : 'none' }}>
+        <div
+          style={{
+            display: cartOpen ? 'block' : 'none',
+            fontFamily: 'lexend !important',
+          }}
+        >
           {<Cart {...props} />}
         </div>
         {error && (
@@ -191,7 +197,7 @@ export const Page = (props) => {
                   </div>
                   <button
                     className='bg-accentY w-full p-2 rounded-[6px] font-semibold mt-4'
-                    onClick={handleAddProduct}
+                    onClick={handleOpenCart}
                     item={ticket?.id}
                     selectedstyle={ticket?.style}
                     currentoption={ticket?.style?.opetion[0]}
@@ -199,15 +205,6 @@ export const Page = (props) => {
                   >
                     Get tickets
                   </button>
-                  {/* <button
-                    onClick={handleFireGlobalEvent}
-                    item={ticket?.id}
-                    selectedstyle={ticket?.style}
-                    currentoption={ticket?.style?.opetion[0]}
-                    action='add_to_cart'
-                  >
-                    Add To Cart
-                  </button> */}
                 </div>
               </div>
             </div>
