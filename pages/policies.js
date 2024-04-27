@@ -9,7 +9,7 @@ import { ChevronRight } from '@mui/icons-material';
 
 const pageName = 'policies';
 
-const policies = (children) => {
+const policies = (props) => {
   const article = [
     {
       title: 'Privacy policy',
@@ -27,21 +27,26 @@ const policies = (children) => {
     },
   ];
   return (
-    <ResourceLayout {...children}>
-      <ResourceStaticLayout {...children}>
-        
-        <div className="container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg ">
-          <div className="flex pb-8 font-medium ">
-            <Link href="/resources" className="cursor-pointer">Resources</Link>
+    <ResourceLayout {...props}>
+      <ResourceStaticLayout {...props}>
+        <div className='container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg '>
+          <div className='flex pb-8 font-medium '>
+            <Link href='/resources' className='cursor-pointer'>
+              Resources
+            </Link>
             <ChevronRight />
             <p>policies</p>
           </div>
-          <h2 className="text-4xl font-bold text-left  pb-10">Policies</h2>
+          <h2 className='text-4xl font-bold text-left  pb-10'>Policies</h2>
           {article.map((articlee, idx) => (
-            <div key={idx} className="py-2 w-[580px] ">
-              <div className="gap-y-2">
-                <h2 className="text-[16px] font-medium pb-2">{articlee.title}</h2>
-                <p className="text-[14px] text-[#A3A3A3] pb-2">{articlee.para}</p>
+            <div key={idx} className='py-2 '>
+              <div className='gap-y-2'>
+                <h2 className='text-[16px] font-medium pb-2'>
+                  {articlee.title}
+                </h2>
+                <p className='text-[14px] text-[#A3A3A3] pb-2'>
+                  {articlee.para}
+                </p>
               </div>
             </div>
           ))}

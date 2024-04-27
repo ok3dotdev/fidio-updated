@@ -154,7 +154,7 @@
     }
 }
 
-.millerText {
+.millerText, pre.millerText {
     font-family: 'Miller Text';
 }
 
@@ -178,6 +178,7 @@
         }
         .DetailTable {
             font-size: .75rem;
+            width: 100%;
         }
     }
 }

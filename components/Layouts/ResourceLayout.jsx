@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import Menu from 'customModules/features/AltMenu';
 import { Input } from '@/components/ui/input';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { cn } from '@/lib/utils';
 
 const ResourceLayout = (props) => {
   const [term, setTerm] = useState('');
-  const { children } = props;
+  const { children, className } = props;
 
   const handleSearch = () => {};
   return (
-    <div className='font-lexend bg-dashBg h-full '>
+    <div className={cn('font-lexend bg-dashBg min-h-screen', className)}>
       <Menu {...props} />
       <div className='max-w-7xl mx-auto pb-20'>
         <div className='flex flex-col items-center pt-20 px-4'>
@@ -18,7 +19,7 @@ const ResourceLayout = (props) => {
             <div className='relative  md:block'>
               <form
                 action=''
-                onSubmit={(e) => { 
+                onSubmit={(e) => {
                   e.preventDefault();
                   handleSearch();
                 }}
