@@ -32,8 +32,6 @@ export const Page = (props) => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
 
-  // props._toggleSingleOpenMenu(e, 'cart');
-
   console.log('slug', router.query.slug);
 
   const fetchTickets = async () => {
@@ -54,13 +52,14 @@ export const Page = (props) => {
     }
   };
   const handleAddProduct = (e) => {
-    props._toggleSingleOpenMenu(e, 'cart')
+    fireGlobalEvent(e, props._LocalEventEmitter);
+    props._toggleSingleOpenMenu(e, 'cart');
     if (props?._openMenu?.currentMenu === 'cart') {
-      setCartOpen(false)
+      setCartOpen(false);
     } else {
       setTimeout(() => {
-        setCartOpen(true)
-      }, 150)
+        setCartOpen(true);
+      }, 150);
     }
   };
   const handleFireGlobalEvent = React.useCallback(async (e) => {
@@ -74,11 +73,7 @@ export const Page = (props) => {
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>
         <div style={{ display: cartOpen ? 'block' : 'none' }}>
-          {
-            // <div className='bg-black inset-0 absolute w-full z-50 opacity-[0.3]'>
-            <Cart {...props} />
-            // </div>
-          }
+          {<Cart {...props} />}
         </div>
         {error && (
           <h1>There was an error with this page. We are looking into it.</h1>
@@ -197,8 +192,12 @@ export const Page = (props) => {
                   <button
                     className='bg-accentY w-full p-2 rounded-[6px] font-semibold mt-4'
                     onClick={handleAddProduct}
+                    item={ticket?.id}
+                    selectedstyle={ticket?.style}
+                    currentoption={ticket?.style?.opetion[0]}
+                    action='add_to_cart'
                   >
-                    Get ticket
+                    Get tickets
                   </button>
                   {/* <button
                     onClick={handleFireGlobalEvent}
