@@ -9,8 +9,8 @@ import Menu from '/customModules/features/AltMenu';
 import HomeLayout from '/customModules/features/HomeLayout';
 import { Input } from '@/components/ui/input';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { createMarkup } from '/modules/article/utility';
-import { SingleArticle } from '/modules/article';
+// import { createMarkup } from '/modules/article/utility';
+// import { SingleArticle } from '/modules/article';
 
 const pageName = 'ar';
 
