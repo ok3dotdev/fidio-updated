@@ -1,1 +1,0 @@
-import{fetchPost}from"../fetch";const fetchSearchData=async(t,e,a)=>{var c=a;for(let t=0;t<e.length;t++)c[e[t]+"Req"]=!0;return c.function="fetchSearchData",await fetchPost(t+"/m/pagedefaults",null,null,c)};export{fetchSearchData};

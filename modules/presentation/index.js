@@ -1,1 +1,0 @@
-import{IndexBgHello}from"./hello/indexBgHello";import{IndexHello}from"./hello/indexHello";import{BannerHello}from"./hello/bannerHello";import{MarketingSlider}from"./marketingSlider";const Modules={BannerHello:BannerHello,IndexBgHello:IndexBgHello,IndexHello:IndexHello,MarketingSlider:MarketingSlider};export default Modules;

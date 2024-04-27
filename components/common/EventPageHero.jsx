@@ -1,13 +1,13 @@
 import React from 'react';
 
 const EventPageHero = ({ info, ticket }) => {
-  console.log(
-    'info',
-    `${info?.cdn?.static}/${
-      ticket?.images && ticket?.images[0] && ticket?.images[0]?.name
-    }`
-  );
-  console.log('cdn', info);
+  // //console.log(
+  //   'info',
+  //   `${info?.cdn?.static}/${
+  //     ticket?.images && ticket?.images[0] && ticket?.images[0]?.name
+  //   }`
+  // );
+  // //console.log('cdn', info);
   return (
     <div className='h-[70vh] w-full relative'>
       {info?.cdn?.static &&

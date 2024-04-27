@@ -33,7 +33,13 @@ export const Page = (props) => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
 
+<<<<<<< HEAD
   console.log('slug', router.query.slug);
+=======
+  // props._toggleSingleOpenMenu(e, 'cart');
+
+  // //console.log('slug', router.query.slug);
+>>>>>>> Fidio-resources-branch
 
   const fetchTickets = async () => {
     setLoading(true);
@@ -67,7 +73,7 @@ export const Page = (props) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
   });
   if (!loading && ticket) {
-    console.log('values', ticket);
+    // //console.log('values', ticket);
   }
 
   return (

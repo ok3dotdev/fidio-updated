@@ -1,1 +1,0 @@
-import React from"react";const Module=e=>React.createElement("div",null,e.useAppConfigLayout&&e.appConfigLayout?React.createElement(React.Fragment,null,e.appConfigLayout):null);export default Module;

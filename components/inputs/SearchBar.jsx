@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
-    // console.log(searchQuery);
+    // //console.log(searchQuery);
   };
 
   return (

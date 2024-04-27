@@ -23,7 +23,7 @@ const MediaDetailsForm = ({
   // const [pipelineObject, setPipelineObject] = React.useState({}); // added variables ---- add values here
   // const [imgFor, setImgFor] = React.useState([]); // form mateched for images
 
-  // console.log('media', pipeObj);
+  // //console.log('media', pipeObj);
   const nextStep = () => {
     setStep(step);
   };

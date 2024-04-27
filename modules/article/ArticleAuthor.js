@@ -1,1 +1,0 @@
-import Link from"next/link";import React from"react";import ArticleStyles from"./Article.module.scss";const Module=e=>React.createElement(React.Fragment,null,React.createElement("span",{className:""+ArticleStyles.author},React.createElement(Link,{href:"/p?u="+e?.articleData?.authorData?.id},e?.articleData?.authorData?.username??"")));export default Module;

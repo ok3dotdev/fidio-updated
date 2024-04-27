@@ -1,1 +1,0 @@
-const handleKeyPressChat=(e,r)=>{if(e&&e.key&&("Enter"==e.key||13==e.charCode))return e.preventDefault(),r(e),!1},scrollChatDown=(e,r="smooth")=>{e?.current?.scrollHeight&&e.current.scrollBy({top:e.current.scrollHeight,behavior:r})};export{handleKeyPressChat,scrollChatDown};

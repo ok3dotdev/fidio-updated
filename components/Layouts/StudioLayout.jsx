@@ -15,7 +15,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const StudioLayout = (props) => {
-  // console.log('rppsp=s', props);
+  // //console.log('rppsp=s', props);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const StudioLayout = (props) => {
   const capitalizedUsername = username
     ? username.charAt(0).toUpperCase() + username.slice(1)
     : '';
-  // console.log('Shoow', showNav);
+  // //console.log('Shoow', showNav);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

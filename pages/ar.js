@@ -9,14 +9,15 @@ import Menu from '/customModules/features/AltMenu';
 import HomeLayout from '/customModules/features/HomeLayout';
 import { Input } from '@/components/ui/input';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { createMarkup } from '/modules/article/utility';
+// import { createMarkup } from '/modules/article/utility';
+// import { SingleArticle } from '/modules/article';
 
 const pageName = 'ar';
 
 export const page = (props) => {
   const [term, setTerm] = React.useState('');
   function createMarkupAlt() {
-    const fixedContent = props?.articleData?.contents.replace(/"/g, '');
+    const fixedContent = props?.articleData?.contents?.replace(/"/g, '');
 
     return { __html: fixedContent };
   }
@@ -40,13 +41,15 @@ export const page = (props) => {
       className='bg-dashBg'
     >
       <div>
-        <div className='w-full max-h-[400px] h-[400px] relative'>
-          <img
-            className='absolute inset-0 w-full h-full object-cover'
-            src={`${props?.articleData?.meta?.featuredImg}`}
-            alt=''
-          />
-        </div>
+        {props?.articleData?.meta?.featuredImg && (
+          <div className='w-full max-h-[400px] h-[400px] relative'>
+            <img
+              className='absolute inset-0 w-full h-full object-cover'
+              src={`${props?.articleData?.meta?.featuredImg}`}
+              alt=''
+            />
+          </div>
+        )}
         <div className='lg:max-w-7xl mx-auto font-lexend md:px-12 px-4 bg-dashBg'>
           <div className='pt-10 '>
             <div className='flex w-full justify-between'>
@@ -113,10 +116,10 @@ export const page = (props) => {
                     </p>
                   </>
                 )}
-              <span className='w-1 h-1 bg-dashtext rounded-full'></span>
-              <p className='text-dashtext font-medium'>
+              <span className='w-1 h-1 bg-dashtext rounded-full hidden md:block'></span>
+              <p className='text-dashtext font-medium hidden md:block'>
                 {calculateReadingTime(props?.articleData?.contents) +
-                  ' minuites'}
+                  ' minutes'}
               </p>
               <span className='w-1 h-1 bg-dashtext rounded-full'></span>
               <p className='font-white font-bold'>
@@ -132,6 +135,7 @@ export const page = (props) => {
                     className=' font-lexend text-dashtext '
                     dangerouslySetInnerHTML={createMarkupAlt()}
                   ></div>
+                  {/* <SingleArticle {...props} /> */}
                 </div>
               </div>
               <div className='hidden md:block w-[30%]'>
