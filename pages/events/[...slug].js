@@ -54,7 +54,14 @@ export const Page = (props) => {
     }
   };
   const handleAddProduct = (e) => {
-    props._toggleSingleOpenMenu(e, 'cart');
+    props._toggleSingleOpenMenu(e, 'cart')
+    if (props?._openMenu?.currentMenu === 'cart') {
+      setCartOpen(false)
+    } else {
+      setTimeout(() => {
+        setCartOpen(true)
+      }, 150)
+    }
   };
   const handleFireGlobalEvent = React.useCallback(async (e) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
@@ -66,11 +73,13 @@ export const Page = (props) => {
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>
-        {
-          // <div className='bg-black inset-0 absolute w-full z-50 opacity-[0.3]'>
-          <Cart {...props} />
-          // </div>
-        }
+        <div style={{ display: cartOpen ? 'block' : 'none' }}>
+          {
+            // <div className='bg-black inset-0 absolute w-full z-50 opacity-[0.3]'>
+            <Cart {...props} />
+            // </div>
+          }
+        </div>
         {error && (
           <h1>There was an error with this page. We are looking into it.</h1>
         )}

@@ -100,10 +100,6 @@ input {
   align-items: center;
 }
 
-.Ecommerce_Cart_Container {
-  top: 66px !important;
-}
-
 @media (max-width: 768px) {
   .carousel-image {
     background-position: center;
@@ -194,11 +190,6 @@ input {
       rgba(50, 50, 50, 1) 100%
     );
   }
-}
-
-.Ecommerce_Cart_Container {
-  background: rgba(128, 128, 128, 0.5);
-  border: none;
 }
 
 .Ecommerce_Item_Container,

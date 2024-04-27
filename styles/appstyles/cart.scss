@@ -1,0 +1,39 @@
+.Ecommerce_Cart_Container {
+    padding: 1rem;
+    transition: 0ms;
+    background: #171717;
+    border: none;
+}
+
+.Ecommerce_Cart_Container_Visible {
+    position: fixed;
+    width: 80vw;
+    height: 60vh;
+    left: 10vw;
+    top: 15vh !important;
+}
+
+.Ecommerce_Layout_Data_Container {
+    gap: 1rem;
+    p {
+        font-size: 1rem;
+    }
+    > div {
+        width: calc(50% - .5rem);
+    }
+    .Ecommerce_Layout_OrderSummary {
+        background: #262626;
+        padding: 1rem;
+        border-radius: .25rem;
+    }
+    .Ecommerce_Layout_Data_Details {
+        label {
+            font-size: .9rem;
+        }
+    }
+}
+
+.Ecommerce_Price {
+    display: flex;
+    justify-content: space-between;
+}
