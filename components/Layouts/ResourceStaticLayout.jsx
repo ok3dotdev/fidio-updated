@@ -4,6 +4,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { ChevronRight } from '@mui/icons-material';
 
 // import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { Wave } from '../icons';
@@ -44,8 +45,8 @@ const ResourceStaticLayout = ({ children }) => {
     },
     {
       contentMenu: (
-        <div className=" font-medium ">
-          <h3 className=" uppercase text-[14px] pb-4 text-[#A3A3A3]">
+        <div className=" font-medium text-[10px] md:text-[14px]">
+          <h3 className=" uppercase  pb-4 text-[#A3A3A3]">
             Contents
           </h3>
           <ul className="flex flex-col gap-y-2 text-[#A3A3A3]">
@@ -89,14 +90,13 @@ const ResourceStaticLayout = ({ children }) => {
           </ul>
         </div>
       </div>
-      
       <div className="flex-1 pb-8">{children}</div>
       {router.pathname === '/faq' ? (
         <div className="rounded-md w-[330px] py-4 md:w-[220px] mx-auto h-[204px] bg-whiteGradient">
           {rightSideDisplay.find(({ buttonChat }) => buttonChat)?.buttonChat}
         </div>
       ) : (
-        <div className="rounded-md w-[330px] py-2 md:w-[220px] mx-auto h-[204px] ">
+        <div className="hidden md:block rounded-md w-[330px] py-2 md:w-[220px] mx-auto h-[204px] ">
           {rightSideDisplay.find(({ contentMenu }) => contentMenu)?.contentMenu}
         </div>
       )}
