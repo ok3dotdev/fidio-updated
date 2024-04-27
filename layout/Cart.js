@@ -26,26 +26,30 @@ const Module = props => {
                                 <div className='Ecommerce_Layout_Data_Details'>
                                     <p className='mb-2 font-semibold'>Billing Information</p>
                                     <div>
-                                        <label className='mb-2 font-semibold'>First Name</label>
-                                        <p>{props?._loggedIn?.meta?.firstName}</p>
+                                        <label className='mb-2'>First Name</label>
+                                        <p style={{ color: 'rgba(163, 163, 163, 1)' }}>{props?._loggedIn?.meta?.firstName}</p>
                                     </div>
                                     <div>
-                                        <label className='mb-2 font-semibold'>Last Name</label>
-                                        <p>{props?._loggedIn?.meta?.lastName}</p>
+                                        <label className='mb-2'>Last Name</label>
+                                        <p style={{ color: 'rgba(163, 163, 163, 1)' }}>{props?._loggedIn?.meta?.lastName}</p>
                                     </div>
                                     <div>
-                                        <label className='mb-2 font-semibold'>Email</label>
-                                        <p>{props?._loggedIn?.email}</p>
+                                        <label className='mb-2'>Email</label>
+                                        <p style={{ color: 'rgba(163, 163, 163, 1)' }}>{props?._loggedIn?.email}</p>
                                     </div>
                                     <div className='flex gap-p5' style={{ marginTop: '1rem' }}>
                                         <input type='checkbox' />
-                                        <div className='text-dashtext' style={{ fontSize: '.8rem' }}>Keep me updated on more events and news from this event organizer</div>
+                                        <div className='text-dashtext' style={{ fontSize: '.74rem' }}>Keep me updated on more events and news from this event organizer.</div>
                                     </div>
                                 </div>
-                                <div style={{ marginTop: '1rem' }}>
+                                <div className='Ecommerce_Layout_CreditCardContainer' style={{ marginTop: '1rem' }}>
                                     <p className='mb-2 font-semibold'>Pay With</p>
+                                    <div>
+                                        <label className='mb-2'>Credit/Debit card</label>
+                                    </div>
                                     <CartCc { ...props } />
                                     <PurchaseButton { ...props } />
+                                    <div className='text-dashtext' style={{ fontSize: '.74rem' }}>We use industry-standard security measure to protect your information.</div>
                                 </div>
                             </div>
                             <div className='Ecommerce_Layout_OrderSummary'>
