@@ -33,13 +33,7 @@ export const Page = (props) => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
 
-<<<<<<< HEAD
   console.log('slug', router.query.slug);
-=======
-  // props._toggleSingleOpenMenu(e, 'cart');
-
-  // //console.log('slug', router.query.slug);
->>>>>>> Fidio-resources-branch
 
   const fetchTickets = async () => {
     setLoading(true);
