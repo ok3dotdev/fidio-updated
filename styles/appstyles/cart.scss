@@ -3,9 +3,11 @@
     transition: 0ms;
     background: #171717;
     border: none;
+    display: none;
 }
 
 .Ecommerce_Cart_Container_Visible {
+    display: block;
     position: fixed;
     width: 80vw;
     height: 60vh;
