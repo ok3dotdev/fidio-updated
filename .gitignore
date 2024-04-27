@@ -83,7 +83,7 @@ styles/appstyles/*
 .next.tar.gz
 public.tar.gz
 
-# Tycoon Systems - Layout defualts ignore
+# Tycoon Systems - Layout defaults ignore
 layout/*
 !*/layout/defaults/*
 !*layout/defaults
