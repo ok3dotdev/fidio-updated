@@ -33,8 +33,6 @@ export const Page = (props) => {
     fetchTickets();
   }, [props?._loggedIn?.identifier]);
 
-  console.log('slug', router.query.slug);
-
   const fetchTickets = async () => {
     setLoading(true);
     if (props && props?._loggedIn?.identifier) {
