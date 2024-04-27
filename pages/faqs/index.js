@@ -33,12 +33,12 @@ const faqs = (children) => {
     <ResourceLayout {...children} >
       <ResourceStaticLayout {...children}>
         <div className="container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg ">
-          <div className="flex pb-8  text-[16px] font-medium ">
-            <Link  href="/resources" className="cursor-pointer " >Resources</Link>
+          <div className="flex pb-8 font-medium cursor-pointer">
+            <Link href="/" >Resources</Link>
             <ChevronRight />
-            <p  >FAQs</p>
+            <Link href="/faq" >FAQs</Link>
           </div>
-          <h2 className="text-4xl font-bold text-left  pb-8">FAQs</h2>
+          <h2 className="text-3xl font-bold text-left  pb-8">FAQs</h2>
           {faqs.map((faq, idx) => (
             <ul key={idx} className=" divide-y ">
               <li className="border-b border-b-[#404040]">
