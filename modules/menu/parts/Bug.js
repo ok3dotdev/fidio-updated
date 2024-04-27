@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>React.createElement(React.Fragment,null,React.createElement("li",{onClick:e?.fireShareBug},React.createElement("div",{className:"material-icons"},"bug_report"),React.createElement("div",null,"Report Bug")));export default Module;

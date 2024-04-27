@@ -1,0 +1,1 @@
+import React from"react";import ArticleStyles from"./Article.module.scss";const Module=e=>React.createElement(React.Fragment,null,React.createElement("div",null,React.createElement("div",{className:""+ArticleStyles.title},e?.articleData?.title??"")));export default Module;
