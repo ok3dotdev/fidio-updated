@@ -145,3 +145,16 @@
     background: #31aa31;
     border-radius: .25rem;
 }
+
+.Ecommerce_CartMessage {
+    background: rgba(34, 34, 34, 1);
+    border-radius: .5rem;
+    padding: .25rem;
+    width: -webkit-fill-available;
+    text-align: center;
+    width: 100%;
+}
+
+.Ecommerce_CartMessage_Message {
+    font-weight: 600;
+}
