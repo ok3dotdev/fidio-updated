@@ -35,7 +35,7 @@ export const Page = (props) => {
 
   const fetchTickets = async () => {
     setLoading(true);
-    if (props && props?._loggedIn?.identifier) {
+    if (props) {
       const res = await apiReq('/product/getProducts', {
         apiUrl: props?.apiUrl,
         pagination: 0,
@@ -77,7 +77,7 @@ export const Page = (props) => {
             fontFamily: 'lexend !important',
           }}
         >
-          {<Cart {...props} />}
+          {<Cart {...props} forceShowCc={true} />}
         </div>
         {error && (
           <h1>There was an error with this page. We are looking into it.</h1>
