@@ -52,3 +52,31 @@
     }
 }
 
+.SignIn_Container {
+    max-width: 260px;
+}
+
+.SignIn_Separator {
+    border-bottom: 1px solid grey;
+    margin-bottom: .25rem;
+}
+
+.SignIn_ManualContainer {
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.SignIn_ManualContainer_Label_Container {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: .5rem;
+    input {
+        width: 100%;
+        border-radius: .25rem;
+        border-width: 0;
+    }
+}
+
+.SignIn_ManualButton {
+    width: 100%;
+}
