@@ -1051,6 +1051,7 @@ button:not(:disabled):active {
     background: black;
     padding: .5rem;
     border-radius: 1rem;
+    overflow: auto;
 }
 
 .documentationObject table,

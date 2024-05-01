@@ -66,6 +66,10 @@
     grid-gap: .5rem; /* Adjust gap between columns as needed */
 }
 
+.mainContainer2 {
+    grid-template-columns: 20% 80%;
+}
+
 .contentContainer {
     // margin-left: .5rem;
 }
@@ -168,5 +172,6 @@
 .htmlParseContainer {
     h1, h2, h3, h4, h5 {
         margin: 0;
+        padding-bottom: .5rem;
     }
 }
