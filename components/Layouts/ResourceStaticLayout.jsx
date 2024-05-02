@@ -23,7 +23,11 @@ const ResourceStaticLayout = ({ children }) => {
       icon: <VideocamOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
     },
     {
+<<<<<<< HEAD
       path: '/guides',
+=======
+      path: '/question',
+>>>>>>> 70c038f (Policies-nested pages)
       label: 'Guides',
       icon: (
         <ConfirmationNumberOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />
@@ -50,6 +54,7 @@ const ResourceStaticLayout = ({ children }) => {
           <h3 className=' uppercase text-[14px] pb-4 text-[#A3A3A3]'>
 =======
         <div className=" font-medium text-[10px] md:text-[14px]">
+<<<<<<< HEAD
           <h3 className=" uppercase  pb-4 text-[#A3A3A3]">
 >>>>>>> 4592d63 (Policies-mobileView Page)
             Contents
@@ -70,6 +75,25 @@ const ResourceStaticLayout = ({ children }) => {
                 Compliance and Legal
               </Link>
             </li>
+=======
+          <h3 className=" uppercase  pb-4 text-[#A3A3A3]">Contents</h3>
+          <ul className="flex flex-col gap-y-2 text-[#A3A3A3] cursor-pointer">
+            {[
+              { label: 'Privacy policy', href: '/policies/privacy' },
+              { label: 'Terms of use', href: '/policies/terms' },
+              { label: 'Compliance and legal', href: '/policies/compliance' },
+            ].map(({ label, href }) => (
+              <li
+                key={href}
+                className={cn(
+                  'text-[#A3A3A3]',
+                  router.pathname === href && 'text-white'
+                )}
+              >
+                <Link href={href}>{label}</Link>
+              </li>
+            ))}
+>>>>>>> 70c038f (Policies-nested pages)
           </ul>
         </div>
       ),
