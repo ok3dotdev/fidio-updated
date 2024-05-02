@@ -65,22 +65,25 @@ export const Page = (props) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
   });
   if (!loading && ticket) {
-    console.log('values', ticket);
+    console.log('values', cartOpen);
   }
 
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>
-        <div
-          style={{
-            display: cartOpen ? 'block' : 'none',
-            fontFamily: 'lexend !important',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          }}
-          className='absolute inset-0 z-50 flex justify-center pt-[90px]'
-        >
-          {<Cart {...props} forceShowCc={true} />}
-        </div>
+        {cartOpen && (
+          <div
+            style={{
+              display: cartOpen ? 'flex' : 'none',
+              fontFamily: 'lexend !important',
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              gap: '3rem',
+            }}
+            className='absolute inset-0 z-50 flex justify-center pt-[90px]'
+          >
+            {<Cart {...props} forceShowCc={true} setCartOpen={setCartOpen} />}
+          </div>
+        )}
         {error && (
           <h1>There was an error with this page. We are looking into it.</h1>
         )}

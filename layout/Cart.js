@@ -18,7 +18,12 @@ import { Input } from '@/components/ui/input';
 const Module = (props) => {
   const close = React.useCallback((e) => {
     props._toggleSingleOpenMenu(e, 'cart');
+    props.setCartOpen(false);
   });
+
+  // if (!loading && ticket) {
+  //   console.log('values', props.open);
+  // }
 
   // Use refs to easily track value inputs
   const firstName = React.useRef();
@@ -101,8 +106,9 @@ const Module = (props) => {
           <div className='Ecommerce_Cart_Internal_Container'>
             <div className='flex justify-between mb-5'>
               <h5 className={'Ecommerce_Label font-bold text-2xl'}>Checkout</h5>
-              <div className='cursor-pointer'>
-                <Close onClick={close}></Close> {/* Use your close icon here */}
+              <div className='cursor-pointer rounded-full bg-dashSides flex items-center justify-center w-8 h-8'>
+                <Close className='mx-auto my-auto' onClick={close}></Close>{' '}
+                {/* Use your close icon here */}
               </div>
             </div>
             <div className='flex Ecommerce_Layout_Data_Container'>
@@ -176,7 +182,7 @@ const Module = (props) => {
                   </div>
                 </div>
               </div>
-              <div className='Ecommerce_Layout_OrderSummary h-auto self-auto'>
+              <div className='Ecommerce_Layout_OrderSummary h-auto self-start'>
                 <div>
                   <p className='mb-8 font-semibold'>Order Summary</p>
                   <CartItems {...props} />

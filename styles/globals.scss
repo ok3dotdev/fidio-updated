@@ -48,6 +48,13 @@ a {
   box-shadow: unset !important;
   gap: 3rem !important;
 }
+.Ecommerce_Layout_Data_Container {
+  gap: 3rem !important;
+}
+
+.Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
+  border-radius: 8px !important;
+}
 
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.
