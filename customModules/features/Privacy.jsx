@@ -1,8 +1,14 @@
 import React from 'react';
 
 const PrivacyContent = () => {
+  const paraStyle = {
+    color: '#A3A3A3',
+    fontSize: '14px',
+    fontFamily: 'lexend',
+    paddingTop:'10px',
+  };
   return (
-    <div className='pt-[100px] px-4 h-full'>
+    <div className='px-4 h-full'>
       <div className='max-w-4xl mx-auto'>
         <main class=' p-4 text-white'>
           <h1 class='text-2xl font-semibold mb-4'>FIDIO PRIVACY POLICY</h1>
@@ -12,7 +18,7 @@ const PrivacyContent = () => {
               Effective as of January 15, 2023 (Publication Date September 16,
               2023)
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='  text-sm font-light mt-2'>
               Thank you for visiting Fidio. Your privacy is important to us.
               This privacy policy ('Privacy Policy') describes how we, our
               affiliated and associated entities, as further detailed below
@@ -36,7 +42,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Be informed about how we process your personal data.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   We provide this information through our Privacy Policy, our
                   Services, and by answering your questions when you contact us.
                 </p>
@@ -45,7 +51,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Access your personal data.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You can ask whether we process your personal data, and if we
                   do, you can ask for a copy of your personal data and for
                   information on certain other aspects of the processing,
@@ -62,7 +68,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Rectify inaccurate or incomplete personal data.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You may correct some categories of your personal data yourself
                   in your account settings or contact{' '}
                   <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
@@ -75,7 +81,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Deletion (erasure) of your personal data.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You have the right to ask us to delete your personal data
                   under certain circumstances, including:
                 </p>
@@ -103,7 +109,7 @@ const PrivacyContent = () => {
                     We have collected the personal data of a child.
                   </li>
                 </ul>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   Please know that you may also delete certain personal data by
                   yourself in your Fidio account. You may also delete your
                   folders, playlists, playlist descriptions, remove tracks from
@@ -111,7 +117,7 @@ const PrivacyContent = () => {
                   your library. Under some circumstances, we are legally not
                   required to comply with a deletion request.
                 </p>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   In order to delete the personal data associated with your
                   account, please contact{' '}
                   <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
@@ -132,7 +138,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Restriction of processing of your personal data.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   Under certain circumstances, you may request that we stop
                   processing some or all of your personal data temporarily. You
                   may request the restriction of processing if:
@@ -163,7 +169,7 @@ const PrivacyContent = () => {
               </li>
               <li class='mb-2'>
                 <h3 class='text-base font-semibold'>Data Portability.</h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You have the right to receive a copy of your personal data in
                   a machine-readable (electronic) format and to have it sent to
                   another service provider, if our legal basis for processing
@@ -172,7 +178,7 @@ const PrivacyContent = () => {
               </li>
               <li class='mb-2'>
                 <h3 class='text-base font-semibold'>Object.</h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You have the right to object to the processing of your
                   personal data on certain grounds:
                 </p>
@@ -209,7 +215,7 @@ const PrivacyContent = () => {
                 <h3 class='text-base font-semibold'>
                   Not be subject to automated decision-making.
                 </h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You have the right not to be subject to a decision based
                   solely on automated processing (i.e., decisions made by
                   machines without human involvement), including profiling,
@@ -220,7 +226,7 @@ const PrivacyContent = () => {
               </li>
               <li class='mb-2'>
                 <h3 class='text-base font-semibold'>Withdraw consent.</h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   Where we rely on your consent to process your personal data
                   for a particular purpose, you may withdraw your consent at any
                   time. If you withdraw your consent, we will stop processing
@@ -231,7 +237,7 @@ const PrivacyContent = () => {
               </li>
               <li class='mb-2'>
                 <h3 class='text-base font-semibold'>Register a complaint.</h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   If you reside in applicable jurisdictions, you are entitled,
                   per local data protection law, to contact your local
                   authorities regarding any question, concern, or complaint you
@@ -240,7 +246,7 @@ const PrivacyContent = () => {
               </li>
               <li>
                 <h3 class='text-base font-semibold'>Non-discrimination.</h3>
-                <p className='font-sans text-sm font-light mt-2'>
+                <p style={paraStyle} className='text-sm font-light mt-2'>
                   You have the right to not be discriminated against if you
                   exercise any of your privacy rights. We will not discriminate
                   against you or deny, charge different prices for, or provide a
@@ -253,7 +259,7 @@ const PrivacyContent = () => {
           </section>
 
           <section class=' p-4 shadow rounded-lg mb-4'>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You can request to exercise any of your privacy rights with an
               email to{' '}
               <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
@@ -274,7 +280,7 @@ const PrivacyContent = () => {
             </p>
           </section>
           <section class=' p-4 shadow rounded-lg mb-4'>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               For the purposes of this Privacy Policy, Fidio Technologies Inc.
               d/b/a ‘Fidio’ is the ‘controller’ of your personal data. Fidio
               Technologies Inc. is registered as a Corporation in Canada, with
@@ -284,7 +290,7 @@ const PrivacyContent = () => {
           </section>
 
           <section class=' p-4 shadow rounded-lg mb-4'>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               The correspondence address for FIDIO is 95 Kenesky Drive, Toronto
               ON L8B 1Y3 Canada. As the controller Fidio decides why and how
               your personal data are handled by FIDIO when you use our services
@@ -296,13 +302,13 @@ const PrivacyContent = () => {
               FIDIO is responsible for handling your data according to
               applicable data protection rules.
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Our policy is to process your personal data in accordance with
               applicable data protection laws and regulations. This Privacy
               Policy is separate from FIDIO’s Terms of Use ('Terms'), which
               govern your use and access to FIDIO Services.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               This Privacy Policy applies when: you register a FIDIO account;
               you log in and use FIDIO’s content and streaming services; you
               download and/or use FIDIO clients (e.g., FIDIO mobile
@@ -324,7 +330,7 @@ const PrivacyContent = () => {
             <h3 class='text-lg font-semibold mb-2'>
               The Personal and Other Information We Collect
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               At FIDIO and FIDIO websites, you can order products, express an
               opinion, create playlists, and subscribe to services such as
               online newsletters and paid streaming. The types of personally
@@ -340,7 +346,7 @@ const PrivacyContent = () => {
               of customer service emails, consumption data, listening behavior,
               surveys, sweepstakes and competitions entered, etc.).
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               FIDIO may process information about you related to: identification
               data and contact data; account data; subscription data; payment
               and billing data; usage data; login data; device data; network
@@ -351,7 +357,7 @@ const PrivacyContent = () => {
               processed about you in the context of your interaction with our
               fan pages on social media networks.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               At certain parts of some of our Services and websites, only
               persons who provide us with the requested personally identifiable
               information will be able to order products, programs, and services
@@ -362,7 +368,7 @@ const PrivacyContent = () => {
               personal data and would not use any such information except for
               the purposes for which it is collected and as authorized by law.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may also receive information about you from third parties that
               may have collected and transferred your personal data to us in
               accordance with their own privacy policies and/or terms of use.
@@ -372,7 +378,7 @@ const PrivacyContent = () => {
               information either alone or in combination with the other personal
               data we hold.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We also may collect certain non-personally identifiable
               information when you visit many of our web pages such as the type
               of browser you are using (e.g., Safari, Internet Explorer), the
@@ -387,7 +393,7 @@ const PrivacyContent = () => {
             <h3 class='text-lg font-semibold mb-2'>
               How We Use the Information We Collect
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may use the information you provide about yourself to fulfill
               your requests for our products, programs, and services, to respond
               to your inquiries about our offerings, and to offer you other
@@ -399,7 +405,7 @@ const PrivacyContent = () => {
               enter into a giveaway, contest or other promotion, we may use the
               information you provide to administer those programs.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               The information we collect in connection with our website is used
               to provide an interactive experience. We use this information to
               facilitate participation in these online forums and communities
@@ -412,7 +418,7 @@ const PrivacyContent = () => {
               demographic information about our users. We may use this
               information to market and advertise our products and services.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               When we process your personal data, we do so because we have
               specific and defined reasons as well as a legal justification to
               do so.
@@ -445,7 +451,7 @@ const PrivacyContent = () => {
                 can rely on this legal basis.
               </li>
             </ul>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may collect, share, use or otherwise process personal data
               about you for various purposes, including providing our Services
               and products, payment and billing, personalization, improvement of
@@ -458,13 +464,13 @@ const PrivacyContent = () => {
               subscription service and special offers, providing customer
               support, and communication on social networks.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You are not required to provide any personally identifiable
               information that we have requested, but if you choose not to do
               so, in many cases we will not be able to provide you with our
               products or services or respond to any questions you may have.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We sometimes use the non-personally identifiable information that
               we collect to improve the design and content of our site and to
               enable us to personalize your Internet experience. We also may
@@ -473,7 +479,7 @@ const PrivacyContent = () => {
               site usage, as well as to offer you products, programs, or
               services.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We share your data with third parties if you give us permission,
               if it is necessary for the performance of the contract we have
               with you, or if we have a legitimate interest for such sharing. We
@@ -488,7 +494,7 @@ const PrivacyContent = () => {
               described in their privacy policies, which may include sending you
               marketing communications.
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You should read those policies to learn how they treat your
               information. We may share information with our affiliates and
               group companies; our processors and service providers; third-party
@@ -500,7 +506,7 @@ const PrivacyContent = () => {
               our business is sold we may give our customer list as part of that
               transaction.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may disclose personally identifiable information in response to
               legal process (e.g. in response to a court order or a subpoena),
               public authorities or to enforce applicable Terms, including
@@ -512,7 +518,7 @@ const PrivacyContent = () => {
               reorganization, merger or sale we may transfer any and all
               information we collect to the relevant third party.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may de-identify your data and combine and aggregate your
               de-identified information with other information in a way that it
               no longer enables your identification and share that
@@ -523,7 +529,7 @@ const PrivacyContent = () => {
               many users constitute a particular age group, general locations of
               where groups of users reside and similar data.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Agents and contractors of FIDIO who have access to personally
               identifiable information are required to protect this information
               in a manner that is consistent with this Privacy Policy by, for
@@ -537,7 +543,7 @@ const PrivacyContent = () => {
               disclosed in a manner that is inconsistent with this Privacy
               Policy.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Finally, FIDIO websites will not use or transfer personally
               identifiable information provided to us in ways unrelated to the
               ones described above without also providing you with an
@@ -549,7 +555,7 @@ const PrivacyContent = () => {
 
           <section class='p-4 shadow rounded-lg mb-4'>
             <h3 class='text-lg font-semibold mb-2'>Cookies</h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               To enhance your experience with our website, many of our web pages
               use "cookies." Cookies are text files we place in your computer's
               browser to store your preferences. Cookies, by themselves, do not
@@ -559,7 +565,7 @@ const PrivacyContent = () => {
               to furnish the site with personally identifiable information, this
               information may be linked to the data stored in the cookie.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We use cookies to understand site usage and to improve the content
               and offerings on our site. For example, we may use cookies to
               personalize your experience at Fidio.ca (e.g. to recognize you by
@@ -567,7 +573,7 @@ const PrivacyContent = () => {
               password-protected areas, and enable you to use shopping carts on
               our website.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You may also set your browser to block all cookies, including
               cookies associated with our services, or to indicate when a cookie
               is being set by us. However, many of our services may not function
@@ -577,7 +583,7 @@ const PrivacyContent = () => {
 
           <section class='p-4 shadow rounded-lg mb-4'>
             <h3 class='text-lg font-semibold mb-2'>Social Media Networks</h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We use various usage and insight tools offered by the operators of
               social media networks, through which we can view general,
               anonymized statistics about our fan pages, such as interactions
@@ -591,7 +597,7 @@ const PrivacyContent = () => {
               or not. On that basis, we receive various insights from the
               operators of social networks.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We do not have access to the personal data which the operators of
               social networks use to create such insights. The selection and
               processing of your data for insights is performed exclusively by
@@ -600,7 +606,7 @@ const PrivacyContent = () => {
               responsible ('joint controllers') with the operators of the social
               networks for processing your data to the extent indicated below.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               When you visit our profile or fan pages on Facebook and Instagram
               (each the 'Social Media Network'), the Social Media Network and
               FIDIO act as joint controllers with respect to the collection of
@@ -618,7 +624,7 @@ const PrivacyContent = () => {
               found in each Social Media Network's own Privacy Policy (Facebook,
               Instagram, etc.).
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               When you visit our Twitter or YouTube profiles, Twitter as the
               operator of Twitter or Google as the operator of YouTube, as
               relevant, collects and processes your personal data to the extent
@@ -630,7 +636,7 @@ const PrivacyContent = () => {
               privacy policies for further information on how they process your
               personal data.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Note that when you visit our fan pages, the operators of social
               media process your data also for their own purposes, which are not
               covered in this Privacy Policy. We have no influence over the data
@@ -643,7 +649,7 @@ const PrivacyContent = () => {
             <h3 class='text-lg font-semibold mb-2'>
               Links to Third Party Sites or Services
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We may link to third party sites or services we don't control. If
               you click on one of those links, you will be taken to websites we
               do not control. This policy does not apply to the privacy
@@ -653,7 +659,7 @@ const PrivacyContent = () => {
               that contains their own cookies or tracking technologies. We do
               not control the use of those technologies.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We do not track our customers across third-party websites;
               however, some third-party sites do keep track of your browsing
               activities when they provide you content, which allows them to
@@ -668,7 +674,7 @@ const PrivacyContent = () => {
               you provide it to them directly. Information collected by third
               parties is governed by their privacy practices.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               FIDIO offers interactive services that allow you to post content
               to share publicly or with friends. At any time, you can contact
               privacy@fidio.ca to delete or remove content you have posted using
@@ -683,7 +689,7 @@ const PrivacyContent = () => {
             <h3 class='text-lg font-semibold mb-2'>
               Information You Choose to Make Public
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Certain information will be public on our websites and Services as
               part of your user experience including your user name, and any
               public interactions you initiate on our websites or Services
@@ -698,7 +704,7 @@ const PrivacyContent = () => {
               along with your user name and data. You can also edit or delete
               this information.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You may be able to create public playlists on our Services. Your
               public playlists will appear in your user data, will be searchable
               on our Services and other FIDIO users can access and use them. You
@@ -720,7 +726,7 @@ const PrivacyContent = () => {
 
           <section class=' p-4 shadow rounded-lg mb-4'>
             <h3 class='text-lg font-semibold mb-2'>Children’s Personal Data</h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Our Services and their content are not directed at children under
               the age of 13. We do not knowingly collect or solicit any personal
               data from children under the age of 13 or knowingly allow such
@@ -746,7 +752,7 @@ const PrivacyContent = () => {
             <h3 class='text-lg font-semibold mb-2'>
               Data Retention, Deletion and Anonymization
             </h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               <strong>Data Retention.</strong> We will keep your personal data
               only for the period necessary to fulfil the purposes for which we
               collect and process your personal data, as described in this
@@ -786,7 +792,7 @@ const PrivacyContent = () => {
                 among other reasons.
               </li>
             </ul>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               <strong>Data Deletion and Anonymization.</strong> Subject to
               applicable law, after the lapse of the retention periods, we will
               delete or permanently anonymize your personal data so that it is
@@ -805,24 +811,24 @@ const PrivacyContent = () => {
           </section>
           <section id='data-retention-security' class='p-4'>
             <h2>Data Retention, Deletion and Anonymization</h2>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We have compelling legitimate grounds to retain some of your
               personal data that overrides your interests in having your data
               deleted (e.g., for fraud prevention purposes, to enforce our
               Terms, etc.).
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We cannot verify your identity or confirm that the personal data
               that we maintain relates to you, or if we cannot verify that you
               have the authority to make a request on behalf of another
               individual;
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               There is another exception under the applicable legislation in the
               country or state of your residence (e.g., exceptions applicable
               under the California Consumer Privacy Act).
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               In such cases, we will keep limited information about you in a
               protected form for the period necessary to fulfil processing under
               the applicable exception.
@@ -831,13 +837,13 @@ const PrivacyContent = () => {
 
           <section id='commitment-to-security' class='p-4'>
             <h2>Our Commitment to Security</h2>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We have put in place appropriate physical, electronic, and
               managerial procedures to safeguard and help prevent unauthorized
               access, maintain data security, and correctly use the information
               we collect online.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We use standard security measures in place to protect your
               information. These measures will depend on the type of information
               collected. However, as the Internet is not guaranteed to be
@@ -846,7 +852,7 @@ const PrivacyContent = () => {
               If you believe that an unauthorized account has been created with
               your name or identity, contact us at the address below.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               We recommend that you always use strong passwords, that you change
               them regularly and that you do not use the same passwords for your
               FIDIO account as you already use to access other services or
@@ -863,7 +869,7 @@ const PrivacyContent = () => {
               JURISDICTIONS
             </h2>
             <h3>CANADA</h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               This section is relevant if you reside in Canada. FIDIO complies
               with the Canadian Personal Information Protection and Electronic
               Documents Act (‘PIPEDA’). This Privacy Policy includes all the
@@ -878,7 +884,7 @@ const PrivacyContent = () => {
               <a href='https://www.priv.gc.ca/en'>https://www.priv.gc.ca/en</a>
             </p>
             <h3>THE EUROPEAN ECONOMIC AREA AND THE UNITED KINGDOM</h3>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               This section is relevant if you reside in any of the European
               Economic Area countries (the ‘EEA’) or in the United Kingdom (the
               ‘UK’) and includes disclosures required by the General Data
@@ -886,14 +892,14 @@ const PrivacyContent = () => {
               described in this Privacy Policy, which you can exercise through
               the contacts and methods provided in this Privacy Policy.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               If you are not satisfied with how we handled your request to
               exercise any of your rights or you have any other questions or
               concerns about your rights or this Privacy Policy, please contact
               admin@fidio.ca or send us a letter to our correspondence address
               as provided in this Privacy Policy.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               You also have the right to register a complaint with the relevant
               data protection authority. You may contact your local data
               protection authority about any questions or concerns you may have.
@@ -907,7 +913,7 @@ const PrivacyContent = () => {
                 Information Commissioner’s Office
               </a>
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               As described above in this Privacy Policy, we share your data both
               internally and with our content providers, affiliates and partners
               and processors and third-party vendors. Some of these recipients
@@ -928,7 +934,7 @@ const PrivacyContent = () => {
 
           <section id='amendments-to-privacy-policy' class='p-4'>
             <h2>Amendments to this Privacy Policy</h2>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Our websites and Services are subject to constant improvements,
               and future changes may influence what personal data we process and
               how we collect, use, share, store or otherwise process it. We may
@@ -937,7 +943,7 @@ const PrivacyContent = () => {
               them accordingly unless stated otherwise upon the launch of the
               new Services.
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               This Privacy Policy may be updated to reflect new changes in our
               Services, changes in the legal framework, or improvements in how
               we handle personal data. When we make material changes to the
@@ -950,14 +956,14 @@ const PrivacyContent = () => {
           </section>
           <section id='contact-us' class='p-4'>
             <h2>How to Contact Us</h2>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               If you have any questions or concerns about the FIDIO Privacy
               Policy for this site our Services or its implementation you may
               contact our Data Protection Office at{' '}
               <a href='mailto:privacy@fidio.ca'>privacy@fidio.ca</a> or at the
               address below:
             </p>
-            <p className='font-sans text-sm font-light mt-2'>
+            <p style={paraStyle} className='text-sm font-light mt-2'>
               Fidio Technologies Inc. 95 Kenesky Drive, Toronto ON L8B 1Y3
               Canada. Attn: Privacy
             </p>

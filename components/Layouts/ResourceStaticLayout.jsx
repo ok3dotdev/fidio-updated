@@ -24,7 +24,7 @@ const ResourceStaticLayout = ({ children }) => {
     },
     {
       path: '/question',
-      label: 'Faqs',
+      label: 'Guides',
       icon: (
         <ConfirmationNumberOutlinedIcon className="w-[20px] h-[20px] bg-inherit" />
       ),
@@ -46,13 +46,23 @@ const ResourceStaticLayout = ({ children }) => {
     {
       contentMenu: (
         <div className=" font-medium text-[10px] md:text-[14px]">
-          <h3 className=" uppercase  pb-4 text-[#A3A3A3]">
-            Contents
-          </h3>
-          <ul className="flex flex-col gap-y-2 text-[#A3A3A3]">
-            <li className="text-white">Privacy policy</li>
-            <li>Terms of use </li>
-            <li>Compliance and legal</li>
+          <h3 className=" uppercase  pb-4 text-[#A3A3A3]">Contents</h3>
+          <ul className="flex flex-col gap-y-2 text-[#A3A3A3] cursor-pointer">
+            {[
+              { label: 'Privacy policy', href: '/policies/privacy' },
+              { label: 'Terms of use', href: '/policies/terms' },
+              { label: 'Compliance and legal', href: '/policies/compliance' },
+            ].map(({ label, href }) => (
+              <li
+                key={href}
+                className={cn(
+                  'text-[#A3A3A3]',
+                  router.pathname === href && 'text-white'
+                )}
+              >
+                <Link href={href}>{label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       ),
