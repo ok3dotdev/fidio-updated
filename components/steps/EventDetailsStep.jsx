@@ -15,7 +15,6 @@ const EventCreationStep = (props) => {
     ImgCache,
   } = props;
   const [step, setStep] = React.useState('details');
-  // //console.log('step', step, props);
 
   return (
     <div className='mt-6'>

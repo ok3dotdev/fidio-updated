@@ -5,7 +5,6 @@ import { DatePickerDemo } from '@/components/inputs/DatePicker';
 import UploadZone from '@/components/inputs/UploadZone';
 import useSurveyStore from '../../hooks/store';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useForm, Controller } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 
 const EventDetailsForm = ({
@@ -14,25 +13,16 @@ const EventDetailsForm = ({
   bannerImage,
   register,
   control,
+  Controller,
+  errors,
+  onSubmit,
+  handleSubmit,
+  trigger,
 }) => {
-  // const { register, control } = useForm();
-
   const { step, setStep } = useSurveyStore();
 
   return (
-    <div>
-      <div>
-        <div className='flex justify-between items-center'>
-          <h1 className='font-bold text-lg'>Create event</h1>
-          <p>
-            Step {step} <span className='text-dashtext'>of 3</span>
-          </p>
-        </div>
-        <p className='text-dashtext text-sm mt-2'>
-          Don&apos;t worry if you need a break! Your event details are saved as
-          a draft. Come back and complete it anytime.
-        </p>
-      </div>
+    <form className='relative' action='' onSubmit={() => trigger()}>
       <Card className=' dark:bg-transparent mt-8'>
         <CardContent className='space-y-4 mt-4'>
           <div className='flex flex-col justify-center space-y-2'>
@@ -42,6 +32,9 @@ const EventDetailsForm = ({
               name='banner.image'
               render={({ field: { onChange } }) => (
                 <UploadZone
+                  handleImageUpload={(file) => {
+                    onChange(file);
+                  }}
                   handleNewFile={handleNewFile}
                   setbannerImage={setbannerImage}
                   bannerImage={bannerImage}
@@ -53,11 +46,20 @@ const EventDetailsForm = ({
             <label htmlFor='title'> What is the title of your event?</label>
             <Input
               name='name'
+              id='title'
               placeholder='Event title'
               className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-              {...register('name')}
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: 'Event must have a title',
+                },
+                min: 5,
+                patter,
+              })}
             />
           </div>
+          <p>{errors.name?.message}</p>
           <div className='space-y-2'>
             <label htmlFor='description'>Description</label>
             <Input
@@ -169,7 +171,6 @@ const EventDetailsForm = ({
           </div>
         </CardContent>
       </Card>
-
       <div className='mt-4 space-x-2 absolute right-0 flex items-center'>
         <Link
           href='/studio/events'
@@ -178,23 +179,17 @@ const EventDetailsForm = ({
           Cancel
         </Link>
         <Button
-          type='button'
-          onClick={() => setStep(2)}
+          // type='submit'
+          onClick={() => {
+            trigger();
+          }}
           className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
         >
           Next
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
 
 export default EventDetailsForm;
-
-// <EventDetailsForm
-//   handleNewFile={handleLineupUpload}
-//   setbannerImage={setbannerImage}
-//   bannerImage={bannerImage}
-//   register={register}
-//   control={control}
-// />

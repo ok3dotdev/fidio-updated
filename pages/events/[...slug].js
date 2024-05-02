@@ -65,7 +65,7 @@ export const Page = (props) => {
     fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
   });
   if (!loading && ticket) {
-    // //console.log('values', ticket);
+    console.log('values', ticket);
   }
 
   return (
@@ -134,11 +134,11 @@ export const Page = (props) => {
                     <p className='mb-2 font-semibold'>Performers</p>
                     <p className='text-dashtext mb-4'>HEADLINER</p>
                     {ticket?.detailmeta?.lineup?.length && (
-                      <div className='flex gap-4 items-center w-[8rem] mb-4'>
+                      <div className='flex gap-4 items-center  mb-4'>
                         <img
                           alt='headliner'
                           src={`${props?.cdn?.static}/${ticket?.detailmeta?.lineup[0].image}`}
-                          className='w-full h-full rounded-[50%] object-cover aspect-square'
+                          className='w-[8rem] h-full rounded-[50%] object-cover aspect-square'
                         />
                         <div>
                           <p className='text-lg'>

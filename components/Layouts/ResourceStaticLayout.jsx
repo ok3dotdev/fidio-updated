@@ -44,14 +44,26 @@ const ResourceStaticLayout = ({ children }) => {
     },
     {
       contentMenu: (
-        <div className=' font-medium '>
+        <div className=' font-medium hidden md:block'>
           <h3 className=' uppercase text-[14px] pb-4 text-[#A3A3A3]'>
             Contents
           </h3>
           <ul className='flex flex-col gap-y-2 text-[#A3A3A3]'>
-            <li className='text-white'>Privacy policy</li>
-            <li>Terms of use </li>
-            <li>Compliance and legal</li>
+            <li className='text-white'>
+              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
+                Privacy policy
+              </Link>
+            </li>
+            <li>
+              <Link href='/terms-of-use' className='w-full whitespace-nowrap'>
+                Terms of Use
+              </Link>
+            </li>
+            <li>
+              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
+                Compliance and Legal
+              </Link>
+            </li>
           </ul>
         </div>
       ),
@@ -78,7 +90,7 @@ const ResourceStaticLayout = ({ children }) => {
                 >
                   <Link
                     href={path}
-                    className='font-lexend hover:bg-gradient-to-r hover:from-whiteGradient flex items-center gap-x-2'
+                    className='font-lexend hover:from-whiteGradient flex items-center gap-x-2'
                   >
                     {icon ? <div>{icon}</div> : ''}
                     {label}

@@ -249,7 +249,7 @@ input {
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+  -webkit-scrollbar: hidden;
 }
 
 @layer base {

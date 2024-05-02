@@ -29,7 +29,7 @@ const policies = (props) => {
   return (
     <ResourceLayout {...props}>
       <ResourceStaticLayout {...props}>
-        <div className='container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg '>
+        <div className='container font-lexend mt-18 md:max-w-3xl mx-auto h-auto bg-dashBg '>
           <div className='flex pb-8 font-medium '>
             <Link href='/resources' className='cursor-pointer'>
               Resources
@@ -38,6 +38,20 @@ const policies = (props) => {
             <p>policies</p>
           </div>
           <h2 className='text-4xl font-bold text-left  pb-10'>Policies</h2>
+          <div className='w-full overflow-x-auto mb-8 block md:hidden'>
+            <p className='text-dashtext text-sm mb-4'>CONTENTS</p>
+            <div className='flex flex-nowrap gap-8 overflow-x-auto no-scrollbar'>
+              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
+                Privacy policy
+              </Link>
+              <Link href='/terms-of-use' className='w-full whitespace-nowrap'>
+                Terms of Use
+              </Link>
+              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
+                Compliance and Legal
+              </Link>
+            </div>
+          </div>
           {article.map((articlee, idx) => (
             <div key={idx} className='py-2 '>
               <div className='gap-y-2'>

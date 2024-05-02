@@ -5,8 +5,14 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ResourceStaticLayout from '@/components/Layouts/ResourceStaticLayout';
 import Link from 'next/link';
-import { ArrowRight, ArrowRightAltOutlined, ArrowRightAltSharp, ArrowRightTwoTone, ChevronRight } from "@mui/icons-material";
-import { ArrowRightIcon, ArrowRightToLine } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowRightAltOutlined,
+  ArrowRightAltSharp,
+  ArrowRightTwoTone,
+  ChevronRight,
+} from '@mui/icons-material';
+import { ArrowRightIcon, ArrowRightToLine } from 'lucide-react';
 
 const pageName = 'faqs';
 
@@ -30,38 +36,40 @@ const faqs = (children) => {
     },
   ];
   return (
-    <ResourceLayout {...children} >
+    <ResourceLayout {...children}>
       <ResourceStaticLayout {...children}>
-        <div className="container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg ">
-          <div className="flex pb-8  text-[16px] font-medium ">
-            <Link  href="/resources" className="cursor-pointer " >Resources</Link>
+        <div className='container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg '>
+          <div className='flex pb-8  text-[16px] font-medium '>
+            <Link href='/resources' className='cursor-pointer '>
+              Resources
+            </Link>
             <ChevronRight />
-            <p  >FAQs</p>
+            <p>FAQs</p>
           </div>
-          <h2 className="text-4xl font-bold text-left  pb-8">FAQs</h2>
+          <h2 className='text-4xl font-bold text-left  pb-8'>FAQs</h2>
           {faqs.map((faq, idx) => (
-            <ul key={idx} className=" divide-y ">
-              <li className="border-b border-b-[#404040]">
-                <details class="group">
-                  <summary class="flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer">
+            <ul key={idx} className=' divide-y '>
+              <li className='border-b border-b-[#404040]'>
+                <details className='group'>
+                  <summary className='flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer'>
                     <svg
-                      class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
+                      className='w-5 h-5 text-gray-500 transition group-open:rotate-90'
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      viewBox='0 0 16 16'
                     >
                       <path
-                        fill-rule="evenodd"
-                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        fill-rule='evenodd'
+                        d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'
                       ></path>
                     </svg>
                     <span>{faq.question}</span>
                   </summary>
 
-                  <article class=" pb-4 text-[#A3A3A3] font-[16px]">
-                    <p className="">{faq.ans}</p>
+                  <article className=' pb-4 text-[#A3A3A3] font-[16px]'>
+                    <p className=''>{faq.ans}</p>
                   </article>
                 </details>
               </li>

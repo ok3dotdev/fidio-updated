@@ -2,35 +2,24 @@ import React from 'react';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Controller } from 'react-hook-form';
 import useSurveyStore from '../../hooks/store';
 
 const ArtistDetailsForm = ({
   handleImageUpload,
   onSubmit,
   handleLineupUpload,
+  handleLineupImage,
   selectedImage,
   lineUpInfo,
   addPerformer,
   register,
   control,
+  Controller,
 }) => {
   const { step, setStep } = useSurveyStore();
 
   return (
-    <div>
-      <div>
-        <div className='flex justify-between items-center'>
-          <h1 className='font-bold text-lg'>Create event</h1>
-          <p>
-            Step {step} <span className='text-dashtext'>of 3</span>
-          </p>
-        </div>
-        <p className='text-dashtext text-sm mt-2'>
-          Don&apos;t worry if you need a break! Your event details are saved as
-          a draft. Come back and complete it anytime.
-        </p>
-      </div>
+    <form onSubmit={onSubmit} className='relative'>
       <Card className=' dark:bg-transparent mt-8'>
         <CardTitle className='p-4'>Enter performers</CardTitle>
         <CardContent className='space-y-4 mt-4'>
@@ -39,15 +28,15 @@ const ArtistDetailsForm = ({
             <label htmlFor='title'>Performer name and photo</label>
             <div className='flex items-center gap-x-2'>
               <Input
-                name='headliner.name'
+                name='detailmeta.lineup[0].title'
                 placeholder='Asake'
                 className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                 ref={register}
-                {...register('headliner.name')}
+                {...register('detailmeta.lineup[0].title')}
               />
               <Controller
                 control={control}
-                name={'headliner.image'}
+                name={'detailmeta.lineup[0].image'}
                 render={({ field: { value, onChange, ...field } }) => {
                   return (
                     <Input
@@ -59,6 +48,8 @@ const ArtistDetailsForm = ({
                       onChange={(event) => {
                         onChange(event.target.files[0]);
                         handleImageUpload(event);
+                        handleLineupUpload(event, 0);
+                        handleLineupImage(event.target.files);
                       }}
                       type='file'
                       id='picture'
@@ -71,11 +62,11 @@ const ArtistDetailsForm = ({
               <label htmlFor='title'>Bio</label>
               <div className='flex items-center gap-x-2'>
                 <Input
-                  name='headliner.bio'
+                  name='detailmeta.lineup[0].bio'
                   placeholder='Enter bio'
                   className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                   ref={register}
-                  {...register('headliner.bio')}
+                  {...register('detailmeta.lineup[0].bio')}
                 />
               </div>
             </div>
@@ -90,32 +81,33 @@ const ArtistDetailsForm = ({
             )}
           </div>
           <hr className='w-full' />
-          <h3 className='text-dashtext'>OTHER PERFORMERS</h3>
+          <h3 className=''>OTHER PERFORMERS</h3>
           <div className='space-y-4'>
-            {lineUpInfo.map((performer, index) => (
+            {lineUpInfo.slice(1).map((performer, index) => (
               <div key={index} className='space-y-2'>
                 <label htmlFor='title'>Performer name and photo</label>
                 <div className='flex gap-2 mb-2'>
                   <Input
-                    name={`detailmeta.lineup[${index}].title`}
+                    name={`detailmeta.lineup[${index + 1}].title`}
                     placeholder='Enter artist, performer or band name'
                     className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                    {...register(`detailmeta.lineup[${index}].title`)}
+                    {...register(`detailmeta.lineup[${index + 1}].title`)}
                   />
                   <Controller
                     control={control}
-                    name={`detailmeta.lineup[${index}].image`}
+                    name={`detailmeta.lineup[${index + 1}].image`}
                     render={({ field: { onChange, value, ...field } }) => (
                       <Input
                         {...field}
                         value={value?.fileName}
-                        name={`detailmeta.lineup[${index}].image`}
+                        name={`detailmeta.lineup[${index + 1}].image`}
                         placeholder='Upload image'
                         accept='image/*'
                         className='w-36'
                         onChange={(e) => {
                           onChange(e.target.files[0]);
-                          handleLineupUpload(e, index);
+                          handleLineupUpload(e, index + 1);
+                          handleLineupImage(e.target.files);
                         }}
                         type='file'
                         id={`picture-${index}`}
@@ -123,7 +115,7 @@ const ArtistDetailsForm = ({
                     )}
                   />
                 </div>
-                {performer.image && (
+                {performer.file && (
                   <div className='flex gap-x-2'>
                     <img
                       src={performer.file}
@@ -132,7 +124,7 @@ const ArtistDetailsForm = ({
                     />
                     <Button
                       className='text-red-500 ml-2'
-                      onClick={() => deletePerformer(index)}
+                      onClick={() => deletePerformer(index + 1)}
                       type='button'
                     >
                       Delete
@@ -149,6 +141,32 @@ const ArtistDetailsForm = ({
               >
                 Add another performer{' '}
               </Button>
+            </div>
+          </div>
+          <hr className='w-full' />
+          <div className=''>
+            <p className='mb-8'>HOST</p>
+            <label htmlFor='host.title'>Name</label>
+            <div className='flex flex-col items-center gap-y-2 mb-2 mt-2'>
+              <Input
+                name='host.title'
+                placeholder='Mc Big Timer'
+                className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                ref={register}
+                {...register('host.title')}
+              />
+            </div>
+            <label className='mt-2' htmlFor='title'>
+              Bio
+            </label>
+            <div className='flex items-center gap-x-2 mt-2'>
+              <Input
+                name='detailmeta.lineup[0].bio'
+                placeholder='Host with the most'
+                className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                ref={register}
+                {...register('host.bio')}
+              />
             </div>
           </div>
           <hr className='w-full' />
@@ -183,7 +201,7 @@ const ArtistDetailsForm = ({
           Next
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
 

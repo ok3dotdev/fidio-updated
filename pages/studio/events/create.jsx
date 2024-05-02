@@ -324,19 +324,19 @@ const Create = (props) => {
     <StudioLayout {...props} showNav>
       {step === 1 && (
         <div className='max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]'>
-          <form className='relative' action='' onSubmit={() => setStep(2)}>
-            <div>
-              <div className='flex justify-between items-center'>
-                <h1 className='font-bold text-lg'>Create event</h1>
-                <p>
-                  Step {step} <span className='text-dashtext'>of 3</span>
-                </p>
-              </div>
-              <p className='text-dashtext text-sm mt-2'>
-                Don&apos;t worry if you need a break! Your event details are
-                saved as a draft. Come back and complete it anytime.
+          <div>
+            <div className='flex justify-between items-center'>
+              <h1 className='font-bold text-lg'>Create event</h1>
+              <p>
+                Step {step} <span className='text-dashtext'>of 3</span>
               </p>
             </div>
+            <p className='text-dashtext text-sm mt-2'>
+              Don&apos;t worry if you need a break! Your event details are saved
+              as a draft. Come back and complete it anytime.
+            </p>
+          </div>
+          <form className='relative' action='' onSubmit={() => setStep(2)}>
             <Card className=' dark:bg-transparent mt-8'>
               <CardContent className='space-y-4 mt-4'>
                 <div className='flex flex-col justify-center space-y-2'>
@@ -500,19 +500,19 @@ const Create = (props) => {
       )}
       {step === 2 && (
         <div className='max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]'>
-          <form onSubmit={handleSubmit(onSubmit)} className='relative'>
-            <div>
-              <div className='flex justify-between items-center'>
-                <h1 className='font-bold text-lg'>Create event</h1>
-                <p>
-                  Step {step} <span className='text-dashtext'>of 3</span>
-                </p>
-              </div>
-              <p className='text-dashtext text-sm mt-2'>
-                Don&apos;t worry if you need a break! Your event details are
-                saved as a draft. Come back and complete it anytime.
+          <div>
+            <div className='flex justify-between items-center'>
+              <h1 className='font-bold text-lg'>Create event</h1>
+              <p>
+                Step {step} <span className='text-dashtext'>of 3</span>
               </p>
             </div>
+            <p className='text-dashtext text-sm mt-2'>
+              Don&apos;t worry if you need a break! Your event details are saved
+              as a draft. Come back and complete it anytime.
+            </p>
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)} className='relative'>
             <Card className=' dark:bg-transparent mt-8'>
               <CardTitle className='p-4'>Enter performers</CardTitle>
               <CardContent className='space-y-4 mt-4'>
