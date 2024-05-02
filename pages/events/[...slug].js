@@ -75,7 +75,9 @@ export const Page = (props) => {
           style={{
             display: cartOpen ? 'block' : 'none',
             fontFamily: 'lexend !important',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
           }}
+          className='absolute inset-0 z-50 flex justify-center pt-[90px]'
         >
           {<Cart {...props} forceShowCc={true} />}
         </div>

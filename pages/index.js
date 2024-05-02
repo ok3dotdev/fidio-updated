@@ -17,7 +17,6 @@ const pageName = 'Index';
 export const page = (props) => {
   return (
     <React.Fragment>
-      {/* <PageContainer { ...props } pageName={pageName} /> */}
       <HomeLayout
         useProps={props}
         pageName={pageName}
