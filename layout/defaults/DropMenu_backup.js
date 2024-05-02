@@ -48,8 +48,11 @@ const Module = props => {
                                     <OnboardLogin { ...props } />
                                     <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
                                     <GoLive { ...props } />
-                                    <SimpleDropMenuLink { ...props } href='/create' materialIcon='inventory' text='Create Product' />
                                     <Invite { ...props } />
+                                    <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
+                                    <Help { ...props } />
+                                    <Feedback { ...props } />
+                                    <Bug { ...props } />
                                 </ul>
                             </div>
                             : null
