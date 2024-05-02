@@ -176,6 +176,18 @@
     }
     p {
         margin: .25rem 0;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+    ul li {
+        height: 0px;
+    }
+    ul {
+        padding-bottom: 1rem;
+        background: #3c3c3c;
+        border-radius: 1rem;
+        h1, h2, h3, h4, h5 {
+            padding: 0;
+        }
     }
 }
