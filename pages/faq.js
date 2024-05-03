@@ -56,15 +56,9 @@ const faq = (children) => {
   return (
     <ResourceLayout {...children}>
       <ResourceStaticLayout {...children}>
-<<<<<<< HEAD
         <div className='container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg '>
           <div className='flex pb-8  text-[16px] font-medium '>
             <Link href='/resources' className='cursor-pointer '>
-=======
-        <div className="container font-lexend mt-18 max-w-3xl mx-auto h-auto bg-dashBg ">
-          <div className="flex pb-8  text-[16px] font-medium ">
-            <Link href="/resources" className="cursor-pointer ">
->>>>>>> 70c038f (Policies-nested pages)
               Resources
             </Link>
             <ChevronRight />
@@ -72,17 +66,10 @@ const faq = (children) => {
           </div>
           <h2 className='text-4xl font-bold text-left  pb-8'>FAQs</h2>
           {faqs.map((faq, idx) => (
-<<<<<<< HEAD
-            <ul key={idx} className=' divide-y '>
+            <ul key={idx} className=' divide-y'>
               <li className='border-b border-b-[#404040]'>
-                <details className='group'>
-                  <summary className='flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer'>
-=======
-            <ul key={idx} className=" divide-y">
-              <li className="border-b border-b-[#404040]">
-                <details class="group">
-                  <summary class="flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer">
->>>>>>> 70c038f (Policies-nested pages)
+                <details class='group'>
+                  <summary class='flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer'>
                     <svg
                       className='w-5 h-5 text-gray-500 transition group-open:rotate-90'
                       xmlns='http://www.w3.org/2000/svg'
@@ -96,7 +83,7 @@ const faq = (children) => {
                         d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'
                       ></path>
                     </svg>
-                    <span className="font-medium">{faq.question}</span>
+                    <span className='font-medium'>{faq.question}</span>
                   </summary>
 
                   <article className=' pb-4 text-[#A3A3A3] font-[16px]'>
