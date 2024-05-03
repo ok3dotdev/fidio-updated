@@ -56,7 +56,7 @@ const ResourceStaticLayout = ({ children }) => {
               <li
                 key={href}
                 className={cn(
-                  'text-[#A3A3A3]',
+                  'text-[#A3A3A3] cursor-pointer',
                   router.pathname === href && 'text-white'
                 )}
               >

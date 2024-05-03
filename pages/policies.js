@@ -11,7 +11,7 @@ import { ChevronRight } from '@mui/icons-material';
 
 const pageName = 'policies';
 
-const policies = (children) => {
+const Policies = (children) => {
   const router = useRouter();
 
   const article = [
@@ -90,4 +90,4 @@ export const getServerSideProps = async (context) => {
   );
   return await getServerSidePropsFunc(currentProps, context);
 };
-export default policies;
+export default Policies;

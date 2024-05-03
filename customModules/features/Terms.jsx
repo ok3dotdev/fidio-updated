@@ -1,13 +1,13 @@
 import React from 'react';
 
 const TermsContent = () => {
-  const ps = document.getElementsByTagName('p');
-
   const paraStyle = {
-    color: '#A3A3A3',
-    fontSize: '14px',
+    color: 'rgba(163, 163, 163, 1)',
+    fontSize: '16px',
     fontFamily: 'lexend',
     paddingTop: '10px',
+    lineHeight: '1.4rem',
+    fontWeight: '400',
   };
   return (
     <div className='w-auto px-4 h-full' suppressHydrationWarning>
