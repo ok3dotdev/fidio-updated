@@ -1,6 +1,8 @@
 import React from 'react';
 
 const TermsContent = () => {
+  const ps = document.getElementsByTagName('p');
+
   const paraStyle = {
     color: '#A3A3A3',
     fontSize: '14px',
