@@ -1,13 +1,21 @@
 import React from 'react';
 
 const TermsContent = () => {
+  const ps = document.getElementsByTagName('p');
+
+  const paraStyle = {
+    color: '#A3A3A3',
+    fontSize: '14px',
+    fontFamily: 'lexend',
+    paddingTop: '10px',
+  };
   return (
-    <div className='pt-[100px] px-4 h-full' suppressHydrationWarning>
+    <div className='w-auto px-4 h-full' suppressHydrationWarning>
       <div className='max-w-4xl mx-auto'>
         <div class=' p-4 text-white'>
           <h1 class='text-2xl font-semibold mb-4'>FIDIO TERMS OF SERVICE</h1>
           <p class='text-sm'>Effective as of January 15, 2023</p>
-          <p class='mt-4 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-4 font-sans text-sm font-light '>
             Thank you for visiting FIDIO’s web site (the “Site”) and for using
             our products and services (“Services”). The following are the terms
             of service (“Terms”) that govern the use of the Fidio websites and
@@ -20,7 +28,7 @@ const TermsContent = () => {
             update from time to time.
           </p>
 
-          <p class='mt-4 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-4  text-sm font-light'>
             This web page contains our full User agreement (“Agreement”). You
             may print this document for reference. Limited use of the Site is
             offered to you by FIDIO subject to, and conditioned upon your
@@ -36,7 +44,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             AGE OF MAJORITY, RIGHT TO ENTER INTO THIS AGREEMENT
           </h2>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light'>
             You represent and warrant to Fidio that you are at least eighteen
             (18) years old and that you possess the legal right and ability to
             enter into this Agreement and to use the Site in accordance with
@@ -44,7 +52,7 @@ const TermsContent = () => {
           </p>
 
           <h2 class='text-xl font-semibold mt-6'>PRIVACY POLICY</h2>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light '>
             Please review our
             <a
               href='https://www.fidio.ca/privacy'
@@ -61,7 +69,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             NOTICE REGARDING FUTURE CHANGES TO TERMS
           </h2>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light'>
             FIDIO reserves the right to change or modify these Terms of Service
             (including, without limitation, FIDIO’s privacy policy) at any time
             without notice to you. Please read these Terms of Service carefully,
@@ -71,7 +79,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>
             NOTICE REGARDING ARBITRATION AND CLASS ACTION WAIVER
           </h2>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light'>
             The Terms contain an arbitration agreement and class action waiver.
             Specifically, you and we agree that any dispute or claim relating in
             any way to the Terms, your use of the Site, or products or services
@@ -84,7 +92,7 @@ const TermsContent = () => {
           </p>
           <h2 class='text-xl font-semibold mt-6'>1. Services</h2>
           <h3 class='text-lg font-semibold mt-4'>1.1. General</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light'>
             Fidio provides a marketplace for Afro-inspired artists, venues,
             festivals, and merchants (collectively, “Event Producers”) to offer
             live-streamed and pre-recorded entertainment events (“Events”) and
@@ -104,7 +112,7 @@ const TermsContent = () => {
           </h2>
 
           <h3 class='text-lg font-semibold mt-4'>1.2.1. Tickets:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             It is your duty as an Event Producer to accurately describe the
             experience in connection with any Tickets you offer and, by offering
             a Ticket, you agree that you will provide the experience described.
@@ -125,7 +133,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             1.2.2. Event Producer Content:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             You are responsible for creating the images, words, graphics,
             recordings and other content that are featured on your Event
             Producer page, communicated to your Attendees through Event Producer
@@ -146,7 +154,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             1.2.3. Event Producer Communications:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             You are responsible for all marketing/exclusive content text
             messages and/or emails featuring Event Producer Content in
             connection with Tickets (collectively, “Event Producer
@@ -162,7 +170,7 @@ const TermsContent = () => {
           <h2 class='text-xl font-semibold mt-6'>2. Account Registration</h2>
 
           <h3 class='text-lg font-semibold mt-4'>2.1. General:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             You will not be required to register for an account in order to
             browse the Site as a general User. However, Users will be required
             to register for an Attendee account to use certain features of the
@@ -175,7 +183,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>2.2. Account Credentials:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             By registering for an account, you agree that all information
             provided is accurate and complete. Your account username may not
             include the name of another person with the intent to impersonate
@@ -200,7 +208,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             2.3. Event Producer Accounts:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p class='mt-2  text-sm font-light'>
             An Event Producer may establish and manage its own account or
             delegate permission to authorized individuals to do so on its
             behalf, resulting in multiple User accounts associated with one
@@ -221,7 +229,7 @@ const TermsContent = () => {
           </h2>
 
           <h3 class='text-lg font-semibold mt-4'>3.1. General:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2  text-sm font-light'>
             Fidio is an events-based ticketing platform for Event Producers’
             streaming Events. We do not control the services advertised or
             provided by the Event Producer and do not manage or fulfil the
@@ -242,7 +250,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.2. Pricing:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             We sell livestream Tickets on behalf of Event Producers, which means
             that the price for each Ticket for an Event is determined by the
             applicable Event Producer. Tickets are sold individually, and we may
@@ -269,7 +277,7 @@ const TermsContent = () => {
               the ability to create playlists.
             </li>
           </ul>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='  text-sm font-light mt-2'>
             Quarterly plans renew for 90-day periods and annual plans renew for
             1-year periods. You must pay all fees (plus any taxes) during your
             subscription period and any renewal periods. Your subscription fees
@@ -286,7 +294,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.3. Fees and Taxes:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             All prices are charged in U.S. Dollars (unless otherwise stated).
             Applicable taxes shall be separately assessed as required by law at
             the time of checkout. If applicable, currency exchange rates and
@@ -312,7 +320,7 @@ const TermsContent = () => {
           </p>
 
           <h3 class='text-lg font-semibold mt-4'>3.4. Method of Payment:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             You agree to pay all charges incurred by you at the amounts in
             effect when such charges are incurred and agree that we and any of
             our third-party payment processors are authorized to immediately
@@ -347,7 +355,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.4. Billing Information Verification:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             All information on accounts and orders must be valid and are subject
             to verification. Orders are subject to credit card approval and are
             processed only after the billing address associated with your credit
@@ -370,7 +378,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.5. No Resale, Transfer, and Promotions:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             Purchases of all Tickets are personal to each Attendee, and the
             resale, transfer, or gifting of Tickets is expressly prohibited.
             Tickets may not be used for advertising, promotions, contests or
@@ -379,7 +387,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.6. Postponed or Rescheduled Events:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             If an Event is postponed or rescheduled, your Ticket is still valid
             for the rescheduled Event date and we will not issue a refund. If an
             Event Producer cancels an Event, we will issue you a refund to the
@@ -389,7 +397,7 @@ const TermsContent = () => {
             changes to Event times on behalf of the Event Producer.
           </p>
           <h3 class='text-lg font-semibold mt-4'>3.7. Refunds:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             All sales are final and Tickets are non-refundable except in the
             limited circumstances where an Event is canceled. In our sole
             discretion, we may issue you a refund for a non-subscription Ticket
@@ -416,7 +424,7 @@ const TermsContent = () => {
             this provision from using the Site.
           </p>
           <h3 class='text-lg font-semibold mt-4'>3.8. Ticket Orders:</h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             Individual Tickets are sold on a first come first served basis and
             while quantities last. Your Ticket or subscription order is
             confirmed when we send you a confirmation, in the form of a
@@ -431,7 +439,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>
             3.9. Ability to View an Event:
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             The ability to view a streaming Event may be limited depending on
             your Internet provider, your device, and your browser type. You are
             responsible for determining whether your Internet speed, device, and
@@ -459,7 +467,7 @@ const TermsContent = () => {
           <h3 class='text-lg font-semibold mt-4'>3.10. Donations:</h3>
 
           <p class='mt-2 font-sans text-sm font-light'>3.10.1. General:</p>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             In partnership with a third-party, Fidio will offer Event Producers
             the option to implement a donation feature with regard to a specific
             Event, Ticket, or other service offering (the “Donation Services”).
@@ -503,7 +511,7 @@ const TermsContent = () => {
             5. Ownership of Content and Grant of Conditional License to use the
             Site
           </h3>
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p style={paraStyle} class='mt-2 font-sans text-sm font-light'>
             The Site and all data, text, designs, pages, print screens, images,
             artwork, photographs, audio and video clips, and HTML code, source
             code, or software that reside or are viewable or otherwise
@@ -623,7 +631,7 @@ const TermsContent = () => {
             purpose.
           </p>
 
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p class='mt-2 font-sans text-sm font-light' style={paraStyle}>
             This license is expressly conditioned on your pre-existing agreement
             to comply with, and your actual compliance with, each of the
             provisions described in this Ownership of Content and Grant of
@@ -639,7 +647,7 @@ const TermsContent = () => {
             rights by using the Site or the Content.
           </p>
 
-          <p class='mt-2 font-sans text-sm font-light'>
+          <p class='mt-2 font-sans text-sm font-light' style={paraStyle}>
             The registered and unregistered trademarks, logos and service marks
             displayed on the Site are owned by us or our licensors. You may not
             use our trademarks, logos and service marks in any way without our
@@ -648,7 +656,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>6. Chat and User Content</h2>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className=' text-sm font-light mt-2' style={paraStyle}>
             We may host livestream Event Producer chats (“Chats”). We reserve
             the right to restrict or terminate your access to the Chats at any
             time, for any reason. If your access to a Chat has been restricted
@@ -661,7 +669,7 @@ const TermsContent = () => {
             expressed in a Chat are solely those of the posting User.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className='text-sm font-light mt-2' style={paraStyle}>
             Users may not post affiliate links, blogger codes, auction site
             postings, links to competitive ticketing and/or streaming platforms,
             links to other commercial websites, your own blog, social media
@@ -683,7 +691,7 @@ const TermsContent = () => {
             to contact you outside of a Chat.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className='font-sans text-sm font-light mt-2' style={paraStyle}>
             As between you and us, you own all rights to your User Content. If
             you submit User Content to the Site, you grant us a worldwide,
             non-exclusive, transferable, sublicensable, royalty-free right and
@@ -705,7 +713,7 @@ const TermsContent = () => {
             information obtained through the post.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className='text-sm font-light mt-2' style={paraStyle}>
             You will be responsible for your User Content and the consequences
             of posting it. By submitting User Content, you represent to us that
             (i) you own, or have the necessary permission to submit the User
@@ -719,14 +727,14 @@ const TermsContent = () => {
             guardian.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className=' text-sm font-light mt-2' style={paraStyle}>
             You understand that User Content posted to Chats will be viewed by
             other Users, that you have no expectation of privacy with regard to
             such User Content, and that your ability to delete User Content
             after posting may be limited due to the nature of the Chat.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className='  text-sm font-light mt-2' style={paraStyle}>
             We will have the right (but not the obligation) to monitor the Site,
             and the User Content, and to disclose any User Content and the
             circumstances surrounding its submission in order to operate the
@@ -734,7 +742,7 @@ const TermsContent = () => {
             Users, or to comply with legal obligations or governmental requests.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className='text-sm font-light mt-2' style={paraStyle}>
             If we are notified that your User Content does not comply with these
             Terms, we may investigate the allegation and may decide to remove
             your User Content and cancel your account. We may also hold you
@@ -746,7 +754,7 @@ const TermsContent = () => {
             our right to enforce them in other instances.
           </p>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className=' text-sm font-light mt-2' style={paraStyle}>
             If you use any review feature of the Site or provide us with any
             communications, comments, questions, suggestions, or other feedback
             relating to the Site or our Services (collectively, “Feedback”) your
@@ -832,7 +840,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>8. Termination</h2>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p className=' text-sm font-light mt-2' style={paraStyle}>
             We reserve the right to terminate or suspend a User account or
             access to the Site at any time and for any reason, including your
             violation of these Terms as determined in our sole and absolute
@@ -851,7 +859,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>9. Third Party Links</h2>
 
-          <p className='font-sans text-sm font-light'>
+          <p style={paraStyle} className='  text-sm font-light'>
             The Site may contain links to other websites that may not be owned
             or operated by us. The fact that we may link to those websites does
             not indicate any approval or endorsement of those websites. We have
@@ -869,7 +877,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>10. Access from Outside Canada</h2>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             We operate the Site from our offices in Ontario, Canada. We do not
             represent that Content available on or through the Site is
             appropriate or available in other locations. We may limit the
@@ -881,7 +889,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>11. Rules for Sweepstakes, Contests, and Games</h2>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             In addition to these Terms, sweepstakes, contests, games, or other
             promotions (collectively, “Promotions”) made available through the
             Site may have specific rules that are different from these Terms. By
@@ -894,7 +902,7 @@ const TermsContent = () => {
 
           <h2 class='mt-4'>12. Violation of these Terms</h2>
 
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className=' text-sm font-light mt-2'>
             We may investigate any violation of these Terms, including
             unauthorized use of the Site. We may provide law enforcement with
             information you provide to us related to your transactions to assist
@@ -920,7 +928,7 @@ const TermsContent = () => {
             your behalf or exercise any other remedy available to us.
           </p>
           <h2 className='mt-4'>13. Disclaimer of Warranties</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='  text-sm font-light mt-2'>
             WE PROVIDE THE SITE AND THE CONTENT TO YOU “AS IS” AND “AS
             AVAILABLE” WITHOUT WARRANTIES OF ANY KIND. WE TRY TO KEEP THE SITE
             UP, BUG-FREE AND SAFE, BUT YOU USE IT AT YOUR OWN RISK. TO THE
@@ -949,7 +957,7 @@ const TermsContent = () => {
             SETTLEMENT WITH THE DEBTOR.
           </p>
           <h2 className='mt-4'>14. Limitation of Liability</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             14.1. IN NO EVENT WILL WE OR OUR SUPPLIERS, SERVICE PROVIDERS,
             ADVERTISERS AND SPONSORS, BE RESPONSIBLE OR LIABLE TO YOU OR ANYONE
             ELSE FOR, AND YOU HEREBY KNOWINGLY AND EXPRESSLY WAIVE ALL RIGHTS TO
@@ -978,11 +986,11 @@ const TermsContent = () => {
             WITH THE SITE IS TO STOP USING THE SITE. THE LIMITATIONS IN THIS
             SECTION WILL APPLY EVEN IF ANY LIMITED REMEDY
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='  text-sm font-light mt-2'>
             FAILS OF ITS ESSENTIAL PURPOSE. THE ALLOCATION OF RISK BETWEEN US IS
             AN ESSENTIAL ELEMENT OF THE BASIS OF THE BARGAIN BETWEEN US.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='font-sans text-sm font-light mt-2'>
             14.2. OUR AGGREGATE LIABILITY ARISING OUT OF THESE TERMS OR THE USE
             OF THE SITE WILL NOT EXCEED (I) THE GREATER OF ONE HUNDRED DOLLARS
             ($100) OR (A) IN THE CASE OF EVENT PRODUCERS, THE AMOUNT WE HAVE
@@ -1004,7 +1012,7 @@ const TermsContent = () => {
             CLAIMS BROUGHT UNDER STATUTES PERMITTING SUCH RECOVERY.
           </p>
           <h2 className='mt-4'>15. Indemnification</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             If anyone brings a claim against us related to your use of the Site,
             your User Content, your Event Producer Content, your Event Producer
             Communications, your violation of these Terms, or your negligence or
@@ -1021,13 +1029,13 @@ const TermsContent = () => {
             16. Disputes, Including Mandatory Arbitration and Class Action
             Waiver
           </h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             YOU AND WE EACH AGREE THAT, EXCEPT AS PROVIDED BELOW, ANY DISPUTE,
             CLAIM, OR CONTROVERSY RELATING IN ANY WAY TO THE TERMS, YOUR USE OF
             THE SITE, OR PRODUCTS OR SERVICES SOLD, DISTRIBUTED, ISSUED, OR
             SERVICED BY OR THROUGH US—IRRESPECTIVE OF WHEN
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             THAT DISPUTE, CLAIM, OR CONTROVERSY AROSE—WILL BE RESOLVED SOLELY BY
             BINDING, INDIVIDUAL ARBITRATION AS SET FORTH IN THESE TERMS, RATHER
             THAN IN COURT. YOU AND WE THEREBY EACH AGREE TO WAIVE ANY RIGHT TO A
@@ -1035,7 +1043,7 @@ const TermsContent = () => {
             OTHER ONLY IN AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR
             CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className=' text-sm font-light mt-2'>
             16.1. Exceptions. The arbitration agreement and class action waiver
             set forth in this Section 16 shall be subject to these limited
             exceptions: You may assert claims in small claims court if your
@@ -1058,7 +1066,7 @@ const TermsContent = () => {
             purposes. You and we each retain the right to participate in
             class-wide settlement of claims.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.2. Informal Dispute Resolution. You and we each recognize and
             agree that good faith, informal efforts to resolve disputes often
             result in prompt, low-cost, and mutually beneficial outcomes.
@@ -1098,7 +1106,7 @@ const TermsContent = () => {
             tolled while you and we engage in the informal dispute resolution
             process described in this section.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.3. Governing Law; Interpretation and Enforcement. The arbitration
             agreement in the Terms is governed by the Arbitration Act (1991,
             S.O. 1991, c.17) (“AA&quot;), including its procedural provisions,
@@ -1110,7 +1118,7 @@ const TermsContent = () => {
             involving interstate commerce and will be governed by and construed
             in accordance with federal law to the fullest extent possible.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.4. Arbitration Generally; Relief Available. There is no judge or
             jury in arbitration, and court review of an arbitration award is
             limited pursuant to the AA. However, an arbitrator can award on an
@@ -1120,12 +1128,12 @@ const TermsContent = () => {
             arbitrator can award public injunctive relief if authorized by law
             and warranted by the individual claim(s).
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.5. Arbitration Proceedings and Rules. The rules and procedures of
             the ADR Institute of Canada (ADRIC) shall apply to all arbitral
             proceedings.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.7. Delegation; Interpretation. The arbitrator, and not any
             federal, state or local court or agency, shall have exclusive
             authority to the extent permitted by law to resolve all disputes
@@ -1138,7 +1146,7 @@ const TermsContent = () => {
             intended to be broadly interpreted and will survive termination of
             the Terms.
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             16.8. Limited Right to Appeal. As explained above, court review of
             the arbitrator’s decision is limited pursuant to the AA; however,
             the Terms provide a limited right to appeal the arbitrator’s
@@ -1163,7 +1171,7 @@ const TermsContent = () => {
             the JAMS appeal panel’s decision.
           </p>
           <h2 className='mt-4'>17. Relationship Between the Parties.</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             Nothing contained in these Terms of Service shall be construed to
             constitute you and FIDIO as partners or joint venturers or to
             constitute employment or any type of agency. These Terms of Service
@@ -1171,7 +1179,7 @@ const TermsContent = () => {
             Service do not create any third party beneficiary rights.
           </p>
           <h2 className='mt-4'>18. Full Integration.</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             These Terms of Service constitute the entire agreement between you
             and FIDIO related to this Site. No prior or contemporaneous written,
             oral, and electronic representation, negotiation, or agreement form
@@ -1180,7 +1188,7 @@ const TermsContent = () => {
             relating to this Site.
           </p>
           <h2 className='mt-'>19. Written Agreement.</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='font-sans text-sm font-light mt-2'>
             These Terms of Service constitute a written agreement between you
             and Fidio. A printed version of these Terms of Service, and of any
             notice given in electronic form related to this agreement, shall be
@@ -1190,7 +1198,7 @@ const TermsContent = () => {
             in printed form.
           </p>
           <h2 className='mt-4'>20. Force Majeure.</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             Fidio shall not have any liability to you hereunder by reason of any
             delay or failure to perform any obligation or covenant if the delay
             or failure to perform is occasioned by force majeure, meaning any
@@ -1201,7 +1209,7 @@ const TermsContent = () => {
             beyond its control.
           </p>
           <h2 className='mt-4'>21. Severability</h2>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             It is our belief that the Terms do not contain any provision
             contrary to law. However, if any part of the Terms is determined to
             be illegal, invalid, or unenforceable, you agree that: (a) that part
@@ -1223,7 +1231,7 @@ const TermsContent = () => {
             any questions, comments or complaints regarding these Terms or the
             Site, please contact us at:
           </p>
-          <p className='font-sans text-sm font-light mt-2'>
+          <p style={paraStyle} className='text-sm font-light mt-2'>
             Fidio Technologies Inc. 95 Kenesky Drive, Waterdown, ON L8B 1Y3
             admin@fidio.com
           </p>

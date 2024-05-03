@@ -21,7 +21,7 @@ const resources = (props) => {
       img: <SvgTwo />,
       title: 'Policies and Terms of Use',
       footer: 'questions asked the most',
-      link: '/poilicies',
+      link: '/policies',
     },
     {
       img: <SvgThree />,

@@ -4,6 +4,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { ChevronRight } from '@mui/icons-material';
 
 // import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { Wave } from '../icons';
@@ -22,7 +23,7 @@ const ResourceStaticLayout = ({ children }) => {
       icon: <VideocamOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
     },
     {
-      path: '/guides',
+      path: '/question',
       label: 'Guides',
       icon: (
         <ConfirmationNumberOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />
@@ -44,26 +45,24 @@ const ResourceStaticLayout = ({ children }) => {
     },
     {
       contentMenu: (
-        <div className=' font-medium hidden md:block'>
-          <h3 className=' uppercase text-[14px] pb-4 text-[#A3A3A3]'>
-            Contents
-          </h3>
-          <ul className='flex flex-col gap-y-2 text-[#A3A3A3]'>
-            <li className='text-white'>
-              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
-                Privacy policy
-              </Link>
-            </li>
-            <li>
-              <Link href='/terms-of-use' className='w-full whitespace-nowrap'>
-                Terms of Use
-              </Link>
-            </li>
-            <li>
-              <Link href='/privacy-policy' className='w-full whitespace-nowrap'>
-                Compliance and Legal
-              </Link>
-            </li>
+        <div className=' font-medium text-[10px] md:text-[14px]'>
+          <h3 className=' uppercase  pb-4 text-[#A3A3A3]'>Contents</h3>
+          <ul className='flex flex-col gap-y-2 text-[#A3A3A3] cursor-pointer'>
+            {[
+              { label: 'Privacy policy', href: '/policies/privacy' },
+              { label: 'Terms of use', href: '/policies/terms' },
+              { label: 'Compliance and legal', href: '/policies/compliance' },
+            ].map(({ label, href }) => (
+              <li
+                key={href}
+                className={cn(
+                  'text-[#A3A3A3]',
+                  router.pathname === href && 'text-white'
+                )}
+              >
+                <Link href={href}>{label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       ),
@@ -82,7 +81,7 @@ const ResourceStaticLayout = ({ children }) => {
                 <li
                   key={path}
                   className={cn(
-                    'py-3 px-4 text-white',
+                    'py-3 px-4 text-white cursor-pointer',
                     isActive
                       ? 'bg-gradient-to-r from-whiteGradient border-l-4 border-accentY gradient'
                       : 'text-dashtext '
@@ -90,7 +89,7 @@ const ResourceStaticLayout = ({ children }) => {
                 >
                   <Link
                     href={path}
-                    className='font-lexend hover:from-whiteGradient flex items-center gap-x-2'
+                    className='font-lexend  flex items-center gap-x-2 cursor-pointer'
                   >
                     {icon ? <div>{icon}</div> : ''}
                     {label}
@@ -101,14 +100,13 @@ const ResourceStaticLayout = ({ children }) => {
           </ul>
         </div>
       </div>
-
       <div className='flex-1 pb-8'>{children}</div>
       {router.pathname === '/faq' ? (
         <div className='rounded-md w-[330px] py-4 md:w-[220px] mx-auto h-[204px] bg-whiteGradient'>
           {rightSideDisplay.find(({ buttonChat }) => buttonChat)?.buttonChat}
         </div>
       ) : (
-        <div className='rounded-md w-[330px] py-2 md:w-[220px] mx-auto h-[204px] '>
+        <div className='hidden md:block rounded-md w-[330px] py-2 md:w-[220px] mx-auto h-[204px] '>
           {rightSideDisplay.find(({ contentMenu }) => contentMenu)?.contentMenu}
         </div>
       )}
