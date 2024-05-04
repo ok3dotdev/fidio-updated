@@ -10,7 +10,7 @@
     display: block;
     position: fixed;
     width: 80vw;
-    height: 60vh;
+    height: 70vh;
     left: 10vw;
     top: 15vh !important;
 }
@@ -38,4 +38,20 @@
 .Ecommerce_Price {
     display: flex;
     justify-content: space-between;
+}
+
+.Ecommerce_CreditCard_FullNameInput_Default {
+    display: none;
+}
+
+.Ecommerce_Cc_PleaseSignIn {
+    display: none;
+}
+
+.Ecommerce_Cart_Internal_Container .SignIn_ManualContainer {
+    display: none;
+}
+
+.Ecommerce_Cart_Internal_Container .SignIn_Separator {
+    display: none;
 }

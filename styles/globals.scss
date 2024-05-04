@@ -25,5 +25,37 @@ a {
   box-sizing: border-box;
 }
 
-@import "/modules/styles/tycoon.scss";
-@import "styles.scss"; // Customers customer stylesheet. Not included in repo.
+.Ecommerce_PurchaseButton {
+  border-radius: 6px;
+  background: var(--Color-Amber-600, rgba(221, 104, 26, 1));
+  padding: 10px 0 !important;
+  cursor: pointer !important;
+
+  &:hover {
+    background-color: unset;
+    box-shadow: unset;
+    border: unset !important;
+    background: var(--Color-Amber-600, rgba(221, 104, 26, 1)) !important;
+    opacity: 0.8;
+  }
+}
+
+.Ecommerce_Cart_Container {
+  background: var(--Color-Neutral-900, rgba(23, 23, 23, 1)) !important;
+  height: unset !important;
+  top: 80px !important;
+  position: static !important;
+  box-shadow: unset !important;
+  gap: 3rem !important;
+  font-family: lexend !important;
+}
+.Ecommerce_Layout_Data_Container {
+  gap: 3rem !important;
+}
+
+.Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
+  border-radius: 8px !important;
+}
+
+@import '/modules/styles/tycoon.scss';
+@import 'styles.scss'; // Customers customer stylesheet. Not included in repo.

@@ -42,6 +42,7 @@ module.exports = {
         dashFg: 'rgba(250, 248, 245, 1)',
         accentY: 'rgba(221, 104, 26, 1)',
         dashSides: 'rgba(38, 38, 38, 1)',
+        neutral600: 'rgba(82, 82, 82, 1)',
         border: 'hsl(var(--border))',
         gradientLight: 'rgba(23, 23, 23, 1)',
         gradientDark: 'rgba(23, 23, 23, 0.4)',

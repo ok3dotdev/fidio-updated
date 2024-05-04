@@ -50,7 +50,7 @@ const ShowGrid = () => {
   return (
     <div className='px-4 lg:px-6 max-w-7xl mx-auto py-24'>
       <h3>Shows</h3>
-      <div class='flex gap-4 overflow-x-auto no-scrollbar mt-8'>
+      <div className='flex gap-4 overflow-x-auto no-scrollbar mt-8'>
         {events.map((event, index) => (
           <div className='bg-[#181818] rounded-[20px] p-4 relative' key={index}>
             <div className=''>

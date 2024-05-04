@@ -4,6 +4,9 @@ npm init @tycoonsystems/tycoon-video
 # Documentation
 www.tv.tycoon.systems/documentation
 
+# Notes
+Use Bash terminal
+
 # Setup
 If you see a bunch of errors in VS Code while developing try:
 1. Ctrl+Shift+P -or- ⌘+shift+P
@@ -26,16 +29,19 @@ nvm ls
 -------------
 ## Git Operations
 # You must fork this and create your own repo
+Go to https://github.com/Tycoon-Systems-Corp/video-streaming-client and click Fork
 
 # Add Upstream repo once you have forked into your own repo
-
 git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-client
+
+# Create app.config.js file in root. See example file here: https://tycoon-public-share.s3.us-east-2.amazonaws.com/app.config.js
+vi app.config.js
 
 # To safely pull /modules folder changes run update_version script
 ./update_version
 
-# Finish merge by running git pull
-git pull
+# If you get Permission denied run following
+chmod 722 update_version
 
 # Push data up to your repo
 git push
@@ -46,6 +52,8 @@ node init_app.js
 
 # Install npm packages
 npm install
+
+# For more information go to https://tv.tycoon.systems/documentation?q=initialize%20application
 
 ## Start Developing
 
