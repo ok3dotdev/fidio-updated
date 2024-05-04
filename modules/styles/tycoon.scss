@@ -1045,12 +1045,13 @@ button:not(:disabled):active {
 // Documentation 
 
 .documentationObject {
+    margin: .5rem;
+    background: #050505;
+    padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
-    background: black;
-    padding: .5rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
+    overflow: auto;
 }
 
 .documentationObject table,
@@ -1059,8 +1060,18 @@ button:not(:disabled):active {
     border: 1px solid rgb(67, 67, 67);
 }
 
-.documentationObject td {
-    padding: .5rem 1rem;
+.documentationObject * {
+    vertical-align: text-top;
+}
+
+.documentationObject td,
+.documentationObject th {
+    padding: .25rem;
+    border: 1px double rgb(53, 53, 53);
+}
+
+.documentationObject h4 {
+    margin: 0;
 }
 
 .Documentation_Container code {

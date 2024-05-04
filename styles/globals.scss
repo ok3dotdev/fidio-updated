@@ -57,5 +57,24 @@ a {
   border-radius: 8px !important;
 }
 
+input[type='text'],
+.Ecommerce_CreditCard_FullNameInput_Default {
+  border-color: rgba(82, 82, 82, 1) !important;
+  color: white !important;
+  padding: 0.75rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  background-color: rgba(38, 38, 38, 1) !important;
+  border-radius: 6px !important;
+  height: 2.25rem !important;
+  width: 100% !important;
+}
+
+button {
+  border-radius: 4px;
+  background-color: rgba(221, 104, 26, 1) !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.
