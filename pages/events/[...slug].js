@@ -51,7 +51,7 @@ export const Page = (props) => {
     }
   };
   const handleOpenCart = (e) => {
-    handleAddProduct(e);
+    fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
     props._toggleSingleOpenMenu(e, 'cart');
     if (props?._openMenu?.currentMenu === 'cart') {
       setCartOpen(false);
@@ -61,11 +61,11 @@ export const Page = (props) => {
       }, 150);
     }
   };
-  const handleAddProduct = React.useCallback(async (e) => {
-    fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
-  });
+  // const handleAddProduct = React.useCallback(async (e) => {
+  //   fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
+  // });
   if (!loading && ticket) {
-    console.log('values', cartOpen);
+    // console.log('values', cartOpen);
   }
 
   return (

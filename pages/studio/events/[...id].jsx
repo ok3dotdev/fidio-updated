@@ -45,7 +45,7 @@ const EventView = (props) => {
   };
 
   if (!loading && ticket) {
-    console.log('values', ticket);
+    // console.log('values', ticket);
   }
 
   return (
