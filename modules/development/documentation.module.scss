@@ -8,8 +8,21 @@
     max-width: 100%;
     .quadrant2 {
         max-width: 100%;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
         pre {
             margin: 0;
+        }
+        .responseContainer {
+            pre {
+                padding: 1rem;
+                background: #0e0e0e;
+                border-radius: .3em;
+                img {
+                    max-width: 100%;
+                }
+            }
         }
     }
 }
@@ -20,6 +33,7 @@
     margin: .25rem;
     margin-bottom: .5rem;
     gap: .5rem;
+    overflow: auto;
 }
 
 .companyLink, .menuContainer li {
@@ -57,6 +71,7 @@
     font-weight: 600;
     font-size: 1.5rem;
     margin-bottom: .5rem;
+    border-bottom: 3px double #545454;
 }
 
 .mainContainer {

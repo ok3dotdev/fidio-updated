@@ -32,8 +32,6 @@ const Module = props => {
                                         <Feedback { ...props } />
                                         <Bug { ...props } />
                                         <Admin { ...props } />
-                                        <Login { ...props } />
-                                        <OnboardLogin { ...props }  />
                                     </ul>
                                 </div>
                                 : null

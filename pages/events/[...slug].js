@@ -156,18 +156,18 @@ export const Page = (props) => {
                       </div>
                     )}
                     <p className='text-dashtext mt-8  mb-4'>OTHER PERFORMERS</p>
-                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm '>
+                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm items-center'>
                       {ticket?.detailmeta?.lineup
                         ?.slice(1, ticket?.detailmeta?.lineup?.length)
                         .map((art, idx) => (
                           <div
                             key={idx}
-                            className='flex flex-col gap-2 items-center w-[8rem]'
+                            className='flex flex-col gap-2 items-center'
                           >
                             <img
                               alt=''
                               src={`${props?.cdn?.static}/${art?.image}`}
-                              className='w-full h-full rounded-[50%] object-cover aspect-square'
+                              className='w-[9rem] h-full rounded-[50%] object-cover aspect-square'
                             />
                             <p className='text-lg'>{art?.title || 'No name'}</p>
                           </div>
