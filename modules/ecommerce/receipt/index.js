@@ -1,1 +1,1 @@
-import ReceiptPage from"./ReceiptPage";import Order from"./Order";export{ReceiptPage,Order};
+import ReceiptPage from"./ReceiptPage";import OrderInternal from"./OrderInternal";export{ReceiptPage,OrderInternal};
