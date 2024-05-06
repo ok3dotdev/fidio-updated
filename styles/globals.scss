@@ -71,6 +71,11 @@ input[type='text'],
   width: 100% !important;
 }
 
+.Ecommerce_Cart_Container .SignIn_OauthContainer,
+.Ecommerce_Cart_Container .SignIn_Separator {
+  display: none;
+}
+
 button {
   border-radius: 4px;
   background-color: rgba(221, 104, 26, 1) !important;
