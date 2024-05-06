@@ -57,14 +57,14 @@ const Module = (props) => {
   };
 
   // This ensures that we will attempt checkout after save credit card
-  const saveBillingInfoFunction = React.useCallback((e) => {
-    fireGlobalEvent(
-      {
-        event: 'checkout',
-      },
-      props._LocalEventEmitter
-    );
-  });
+  // const saveBillingInfoFunction = React.useCallback((e) => {
+  //   fireGlobalEvent(
+  //     {
+  //       event: 'checkout',
+  //     },
+  //     props._LocalEventEmitter
+  //   );
+  // });
 
   return (
     <div
@@ -170,11 +170,7 @@ const Module = (props) => {
                   <div>
                     <label className='mb-2'>Credit/Debit card</label>
                   </div>
-                  <CartCc
-                    {...props}
-                    saveBillingInfoText={'Purchase'}
-                    saveBillingInfoFunction={saveBillingInfoFunction}
-                  />
+                  <CartCc {...props} expressCheckout={true} />
                   <PurchaseButton
                     {...props}
                     f={doFunc}
