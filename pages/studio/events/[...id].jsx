@@ -13,13 +13,14 @@ import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import { format } from 'date-fns';
+import EventUpdateModal from '@/components/modals/EventUpdateModal';
 
 const pageName = 'create';
 
 const EventView = (props) => {
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -44,6 +45,10 @@ const EventView = (props) => {
     }
   };
 
+  const handleEventUpdate = () => {
+    setModalOpen(!modalOpen);
+  };
+
   if (!loading && ticket) {
     // console.log('values', ticket);
   }
@@ -53,6 +58,7 @@ const EventView = (props) => {
       <div className='px-2 md:px-8'>
         {!loading && ticket && (
           <div>
+            {modalOpen && <EventUpdateModal setModalOpen={setModalOpen} />}
             <div className='relative  mb-[12rem]'>
               <div className='relative'>
                 <div
@@ -77,8 +83,11 @@ const EventView = (props) => {
                       {ticket.name}
                     </h1>
                     <div>
-                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center'>
-                        <DriveFileRenameOutlineIcon className='w-8 h-8 p-1' />
+                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer'>
+                        <DriveFileRenameOutlineIcon
+                          className='w-8 h-8 p-1'
+                          onClick={handleEventUpdate}
+                        />
                       </div>
                     </div>
                   </div>
