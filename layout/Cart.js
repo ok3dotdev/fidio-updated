@@ -39,6 +39,7 @@ const Module = (props) => {
   // Attempt anonymous sign in with input info here. You can run manually or pass as f to PurchaseButton
   const doFunc = async () => {
     props.setPageError(null);
+    console.log('jmmm')
     if (!intendsToSignInAsGuest && !props._loggedIn) {
       // If we detect no input and user clicks purchase give next action
       props.setPageError({
@@ -171,9 +172,7 @@ const Module = (props) => {
                     <label className='mb-2'>Credit/Debit card</label>
                   </div>
                   <CartCc
-                    {...props}
-                    saveBillingInfoText={'Purchase'}
-                    saveBillingInfoFunction={saveBillingInfoFunction}
+                    {...props} expressCheckout={true}
                   />
                   <PurchaseButton
                     {...props}
