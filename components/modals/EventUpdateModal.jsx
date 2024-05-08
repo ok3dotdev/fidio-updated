@@ -11,8 +11,8 @@ const EventUpdateModal = ({ setModalOpen }) => {
   const { register, handleSubmit, reset, control, setValue } = useForm();
 
   return (
-    <div className='top-0 absolute w-full bg-red-300 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
-      <div className='bg-dashBg p-8 md:w-[500px] w-full mt-14 mb-4'>
+    <div className='absolute w-full inset-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
+      <div className='bg-dashBg p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-auto'>
         <div className='flex w-full justify-between items-center'>
           <h3>Modify Event</h3>
           <div className='cursor-pointer rounded-full bg-dashSides flex items-center justify-center w-8 h-8'>
@@ -23,26 +23,9 @@ const EventUpdateModal = ({ setModalOpen }) => {
           </div>
         </div>
         <div>
-          <form className='relative' action='' onSubmit={() => trigger()}>
+          <form className='relative mb-12' action='' onSubmit={() => trigger()}>
             <Card className=' dark:bg-transparent mt-8'>
               <CardContent className='space-y-4 mt-4'>
-                {/* <div className='flex flex-col justify-center space-y-2'>
-                  <label htmlFor=''>Banner image</label>
-                  <Controller
-                    control={control}
-                    name='banner.image'
-                    render={({ field: { onChange } }) => (
-                      <UploadZone
-                        handleImageUpload={(file) => {
-                          onChange(file);
-                        }}
-                        handleNewFile={handleNewFile}
-                        setbannerImage={setbannerImage}
-                        bannerImage={bannerImage}
-                      />
-                    )}
-                  />
-                </div> */}
                 <div className='space-y-2 mt-8'>
                   <label htmlFor='title'>
                     {' '}
@@ -171,6 +154,84 @@ const EventUpdateModal = ({ setModalOpen }) => {
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-dashtext'
                         {...register('discount.endDate')}
                       />
+                    </div>
+                  </div>
+                </div>
+                <div className='space-y-2'>
+                  <label htmlFor='stream start'>
+                    When does your stream start and end?
+                  </label>
+                  <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2 '>
+                    <div className='relative w-full'>
+                      <Controller
+                        control={control}
+                        name={'date'}
+                        render={({ field: { value, onChange, ...field } }) => {
+                          return (
+                            <DatePickerDemo
+                              value={value} // Pass value from the form control to the DatePickerDemo
+                              onChange={onChange}
+                            />
+                          );
+                        }}
+                      />
+                    </div>
+                    <div className='relative'>
+                      <Input
+                        placeholder='Start time'
+                        type='time'
+                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        {...register('startTime')}
+                      />
+                    </div>
+                    <div className='relative'>
+                      <Input
+                        placeholder='End time'
+                        type='time'
+                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        {...register('endTime')}
+                      />
+                      {/* <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' /> */}
+                    </div>
+                  </div>
+                  <div className='space-y-2'>
+                    <label htmlFor='stream start'>
+                      When does your stream start and end?
+                    </label>
+                    <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2 '>
+                      <div className='relative w-full'>
+                        <Controller
+                          control={control}
+                          name={'date'}
+                          render={({
+                            field: { value, onChange, ...field },
+                          }) => {
+                            return (
+                              <DatePickerDemo
+                                value={value} // Pass value from the form control to the DatePickerDemo
+                                onChange={onChange}
+                              />
+                            );
+                          }}
+                        />
+                      </div>
+                      <div className='relative'>
+                        <Input
+                          placeholder='Start time'
+                          type='time'
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          {...register('startTime')}
+                        />
+                      </div>
+                      <div className='relative'>
+                        <Input
+                          placeholder='End time'
+                          type='time'
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          {...register('endTime')}
+                        />
+                        {/* <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' /> */}
+                      </div>
                     </div>
                   </div>
                 </div>
