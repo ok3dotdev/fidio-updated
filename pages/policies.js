@@ -17,18 +17,11 @@ const Policies = (children) => {
   const article = [
     {
       title: 'Privacy policy',
-      para: `What makes Fidio the perfect platform for African entertainment around the world? In the vast domain of digital music Fidio is carving a niche at a remarkable pace.
-      
-      
-      Fidio is a fast-growing platform in the realm of live-streamed African music concerts and events, offering an exceptional experience to a tremendous audience across Africa.`,
+      para: `Thank you for visiting Fidio. Your privacy is important to us. This privacy policy ('Privacy Policy') describes how we, our affiliated and associated entities, as further detailed below (collectively 'Fidio', 'we', 'us', and 'our'), collects, uses, discloses, transfers, stores, retains, or otherwise processes your personal data, and the choices you can make about the way your information is collected and used by Fidio. Please review our Privacy Policy as it may change in the future and contact us at privacy@fidio.ca or the correspondence address below if you have any questions or concerns or wish to exercise your privacy rights.`,
     },
     {
       title: 'Terms of Use',
-      para: `The difference between Fidio and the rest is the full African experience that we provide. Imagine lounging in your living room, or hanging out with friends, now you can revel in the energy and excitement of live performances from the comfort of your own home and device.\n\nAdditional sentence or paragraph for "Terms of Use" if needed.`,
-    },
-    {
-      title: 'Compliance and Legal',
-      para: `So how can live-streaming break down borders you may ask- At Fidio we are committed to delivering musical experiences that transcend barriers, making each live-streamed event a sonic journey.\n\nAdditional sentence or paragraph for "Compliance and Legal" if needed.`,
+      para: `This web page contains our full User agreement (“Agreement”). You may print this document for reference. Limited use of the Site is offered to you by FIDIO subject to, and conditioned upon your acceptance of, these Terms of Service. Your use of the Site constitutes your legally binding acceptance of and agreement to these Terms of Service. Under these Terms of Service only, Fidio grants you a license to view and use the interactive features of this Site. If you do not agree to these Terms of Service, you are not an authorized User and should discontinue any use of the Site and Services.`,
     },
   ];
   return (

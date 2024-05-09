@@ -1,13 +1,9 @@
 import React from 'react';
-import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
-import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { ChevronRight } from '@mui/icons-material';
 
-// import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { Wave } from '../icons';
+import { FaqFile, Target, Cursor } from '../icons';
 
 const ResourceStaticLayout = ({ children }) => {
   const router = useRouter();
@@ -15,19 +11,17 @@ const ResourceStaticLayout = ({ children }) => {
     {
       path: '/faq',
       label: 'FAQs',
-      icon: <Wave className='w-[20px] h-[20px]' />,
+      icon: <FaqFile className='w-[20px] h-[20px]' />,
     },
     {
       path: '/policies',
       label: 'Policies',
-      icon: <VideocamOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
+      icon: <Cursor className='w-[20px] h-[20px] bg-inherit' />,
     },
     {
-      path: '/question',
+      path: '#',
       label: 'Guides',
-      icon: (
-        <ConfirmationNumberOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />
-      ),
+      icon: <Target className='w-[20px] h-[20px] bg-inherit' />,
     },
   ];
   const rightSideDisplay = [
@@ -35,11 +29,14 @@ const ResourceStaticLayout = ({ children }) => {
       buttonChat: (
         <div className='p-8 space-y-5 items-center justify-center flex flex-col'>
           <p className='text-3xl font-semibold md:text-left text-center w-[162px]'>
-            Still got question?
+            Still got questions?
           </p>
-          <button className='md:px-7 px-14 py-2 bg-[#404040] text-[16px] font-medium rounded-sm border'>
+          <a
+            href='mailto:support@fidio.ca'
+            className='md:px-7 px-14 py-2 bg-[#404040] text-[16px] font-medium rounded-sm border hover:opacity-[80%]'
+          >
             Hey, Fidio
-          </button>
+          </a>
         </div>
       ),
     },
@@ -51,7 +48,6 @@ const ResourceStaticLayout = ({ children }) => {
             {[
               { label: 'Privacy policy', href: '/policies/privacy' },
               { label: 'Terms of use', href: '/policies/terms' },
-              { label: 'Compliance and legal', href: '/policies/compliance' },
             ].map(({ label, href }) => (
               <li
                 key={href}
