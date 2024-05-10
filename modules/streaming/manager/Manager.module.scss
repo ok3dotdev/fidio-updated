@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     place-self: flex-start;
     .settingContainer {
-        max-width: 300px;
+        max-width: 350px;
     }
 }
 
@@ -181,6 +181,7 @@ button.streamingButton:not(:disabled):hover {
     overflow-x: hidden;
     margin-top: .25rem;
     transition: 200ms;
+    justify-content: space-between;
 }
 
 .upcomingStreamsContainer:hover,
@@ -189,12 +190,14 @@ button.streamingButton:not(:disabled):hover {
 }
 
 .upcomingStreamContainer {
-    flex: 0 0 24%;
-    max-width: 24%;
+    flex: 0 0 22.5%;
+    max-width: 22.5%;
     text-align: center;
     text-align: -webkit-center;
     padding: .25rem;
     border-radius: .25rem;
+    border: 2px solid rgb(117, 117, 117);
+    margin-bottom: .5rem;
     cursor: pointer;
     .upcomingStreamLabel {
         font-size: .8rem;
