@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>React.createElement(React.Fragment,null,React.createElement("div",{className:"Ecommerce_Title"},e?.n?.product?.name??""));export default Module;

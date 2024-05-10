@@ -30,7 +30,11 @@ const Module = (props) => {
   const lastName = React.useRef();
   const email = React.useRef();
 
-  const intendsToSignInAsGuest = !props?._loggedIn && email?.current?.value; // Guess intent based on input email
+  const intendsToSignInAsGuest =
+    !props?._loggedIn &&
+    (email?.current?.value ||
+      firstName?.current?.value ||
+      lastName?.current?.value); // Guess intent based on input email
 
   // Attempt anonymous sign in with input info here. You can run manually or pass as f to PurchaseButton
   const doFunc = async () => {
@@ -53,14 +57,14 @@ const Module = (props) => {
   };
 
   // This ensures that we will attempt checkout after save credit card
-  const saveBillingInfoFunction = React.useCallback((e) => {
-    fireGlobalEvent(
-      {
-        event: 'checkout',
-      },
-      props._LocalEventEmitter
-    );
-  });
+  // const saveBillingInfoFunction = React.useCallback((e) => {
+  //   fireGlobalEvent(
+  //     {
+  //       event: 'checkout',
+  //     },
+  //     props._LocalEventEmitter
+  //   );
+  // });
 
   return (
     <div
@@ -166,11 +170,7 @@ const Module = (props) => {
                   <div>
                     <label className='mb-2'>Credit/Debit card</label>
                   </div>
-                  <CartCc
-                    {...props}
-                    saveBillingInfoText={'Purchase'}
-                    saveBillingInfoFunction={saveBillingInfoFunction}
-                  />
+                  <CartCc {...props} expressCheckout={true} />
                   <PurchaseButton
                     {...props}
                     f={doFunc}
@@ -197,8 +197,8 @@ const Module = (props) => {
                 <div style={{ fontSize: '1rem', lineHeight: '1.25rem' }}>
                   <ItemsTotal {...props} />
                   <CartTotal {...props} />
-                  {/* <CartMessages {...props} /> */}
-                  {/* <CartDisclaimer {...props} /> */}
+                  <CartMessages {...props} />
+                  <CartDisclaimer {...props} />
                   <ItemsRemaining {...props} />
                 </div>
               </div>

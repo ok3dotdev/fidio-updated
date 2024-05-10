@@ -158,3 +158,79 @@
 .Ecommerce_CartMessage_Message {
     font-weight: 600;
 }
+
+.Ecommerce_RegisterVendor_Container {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    margin: 1rem;
+    padding: .5rem;
+    background: #313131;
+    width: fit-content;
+    border-radius: 1rem;
+    .Ecommerce_RegisterVendor_Label {
+        font-weight: 600;
+    }
+    .Ecommerce_SetupVendor_Link {
+        align-self: center;
+    }
+}
+
+.Ecommerce_SingleOrderContainer {
+    .Ecommerce_SingleOrderInternalContainer {
+        .Ecommerce_SingleOrderMetaContainer {
+            display: flex;
+            justify-content: space-between;
+            .Ecommerce_SingleOrderMeta {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                .Ecommerce_OrderLabel {
+                    margin: 0;
+                }
+                .Ecommerce_OrderId {
+                    background: #222222;
+                    border-radius: 1rem;
+                    padding: .0rem .75rem;
+                }
+            }
+        }
+        .Ecommerce_OrderSingleItemContainer {
+            display: flex;
+            gap: .3rem;
+            flex-direction: column;
+            margin-top: .3rem;
+            margin-bottom: .3rem;
+            .Ecommerce_Item_Container {
+                gap: .2rem;
+                .Ecommerce_Item_ContainerInternal {
+                    display: flex;
+                    gap: .5rem;
+                    .Ecommerce_ItemContainerWidth {
+                        width: 100%;
+                        .Ecommerce_Cart_Title_Main_ContainerOrder {
+                            gap: .2rem;
+                            display: flex;
+                        }
+                        .Ecommerce_Order_StyleOrderContainer {
+                            justify-content: space-between;
+                            .Ecommerce_Cart_Side_Meta_Container {
+                                .Ecommerce_Order_SubtotalLabel {
+                                    color: grey;
+                                    font-size: .7rem;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Ecommerce_ReceiptPageContainer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
