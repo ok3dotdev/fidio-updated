@@ -60,7 +60,8 @@
     "talkjs": "^0.16.6",
     "typescript": "5.0.4",
     "universal-cookie": "^4.0.4",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0"
