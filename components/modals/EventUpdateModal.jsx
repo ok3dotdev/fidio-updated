@@ -50,6 +50,8 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
     setSurveyState(temp);
   };
 
+  console.log('item', surveyState.pipelineDbItem);
+
   const allowedTypes = ['image/jpeg', 'image/png'];
 
   // This will add the file to the FormData instance and append it to the appropriate array during API call
@@ -110,8 +112,8 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
   };
 
   return (
-    <div className='absolute w-full inset-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
-      <div className='bg-dashBg p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-auto'>
+    <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
+      <div className='bg-dashBg p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-scroll'>
         <div className='flex w-full justify-between items-center'>
           <h3>Modify Event</h3>
           <div className='cursor-pointer rounded-full bg-dashSides flex items-center justify-center w-8 h-8'>
@@ -241,26 +243,183 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       {...register('quantity')}
                     />
                   </div>
+                  <div className=''>
+                    <div>
+                      <h2 className='mt-4'>Enter performers</h2>
+                    </div>
+                    <p className='my-4  text-dashtext text-sm'>HEADLINER</p>
+                    <label className='mb-4' htmlFor='title'>
+                      Performer name and photo
+                    </label>
+                    <div className='flex items-center gap-x-2 mt-4'>
+                      <Input
+                        name='detailmeta.lineup[0].title'
+                        placeholder='Asake'
+                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        ref={register}
+                        {...register('detailmeta.lineup[0].title')}
+                      />
+                      <Controller
+                        control={control}
+                        name={'detailmeta.lineup[0].image'}
+                        render={({ field: { value, onChange, ...field } }) => {
+                          return (
+                            <Input
+                              {...field}
+                              name='headliner'
+                              value={value?.fileName}
+                              placeholder='Upload image'
+                              className='w-36'
+                              onChange={(event) => {
+                                onChange(event.target.files[0]);
+                                handleImageUpload(event);
+                                handleLineupUpload(event, 0);
+                                handleLineupImage(event.target.files);
+                              }}
+                              type='file'
+                              id='picture'
+                            />
+                          );
+                        }}
+                      />
+                    </div>
+                    <div className='space-y-2 mt-4'>
+                      <label htmlFor='title'>Bio</label>
+                      <div className='flex items-center gap-x-2'>
+                        <Input
+                          name='detailmeta.lineup[0].bio'
+                          placeholder='Enter bio'
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          ref={register}
+                          {...register('detailmeta.lineup[0].bio')}
+                        />
+                      </div>
+                    </div>
+                    {/* {selectedImage && (
+                      <div>
+                        <img
+                          src={selectedImage}
+                          alt='Selected Image'
+                          className='mt-4 w-20 h-20 rounded-full object-cover'
+                        />
+                      </div>
+                    )} */}
+                  </div>
+                </div>
+                <hr className='w-full mt-6' />
+                <h3 className=''>OTHER PERFORMERS</h3>
+                <div className='space-y-4'>
+                  {/* {lineUpInfo.slice(1).map((performer, index) => (
+                    <div key={index} className='space-y-2'>
+                      <label htmlFor='title'>Performer name and photo</label>
+                      <div className='flex gap-2 mb-2'>
+                        <Input
+                          name={`detailmeta.lineup[${index + 1}].title`}
+                          placeholder='Enter artist, performer or band name'
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          {...register(`detailmeta.lineup[${index + 1}].title`)}
+                        />
+                        <Controller
+                          control={control}
+                          name={`detailmeta.lineup[${index + 1}].image`}
+                          render={({
+                            field: { onChange, value, ...field },
+                          }) => (
+                            <Input
+                              {...field}
+                              value={value?.fileName}
+                              name={`detailmeta.lineup[${index + 1}].image`}
+                              placeholder='Upload image'
+                              accept='image/*'
+                              className='w-36'
+                              onChange={(e) => {
+                                onChange(e.target.files[0]);
+                                handleLineupUpload(e, index + 1);
+                                handleLineupImage(e.target.files);
+                              }}
+                              type='file'
+                              id={`picture-${index}`}
+                            />
+                          )}
+                        />
+                      </div>
+                      {performer.file && (
+                        <div className='flex gap-x-2'>
+                          <img
+                            src={performer.file}
+                            alt='Performer'
+                            className='w-10 h-10 rounded-full object-cover'
+                          />
+                          <Button
+                            className='text-red-500 ml-2'
+                            onClick={() => deletePerformer(index + 1)}
+                            type='button'
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ))} */}
+                  <div>
+                    <Button
+                      type='button'
+                      onClick={{}}
+                      className='w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white'
+                    >
+                      Add another performer{' '}
+                    </Button>
+                  </div>
+                </div>
+                <hr className='w-full' />
+                <div className=''>
+                  <p className='mb-8'>HOST</p>
+                  <label htmlFor='host.title'>Name</label>
+                  <div className='flex flex-col items-center gap-y-2 mb-2 mt-2'>
+                    <Input
+                      name='host.title'
+                      placeholder='Mc Big Timer'
+                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      ref={register}
+                      {...register('host.title')}
+                    />
+                  </div>
+                  <label className='mt-2' htmlFor='title'>
+                    Bio
+                  </label>
+                  <div className='flex items-center gap-x-2 mt-2'>
+                    <Input
+                      name='detailmeta.lineup[0].bio'
+                      placeholder='Host with the most'
+                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      ref={register}
+                      {...register('host.bio')}
+                    />
+                  </div>
+                </div>
+                <button className='w-full bg-accentY rounded-[8px]'>
+                  Modify
+                </button>
+                <div className='mt-4 space-x-2 w-full'>
+                  <hr />
+                  <p className='text-sm mt-4'>Cancel this event</p>
+                  <div className='flex gap-4 w-full justify-between my-4 align-top'>
+                    <Input type='checkbox' className='w-6 h-6' />
+                    <p className='text-[10px] text-dashtext'>
+                      Cancelling an event can disappoint your audience and
+                      affect your reputation. Check this box to confirm that you
+                      understand the implications.
+                    </p>
+                  </div>
+                  <button
+                    disabled
+                    className='dark:bg-[#E62222] dark:bg-opacity-[5%] dark:text-[#E62222] border-[1px] dark:hover:bg-opacity-[8%] p-[8px] px-[12px] rounded-[8px] w-full  hover:shadow-none hover:outline-none hover:text-red-800 hover:border-none'
+                  >
+                    Cancel event
+                  </button>
                 </div>
               </CardContent>
             </Card>
-            <div className='mt-4 space-x-2 absolute right-0 flex items-center'>
-              <Link
-                href='/studio/events'
-                className='dark:bg-transparent dark:text-white border-[1px] border-dashBorder dark:hover:bg-transparent p-[8px] px-[12px] rounded-[8px]'
-              >
-                Cancel
-              </Link>
-              <Button
-                // type='submit'
-                onClick={() => {
-                  trigger();
-                }}
-                className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
-              >
-                Next
-              </Button>
-            </div>
           </form>
         </div>
       </div>
