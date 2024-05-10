@@ -1,1 +1,1 @@
-import Manager from"./Manager.js";export{Manager};
+import Manager from"./Manager.js";import StreamManagerInternal from"./StreamManagerInternal.js";export{Manager,StreamManagerInternal};

@@ -1017,11 +1017,25 @@ button:not(:disabled):active {
     cursor: default;
 }
 
+.spinner {
+    transition: 200ms;
+}
+
+.spinnerRelative {
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.spinnerHide {
+    margin: 0;
+}
+
 .spinner::after {
     content: "";
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     top: 0;
     left: 0;
     right: 0;
