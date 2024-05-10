@@ -10,6 +10,7 @@ import { homePageData } from '/customModules/features/seo-data';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
+import StreamManagerInternal from '/modules/streaming/manager/StreamManagerInternal'
 // import { Menu } from '/modules/menu/';
 
 const pageName = 'Index';
@@ -23,6 +24,7 @@ export const page = (props) => {
         pageData={homePageData}
         props={props}
       >
+        <StreamManagerInternal { ...props } />
         <Hero {...props} />
         <div className='max-w-7xl mx-auto py-24 font-Archivo'>
           <div className='flex flex-col lg:flex-row'>
