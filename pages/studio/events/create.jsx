@@ -32,7 +32,16 @@ import EventDetailsForm from '../../../components/forms/EventDetailsForm';
 const pageName = 'create';
 
 const Create = (props) => {
-  const { register, handleSubmit, reset, control, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    setValue,
+    trigger,
+    formState: { errors },
+    watch,
+  } = useForm();
   const [selectedImage, setSelectedImage] = useState(null);
   const [bannerImage, setbannerImage] = useState(null);
   const [lineUpInfo, setLineUpInfo] = useState([]);
@@ -303,7 +312,7 @@ const Create = (props) => {
       title: 'Success!',
       description:
         'Congrats! Your event has been created successfully. You can share a link to the events page, or add it to your marketing.',
-      action: <ToastAction altText='Goto schedule to undo'>Undo</ToastAction>,
+      action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>,
     });
     reset();
     setEventDetails({});
@@ -320,30 +329,40 @@ const Create = (props) => {
     //console.log('imgfor', imgFor);
   };
 
+  const isOnSubmit = (data) => {
+    // this handles form submission logic here
+    console.log('Form submitted:', data);
+    setStep(2);
+  };
   return (
     <StudioLayout {...props} showNav>
       {step === 1 && (
-        <div className='max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]'>
+        <div className="max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]">
           <div>
-            <div className='flex justify-between items-center'>
-              <h1 className='font-bold text-lg'>Create event</h1>
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold text-lg">Create event</h1>
               <p>
-                Step {step} <span className='text-dashtext'>of 3</span>
+                Step {step} <span className="text-dashtext">of 3</span>
               </p>
             </div>
-            <p className='text-dashtext text-sm mt-2'>
+            <p className="text-dashtext text-sm mt-2">
               Don&apos;t worry if you need a break! Your event details are saved
               as a draft. Come back and complete it anytime.
             </p>
           </div>
-          <form className='relative' action='' onSubmit={() => setStep(2)}>
-            <Card className=' dark:bg-transparent mt-8'>
-              <CardContent className='space-y-4 mt-4'>
-                <div className='flex flex-col justify-center space-y-2'>
-                  <label htmlFor=''>Banner image</label>
+
+          <form
+            className="relative"
+            action=""
+            onSubmit={handleSubmit(isOnSubmit)}
+          >
+            <Card className=" dark:bg-transparent mt-8">
+              <CardContent className="space-y-4 mt-4">
+                <div className="flex flex-col justify-center space-y-2">
+                  <label htmlFor="">Banner image</label>
                   <Controller
                     control={control}
-                    name='banner.image'
+                    name="banner.image"
                     render={({ field: { onChange } }) => (
                       <UploadZone
                         handleImageUpload={(file) => {
@@ -356,33 +375,43 @@ const Create = (props) => {
                     )}
                   />
                 </div>
-                <div className='space-y-2 mt-8'>
-                  <label htmlFor='title'>
-                    {' '}
+                <div className="space-y-2 mt-8">
+                  <label htmlFor="title">
                     What is the title of your event?
                   </label>
                   <Input
-                    name='name'
-                    placeholder='Event title'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                    {...register('name')}
+                    id="title"
+                    name="name"
+                    placeholder="Event title"
+                    className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
+                    {...register('name', {
+                      required: 'Event title is required',
+                      minLength: {
+                        value: 1,
+                        message: 'Enter title of event',
+                      },
+                    })}
                   />
+                  {errors?.name && (
+                    <p className="text-red-500">{`${errors?.name.message}`}</p>
+                  )}
                 </div>
-                <div className='space-y-2'>
-                  <label htmlFor='description'>Description</label>
+                <div className="space-y-2">
+                  <label htmlFor="description">Description</label>
                   <Input
-                    name='description'
-                    placeholder='A time to party!'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                    id="description"
+                    name="description"
+                    placeholder="A time to party!"
+                    className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                     {...register('description')}
                   />
                 </div>
-                <div className='space-y-2'>
-                  <label htmlFor='stream start'>
+                <div className="space-y-2">
+                  <label htmlFor="stream start">
                     When does your stream start and end?
                   </label>
-                  <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2 '>
-                    <div className='relative w-full'>
+                  <div className="grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2 ">
+                    <div className="relative w-full">
                       <Controller
                         control={control}
                         name={'date'}
@@ -396,84 +425,97 @@ const Create = (props) => {
                         }}
                       />
                     </div>
-                    <div className='relative'>
+                    <div className="relative">
                       <Input
-                        placeholder='Start time'
-                        type='time'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        id="stream start"
+                        placeholder="Start time"
+                        type="time"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                         {...register('startTime')}
                       />
                     </div>
-                    <div className='relative'>
+                    <div className="relative">
                       <Input
-                        placeholder='End time'
-                        type='time'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        placeholder="End time"
+                        type="time"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                         {...register('endTime')}
                       />
                       {/* <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' /> */}
                     </div>
                   </div>
                 </div>
-                <div className='space-y-2'>
-                  <label htmlFor='venue'>Where is it happening ?</label>
+                <div className="space-y-2">
+                  <label htmlFor="venue">Where is it happening ?</label>
                   <Input
-                    name='venue'
-                    placeholder='Type the venue address'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                    id="venue"
+                    name="venue"
+                    placeholder="Type the venue address"
+                    className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                     {...register('venue')}
                   />
                 </div>
-                <div className='space-y-2 '>
-                  <label htmlFor='price'>What is the ticket price?</label>
-                  <div className='relative'>
+                <div className="space-y-2 ">
+                  <label htmlFor="price">What is the ticket price?</label>
+                  <div className="relative">
                     <Input
-                      name='price'
-                      placeholder='15.99'
-                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                      {...register('price')}
+                      id="price"
+                      name="price"
+                      type="number"
+                      placeholder="15.99"
+                      className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
+                      {...register('price', {
+                        required: 'Price  is required',
+                        minLength: {
+                          value: 0,
+                          message: 'Enter price in CAD',
+                        },
+                      })}
                     />
-                    <p className='absolute right-2 top-2 text-dashtext text-sm'>
+                    <p className="absolute right-2 top-2 text-dashtext text-sm">
                       $CAD
                     </p>
+                    {errors?.price && (
+                      <p className="text-red-500">{`${errors?.price.message}`}</p>
+                    )}
                   </div>
                 </div>
-                <div className='space-y-2 '>
-                  <label htmlFor='quantity'>Quantity</label>
-                  <div className='relative'>
+                <div className="space-y-2 ">
+                  <label htmlFor="quantity">Quantity</label>
+                  <div className="relative">
                     <Input
-                      name='quantity'
-                      placeholder='10'
-                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      name="quantity"
+                      placeholder="10"
+                      className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                       {...register('quantity')}
                     />
                   </div>
                 </div>
-                <div className='space-y-2'>
-                  <label htmlFor='description'>
+                <div className="space-y-2">
+                  <label htmlFor="description">
                     Discount (Leave empty if none)
                   </label>
-                  <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2'>
-                    <div className=''>
+                  <div className="grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2">
+                    <div className="">
                       <Input
-                        placeholder='Amount'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        placeholder="Amount"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                         {...register('discount.amount')}
                       />
                     </div>
-                    <div className='relative'>
+                    <div className="relative">
                       <Input
-                        placeholder='Start date'
-                        type='date'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        placeholder="Start date"
+                        type="date"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                         {...register('discount.startDate')}
                       />
                     </div>
-                    <div className='relative'>
+                    <div className="relative">
                       <Input
-                        placeholder='End time'
-                        type='date'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-dashtext'
+                        placeholder="End time"
+                        type="date"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-dashtext"
                         {...register('discount.endDate')}
                       />
                     </div>
@@ -481,16 +523,17 @@ const Create = (props) => {
                 </div>
               </CardContent>
             </Card>
-            <div className='mt-4 space-x-2 absolute right-0 flex items-center'>
+            <div className="mt-4 space-x-2 absolute right-0 flex items-center">
               <Link
-                href='/studio/events'
-                className='dark:bg-transparent dark:text-white border-[1px] border-dashBorder dark:hover:bg-transparent p-[8px] px-[12px] rounded-[8px]'
+                href="/studio/events"
+                className="dark:bg-transparent dark:text-white border-[1px] border-dashBorder dark:hover:bg-transparent p-[8px] px-[12px] rounded-[8px]"
               >
                 Cancel
               </Link>
               <Button
-                type='submit'
-                className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
+                type="submit"
+                // disabled={isSubmitting}
+                className="dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none"
               >
                 Next
               </Button>
@@ -499,31 +542,31 @@ const Create = (props) => {
         </div>
       )}
       {step === 2 && (
-        <div className='max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]'>
+        <div className="max-w-[500px] mx-auto font-lexend mt-[2rem] mb-[12rem]">
           <div>
-            <div className='flex justify-between items-center'>
-              <h1 className='font-bold text-lg'>Create event</h1>
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold text-lg">Create event</h1>
               <p>
-                Step {step} <span className='text-dashtext'>of 3</span>
+                Step {step} <span className="text-dashtext">of 3</span>
               </p>
             </div>
-            <p className='text-dashtext text-sm mt-2'>
+            <p className="text-dashtext text-sm mt-2">
               Don&apos;t worry if you need a break! Your event details are saved
               as a draft. Come back and complete it anytime.
             </p>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className='relative'>
-            <Card className=' dark:bg-transparent mt-8'>
-              <CardTitle className='p-4'>Enter performers</CardTitle>
-              <CardContent className='space-y-4 mt-4'>
-                <div className='space-y-2'>
-                  <p className='mb-8'>HEADLINER</p>
-                  <label htmlFor='title'>Performer name and photo</label>
-                  <div className='flex items-center gap-x-2'>
+          <form onSubmit={handleSubmit(onSubmit)} className="relative">
+            <Card className=" dark:bg-transparent mt-8">
+              <CardTitle className="p-4">Enter performers</CardTitle>
+              <CardContent className="space-y-4 mt-4">
+                <div className="space-y-2">
+                  <p className="mb-8">HEADLINER</p>
+                  <label htmlFor="title">Performer name and photo</label>
+                  <div className="flex items-center gap-x-2">
                     <Input
-                      name='detailmeta.lineup[0].title'
-                      placeholder='Asake'
-                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      name="detailmeta.lineup[0].title"
+                      placeholder="Asake"
+                      className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                       ref={register}
                       {...register('detailmeta.lineup[0].title')}
                     />
@@ -534,30 +577,30 @@ const Create = (props) => {
                         return (
                           <Input
                             {...field}
-                            name='headliner'
+                            name="headliner"
                             value={value?.fileName}
-                            placeholder='Upload image'
-                            className='w-36'
+                            placeholder="Upload image"
+                            className="w-36"
                             onChange={(event) => {
                               onChange(event.target.files[0]);
                               handleImageUpload(event);
                               handleLineupUpload(event, 0);
                               handleLineupImage(event.target.files);
                             }}
-                            type='file'
-                            id='picture'
+                            type="file"
+                            id="picture"
                           />
                         );
                       }}
                     />
                   </div>
-                  <div className='space-y-2 mt-4'>
-                    <label htmlFor='title'>Bio</label>
-                    <div className='flex items-center gap-x-2'>
+                  <div className="space-y-2 mt-4">
+                    <label htmlFor="title">Bio</label>
+                    <div className="flex items-center gap-x-2">
                       <Input
-                        name='detailmeta.lineup[0].bio'
-                        placeholder='Enter bio'
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                        name="detailmeta.lineup[0].bio"
+                        placeholder="Enter bio"
+                        className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                         ref={register}
                         {...register('detailmeta.lineup[0].bio')}
                       />
@@ -567,23 +610,23 @@ const Create = (props) => {
                     <div>
                       <img
                         src={selectedImage}
-                        alt='Selected Image'
-                        className='mt-4 w-20 h-20 rounded-full object-cover'
+                        alt="Selected Image"
+                        className="mt-4 w-20 h-20 rounded-full object-cover"
                       />
                     </div>
                   )}
                 </div>
-                <hr className='w-full' />
-                <h3 className=''>OTHER PERFORMERS</h3>
-                <div className='space-y-4'>
+                <hr className="w-full" />
+                <h3 className="">OTHER PERFORMERS</h3>
+                <div className="space-y-4">
                   {lineUpInfo.slice(1).map((performer, index) => (
-                    <div key={index} className='space-y-2'>
-                      <label htmlFor='title'>Performer name and photo</label>
-                      <div className='flex gap-2 mb-2'>
+                    <div key={index} className="space-y-2">
+                      <label htmlFor="title">Performer name and photo</label>
+                      <div className="flex gap-2 mb-2">
                         <Input
                           name={`detailmeta.lineup[${index + 1}].title`}
-                          placeholder='Enter artist, performer or band name'
-                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          placeholder="Enter artist, performer or band name"
+                          className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                           {...register(`detailmeta.lineup[${index + 1}].title`)}
                         />
                         <Controller
@@ -596,31 +639,31 @@ const Create = (props) => {
                               {...field}
                               value={value?.fileName}
                               name={`detailmeta.lineup[${index + 1}].image`}
-                              placeholder='Upload image'
-                              accept='image/*'
-                              className='w-36'
+                              placeholder="Upload image"
+                              accept="image/*"
+                              className="w-36"
                               onChange={(e) => {
                                 onChange(e.target.files[0]);
                                 handleLineupUpload(e, index + 1);
                                 handleLineupImage(e.target.files);
                               }}
-                              type='file'
+                              type="file"
                               id={`picture-${index}`}
                             />
                           )}
                         />
                       </div>
                       {performer.file && (
-                        <div className='flex gap-x-2'>
+                        <div className="flex gap-x-2">
                           <img
                             src={performer.file}
-                            alt='Performer'
-                            className='w-10 h-10 rounded-full object-cover'
+                            alt="Performer"
+                            className="w-10 h-10 rounded-full object-cover"
                           />
                           <Button
-                            className='text-red-500 ml-2'
+                            className="text-red-500 ml-2"
                             onClick={() => deletePerformer(index + 1)}
-                            type='button'
+                            type="button"
                           >
                             Delete
                           </Button>
@@ -630,58 +673,58 @@ const Create = (props) => {
                   ))}
                   <div>
                     <Button
-                      type='button'
+                      type="button"
                       onClick={addPerformer}
-                      className='w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white'
+                      className="w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white"
                     >
                       Add another performer{' '}
                     </Button>
                   </div>
                 </div>
-                <hr className='w-full' />
-                <div className=''>
-                  <p className='mb-8'>HOST</p>
-                  <label htmlFor='host.title'>Name</label>
-                  <div className='flex flex-col items-center gap-y-2 mb-2 mt-2'>
+                <hr className="w-full" />
+                <div className="">
+                  <p className="mb-8">HOST</p>
+                  <label htmlFor="host.title">Name</label>
+                  <div className="flex flex-col items-center gap-y-2 mb-2 mt-2">
                     <Input
-                      name='host.title'
-                      placeholder='Mc Big Timer'
-                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      name="host.title"
+                      placeholder="Mc Big Timer"
+                      className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                       ref={register}
                       {...register('host.title')}
                     />
                   </div>
-                  <label className='mt-2' htmlFor='title'>
+                  <label className="mt-2" htmlFor="title">
                     Bio
                   </label>
-                  <div className='flex items-center gap-x-2 mt-2'>
+                  <div className="flex items-center gap-x-2 mt-2">
                     <Input
-                      name='detailmeta.lineup[0].bio'
-                      placeholder='Host with the most'
-                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      name="detailmeta.lineup[0].bio"
+                      placeholder="Host with the most"
+                      className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                       ref={register}
                       {...register('host.bio')}
                     />
                   </div>
                 </div>
-                <hr className='w-full' />
-                <div className='space-y-2'>
-                  <label htmlFor='merch'>
+                <hr className="w-full" />
+                <div className="space-y-2">
+                  <label htmlFor="merch">
                     Sell your merch by sharing a link to your store
                   </label>
                   <Input
-                    name='merch'
-                    placeholder='https://'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                    name="merch"
+                    placeholder="https://"
+                    className="bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium"
                     {...register('merch')}
                   />
                 </div>
               </CardContent>
             </Card>
-            <div className='mt-4 space-x-2 absolute right-0'>
+            <div className="mt-4 space-x-2 absolute right-0">
               <Button
-                role=''
-                className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
+                role=""
+                className="dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent"
                 onClick={(e) => {
                   e.preventDefault();
                   setStep(1);
@@ -690,8 +733,8 @@ const Create = (props) => {
                 Go back safely
               </Button>
               <Button
-                type='submit'
-                className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
+                type="submit"
+                className="dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none"
               >
                 Next
               </Button>
@@ -700,52 +743,52 @@ const Create = (props) => {
         </div>
       )}
       {step === 3 && eventDetails && (
-        <div className='relative mt-[20px] mb-[12rem]'>
+        <div className="relative mt-[20px] mb-[12rem]">
           <div
-            className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-40 items-center justify-center'
+            className="flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-40 items-center justify-center"
             style={{
               backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0)) , url(${bannerImage})`,
               backgroundSize: 'cover',
             }}
           >
-            <h3 className='font-bold text-4xl text-white'>
+            <h3 className="font-bold text-4xl text-white">
               {eventDetails.name}
             </h3>
-            <div className='text-dashtext flex gap-4 text-sm'>
-              <div className='flex items-center gap-1'>
-                <CalendarTodayOutlinedIcon className='w-3' />
-                <p className='  text-white font-medium'>
+            <div className="text-dashtext flex gap-4 text-sm">
+              <div className="flex items-center gap-1">
+                <CalendarTodayOutlinedIcon className="w-3" />
+                <p className="  text-white font-medium">
                   {eventDetails.date && format(eventDetails.date, 'PPP')}
                 </p>
               </div>
-              <div className='flex items-center gap-1'>
-                <AccessTimeOutlinedIcon className='w-3' />
-                <p className='  text-white font-medium'>
+              <div className="flex items-center gap-1">
+                <AccessTimeOutlinedIcon className="w-3" />
+                <p className="  text-white font-medium">
                   {eventDetails.startTime}
                 </p>
               </div>
-              <div className='flex items-center gap-1'>
-                <FmdGoodOutlinedIcon className='w-3' />
-                <p className='  text-white font-medium'>{eventDetails.venue}</p>
+              <div className="flex items-center gap-1">
+                <FmdGoodOutlinedIcon className="w-3" />
+                <p className="  text-white font-medium">{eventDetails.venue}</p>
               </div>
             </div>
           </div>
-          <div className='flex flex-col pt-4'>
-            <div className='relative max-w-[500px] mx-auto'>
-              <h3 className='max-w-[500px] mx-auto mb-2 font-semibold mt-6'>
+          <div className="flex flex-col pt-4">
+            <div className="relative max-w-[500px] mx-auto">
+              <h3 className="max-w-[500px] mx-auto mb-2 font-semibold mt-6">
                 {!sent ? `Preview your event` : 'Event created successfuly'}
               </h3>
-              <div className='bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto'>
+              <div className="bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto">
                 {eventDetails.detailmeta.lineup.length > 0 && (
-                  <div className='space-y-4'>
+                  <div className="space-y-4">
                     <p>Performers</p>
-                    <p className='text-dashtext'>HEADLINER</p>
-                    <div className='flex items-center gap-x-2'>
-                      <div className='flex flex-col items-center'>
+                    <p className="text-dashtext">HEADLINER</p>
+                    <div className="flex items-center gap-x-2">
+                      <div className="flex flex-col items-center">
                         <img
                           src={selectedImage}
-                          alt=''
-                          className='w-14 h-14 object-cover rounded-full'
+                          alt=""
+                          className="w-14 h-14 object-cover rounded-full"
                         />
                         <p>{eventDetails.detailmeta.lineup[0].title}</p>
                       </div>
@@ -753,49 +796,49 @@ const Create = (props) => {
                     </div>
                   </div>
                 )}
-                <div className='mt-5'>
-                  <p className='text-dashtext'>OTHER PERFORMERS</p>
-                  <div className='flex flex-wrap gap-x-4 mt-4'>
+                <div className="mt-5">
+                  <p className="text-dashtext">OTHER PERFORMERS</p>
+                  <div className="flex flex-wrap gap-x-4 mt-4">
                     {eventDetails.detailmeta.lineup
                       .slice(1)
                       .map((performer, index) => (
-                        <div key={index} className='flex flex-col'>
-                          <div className='flex items-center gap-x-2'>
+                        <div key={index} className="flex flex-col">
+                          <div className="flex items-center gap-x-2">
                             <img
                               src={lineUpInfo[index + 1]?.file}
-                              alt=''
-                              className='w-14 h-14 rounded-full object-cover'
+                              alt=""
+                              className="w-14 h-14 rounded-full object-cover"
                             />
                             <p>{performer.title}</p>
                           </div>
                         </div>
                       ))}
                   </div>
-                  <p className='text-dashtext mt-5'>ABOUT THE HOST</p>
-                  <div className='bg-black rounded-[8px] p-4 mt-2'>
-                    <p className='font-semibold text-lg'>
+                  <p className="text-dashtext mt-5">ABOUT THE HOST</p>
+                  <div className="bg-black rounded-[8px] p-4 mt-2">
+                    <p className="font-semibold text-lg">
                       {eventDetails?.host?.title}
                     </p>
-                    <p className='text-dashtext'>{eventDetails?.host?.bio}</p>
+                    <p className="text-dashtext">{eventDetails?.host?.bio}</p>
                   </div>
                 </div>
               </div>
               {!sent && (
-                <div className='flex gap-x-2 mt-4'>
-                  <input type='checkbox' />
-                  <p className='text-sm'>
+                <div className="flex gap-x-2 mt-4">
+                  <input type="checkbox" />
+                  <p className="text-sm">
                     Checking this button confirms your acceptance of our
-                    <span className='underline'>event creation guidelines</span>
+                    <span className="underline">event creation guidelines</span>
                     , which detail the process and expectations for creating
                     events.
                   </p>
                 </div>
               )}
               {!sent ? (
-                <div className='mt-4 space-x-2 absolute right-0'>
+                <div className="mt-4 space-x-2 absolute right-0">
                   <Button
-                    role=''
-                    className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
+                    role=""
+                    className="dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent"
                     onClick={(e) => {
                       e.preventDefault();
                       setStep(2);
@@ -805,18 +848,18 @@ const Create = (props) => {
                   </Button>
                   <Button
                     onClick={handleButtonClick}
-                    className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
+                    className="dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none"
                   >
                     Confirm event
                   </Button>
                 </div>
               ) : (
-                <div className='mt-8 space-x-2 absolute right-0'>
+                <div className="mt-8 space-x-2 absolute right-0">
                   <Button
                     onClick={(e) => {
                       setSent(false);
                     }}
-                    className='dark:bg-transparent dark:text-white dark:border-[1px] dark:border-dashBorder dark:hover:bg-transparent p-3 rounded-[6px] text-sm'
+                    className="dark:bg-transparent dark:text-white dark:border-[1px] dark:border-dashBorder dark:hover:bg-transparent p-3 rounded-[6px] text-sm"
                   >
                     Create another event
                   </Button>
