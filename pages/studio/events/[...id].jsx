@@ -121,7 +121,11 @@ const EventView = (props) => {
         {!loading && ticket && (
           <div>
             {modalOpen && (
-              <EventUpdateModal setModalOpen={setModalOpen} ticket={ticket} />
+              <EventUpdateModal
+                setModalOpen={setModalOpen}
+                ticket={ticket}
+                {...props}
+              />
             )}
             <div className='relative  mb-[12rem]'>
               <div className='relative'>

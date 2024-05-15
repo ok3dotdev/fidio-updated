@@ -82,7 +82,7 @@ const Events = (props) => {
         });
         setTickets(tix || []);
         if (tickets) {
-          //console.log('tix', tickets);
+          console.log('tix', tickets);
           setLoading(false);
         }
       }

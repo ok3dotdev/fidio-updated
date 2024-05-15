@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Ticket = ({ info, ticketData }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
-  // //console.log('Ddd', ticketData, info);
+  console.log('Ddd', ticketData, info);
 
   return (
     <div

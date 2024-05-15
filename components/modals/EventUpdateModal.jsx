@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Close from '@mui/icons-material/Close';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Loader2, Plus } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+
 import { DatePickerDemo } from '@/components/inputs/DatePicker';
 import { Input } from '@/components/ui/input';
 import { useForm, Controller } from 'react-hook-form';
@@ -10,10 +13,21 @@ import apiReq from '/modules/utility/api/apiReq'; // Import API for making DB Re
 import { defaultStyle } from '/modules/ecommerce/product/defaults';
 import { v4 as uuidv4 } from 'uuid';
 
-const EventUpdateModal = ({ setModalOpen, ticket }) => {
-  console.log('iddddd', ticket?.id);
-  const { register, handleSubmit, reset, control, setValue } = useForm();
+const EventUpdateModal = (props) => {
+  const { setModalOpen, ticket } = props;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    setValue,
+    trigger,
+    formState,
+  } = useForm();
   const [componentDidMount, setComponentDidMount] = React.useState(false);
+  const { errors } = formState;
+  const [loading, setLoading] = useState(true);
+  const [imgCache, setImgCache] = React.useState(new FormData());
   const [surveyState, setSurveyState] = React.useState({
     answers: {},
     currentStage: null,
@@ -25,18 +39,22 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
   React.useEffect(() => {
     if (!componentDidMount) {
       const f = async () => {
-        const res2 = await apiReq('/fetch/fetchhandler', {
-          handlerArgs: [
-            {
-              productReq: [ticket?.id],
-            },
-          ],
-        });
-        console.log('res', res2);
-        if (res2?.data?.fetchedData[1]?.productReq[0]) {
-          const temp = surveyState;
-          temp.pipelineDbItem = res2?.data?.fetchedData[1]?.productReq[0];
-          setSurveyStateDefault(data);
+        setLoading(true);
+        try {
+          const res2 = await apiReq('/fetch/fetchhandler', {
+            handlerArgs: [
+              {
+                productReq: [ticket?.id],
+              },
+            ],
+          });
+          if (res2?.data?.fetchedData[0]?.productReq[0]) {
+            const data = res2?.data?.fetchedData[0]?.productReq[0];
+            setSurveyStateDefault(data);
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        } finally {
         }
       };
       f();
@@ -48,9 +66,12 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
     const temp = surveyState;
     temp.pipelineDbItem = data;
     setSurveyState(temp);
+    setLoading(false);
+
+    console.log('item', surveyState.pipelineDbItem);
   };
 
-  console.log('item', surveyState.pipelineDbItem);
+  const { pipelineDbItem } = surveyState;
 
   const allowedTypes = ['image/jpeg', 'image/png'];
 
@@ -98,18 +119,33 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
     setImgCache(useForm);
   });
 
-  const publishProduct = async () => {
-    console.log('Run', surveyState);
+  const publishProduct = async (data) => {
+    await trigger();
+    console.log('Run', data);
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
       pipelineDbItem: surveyState.pipelineDbItem,
-      pipelineObject: surveyState.pipelineObject,
+      pipelineObject: data,
       imgCache: imgCache,
       imgFor: surveyState.imgFor,
       _loggedIn: props?._loggedIn, // Requires Authentication
     });
     console.log('Published!', res);
   };
+
+  if (loading) {
+    return (
+      <div className='absolute w-full left-0 z-40 flex justify-center px-4 '>
+        <div className=' p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-hidden '>
+          <div className='max-w-screen-2xl mx-auto w-full pb-10 '>
+            <div className='h-[500px] w-full flex items-center justify-center'>
+              <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
@@ -124,7 +160,11 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
           </div>
         </div>
         <div>
-          <form className='relative mb-12' action='' onSubmit={() => trigger()}>
+          <form
+            className='relative mb-12'
+            action=''
+            onSubmit={handleSubmit(publishProduct)}
+          >
             <Card className=' dark:bg-transparent mt-8'>
               <CardContent className='space-y-4 mt-4'>
                 <div className='space-y-2 mt-8'>
@@ -132,28 +172,32 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                     {' '}
                     What is the title of your event?
                   </label>
-                  <Input
-                    name='name'
-                    id='title'
-                    placeholder='Event title'
-                    defaultValue={ticket?.name}
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                    {...register('name', {
-                      required: {
-                        value: true,
-                        message: 'Event must have a title',
-                      },
-                      min: 5,
-                    })}
-                  />
+                  <div>
+                    <Input
+                      name='name'
+                      id='title'
+                      placeholder='Event title'
+                      defaultValue={pipelineDbItem.name}
+                      className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                      {...register('name', {
+                        required: {
+                          value: true,
+                          message: 'event must have a title',
+                        },
+                        min: 5,
+                      })}
+                    />
+                    <p className='text-red-600 text-sm mt-1'>
+                      {errors.name?.message}
+                    </p>
+                  </div>
                 </div>
-                {/* <p>{errors.name?.message}</p> */}
                 <div className='space-y-2'>
                   <label htmlFor='description'>Description</label>
                   <Input
                     name='description'
                     placeholder='A time to party!'
-                    defaultValue={ticket?.detailmeta?.description}
+                    defaultValue={pipelineDbItem?.detailmeta?.description}
                     className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                     {...register('description')}
                   />
@@ -167,7 +211,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       <Controller
                         control={control}
                         name={'date'}
-                        defaultValue={ticket?.created?.split(' ')[0]}
+                        defaultValue={pipelineDbItem?.created?.split(' ')[0]}
                         render={({ field: { value, onChange, ...field } }) => {
                           return (
                             <DatePickerDemo
@@ -182,7 +226,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       <Input
                         placeholder='Start time'
                         type='time'
-                        defaultValue={ticket?.meta?.startTime}
+                        defaultValue={pipelineDbItem?.meta?.startTime}
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         {...register('startTime')}
                       />
@@ -191,7 +235,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       <Input
                         placeholder='End time'
                         type='time'
-                        defaultValue={ticket?.meta?.endTime}
+                        defaultValue={pipelineDbItem?.meta?.endTime}
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         {...register('endTime')}
                       />
@@ -204,7 +248,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                   <Input
                     name='venue'
                     placeholder='Type the venue address'
-                    defaultValue={ticket?.meta?.venue}
+                    defaultValue={pipelineDbItem?.meta?.venue}
                     className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                     {...register('venue')}
                   />
@@ -216,9 +260,9 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       name='price'
                       placeholder='15.99'
                       defaultValue={
-                        ticket?.styles &&
-                        ticket?.styles[0] &&
-                        ticket?.styles[0]?.price
+                        pipelineDbItem?.styles &&
+                        pipelineDbItem?.styles[0] &&
+                        pipelineDbItem?.styles[0]?.price
                       }
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       {...register('price')}
@@ -235,9 +279,9 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       name='quantity'
                       placeholder='10'
                       defaultValue={
-                        ticket?.styles &&
-                        ticket?.styles[0] &&
-                        ticket?.styles[0]?.quantity
+                        pipelineDbItem?.styles &&
+                        pipelineDbItem?.styles[0] &&
+                        pipelineDbItem?.styles[0]?.quantity
                       }
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       {...register('quantity')}
@@ -255,6 +299,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       <Input
                         name='detailmeta.lineup[0].title'
                         placeholder='Asake'
+                        defaultValue={pipelineDbItem.detailmeta.lineup[0].title}
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         ref={register}
                         {...register('detailmeta.lineup[0].title')}
@@ -288,6 +333,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                       <div className='flex items-center gap-x-2'>
                         <Input
                           name='detailmeta.lineup[0].bio'
+                          defaultValue={pipelineDbItem.detailmeta.lineup[0].bio}
                           placeholder='Enter bio'
                           className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                           ref={register}
@@ -295,72 +341,77 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                         />
                       </div>
                     </div>
-                    {/* {selectedImage && (
+                    {pipelineDbItem.detailmeta.lineup[0].image && (
                       <div>
                         <img
-                          src={selectedImage}
+                          src={`${props?.cdn?.static}/${pipelineDbItem.detailmeta.lineup[0].image}`}
                           alt='Selected Image'
-                          className='mt-4 w-20 h-20 rounded-full object-cover'
+                          className='mt-4 w-10 h-10 rounded-full object-cover'
                         />
                       </div>
-                    )} */}
+                    )}
                   </div>
                 </div>
                 <hr className='w-full mt-6' />
                 <h3 className=''>OTHER PERFORMERS</h3>
                 <div className='space-y-4'>
-                  {/* {lineUpInfo.slice(1).map((performer, index) => (
-                    <div key={index} className='space-y-2'>
-                      <label htmlFor='title'>Performer name and photo</label>
-                      <div className='flex gap-2 mb-2'>
-                        <Input
-                          name={`detailmeta.lineup[${index + 1}].title`}
-                          placeholder='Enter artist, performer or band name'
-                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                          {...register(`detailmeta.lineup[${index + 1}].title`)}
-                        />
-                        <Controller
-                          control={control}
-                          name={`detailmeta.lineup[${index + 1}].image`}
-                          render={({
-                            field: { onChange, value, ...field },
-                          }) => (
-                            <Input
-                              {...field}
-                              value={value?.fileName}
-                              name={`detailmeta.lineup[${index + 1}].image`}
-                              placeholder='Upload image'
-                              accept='image/*'
-                              className='w-36'
-                              onChange={(e) => {
-                                onChange(e.target.files[0]);
-                                handleLineupUpload(e, index + 1);
-                                handleLineupImage(e.target.files);
-                              }}
-                              type='file'
-                              id={`picture-${index}`}
-                            />
-                          )}
-                        />
-                      </div>
-                      {performer.file && (
-                        <div className='flex gap-x-2'>
-                          <img
-                            src={performer.file}
-                            alt='Performer'
-                            className='w-10 h-10 rounded-full object-cover'
+                  {pipelineDbItem.detailmeta.lineup
+                    .slice(1)
+                    .map((performer, index) => (
+                      <div key={index} className='space-y-2'>
+                        <label htmlFor='title'>Performer name and photo</label>
+                        <div className='flex gap-2 mb-2'>
+                          <Input
+                            name={`detailmeta.lineup[${index + 1}].title`}
+                            placeholder='Enter artist, performer or band name'
+                            defaultValue={performer.title}
+                            className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                            {...register(
+                              `detailmeta.lineup[${index + 1}].title`
+                            )}
                           />
-                          <Button
-                            className='text-red-500 ml-2'
-                            onClick={() => deletePerformer(index + 1)}
-                            type='button'
-                          >
-                            Delete
-                          </Button>
+                          <Controller
+                            control={control}
+                            name={`detailmeta.lineup[${index + 1}].image`}
+                            render={({
+                              field: { onChange, value, ...field },
+                            }) => (
+                              <Input
+                                {...field}
+                                value={value?.fileName}
+                                name={`detailmeta.lineup[${index + 1}].image`}
+                                placeholder='Upload image'
+                                accept='image/*'
+                                className='w-36'
+                                onChange={(e) => {
+                                  onChange(e.target.files[0]);
+                                  handleLineupUpload(e, index + 1);
+                                  handleLineupImage(e.target.files);
+                                }}
+                                type='file'
+                                id={`picture-${index}`}
+                              />
+                            )}
+                          />
                         </div>
-                      )}
-                    </div>
-                  ))} */}
+                        {performer.file && (
+                          <div className='flex gap-x-2'>
+                            <img
+                              src={performer.file}
+                              alt='Performer'
+                              className='w-10 h-10 rounded-full object-cover'
+                            />
+                            <Button
+                              className='text-red-500 ml-2'
+                              onClick={() => deletePerformer(index + 1)}
+                              type='button'
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   <div>
                     <Button
                       type='button'
@@ -379,6 +430,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                     <Input
                       name='host.title'
                       placeholder='Mc Big Timer'
+                      defaultValue={pipelineDbItem.meta.host.title}
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       ref={register}
                       {...register('host.title')}
@@ -391,6 +443,7 @@ const EventUpdateModal = ({ setModalOpen, ticket }) => {
                     <Input
                       name='detailmeta.lineup[0].bio'
                       placeholder='Host with the most'
+                      defaultValue={pipelineDbItem.meta.host.bio}
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       ref={register}
                       {...register('host.bio')}
