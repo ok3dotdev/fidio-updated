@@ -25,7 +25,7 @@ import {
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Input } from '@/components/ui/input';
 
-const pageName = 'Events';
+const pageName = 'studioEvents';
 
 const Events = (props) => {
   const [step, setStep] = useState('draft');
