@@ -31,9 +31,6 @@ const FeaturedEventSlider = () => {
   return (
     <Carousel
       className='h-full z-40'
-      opts={{
-        loop: true,
-      }}
       plugins={[
         Autoplay({
           delay: 5000,
@@ -62,8 +59,8 @@ const FeaturedEventSlider = () => {
         ))}
       </CarouselContent>
       <div className='max-w-screen-2xl mx-auto px-12 absolute bottom-4 w-full space-x-4 left-0 right-0 h-full'>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
+        <CarouselNext className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
       </div>
     </Carousel>
   );

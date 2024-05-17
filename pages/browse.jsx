@@ -5,6 +5,7 @@ import { getServerSidePropsFunc } from '/appServer/serverProps';
 import apiReq from '/modules/utility/api/apiReq';
 import BrowseLayout from '../components/Layouts/BrowseLayout';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const pageName = 'browse';
 
@@ -51,7 +52,7 @@ const page = (props) => {
             {!loading &&
               tickets &&
               tickets.slice(0, 20).map((ticket, id) => (
-                <div>
+                <Link href={`/events/${ticket.id}`}>
                   <img
                     src={`${props?.cdn?.static}/${ticket.images[0]?.name}`}
                     className='h-[250px] aspect-square object-cover w-full rounded-[8px]'
@@ -70,7 +71,7 @@ const page = (props) => {
                       <Button className='self-end ml-auto'>Buy</Button>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
         </div>
