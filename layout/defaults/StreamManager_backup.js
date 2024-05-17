@@ -1,6 +1,8 @@
 import React from 'react'
 import PageErrorModule from '/modules/utility/utility/component/PageErrorModule'
 import { BeginStream, CurrentlyStreaming, PermissionsModule, StreamOn, StreamTitleInput, StreamMoreSettings, StreamSettings, UpcomingStreams, StreamUpdateSettings, TerminateStream, NowStreaming} from '/modules/streaming/manager/parts'
+import Preview from '/modules/streaming/watch/preview/Preview'
+import { Username } from '/modules/onboarding/signin'
 
 const Module = props => {
     const { askEndStream, fetchBusy, currentlyStreaming, ManagerStyles, streamChecking, canStream, moreSettings, settingsHeight, moreSettingsContainerRef, handleAskEndStream } = props
@@ -9,11 +11,16 @@ const Module = props => {
             <PageErrorModule { ...props } />
             {
                 props._loggedIn && props._loggedIn.username
-                    ? <div className={`${ManagerStyles.settingsSectionContainer} flex gap-p5`} style={{ padding: '.25rem' }}>
+                    ? <div className={`${ManagerStyles.settingsSectionContainer} flex gap-p5`}>
                         <div className={`${ManagerStyles.settingContainer} ${ManagerStyles.streamingInfoContainer} ${currentlyStreaming ? `${ManagerStyles.isStreamingContainer}` : ''}`}>
                             <div className={`spinner spinnerBig ${streamChecking ? 'opacity1 spinnerRelative' : 'opacity0 spinnerHide'}`}></div>
                             <PermissionsModule { ...props } />
                             <NowStreaming { ...props } />
+                            {
+                                currentlyStreaming
+                                    ? <Preview { ...props } useWatchDataPreview={currentlyStreaming} />
+                                    : null
+                            }
                             <CurrentlyStreaming { ...props } />
                             {
                                 canStream
@@ -53,7 +60,10 @@ const Module = props => {
                             }
                         </div>
                     </div>
-                    : <div>{props._loggedIn ? !props._loggedIn.username ? 'Please register Username to begin streaming' : 'Please login to begin streaming' : null}</div>
+                    : <div>
+                        <h4 style={{ marginTop: 0, padding: '0 .25rem' }}>{props._loggedIn ? !props._loggedIn.username ? 'Please register Username to begin streaming' : 'Please login to begin streaming' : null}</h4>
+                        <Username { ...props } />
+                    </div>
             }
         </div>
     )

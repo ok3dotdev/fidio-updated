@@ -6,12 +6,19 @@
     height: 0px;
     transition: 600ms;
     margin-top: 0rem;
-    max-width: 600px;
     position: fixed;
     right: 0;
     z-index: 20;
     min-width: 350px;
     max-width: 350px;
+}
+
+
+@media(max-width: 450px) {
+    .AdminPanel_Container {
+        min-width: 200px;
+        max-width: 100vw;
+    }
 }
 
 .AdminPanel_ContainerOpen {

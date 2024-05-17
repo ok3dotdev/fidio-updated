@@ -30,7 +30,6 @@
     transition: 200ms;
     overflow: auto;
     padding: 0 .25rem;
-    height: calc(100% - 45px);
     flex-grow: 1;
 }
 
@@ -106,9 +105,6 @@
 }
 
 @media(max-width: 700px) {
-    .chatLogExternalContainer {
-        height: calc(100vh - 426px);
-    }
     .userDisplayContainer {
         width: 99.9%;
     }

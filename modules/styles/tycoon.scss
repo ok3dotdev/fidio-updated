@@ -233,6 +233,10 @@ button:not(:disabled):active {
     align-items: center;
 }
 
+.width100 {
+    width: 100%;
+}
+
 .text-cen {
     text-align: center;
 }
@@ -545,6 +549,24 @@ button:not(:disabled):active {
     }
 }
 
+button.premBtn {
+    background: linear-gradient(50deg, #7252ff 0%, #ff4736 100%);
+    color: white;
+}
+
+button.premBtn:hover {
+    background: linear-gradient(50deg, #ffd75f 0%, #ffebb0 100%);
+    color: black;
+}
+
+.doneLabel {
+    background: linear-gradient(50deg, #6543bf 0%, #3defb4 100%);
+    padding: 0.25rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: .9rem;
+    border: 2px solid rgb(255, 255, 255);
+}
 
 // .marquee {
 //     animation: marquee 15s linear infinite;
@@ -1046,6 +1068,11 @@ button:not(:disabled):active {
     border-radius: 50%;
     animation: button-loading-spinner 1s ease infinite;
 }
+
+.spinnerSm::after {
+    width: 12px;
+    height: 12px;
+}
   
 @keyframes button-loading-spinner {
     from {
@@ -1104,4 +1131,61 @@ code[class*=language-], pre[class*=language-] {
 
 .lineup_uuid {
     display: none;
+}
+
+.WatchPage_Container {
+    padding-bottom: 0 !important;
+}
+
+.Watch_PreviewExternalContainer {
+    margin-top: .5rem;
+    position: relative;
+    .Watch_PreviewLabel {
+        position: absolute;
+        left: 1rem;
+        top: .75rem;
+        z-index: 15;
+        margin: 0;
+    }
+}
+
+.Watch_PreviewContainer {
+    width: 100%;
+    height: 100%;
+    .vjs-loading-spinner,
+    .vjs-modal-dialog-content,
+    .vjs-error-display,
+    .vjs-big-play-button {
+        display: none;
+    }
+    div {
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        video.vjs-tech {
+            height: auto;
+            position: relative;
+            border-radius: 1rem;
+        }
+        .vjs-volume-bar.vjs-slider-horizontal {
+            width: 2em;
+        }
+        .vjs-volume-panel {
+            max-width: 5em;
+        }
+        .vjs-control-bar {
+            .vjs-volume-control {
+                .vjs-mouse-display {
+                    .vjs-volume-tooltip {
+                        padding: .5rem 3rem .5rem 1rem;
+                    }
+                }
+            }
+        }
+    }
+    .vjs-fullscreen {
+        video.vjs-tech {
+            height: 100%;
+        }
+    }
 }
