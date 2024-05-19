@@ -24,8 +24,8 @@ import {
 } from '@/components/ui/select';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Input } from '@/components/ui/input';
-import { FiGrid } from "react-icons/fi"
-import { IoIosList } from "react-icons/io";
+import { FiGrid } from 'react-icons/fi';
+import { IoIosList } from 'react-icons/io';
 
 const pageName = 'Events';
 
@@ -340,7 +340,31 @@ const Events = (props) => {
           </p>
         </div>
         <div className="mt-8 flex justify-between p-1 items-center">
-          <h3 className="font-lexend font-medium">YOUR EVENTS</h3>
+          <div className="  cursor-pointer flex space-x-2">
+            <div
+              role="button"
+              className={`px-3 py-2 ${
+                viewMode === 'list'
+                  ? 'bg-black/30 text-white'
+                  : 'bg-transparent text-gray-600'
+              } rounded-l`}
+              onClick={() => setViewMode('list')}
+            >
+              <IoIosList className="h-7 w-7" />
+            </div>
+            <div
+              role="button"
+              className={`px-3 py-2 ${
+                viewMode === 'grid'
+                  ? 'bg-black/30 text-white'
+                  : 'bg-transparent text-gray-600'
+              } rounded-r`}
+              onClick={() => setViewMode('grid')}
+            >
+              <FiGrid className="h-7 w-7" />
+            </div>
+          </div>
+
           <div className="flex items-center gap-2">
             <p className="font-lexend">Sort by:</p>
             <div className="flex gap-2">
@@ -407,37 +431,14 @@ const Events = (props) => {
           />
         </div>
 
-        <div className="mb-4 cursor-pointer flex mr-3 space-x-2">
-          <div
-          role="button"
-            className={`px-3 py-2 ${
-              viewMode === 'list'
-                ? 'bg-black/30 text-white'
-                : 'bg-transparent text-gray-600'
-            } rounded-l`}
-            onClick={() => setViewMode('list')}
-          >
-            <IoIosList  className="h-7 w-7" />
-          </div>
-          <div
-          role="button"
-            className={`px-3 py-2 ${
-              viewMode === 'grid'
-                ? 'bg-black/30 text-white'
-                : 'bg-transparent text-gray-600'
-            } rounded-r`}
-            onClick={() => setViewMode('grid')}
-          >
-            <FiGrid  className="h-7 w-7" />
-          </div>
-        </div>
-
         <div className="my-8 space-y-4">
           {!loading && tickets.length > 0 && (
             <div
               id="itemContainer"
               className={`my-8 mb-12 ${
-                viewMode === 'list' ? 'list-view' : 'grid-view'
+                viewMode === 'list'
+                  ? 'list-view'
+                  : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2'
               }`}
             >
               {tickets.map((m, index) => (
