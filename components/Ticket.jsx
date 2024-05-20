@@ -72,7 +72,7 @@ const Ticket = ({ info, ticketData, viewMode }) => {
   if (viewMode === 'grid') {
     return (
       <div
-        className='h-[320px] w-[270px] rounded-lg border shadow-Txl '
+        className=' rounded-lg border shadow-Txl '
         // style={{
         //   backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0)) , url(${info?.cdn?.static}/${images[0]?.name})`,
         //   backgroundSize: 'cover',
@@ -132,7 +132,9 @@ const Ticket = ({ info, ticketData, viewMode }) => {
               </div>
               <div className='flex items-left flex-col'>
                 <span className='text-white/40 text-sm'>Created by</span>
-                <span className='text-white/90 font-medium'>MC Clint</span>
+                <span className='text-white/90 font-medium'>
+                  {meta?.host?.title}
+                </span>
               </div>
             </div>
           </div>

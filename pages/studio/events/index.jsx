@@ -216,7 +216,7 @@ const Events = (props) => {
               className={`my-8 mb-12 ${
                 viewMode === 'list'
                   ? 'list-view'
-                  : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2'
+                  : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 gap-y-4'
               }`}
             >
               {tickets.map((m, index) => (

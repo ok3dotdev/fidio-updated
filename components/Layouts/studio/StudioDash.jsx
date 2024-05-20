@@ -225,7 +225,7 @@ const StudioDash = (props) => {
       {!loading && tickets.length > 0 ? (
         <div className='my-8 space-y-2 mb-12'>
           {tickets.map((m, index) => (
-            <Ticket info={props} ticketData={m} key={index} />
+            <Ticket info={props} ticketData={m} key={index} viewMode={'list'} />
           ))}
         </div>
       ) : (
