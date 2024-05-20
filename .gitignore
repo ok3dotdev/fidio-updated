@@ -51,8 +51,8 @@ tycoon-client-modules-dist/*
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
-customModules/*
 !*customModules/admin
+customModules/doc/
 customModules/admin/*
 !*customModules/admin/index_backup.js
 !*customModules/admin/components
