@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { fetchPost } from '/modules/utility/fetch';
 import resolveConfig, { resolveVariables, pageDefaults } from '/app.config';
 import {
   basicError,

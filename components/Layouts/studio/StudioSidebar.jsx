@@ -2,21 +2,14 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Wave } from '../icons';
-// import UserMenu from '/customModules/features/UserMenu';
-import UserMenu from './UserMenu';
-
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from '@/components/ui/resizable';
+import { Wave } from '../../icons';
+import UserMenu from '../UserMenu';
 
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-const Sidebar = (props) => {
+const StudioSidebar = (props) => {
   const router = useRouter();
   const { username } = props?._loggedIn;
   const capitalizedUsername = username
@@ -100,4 +93,4 @@ const Sidebar = (props) => {
   );
 };
 
-export default Sidebar;
+export default StudioSidebar;

@@ -65,6 +65,14 @@ const FeaturedEvent = (props) => {
       date: ' January 14, 2024 4:00PM WAT',
       id: 'tinys-condo-session',
     },
+    {
+      backgroundImageDesktop: 'url(/img/internal/home-banner.png)',
+      backgroundImageMobile: 'url(/img/internal/home-banner-mobile1.png)',
+      artist: 'TINY’S CONDO SESSION',
+      event: 'Live from Lagos',
+      date: ' January 14, 2024 4:00PM WAT',
+      id: 'tinys-condo-session',
+    },
   ];
 
   // const receiveData = (data) => {
@@ -114,7 +122,7 @@ const FeaturedEvent = (props) => {
         selectedItem={currentIndex}
         onChange={handleCarouselChange}
         showThumbs={false}
-        showArrows={true}
+        showArrows={false}
         showStatus={false}
         interval={3000}
       >
