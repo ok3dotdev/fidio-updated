@@ -201,12 +201,6 @@ input {
   max-height: 40px !important;
   background-position: center !important;
 }
-.list-view {
-  @apply space-y-4;
-}
-/* .grid-view {
-  @apply grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4;
-} */
 
 @layer base {
   .dark {
