@@ -4,54 +4,39 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import { getServerSidePropsFunc } from '/appServer/serverProps';
 import Cart from '/modules/ecommerce/cart/CartInternal';
 
 import HomeLayout from '/customModules/features/HomeLayout';
-import apiReq from '/modules/utility/api/apiReq';
 import EventPageHero from '../../components/common/EventPageHero';
 
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import ShareIcon from '@mui/icons-material/Share';
 import { fireGlobalEvent } from '/modules/utility/utility';
+import { fetchTickets } from '@/lib/utils';
 
-import Button from '@/components/ui/button';
-import { fontFamily } from '@mui/system';
 const pageName = 'events';
 
 export const Page = (props) => {
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const router = useRouter();
   const [cartOpen, setCartOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    fetchTickets();
+    const loadTickets = async () => {
+      setLoading(true);
+      const tix = await fetchTickets(props?.apiUrl, router.query.slug);
+      setTicket(tix);
+      setLoading(false);
+    };
+
+    loadTickets();
   }, [props?._loggedIn?.identifier]);
 
-  const fetchTickets = async () => {
-    setLoading(true);
-    if (props) {
-      const res = await apiReq('/product/getProducts', {
-        apiUrl: props?.apiUrl,
-        pagination: 0,
-        id: router.query.slug,
-      });
-      if (res && res.products) {
-        setTicket(res.products[0] || []);
-        setLoading(false);
-      } else {
-        setError(true);
-        setTicket([]);
-      }
-    }
-  };
   const handleOpenCart = (e) => {
-    fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
+    fireGlobalEvent(e, props._LocalEventEmitter);
     props._toggleSingleOpenMenu(e, 'cart');
     if (props?._openMenu?.currentMenu === 'cart') {
       setCartOpen(false);
@@ -61,12 +46,6 @@ export const Page = (props) => {
       }, 150);
     }
   };
-  // const handleAddProduct = React.useCallback(async (e) => {
-  //   fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
-  // });
-  if (!loading && ticket) {
-    // console.log('values', cartOpen);
-  }
 
   return (
     <div className='relative'>
@@ -83,9 +62,6 @@ export const Page = (props) => {
           >
             {<Cart {...props} forceShowCc={true} setCartOpen={setCartOpen} />}
           </div>
-        )}
-        {error && (
-          <h1>There was an error with this page. We are looking into it.</h1>
         )}
         {ticket && (
           <>
@@ -219,11 +195,7 @@ export const Page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  let currentProps = await getServerSidePropsDefault(
-    context,
-    pageDefaults[pageName]
-  );
-  return await getServerSidePropsFunc(currentProps, context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default Page;

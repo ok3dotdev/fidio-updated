@@ -30,7 +30,7 @@ const FeaturedEventSlider = () => {
 
   return (
     <Carousel
-      className='h-full z-40'
+      className='h-full z-20'
       plugins={[
         Autoplay({
           delay: 5000,
@@ -48,7 +48,7 @@ const FeaturedEventSlider = () => {
               alt=''
               className='w-full h-full border-none absolute inset-0 object-cover'
             />
-            <div className='absolute bottom-12 left-0 w-full px-8 md:px-4 space-y-8 right-0 max-w-screen-2xl mx-auto z-30'>
+            <div className='absolute bottom-12 left-0 w-full px-8 md:px-4 space-y-8 right-0 max-w-screen-xl mx-auto z-30'>
               <h1 className='text-2xl md:text-6xl font-bold'>
                 Asake in toronto
               </h1>
@@ -58,7 +58,7 @@ const FeaturedEventSlider = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className='max-w-screen-2xl mx-auto px-12 absolute bottom-4 w-full space-x-4 left-0 right-0 h-full'>
+      <div className='max-w-screen-xl mx-auto px-12 absolute bottom-4 w-full space-x-4 left-0 right-0 h-full'>
         <CarouselPrevious className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
         <CarouselNext className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
       </div>

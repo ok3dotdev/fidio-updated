@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/select';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Input } from '@/components/ui/input';
-import Ticket from '../Ticket';
+import Ticket from '../../Ticket';
 
 const StudioDash = (props) => {
   const [tickets, setTickets] = useState([]);

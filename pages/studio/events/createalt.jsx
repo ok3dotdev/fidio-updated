@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import StudioLayout from '@/components/Layouts/StudioLayout';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 import apiReq from '/modules/utility/api/apiReq';
 import { defaultStyle } from '/modules/ecommerce/product/defaults';
 import { v4 as uuidv4 } from 'uuid';

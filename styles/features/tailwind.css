@@ -278,7 +278,9 @@ input {
 .Survey_currentItem__z2NUZ label {
   @apply font-sans;
 }
-
+.Ecommerce_Cart_Container button {
+  @apply dark:bg-accentY;
+}
 /* @layer components {
   .zoom-image [data-rmiz-modal-overlay='visible'] {
     @apply bg-background/10 backdrop-blur;

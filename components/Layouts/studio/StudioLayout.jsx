@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import StudioNav from '@/components/Layouts/StudioNav';
+import StudioNav from '@/components/Layouts/studio/StudioNav';
+import StudioSidebar from '@/components/Layouts/studio/StudioSidebar';
 import { Toaster } from '@/components/ui/toaster';
-import Sidebar from '@/components/Layouts/Sidebar';
 import Link from 'next/link';
-// import UserMenu from '/customModules/features/UserMenu';
-import UserMenu from './UserMenu';
+import UserMenu from '../UserMenu';
 
-import { Wave } from '../icons';
+import { Wave } from '../../icons';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/router';
 
@@ -71,7 +70,7 @@ const StudioLayout = (props) => {
 
   return (
     <div className='flex h-screen w-full font-lexend relative'>
-      <Sidebar {...props} />
+      <StudioSidebar {...props} />
       <div className='flex flex-1 flex-col'>
         {(isMobileScreen || showNav) && (
           <StudioNav
