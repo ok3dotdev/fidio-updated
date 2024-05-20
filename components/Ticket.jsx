@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 const Ticket = ({ info, ticketData, viewMode }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
+<<<<<<< HEAD
   // //console.log('Ddd', ticketData, info);
   if (viewMode === 'list') {
     return (
@@ -38,6 +39,9 @@ const Ticket = ({ info, ticketData, viewMode }) => {
                 {created?.split(' ')[0]}
               </p>
             </div>
+=======
+  console.log('Ddd', ticketData, info);
+>>>>>>> Fidio-event-uppdate
 
             <div className="flex items-center gap-1">
               <div className="w-3">

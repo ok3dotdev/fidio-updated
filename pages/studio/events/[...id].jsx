@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StudioLayout from '@/components/Layouts/StudioLayout';
+import Countdown from 'react-countdown';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
@@ -13,13 +14,15 @@ import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import { format } from 'date-fns';
+import EventUpdateModal from '@/components/modals/EventUpdateModal';
 
 const pageName = 'create';
 
 const EventView = (props) => {
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [startEnabled, setStartEnabled] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -39,20 +42,91 @@ const EventView = (props) => {
       });
       if (res && res.products) {
         setTicket(res.products[0] || []);
+        const tree = setStartTimeFunc();
       }
       setLoading(false);
     }
   };
 
+  const handleEventUpdate = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  const setStartTimeFunc = (value, time) => {
+    if (!time) {
+      console.error('Start time is not defined.');
+      return null;
+    }
+    console.log('', value, time);
+    // const event = ticket.meta;
+    const date = new Date(value);
+    // Extract the time from startTime string
+    const startTimeParts = time.split(':');
+
+    // Set the hours and minutes for startTime
+    date.setHours(parseInt(startTimeParts[0], 10));
+    date.setMinutes(parseInt(startTimeParts[1], 10));
+    const res = date - Date.now();
+    const startDateInMilliseconds = date.getTime();
+    const eventTimeFormatted = date.toISOString();
+    console.log('Event Start Time (Milliseconds):', res);
+
+    return res;
+  };
+  // Parse the date string into a Date object
+
   if (!loading && ticket) {
-    // console.log('values', ticket);
+    console.log('values', ticket);
   }
+
+  const herrrr = setStartTimeFunc();
+  console.log('shhhh', herrrr);
+  // Random component
+  const Completionist = () => <span>You can start the stream!</span>;
+
+  // Renderer callback with condition
+  const renderer = ({
+    years,
+    months,
+    days,
+    hours,
+    minutes,
+    seconds,
+    completed,
+  }) => {
+    if (hours < 45) {
+      console.log('hours', hours);
+      setStartEnabled(true);
+    }
+    if (completed) {
+      // Render a complete state
+      setStartEnabled(!setStartEnabled);
+      return <Completionist />;
+    } else {
+      // Render a countdown
+      return (
+        <p className='text-3xl font-semibold text-center'>
+          {days > 0 && `${days}days `}
+          {hours > 0 && `${hours}hrs `}
+          {minutes > 0 && `${minutes}mins `}
+          {seconds > 0 && `${seconds}s`}
+        </p>
+      );
+    }
+  };
 
   return (
     <StudioLayout {...props}>
       <div className='px-2 md:px-8'>
         {!loading && ticket && (
           <div>
+            {modalOpen && (
+              <EventUpdateModal
+                setModalOpen={setModalOpen}
+                ticket={ticket}
+                {...props}
+              />
+            )}
             <div className='relative  mb-[12rem]'>
               <div className='relative'>
                 <div
@@ -77,8 +151,11 @@ const EventView = (props) => {
                       {ticket.name}
                     </h1>
                     <div>
-                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center'>
-                        <DriveFileRenameOutlineIcon className='w-8 h-8 p-1' />
+                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer'>
+                        <DriveFileRenameOutlineIcon
+                          className='w-8 h-8 p-1'
+                          onClick={handleEventUpdate}
+                        />
                       </div>
                     </div>
                   </div>
@@ -94,7 +171,7 @@ const EventView = (props) => {
                           style={{ width: '0.75rem' }}
                         />
                         <p className='font-medium'>
-                          {ticket?.created?.split(' ')[0]}
+                          {ticket?.meta?.date?.split('T')[0]}
                         </p>
                       </div>
                       <div className='flex items-center gap-1'>
@@ -190,8 +267,31 @@ const EventView = (props) => {
                       <p className='text-dashtext font-semibold'>
                         THIS EVENT BEGINS IN
                       </p>
-                      <p className='text-3xl font-semibold'>45mins 29s</p>
-                      <button className='bg-dashBorder py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none opacity-[0.3] font-semibold'>
+                      {/* <p className='text-3xl font-semibold'>45mins 29s</p> */}
+                      {ticket &&
+                        ticket?.meta &&
+                        ticket.meta.date &&
+                        ticket.meta.startTime &&
+                        setStartTimeFunc(
+                          ticket.meta.date,
+                          ticket.meta.startTime
+                        ) && (
+                          <Countdown
+                            className='text-3xl font-lexend font-bold text-center'
+                            date={
+                              Date.now() +
+                              setStartTimeFunc(
+                                ticket.meta.date,
+                                ticket.meta.startTime
+                              )
+                            }
+                            renderer={renderer}
+                          />
+                        )}
+                      <button
+                        disabled={startEnabled}
+                        className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-red-400'
+                      >
                         Start stream
                       </button>
                       <p className='text-dashtext text-sm'>
