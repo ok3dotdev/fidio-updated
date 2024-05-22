@@ -7,15 +7,13 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import Menu from '/customModules/features/AltMenu';
 import HomeLayout from '/customModules/features/HomeLayout';
-import { Input } from '@/components/ui/input';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import SubscribeForm from '../components/forms/SubscribeToNewsLetter';
 // import { createMarkup } from '/modules/article/utility';
 // import { SingleArticle } from '/modules/article';
 
 const pageName = 'ar';
 
 export const page = (props) => {
-  const [term, setTerm] = React.useState('');
   function createMarkupAlt() {
     const fixedContent = props?.articleData?.contents?.replace(/"/g, '');
 
@@ -30,8 +28,6 @@ export const page = (props) => {
 
     return readingTimeMinutes;
   }
-
-  function handleSubscribe() {}
 
   return (
     <HomeLayout
@@ -157,35 +153,7 @@ export const page = (props) => {
             </div>
           </div>
         </div>
-        <div className='relative lg:max-w-7xl mx-auto md:px-12 px-4 mt-12'>
-          <div className='p-12 bg-dashSides rounded-[10px]'>
-            <h3 className='font-bold text-3xl flex flex-col'>
-              <span>Subscribe to</span>
-              <span>Fidio’s newsletter</span>
-            </h3>
-            <div className='relative block mt-2 w-[300px]'>
-              <form
-                action=''
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSubscribe();
-                }}
-              >
-                <Input
-                  placeholder='Subscribe'
-                  className='text-muted-foreground font-lexend p-1 border-b bg-transparent border-dashBorder '
-                  onChange={(e) => setTerm(e?.target?.value)}
-                  value={term}
-                  onSubmit={handleSubscribe}
-                />
-              </form>
-              <ArrowForwardIcon
-                className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground cursor-pointer'
-                onClick={handleSubscribe}
-              />
-            </div>
-          </div>
-        </div>
+        <SubscribeForm />
       </div>
     </HomeLayout>
   );
