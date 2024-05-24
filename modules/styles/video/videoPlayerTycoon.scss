@@ -208,24 +208,67 @@ div[ad-active="true"] .shaka-small-play-button {
 
 .video-js .vjs-control-bar {
     background-color: rgba(0,0,0,0);
-    height: 3rem;
+    height: 2.5rem;
 }
 
 .video-js .vjs-control {
     font-size: 1rem;
-    width: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    color: rgb(198, 198, 198);
+}
+
+.video-js .vjs-control:hover {
+    color: white;
 }
 
 .video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal:active, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active {
     width: 9em;
 }
 
-.vide-js .vjs-control:focus:before,
+.video-js .vjs-control:focus:before,
 .video-js .vjs-control:hover:before,
 .video-js .vjs-control:focus {
     text-shadow: none !important;
 }
 
-.vjs-icon-placeholder:hover {
-    text-shadow: 0em 0em .5em white;
+// .vjs-icon-placeholder:hover {
+//     text-shadow: none;
+// }
+
+button.vjs-button:hover {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.vjs-button > .vjs-icon-placeholder:before {
+    font-size: 1.6rem;
+    line-height: normal;
+    align-content: center;
+}
+
+.video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
+    bottom: 0.25rem;
+}
+
+.video-js .vjs-volume-panel.vjs-hover .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-horizontal, .video-js .vjs-volume-panel.vjs-hover .vjs-mute-control ~ .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-horizontal {
+    width: 10em;
+}
+
+.video-js .vjs-live-control {
+    line-height: 2.5em;
+    cursor: default;
+    font-weight: 600;
+}
+
+.vjs-has-started .vjs-control-bar, .vjs-audio-only-mode .vjs-control-bar {
+    gap: .25rem;
+}
+
+.vjs-fullscreen,
+.vjs-fullscreen .vjs-tech {
+    height: 100%;
+    max-height: 100% !important;
 }

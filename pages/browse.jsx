@@ -4,6 +4,7 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { fetchTickets } from '@/lib/utils';
 import BrowseLayout from '../components/Layouts/browse/BrowseLayout';
 import Ticket from '@/components/PurchaseTicketCard';
+import { Loader2 } from 'lucide-react';
 
 const pageName = 'browse';
 
@@ -27,6 +28,11 @@ const Page = (props) => {
       <BrowseLayout>
         <div>
           <h3 className='text-2xl font-semibold'>Upcoming</h3>
+          {loading && (
+            <div className='h-[500px] w-full flex items-center justify-center'>
+              <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
+            </div>
+          )}
           <div className='grid grid-cols-1 md:grid-cols-4 gap-y-12 gap-x-4 items-center mt-6'>
             {!loading &&
               tickets &&

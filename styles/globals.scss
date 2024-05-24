@@ -48,6 +48,10 @@ a {
   box-shadow: unset !important;
   gap: 3rem !important;
   font-family: lexend !important;
+
+  @media (max-width: 768px) {
+    padding: 1rem !important;
+  }
 }
 .Ecommerce_Layout_Data_Container {
   gap: 3rem !important;
@@ -84,6 +88,15 @@ button {
   border-radius: 4px;
   // background-color: rgba(221, 104, 26, 1) !important;
   padding: 0.5rem 0.5rem !important;
+}
+
+.Ecommerce_Layout_Data_Container {
+  @media (max-width: 768px) {
+    flex-direction: column-reverse !important;
+    div {
+      width: 100% !important;
+    }
+  }
 }
 
 @import '/modules/styles/tycoon.scss';

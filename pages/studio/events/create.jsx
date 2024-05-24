@@ -14,20 +14,16 @@ import { useRouter } from 'next/router';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
-import { validationCheck } from '../../../lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Button } from '@/components/ui/button';
 import { DatePickerDemo } from '../../../components/inputs/DatePicker';
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import useSurveyStore from '../../../hooks/store';
 
 import { useForm, Controller } from 'react-hook-form';
-import EventDetailsForm from '../../../components/forms/EventDetailsForm';
 
 const pageName = 'create';
 
@@ -37,8 +33,6 @@ const Create = (props) => {
     handleSubmit,
     reset,
     control,
-    setValue,
-    trigger,
     formState: { errors },
     watch,
   } = useForm();
@@ -72,12 +66,6 @@ const Create = (props) => {
     }
   }, [componentDidMount]);
 
-  useEffect(() => {
-    if (imgFor) {
-      // //console.log('imgForqq', imgFor);
-    }
-  }, [imgFor]);
-
   const onSubmit = (data) => {
     //console.log('DATA', data);
     //console.log('info', lineUpInfo);
@@ -88,7 +76,6 @@ const Create = (props) => {
       image: performer.image || eventDetails?.detailmeta?.lineup[index]?.image,
       bio: data?.detailmeta?.lineup[index]?.bio,
     }));
-    //console.log('updated event', updatedLineup);
 
     const updatedEventDetails = {
       ...eventDetails,
@@ -98,7 +85,7 @@ const Create = (props) => {
         lineup: updatedLineup,
       },
     };
-    //console.log('updated event dets', updatedEventDetails);
+    console.log('updated event dets', updatedEventDetails);
 
     const temp = { ...pipelineDbItem };
     temp.detailmeta.lineup = updatedLineup;
@@ -149,6 +136,7 @@ const Create = (props) => {
 
   /*This handles line up image */
   const handleLineupImage = React.useCallback((files, i) => {
+    console.log('index', i);
     const useForm = imgCache;
     const useImgName = uuidv4();
     const modif = 'lineup'; // Valid names are 'featureImg', 'leadImg', 'productImg', 'lineup'
@@ -167,11 +155,12 @@ const Create = (props) => {
           return new File([blob], `${useImgName}.${ext}`, { type: m.type });
         })[0]
     );
+    console.log('index', lineUpInfo, pipelineDbItem);
     const useTempImgFor = imgFor;
     const imageObject = {
       name: `${useImgName}.${ext}`,
       modif: modif,
-      id: uuidv4(),
+      id: lineUpInfo[i]?.id,
     };
 
     /* We might not need this */
@@ -264,11 +253,11 @@ const Create = (props) => {
   };
 
   const doFunc = async () => {
-    // //console.log('Run', pipelineDbItem, eventDetails);
+    console.log('Run', pipelineDbItem, eventDetails);
     // imgCache.getAll('image').map((m) => //console.log(m));
     eventDetails.lineup = eventDetails.detailmeta.lineup;
     for (let i = 0; i < imgFor.length; i++) {
-      //console.log(imgFor[i], pipelineObject.lineup);
+      console.log(imgFor[i], pipelineObject.lineup);
     }
     try {
       const res = await apiReq('/product/createProduct', {
@@ -280,7 +269,7 @@ const Create = (props) => {
         _loggedIn: props?._loggedIn,
       });
       if (res) {
-        //console.log(res);
+        console.log(res);
       }
     } catch (error) {
       console.error('Error creating product:', error);
@@ -585,7 +574,7 @@ const Create = (props) => {
                               onChange(event.target.files[0]);
                               handleImageUpload(event);
                               handleLineupUpload(event, 0);
-                              handleLineupImage(event.target.files);
+                              handleLineupImage(event.target.files, 0);
                             }}
                             type='file'
                             id='picture'
@@ -645,7 +634,7 @@ const Create = (props) => {
                               onChange={(e) => {
                                 onChange(e.target.files[0]);
                                 handleLineupUpload(e, index + 1);
-                                handleLineupImage(e.target.files);
+                                handleLineupImage(e.target.files, index);
                               }}
                               type='file'
                               id={`picture-${index}`}

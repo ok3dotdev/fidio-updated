@@ -5,7 +5,8 @@
         width: 100%;
         .videoPlayer {
             width: 100%;
-            min-height: 100%;
+            min-height: 70vh;
+            max-height: 70vh;
         }
         @media (max-width: 700px) {
             .videoPlayer {
@@ -61,20 +62,32 @@
 
 .chatOpen {
     width: 350px;
+    width: 350px;
     max-width: 350px;
-}
-
-@media(max-width: 900px) {
-    .chatOpen {
-        width: 300px;
-        max-width: 300px;
-    }
 }
 
 .videoExternalContainer {
     display: flex;
     overflow: hidden;
     min-height: 100%;
+    .videoInternalContainer {
+        flex-grow: 1;
+        background: #161616;
+        .metaContainer {
+            padding: 1rem;
+            .title {
+                margin-top: 0;
+                margin-bottom: .5rem;
+            }
+            .socialContainer {
+
+            }
+        }
+    }
+}
+
+.commandPanelContainer {
+    overflow: hidden;
 }
 
 @media (max-width: 700px) {
@@ -89,5 +102,23 @@
     .chatContainer {
         border-left: none;
         border-top: .5px solid #2d2d2d;
+    }
+}
+
+
+@media (min-width: 700px) {
+    .commandPanelContainerOpen {
+        max-width: calc(100vw - 350px);
+    }
+}
+
+@media(max-width: 900px) {
+    .chatOpen {
+        min-width: 300px;
+        width: 300px;
+        max-width: 300px;
+    }
+    .commandPanelContainerOpen {
+        max-width: calc(100vw - 300px);
     }
 }

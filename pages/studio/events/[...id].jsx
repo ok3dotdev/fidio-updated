@@ -15,6 +15,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import EventUpdateModal from '@/components/modals/EventUpdateModal';
+import Preview from '/modules/streaming/watch/preview/Preview';
 
 const pageName = 'create';
 
@@ -290,7 +291,7 @@ const EventView = (props) => {
                         )}
                       <button
                         disabled={startEnabled}
-                        className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-red-400'
+                        className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
                       >
                         Start stream
                       </button>
@@ -300,6 +301,12 @@ const EventView = (props) => {
                         official start time. For more details, check out our
                         <span className='text-white '>Terms of Use.</span>
                       </p>
+                    </div>
+                    <div>
+                      {/* <Preview
+                        {...props}
+                        useWatchDataPreview={props?.watchData}
+                      /> */}
                     </div>
                   </div>
                 </div>

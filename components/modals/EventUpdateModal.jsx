@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import Close from '@mui/icons-material/Close';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Loader2, Plus } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardContent } from '@/components/ui/card';
+import { Loader2 } from 'lucide-react';
 
 import { DatePickerDemo } from '@/components/inputs/DatePicker';
 import { Input } from '@/components/ui/input';
 import { useForm, Controller } from 'react-hook-form';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import apiReq from '/modules/utility/api/apiReq'; // Import API for making DB Requests
-import { defaultStyle } from '/modules/ecommerce/product/defaults';
 import { v4 as uuidv4 } from 'uuid';
 
 const EventUpdateModal = (props) => {

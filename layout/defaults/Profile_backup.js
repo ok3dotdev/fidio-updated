@@ -6,8 +6,6 @@ const Module = props => {
     return (
         <div>
             <AdminPanel { ...props } />
-            <SignIn redirectOnAuth={'/p'} { ...props } />
-            <Username { ...props } />
             {
                 props?.profileData?.user
                     ? <div>
