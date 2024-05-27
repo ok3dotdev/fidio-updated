@@ -8,7 +8,6 @@ import { getServerSidePropsFunc } from '/appServer/serverProps';
 
 import { useRouter } from 'next/router';
 import apiReq from '/modules/utility/api/apiReq';
-import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
 
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -17,6 +16,19 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import EventUpdateModal from '@/components/modals/EventUpdateModal';
 import Preview from '/modules/streaming/watch/preview/Preview';
 
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
 const pageName = 'create';
 
 const EventView = (props) => {
@@ -24,6 +36,8 @@ const EventView = (props) => {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [startEnabled, setStartEnabled] = useState(false);
+  const [currentlyStreaming, setCurrentlyStreaming] = useState(null);
+  const [showStreamDialog, setShowStreamDialog] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -49,6 +63,26 @@ const EventView = (props) => {
     }
   };
 
+  const startStream = async (e) => {
+    console.log('clicked');
+    const res = await apiReq('/stream/startstream', {
+      user: props?._loggedIn,
+      streamSettings: {
+        dates: ['2024-05-27T19:35'],
+        input: ['2024-05-27T23:35', 'streamTag'],
+        password: '',
+        tags: ['streamTag'],
+        title: 'My Stream',
+        description: 'Stream description',
+      },
+      streamingFor: router.query?.id, // Use id of relevant product event. Product should be set to "Livestream"
+    });
+    console.log('resssi', res);
+    console.log('doing');
+    setCurrentlyStreaming(res.data);
+    setShowStreamDialog(true);
+  };
+
   const handleEventUpdate = () => {
     setModalOpen(!modalOpen);
   };
@@ -58,34 +92,17 @@ const EventView = (props) => {
       console.error('Start time is not defined.');
       return null;
     }
-    console.log('', value, time);
-    // const event = ticket.meta;
     const date = new Date(value);
-    // Extract the time from startTime string
     const startTimeParts = time.split(':');
-
-    // Set the hours and minutes for startTime
     date.setHours(parseInt(startTimeParts[0], 10));
     date.setMinutes(parseInt(startTimeParts[1], 10));
     const res = date - Date.now();
-    const startDateInMilliseconds = date.getTime();
-    const eventTimeFormatted = date.toISOString();
     console.log('Event Start Time (Milliseconds):', res);
-
     return res;
   };
-  // Parse the date string into a Date object
 
-  if (!loading && ticket) {
-    console.log('values', ticket);
-  }
-
-  const herrrr = setStartTimeFunc();
-  console.log('shhhh', herrrr);
-  // Random component
   const Completionist = () => <span>You can start the stream!</span>;
 
-  // Renderer callback with condition
   const renderer = ({
     years,
     months,
@@ -100,11 +117,9 @@ const EventView = (props) => {
       setStartEnabled(true);
     }
     if (completed) {
-      // Render a complete state
       setStartEnabled(!setStartEnabled);
       return <Completionist />;
     } else {
-      // Render a countdown
       return (
         <p className='text-3xl font-semibold text-center'>
           {days > 0 && `${days}days `}
@@ -268,7 +283,6 @@ const EventView = (props) => {
                       <p className='text-dashtext font-semibold'>
                         THIS EVENT BEGINS IN
                       </p>
-                      {/* <p className='text-3xl font-semibold'>45mins 29s</p> */}
                       {ticket &&
                         ticket?.meta &&
                         ticket.meta.date &&
@@ -289,12 +303,48 @@ const EventView = (props) => {
                             renderer={renderer}
                           />
                         )}
-                      <button
-                        disabled={startEnabled}
-                        className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
+                      <Dialog
+                        open={showStreamDialog}
+                        onOpenChange={setShowStreamDialog}
                       >
-                        Start stream
-                      </button>
+                        <DialogTrigger asChild>
+                          <button
+                            disabled={startEnabled}
+                            onClick={startStream}
+                            className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
+                          >
+                            Start stream
+                          </button>
+                        </DialogTrigger>
+                        <DialogContent className='sm:max-w-[425px] font-lexend'>
+                          <DialogHeader>
+                            <DialogTitle>Go Live Now</DialogTitle>
+                            <DialogDescription>
+                              Use our URL and key on any streaming software
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className='grid gap-4 py-4'>
+                            <div className='grid grid-cols-4 items-center gap-4'>
+                              <Label htmlFor='key'>Stream Key</Label>
+                              <Input
+                                id='key'
+                                className='col-span-3 text-white font-bold'
+                                value={currentlyStreaming?.key || ''}
+                                readOnly
+                              />
+                            </div>
+                            <div className='grid grid-cols-4 items-center gap-4'>
+                              <Label htmlFor='url'>Server URL</Label>
+                              <Input
+                                id='url'
+                                className='col-span-3 text-white font-bold'
+                                value={currentlyStreaming?.streamTo || ''}
+                                readOnly
+                              />
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                       <p className='text-dashtext text-sm'>
                         You can go live on your event{' '}
                         <span className='text-white'>1 hour </span>before the
@@ -302,12 +352,14 @@ const EventView = (props) => {
                         <span className='text-white '>Terms of Use.</span>
                       </p>
                     </div>
-                    <div>
-                      {/* <Preview
-                        {...props}
-                        useWatchDataPreview={props?.watchData}
-                      /> */}
-                    </div>
+                    {!loading && currentlyStreaming && (
+                      <div>
+                        <Preview
+                          {...props}
+                          useWatchDataPreview={props?.watchData}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
