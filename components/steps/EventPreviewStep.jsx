@@ -1,20 +1,91 @@
 import React from 'react';
+import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
-import useSurveyStore from '../../hooks/store';
+import { useRouter } from 'next/router';
+import { useToast } from '@/components/ui/use-toast';
+import { ToastAction } from '@/components/ui/toast';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import { format } from 'date-fns';
 
-const EventPreviewStep = ({
-  setSent,
-  sent,
-  bannerImage,
-  lineUpInfo,
-  handleButtonClick,
-  selectedImage,
-}) => {
-  const { setStep, eventDetails } = useSurveyStore();
+import apiReq from '/modules/utility/api/apiReq';
+
+import useSurveyStore from '../../hooks/store';
+
+const EventPreviewStep = ({ info, reset }) => {
+  const {
+    eventDetails,
+    setEventDetails,
+    pipelineDbItem,
+    setPipelineDbItem,
+    pipelineObject,
+    bannerImage,
+    setbannerImage,
+    setStep,
+    imgCache,
+    imgFor,
+    setImgFor,
+    sent,
+    setSent,
+    lineUpInfo,
+    selectedImage,
+    setImgCache,
+    setPipelineObject,
+    setSelectedImage,
+    setLineUpInfo,
+  } = useSurveyStore();
+
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const createEvent = async () => {
+    console.log('Run', pipelineDbItem, eventDetails);
+    for (let i = 0; i < imgFor.length; i++) {
+      console.log(imgFor[i]);
+    }
+    try {
+      const res = await apiReq('/product/createProduct', {
+        apiUrl: info?.apiUrl,
+        pipelineDbItem: pipelineDbItem,
+        pipelineObject: eventDetails,
+        imgCache: imgCache,
+        imgFor,
+        _loggedIn: info?._loggedIn,
+      });
+      if (res) {
+        console.log(res);
+      }
+    } catch (error) {
+      console.error('Error creating product:', error);
+      toast({
+        title: 'Error!',
+        description:
+          'An error occurred while creating the product. Please try again later.',
+        status: 'error',
+      });
+    }
+  };
+
+  const handleConfirmEvent = async () => {
+    await createEvent();
+    setSent(true);
+    toast({
+      title: 'Success!',
+      description: 'Congrats! Your event has been created successfully.',
+      action: <ToastAction altText='Goto schedule to undo'>Undo</ToastAction>,
+    });
+    reset();
+    setEventDetails({});
+    setSelectedImage(null);
+    setLineUpInfo([]);
+    setbannerImage('');
+    setImgCache(new FormData());
+    setImgFor([]);
+    setStep(1);
+    setPipelineObject({});
+    setPipelineDbItem({});
+    router.push('/studio');
+  };
 
   return (
     <div className='relative mt-[20px] mb-[12rem]'>
@@ -29,27 +100,27 @@ const EventPreviewStep = ({
         <div className='text-dashtext flex gap-4 text-sm'>
           <div className='flex items-center gap-1'>
             <CalendarTodayOutlinedIcon className='w-3' />
-            <p className='  text-white font-medium'>
+            <p className='text-white font-medium'>
               {eventDetails.date && format(eventDetails.date, 'PPP')}
             </p>
           </div>
           <div className='flex items-center gap-1'>
             <AccessTimeOutlinedIcon className='w-3' />
-            <p className='  text-white font-medium'>{eventDetails.startTime}</p>
+            <p className='text-white font-medium'>{eventDetails.startTime}</p>
           </div>
           <div className='flex items-center gap-1'>
             <FmdGoodOutlinedIcon className='w-3' />
-            <p className='  text-white font-medium'>{eventDetails.venue}</p>
+            <p className='text-white font-medium'>{eventDetails.venue}</p>
           </div>
         </div>
       </div>
       <div className='flex flex-col pt-4'>
         <div className='relative max-w-[500px] mx-auto'>
           <h3 className='max-w-[500px] mx-auto mb-2 font-semibold mt-6'>
-            {!sent ? `Preview your event` : 'Event created successfuly'}
+            {!sent ? `Preview your event` : 'Event created successfully'}
           </h3>
           <div className='bg-dashSides p-6 rounded-[8px] max-w-[500px] min-w-[500px] mx-auto'>
-            {eventDetails.detailmeta.lineup.length > 0 && (
+            {eventDetails?.detailmeta?.lineup?.length > 0 && (
               <div className='space-y-4'>
                 <p>Performers</p>
                 <p className='text-dashtext'>HEADLINER</p>
@@ -60,17 +131,17 @@ const EventPreviewStep = ({
                       alt=''
                       className='w-14 h-14 object-cover rounded-full'
                     />
-                    <p>{eventDetails.detailmeta.lineup[0].title}</p>
+                    <p>{eventDetails?.detailmeta?.lineup[0]?.title}</p>
                   </div>
-                  <p>{eventDetails.detailmeta.lineup[0].bio}</p>
+                  <p>{eventDetails?.detailmeta?.lineup[0]?.bio}</p>
                 </div>
               </div>
             )}
             <div className='mt-5'>
               <p className='text-dashtext'>OTHER PERFORMERS</p>
               <div className='flex flex-wrap gap-x-4 mt-4'>
-                {eventDetails.detailmeta.lineup
-                  .slice(1)
+                {eventDetails?.detailmeta?.lineup
+                  ?.slice(1)
                   .map((performer, index) => (
                     <div key={index} className='flex flex-col'>
                       <div className='flex items-center gap-x-2'>
@@ -103,7 +174,7 @@ const EventPreviewStep = ({
               </p>
             </div>
           )}
-          {!sent ? (
+          {!sent && (
             <div className='mt-4 space-x-2 absolute right-0'>
               <Button
                 role=''
@@ -116,21 +187,10 @@ const EventPreviewStep = ({
                 Go back safely
               </Button>
               <Button
-                onClick={handleButtonClick}
+                onClick={handleConfirmEvent}
                 className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
               >
                 Confirm event
-              </Button>
-            </div>
-          ) : (
-            <div className='mt-8 space-x-2 absolute right-0'>
-              <Button
-                onClick={(e) => {
-                  setSent(false);
-                }}
-                className='dark:bg-transparent dark:text-white dark:border-[1px] dark:border-dashBorder dark:hover:bg-transparent p-3 rounded-[6px] text-sm'
-              >
-                Create another event
               </Button>
             </div>
           )}

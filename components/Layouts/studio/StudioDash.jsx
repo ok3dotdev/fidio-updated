@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SalesCard from '@/components/SalesCard';
-import EventStatusSteps from '@/components/steps/EventStatusSteps';
 import apiReq from '/modules/utility/api/apiReq';
 import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
 
