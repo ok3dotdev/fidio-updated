@@ -54,86 +54,6 @@ export const page = (props) => {
     }
   };
 
-  // Function to scroll forward
-  const scrollForward = () => {
-    if (scrollContainerRef.current) {
-      setDisable({ ...disable, left: false });
-      const container = scrollContainerRef.current;
-      container.scrollLeft += 432;
-
-      const scrollLeft = container.scrollLeft;
-      const scrollWidth = container.scrollWidth;
-      const clientWidth = container.clientWidth;
-      // //console.log('widhth', scrollLeft, scrollWidth, clientWidth);
-      if (scrollLeft + clientWidth === scrollWidth) {
-        setDisable({ ...disable, right: false });
-      }
-    }
-  };
-
-  const fakeBlogs = [
-    {
-      id: 'a677506b-1db3-46a5-b2c3-ec6cd6db53a5',
-      title: 'Lorem Ipsum Dolor Sit Amet',
-      tags: ['Lorem', 'Ipsum', 'Dolor'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'b3220b18-3e4d-4214-bdd3-6b92607c9c09',
-      title: 'Consectetur Adipiscing Elit',
-      tags: ['Consectetur', 'Adipiscing', 'Elit'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'c785d895-f726-4772-a3b3-1e5e2020023f',
-      title: 'Sed Do Eiusmod Tempor Incididunt',
-      tags: ['Sed', 'Tempor', 'Incididunt'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'd6c318ed-754b-4a8b-8d6c-49987f76d03c',
-      title: 'Labore Et Dolore Magna Aliqua',
-      tags: ['Labore', 'Dolore', 'Magna'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'e0e4f587-6df2-47a5-8620-2d72b8b1ed9c',
-      title: 'Ut Enim Ad Minim Veniam',
-      tags: ['Ut', 'Enim', 'Minim'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'f7c8dfe4-ae3e-4797-8c1a-0b32c55be6cf',
-      title: 'Quis Nostrud Exercitation Ullamco',
-      tags: ['Quis', 'Nostrud', 'Exercitation'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-  ];
-
   const handleSearch = async () => {
     setLoading(true);
     // //console.log('term', term);
@@ -187,10 +107,6 @@ export const page = (props) => {
     fetchBlogs();
   }, []);
 
-  if (!isLoading && data) {
-    // //console.log('data222', data.fetchedData[0].articleReq[0]);
-    // //console.log('data2225', data.articleReq[0]);
-  }
   return (
     <HomeLayout
       pageName={pageName}
@@ -261,65 +177,6 @@ export const page = (props) => {
               </div>
             </div>
           )}
-          {
-            <div className='text-center mt-8'>
-              <button
-                onClick={loadMore}
-                className='bg-dashBorder p-2 rounded-[6px]'
-              >
-                {isLoading ? 'Loading...' : 'Load More'}
-              </button>
-            </div>
-          }
-          <div className='mt-8'>
-            <div className='flex w-full justify-between items-center mb-12'>
-              <p className='text-2xl font-bold'>Popular posts</p>
-              <div className='flex w-[150px] justify-between items-center'>
-                <ArrowBackIcon
-                  className={`${
-                    disable.left ? 'text-dashtext opacity-[0.4]' : 'text-white'
-                  } h-4 w-4 cursor-pointer `}
-                  onClick={scrollBack}
-                />
-                <ArrowForwardIcon
-                  onClick={scrollForward}
-                  className={`${
-                    disable.right ? 'text-dashtext opacity-[0.4]' : 'text-white'
-                  } h-4 w-4 cursor-pointer `}
-                />
-              </div>
-            </div>
-            <div
-              ref={scrollContainerRef}
-              className='w-full overflow-x-scroll overflow-hidden flex gap-x-8 scroll-smooth'
-              style={{ scrollbarWidth: 'none !important' }}
-            >
-              {fakeBlogs.map((articleReq, index) => (
-                <a key={index} href={`/ar?p=${articleReq?.id}`}>
-                  <div
-                    key={index}
-                    className='p-4 bg-dashSides rounded-[8px] w-[400px]'
-                  >
-                    <div className='w-full h-[250px] rounded-[8px]'>
-                      <img
-                        className='object-cover w-full rounded-[8px] h-full'
-                        src={articleReq.meta.featuredImg}
-                        alt='main image'
-                      />
-                    </div>
-                    <div className='py-4'>
-                      <p className='font-sans text-lg font-bold'>
-                        {articleReq.title}
-                      </p>
-                      <h2 className='mt-2 text-dashtext text-sm'>
-                        {articleReq.author}
-                      </h2>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
           <div className='relative mt-12'>
             <div className='p-12 bg-dashSides rounded-[10px]'>
               <h3 className='font-bold text-3xl flex flex-col'>

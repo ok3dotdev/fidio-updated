@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ArticleAuthor,
-  ArticleDate,
-  ArticleTitle,
-  SingleArticle,
-} from '../modules/article';
+import { SingleArticle } from '../modules/article';
 import HomeLayout from '/customModules/features/HomeLayout';
 import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
 const pageName = 'ar';
@@ -19,10 +14,22 @@ const Module = (props) => {
 
     return readingTimeMinutes;
   }
+  const seoData = {
+    title: props?.articleData?.title,
+    seo: {
+      metaTitle: props?.articleData?.title,
+      metaDesc: props?.articleData?.contents.split('.')[0].replace('<p>', ''),
+      shareTitle: props?.articleData?.title,
+      shareDesc: props?.articleData?.contents.split('.')[0].replace('<p>', ''),
+      shareGraphic: {
+        asset: props?.articleData?.meta?.featuredImg, // Replace with the actual image URL
+      },
+    },
+  };
   return (
     <HomeLayout
       pageName={pageName}
-      pageData={{}}
+      pageData={seoData}
       props={props}
       className='bg-dashBg'
     >
@@ -116,31 +123,11 @@ const Module = (props) => {
             <hr className='my-8' />
             <div className='flex gap-x-8 w-full'>
               <div className='w-full'>
-                <div className='flex space-y-2'>
-                  {/* <div
-                    className=' font-lexend text-dashtext '
-                    dangerouslySetInnerHTML={createMarkupAlt()}
-                  ></div> */}
-                  {/* {createMarkupAlt()} */}
+                <div className='flex space-y-2 leading-8'>
                   <SingleArticle {...props} />
                 </div>
               </div>
-              <div className='hidden md:block w-[30%]'>
-                <h3 className='mb-4'>Popular posts</h3>
-                <div>
-                  <div className='p-3 rounded-[9px] bg-dashSides'>
-                    <img
-                      className=' w-[250px] object-cover rounded-[9px] aspect-square'
-                      src='https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp'
-                      alt=''
-                    />
-                    <p className='mt-4 font-bold text-lg'>A test title</p>
-                    <p className='mb-4 text-dashtext text-sm'>
-                      By Social Media
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <div className='hidden md:block w-[30%]'></div>
             </div>
           </div>
         </div>
