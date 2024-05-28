@@ -71,69 +71,6 @@ export const page = (props) => {
     }
   };
 
-  const fakeBlogs = [
-    {
-      id: 'a677506b-1db3-46a5-b2c3-ec6cd6db53a5',
-      title: 'Lorem Ipsum Dolor Sit Amet',
-      tags: ['Lorem', 'Ipsum', 'Dolor'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'b3220b18-3e4d-4214-bdd3-6b92607c9c09',
-      title: 'Consectetur Adipiscing Elit',
-      tags: ['Consectetur', 'Adipiscing', 'Elit'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'c785d895-f726-4772-a3b3-1e5e2020023f',
-      title: 'Sed Do Eiusmod Tempor Incididunt',
-      tags: ['Sed', 'Tempor', 'Incididunt'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'd6c318ed-754b-4a8b-8d6c-49987f76d03c',
-      title: 'Labore Et Dolore Magna Aliqua',
-      tags: ['Labore', 'Dolore', 'Magna'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'e0e4f587-6df2-47a5-8620-2d72b8b1ed9c',
-      title: 'Ut Enim Ad Minim Veniam',
-      tags: ['Ut', 'Enim', 'Minim'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-    {
-      id: 'f7c8dfe4-ae3e-4797-8c1a-0b32c55be6cf',
-      title: 'Quis Nostrud Exercitation Ullamco',
-      tags: ['Quis', 'Nostrud', 'Exercitation'],
-      meta: {
-        featuredImg:
-          'https://d2ib7gxb0luc1i.cloudfront.net/img/burna-boy-bbma-show-2022-billboard-1548.webp',
-      },
-      author: 'socialMedia',
-    },
-  ];
-
   const handleSearch = async () => {
     setLoading(true);
     // //console.log('term', term);

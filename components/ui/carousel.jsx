@@ -180,7 +180,7 @@ const CarouselPrevious = React.forwardRef(
           orientation === 'horizontal'
             ? 'right-[3.5rem]'
             : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-          arrows === 'top' ? 'top-8' : '',
+          arrows === 'top' ? 'static' : '',
           className
         )}
         disabled={!canScrollPrev}
@@ -212,7 +212,7 @@ const CarouselNext = React.forwardRef(
           orientation === 'horizontal'
             ? 'right-[1rem]'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-          arrows === 'top' ? 'top-8' : '',
+          arrows === 'top' ? 'static' : '',
           className
         )}
         disabled={!canScrollNext}

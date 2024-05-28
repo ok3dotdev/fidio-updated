@@ -65,7 +65,7 @@ const Page = (props) => {
                       arrows='top'
                       className='w-full'
                     >
-                      <div className='z-50 relative'>
+                      <div className='z-50 relative flex justify-end gap-2 mb-2'>
                         <CarouselPrevious arrows='top' className='z-24' />
                         <CarouselNext arrows='top' className='z-24' />
                       </div>
@@ -86,11 +86,6 @@ const Page = (props) => {
                         ))}
                       </CarouselContent>
                     </Carousel>
-                    {/* <div className='flex w-full overflow-x-scroll'>
-                      {tickets[dateRange[i]].map((ticket, id) => (
-                        <Ticket key={id} ticket={ticket} cdn={props.cdn} />
-                      ))}
-                    </div> */}
                   </div>
                 )
             )}
