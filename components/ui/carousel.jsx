@@ -24,6 +24,7 @@ const Carousel = React.forwardRef(
       opts,
       setApi,
       plugins,
+      arrows,
       className,
       children,
       ...props
@@ -98,6 +99,7 @@ const Carousel = React.forwardRef(
           carouselRef,
           api: api,
           opts,
+          arrows,
           orientation:
             orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
           scrollPrev,
@@ -161,8 +163,12 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
 CarouselItem.displayName = 'CarouselItem';
 
 const CarouselPrevious = React.forwardRef(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  (
+    { className, variant = 'outline', arrows, size = 'icon', ...props },
+    ref
+  ) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+    console.log('arrows', arrows);
 
     return (
       <Button
@@ -170,10 +176,11 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          'absolute  h-8 w-8 rounded-[6px]',
+          'absolute h-8 w-8 rounded-[6px]',
           orientation === 'horizontal'
             ? 'right-[3.5rem]'
             : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+          arrows === 'top' ? 'top-8' : '',
           className
         )}
         disabled={!canScrollPrev}
@@ -189,7 +196,10 @@ const CarouselPrevious = React.forwardRef(
 CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef(
-  ({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  (
+    { className, variant = 'outline', arrows, size = 'icon', ...props },
+    ref
+  ) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
     return (
@@ -202,6 +212,7 @@ const CarouselNext = React.forwardRef(
           orientation === 'horizontal'
             ? 'right-[1rem]'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+          arrows === 'top' ? 'top-8' : '',
           className
         )}
         disabled={!canScrollNext}

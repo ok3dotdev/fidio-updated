@@ -11,6 +11,14 @@ import BrowseLayout from '../components/Layouts/browse/BrowseLayout';
 import Ticket from '@/components/PurchaseTicketCard';
 import { Loader2 } from 'lucide-react';
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+
 const pageName = 'browse';
 
 const Page = (props) => {
@@ -45,17 +53,44 @@ const Page = (props) => {
             tickets &&
             dateRange.map(
               (_, i) =>
-                tickets[dateRange[i]] &&
-                tickets[dateRange[i]].length > 0 && (
-                  <div className='flex w-full gap-12 '>
+                tickets[dateRange[i]] && (
+                  <div className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12'>
                     <div>
-                      <DateComponent date={dateRange[0] + 'T00:00'} />
+                      <DateComponent date={dateRange[i] + 'T00:00'} />
                     </div>
-                    <div>
+                    <Carousel
+                      opts={{
+                        align: 'start',
+                      }}
+                      arrows='top'
+                      className='w-full'
+                    >
+                      <div className='z-50 relative'>
+                        <CarouselPrevious arrows='top' className='z-24' />
+                        <CarouselNext arrows='top' className='z-24' />
+                      </div>
+                      <CarouselContent className='z-2'>
+                        {tickets[dateRange[i]]?.map((ticket, id) => (
+                          <CarouselItem
+                            key={id}
+                            className='md:basis-1/2 lg:basis-1/3'
+                          >
+                            <div className='p-1'>
+                              <Ticket
+                                key={id}
+                                ticket={ticket}
+                                cdn={props.cdn}
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                    </Carousel>
+                    {/* <div className='flex w-full overflow-x-scroll'>
                       {tickets[dateRange[i]].map((ticket, id) => (
                         <Ticket key={id} ticket={ticket} cdn={props.cdn} />
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 )
             )}
