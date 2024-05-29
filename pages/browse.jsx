@@ -29,7 +29,7 @@ const Page = (props) => {
     const loadTickets = async () => {
       setLoading(true);
       const tix = await fetchTickets(props?.apiUrl);
-      // tix?.map((t, i) => console.log('date', t.created, t.meta.date));
+      tix?.map((t, i) => console.log('date', t.created, t.meta.date, t.name));
       const groupedTicketsByDate = groupByDate(tix);
       // console.log('groupedTix', groupedTicketsByDate);
       setTickets(groupedTicketsByDate);
