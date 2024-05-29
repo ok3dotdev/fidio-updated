@@ -131,6 +131,10 @@ const EventView = (props) => {
     }
   };
 
+  if (!loading && currentlyStreaming) {
+    console.log('watch data', currentlyStreaming);
+  }
+
   return (
     <StudioLayout {...props}>
       <div className='px-2 md:px-8'>
@@ -356,7 +360,7 @@ const EventView = (props) => {
                       <div>
                         <Preview
                           {...props}
-                          useWatchDataPreview={props?.watchData}
+                          useWatchDataPreview={currentlyStreaming?.stream}
                         />
                       </div>
                     )}
