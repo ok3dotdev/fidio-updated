@@ -127,6 +127,10 @@ const EventUpdateModal = (props) => {
       imgFor: surveyState.imgFor,
       _loggedIn: props?._loggedIn, // Requires Authentication
     });
+    if (res && res.product) {
+      setModalOpen(false);
+      window.location.reload();
+    }
     console.log('Published!', res);
   };
 
