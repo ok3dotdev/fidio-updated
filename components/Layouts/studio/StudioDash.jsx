@@ -19,6 +19,7 @@ import { Input } from '@/components/ui/input';
 import Ticket from '../../Ticket';
 
 const StudioDash = (props) => {
+  console.log('props', props?.apiUrl);
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
   const [term, setTerm] = useState('');

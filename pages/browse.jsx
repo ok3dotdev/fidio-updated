@@ -29,7 +29,9 @@ const Page = (props) => {
     const loadTickets = async () => {
       setLoading(true);
       const tix = await fetchTickets(props?.apiUrl);
+      // tix?.map((t, i) => console.log('date', t.created, t.meta.date));
       const groupedTicketsByDate = groupByDate(tix);
+      // console.log('groupedTix', groupedTicketsByDate);
       setTickets(groupedTicketsByDate);
       setLoading(false);
     };
@@ -38,6 +40,7 @@ const Page = (props) => {
   }, [props?.apiUrl]);
 
   const dateRange = generateDateRange(7);
+  console.log('range', dateRange);
 
   return (
     <div className='w-full h-screen'>
@@ -51,44 +54,37 @@ const Page = (props) => {
           )}
           {!loading &&
             tickets &&
-            dateRange.map(
-              (_, i) =>
-                tickets[dateRange[i]] && (
-                  <div className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12'>
-                    <div>
-                      <DateComponent date={dateRange[i] + 'T00:00'} />
-                    </div>
-                    <Carousel
-                      opts={{
-                        align: 'start',
-                      }}
-                      arrows='top'
-                      className='w-full'
-                    >
-                      <div className='z-50 relative flex justify-end gap-2 mb-2'>
-                        <CarouselPrevious arrows='top' className='z-24' />
-                        <CarouselNext arrows='top' className='z-24' />
-                      </div>
-                      <CarouselContent className='z-2'>
-                        {tickets[dateRange[i]]?.map((ticket, id) => (
-                          <CarouselItem
-                            key={id}
-                            className='md:basis-1/2 lg:basis-1/3'
-                          >
-                            <div className='p-1'>
-                              <Ticket
-                                key={id}
-                                ticket={ticket}
-                                cdn={props.cdn}
-                              />
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                    </Carousel>
+            dateRange.map((_, i) => (
+              <div className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px]'>
+                <div>
+                  <DateComponent date={dateRange[i] + 'T00:00'} />
+                </div>
+                <Carousel
+                  opts={{
+                    align: 'start',
+                  }}
+                  arrows='top'
+                  className='w-full'
+                >
+                  <div className='z-50 relative flex justify-end gap-2 mb-2'>
+                    <CarouselPrevious arrows='top' className='z-24' />
+                    <CarouselNext arrows='top' className='z-24' />
                   </div>
-                )
-            )}
+                  <CarouselContent className='z-2'>
+                    {tickets[dateRange[i]]?.map((ticket, id) => (
+                      <CarouselItem
+                        key={id}
+                        className='md:basis-1/2 lg:basis-1/3'
+                      >
+                        <div className='p-1'>
+                          <Ticket key={id} ticket={ticket} cdn={props.cdn} />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              </div>
+            ))}
         </div>
       </BrowseLayout>
     </div>
