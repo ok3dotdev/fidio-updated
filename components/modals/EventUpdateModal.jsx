@@ -116,6 +116,97 @@ const EventUpdateModal = (props) => {
     setImgCache(useForm);
   });
 
+  const handleImageUpload = (e) => {
+    const file = e?.target?.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setSelectedImage(event?.target?.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleLineupUpload = (e, index) => {
+    const tempId = uuidv4();
+
+    const file = e?.target?.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const updatedLineUp =
+          index === 0
+            ? [{ id: tempId, title: '', image: null, bio: '' }]
+            : [...lineUpInfo];
+        updatedLineUp[index].image = file;
+        updatedLineUp[index].file = event?.target?.result;
+        updatedLineUp[index].id = tempId;
+        setLineUpInfo(updatedLineUp);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    const useForm = imgCache;
+    const useImgName = uuidv4();
+    const modif = 'lineup'; // Valid names are 'featureImg', 'leadImg', 'productImg', 'lineup'
+    let ext;
+    // Option 1: Use the method below to apply to shared imgCache and imgFor
+    useForm.append(
+      'image',
+      Array.from(e?.target?.files)
+        .filter((m) => allowedTypes.indexOf(m.type) > -1)
+        .map((m) => {
+          var blob = m.slice(0, m.size, m.type);
+          ext =
+            allowedTypes[allowedTypes.indexOf(m.type)].match(
+              /\/([a-zA-Z0-9].*)/
+            )[1];
+          return new File([blob], `${useImgName}.${ext}`, { type: m.type });
+        })[0]
+    );
+    console.log('index', tempId, lineUpInfo);
+    const useTempImgFor = imgFor;
+    const imageObject = {
+      name: `${useImgName}.${ext}`,
+      modif: modif,
+      id: tempId,
+    };
+
+    useTempImgFor.push(imageObject);
+    setImgFor(useTempImgFor);
+    setImgCache(useForm);
+  };
+
+  const deletePerformer = (index) => {
+    const updatedLineUpInfo = [...lineUpInfo];
+    updatedLineUpInfo.splice(index, 1);
+
+    const updatedLineup = eventDetails?.detailmeta?.lineup?.filter(
+      (_, i) => i !== index
+    );
+
+    const updatedEventDetails = {
+      ...eventDetails,
+      detailmeta: {
+        ...eventDetails.detailmeta,
+        lineup: updatedLineup,
+      },
+    };
+
+    // Remove the corresponding image entry from imgFor
+    const performerId = lineUpInfo[index].id;
+    const updatedImgFor = imgFor.filter((img) => img.id !== performerId);
+
+    setEventDetails(updatedEventDetails);
+    setLineUpInfo(updatedLineUpInfo);
+    setImgFor(updatedImgFor);
+    reset(updatedEventDetails);
+  };
+
+  const addPerformer = () => {
+    setLineUpInfo([...lineUpInfo, { title: '', image: null, bio: '' }]);
+  };
+
   const publishProduct = async (data) => {
     await trigger();
     console.log('Run', data);
@@ -208,10 +299,11 @@ const EventUpdateModal = (props) => {
                       <Controller
                         control={control}
                         name={'date'}
-                        defaultValue={pipelineDbItem?.created?.split(' ')[0]}
+                        defaultValue={pipelineDbItem?.meta?.date}
                         render={({ field: { value, onChange, ...field } }) => {
                           return (
                             <DatePickerDemo
+                              className='dark:text-white'
                               value={value} // Pass value from the form control to the DatePickerDemo
                               onChange={onChange}
                             />
@@ -316,7 +408,6 @@ const EventUpdateModal = (props) => {
                                 onChange(event.target.files[0]);
                                 handleImageUpload(event);
                                 handleLineupUpload(event, 0);
-                                handleLineupImage(event.target.files);
                               }}
                               type='file'
                               id='picture'
@@ -383,7 +474,6 @@ const EventUpdateModal = (props) => {
                                 onChange={(e) => {
                                   onChange(e.target.files[0]);
                                   handleLineupUpload(e, index + 1);
-                                  handleLineupImage(e.target.files);
                                 }}
                                 type='file'
                                 id={`picture-${index}`}

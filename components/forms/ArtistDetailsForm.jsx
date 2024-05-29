@@ -188,7 +188,6 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
                         onChange(event.target.files[0]);
                         handleImageUpload(event);
                         handleLineupUpload(event, 0);
-                        // handleLineupImage(event.target.files, 0);
                       }}
                       type='file'
                       id='picture'
