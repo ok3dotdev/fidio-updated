@@ -25,6 +25,9 @@ const EventUpdateModal = (props) => {
   const { errors } = formState;
   const [loading, setLoading] = useState(true);
   const [imgCache, setImgCache] = React.useState(new FormData());
+  const [lineUpInfo, setLineUpInfo] = React.useState({});
+  const [imgFor, setImgFor] = React.useState([]);
+  const [selectedImage, setSelectedImage] = React.useState(null);
   const [surveyState, setSurveyState] = React.useState({
     answers: {},
     currentStage: null,
@@ -62,10 +65,12 @@ const EventUpdateModal = (props) => {
   const setSurveyStateDefault = (data) => {
     const temp = surveyState;
     temp.pipelineDbItem = data;
+
     setSurveyState(temp);
+    setLineUpInfo(data?.detailmeta?.lineup);
     setLoading(false);
 
-    console.log('item', surveyState.pipelineDbItem);
+    console.log('item00000', data?.detailmeta?.lineup);
   };
 
   const { pipelineDbItem } = surveyState;
@@ -218,6 +223,10 @@ const EventUpdateModal = (props) => {
       imgFor: surveyState.imgFor,
       _loggedIn: props?._loggedIn, // Requires Authentication
     });
+    if (res && res.product) {
+      setModalOpen(false);
+      window.location.reload();
+    }
     console.log('Published!', res);
   };
 
@@ -429,21 +438,30 @@ const EventUpdateModal = (props) => {
                         />
                       </div>
                     </div>
-                    {pipelineDbItem.detailmeta.lineup[0].image && (
+                    {(selectedImage && (
                       <div>
                         <img
-                          src={`${props?.cdn?.static}/${pipelineDbItem.detailmeta.lineup[0].image}`}
+                          src={selectedImage}
                           alt='Selected Image'
-                          className='mt-4 w-10 h-10 rounded-full object-cover'
+                          className='mt-4 w-20 h-20 rounded-full object-cover'
                         />
                       </div>
-                    )}
+                    )) ||
+                      (pipelineDbItem.detailmeta.lineup[0].image && (
+                        <div>
+                          <img
+                            src={`${props?.cdn?.static}/${pipelineDbItem.detailmeta.lineup[0].image}`}
+                            alt='Selected Image'
+                            className='mt-4 w-10 h-10 rounded-full object-cover'
+                          />
+                        </div>
+                      ))}
                   </div>
                 </div>
                 <hr className='w-full mt-6' />
                 <h3 className=''>OTHER PERFORMERS</h3>
                 <div className='space-y-4'>
-                  {pipelineDbItem.detailmeta.lineup
+                  {/* {pipelineDbItem.detailmeta.lineup
                     .slice(1)
                     .map((performer, index) => (
                       <div key={index} className='space-y-2'>
@@ -498,11 +516,64 @@ const EventUpdateModal = (props) => {
                           </div>
                         )}
                       </div>
-                    ))}
+                    ))} */}
+                  {lineUpInfo.slice(1).map((performer, index) => (
+                    <div key={performer.id} className='space-y-2'>
+                      <label htmlFor='title'>Performer name and photo</label>
+                      <div className='flex gap-2 mb-2'>
+                        <Input
+                          name={`detailmeta.lineup[${index + 1}].title`}
+                          defaultValue={performer.title}
+                          placeholder='Enter artist, performer or band name'
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                          {...register(`detailmeta.lineup[${index + 1}].title`)}
+                        />
+                        <Controller
+                          control={control}
+                          name={`detailmeta.lineup[${index + 1}].image`}
+                          render={({
+                            field: { onChange, value, ...field },
+                          }) => (
+                            <Input
+                              {...field}
+                              value={value?.fileName}
+                              name={`detailmeta.lineup[${index + 1}].image`}
+                              placeholder='Upload image'
+                              accept='image/*'
+                              className='w-36'
+                              onChange={(e) => {
+                                onChange(e.target.files[0]);
+                                handleLineupUpload(e, index + 1);
+                                // handleLineupImage(e.target.files, index);
+                              }}
+                              type='file'
+                              id={`picture-${index}`}
+                            />
+                          )}
+                        />
+                      </div>
+                      {performer.image && (
+                        <div className='flex gap-x-2'>
+                          <img
+                            src={`${props?.cdn?.static}/${performer.image}`}
+                            alt='Performer'
+                            className='w-10 h-10 rounded-full object-cover'
+                          />
+                          <Button
+                            className='text-red-500 ml-2'
+                            onClick={() => deletePerformer(index + 1)}
+                            type='button'
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                   <div>
                     <Button
                       type='button'
-                      onClick={{}}
+                      onClick={addPerformer}
                       className='w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white'
                     >
                       Add another performer{' '}
