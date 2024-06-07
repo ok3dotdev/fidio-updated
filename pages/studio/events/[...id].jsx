@@ -36,12 +36,16 @@ const EventView = (props) => {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [startEnabled, setStartEnabled] = useState(false);
-  const [currentlyStreaming, setCurrentlyStreaming] = useState(null);
+  const [streamStatusCheck, setStreamStatusCheck] = React.useState(null);
   const [showStreamDialog, setShowStreamDialog] = useState(false);
+  const [currentlyStreaming, setCurrentlyStreaming] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     fetchTickets();
+    if (!streamStatusCheck) {
+      checkStreamStatus();
+    }
   }, [props?._loggedIn?.identifier]);
 
   const fetchTickets = async () => {
@@ -57,9 +61,22 @@ const EventView = (props) => {
       });
       if (res && res.products) {
         setTicket(res.products[0] || []);
-        const tree = setStartTimeFunc();
       }
       setLoading(false);
+    }
+  };
+
+  const checkStreamStatus = async () => {
+    setStreamStatusCheck(true);
+    const res = await apiReq('/stream/checkuserstreamingstatus', {
+      user: props?._loggedIn,
+    });
+    // const res = await apiReq('/stream/endstream', {
+    //   user: props?._loggedIn,
+    //   stream: '3eec445e-bfbf-4880-9232-e13e3c7ce732',
+    // });
+    if (res && res.currentlyStreaming) {
+      setStreamStatusCheck(res.currentlyStreaming);
     }
   };
 
@@ -68,17 +85,12 @@ const EventView = (props) => {
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
-        dates: ['2024-05-27T19:35'],
-        input: ['2024-05-27T23:35', 'streamTag'],
-        password: '',
-        tags: ['streamTag'],
-        title: 'My Stream',
-        description: 'Stream description',
+        title: ticket?.name,
+        private: true,
+        description: ticket?.description,
       },
       streamingFor: router.query?.id, // Use id of relevant product event. Product should be set to "Livestream"
     });
-    console.log('resssi', res);
-    console.log('doing');
     setCurrentlyStreaming(res.data);
     setShowStreamDialog(true);
   };
@@ -97,11 +109,8 @@ const EventView = (props) => {
     date.setHours(parseInt(startTimeParts[0], 10));
     date.setMinutes(parseInt(startTimeParts[1], 10));
     const res = date - Date.now();
-    console.log('Event Start Time (Milliseconds):', res);
     return res;
   };
-
-  const Completionist = () => <span>You can start the stream!</span>;
 
   const renderer = ({
     years,
@@ -113,12 +122,10 @@ const EventView = (props) => {
     completed,
   }) => {
     if (hours < 45) {
-      console.log('hours', hours);
       setStartEnabled(true);
     }
     if (completed) {
       setStartEnabled(!setStartEnabled);
-      return <Completionist />;
     } else {
       return (
         <p className='text-3xl font-semibold text-center'>
@@ -130,10 +137,6 @@ const EventView = (props) => {
       );
     }
   };
-
-  if (!loading && currentlyStreaming) {
-    console.log('watch data', currentlyStreaming);
-  }
 
   return (
     <StudioLayout {...props}>
@@ -357,7 +360,7 @@ const EventView = (props) => {
                       </p>
                     </div>
                     {!loading && currentlyStreaming && (
-                      <div>
+                      <div className='mt-8'>
                         <Preview
                           {...props}
                           useWatchDataPreview={currentlyStreaming?.stream}

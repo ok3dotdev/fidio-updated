@@ -35,7 +35,7 @@ const Ticket = ({ info, ticketData, viewMode }) => {
                 />
               </div>
               <p className=' font-sans text-neutralBg font-semibold'>
-                {created?.split(' ')[0]}
+                {meta?.date?.split('T')[0] || 'No date'}
               </p>
             </div>
             <div className='flex items-center gap-1'>
