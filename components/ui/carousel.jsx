@@ -168,7 +168,6 @@ const CarouselPrevious = React.forwardRef(
     ref
   ) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
-    console.log('arrows', arrows);
 
     return (
       <Button
