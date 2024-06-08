@@ -272,3 +272,53 @@ button.vjs-button:hover {
     height: 100%;
     max-height: 100% !important;
 }
+
+.video-js .vjs-time-control {
+    width: 75px;
+    align-content: center;
+    .vjs-remaining-time-display {
+        font-weight: 600;
+    }
+}
+
+.vjs-time-tooltip {
+    font-weight: 600;
+}
+
+.vjs-mouse-display .vjs-time-tooltip {
+    outline: rgba(128, 128, 128, 0.5) solid 2px;
+}
+
+.video-js .vjs-progress-control .vjs-mouse-display {
+    z-index: 3;
+    width: 2px;
+}
+
+@keyframes attentionplay {
+    0% {
+        border-radius: 1rem;
+    }
+    15% {
+        border-radius: 1rem;
+    }
+    50% {
+        border-radius: .75rem;
+    }
+    100% {
+        border-radius: 3rem;
+    }
+}
+
+.video-js .vjs-big-play-button {
+    transition: 200ms;
+    animation-name: attentionplay;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    line-height: 1.325em;
+    border-radius: 1rem;
+    border: 4px solid white;
+}
+
+.video-js .vjs-play-progress:before {
+    z-index: 5;
+}
