@@ -1,0 +1,1 @@
+const updateDocument=(e,t)=>{e=e||{};for(var[o,r]of Object.entries(t))e[o]=r;return e};export{updateDocument};
