@@ -47,6 +47,10 @@ export const Page = (props) => {
     }
   };
 
+  if (!loading && ticket) {
+    console.log('tix', ticket);
+  }
+
   return (
     <div className='relative'>
       <HomeLayout pageName={pageName} pageData={''} props={props}>

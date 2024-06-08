@@ -7,7 +7,7 @@ const Ticket = ({ ticket, cdn }) => {
     <Link href={`/events/${ticket.id}`}>
       <img
         src={`${cdn?.static}/${ticket.images[0]?.name}`}
-        className='h-[250px] aspect-square object-cover w-full rounded-[8px]'
+        className='h-[250px]  aspect-square object-cover w-full rounded-[8px]'
         alt={ticket.name}
       />
       <div className='mt-2'>
