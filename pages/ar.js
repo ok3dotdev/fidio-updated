@@ -15,9 +15,15 @@ export const page = (props) => {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <PageContainer {...props} pageName={pageName}>
         <AppConfigLayout></AppConfigLayout>
       </PageContainer>
+=======
+      {/* <PageContainer {...props} pageName={pageName}> */}
+      <AppConfigLayout></AppConfigLayout>
+      {/* </PageContainer> */}
+>>>>>>> Stashed changes
 =======
       {/* <PageContainer {...props} pageName={pageName}> */}
       <AppConfigLayout></AppConfigLayout>
