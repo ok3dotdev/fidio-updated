@@ -208,6 +208,18 @@ input {
   @apply grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4;
 } */
 
+.ar_Body {
+  top: 0 !important;
+}
+.ar_Body p {
+}
+.ar_Body p > img {
+  max-height: 500px;
+  width: 400px;
+  object-fit: contain;
+  margin: auto;
+}
+
 @layer base {
   .dark {
     --background: 240 10% 3.9%;
