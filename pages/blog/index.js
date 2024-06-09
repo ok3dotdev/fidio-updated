@@ -226,7 +226,7 @@ export const page = (props) => {
                 />
               </div>
             </div>
-            <div
+            {/* <div
               ref={scrollContainerRef}
               className='w-full overflow-x-scroll overflow-hidden flex gap-x-8 scroll-smooth'
               style={{ scrollbarWidth: 'none !important' }}
@@ -255,7 +255,7 @@ export const page = (props) => {
                   </div>
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className='relative mt-12'>
             <div className='p-12 bg-dashSides rounded-[10px]'>

@@ -4,28 +4,25 @@ import React from 'react';
 import { AppConfigLayout, PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import { getServerSidePropsFunc } from '/appServer/serverProps';
-import { Menu } from '/modules/menu/';
+import { WatchPage } from '/modules/streaming/watch';
+import WatchLayout from '../components/Layouts/watch/WatchLayout';
 
 const pageName = 'w';
 
 export const page = (props) => {
   return (
     <React.Fragment>
-      <PageContainer {...props} pageName={pageName}>
-        <Menu></Menu>
-        <AppConfigLayout></AppConfigLayout>
-      </PageContainer>
+      <WatchLayout>
+        <PageContainer {...props} pageName={pageName}>
+          <WatchPage {...props} />
+        </PageContainer>
+      </WatchLayout>
     </React.Fragment>
   );
 };
 
 export const getServerSideProps = async (context) => {
-  let currentProps = await getServerSidePropsDefault(
-    context,
-    pageDefaults[pageName]
-  );
-  return await getServerSidePropsFunc(currentProps, context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default page;

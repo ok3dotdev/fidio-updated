@@ -99,5 +99,20 @@ button {
   }
 }
 
+.WatchPage_videoExternalContainer__YRQWM {
+  column-gap: 20px;
+}
+.WatchPage_chatContainer__fsRZx {
+  border: none !important;
+}
+.Chat_chatContainer__MeuU_ {
+  border-radius: 20px !important;
+  border-width: 1px !important;
+  // padding: 1rem !important;
+  // padding-top: 1.5rem !important;
+}
+.Chat_chatLogExternalContainer__lxHAd {
+  border: none;
+}
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.
