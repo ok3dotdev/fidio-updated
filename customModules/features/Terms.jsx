@@ -2,7 +2,7 @@ import React from 'react';
 
 const TermsContent = () => {
   return (
-    <div className='pt-[100px] px-4 h-full' suppressHydrationWarning>
+    <div className='pt-[20px] px-4 h-full' suppressHydrationWarning>
       <div className='max-w-4xl mx-auto'>
         <div class=' p-4 text-white'>
           <h1 class='text-2xl font-semibold mb-4'>FIDIO TERMS OF SERVICE</h1>

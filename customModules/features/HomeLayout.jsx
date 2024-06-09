@@ -24,9 +24,9 @@ const HomeLayout = ({
   );
   const showFooter = [
     'Index',
-    'Privacy',
-    'Faq',
-    'Terms',
+    'privacy',
+    'faq',
+    'terms',
     'blog',
     'ar',
   ].includes(pageName);

@@ -6,16 +6,17 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import { Menu } from '/modules/menu/';
+import HomeLayout from '../customModules/features/HomeLayout';
 
-const pageName = 'Privacy';
+const pageName = 'privacy';
 
 export const page = (props) => {
   return (
-    <React.Fragment>
+    <HomeLayout pageName={pageName} pageData={''} props={props}>
       <PageContainer {...props} pageName={pageName}>
         <AppConfigLayout></AppConfigLayout>
       </PageContainer>
-    </React.Fragment>
+    </HomeLayout>
   );
 };
 

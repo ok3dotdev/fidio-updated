@@ -8,18 +8,19 @@ import HomeLayout from '/customModules/features/HomeLayout';
 import { termsOfServicePageData } from '/customModules/features/seo-data';
 import Menu from '/customModules/features/Menu';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
-import dir from '/customModules/pages/';
+// import dir from '/customModules/pages/';
+import Terms from '/customModules/doc/Terms';
 
 const pageName = 'terms';
-const CustomPageChildren = dir[pageName];
+// const CustomPageChildren = dir[pageName];
 
 export const page = (props) => {
   return (
-    <React.Fragment>
+    <HomeLayout pageName={pageName} pageData={''} props={props}>
       <PageContainer {...props} pageName={pageName}>
-        <CustomPageChildren {...props} />
+        <Terms />
       </PageContainer>
-    </React.Fragment>
+    </HomeLayout>
   );
 };
 

@@ -54,21 +54,6 @@ const AltMenu = (props) => {
         </div>
         <div className='lg:flex gap-4'>
           <div className='flex justify-center items-center gap-4 cursor-pointer'>
-            {/* <div className='cursor-pointer'>
-              <Sheet>
-                <SheetTrigger>
-                  <ShoppingCartIcon />
-                </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Your Cart is Empty</SheetTitle>
-                    <SheetDescription className='font-mono'>
-                      Please add something to cart to view items
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
-            </div> */}
             <UserMenu {...props} />
           </div>
         </div>

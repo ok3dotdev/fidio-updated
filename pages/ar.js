@@ -138,7 +138,7 @@ export const page = (props) => {
                   {/* <SingleArticle {...props} /> */}
                 </div>
               </div>
-              <div className='hidden md:block w-[30%]'>
+              {/* <div className='hidden md:block w-[30%]'>
                 <h3 className='mb-4'>Popular posts</h3>
                 <div>
                   <div className='p-3 rounded-[9px] bg-dashSides'>
@@ -153,7 +153,7 @@ export const page = (props) => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

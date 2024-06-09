@@ -46,14 +46,7 @@ const UserMenu = (props) => {
   return (
     <div className='relative group'>
       <div className='w-8 h-8 rounded-full cursor-pointer' onClick={toggleMenu}>
-        {!props._loggedIn?.icon ? (
-          <UserIconSkeleton
-            toggleMenu={toggleMenu}
-            handleLogout={handleLogout}
-            menuRef={menuRef}
-            isMenuOpen={isMenuOpen}
-          />
-        ) : (
+        {props._loggedIn?.icon && (
           <img
             className='rounded-full w-8 h-8 avatar'
             src={props._loggedIn.icon} // Use a placeholder image if userIcon is empty
@@ -74,7 +67,7 @@ const UserMenu = (props) => {
                 blog
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href={'/studio'}
                 className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
@@ -89,7 +82,7 @@ const UserMenu = (props) => {
               >
                 Settings
               </Link>
-            </li>
+            </li> */}
             <li>
               <button
                 onClick={handleLogout}

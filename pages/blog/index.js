@@ -261,7 +261,7 @@ export const page = (props) => {
               </div>
             </div>
           )}
-          {
+          {/* {
             <div className='text-center mt-8'>
               <button
                 onClick={loadMore}
@@ -270,9 +270,9 @@ export const page = (props) => {
                 {isLoading ? 'Loading...' : 'Load More'}
               </button>
             </div>
-          }
+          } */}
           <div className='mt-8'>
-            <div className='flex w-full justify-between items-center mb-12'>
+            {/* <div className='flex w-full justify-between items-center mb-12'>
               <p className='text-2xl font-bold'>Popular posts</p>
               <div className='flex w-[150px] justify-between items-center'>
                 <ArrowBackIcon
@@ -288,8 +288,8 @@ export const page = (props) => {
                   } h-4 w-4 cursor-pointer `}
                 />
               </div>
-            </div>
-            <div
+            </div> */}
+            {/* <div
               ref={scrollContainerRef}
               className='w-full overflow-x-scroll overflow-hidden flex gap-x-8 scroll-smooth'
               style={{ scrollbarWidth: 'none !important' }}
@@ -318,7 +318,7 @@ export const page = (props) => {
                   </div>
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className='relative mt-12'>
             <div className='p-12 bg-dashSides rounded-[10px]'>
