@@ -44,7 +44,7 @@ const Module = (props) => {
           </div>
         )}
         <div className='lg:max-w-7xl mx-auto font-lexend md:px-12 px-4 bg-dashBg'>
-          <div className='pt-10 '>
+          <div className='py-10 '>
             <div className='flex w-full justify-between'>
               <h1 className='text-4xl font-bold'>
                 {props?.articleData?.title}
@@ -127,7 +127,6 @@ const Module = (props) => {
                   <SingleArticle {...props} />
                 </div>
               </div>
-              <div className='hidden md:block w-[30%]'></div>
             </div>
           </div>
         </div>
