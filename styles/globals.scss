@@ -25,6 +25,7 @@ a {
   box-sizing: border-box;
 }
 
+<<<<<<< Updated upstream
 .Ecommerce_PurchaseButton {
   border-radius: 6px;
   background: var(--Color-Amber-600, rgba(221, 104, 26, 1));
@@ -99,5 +100,7 @@ button {
   }
 }
 
+=======
+>>>>>>> Stashed changes
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.
