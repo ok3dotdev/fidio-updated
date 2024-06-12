@@ -320,7 +320,7 @@ export const page = (props) => {
               ))}
             </div> */}
           </div>
-          <div className='relative mt-12'>
+          {/* <div className='relative mt-12'>
             <div className='p-12 bg-dashSides rounded-[10px]'>
               <h3 className='font-bold text-3xl flex flex-col'>
                 <span>Subscribe to</span>
@@ -348,7 +348,7 @@ export const page = (props) => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </HomeLayout>

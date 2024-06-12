@@ -165,3 +165,30 @@ if (fs.existsSync(useFile)) {
     fs.copyFileSync('layout/defaults/Menu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
+
+useFile = 'layout/Help.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Help_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/Order.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/Order_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/StreamManager.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('layout/defaults/StreamManager_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}

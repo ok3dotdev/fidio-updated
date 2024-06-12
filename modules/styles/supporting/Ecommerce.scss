@@ -145,3 +145,198 @@
     background: #31aa31;
     border-radius: .25rem;
 }
+
+.Ecommerce_CartMessage {
+    background: rgba(34, 34, 34, 1);
+    border-radius: .5rem;
+    padding: .25rem;
+    width: -webkit-fill-available;
+    text-align: center;
+    width: 100%;
+}
+
+.Ecommerce_CartMessage_Message {
+    font-weight: 600;
+}
+
+.Ecommerce_RegisterVendor_Container {
+    align-items: center;
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    padding: .5rem;
+    background: #313131;
+    width: fit-content;
+    border-radius: 1rem;
+    .Ecommerce_SetupVendor_Link {
+        align-self: center;
+    }
+}
+
+.Ecommerce_RegisterVendor_Label {
+    font-weight: 600;
+}
+
+.Ecommerce_SingleOrderContainer {
+    .Ecommerce_SingleOrderInternalContainer {
+        .Ecommerce_SingleOrderMetaContainer {
+            display: flex;
+            justify-content: space-between;
+            .Ecommerce_SingleOrderMeta {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                .Ecommerce_OrderLabel {
+                    margin: 0;
+                }
+                .Ecommerce_OrderId {
+                    background: #222222;
+                    border-radius: 1rem;
+                    padding: .0rem .75rem;
+                }
+            }
+        }
+        .Ecommerce_OrderSingleItemContainer {
+            display: flex;
+            gap: .3rem;
+            flex-direction: column;
+            margin-top: .3rem;
+            margin-bottom: .3rem;
+            .Ecommerce_Item_Container {
+                gap: .2rem;
+                .Ecommerce_Item_ContainerInternal {
+                    display: flex;
+                    gap: .5rem;
+                    .Ecommerce_ItemContainerWidth {
+                        width: 100%;
+                        .Ecommerce_Cart_Title_Main_ContainerOrder {
+                            gap: .2rem;
+                            display: flex;
+                        }
+                        .Ecommerce_Order_StyleOrderContainer {
+                            justify-content: space-between;
+                            .Ecommerce_Cart_Side_Meta_Container {
+                                .Ecommerce_Order_SubtotalLabel {
+                                    color: grey;
+                                    font-size: .7rem;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Ecommerce_ReceiptPageContainer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.Ecommerce_DonationContainer {
+    display: flex;
+    width: max-content;
+    background: #313131;
+    border-radius: 1rem;
+    overflow: hidden;
+    .Ecommerce_DonationButton {
+        text-wrap: nowrap;
+        align-content: center;
+        align-items: center;
+    }
+    .Ecommerce_DonateInputExternalContainer {
+        display: flex;
+        position: relative;
+    }
+    .Ecommerce_DonateInputContainer {
+        display: flex;
+        width: 0;
+        overflow: hidden;
+        transition: 300ms;
+        gap: .25rem;
+        text-wrap: nowrap;
+        height: auto;
+        .Ecommerce_DonateInputInternalContainer {
+            display: flex;
+            gap: .25rem;
+            align-items: center;
+            .Ecommerce_DonateInputSymbol {
+                font-weight: 600;
+            }
+        }
+        .Ecommerce_DonateAddDecreaseContainer {
+            display: flex;
+            button {
+                padding: 0 .5rem;
+            }
+            .Ecommerce_DonateAdd {
+                border-radius: 1rem 0 0 1rem;
+            }
+            .Ecommerce_DonateDecrease {
+                border-radius: 0 1rem 1rem 0;
+            }
+        }
+    }
+    .Ecommerce_DonateInputContainer > * {
+        align-content: center;
+    }
+    .Ecommerce_DonateInputContainerOpen {
+        width: 100%;
+    }
+    .Ecommerce_DonateInput {
+        width: 80px;
+        font-weight: 600;
+        border-radius: .5rem;
+        border-width: 0;
+        font-size: 1rem;
+        height: -webkit-fill-available;
+    }
+    .Ecommerce_DonateCancel {
+        font-size: .75rem;
+        padding: .125rem .5rem;
+        background: #d5d5d5;
+    }
+}
+
+.Ecommerce_DonateInputExternalContainerOpen {
+    gap: .25rem;
+}
+
+.Ecommerce_DonateInputExternalContainerClosed {
+    width: 0%;
+}
+
+.Ecommerce_BusyScreen {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 100;
+    height: -webkit-fill-available;
+    background: grey;
+    opacity: .5;
+    width: -webkit-fill-available;
+}
+
+.Ecommerce_CommandPanelButton {
+    border-radius: 1rem;
+    padding: .25rem .75rem;
+}
+
+.Ecommerce_Spinner {
+    width: 0%;
+    transition: 200ms;
+    overflow: hidden;
+}
+
+.Ecommerce_SpinnerVisible {
+    width: 100%;
+}
+
+.Ecommerce_DonationButton_Icon {
+    font-size: 1rem;
+}

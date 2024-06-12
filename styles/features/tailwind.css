@@ -202,6 +202,21 @@ input {
   background-position: center !important;
 }
 
+.ar_Body {
+  top: 0 !important;
+}
+.ar_Body p {
+}
+.ar_Body p > img {
+  max-height: 500px;
+  width: 400px;
+  object-fit: contain;
+  margin: auto;
+}
+.article-container > div {
+  width: 100%;
+  overflow: hidden;
+}
 @layer base {
   .dark {
     --background: 240 10% 3.9%;

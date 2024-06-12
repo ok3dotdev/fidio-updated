@@ -1,13 +1,11 @@
 import React from 'react'
-import { SignIn, Username } from '../modules/onboarding/signin'
-import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '../modules/profile'
+import { SignIn, Username } from '/modules/onboarding/signin'
+import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '/modules/profile'
 
 const Module = props => {
     return (
         <div>
             <AdminPanel { ...props } />
-            <SignIn redirectOnAuth={'/p'} { ...props } />
-            <Username { ...props } />
             {
                 props?.profileData?.user
                     ? <div>

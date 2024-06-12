@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{handleClearError:e,pageError:r}=e;return React.createElement(React.Fragment,null,r&&r.message&&!r.placement?React.createElement("div",{className:"error",style:{margin:".25rem",marginBottom:"0"},onClick:e},r.message):null)};export default Module;

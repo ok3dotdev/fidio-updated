@@ -1,36 +1,9 @@
+@import '/modules/video/flexStyles.module.scss';
+
 .leadContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    grid-gap: 1rem;
-    gap: 2rem;
     margin: 0 auto;
     padding: 1rem;
-
-    .col {
-        -webkit-flex: 0 0 33.33333333%;
-        flex: 0 0 33.33333333%;
-        width: calc(100%/3 - 2rem);
-        padding: 0;
-        -webkit-flex-basis: auto;
-        flex-basis: auto;
-    }
-
-    @media(max-width: 1148px) {
-        .col {
-            width: calc(100%/3 - 1.33333333333rem);
-        }
-    }
-
-    @media(max-width: 748px) {
-        .col {
-            width: calc(100%/2 - 1rem);
-        }
-    }
-
-    @media(max-width: 448px) {
-        .col {
-            width: calc(100%);
-        }
-    }
 }

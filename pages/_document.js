@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script type='text/javascript' src='src/purify.js'></script>
           <script
             id='google-analytics-script'
             dangerouslySetInnerHTML={{

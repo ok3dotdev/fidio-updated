@@ -42,7 +42,7 @@ const AltMenu = (props) => {
   return (
     <div className='bg-transparent z-40 relative h-[66px] lg:h-[80px]'>
       <div className='max-w-7xl mx-auto flex justify-between pt-4 pb-4 items-center px-3 lg:px-5 h-full'>
-        <div>
+        <div className='flex'>
           <Link className='w-[150px] h-auto' href='/home'>
             <img
               src='/img/internal/frame2.png'
