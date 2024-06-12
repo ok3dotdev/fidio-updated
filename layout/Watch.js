@@ -17,7 +17,10 @@ const Module = (props) => {
   console.log('prrrr', props);
   const { WatchPageStyles = {}, watchMeta = {} } = props;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
   const {
     videoQuadrant,
