@@ -107,6 +107,10 @@ const Events = (props) => {
     router.push(`/studio/events/${id}`);
   };
 
+  if (!loadin && tickets) {
+    console.log('tix', tickets);
+    setLoading(false);
+  }
   return (
     <StudioLayout {...props} showNav>
       <div className='font-lexend mt-[2rem]' key={props?.key}>

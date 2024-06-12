@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import apiReq from '/modules/utility/api/apiReq';
 import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
 
@@ -8,7 +9,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -17,45 +17,72 @@ import { Input } from '@/components/ui/input';
 import Ticket from '../../Ticket';
 
 const StudioDash = (props) => {
-  console.log('props', props?.apiUrl);
+  const router = useRouter();
+  const { page, term, sort } = router.query;
+
+  const initialPage = parseInt(page) || 0;
+  const initialTerm = term || '';
+  const initialSort = sort || '';
+
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [term, setTerm] = useState('');
-  const [sort, setSort] = useState('');
+  const [searchTerm, setSearchTerm] = useState(initialTerm);
+  const [sortValue, setSortValue] = useState(initialSort);
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [pageSize] = useState(10); // Define a fixed page size
+  const [hasMore, setHasMore] = useState(true); // Flag to indicate if more items are available
 
-  const ticketSales = {
-    title: 'Tickets Sold',
-    amount: '$1234.00',
-  };
-  const ticketRevenue = {
-    title: 'Ticket revenue',
-    amount: '12',
-  };
   const { username } = props?._loggedIn;
   const capitalizedUsername = username
     ? username.charAt(0).toUpperCase() + username.slice(1)
     : '';
 
   useEffect(() => {
-    fetchTickets();
-  }, [props?._loggedIn?.identifier]);
+    fetchTickets(currentPage, searchTerm, sortValue);
+  }, [currentPage, searchTerm, sortValue, props?._loggedIn?.identifier]);
+
+  // useEffect(() => {
+  //   let queryParams = {};
+
+  //   if (currentPage) {
+  //     queryParams.page = currentPage;
+  //   }
+  //   if (searchTerm) {
+  //     queryParams.term = searchTerm;
+  //   }
+  //   if (sortValue) {
+  //     queryParams.sort = sortValue;
+  //   }
+  //   // const queryParams = {
+  //   //   page: currentPage,
+  //   //   term: searchTerm,
+  //   //   sort: sortValue,
+  //   // };
+  //   router.replace(
+  //     { pathname: router.pathname, query: queryParams },
+  //     undefined,
+  //     { shallow: true }
+  //   );
+  // }, [currentPage, searchTerm, sortValue, router]);
 
   const handleSearch = async () => {
     setLoading(true);
-    await fetchTickets(term);
-    setTerm('');
+    setCurrentPage(0); // Reset to first page on search
+    await fetchTickets(0, searchTerm, sortValue);
+    setLoading(false);
   };
 
   const handleSort = async (value) => {
-    // //console.log('doing', value);
     if (value && value.length) {
       setLoading(true);
-      await fetchTickets(null, value);
-      setSort('');
+      setCurrentPage(0); // Reset to first page on sort
+      setSortValue(value);
+      await fetchTickets(0, searchTerm, value);
+      setLoading(false);
     }
   };
 
-  const fetchTickets = async (SearchTerm, status) => {
+  const fetchTickets = async (page = 0, searchTerm = '', status = '') => {
     setLoading(true);
 
     if (props && props?._loggedIn?.identifier) {
@@ -63,8 +90,8 @@ const StudioDash = (props) => {
         owner: props?._loggedIn?.identifier,
       };
 
-      if (SearchTerm) {
-        extraObject.name = SearchTerm;
+      if (searchTerm) {
+        extraObject.name = searchTerm;
       }
       if (!extraObject.meta) {
         extraObject.meta = {};
@@ -76,23 +103,41 @@ const StudioDash = (props) => {
 
       const res = await apiReq('/product/getProducts', {
         apiUrl: props?.apiUrl,
-        pagination: 0,
+        pagination: currentPage,
         extra: extraObject,
       });
+
       if (res && res.products) {
-        const tix = res.products.sort((a, b) => {
+        const sortedTickets = res.products.sort((a, b) => {
           const dateA = new Date(a.created);
           const dateB = new Date(b.created);
           return dateB - dateA;
         });
-        setTickets(tix || []);
-        if (tickets) {
-          // //console.log('tix', tickets);
-          setLoading(false);
-        }
+
+        // Append new tickets to the existing list
+        setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);
+
+        // Set hasMore flag to false if no more items are returned
+        setHasMore(sortedTickets.length >= pageSize);
+      } else {
+        setHasMore(false); // No more items available
       }
+      setLoading(false);
     }
   };
+
+  const handleNextPage = () => {
+    if (hasMore) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <div className='mt-[2rem] mb-12'>
       <div className='mb-[2rem] md:mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
@@ -103,10 +148,7 @@ const StudioDash = (props) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className='font-lexend text-3xl font-bold'>
-              {/* {ticketRevenue.amount} */}
-              $2,500.00
-            </p>
+            <p className='font-lexend text-3xl font-bold'>$2,500.00</p>
           </CardContent>
         </Card>
         <Card className='rounded-[8px] font-lexend font-normal text-dashtext dark:bg-dashSides'>
@@ -116,10 +158,7 @@ const StudioDash = (props) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className='font-lexend text-3xl font-bold'>
-              {/* {ticketSales.amount} */}
-              50
-            </p>
+            <p className='font-lexend text-3xl font-bold'>50</p>
           </CardContent>
         </Card>
         <Card className='rounded-[8px] font-lexend font-normal text-dashtext dark:bg-dashSides'>
@@ -159,7 +198,7 @@ const StudioDash = (props) => {
             <Select
               className='font-lexend'
               onValueChange={(e) => {
-                setSort(e);
+                setSortValue(e);
                 handleSort(e);
               }}
             >
@@ -187,8 +226,8 @@ const StudioDash = (props) => {
                 <Input
                   placeholder='Search'
                   className='text-muted-foreground font-lexend'
-                  onChange={(e) => setTerm(e?.target?.value)}
-                  value={term}
+                  onChange={(e) => setSearchTerm(e?.target?.value)}
+                  value={searchTerm}
                   onSubmit={handleSearch}
                 />
               </form>
@@ -211,8 +250,8 @@ const StudioDash = (props) => {
           <Input
             placeholder='Search'
             className='text-muted-foreground font-lexend'
-            onChange={(e) => setTerm(e?.target?.value)}
-            value={term}
+            onChange={(e) => setSearchTerm(e?.target?.value)}
+            value={searchTerm}
             onSubmit={handleSearch}
           />
         </form>
@@ -241,6 +280,25 @@ const StudioDash = (props) => {
           <TicketLoadingSkeleton />
         </div>
       )}
+
+      {/* Pagination Controls */}
+      <div className='flex justify-between items-center mt-8'>
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 0}
+          className='px-4 py-2 bg-gray-300 rounded-md disabled:opacity-50'
+        >
+          Previous
+        </button>
+        <span>Page {currentPage}</span>
+        <button
+          onClick={handleNextPage}
+          disabled={!hasMore}
+          className='px-4 py-2 bg-gray-300 rounded-md disabled:opacity-50'
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -71,26 +71,12 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
         </>
       )}
 
-      {/* {shareGraphic && (
+      {shareGraphic && (
         <>
-          <meta
-            property='og:image'
-            content={imageBuilder
-              .image(shareGraphic)
-              .width(1200)
-              .height(630)
-              .url()}
-          />
-          <meta
-            name='twitter:image'
-            content={imageBuilder
-              .image(shareGraphic)
-              .width(1200)
-              .height(630)
-              .url()}
-          />
+          <meta property='og:image' content={shareGraphic} />
+          <meta name='twitter:image' content={shareGraphic} />
         </>
-      )} */}
+      )}
 
       <meta property='og:type' content='website' />
       <meta name='twitter:card' content='summary_large_image' />
