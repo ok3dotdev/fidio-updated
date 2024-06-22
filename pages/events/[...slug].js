@@ -27,7 +27,11 @@ export const Page = (props) => {
   useEffect(() => {
     const loadTickets = async () => {
       setLoading(true);
-      const tix = await fetchTickets(props?.apiUrl, router.query.slug);
+      console.log('slug', router.query.slug);
+      const id = Array.isArray(router.query.slug)
+        ? router.query.slug[0]
+        : router.query.slug;
+      const tix = await fetchTickets(props?.apiUrl, id);
       setTicket(tix);
       setLoading(false);
     };

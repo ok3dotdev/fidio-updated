@@ -1,19 +1,8 @@
 const path = require('path');
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-// const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
-=======
-const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
->>>>>>> Stashed changes
-=======
-const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
->>>>>>> Stashed changes
-=======
-const website = 'https://development.fidio.ca'; // You must set this line to your own website for PRODUCTION builds
->>>>>>> Stashed changes
-// const website = 'http://localhost:3020'; // You must set this line to your own website for PRODUCTION builds
+// You must set this line to your own website for PRODUCTION builds
+
+const website = 'http://localhost:3020'; // You must set this line to your own website for PRODUCTION builds
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

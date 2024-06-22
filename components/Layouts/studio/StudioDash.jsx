@@ -41,29 +41,29 @@ const StudioDash = (props) => {
     fetchTickets(currentPage, searchTerm, sortValue);
   }, [currentPage, searchTerm, sortValue, props?._loggedIn?.identifier]);
 
-  // useEffect(() => {
-  //   let queryParams = {};
+  useEffect(() => {
+    let queryParams = {};
 
-  //   if (currentPage) {
-  //     queryParams.page = currentPage;
-  //   }
-  //   if (searchTerm) {
-  //     queryParams.term = searchTerm;
-  //   }
-  //   if (sortValue) {
-  //     queryParams.sort = sortValue;
-  //   }
-  //   // const queryParams = {
-  //   //   page: currentPage,
-  //   //   term: searchTerm,
-  //   //   sort: sortValue,
-  //   // };
-  //   router.replace(
-  //     { pathname: router.pathname, query: queryParams },
-  //     undefined,
-  //     { shallow: true }
-  //   );
-  // }, [currentPage, searchTerm, sortValue, router]);
+    if (currentPage) {
+      queryParams.page = currentPage;
+    }
+    if (searchTerm) {
+      queryParams.term = searchTerm;
+    }
+    if (sortValue) {
+      queryParams.sort = sortValue;
+    }
+    // const queryParams = {
+    //   page: currentPage,
+    //   term: searchTerm,
+    //   sort: sortValue,
+    // };
+    router.replace(
+      { pathname: router.pathname, query: queryParams },
+      undefined,
+      { shallow: true }
+    );
+  }, [currentPage, searchTerm, sortValue, router]);
 
   const handleSearch = async () => {
     setLoading(true);
@@ -93,9 +93,9 @@ const StudioDash = (props) => {
       if (searchTerm) {
         extraObject.name = searchTerm;
       }
-      if (!extraObject.meta) {
-        extraObject.meta = {};
-      }
+      // if (!extraObject.meta) {
+      //   extraObject.meta = {};
+      // }
 
       if (status) {
         extraObject.meta.status = status;
@@ -105,6 +105,7 @@ const StudioDash = (props) => {
         apiUrl: props?.apiUrl,
         pagination: currentPage,
         extra: extraObject,
+        limit: 10,
       });
 
       if (res && res.products) {
@@ -290,7 +291,7 @@ const StudioDash = (props) => {
         >
           Previous
         </button>
-        <span>Page {currentPage}</span>
+        <span>Page {currentPage + 1}</span>
         <button
           onClick={handleNextPage}
           disabled={!hasMore}
