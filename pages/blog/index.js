@@ -194,6 +194,97 @@ export const page = (props) => {
               </div>
             </div>
           )}
+<<<<<<< HEAD
+=======
+          {
+            <div className='text-center mt-8'>
+              <button
+                onClick={loadMore}
+                className='bg-dashBorder p-2 rounded-[6px]'
+              >
+                {isLoading ? 'Loading...' : 'Load More'}
+              </button>
+            </div>
+          }
+          <div className='mt-8'>
+            <div className='flex w-full justify-between items-center mb-12'>
+              <p className='text-2xl font-bold'>Popular posts</p>
+              <div className='flex w-[150px] justify-between items-center'>
+                <ArrowBackIcon
+                  className={`${
+                    disable.left ? 'text-dashtext opacity-[0.4]' : 'text-white'
+                  } h-4 w-4 cursor-pointer `}
+                  onClick={scrollBack}
+                />
+                <ArrowForwardIcon
+                  onClick={scrollForward}
+                  className={`${
+                    disable.right ? 'text-dashtext opacity-[0.4]' : 'text-white'
+                  } h-4 w-4 cursor-pointer `}
+                />
+              </div>
+            </div>
+            {/* <div
+              ref={scrollContainerRef}
+              className='w-full overflow-x-scroll overflow-hidden flex gap-x-8 scroll-smooth'
+              style={{ scrollbarWidth: 'none !important' }}
+            >
+              {fakeBlogs.map((articleReq, index) => (
+                <a key={index} href={`/ar?p=${articleReq?.id}`}>
+                  <div
+                    key={index}
+                    className='p-4 bg-dashSides rounded-[8px] w-[400px]'
+                  >
+                    <div className='w-full h-[250px] rounded-[8px]'>
+                      <img
+                        className='object-cover w-full rounded-[8px] h-full'
+                        src={articleReq.meta.featuredImg}
+                        alt='main image'
+                      />
+                    </div>
+                    <div className='py-4'>
+                      <p className='font-sans text-lg font-bold'>
+                        {articleReq.title}
+                      </p>
+                      <h2 className='mt-2 text-dashtext text-sm'>
+                        {articleReq.author}
+                      </h2>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div> */}
+          </div>
+          {/* <div className='relative mt-12'>
+            <div className='p-12 bg-dashSides rounded-[10px]'>
+              <h3 className='font-bold text-3xl flex flex-col'>
+                <span>Subscribe to</span>
+                <span>Fidio’s newsletter</span>
+              </h3>
+              <div className='relative block mt-2  w-[300px] md:w-[500px]'>
+                <form
+                  action=''
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSubscribe();
+                  }}
+                >
+                  <Input
+                    placeholder='Enter your email'
+                    className='text-muted-foreground font-lexend p-1 border-b bg-transparent border-dashBorder '
+                    onChange={(e) => setTerm(e?.target?.value)}
+                    value={term}
+                    onSubmit={handleSubscribe}
+                  />
+                </form>
+                <ArrowForwardIcon
+                  className='absolute right-2 top-2.5 h-4 w-4 cursor-pointer text-accentY'
+                  onClick={handleSubscribe}
+                />
+              </div>
+            </div>
+          </div> */}
+>>>>>>> Fidio-watch-page
         </div>
       </div>
     </HomeLayout>

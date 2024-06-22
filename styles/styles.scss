@@ -263,3 +263,15 @@ textarea {
 .list-view {
   @apply space-y-4;
 }
+// .WatchPage_chatOpen__sOXqv {
+//   width: 100%;
+//   max-width: 100%;
+// }
+
+@media (max-width: 900px) {
+  .WatchPage_chatOpen__sOXqv {
+    min-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
