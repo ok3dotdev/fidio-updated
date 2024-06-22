@@ -11,6 +11,7 @@ const Module = props => {
                     <SubMenu { ...props } type='watch'></SubMenu>
                 </div>
                 <div className={`${props._loggedIn ? `${menuStyle.subMenu}` :  `${menuStyle.subMenu} ${menuStyle.subMenuBottomPadding} subMenuContainer`} ${menuStyle.menu}`}>
+                    <SubMenu {...props} type='link' muiIcon={'upload'} name='Upload' href={`https://${props?.domainUrl}/upload`}></SubMenu>
                     <SubMenu {...props} type='stream' href={'p?a=openbeginstream'} small={true}></SubMenu>
                     <SubMenu {...props} type='notifications' small={true}></SubMenu>
                     <SubMenu {...props} type='cart'></SubMenu>

@@ -29,14 +29,75 @@
 .chatLogExternalContainer {
     transition: 200ms;
     overflow: auto;
-    padding: 0 .25rem;
     flex-grow: 1;
+}
+
+.chatLogItemContainer {
+    transition: 200ms;
+    padding: 0 .5rem;
+}
+
+.chatLogItemContainerDonation {
+    background: #2b2b2b;
+    padding: 1rem .5rem;
 }
 
 .chatLogContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    gap: .25rem;
+}
+
+.chatDonationItemContainer {
+    position: relative;
+}
+
+.chatDonationsContainer {
+    display: flex;
+    gap: .5rem;
+    padding: .5rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    height: 37.5px;
+    min-height: 37.5px;
+    .chatDonationItemText {
+        z-index: 20;
+        font-weight: 600;
+        color: white;
+    }
+    .chatDonationItem {
+        padding: 0 .25rem;
+        border-radius: 1rem;
+        position: relative;
+        background: #333; /* Background color for the donation item */
+        color: #fff; /* Text color */
+        width: 100px;
+        overflow: hidden;
+        font-weight: 600;
+        z-index: 25;
+    }
+    .chatDonationItem::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(208, 255, 0, .75) 0%, rgba(208, 255, 0, .75) 98%, transparent 99%, transparent 100%);
+        width: 100%; /* Start with full width */
+        transform-origin: left;
+        transform: scaleX(var(--gradient-scale, 1)); /* Use scaleX for smooth transition */
+        transition: transform var(--animation-duration) linear;
+        z-index: 30;
+    }
+    @keyframes depleteGradient {
+        from {
+          background-position: 135% 0;
+        }
+        to {
+          background-position: -50% 0;
+        }
+    }
 }
 
 .chatInputContainer {
@@ -49,10 +110,9 @@
         .chatInputSendContainer {
             display: flex;
             gap: .25rem;
-            padding: 0 .2rem;
             z-index: 5;
             position: inherit;
-            margin-bottom: .25rem;
+            padding: .5rem;
             .send {
                 padding: 0 .75rem;
                 border-radius: .5rem;
@@ -75,6 +135,15 @@
         min-width: 0;
         display: none;
     }
+}
+
+.userContentContainerFlex {
+    display: flex;
+    gap: .25rem;
+}
+
+.userContentContainerFlexOff {
+    flex-direction: column;
 }
 
 .warningText {
@@ -111,7 +180,7 @@
 }
 
 .chatLogMain {
-    align-items: baseline;
+    align-items: center;
     display: flex;
     gap: .25rem;
     position: relative;
@@ -143,7 +212,7 @@
     }
 }
 
-.chatLogMain:hover,
+.chatLogItemContainer:hover,
 .replyToRepliesThread:hover {
     background-color: #121212;
     .replyTo, .viewReplyTo {
@@ -158,9 +227,17 @@
     }
 }
 
+.chatMessageAvatarContainer {
+    height: 30px;
+    img {
+        height: 30px;
+    }
+}
+
 .username {
     font-weight: 600;
-    height: .65rem;
+    height: 1rem;
+    color: #ababab;
 }
 
 @-moz-document url-prefix() {
@@ -183,29 +260,28 @@
 
 .replyToContainer {
     color: white;
+    position: relative;
     width: 100%;
     border-radius: .25rem .25rem 0 0;
     border: 1px solid #2d2d2d;
-    top: -1.25rem;
+    border-bottom: none;
     padding: 0 .25rem;
-    position: absolute;
     background: black;
-    height: 175px;
     font-size: .85rem;
     z-index: 3;
 }
 
 .replyToRepliesContainer {
     display: flex;
+    overflow: auto;
     gap: 0;
     flex-direction: column;
-    position: absolute;
     top: -4.5rem;
     width: 100%;
     padding: .25rem;
     background: #1c1c1c;
     z-index: 2;
-    height: 250px;
+    max-height: 100px;
     border: 1px solid #2d2d2d;
     border-radius: .25rem .25rem 0 0;
     font-size: .85rem;
@@ -213,8 +289,8 @@
 
 .chatCancelReplyTo {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: .5rem;
+    top: .125rem;
     cursor: pointer;
 }
 
@@ -251,4 +327,52 @@
 
 .blockSend {
     background: black;
+}
+.chatActionBar {
+    .quickDonateContainer {
+        display: flex;
+        padding: .5rem;
+        gap: .5rem;
+        justify-content: space-between;
+        input {
+            color: white;
+            background: transparent;
+        }
+        button {
+            padding: 0.25rem .5rem;
+            color: white;
+            background: transparent;
+        }
+        button.favorite {
+            color: #ff0000;
+        }
+    }
+}
+
+.squeezedInput {
+    width: 40px;
+}
+
+.promptCheckoutContainer {
+    position: absolute;
+    padding: .5rem;
+    bottom: -100px;
+    z-index: 15;
+    background: #161616;
+    width: 100%;
+    height: 0px;
+    left: 0;
+    transition: 200ms;
+    .promptChatMessage {
+        text-align: center;
+    }
+}
+
+.promptCheckoutContainerVisible {
+    height: 200px;
+    bottom: 0;
+}
+
+.Close {
+    cursor: pointer;
 }
