@@ -43,10 +43,11 @@ const EventView = (props) => {
 
   useEffect(() => {
     fetchTickets();
-    if (!streamStatusCheck) {
-      checkStreamStatus();
-    }
-  }, [props?._loggedIn?.identifier]);
+  }, [props._loggedIn.identifier]);
+
+  useEffect(() => {
+    checkStreamStatus();
+  }, [ticket]);
 
   const fetchTickets = async () => {
     setLoading(true);
@@ -58,8 +59,10 @@ const EventView = (props) => {
           owner: props?._loggedIn?.identifier,
         },
         id: router.query.id,
+        limit: 1,
       });
       if (res && res.products) {
+        console.log('product', res.products[0]);
         setTicket(res.products[0] || []);
       }
       setLoading(false);
@@ -71,12 +74,9 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    // const res = await apiReq('/stream/endstream', {
-    //   user: props?._loggedIn,
-    //   stream: '3eec445e-bfbf-4880-9232-e13e3c7ce732',
-    // });
+    console.log('streaming', res);
     if (res && res.currentlyStreaming) {
-      setStreamStatusCheck(res.currentlyStreaming);
+      setCurrentlyStreaming(res.currentlyStreaming);
     }
   };
 
@@ -112,15 +112,7 @@ const EventView = (props) => {
     return res;
   };
 
-  const renderer = ({
-    years,
-    months,
-    days,
-    hours,
-    minutes,
-    seconds,
-    completed,
-  }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (hours < 45) {
       setStartEnabled(true);
     }
@@ -363,7 +355,7 @@ const EventView = (props) => {
                       <div className='mt-8'>
                         <Preview
                           {...props}
-                          useWatchDataPreview={currentlyStreaming?.stream}
+                          useWatchDataPreview={props?.watchData}
                         />
                       </div>
                     )}

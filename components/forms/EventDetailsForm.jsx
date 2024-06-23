@@ -118,7 +118,7 @@ const EventDetailsForm = ({
                 })}
               />
               {errors?.name && (
-                <p className='text-red-500'>{`${errors?.name.message}`}</p>
+                <p className='text-red-500 text-xs'>{`${errors?.name.message}`}</p>
               )}
             </div>
             <div className='space-y-2'>
@@ -146,7 +146,7 @@ const EventDetailsForm = ({
                     )}
                   />
                   {errors?.date && (
-                    <p className='text-red-500'>{`${errors?.date.message}`}</p>
+                    <p className='text-red-500 mt-1 text-xs'>{`${errors?.date.message}`}</p>
                   )}
                 </div>
                 <div className='relative'>
@@ -160,7 +160,7 @@ const EventDetailsForm = ({
                     })}
                   />
                   {errors?.startTime && (
-                    <p className='text-red-500'>{`${errors?.startTime.message}`}</p>
+                    <p className='text-red-500 mt-1 text-xs'>{`${errors?.startTime.message}`}</p>
                   )}
                 </div>
                 <div className='relative'>
@@ -173,7 +173,7 @@ const EventDetailsForm = ({
                     })}
                   />
                   {errors?.endTime && (
-                    <p className='text-red-500'>{`${errors?.endTime.message}`}</p>
+                    <p className='text-red-500 mt-1 text-xs'>{`${errors?.endTime.message}`}</p>
                   )}
                 </div>
               </div>
@@ -206,7 +206,7 @@ const EventDetailsForm = ({
                   $USD
                 </p>
                 {errors?.price && (
-                  <p className='text-red-500'>{`${errors?.price.message}`}</p>
+                  <p className='text-red-500 mt-1 text-xs'>{`${errors?.price.message}`}</p>
                 )}
               </div>
             </div>

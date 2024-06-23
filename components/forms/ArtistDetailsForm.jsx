@@ -306,18 +306,6 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
                 />
               </div>
             </div>
-            <hr className='w-full' />
-            <div className='space-y-2'>
-              <label htmlFor='merch'>
-                Sell your merch by sharing a link to your store
-              </label>
-              <Input
-                name='merch'
-                placeholder='https://'
-                className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                {...register('merch')}
-              />
-            </div>
           </CardContent>
         </Card>
         <div className='mt-4 space-x-2 absolute right-0'>

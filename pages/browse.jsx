@@ -54,7 +54,10 @@ const Page = (props) => {
           {!loading &&
             tickets &&
             dateRange.map((_, i) => (
-              <div className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px]'>
+              <div
+                key={i}
+                className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px]'
+              >
                 <div>
                   <DateComponent date={dateRange[i] + 'T00:00'} />
                 </div>

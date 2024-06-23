@@ -106,7 +106,10 @@ const EventPreviewStep = ({ info, reset }) => {
           </div>
           <div className='flex items-center gap-1'>
             <AccessTimeOutlinedIcon className='w-3' />
-            <p className='text-white font-medium'>{eventDetails.startTime}</p>
+            <p className='text-white font-medium'>
+              {eventDetails.startTime}
+            </p> -{' '}
+            <p className='text-white font-medium'>{eventDetails.endTime}</p>
           </div>
           <div className='flex items-center gap-1'>
             <FmdGoodOutlinedIcon className='w-3' />
