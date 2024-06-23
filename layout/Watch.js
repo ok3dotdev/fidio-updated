@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-const Module = () => {
-  <div>hello</div>;
-};
-
-=======
 import React from 'react';
 import { Chat, Player, Prompt } from '../modules/streaming/watch';
 import DonateButton from '/modules/ecommerce/donate/DonateButton';
@@ -125,5 +119,4 @@ const Module = (props) => {
   );
 };
 
->>>>>>> Fidio-watch-page
 export default Module;

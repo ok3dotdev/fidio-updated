@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import apiReq from '/modules/utility/api/apiReq';
 import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
@@ -29,45 +29,49 @@ const StudioDash = (props) => {
   const [searchTerm, setSearchTerm] = useState(initialTerm);
   const [sortValue, setSortValue] = useState(initialSort);
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const [pageSize] = useState(10); // Define a fixed page size
-  const [hasMore, setHasMore] = useState(true); // Flag to indicate if more items are available
-
-  const { username } = props?._loggedIn;
-  const capitalizedUsername = username
-    ? username.charAt(0).toUpperCase() + username.slice(1)
-    : '';
+  const [pageSize] = useState(10);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     fetchTickets(currentPage, searchTerm, sortValue);
-  }, [currentPage, searchTerm, sortValue, props?._loggedIn?.identifier]);
+  }, [currentPage, sortValue, props?._loggedIn?.identifier]);
+
+  const initialRender = useRef(true);
 
   useEffect(() => {
-    let queryParams = {};
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
 
-    if (currentPage) {
+    const queryParams = {};
+    if (currentPage !== initialPage) {
       queryParams.page = currentPage;
     }
-    if (searchTerm) {
+    if (searchTerm !== initialTerm) {
       queryParams.term = searchTerm;
     }
-    if (sortValue) {
+    if (sortValue !== initialSort) {
       queryParams.sort = sortValue;
     }
-    // const queryParams = {
-    //   page: currentPage,
-    //   term: searchTerm,
-    //   sort: sortValue,
-    // };
-    router.replace(
-      { pathname: router.pathname, query: queryParams },
-      undefined,
-      { shallow: true }
-    );
-  }, [currentPage, searchTerm, sortValue, router]);
+
+    if (
+      queryParams.page !== page ||
+      queryParams.term !== term ||
+      queryParams.sort !== sort
+    ) {
+      router.replace(
+        { pathname: router.pathname, query: queryParams },
+        undefined,
+        { shallow: false }
+      );
+    }
+  }, [currentPage, sortValue]);
 
   const handleSearch = async () => {
+    console.log('hello');
     setLoading(true);
-    setCurrentPage(0); // Reset to first page on search
+    setCurrentPage(0);
     await fetchTickets(0, searchTerm, sortValue);
     setLoading(false);
   };
@@ -75,17 +79,18 @@ const StudioDash = (props) => {
   const handleSort = async (value) => {
     if (value && value.length) {
       setLoading(true);
-      setCurrentPage(0); // Reset to first page on sort
+      setCurrentPage(0);
       setSortValue(value);
       await fetchTickets(0, searchTerm, value);
       setLoading(false);
     }
   };
 
-  const fetchTickets = async (page = 0, searchTerm = '', status = '') => {
+  const fetchTickets = async (page = 0, searchTerm = '', sortValue = '') => {
     setLoading(true);
 
     if (props && props?._loggedIn?.identifier) {
+      let meta = {};
       let extraObject = {
         owner: props?._loggedIn?.identifier,
       };
@@ -93,12 +98,9 @@ const StudioDash = (props) => {
       if (searchTerm) {
         extraObject.name = searchTerm;
       }
-      // if (!extraObject.meta) {
-      //   extraObject.meta = {};
-      // }
 
-      if (status) {
-        extraObject.meta.status = status;
+      if (sortValue) {
+        meta.status = sortValue;
       }
 
       const res = await apiReq('/product/getProducts', {
@@ -106,20 +108,23 @@ const StudioDash = (props) => {
         pagination: currentPage,
         extra: extraObject,
         limit: 10,
+        meta,
       });
 
       if (res && res.products) {
         const sortedTickets = res.products.sort((a, b) => {
           const dateA = new Date(a.created);
           const dateB = new Date(b.created);
-          return dateB - dateA;
+          return dateA - dateB;
         });
 
-        // Append new tickets to the existing list
-        setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);
-
-        // Set hasMore flag to false if no more items are returned
-        setHasMore(sortedTickets.length >= pageSize);
+        if (searchTerm || sortValue) {
+          console.log('sorted', sortedTickets);
+          setTickets(sortedTickets);
+        } else {
+          setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);
+          setHasMore(sortedTickets.length >= pageSize);
+        }
       } else {
         setHasMore(false); // No more items available
       }
@@ -268,7 +273,8 @@ const StudioDash = (props) => {
           ))}
         </div>
       ) : (
-        !loading && (
+        !loading &&
+        tickets.length < 0 && (
           <div className='my-8 space-y-2 mb-12'>
             <h3>Sorry, No results match...</h3>
           </div>
@@ -291,7 +297,7 @@ const StudioDash = (props) => {
         >
           Previous
         </button>
-        <span>Page {currentPage + 1}</span>
+        {!currentPage ? '' : <span>Page {currentPage + 1}</span>}
         <button
           onClick={handleNextPage}
           disabled={!hasMore}

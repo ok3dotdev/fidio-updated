@@ -7,55 +7,30 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import Menu from '/customModules/features/AltMenu';
 import HomeLayout from '/customModules/features/HomeLayout';
-<<<<<<< Updated upstream
-import SubscribeForm from '../components/forms/SubscribeToNewsLetter';
-import DOMPurify from 'dompurify';
-// import { createMarkup } from '/modules/article/utility';
-import { SingleArticle } from '/modules/article';
-=======
 import { Input } from '@/components/ui/input';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // import { createMarkup } from '/modules/article/utility';
 // import { SingleArticle } from '/modules/article';
->>>>>>> Stashed changes
 
 const pageName = 'ar';
 
 export const page = (props) => {
-<<<<<<< Updated upstream
-  function createMarkupAlt() {
-    const fixedContent = props?.articleData?.contents;
-
-    // const sanitizedContent = DOMPurify.sanitize(fixedContent);
-
-    // return { __html: sanitizedContent };
-=======
   const [term, setTerm] = React.useState('');
   function createMarkupAlt() {
     const fixedContent = props?.articleData?.contents?.replace(/"/g, '');
->>>>>>> Stashed changes
 
     return { __html: fixedContent };
   }
   function calculateReadingTime(articleContent) {
     const averageReadingSpeed = 200;
 
-<<<<<<< Updated upstream
     const wordCount = articleContent?.split(/\s+/).length;
-=======
-    const wordCount = articleContent.split(/\s+/).length;
->>>>>>> Stashed changes
 
     const readingTimeMinutes = Math.ceil(wordCount / averageReadingSpeed);
 
     return readingTimeMinutes;
   }
 
-<<<<<<< Updated upstream
-=======
-  function handleSubscribe() {}
-
->>>>>>> Stashed changes
   return (
     <HomeLayout
       pageName={pageName}
@@ -154,7 +129,6 @@ export const page = (props) => {
             <div className='flex gap-x-8 w-full'>
               <div className='w-full'>
                 <div className='flex space-y-2'>
-<<<<<<< Updated upstream
                   {/* <div
                     className=' font-lexend text-dashtext '
                     dangerouslySetInnerHTML={createMarkupAlt()}
@@ -164,16 +138,6 @@ export const page = (props) => {
                 </div>
               </div>
               <div className='hidden md:block w-[30%]'>
-=======
-                  <div
-                    className=' font-lexend text-dashtext '
-                    dangerouslySetInnerHTML={createMarkupAlt()}
-                  ></div>
-                  {/* <SingleArticle {...props} /> */}
-                </div>
-              </div>
-              {/* <div className='hidden md:block w-[30%]'>
->>>>>>> Stashed changes
                 <h3 className='mb-4'>Popular posts</h3>
                 <div>
                   <div className='p-3 rounded-[9px] bg-dashSides'>
@@ -188,47 +152,11 @@ export const page = (props) => {
                     </p>
                   </div>
                 </div>
-<<<<<<< Updated upstream
               </div>
             </div>
           </div>
         </div>
         <SubscribeForm />
-=======
-              </div> */}
-            </div>
-          </div>
-        </div>
-        <div className='relative lg:max-w-7xl mx-auto md:px-12 px-4 mt-12'>
-          <div className='p-12 bg-dashSides rounded-[10px]'>
-            <h3 className='font-bold text-3xl flex flex-col'>
-              <span>Subscribe to</span>
-              <span>Fidio’s newsletter</span>
-            </h3>
-            <div className='relative block mt-2 w-[300px]'>
-              <form
-                action=''
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSubscribe();
-                }}
-              >
-                <Input
-                  placeholder='Subscribe'
-                  className='text-muted-foreground font-lexend p-1 border-b bg-transparent border-dashBorder '
-                  onChange={(e) => setTerm(e?.target?.value)}
-                  value={term}
-                  onSubmit={handleSubscribe}
-                />
-              </form>
-              <ArrowForwardIcon
-                className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground cursor-pointer'
-                onClick={handleSubscribe}
-              />
-            </div>
-          </div>
-        </div>
->>>>>>> Stashed changes
       </div>
     </HomeLayout>
   );
