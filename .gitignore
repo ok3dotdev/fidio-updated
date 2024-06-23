@@ -86,8 +86,6 @@ public.tar.gz
 
 # Tycoon Systems - Layout defaults ignore
 layout/*
-!*/layout/defaults/*
-!*layout/defaults
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
