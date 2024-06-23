@@ -195,15 +195,15 @@ const EventDetailsForm = ({
                   id='price'
                   name='price'
                   type='number'
-                  placeholder='15.99'
+                  placeholder=''
                   className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                   {...register('price', {
                     required: 'Price is required',
-                    minLength: { value: 0, message: 'Enter price in CAD' },
+                    minLength: { value: 0, message: 'Enter price in USD' },
                   })}
                 />
                 <p className='absolute right-2 top-2 text-dashtext text-sm'>
-                  $CAD
+                  $USD
                 </p>
                 {errors?.price && (
                   <p className='text-red-500'>{`${errors?.price.message}`}</p>
@@ -219,36 +219,6 @@ const EventDetailsForm = ({
                   className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                   {...register('quantity')}
                 />
-              </div>
-            </div>
-            <div className='space-y-2'>
-              <label htmlFor='description'>
-                Discount (Leave empty if none)
-              </label>
-              <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2'>
-                <div className=''>
-                  <Input
-                    placeholder='Amount'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                    {...register('discount.amount')}
-                  />
-                </div>
-                <div className='relative'>
-                  <Input
-                    placeholder='Start date'
-                    type='date'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                    {...register('discount.startDate')}
-                  />
-                </div>
-                <div className='relative'>
-                  <Input
-                    placeholder='End time'
-                    type='date'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-dashtext'
-                    {...register('discount.endDate')}
-                  />
-                </div>
               </div>
             </div>
           </CardContent>

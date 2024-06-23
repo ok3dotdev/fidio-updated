@@ -1,0 +1,1 @@
+import React from"react";import ChatStyles from"./Chat.module.scss";const Module=e=>React.createElement("div",{className:ChatStyles.reactionContainer+" Chat_reactionContainer",style:{background:"#161616"}},React.createElement("button",{className:ChatStyles.favorite+" material-icons",style:{background:"black",fontSize:"1.25rem"}},"favorite"));export default Module;

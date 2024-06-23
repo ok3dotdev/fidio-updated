@@ -1,5 +1,6 @@
 import React from 'react'
 import { SignIn, Username } from '/modules/onboarding/signin'
+import GridList from '/modules/video/player/gridList'
 import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '/modules/profile'
 
 const Module = props => {
@@ -17,6 +18,9 @@ const Module = props => {
                             </div>
                         </div>
                         <UserFeed { ...props } />
+                        <div className='ProfilePage_Feed'>
+                            <GridList loggedIn={props._loggedIn} _gridItems={props.videoCombinedFeed ?? []} _gridListType={'video'} {...props}></GridList>
+                        </div>
                         <UserShop { ...props } />
                     </div>
                     : null

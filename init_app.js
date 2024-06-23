@@ -109,15 +109,15 @@ if (fs.existsSync(useFile)) {
 }
 
 useFile = 'layout/index.js'
-fs.copyFileSync('layout/defaults/index_backup.js', useFile)
-console.log(useFile, 'File does not exist on', process.platform)
+fs.copyFileSync('modules/defaults/index_backup.js', useFile)
+console.log(useFile, 'Copied file on', process.platform)
 
 useFile = 'layout/Cart.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Cart_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Cart_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -126,7 +126,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Profile_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Profile_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -135,7 +135,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Watch_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Watch_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -144,7 +144,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Article_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Article_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -153,7 +153,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/DropMenu_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/DropMenu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -162,7 +162,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Menu_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Menu_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -171,7 +171,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Help_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Help_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -180,7 +180,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/Order_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/Order_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -189,6 +189,93 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('layout/defaults/StreamManager_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/StreamManager_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/chat'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/chat/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/chat/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/chat/ChatLog.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/chat/ChatLog_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/chat/DonationsLedger.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/chat/DonationsLedger_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/chat/ChatCommandBar.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/chat/ChatCommandBar_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a' ] // Default pages
+
+for (let i = 0; i < pages.length; i++) {
+    useFile = `pages/${pages[i]}.js`
+    if (fs.existsSync(useFile)) {
+        // Add your commands here
+        console.log(useFile, 'File exists on', process.platform)
+    } else {
+        const page = `/* eslint-disable react-hooks/rules-of-hooks */
+
+import React from 'react'
+import { AppConfigLayout, PageContainer } from '/modules/internal'
+import { pageDefaults } from '/app.config'
+import { getServerSidePropsDefault } from '/modules/utility.js'
+import { getServerSidePropsFunc } from '/appServer/serverProps'
+import { Menu } from '/modules/menu/'
+
+const pageName = '${pages[i]}'
+
+export const page = props => {
+    return (
+        <React.Fragment>
+            <PageContainer { ...props } pageName={pageName}>
+                <Menu></Menu>
+                <AppConfigLayout></AppConfigLayout>
+            </PageContainer>
+        </React.Fragment>
+    )
+}
+
+export const getServerSideProps = async (context) => {
+    let currentProps = await getServerSidePropsDefault(context, pageDefaults[pageName])
+    return await getServerSidePropsFunc(currentProps, context)
+}
+
+export default page`
+
+        fs.writeFileSync(useFile, page, 'utf-8')
+        console.log(useFile, 'File does not exist on', process.platform)
+    }
 }
