@@ -66,8 +66,8 @@ customModules/middleware/*
 
 # Tycoon Systems - Public Files
 public/font/internal
-public/img/internal
-public/doc/internal
+# public/img/internal
+# public/doc/internal
 !*public/img
 !*public/doc
 /public/doc/internal/*

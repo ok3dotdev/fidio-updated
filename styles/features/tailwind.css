@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-color: hsl(var(--border));
 }
 
 .dark {
@@ -88,6 +89,12 @@ Chat_ChatLogItemInternalContainer {
 .Username_PromptContainer > span > button {
   @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin w-full;
 }
+/* button:hover {
+  outline: unset !important;
+  background: unset !important;
+  outline-offset: unset !important;
+  box-shadow: unset !important;
+} */
 
 @layer base {
   .dark {

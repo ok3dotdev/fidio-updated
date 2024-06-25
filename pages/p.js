@@ -9,7 +9,7 @@ import { Menu } from '/modules/menu/';
 
 const pageName = 'p';
 
-const Page = (props) => {
+export const page = (props) => {
   return (
     <React.Fragment>
       <PageContainer {...props} pageName={pageName}>
@@ -28,4 +28,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default Page;
+export default page;

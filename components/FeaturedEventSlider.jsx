@@ -48,7 +48,7 @@ const FeaturedEventSlider = () => {
               alt=''
               className='w-full h-full border-none absolute inset-0 object-cover'
             />
-            <div className='absolute bottom-12 left-0 w-full px-8 md:px-4 space-y-8 right-0 max-w-screen-xl mx-auto z-30'>
+            <div className='absolute bottom-12 left-0 w-full px-8 md:px-4 space-y-8 right-0 max-w-screen-xl mx-auto z-30 p-12'>
               <h1 className='text-2xl md:text-6xl font-bold'>
                 Asake in toronto
               </h1>
