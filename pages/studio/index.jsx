@@ -3,10 +3,9 @@
 import React from 'react';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import { getServerSidePropsFunc } from '/appServer/serverProps';
 
-import StudioLayout from '@/components/Layouts/StudioLayout';
-import StudioDash from '@/components/Layouts/StudioDash';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
+import StudioDash from '@/components/Layouts/studio/StudioDash';
 
 const pageName = 'studio';
 
@@ -19,11 +18,7 @@ const Page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  let currentProps = await getServerSidePropsDefault(
-    context,
-    pageDefaults[pageName]
-  );
-  return await getServerSidePropsFunc(currentProps, context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default Page;

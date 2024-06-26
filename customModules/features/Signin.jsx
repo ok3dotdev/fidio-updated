@@ -26,12 +26,12 @@ const Signin = (props) => {
             </div>
             <p className='text-2xl mb-8 font-bold'>Log In or Sign Up</p>
             <Username
-              redirectOnAuth={'/home'}
+              redirectOnAuth={'/browse'}
               {...props}
               prompt={'Username'}
               confirm={'Continue'}
             />
-            <SignIn redirectOnAuth={'/home'} {...props} />
+            <SignIn redirectOnAuth={'/browse'} {...props} />
           </div>
         </div>
       </div>

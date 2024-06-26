@@ -52,8 +52,8 @@ tycoon-client-modules-dist/*
 !*/customModules/features/FeatureModule1.js
 /customModules/index.js
 !*/customModules/index_backup.js
-customModules/*
 !*customModules/admin
+customModules/doc/
 customModules/admin/*
 !*customModules/admin/index_backup.js
 !*customModules/admin/components
@@ -66,8 +66,8 @@ customModules/middleware/*
 
 # Tycoon Systems - Public Files
 public/font/internal
-public/img/internal
-public/doc/internal
+# public/img/internal
+# public/doc/internal
 !*public/img
 !*public/doc
 /public/doc/internal/*
@@ -86,8 +86,6 @@ public.tar.gz
 
 # Tycoon Systems - Layout defaults ignore
 layout/*
-!*/layout/defaults/*
-!*layout/defaults
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/

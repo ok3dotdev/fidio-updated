@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Ticket from '@/components/Ticket';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import Link from 'next/link';
-import { cn, statusColors, getButtonsForStep } from '@/lib/utils';
-import SearchBar from '@/components/inputs/SearchBar';
 import { useRouter } from 'next/router';
 import apiReq from '/modules/utility/api/apiReq';
 import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
-import StudioLayout from '@/components/Layouts/StudioLayout';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
@@ -24,85 +20,139 @@ import {
 } from '@/components/ui/select';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Input } from '@/components/ui/input';
+import { FiGrid } from 'react-icons/fi';
+import { IoIosList } from 'react-icons/io';
 
-const pageName = 'Events';
+const pageName = 'studioEvents';
 
 const Events = (props) => {
-  const [step, setStep] = useState('draft');
+  const router = useRouter();
+  const { page, term, sort } = router.query;
+
+  const initialPage = parseInt(page) || 0;
+  const initialTerm = term || '';
+  const initialSort = sort || '';
+
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [term, setTerm] = useState('');
-  const [sort, setSort] = useState('');
-  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState(initialTerm);
+  const [sortValue, setSortValue] = useState(initialSort);
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [viewMode, setViewMode] = useState('list');
+  const [pageSize] = useState(10);
+  const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    fetchTickets(currentPage, searchTerm, sortValue);
+  }, [currentPage, sortValue, props?._loggedIn?.identifier]);
+
+  const initialRender = useRef(true);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+
+    const queryParams = {};
+    if (currentPage !== initialPage) {
+      queryParams.page = currentPage;
+    }
+    if (searchTerm !== initialTerm) {
+      queryParams.term = searchTerm;
+    }
+    if (sortValue !== initialSort) {
+      queryParams.sort = sortValue;
+    }
+
+    if (
+      queryParams.page !== page ||
+      queryParams.term !== term ||
+      queryParams.sort !== sort
+    ) {
+      router.replace(
+        { pathname: router.pathname, query: queryParams },
+        undefined,
+        { shallow: false }
+      );
+    }
+  }, [currentPage, sortValue]);
 
   const handleSearch = async () => {
+    console.log('hello');
     setLoading(true);
-    await fetchTickets(term);
-    setTerm('');
+    setCurrentPage(0);
+    await fetchTickets(0, searchTerm, sortValue);
+    setLoading(false);
   };
 
   const handleSort = async (value) => {
-    //console.log('doing', value);
     if (value && value.length) {
       setLoading(true);
-      await fetchTickets(null, value);
-      setSort('');
+      setCurrentPage(0);
+      setSortValue(value);
+      await fetchTickets(0, searchTerm, value);
+      setLoading(false);
     }
   };
 
-  const fetchTickets = async (SearchTerm, status) => {
+  const fetchTickets = async (page = 0, searchTerm = '', sortValue = '') => {
     setLoading(true);
 
     if (props && props?._loggedIn?.identifier) {
+      let meta = {};
       let extraObject = {
         owner: props?._loggedIn?.identifier,
       };
 
-      if (SearchTerm) {
-        extraObject.name = SearchTerm;
-      }
-      if (!extraObject.meta) {
-        extraObject.meta = {};
+      if (searchTerm) {
+        extraObject.name = searchTerm;
       }
 
-      if (status) {
-        extraObject.meta.status = status;
+      if (sortValue) {
+        meta.status = sortValue;
       }
 
       const res = await apiReq('/product/getProducts', {
         apiUrl: props?.apiUrl,
-        pagination: 0,
+        pagination: currentPage,
         extra: extraObject,
+        limit: 10,
+        meta,
       });
+
       if (res && res.products) {
-        const tix = res.products.sort((a, b) => {
+        const sortedTickets = res.products.sort((a, b) => {
           const dateA = new Date(a.created);
           const dateB = new Date(b.created);
-          return dateB - dateA;
+          return dateA - dateB;
         });
-        setTickets(tix || []);
-        if (tickets) {
-          //console.log('tix', tickets);
-          setLoading(false);
+
+        if (searchTerm || sortValue) {
+          console.log('sorted', sortedTickets);
+          setTickets(sortedTickets);
+        } else {
+          setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);
+          setHasMore(sortedTickets.length >= pageSize);
         }
+      } else {
+        setHasMore(false); // No more items available
       }
-    }
-  };
-  useEffect(() => {
-    fetchTickets();
-  }, [props?._loggedIn?.identifier]);
-
-  const handleStepChange = async (newStep) => {
-    if (newStep !== step) {
-      // setLoading(true);
-      setStep(newStep);
+      setLoading(false);
     }
   };
 
-  const handleView = (id) => {
-    router.push(`/studio/events/${id}`);
+  const handleNextPage = () => {
+    if (hasMore) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   };
 
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
   return (
     <StudioLayout {...props} showNav>
       <div className='font-lexend mt-[2rem]' key={props?.key}>
@@ -114,7 +164,31 @@ const Events = (props) => {
           </p>
         </div>
         <div className='mt-8 flex justify-between p-1 items-center'>
-          <h3 className='font-lexend font-medium'>YOUR EVENTS</h3>
+          <div className='  cursor-pointer flex space-x-2'>
+            <div
+              role='button'
+              className={`px-3 py-2 ${
+                viewMode === 'list'
+                  ? 'bg-black/30 text-white'
+                  : 'bg-transparent text-gray-600'
+              } rounded-l`}
+              onClick={() => setViewMode('list')}
+            >
+              <IoIosList className='h-7 w-7' />
+            </div>
+            <div
+              role='button'
+              className={`px-3 py-2 ${
+                viewMode === 'grid'
+                  ? 'bg-black/30 text-white'
+                  : 'bg-transparent text-gray-600'
+              } rounded-r`}
+              onClick={() => setViewMode('grid')}
+            >
+              <FiGrid className='h-7 w-7' />
+            </div>
+          </div>
+
           <div className='flex items-center gap-2'>
             <p className='font-lexend'>Sort by:</p>
             <div className='flex gap-2'>
@@ -149,7 +223,7 @@ const Events = (props) => {
                   <Input
                     placeholder='Search'
                     className='text-muted-foreground font-lexend'
-                    onChange={(e) => setTerm(e?.target?.value)}
+                    onChange={(e) => setSearchTerm(e?.target?.value)}
                     value={term}
                     onSubmit={handleSearch}
                   />
@@ -180,11 +254,24 @@ const Events = (props) => {
             onClick={handleSearch}
           />
         </div>
+
         <div className='my-8 space-y-4'>
           {!loading && tickets.length > 0 && (
-            <div className='my-8 space-y-4 mb-12'>
+            <div
+              id='itemContainer'
+              className={`my-8 mb-12 ${
+                viewMode === 'list'
+                  ? 'list-view'
+                  : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 gap-y-4'
+              }`}
+            >
               {tickets.map((m, index) => (
-                <Ticket key={index} info={props} ticketData={m} />
+                <Ticket
+                  key={index}
+                  info={props}
+                  ticketData={m}
+                  viewMode={viewMode}
+                />
               ))}
             </div>
           )}

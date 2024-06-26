@@ -2,7 +2,6 @@ import React from 'react';
 import ResourceLayout from '@/components/Layouts/ResourceLayout';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import { getServerSidePropsFunc } from '/appServer/serverProps';
 import Link from 'next/link';
 import ResourceCards from '@/components/cards/ResourceCards';
 import { SvgOne, SvgTwo, SvgThree } from '@/components/icons';
@@ -48,11 +47,7 @@ const resources = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  let currentProps = await getServerSidePropsDefault(
-    context,
-    pageDefaults[pageName]
-  );
-  return await getServerSidePropsFunc(currentProps, context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default resources;

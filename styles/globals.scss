@@ -48,6 +48,10 @@ a {
   box-shadow: unset !important;
   gap: 3rem !important;
   font-family: lexend !important;
+
+  @media (max-width: 768px) {
+    padding: 1rem !important;
+  }
 }
 .Ecommerce_Layout_Data_Container {
   gap: 3rem !important;
@@ -57,5 +61,42 @@ a {
   border-radius: 8px !important;
 }
 
+// .Ecommerce_Cart_Container button {
+//   @apple
+// }
+
+input[type='text'],
+.InputElement,
+.Ecommerce_CreditCard_FullNameInput_Default {
+  border-color: rgba(82, 82, 82, 1) !important;
+  color: white !important;
+  padding: 0.75rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  background-color: rgba(38, 38, 38, 1) !important;
+  border-radius: 6px !important;
+  height: 2.25rem !important;
+  width: 100% !important;
+}
+
+.Ecommerce_Cart_Container .SignIn_OauthContainer,
+.Ecommerce_Cart_Container .SignIn_Separator {
+  display: none;
+}
+
+button {
+  border-radius: 4px;
+  // background-color: rgba(221, 104, 26, 1) !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+.Ecommerce_Layout_Data_Container {
+  @media (max-width: 768px) {
+    flex-direction: column-reverse !important;
+    div {
+      width: 100% !important;
+    }
+  }
+}
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.

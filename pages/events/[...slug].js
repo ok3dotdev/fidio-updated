@@ -4,54 +4,43 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
-import { getServerSidePropsFunc } from '/appServer/serverProps';
 import Cart from '/modules/ecommerce/cart/CartInternal';
 
 import HomeLayout from '/customModules/features/HomeLayout';
-import apiReq from '/modules/utility/api/apiReq';
 import EventPageHero from '../../components/common/EventPageHero';
 
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import ShareIcon from '@mui/icons-material/Share';
 import { fireGlobalEvent } from '/modules/utility/utility';
+import { fetchTickets } from '@/lib/utils';
 
-import Button from '@/components/ui/button';
-import { fontFamily } from '@mui/system';
 const pageName = 'events';
 
 export const Page = (props) => {
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const router = useRouter();
   const [cartOpen, setCartOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    fetchTickets();
+    const loadTickets = async () => {
+      setLoading(true);
+      console.log('slug', router.query.slug);
+      const id = Array.isArray(router.query.slug)
+        ? router.query.slug[0]
+        : router.query.slug;
+      const tix = await fetchTickets(props?.apiUrl, id);
+      setTicket(tix);
+      setLoading(false);
+    };
+
+    loadTickets();
   }, [props?._loggedIn?.identifier]);
 
-  const fetchTickets = async () => {
-    setLoading(true);
-    if (props) {
-      const res = await apiReq('/product/getProducts', {
-        apiUrl: props?.apiUrl,
-        pagination: 0,
-        id: router.query.slug,
-      });
-      if (res && res.products) {
-        setTicket(res.products[0] || []);
-        setLoading(false);
-      } else {
-        setError(true);
-        setTicket([]);
-      }
-    }
-  };
   const handleOpenCart = (e) => {
-    handleAddProduct(e);
+    fireGlobalEvent(e, props._LocalEventEmitter);
     props._toggleSingleOpenMenu(e, 'cart');
     if (props?._openMenu?.currentMenu === 'cart') {
       setCartOpen(false);
@@ -61,11 +50,9 @@ export const Page = (props) => {
       }, 150);
     }
   };
-  const handleAddProduct = React.useCallback(async (e) => {
-    fireGlobalEvent(e, props._LocalEventEmitter); // Dependent on {...props} in this component use
-  });
+
   if (!loading && ticket) {
-    console.log('values', cartOpen);
+    console.log('tix', ticket);
   }
 
   return (
@@ -83,9 +70,6 @@ export const Page = (props) => {
           >
             {<Cart {...props} forceShowCc={true} setCartOpen={setCartOpen} />}
           </div>
-        )}
-        {error && (
-          <h1>There was an error with this page. We are looking into it.</h1>
         )}
         {ticket && (
           <>
@@ -156,18 +140,18 @@ export const Page = (props) => {
                       </div>
                     )}
                     <p className='text-dashtext mt-8  mb-4'>OTHER PERFORMERS</p>
-                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm '>
+                    <div className='text-white flex flex-wrap grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-12 space-y-4 text-sm items-center'>
                       {ticket?.detailmeta?.lineup
                         ?.slice(1, ticket?.detailmeta?.lineup?.length)
                         .map((art, idx) => (
                           <div
                             key={idx}
-                            className='flex flex-col gap-2 items-center w-[8rem]'
+                            className='flex flex-col gap-2 items-center'
                           >
                             <img
                               alt=''
                               src={`${props?.cdn?.static}/${art?.image}`}
-                              className='w-full h-full rounded-[50%] object-cover aspect-square'
+                              className='w-[9rem] h-full rounded-[50%] object-cover aspect-square'
                             />
                             <p className='text-lg'>{art?.title || 'No name'}</p>
                           </div>
@@ -219,11 +203,7 @@ export const Page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  let currentProps = await getServerSidePropsDefault(
-    context,
-    pageDefaults[pageName]
-  );
-  return await getServerSidePropsFunc(currentProps, context);
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
 };
 
 export default Page;

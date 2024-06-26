@@ -1,1 +1,1 @@
-import{beginStream,doFetchAuthForStream,endStream,updateStreamConfigRequest,requestStreamingPermissions}from"./stream";export{beginStream,doFetchAuthForStream,endStream,updateStreamConfigRequest,requestStreamingPermissions};
+import{beginStream,checkAuthorization,checkPlayerIsPlaying,doFetchAuthForStream,endStream,updateStreamConfigRequest,requestStreamingPermissions}from"./stream";export{beginStream,checkAuthorization,checkPlayerIsPlaying,doFetchAuthForStream,endStream,updateStreamConfigRequest,requestStreamingPermissions};

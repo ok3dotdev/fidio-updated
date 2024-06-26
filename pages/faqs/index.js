@@ -5,14 +5,7 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ResourceStaticLayout from '@/components/Layouts/ResourceStaticLayout';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  ArrowRightAltOutlined,
-  ArrowRightAltSharp,
-  ArrowRightTwoTone,
-  ChevronRight,
-} from '@mui/icons-material';
-import { ArrowRightIcon, ArrowRightToLine } from 'lucide-react';
+import { ChevronRight } from '@mui/icons-material';
 
 const pageName = 'faqs';
 

@@ -2,10 +2,12 @@ import React from 'react';
 
 const PrivacyContent = () => {
   const paraStyle = {
-    color: '#A3A3A3',
-    fontSize: '14px',
+    color: 'rgba(163, 163, 163, 1)',
+    fontSize: '16px',
     fontFamily: 'lexend',
-    paddingTop:'10px',
+    paddingTop: '10px',
+    lineHeight: '1.4rem',
+    fontWeight: '400',
   };
   return (
     <div className='px-4 h-full'>

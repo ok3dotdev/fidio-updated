@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{fetchBusy:t,currentlyStreaming:r}=e;return React.createElement(React.Fragment,null,t||r?null:React.createElement("div",{style:{fontSize:"1rem",fontWeight:"600",paddingTop:"0",paddingBottom:".125rem",textAlign:"center"}},"Stream on ",e.siteTitle," Now"))};export default Module;

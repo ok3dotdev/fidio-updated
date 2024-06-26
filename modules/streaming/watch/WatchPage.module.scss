@@ -5,7 +5,8 @@
         width: 100%;
         .videoPlayer {
             width: 100%;
-            min-height: 100%;
+            min-height: 70vh;
+            max-height: 70vh;
         }
         @media (max-width: 700px) {
             .videoPlayer {
@@ -26,6 +27,10 @@
             }
         }
     }
+}
+
+.videoQuadrantSimple {
+    height: auto;
 }
 
 .streamLeadPrompt {
@@ -61,20 +66,32 @@
 
 .chatOpen {
     width: 350px;
+    width: 350px;
     max-width: 350px;
-}
-
-@media(max-width: 900px) {
-    .chatOpen {
-        width: 300px;
-        max-width: 300px;
-    }
 }
 
 .videoExternalContainer {
     display: flex;
     overflow: hidden;
     min-height: 100%;
+    .videoInternalContainer {
+        flex-grow: 1;
+        background: #161616;
+        .metaContainer {
+            padding: 1rem;
+            .title {
+                margin-top: 0;
+                margin-bottom: .5rem;
+            }
+            .socialContainer {
+
+            }
+        }
+    }
+}
+
+.commandPanelContainer {
+    overflow: hidden;
 }
 
 @media (max-width: 700px) {
@@ -89,5 +106,95 @@
     .chatContainer {
         border-left: none;
         border-top: .5px solid #2d2d2d;
+    }
+}
+
+
+@media (min-width: 700px) {
+    .commandPanelContainerOpen {
+        max-width: calc(100vw - 350px);
+    }
+}
+
+@media(max-width: 900px) {
+    .chatOpen {
+        min-width: 300px;
+    }
+    .commandPanelContainerOpen {
+        max-width: calc(100vw - 300px);
+    }
+}
+
+.playerNotInitialized {
+    opacity: 0;
+}
+
+.playerInitialized {
+    opacity: 1;
+}
+
+.thumbnailsContainer {
+    overflow-x: auto;
+    display: flex;
+    gap: 1rem;
+    margin: .5rem;
+}
+
+.thumbnailContainer {
+    width: 160px;
+    max-height: 140px;
+    .thumbnail {
+        cursor: pointer;
+        border: 1px solid grey;
+        border-radius: 1rem;
+        width: 160px;
+        height: 70px;
+    }
+    .thumbnailProcessing {
+        border: 1px solid #f5c94e;
+    }
+    .thumbnailSelecting, .thumbnailSelecting:hover {
+        border: 1px solid rgb(53, 237, 53);
+    }
+}
+
+.thumbnail:hover {
+    border: 1px solid white;
+}
+
+.thumbnailsContainerBusy {
+    opacity: .2;
+}
+
+.uploadMetaContainer {
+    margin-top: .5rem;
+    @media(min-width: 700px) {
+        .uploadMetaPrimaryContainer {
+            max-width: calc(100vw - 325px);
+        }
+    }
+}
+
+.thumbnailTitle {
+    margin: .5rem 0;
+}
+
+.floodMediaContainer {
+    display: flex;
+    gap: .5rem;
+}
+
+.snipMediaContainer {
+    width: 250px;
+}
+
+.leadContentContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 725px) {
+    .floodMediaContainer, .leadContentContainer {
+        flex-direction: column;
     }
 }
