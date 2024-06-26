@@ -1,13 +1,20 @@
-import React from 'react'
-import { SignIn, Username } from '/modules/onboarding/signin'
-import GridList from '/modules/video/player/gridList'
-import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '/modules/profile'
+import React from 'react';
+// import { SignIn, Username } from '/modules/onboarding/signin';
+// import GridList from '/modules/video/player/gridList';
+// import {
+//   AdminPanel,
+//   BeginStream,
+//   UsernameContainer,
+//   UserFeed,
+//   UserIcon,
+//   UserShop,
+// } from '/modules/profile';
 
-const Module = props => {
-    return (
-        <div>
-            <AdminPanel { ...props } />
-            {
+const Module = (props) => {
+  return (
+    <div>
+      {/* <AdminPanel {...props} /> */}
+      {/* {
                 props?.profileData?.user
                     ? <div>
                         <div className={`${props?.className ?? ''} flex wrap gap-p10 PagePadding pTop ProfilePage_ProfileContainer`}>
@@ -24,9 +31,9 @@ const Module = props => {
                         <UserShop { ...props } />
                     </div>
                     : null
-            }
-        </div>
-    )
-}
+            } */}
+    </div>
+  );
+};
 
-export default Module
+export default Module;

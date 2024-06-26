@@ -32,6 +32,7 @@ import { Label } from '@/components/ui/label';
 const pageName = 'create';
 
 const EventView = (props) => {
+  console.log('props', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -81,7 +82,7 @@ const EventView = (props) => {
   };
 
   const startStream = async (e) => {
-    console.log('clicked');
+    console.log('clicked', router.query.id);
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -91,7 +92,7 @@ const EventView = (props) => {
       },
       streamingFor: router.query?.id, // Use id of relevant product event. Product should be set to "Livestream"
     });
-    setCurrentlyStreaming(res.data);
+    setCurrentlyStreaming(res.data.stream);
     setShowStreamDialog(true);
   };
 

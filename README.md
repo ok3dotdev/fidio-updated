@@ -75,6 +75,15 @@ ANALYZE=true npm run build
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Errors
+
+## Packages
+
+If you are missing dependencies check /modules/dependencies.txt
+Ensure all of these exist atleast once in package.json file
+
+You can make sure all required packages are installed on DEV or PROD by navigating to /admin in app and then going to build. Then you will want to click "Build" tab and upload a package.json. Then click "run npm install"
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

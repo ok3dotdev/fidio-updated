@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import MobileMenu from '@/components/menu/mobileMenu';
 
 const Menu = (props) => {
+  console.log('pssss', props);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -30,7 +32,8 @@ const Menu = (props) => {
             <div></div>
           )}
         </div>
-        <div className='lg:hidden flex items-center'>
+        <MobileMenu info={props} />
+        {/* <div className='lg:hidden flex items-center'>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className='text-white focus:outline-none'
@@ -50,7 +53,7 @@ const Menu = (props) => {
               ></path>
             </svg>
           </button>
-        </div>
+        </div> */}
       </div>
       {isMenuOpen && (
         <div className='lg:hidden fixed inset-0 bg-black p-4 transition-transform transform-gpu translate-y-0 ease-out duration-300 flex flex-col justify-between'>

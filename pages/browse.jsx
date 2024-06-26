@@ -66,7 +66,7 @@ const Page = (props) => {
             sortedDates.map((date, i) => (
               <div
                 key={i}
-                className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px]'
+                className='flex w-full gap-4 md:gap-12 overflow-hidden mb-12 min-h-[250px]'
               >
                 <div>
                   <DateComponent date={date} />
@@ -76,7 +76,7 @@ const Page = (props) => {
                     align: 'start',
                   }}
                   arrows='top'
-                  className='w-full'
+                  className='w-[410px] md:w-full '
                 >
                   {/* <div className='z-50 relative flex justify-end gap-2 mb-2 bg-red-400'>
                       <CarouselPrevious arrows='top' className='z-24' />
@@ -86,7 +86,7 @@ const Page = (props) => {
                     {tickets[date]?.map((ticket, id) => (
                       <CarouselItem
                         key={id}
-                        className='md:basis-1/2 lg:basis-1/3 '
+                        className=' md:basis-2/3 rounded-lg lg:basis-1/3'
                       >
                         <div className='p-1 cursor-pointer'>
                           <Ticket key={id} ticket={ticket} cdn={props.cdn} />
@@ -114,7 +114,6 @@ const Page = (props) => {
 };
 
 const DateComponent = ({ date }) => {
-  console.log('date', date);
   const { month, weekday, day } = getDisplayDate(date);
 
   return (

@@ -5,11 +5,15 @@ import { Button } from '@/components/ui/button';
 const Ticket = ({ ticket, cdn }) => {
   return (
     <Link href={`/events/${ticket.id}`}>
-      <img
-        src={`${cdn?.static}/${ticket.images[0]?.name}`}
-        className='h-[250px]  aspect-square object-cover w-full rounded-[8px]'
-        alt={ticket.name}
-      />
+      {ticket.images[0] ? (
+        <img
+          src={`${cdn?.static}/${ticket.images[0]?.name}`}
+          className='aspect-square object-cover w-full rounded-[8px]'
+          alt={ticket.name}
+        />
+      ) : (
+        <img src='/img/internal/althero.png' className='rounded-[8px]' />
+      )}
       <div className='mt-2'>
         <p className='font-semibold'>{ticket.name}</p>
         <div className='flex w-full justify-between mt-4'>

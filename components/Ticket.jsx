@@ -10,7 +10,6 @@ import Image from 'next/image';
 
 const Ticket = ({ info, ticketData, viewMode }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
-  // //console.log('Ddd', ticketData, info);
   if (viewMode === 'list') {
     return (
       <div
@@ -71,13 +70,7 @@ const Ticket = ({ info, ticketData, viewMode }) => {
   }
   if (viewMode === 'grid') {
     return (
-      <div
-        className=' rounded-lg border shadow-Txl '
-        // style={{
-        //   backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0)) , url(${info?.cdn?.static}/${images[0]?.name})`,
-        //   backgroundSize: 'cover',
-        // }}
-      >
+      <div className=' rounded-lg border shadow-Txl '>
         <div class='overflow-hidden rounded-lg'>
           <div class='relative h-40'>
             <div
