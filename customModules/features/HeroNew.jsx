@@ -79,22 +79,6 @@ const Hero = (props) => {
       middlePosition // 84px is half of the default height (2em) of the left h2 element
     }px`;
   }, []);
-  // useEffect(() => {
-  //   const leftHeadings = document.querySelectorAll('#scrollingContainer h2');
-  //   const totalLeftHeadingsHeight = Array.from(leftHeadings).reduce(
-  //     (acc, heading) => acc + heading.offsetHeight,
-  //     0
-  //   );
-
-  //   const rightContainer = document.querySelector('.left-container');
-  //   const rightContainerHeight = rightContainer.offsetHeight;
-
-  //   const paddingTop = (rightContainerHeight - totalLeftHeadingsHeight) / 2;
-  //   const paddingLeft = window.innerWidth >= 768 ? 0 : 20; // Adjust as needed
-
-  //   rightContainer.style.paddingTop = `${paddingTop}px`;
-  //   // rightContainer.style.paddingLeft = `${paddingLeft}px`;
-  // }, []);
 
   return (
     <div className='h-screen w-full relative font-Archivo'>

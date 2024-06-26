@@ -66,7 +66,7 @@ const Page = (props) => {
             sortedDates.map((date, i) => (
               <div
                 key={i}
-                className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px] max-w-[900px]'
+                className='flex w-full gap-4 md:gap-12 overflow-x-hidden mb-12 min-h-[250px]'
               >
                 <div>
                   <DateComponent date={date} />
