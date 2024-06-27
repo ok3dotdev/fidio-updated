@@ -32,6 +32,7 @@ import { Label } from '@/components/ui/label';
 const pageName = 'create';
 
 const EventView = (props) => {
+  console.log('propsID', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -74,14 +75,16 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    console.log('streaming', res);
+    if (res?.data?.stream) {
+      props._setCurrentlyStreaming(res.data.stream);
+    }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.currentlyStreaming);
     }
   };
 
+  // console.log('clicked', router.query.id);
   const startStream = async (e) => {
-    console.log('clicked');
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -89,9 +92,14 @@ const EventView = (props) => {
         private: true,
         description: ticket?.description,
       },
-      streamingFor: router.query?.id, // Use id of relevant product event. Product should be set to "Livestream"
+      streamingFor: router.query?.id[0], // Use id of relevant product event. Product should be set to "Livestream"
     });
+    console.log('clicked', res);
+
     setCurrentlyStreaming(res.data);
+    if (res?.data?.stream) {
+      props._setCurrentlyStreaming(res.data.stream);
+    }
     setShowStreamDialog(true);
   };
 
@@ -355,7 +363,7 @@ const EventView = (props) => {
                       <div className='mt-8'>
                         <Preview
                           {...props}
-                          useWatchDataPreview={props?.watchData}
+                          useWatchDataPreview={props?._currentlyStreaming}
                         />
                       </div>
                     )}
