@@ -75,13 +75,16 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
+    if (res?.data?.stream) {
+      props._setCurrentlyStreaming(res.data.stream);
+    }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.currentlyStreaming);
     }
   };
 
+  // console.log('clicked', router.query.id);
   const startStream = async (e) => {
-    console.log('clicked', router.query.id);
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -89,9 +92,14 @@ const EventView = (props) => {
         private: true,
         description: ticket?.description,
       },
-      streamingFor: router.query?.id, // Use id of relevant product event. Product should be set to "Livestream"
+      streamingFor: router.query?.id[0], // Use id of relevant product event. Product should be set to "Livestream"
     });
-    setCurrentlyStreaming(res.data.stream);
+    console.log('clicked', res);
+
+    setCurrentlyStreaming(res.data);
+    if (res?.data?.stream) {
+      props._setCurrentlyStreaming(res.data.stream);
+    }
     setShowStreamDialog(true);
   };
 
@@ -355,7 +363,7 @@ const EventView = (props) => {
                       <div className='mt-8'>
                         <Preview
                           {...props}
-                          useWatchDataPreview={props?.watchData}
+                          useWatchDataPreview={props?._currentlyStreaming}
                         />
                       </div>
                     )}
