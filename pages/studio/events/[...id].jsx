@@ -75,7 +75,6 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    console.log('streaming', res);
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.currentlyStreaming);
     }
