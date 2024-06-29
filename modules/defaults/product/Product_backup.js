@@ -13,7 +13,8 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { selectThisText } from '/modules/utility/utility/event'
 
 const Module = props => {
-    const { isEditing, useEditingOptions, validStyleObject, validOptionObject, isAdmin, handleEdit, currentPrice, handleFireGlobalEvent, selectedStyle, selectedOption, currentOption, handleUpdateProductDescription, descriptionInputRef, isSettingCurrency, handleSetIsSettingCurrency, currentCurrencyRef, quantityInput, setCurrentQuantity, setInfinity, setCurrentStyleName, optionInput, setCurrentOptionName, changeCurrentOption, styleSelect, optionSelect, isTicketRef, isLivestreamRef, warning, setWarning, setSelectedStyleHandler, handleChangeCurrentCurrency } = props
+    const { isEditing, useEditingOptions, validStyleObject, validOptionObject, isAdmin, handleEdit, currentPrice, handleFireGlobalEvent, selectedStyle, selectedOption, currentOption, handleUpdateProductDescription, descriptionInputRef, isSettingCurrency, handleSetIsSettingCurrency, currentCurrencyRef, quantityInput, setCurrentQuantity, setInfinity, setCurrentStyleName, optionInput, setCurrentOptionName, changeCurrentOption, styleSelect, optionSelect, isTicketRef, isLivestreamRef, warning, setWarning, setSelectedStyleHandler, handleChangeCurrentCurrency, passTempImages, editingOptionsMeta, setOptionsMetaData, appendFormData, currentLineupEditing, setCurrentLineupEditing } = props
+    const editingNew = props?.product?.new
     return (
         <React.Fragment>
             {
@@ -21,7 +22,7 @@ const Module = props => {
                     ? <div className={`${PIMStyles.currentEditingProductInnerContainer}`}>
                         <div className={`${PIMStyles.currentlyEditingProductContent}`}>
                             <div className={`${PIMStyles.productImgContainer} ${!isEditing ? 'Product_img_container' : ''} Product_img_container_large`}>
-                                <ProductImageManager {...props} />
+                                <ProductImageManager {...props} editing={props.product} passTempImages={editingNew && passTempImages ? passTempImages : null} />
                             </div>
                             <div className={`${PIMStyles.productMetaContainer} Product_meta_container`}>
                                 <div className={`${PIMStyles.productMetaInternalContainer}`} style={{ height: `calc(100% - ${props._loggedIn ? '25' : '40'}px)` }}>
@@ -143,14 +144,14 @@ const Module = props => {
                                                 <div style={{ fontSize: '.8rem' }}>Is this a ticket?</div>
                                                 <ConfirmationNumber style={{ width: '15px', height: '15px' }} />
                                             </Tooltip>
-                                            <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.ticket} defaultChecked={props.product.detailmeta.ticket} onChange={props.setOptionsMetaData} option='ticket' ref={isTicketRef} />
+                                            <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.ticket} defaultChecked={props.product.detailmeta.ticket} onChange={setOptionsMetaData} option='ticket' ref={isTicketRef} />
                                         </div>
                                         {
                                             useEditingOptions.ticket
                                                 ? <div>
                                                     <Tooltip title="Please add dates your event is happening. Enter dates in the following format MON-DD-YYYY-HH:MM or they will not be parsed as dates." className='flex gap-p2' style={{ alignItems: 'center' }} placement='right'>
                                                         <span style={{ fontSize: '.8rem', fontWeight: '600', whiteSpace: 'nowrap' }}>Date for Event</span>
-                                                        <input type='text' style={{ marginBottom: '.125rem', width: '-webkit-fill-available' }} placeholder='Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty' onInput={props.setOptionsMetaData} option='eventDateDef' option2='input' defaultValue={props?.product?.detailmeta?.eventDateDef?.input} />
+                                                        <input type='text' style={{ marginBottom: '.125rem', width: '-webkit-fill-available' }} placeholder='Date in MON-DD-YYYY-HH:MM format. If the ticket does not have an event date leave empty' onInput={setOptionsMetaData} option='eventDateDef' option2='input' defaultValue={props?.product?.detailmeta?.eventDateDef?.input} />
                                                     </Tooltip>
                                                     {
                                                         props?.product?.detailmeta?.eventDateDef?.dates?.length > 0 ?
@@ -168,7 +169,7 @@ const Module = props => {
                                         }
                                     </div>
                                     {
-                                        props?.editingOptionsMeta?.productType === 'virtual'
+                                        editingOptionsMeta?.productType === 'virtual'
                                             ? <div>
                                                 <div className='promptContainer' style={{ borderRadius: '.5rem', margin: '.25rem 0' }}>
                                                     <div className='flex gap-p2' style={{ alignItems: 'center', height: '20px' }}>
@@ -176,14 +177,14 @@ const Module = props => {
                                                             <div style={{ fontSize: '.8rem' }}>Is this for a livestream?</div>
                                                             <Stadium style={{ width: '15px' }} />
                                                         </Tooltip>
-                                                        <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.livestream} defaultChecked={props.product.detailmeta.livestream} onChange={props.setOptionsMetaData} option='livestream' ref={isLivestreamRef} />
+                                                        <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.livestream} defaultChecked={props.product.detailmeta.livestream} onChange={setOptionsMetaData} option='livestream' ref={isLivestreamRef} />
                                                     </div>
                                                     {
                                                         useEditingOptions.livestream
                                                             ? <div>
                                                                 <Tooltip title="Enter dates or words for matching authorization. Enter dates in the following format MON-DD-YYYY-HH:MM. Time must be input in 24 H military time. Values that do not match dates will be parsed as Tags that can be added to livestreams. Any matches will authorize viewership of the stream for purchases of this ticket" className='flex gap-p2' style={{ alignItems: 'center' }} placement='right'>
                                                                     <span style={{ fontSize: '.8rem', fontWeight: '600', whiteSpace: 'nowrap' }}>Tags</span>
-                                                                    <input type='text' style={{ marginBottom: '.125rem', width: '-webkit-fill-available' }} placeholder='Date in DD/MM/YY format or a Tag' onInput={props.setOptionsMetaData} option='livestreamDef' option2='input' defaultValue={props?.product?.detailmeta?.livestreamDef?.input} />
+                                                                    <input type='text' style={{ marginBottom: '.125rem', width: '-webkit-fill-available' }} placeholder='Date in DD/MM/YY format or a Tag' onInput={setOptionsMetaData} option='livestreamDef' option2='input' defaultValue={props?.product?.detailmeta?.livestreamDef?.input} />
                                                                 </Tooltip>
                                                                 <span className='flex gap-p2' style={{ marginBottom: '.25rem' }}>
                                                                     {
@@ -212,7 +213,11 @@ const Module = props => {
                                                             </div>
                                                             : null
                                                     }
-                                                    <Lineup { ...props } product={props.product} setWarning={setWarning} appendFormData={props?.appendFormData} />
+                                                    {
+                                                        editingNew
+                                                            ? <Lineup { ...props } product={props.product} editing={props.product} editingOptionsMeta={editingOptionsMeta} setOptionsMetaData={setOptionsMetaData} currentLineupEditing={currentLineupEditing} setCurrentLineupEditing={setCurrentLineupEditing} appendFormData={appendFormData} />
+                                                            : <Lineup { ...props } product={props.product} setWarning={setWarning} appendFormData={appendFormData} />
+                                                    }
                                                 </div>
                                                 {
                                                     warning && warning.message
@@ -231,7 +236,7 @@ const Module = props => {
                                             <div style={{ fontSize: '.8rem' }}>Is this a subscription?</div>
                                             <Inventory style={{ width: '15px' }} />
                                         </Tooltip>
-                                        <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.subscription} defaultChecked={props.product.detailmeta.subscription} onChange={props.setOptionsMetaData} option='subscription' />
+                                        <input type='checkbox' style={{ margin: 0 }} value={props.product.detailmeta.subscription} defaultChecked={props.product.detailmeta.subscription} onChange={setOptionsMetaData} option='subscription' />
                                     </div>
                                     {
                                         props?.product?.published
@@ -251,10 +256,10 @@ const Module = props => {
                                     }
                                 </div>
                                 <div className='flex gap-p2 Product_admin_choice_container' style={{ marginTop: '.125rem' }}>
-                                    <button onClick={props.handlePublishProduct} modif='publish' existing='true'>Publish</button><button onClick={props.handlePublishProduct} modif='save' existing='true'>Save</button>
+                                    <button onClick={props.handlePublishProduct} modif='publish' existing={editingNew ? null : 'true'}>Publish</button><button onClick={props.handlePublishProduct} modif='save' existing={editingNew ? null : 'true'}>Save</button>
                                     {
                                         props.editing ?
-                                            <button onClick={props.handleCancelProduct} modif='save'>{props.editing.new ? 'Abandon' : 'Cancel'}</button>
+                                            <button onClick={props.handleCancelProduct} modif='save'>{editingNew ? 'Abandon' : 'Cancel'}</button>
                                             : null
                                     }
                                 </div>
