@@ -13,7 +13,7 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { selectThisText } from '/modules/utility/utility/event'
 
 const Module = props => {
-    const { isEditing, useEditingOptions, validStyleObject, validOptionObject, isAdmin, handleEdit, currentPrice, handleFireGlobalEvent, selectedStyle, selectedOption, currentOption, handleUpdateProductDescription, descriptionInputRef, isSettingCurrency, handleSetIsSettingCurrency, currentCurrencyRef, quantityInput, setCurrentQuantity, setInfinity, setCurrentStyleName, optionInput, setCurrentOptionName, changeCurrentOption, styleSelect, optionSelect, isTicketRef, isLivestreamRef, warning, setWarning, setSelectedStyleHandler, handleChangeCurrentCurrency, passTempImages, editingOptionsMeta, setOptionsMetaData, appendFormData, currentLineupEditing, setCurrentLineupEditing } = props
+    const { isEditing, useEditingOptions, validStyleObject, validOptionObject, isAdmin, handleEdit, currentPrice, handleFireGlobalEvent, selectedStyle, selectedOption, currentOption, handleUpdateProductDescription, descriptionInputRef, isSettingCurrency, handleSetIsSettingCurrency, currentCurrencyRef, quantityInput, setCurrentQuantity, setInfinity, setCurrentStyleName, optionInput, setCurrentOptionName, changeCurrentOption, styleSelect, optionSelect, isTicketRef, isLivestreamRef, warning, setWarning, setSelectedStyleHandler, handleChangeCurrentCurrency, passTempImages, editingOptionsMeta, setOptionsMetaData, appendFormData, currentLineupEditing, setCurrentLineupEditing, setCurrentName, nameRef, currentDefinePriceCurrency, setCurrentPrice, styleInput, setCombinedFeed, setEditing, handleCancelProduct, handlePublishProduct, onProductTypeChange, addStyle, addOption } = props
     const editingNew = props?.product?.new
     return (
         <React.Fragment>
@@ -31,7 +31,7 @@ const Module = props => {
                                             <Tooltip title="Name of Product" placement='left'>
                                                     <label style={{ fontWeight: '600' }}>Title </label>
                                             </Tooltip>
-                                            <input name='name' placeholder='Product Title' style={{ fontWeight: '600', width: '100%' }} onChange={props.setCurrentName} ref={props.nameRef} modif='product_name' defaultValue={props?.editing?.name} />
+                                            <input name='name' placeholder='Product Title' style={{ fontWeight: '600', width: '100%' }} onChange={setCurrentName} ref={nameRef} modif='product_name' defaultValue={props?.editing?.name} />
                                         </div>
                                         {
                                             props.pageError.location && props.pageError.location === 'product_name'
@@ -44,20 +44,20 @@ const Module = props => {
                                     </Tooltip>
                                     <div className='flex gap-p2' style={{ alignItems: 'center'}}>
                                         <Tooltip title="Set the price for the currently selected Style" placement='left'>
-                                            <div style={{ fontSize: '.8rem', fontWeight: 600 }}>{props.currentDefinePriceCurrency?.symbol ?? '$'}</div>
+                                            <div style={{ fontSize: '.8rem', fontWeight: 600 }}>{currentDefinePriceCurrency?.symbol ?? '$'}</div>
                                         </Tooltip>
-                                        <input type='currency' style={{ width: '100%' }} defaultValue='10.00' ref={props.priceInput} onChange={props.setCurrentPrice} />
+                                        <input type='currency' style={{ width: '100%' }} defaultValue='10.00' ref={props.priceInput} onChange={setCurrentPrice} />
                                         {
-                                            validStyleObject && (props.currentDefinePriceCurrency?.currency === 'USD' && validStyleObject?.price != props?.priceInput?.current?.value)
-                                                || (props.currentDefinePriceCurrency?.currency !== 'USD'
-                                                    && (!validStyleObject.priceTable || (validStyleObject.priceTable && !validStyleObject.priceTable[props.currentDefinePriceCurrency.currency]) || (props?.currentDefinePriceCurrency?.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, props.currentDefinePriceCurrency.currency) && validStyleObject.priceTable[props.currentDefinePriceCurrency.currency] != props.priceInput.current.value)))
+                                            validStyleObject && (currentDefinePriceCurrency?.currency === 'USD' && validStyleObject?.price != props?.priceInput?.current?.value)
+                                                || (currentDefinePriceCurrency?.currency !== 'USD'
+                                                    && (!validStyleObject.priceTable || (validStyleObject.priceTable && !validStyleObject.priceTable[currentDefinePriceCurrency.currency]) || (props?.currentDefinePriceCurrency?.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, currentDefinePriceCurrency.currency) && validStyleObject.priceTable[currentDefinePriceCurrency.currency] != props.priceInput.current.value)))
                                                 ? <Tooltip title="The price displayed is currently not set for this product style. Click here to set it">
-                                                    <button onClick={props.setCurrentPrice} value={props.priceInput?.current?.value} style={{ whiteSpace: 'nowrap', lineHeight: '.5rem', fontSize: '.75rem' }}>Set Price</button>
+                                                    <button onClick={setCurrentPrice} value={props.priceInput?.current?.value} style={{ whiteSpace: 'nowrap', lineHeight: '.5rem', fontSize: '.75rem' }}>Set Price</button>
                                                 </Tooltip>
                                                 : null
                                         }
                                         <Tooltip title="You can set pricing in multiple currencies. Although the value you keep selected here will be the primary currency. Use the currency selector to choose a currency to begin setting prices in the respective currency. Countries that users reside in for which you have not set a currency will be presented the closest relevant currency you have defined a pricepoint in">
-                                        <div className={`${PIMStyles.currencyLabel} ${isSettingCurrency ? `${PIMStyles.currencyLabelActive}` : null}`} style={{ lineHeight: '.5rem' }} onClick={handleSetIsSettingCurrency} ref={currentCurrencyRef}>{props.currentDefinePriceCurrency?.currency ?? isEditing?.meta?.currency ?? 'USD'}</div>
+                                        <div className={`${PIMStyles.currencyLabel} ${isSettingCurrency ? `${PIMStyles.currencyLabelActive}` : null}`} style={{ lineHeight: '.5rem' }} onClick={handleSetIsSettingCurrency} ref={currentCurrencyRef}>{currentDefinePriceCurrency?.currency ?? isEditing?.meta?.currency ?? 'USD'}</div>
                                         </Tooltip>
                                         {
                                             isSettingCurrency
@@ -97,7 +97,7 @@ const Module = props => {
                                             <div className='flex gap-p2' style={{ alignItems: 'center' }}>
                                                 <div style={{ fontSize: '.8rem', fontWeight: 600 }}>Style</div>
                                                 <div className='dropdown_input'>
-                                                    <input type="text" ref={props.styleInput} onChange={setCurrentStyleName} />
+                                                    <input type="text" ref={styleInput} onChange={setCurrentStyleName} />
                                                     <select id={props.editing.id + '_styles'} name={props.editing.id + '_styles'} style={{ width: '100%' }} onChange={props.changeCurrentStyle}>{props.resolveStyles(props.editing).map((style, i) => {
                                                         return (<option value={style.sid} className={`style_option ${props?.editingSelectedStyle === style.sid ? 'option_currently_selected' : ''}`} key={i}>{style.style}</option>)
                                                     })}
@@ -123,16 +123,16 @@ const Module = props => {
                                         }
                                     </div>
                                     <div className='flex gap-p2 Product_admin_choice_container'>
-                                        <button onClick={props.addStyle}>Add Style</button>
-                                        <button onClick={props.addOption}>Add Option</button>
+                                        <button onClick={addStyle}>Add Style</button>
+                                        <button onClick={addOption}>Add Option</button>
                                         <Tooltip title="Set the product type" placement='right'>
                                             <div className='flex gap-p2' style={{ fontSize: '.8rem', alignItems: 'center' }}>
                                                 <span className='flex'>
-                                                    <input type="radio" id="virtual" name="fav_language" value="virtual" defaultChecked onChange={props.onProductTypeChange} />
+                                                    <input type="radio" id="virtual" name="fav_language" value="virtual" defaultChecked onChange={onProductTypeChange} />
                                                     <label for="virtual">Virtual</label>
                                                 </span>
                                                 <span className='flex'>
-                                                    <input type="radio" id="physical" name="fav_language" value="physical" onChange={props.onProductTypeChange} />
+                                                    <input type="radio" id="physical" name="fav_language" value="physical" onChange={onProductTypeChange} />
                                                     <label for="physical">Physical</label>
                                                 </span>
                                             </div>
@@ -256,10 +256,10 @@ const Module = props => {
                                     }
                                 </div>
                                 <div className='flex gap-p2 Product_admin_choice_container' style={{ marginTop: '.125rem' }}>
-                                    <button onClick={props.handlePublishProduct} modif='publish' existing={editingNew ? null : 'true'}>Publish</button><button onClick={props.handlePublishProduct} modif='save' existing={editingNew ? null : 'true'}>Save</button>
+                                    <button onClick={handlePublishProduct} modif='publish' existing={editingNew ? null : 'true'}>Publish</button><button onClick={handlePublishProduct} modif='save' existing={editingNew ? null : 'true'}>Save</button>
                                     {
                                         props.editing ?
-                                            <button onClick={props.handleCancelProduct} modif='save'>{editingNew ? 'Abandon' : 'Cancel'}</button>
+                                            <button onClick={handleCancelProduct} modif='save'>{editingNew ? 'Abandon' : 'Cancel'}</button>
                                             : null
                                     }
                                 </div>
@@ -277,7 +277,7 @@ const Module = props => {
                                         </Tooltip>
                                     : null
                             }
-                            <ProductImageManager cdn={props.cdn} product={props.product} _loggedIn={props._loggedIn} domainKey={props.domainKey} apiUrl={props.apiUrl} setEditing={props.setEditing} setCombinedFeed={props.setCombinedFeed} />
+                            <ProductImageManager cdn={props.cdn} product={props.product} _loggedIn={props._loggedIn} domainKey={props.domainKey} apiUrl={props.apiUrl} setEditing={setEditing} setCombinedFeed={setCombinedFeed} />
                         </div>
                         <div className={`Product_meta_container`}>
                             <div>
