@@ -26,9 +26,6 @@ const StudioNav = ({ toggleMenu, isMenuOpen, showButtons }) => {
       </div>
       {showButtons && (
         <div className='absolute right-0 px-[2rem] gap-4 hidden md:flex'>
-          <button className='border-[1px] border-dashBorder p-3 font-lexend font-medium rounded-[6px] flex justify-center items-center'>
-            Start instant stream
-          </button>
           <Link
             href='/studio/events/create'
             className='bg-accentY hover:bg-accentY p-3 font-lexend font-medium rounded-[6px] flex justify-center items-center'

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 import Countdown from 'react-countdown';
+import copy from 'copy-to-clipboard';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
@@ -16,6 +17,8 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import EventUpdateModal from '@/components/modals/EventUpdateModal';
 import Preview from '/modules/streaming/watch/preview/Preview';
 
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -26,6 +29,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -40,6 +53,7 @@ const EventView = (props) => {
   const [streamStatusCheck, setStreamStatusCheck] = React.useState(null);
   const [showStreamDialog, setShowStreamDialog] = useState(false);
   const [currentlyStreaming, setCurrentlyStreaming] = useState(null);
+  const [hasCopied, setHasCopied] = useState(currentlyStreaming);
   const router = useRouter();
 
   useEffect(() => {
@@ -59,7 +73,7 @@ const EventView = (props) => {
         extra: {
           owner: props?._loggedIn?.identifier,
         },
-        id: router.query.id,
+        id: router.query.id[0],
         limit: 1,
       });
       if (res && res.products) {
@@ -71,6 +85,7 @@ const EventView = (props) => {
   };
 
   const checkStreamStatus = async () => {
+    console.log('checking');
     setStreamStatusCheck(true);
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
@@ -80,6 +95,7 @@ const EventView = (props) => {
     }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.currentlyStreaming);
+      console.log('checking', res.currentlyStreaming);
     }
   };
 
@@ -92,15 +108,15 @@ const EventView = (props) => {
         private: true,
         description: ticket?.description,
       },
-      streamingFor: router.query?.id[0], // Use id of relevant product event. Product should be set to "Livestream"
+      streamingFor: router.query?.id[0],
     });
     console.log('clicked', res);
 
-    setCurrentlyStreaming(res.data);
     if (res?.data?.stream) {
+      setCurrentlyStreaming(res.data);
+      setShowStreamDialog(true);
       props._setCurrentlyStreaming(res.data.stream);
     }
-    setShowStreamDialog(true);
   };
 
   const handleEventUpdate = () => {
@@ -138,6 +154,34 @@ const EventView = (props) => {
     }
   };
 
+  const endStream = React.useCallback((e) => {
+    e.preventDefault();
+    console.log('Emding');
+
+    const f = async () => {
+      const res = await apiReq('/stream/endstream', {
+        user: props?._loggedIn,
+        stream: currentlyStreaming?.stream?.id,
+      });
+      if (res?.status === 'success') {
+        setCurrentlyStreaming(false);
+        props._setCurrentlyStreaming(false);
+      }
+    };
+    f();
+  });
+  if (currentlyStreaming) {
+    console.log('stream', currentlyStreaming?.streamForProduct);
+  }
+
+  const setDialogChange = (arg) => {
+    console.log('props', arg);
+    if (currentlyStreaming) {
+      setShowStreamDialog(!arg);
+      setHasCopied(true);
+    }
+  };
+
   return (
     <StudioLayout {...props}>
       <div className='px-2 md:px-8'>
@@ -153,7 +197,7 @@ const EventView = (props) => {
             <div className='relative  mb-[12rem]'>
               <div className='relative'>
                 <div
-                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[350px] items-center justify-center bg-red-100'
+                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[350px] items-center justify-center'
                   style={{
                     backgroundImage: `url(${props?.cdn?.static}/${
                       ticket?.images &&
@@ -286,86 +330,165 @@ const EventView = (props) => {
                     </div>
                   </div>
                   <div className='mt-8 mx-auto'>
-                    <div className='flex flex-col space-y-4 items-center bg-dashSides rounded-[8px] p-8'>
-                      <p className='text-dashtext font-semibold'>
-                        THIS EVENT BEGINS IN
-                      </p>
-                      {ticket &&
-                        ticket?.meta &&
-                        ticket.meta.date &&
-                        ticket.meta.startTime &&
-                        setStartTimeFunc(
-                          ticket.meta.date,
-                          ticket.meta.startTime
-                        ) && (
-                          <Countdown
-                            className='text-3xl font-lexend font-bold text-center'
-                            date={
-                              Date.now() +
-                              setStartTimeFunc(
-                                ticket.meta.date,
-                                ticket.meta.startTime
-                              )
-                            }
-                            renderer={renderer}
-                          />
-                        )}
-                      <Dialog
-                        open={showStreamDialog}
-                        onOpenChange={setShowStreamDialog}
-                      >
-                        <DialogTrigger asChild>
-                          <button
-                            disabled={startEnabled}
-                            onClick={startStream}
-                            className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
-                          >
-                            Start stream
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className='sm:max-w-[425px] font-lexend'>
-                          <DialogHeader>
-                            <DialogTitle>Go Live Now</DialogTitle>
-                            <DialogDescription>
-                              Use our URL and key on any streaming software
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className='grid gap-4 py-4'>
-                            <div className='grid grid-cols-4 items-center gap-4'>
-                              <Label htmlFor='key'>Stream Key</Label>
-                              <Input
-                                id='key'
-                                className='col-span-3 text-white font-bold'
-                                value={currentlyStreaming?.key || ''}
-                                readOnly
-                              />
+                    {!loading && currentlyStreaming && !hasCopied ? (
+                      <div className='flex flex-col space-y-4 items-center bg-dashSides rounded-[8px] p-8'>
+                        <p className='text-dashtext font-semibold'>
+                          THIS EVENT BEGINS IN
+                        </p>
+                        {ticket &&
+                          ticket?.meta &&
+                          ticket.meta.date &&
+                          ticket.meta.startTime &&
+                          setStartTimeFunc(
+                            ticket.meta.date,
+                            ticket.meta.startTime
+                          ) && (
+                            <Countdown
+                              className='text-3xl font-lexend font-bold text-center'
+                              date={
+                                Date.now() +
+                                setStartTimeFunc(
+                                  ticket.meta.date,
+                                  ticket.meta.startTime
+                                )
+                              }
+                              renderer={renderer}
+                            />
+                          )}
+                        <Dialog
+                          open={showStreamDialog}
+                          onOpenChange={setDialogChange}
+                          className='dark:bg-red-300'
+                        >
+                          <DialogTrigger asChild>
+                            <button
+                              disabled={startEnabled}
+                              onClick={startStream}
+                              className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
+                            >
+                              Start stream
+                            </button>
+                          </DialogTrigger>
+                          <DialogContent className='sm:max-w-[425px] font-lexend dark:bg-dashBg'>
+                            <DialogHeader>
+                              <DialogTitle className='mb-8'>
+                                Go Live Now
+                              </DialogTitle>
+                              <DialogDescription className='dark:text-white mt-4'>
+                                Use our URL and key on any streaming software
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className=''>
+                              <div className='mb-4'>
+                                <Label htmlFor='key'>Stream Key</Label>
+                                <div className='flex gap-2 items-center mt-2'>
+                                  <Input
+                                    id='key'
+                                    className='col-span-3 text-white font-bold bg-dashSides border-2 dark:border-dashBorder text-sm'
+                                    value={currentlyStreaming?.key || ''}
+                                    readOnly
+                                  />
+                                  <Button
+                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                    onClick={() =>
+                                      copy(currentlyStreaming?.key || '')
+                                    }
+                                  >
+                                    copy
+                                  </Button>
+                                </div>
+                              </div>
+                              <div className='mb-2'>
+                                <Label htmlFor='url'>Server URL</Label>
+                                <div className='flex gap-2 items-center mt-2'>
+                                  <Input
+                                    id='url'
+                                    className='col-span-3 text-white font-bold bg-dashSides border-2 dark:border-dashBorder'
+                                    value={currentlyStreaming?.streamTo || ''}
+                                    readOnly
+                                  />
+                                  <Button
+                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                    onClick={() =>
+                                      copy(currentlyStreaming?.streamTo || '')
+                                    }
+                                  >
+                                    copy
+                                  </Button>
+                                </div>
+                              </div>
                             </div>
-                            <div className='grid grid-cols-4 items-center gap-4'>
-                              <Label htmlFor='url'>Server URL</Label>
-                              <Input
-                                id='url'
-                                className='col-span-3 text-white font-bold'
-                                value={currentlyStreaming?.streamTo || ''}
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                      <p className='text-dashtext text-sm'>
-                        You can go live on your event{' '}
-                        <span className='text-white'>1 hour </span>before the
-                        official start time. For more details, check out our
-                        <span className='text-white '>Terms of Use.</span>
-                      </p>
-                    </div>
-                    {!loading && currentlyStreaming && (
-                      <div className='mt-8'>
-                        <Preview
-                          {...props}
-                          useWatchDataPreview={props?._currentlyStreaming}
-                        />
+                          </DialogContent>
+                        </Dialog>
+                        <p className='text-dashtext text-sm'>
+                          You can go live on your event{' '}
+                          <span className='text-white'>1 hour </span>before the
+                          official start time. For more details, check out our
+                          <span className='text-white '>Terms of Use.</span>
+                        </p>
                       </div>
+                    ) : (
+                      !loading &&
+                      currentlyStreaming && (
+                        <Tabs defaultValue='summary' className='w-full mt-12'>
+                          <TabsList className='grid w-full grid-cols-2 p-1 dark:bg-transparent border-2 border-dashBorder h-auto mb-4'>
+                            <TabsTrigger
+                              className='dark:data-[state=active]:bg-dashBorder dark:hover:bg-dashBorder'
+                              value='summary'
+                            >
+                              Summary
+                            </TabsTrigger>
+                            <TabsTrigger
+                              className='dark:data-[state=active]:bg-dashBorder dark:hover:bg-dashBorder'
+                              value='preview'
+                            >
+                              Preview
+                            </TabsTrigger>
+                          </TabsList>
+                          <TabsContent value='summary'>
+                            <Card className='dark:bg-dashSides min-h-[200px]'>
+                              <CardHeader>
+                                <CardTitle className='text-center text-dashtext'>
+                                  <div className='flex justify-center gap-x-2 items-center'>
+                                    LIVE
+                                    <div className='w-2 h-2 bg-[#12CB12] rounded'></div>
+                                  </div>
+                                </CardTitle>
+                              </CardHeader>
+                              <CardContent className='space-y-2'>
+                                <div className='space-y-1'>
+                                  <CardContent></CardContent>
+                                  <CardFooter>
+                                    <Button
+                                      className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black'
+                                      onClick={endStream}
+                                    >
+                                      End Stream
+                                    </Button>
+                                  </CardFooter>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </TabsContent>
+                          <TabsContent value='preview'>
+                            <Card>
+                              {!loading && currentlyStreaming && (
+                                <Link
+                                  href={`/w?v=${currentlyStreaming?.stream?.id}`}
+                                  className=''
+                                >
+                                  <Preview
+                                    {...props}
+                                    useWatchDataPreview={
+                                      props?._currentlyStreaming
+                                    }
+                                  />
+                                </Link>
+                              )}
+                            </Card>
+                          </TabsContent>
+                        </Tabs>
+                      )
                     )}
                   </div>
                 </div>

@@ -9,7 +9,7 @@ const BrowseLayout = (props) => {
   return (
     <div className='relative bg-[#171717] font-lexend'>
       <div className='min-h-[500px] '>
-        <BrowseHeader />
+        <BrowseHeader {...props} />
         <FeaturedEventSlider />
       </div>
       <div className='p-4 py-8 max-w-screen-xl mx-auto'>{children}</div>

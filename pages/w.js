@@ -6,6 +6,7 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { WatchPage } from '/modules/streaming/watch';
 import WatchLayout from '../components/Layouts/watch/WatchLayout';
+import { CartInternal } from '../modules/ecommerce/cart';
 
 const pageName = 'w';
 
@@ -15,6 +16,7 @@ export const page = (props) => {
       <WatchLayout>
         <PageContainer {...props} pageName={pageName}>
           <WatchPage {...props} />
+          <CartInternal {...props} />
         </PageContainer>
       </WatchLayout>
     </React.Fragment>

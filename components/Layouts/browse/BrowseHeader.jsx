@@ -2,8 +2,9 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import MobileMenu from '@/components/menu/mobileMenu';
 import useMediaQuery from '../../../hooks/use-media-query';
+import UserAvatar from '@/components/Avatar';
 
-const BrowseHeader = () => {
+const BrowseHeader = (props) => {
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });
@@ -17,16 +18,25 @@ const BrowseHeader = () => {
         />
       </Link>
       {isDesktop ? (
-        <div className='space-x-4'>
-          <Button
-            variant={'outline'}
-            className='text-white dark:border-white dark:bg-transparent font-semibold'
+        <div className='space-x-4 flex'>
+          <div className='flex items-center'>
+            {props._islogedIn}
+            <UserAvatar {...props} />
+          </div>
+          <Link
+            href='/signin'
+            className='text-white dark:border-white dark:bg-transparent font-semibold border-[0.5px] rounded-md flex p-2 hover:opacity-[90%]'
+            type='submit'
           >
             Login
-          </Button>
-          <Button className='dark:bg-accentY bg-opacity-60 font-semibold dark:text-white dark:hover:bg-accentY dark:hover:bg-opacity-100'>
-            Sign up
-          </Button>
+          </Link>
+          <Link
+            href='/signin'
+            className='dark:bg-accentY bg-opacity-60 font-semibold dark:text-white dark:hover:bg-accentY dark:hover:bg-opacity-100 flex p-2 rounded-sm items-center hover:opacity-[90%]'
+            type='submit'
+          >
+            Sign Up
+          </Link>
         </div>
       ) : (
         <MobileMenu />

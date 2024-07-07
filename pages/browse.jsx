@@ -3,7 +3,7 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { fetchTickets, groupByDate, getDisplayDate } from '@/lib/utils';
 import BrowseLayout from '../components/Layouts/browse/BrowseLayout';
-import Ticket from '@/components/PurchaseTicketCard';
+import Ticket from '@/components/cards/PurchaseTicketCard';
 import { Loader2 } from 'lucide-react';
 import {
   Carousel,
@@ -49,11 +49,11 @@ const Page = (props) => {
   // Sort the dates
   const sortedDates = Object.keys(tickets)
     .filter((date) => tickets[date]?.length > 0)
-    .sort((a, b) => new Date(a) - new Date(b));
+    .sort((a, b) => new Date(b) - new Date(a));
 
   return (
     <div className='w-full h-screen'>
-      <BrowseLayout>
+      <BrowseLayout {...props}>
         <div>
           <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           {loading && (

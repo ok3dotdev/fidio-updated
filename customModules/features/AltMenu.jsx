@@ -1,25 +1,16 @@
 import Link from 'next/link';
-
 import React, { useState, useEffect, useRef } from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserMenu from './UserMenu';
-
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '../../components/ui/sheet';
+import MobileMenu from '../../components/menu/mobileMenu';
+import useMediaQuery from '../../hooks/use-media-query';
 
 const AltMenu = (props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
 
-  const handleCartOpen = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+  const isDesktop = useMediaQuery('(min-width: 640px)', {
+    initializeWithValue: false,
+  });
 
   function passOveride() {
     setIsCartOpen(true);
@@ -54,22 +45,8 @@ const AltMenu = (props) => {
         </div>
         <div className='lg:flex gap-4'>
           <div className='flex justify-center items-center gap-4 cursor-pointer'>
-            {/* <div className='cursor-pointer'>
-              <Sheet>
-                <SheetTrigger>
-                  <ShoppingCartIcon />
-                </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Your Cart is Empty</SheetTitle>
-                    <SheetDescription className='font-mono'>
-                      Please add something to cart to view items
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
-            </div> */}
             <UserMenu {...props} />
+            <MobileMenu />
           </div>
         </div>
       </div>

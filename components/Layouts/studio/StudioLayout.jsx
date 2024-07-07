@@ -14,18 +14,16 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const StudioLayout = (props) => {
-  // //console.log('rppsp=s', props);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   useEffect(() => {
-    // Check screen size on component mount and window resize
     const handleResize = () => {
-      setIsMobileScreen(window.innerWidth <= 768); // Assuming 768px is your breakpoint for mobile
+      setIsMobileScreen(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on component mount
+    handleResize();
 
-    window.addEventListener('resize', handleResize); // Check on window resize
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize); // Cleanup
@@ -145,9 +143,6 @@ const StudioLayout = (props) => {
             </ul>
           </div>
           <div className='px-2 gap-4 w-full space-y-2 mt-8'>
-            <button className='border-[1px] border-dashBorder p-3 font-lexend font-medium rounded-[6px] flex justify-center items-center w-full'>
-              Start instant stream
-            </button>
             <Link
               href='/studio/events/create'
               className='bg-accentY hover:bg-accentY p-3 font-lexend font-medium rounded-[6px] flex justify-center items-center'

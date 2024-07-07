@@ -58,9 +58,15 @@ const FeaturedEventSlider = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className='max-w-screen-xl mx-auto px-12 absolute bottom-4 w-full space-x-4 left-0 right-0 h-full'>
-        <CarouselPrevious className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
-        <CarouselNext className='dark:bg-white dark:bg-opacity-[8%] dark:border-none' />
+      <div className='max-w-screen-xl mx-auto px-12 bottom-4 w-full space-x-4 left-0 right-0 h-full'>
+        <CarouselPrevious
+          arrows='top'
+          className='dark:bg-white dark:bg-opacity-[8%] dark:border-none'
+        />
+        <CarouselNext
+          className='dark:bg-white dark:bg-opacity-[8%] dark:border-none'
+          arrows='top'
+        />
       </div>
     </Carousel>
   );

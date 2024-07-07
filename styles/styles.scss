@@ -62,7 +62,7 @@ input[type='text'],
 button {
   border-radius: 4px;
   // background-color: rgba(221, 104, 26, 1) !important;
-  padding: 0.5rem 0.5rem !important;
+  // padding: 0.5rem 0.5rem !important;
 }
 
 .Ecommerce_Layout_Data_Container {
@@ -279,4 +279,16 @@ textarea {
 .Chat_chatMessageAvatarContainer___pZsU img {
   border-radius: 50% !important;
   margin-right: 0.5rem;
+}
+
+.dialog-btn {
+  bottom: auto !important;
+}
+button {
+  bottom: auto !important;
+}
+
+button:hover {
+  box-shadow: none;
+  outline: none;
 }

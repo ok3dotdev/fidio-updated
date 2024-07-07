@@ -103,20 +103,18 @@ const StudioDash = (props) => {
         meta.status = sortValue;
       }
 
-      const res = await apiReq('/product/getProducts', {
+      const res = await apiReq('/m/getProducts', {
         apiUrl: props?.apiUrl,
         pagination: currentPage,
         extra: extraObject,
-        limit: 10,
         meta,
+        limit: 10,
+        sortField: 'created',
+        sort: 'desc',
       });
 
       if (res && res.products) {
-        const sortedTickets = res.products.sort((a, b) => {
-          const dateA = new Date(a.created);
-          const dateB = new Date(b.created);
-          return dateA - dateB;
-        });
+        const sortedTickets = res.products;
 
         if (searchTerm || sortValue) {
           console.log('sorted', sortedTickets);
@@ -293,7 +291,7 @@ const StudioDash = (props) => {
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 0}
-          className='px-4 py-2 bg-gray-300 rounded-md disabled:opacity-50'
+          className='px-4 py-2 bg-black rounded-md disabled:opacity-50'
         >
           Previous
         </button>
@@ -301,7 +299,7 @@ const StudioDash = (props) => {
         <button
           onClick={handleNextPage}
           disabled={!hasMore}
-          className='px-4 py-2 bg-gray-300 rounded-md disabled:opacity-50'
+          className='px-4 py-2 bg-black rounded-md disabled:opacity-50'
         >
           Next
         </button>
