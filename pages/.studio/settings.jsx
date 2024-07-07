@@ -1,13 +1,13 @@
-import React from 'react'
-import StudioLayout from '@/components/Layouts/StudioLayout'
+import React from 'react';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 
-import { pageDefaults } from '/app.config'
-import { getServerSidePropsDefault } from '/modules/utility.js'
-import { getServerSidePropsFunc } from '/appServer/serverProps'
+import { pageDefaults } from '/app.config';
+import { getServerSidePropsDefault } from '/modules/utility.js';
+import { getServerSidePropsFunc } from '/appServer/serverProps';
 
-const pageName = 'settings'
+const pageName = 'settings';
 
-const Settings = (props) => { 
+const Settings = (props) => {
   return (
     <StudioLayout {...props}>
       <div className='xl:mx-[20rem] md:mx-[3rem]'>
@@ -18,8 +18,11 @@ const Settings = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-	let currentProps = await getServerSidePropsDefault(context, pageDefaults[pageName])
-  return await getServerSidePropsFunc(currentProps, context)
-}
+  let currentProps = await getServerSidePropsDefault(
+    context,
+    pageDefaults[pageName]
+  );
+  return await getServerSidePropsFunc(currentProps, context);
+};
 
 export default Settings;

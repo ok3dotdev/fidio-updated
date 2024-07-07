@@ -1,5 +1,5 @@
 import React from 'react';
-import StudioLayout from '@/components/Layouts/StudioLayout';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';

@@ -8,6 +8,7 @@ import HomeLayout from '/customModules/features/HomeLayout';
 import { homePageData } from '/customModules/features/seo-data';
 import ShowGrid from '../components/ShowGrid';
 import Link from 'next/link';
+import Hero from '/customModules/features/HeroNew';
 import LandingPageHero from '@/components/common/LandingPageHero';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ImageText from '@/components/ImageText';
@@ -25,14 +26,15 @@ export const page = (props) => {
         props={props}
         className='bg-dashBg'
       >
-        <LandingPageHero />
+        <Hero {...props} />
+        {/* <LandingPageHero />
         <ImageText
           img={'https://d2ib7gxb0luc1i.cloudfront.net/img/imagetext1.png'}
           heading={'The Future of African Music is Here'}
           description={
             'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
           }
-        />
+        /> */}
         <div className='max-w-7xl mx-auto py-24 font-Archivo'>
           <div className='flex flex-col lg:flex-row'>
             <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>

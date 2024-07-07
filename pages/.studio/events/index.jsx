@@ -7,7 +7,7 @@ import SearchBar from '@/components/inputs/SearchBar';
 import { useRouter } from 'next/router';
 import apiReq from '/modules/utility/api/apiReq';
 import TicketLoadingSkeleton from '@/components/skeletons/TicketLoadingSkeleton';
-import StudioLayout from '@/components/Layouts/StudioLayout';
+import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';

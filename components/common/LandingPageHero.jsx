@@ -75,7 +75,7 @@ export default function LandingPageHero() {
             </div>
             <div className='space-y-4 mt-12'>
               {ArtistCardDetails.map((details, id) => (
-                <HeroCard {...details} />
+                <HeroCard {...details} key={id} />
               ))}
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function LandingPageHero() {
             </div>
             <div className='space-y-4 mt-12'>
               {hostCardDetails.map((details, id) => (
-                <HeroCard {...details} />
+                <HeroCard {...details} key={id} />
               ))}
             </div>
           </div>

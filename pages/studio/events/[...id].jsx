@@ -53,7 +53,9 @@ const EventView = (props) => {
   const [streamStatusCheck, setStreamStatusCheck] = React.useState(null);
   const [showStreamDialog, setShowStreamDialog] = useState(false);
   const [currentlyStreaming, setCurrentlyStreaming] = useState(null);
-  const [hasCopied, setHasCopied] = useState(currentlyStreaming);
+  const [hasCopied, setHasCopied] = useState(false);
+  const [showKeys, setShowKeys] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -90,17 +92,20 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
+    console.log('res', res);
     if (res?.data?.stream) {
       props._setCurrentlyStreaming(res.data.stream);
     }
     if (res && res.currentlyStreaming) {
-      setCurrentlyStreaming(res.currentlyStreaming);
+      setCurrentlyStreaming(res.data);
+      setHasCopied(true);
       console.log('checking', res.currentlyStreaming);
     }
   };
 
   // console.log('clicked', router.query.id);
   const startStream = async (e) => {
+    console.log('startstream');
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -114,7 +119,7 @@ const EventView = (props) => {
 
     if (res?.data?.stream) {
       setCurrentlyStreaming(res.data);
-      setShowStreamDialog(true);
+      setDialogChange(true);
       props._setCurrentlyStreaming(res.data.stream);
     }
   };
@@ -165,6 +170,7 @@ const EventView = (props) => {
       });
       if (res?.status === 'success') {
         setCurrentlyStreaming(false);
+        setHasCopied(false);
         props._setCurrentlyStreaming(false);
       }
     };
@@ -173,11 +179,12 @@ const EventView = (props) => {
   if (currentlyStreaming) {
     console.log('stream', currentlyStreaming?.streamForProduct);
   }
+  console.log('stream', currentlyStreaming);
 
   const setDialogChange = (arg) => {
-    console.log('props', arg);
-    if (currentlyStreaming) {
-      setShowStreamDialog(!arg);
+    console.log('props', arg, currentlyStreaming);
+    setShowStreamDialog(arg);
+    if (arg === false) {
       setHasCopied(true);
     }
   };
@@ -330,7 +337,7 @@ const EventView = (props) => {
                     </div>
                   </div>
                   <div className='mt-8 mx-auto'>
-                    {!loading && currentlyStreaming && !hasCopied ? (
+                    {!loading && !hasCopied ? (
                       <div className='flex flex-col space-y-4 items-center bg-dashSides rounded-[8px] p-8'>
                         <p className='text-dashtext font-semibold'>
                           THIS EVENT BEGINS IN
@@ -433,13 +440,13 @@ const EventView = (props) => {
                         <Tabs defaultValue='summary' className='w-full mt-12'>
                           <TabsList className='grid w-full grid-cols-2 p-1 dark:bg-transparent border-2 border-dashBorder h-auto mb-4'>
                             <TabsTrigger
-                              className='dark:data-[state=active]:bg-dashBorder dark:hover:bg-dashBorder'
+                              className='dark:data-[state=active]:bg-dashBorder  dark:hover:bg-transparent dark:hover:outline-none'
                               value='summary'
                             >
                               Summary
                             </TabsTrigger>
                             <TabsTrigger
-                              className='dark:data-[state=active]:bg-dashBorder dark:hover:bg-dashBorder'
+                              className='dark:data-[state=active]:bg-dashBorder dark:hover:bg-transparent dark:hover:outline-none'
                               value='preview'
                             >
                               Preview
@@ -458,13 +465,94 @@ const EventView = (props) => {
                               <CardContent className='space-y-2'>
                                 <div className='space-y-1'>
                                   <CardContent></CardContent>
-                                  <CardFooter>
+                                  <CardFooter className='space-x-1'>
                                     <Button
-                                      className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black'
+                                      className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black ml-5'
                                       onClick={endStream}
                                     >
                                       End Stream
                                     </Button>
+                                    <Dialog
+                                      open={showKeys}
+                                      onOpenChange={setShowKeys}
+                                      className='dark:bg-red-300'
+                                    >
+                                      <DialogTrigger asChild>
+                                        <button
+                                          disabled={startEnabled}
+                                          onClick={startStream}
+                                          className='bg-accentY py-2 rounded-[6px] w-full dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default '
+                                        >
+                                          Show Keys
+                                        </button>
+                                      </DialogTrigger>
+                                      <DialogContent className='sm:max-w-[425px] font-lexend dark:bg-dashBg'>
+                                        <DialogHeader>
+                                          <DialogTitle className='mb-8'>
+                                            Go Live Now
+                                          </DialogTitle>
+                                          <DialogDescription className='dark:text-white mt-4'>
+                                            Use our URL and key on any streaming
+                                            software
+                                          </DialogDescription>
+                                        </DialogHeader>
+                                        <div className=''>
+                                          <div className='mb-4'>
+                                            <Label htmlFor='key'>
+                                              Stream Key
+                                            </Label>
+                                            <div className='flex gap-2 items-center mt-2'>
+                                              <Input
+                                                id='key'
+                                                className='col-span-3 text-white font-bold bg-dashSides border-2 dark:border-dashBorder text-sm'
+                                                value={
+                                                  currentlyStreaming?.key || ''
+                                                }
+                                                readOnly
+                                              />
+                                              <Button
+                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                                onClick={() =>
+                                                  copy(
+                                                    currentlyStreaming?.key ||
+                                                      ''
+                                                  )
+                                                }
+                                              >
+                                                copy
+                                              </Button>
+                                            </div>
+                                          </div>
+                                          <div className='mb-2'>
+                                            <Label htmlFor='url'>
+                                              Server URL
+                                            </Label>
+                                            <div className='flex gap-2 items-center mt-2'>
+                                              <Input
+                                                id='url'
+                                                className='col-span-3 text-white font-bold bg-dashSides border-2 dark:border-dashBorder'
+                                                value={
+                                                  currentlyStreaming?.streamTo ||
+                                                  ''
+                                                }
+                                                readOnly
+                                              />
+                                              <Button
+                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                                onClick={() =>
+                                                  copy(
+                                                    currentlyStreaming?.streamTo ||
+                                                      ''
+                                                  )
+                                                }
+                                              >
+                                                copy
+                                              </Button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </DialogContent>
+                                    </Dialog>
                                   </CardFooter>
                                 </div>
                               </CardContent>
