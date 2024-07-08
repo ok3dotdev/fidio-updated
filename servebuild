@@ -1,0 +1,7 @@
+rm -rf .next
+aws s3 cp s3://$1/build/.next.tar.gz .next.tar.gz
+tar -xzvf .next.tar.gz
+rm -rf public
+aws s3 cp s3://$1/build/public.tar.gz public.tar.gz
+tar -xzvf public.tar.gz
+echo "Done"
