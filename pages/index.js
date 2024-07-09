@@ -1,18 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React from 'react';
-import { AppConfigLayout, PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import HomeLayout from '/customModules/features/HomeLayout';
 import { homePageData } from '/customModules/features/seo-data';
-import ShowGrid from '../components/ShowGrid';
-import Link from 'next/link';
-import Hero from '/customModules/features/HeroNew';
 import LandingPageHero from '@/components/common/LandingPageHero';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ImageText from '@/components/ImageText';
-// import { Menu } from '/modules/menu/';
+import BulletCard from '@/components/cards/BulletCard';
+import { featuresList } from '@/lib/constants';
 
 const pageName = 'Index';
 
@@ -24,17 +21,29 @@ export const page = (props) => {
         pageName={pageName}
         pageData={homePageData}
         props={props}
-        className='bg-dashBg'
+        className='bg-dashBg text-center'
       >
-        {/* <Hero {...props} /> */}
         <LandingPageHero />
-        {/* <ImageText
+        <ImageText
           img={'https://d2ib7gxb0luc1i.cloudfront.net/img/desktop-bg.png'}
           heading={'The Future of African Music is Here'}
           description={
             'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
           }
-        /> */}
+          direction='reverse'
+        />
+        <div className='space-y-8 mt-12 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto'>
+          {featuresList.map((item, idx) => (
+            <BulletCard {...item} key={idx} />
+          ))}
+        </div>
+        <ImageText
+          img={'https://d2ib7gxb0luc1i.cloudfront.net/img/Image1.png'}
+          heading={"Fidio is more than just a platform – it's a movement"}
+          description={
+            'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
+          }
+        />
         {/* <div className='max-w-7xl mx-auto py-24 font-Archivo'>
           <div className='flex flex-col lg:flex-row'>
             <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>

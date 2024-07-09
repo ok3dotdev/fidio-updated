@@ -1310,3 +1310,7 @@ section.range-slider input::-moz-range-thumb {
 .simpleOptions > div:not(:last-child) {
     border-bottom: 2px dashed #4b4b4b;
 }
+
+.option_currently_selected {
+    background: #ebebeb;
+}

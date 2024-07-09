@@ -107,7 +107,8 @@
 .Ecommerce_Cart_Side_Meta_Container,
 .Ecommerce_Cart_Price_Container {
     width: fit-content;
-    max-width: 75px;
+    max-width: 125px;
+    overflow: scroll;
 }
 
 .Ecommerce_Price_Expanded_Container {

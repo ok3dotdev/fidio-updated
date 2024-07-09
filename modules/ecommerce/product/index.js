@@ -1,1 +1,1 @@
-import Lineup from"./Lineup";import Product from"./Product";import ProductImageManager from"./ProductImageManager";import ProductPage from"./ProductPage";export{Lineup,Product,ProductImageManager,ProductPage};
+import Lineup from"./Lineup";import ProductInternal from"./ProductInternal";import ProductImageManager from"./ProductImageManager";import ProductPage from"./ProductPage";export{Lineup,ProductInternal,ProductImageManager,ProductPage};

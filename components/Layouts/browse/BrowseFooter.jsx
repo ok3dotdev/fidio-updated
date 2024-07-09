@@ -2,7 +2,7 @@ import Link from 'next/link';
 const BrowseFooter = () => {
   return (
     <div>
-      <div className='flex w-full'>
+      <div className='flex w-full text-left'>
         <div className='p-4 py-24 max-w-screen-xl mx-auto flex justify-between w-full flex-col md:flex-row gap-y-8'>
           <Link href='/'>
             <img
