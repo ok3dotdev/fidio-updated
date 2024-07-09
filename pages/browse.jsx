@@ -85,7 +85,7 @@ const Page = (props) => {
                     <div className='md:hidden'>
                       <DateComponent date={date} />
                     </div>
-                    <div className='z-50 relative flex justify-end gap-2 mb-4 '>
+                    <div className='z-50 relative flex justify-end gap-2 mb-4 md:hidden'>
                       <CarouselPrevious arrows='top' className='z-24' />
                       <CarouselNext arrows='top' className='z-24' />
                     </div>

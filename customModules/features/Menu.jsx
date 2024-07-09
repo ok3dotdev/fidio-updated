@@ -17,20 +17,6 @@ const Menu = (props) => {
             />
           </Link>
         </div>
-        <div className='lg:flex gap-4 hidden'>
-          {!props._loggedIn ? (
-            <>
-              <Link
-                className='bg-white text-black py-3 px-6 font-sans rounded-[20px] flex justify-center items-center text-sm font-medium'
-                href='/signin'
-              >
-                Log in with Google
-              </Link>
-            </>
-          ) : (
-            <div></div>
-          )}
-        </div>
         <MobileMenu info={props} />
         {/* <div className='lg:hidden flex items-center'>
           <button
@@ -58,7 +44,7 @@ const Menu = (props) => {
         <div className='lg:hidden fixed inset-0 bg-black p-4 transition-transform transform-gpu translate-y-0 ease-out duration-300 flex flex-col justify-between'>
           <div>
             <div className='flex justify-between items-center mb-8'>
-              <Link href='/home'>
+              <Link href='/'>
                 <img
                   src='/img/internal/frame2.png'
                   alt=''

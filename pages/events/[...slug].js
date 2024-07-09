@@ -97,7 +97,9 @@ export const Page = (props) => {
                           style={{ width: '0.75rem' }}
                         />
                         <p className='font-medium'>
-                          {ticket?.created?.split(' ')[0]}
+                          {ticket?.meta?.date
+                            ? ticket?.meta?.date.split('T')[0]
+                            : ticket?.created?.split(' ')[0]}
                         </p>
                       </div>
                       <div className='flex items-center gap-1'>

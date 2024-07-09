@@ -76,20 +76,20 @@ export default function LandingPageHero() {
                 alt='artist'
                 width={700}
                 height={500}
-                className='hidden: md:block mx-auto'
+                className='hidden md:block mx-auto'
               />
             </TabsContent>
           </Tabs>
         </div>
         {viewer === 'artist' && (
-          <div className='mt-12 items-center'>
+          <div className='mt-12 flex flex-col items-center'>
             <div>
               <h3 className='text-dashtext text-lg'>
                 Amplify your voice as an{' '}
                 <span className='text-white font-semibold'>Artist</span> 🎤{' '}
               </h3>
             </div>
-            <div className='space-y-4 mt-12 flex flex-col items-center'>
+            <div className='space-y-4 mt-12 flex flex-col max-w-[800px] mx-auto'>
               {ArtistCardDetails.map((details, id) => (
                 <HeroCard {...details} key={id} />
               ))}
@@ -97,14 +97,14 @@ export default function LandingPageHero() {
           </div>
         )}
         {viewer === 'host' && (
-          <div className='mt-12'>
+          <div className='mt-12 flex flex-col items-center'>
             <div>
               <p className='text-dashtext'>Empower your business as a host</p>
               <h3 className='text-white text-lg'>
                 Show Promoter, Record Label, Event Venue
               </h3>
             </div>
-            <div className='space-y-4 mt-12'>
+            <div className='space-y-4 mt-12 max-w-[800px] mx-auto'>
               {hostCardDetails.map((details, id) => (
                 <HeroCard {...details} key={id} />
               ))}
