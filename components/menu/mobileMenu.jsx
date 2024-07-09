@@ -13,11 +13,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { logout } from 'modules/utility/onboarding/SignIn.js';
 
-const MobileMenu = ({ info }) => {
-  console.log('info', info);
+const MobileMenu = (props) => {
   const router = useRouter();
   const handleLogout = (e) => {
-    logout(info._setLoggedIn);
+    logout(props._setLoggedIn);
     router.push('/');
   };
   return (
@@ -52,28 +51,28 @@ const MobileMenu = ({ info }) => {
         <div className='mt-8 w-full'>
           <Link
             className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/home'
+            href='/browse'
           >
-            Home
+            Browse
           </Link>
           <Link
             className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/home'
+            href='/blog'
           >
             Blog
           </Link>
           <Link
             className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/home'
+            href='/studio'
           >
-            Browse
+            Studio
           </Link>
         </div>
 
         <div className='flex-grow'></div>
 
         <SheetFooter className='w-full gap-2 flex-col'>
-          {info?._loggedIn ? (
+          {props?._loggedIn ? (
             <div>
               <Button
                 onClick={handleLogout}

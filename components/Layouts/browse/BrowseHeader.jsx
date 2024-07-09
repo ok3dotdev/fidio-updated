@@ -39,7 +39,7 @@ const BrowseHeader = (props) => {
           </Link>
         </div>
       ) : (
-        <MobileMenu />
+        <MobileMenu {...props} />
       )}
     </div>
   );

@@ -45,7 +45,6 @@ import { Label } from '@/components/ui/label';
 const pageName = 'create';
 
 const EventView = (props) => {
-  console.log('props', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,7 +78,7 @@ const EventView = (props) => {
         limit: 1,
       });
       if (res && res.products) {
-        console.log('product', res.products[0]);
+        // console.log('product', res.products[0]);
         setTicket(res.products[0] || []);
       }
       setLoading(false);
@@ -87,25 +86,24 @@ const EventView = (props) => {
   };
 
   const checkStreamStatus = async () => {
-    console.log('checking');
+    // console.log('checking');
     setStreamStatusCheck(true);
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    console.log('res', res);
+    // console.log('res', res);
     if (res?.data?.stream) {
       props._setCurrentlyStreaming(res.data.stream);
     }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.data);
       setHasCopied(true);
-      console.log('checking', res.currentlyStreaming);
+      // console.log('checking', res.currentlyStreaming);
     }
   };
 
   // console.log('clicked', router.query.id);
   const startStream = async (e) => {
-    console.log('startstream');
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -115,7 +113,6 @@ const EventView = (props) => {
       },
       streamingFor: router.query?.id[0],
     });
-    console.log('clicked', res);
 
     if (res?.data?.stream) {
       setCurrentlyStreaming(res.data);
@@ -161,7 +158,6 @@ const EventView = (props) => {
 
   const endStream = React.useCallback((e) => {
     e.preventDefault();
-    console.log('Emding');
 
     const f = async () => {
       const res = await apiReq('/stream/endstream', {
@@ -176,13 +172,8 @@ const EventView = (props) => {
     };
     f();
   });
-  if (currentlyStreaming) {
-    console.log('stream', currentlyStreaming?.streamForProduct);
-  }
-  console.log('stream', currentlyStreaming);
 
   const setDialogChange = (arg) => {
-    console.log('props', arg, currentlyStreaming);
     setShowStreamDialog(arg);
     if (arg === false) {
       setHasCopied(true);

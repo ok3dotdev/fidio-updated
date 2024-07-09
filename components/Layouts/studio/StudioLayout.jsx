@@ -36,7 +36,6 @@ const StudioLayout = (props) => {
   const capitalizedUsername = username
     ? username.charAt(0).toUpperCase() + username.slice(1)
     : '';
-  // //console.log('Shoow', showNav);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

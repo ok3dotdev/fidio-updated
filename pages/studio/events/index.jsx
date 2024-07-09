@@ -79,7 +79,6 @@ const Events = (props) => {
   }, [currentPage, sortValue]);
 
   const handleSearch = async () => {
-    console.log('hello');
     setLoading(true);
     setCurrentPage(0);
     await fetchTickets(0, searchTerm, sortValue);
@@ -129,7 +128,6 @@ const Events = (props) => {
         });
 
         if (searchTerm || sortValue) {
-          console.log('sorted', sortedTickets);
           setTickets(sortedTickets);
         } else {
           setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);

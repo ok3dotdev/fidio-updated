@@ -74,7 +74,7 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
           return new File([blob], `${useImgName}.${ext}`, { type: m.type });
         })[0]
     );
-    console.log('index', tempId, lineUpInfo);
+    // console.log('index', tempId, lineUpInfo);
     const useTempImgFor = imgFor;
     const imageObject = {
       name: `${useImgName}.${ext}`,

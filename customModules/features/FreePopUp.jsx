@@ -2,7 +2,6 @@ import React from 'react';
 import AlarmIcon from '@mui/icons-material/Alarm';
 
 const FreePopUp = ({ onClose, name }) => {
-  console.log('name', name);
   return (
     <div className='fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50'>
       <div className='bg-gray-800 p-8 rounded-lg shadow-lg  text-center'>

@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { Half1Icon } from '@radix-ui/react-icons';
 
 const pageName = 'browse';
 
@@ -20,6 +21,7 @@ const Page = (props) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [sortedDates, setSortedDates] = useState([]);
 
   useEffect(() => {
     const loadTickets = async (pageNumber) => {
@@ -40,16 +42,17 @@ const Page = (props) => {
     loadTickets(page);
   }, [props?.apiUrl, page]);
 
-  console.log('tix', tickets);
+  useEffect(() => {
+    const dates = Object.keys(tickets)
+      .filter((date) => tickets[date]?.length > 0)
+      .sort((a, b) => new Date(b) - new Date(a));
+    setSortedDates(dates);
+    console.log('sorted', sortedDates);
+  }, [tickets]);
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
-
-  // Sort the dates
-  const sortedDates = Object.keys(tickets)
-    .filter((date) => tickets[date]?.length > 0)
-    .sort((a, b) => new Date(b) - new Date(a));
 
   return (
     <div className='w-full h-screen'>
@@ -66,9 +69,9 @@ const Page = (props) => {
             sortedDates.map((date, i) => (
               <div
                 key={i}
-                className='flex w-full gap-4 md:gap-12 overflow-hidden mb-12 min-h-[250px]'
+                className='flex w-full gap-4 md:gap-12 overflow-hidden mb-12 min-h-[250px] flex-col md:flex-row items-start '
               >
-                <div>
+                <div className='hidden md:block'>
                   <DateComponent date={date} />
                 </div>
                 <Carousel
@@ -76,17 +79,22 @@ const Page = (props) => {
                     align: 'start',
                   }}
                   arrows='top'
-                  className='w-[410px] md:w-full '
+                  className='w-full'
                 >
-                  {/* <div className='z-50 relative flex justify-end gap-2 mb-2 bg-red-400'>
+                  <div className='w-full flex justify-between'>
+                    <div className='md:hidden'>
+                      <DateComponent date={date} />
+                    </div>
+                    <div className='z-50 relative flex justify-end gap-2 mb-4 '>
                       <CarouselPrevious arrows='top' className='z-24' />
                       <CarouselNext arrows='top' className='z-24' />
-                    </div> */}
+                    </div>
+                  </div>
                   <CarouselContent className='z-2 cursor-pointer'>
                     {tickets[date]?.map((ticket, id) => (
                       <CarouselItem
                         key={id}
-                        className=' md:basis-2/3 rounded-lg lg:basis-1/3'
+                        className=' md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
                       >
                         <div className='p-1 cursor-pointer'>
                           <Ticket key={id} ticket={ticket} cdn={props.cdn} />
@@ -117,7 +125,7 @@ const DateComponent = ({ date }) => {
   const { month, weekday, day } = getDisplayDate(date);
 
   return (
-    <div className='flex flex-col justify-center items-center gap-y-0'>
+    <div className='flex flex-row md:flex-col justify-center items-center gap-y-0 gap-x-2'>
       <p className='text-xs text-dashtext'>{weekday}</p>
       <p className='text-2xl font-bold'>{day}</p>
       <p className='text-xs text-dashtext'>{month}</p>

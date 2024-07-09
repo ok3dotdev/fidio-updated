@@ -31,7 +31,7 @@ export default function LandingPageHero() {
         </Button>
         <div>
           <Tabs defaultValue='artist' className='w-full mt-12'>
-            <TabsList className='grid w-full grid-cols-2 dark:bg-transparent border-2 border-dashBorder h-auto mb-4 p-0'>
+            <TabsList className='grid grid-cols-2 dark:bg-transparent border-2 border-dashBorder h-auto mb-12 p-0 w-[210px] max-w-[400px] mx-auto'>
               <TabsTrigger
                 onClick={() => setViewer('artist')}
                 className='dark:data-[state=active]:bg-white dark:data-[state=active]:text-black dark:hover:bg-transparent  dark:hover:outline-none dark:text-white'
@@ -47,12 +47,20 @@ export default function LandingPageHero() {
                 Host
               </TabsTrigger>
             </TabsList>
-            <TabsContent value='artist'>
+            <TabsContent value='artist' className='max-w-[700px] mx-auto'>
               <Image
                 src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer.png'
                 alt='artist'
                 width={500}
                 height={500}
+                className='md:hidden'
+              />
+              <Image
+                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer.png'
+                alt='artist'
+                width={700}
+                height={500}
+                className='hidden md:block'
               />
             </TabsContent>
             <TabsContent value='host'>
@@ -61,19 +69,27 @@ export default function LandingPageHero() {
                 alt='artist'
                 width={500}
                 height={500}
+                className='md:hidden'
+              />
+              <Image
+                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer(1).png'
+                alt='artist'
+                width={700}
+                height={500}
+                className='hidden: md:block mx-auto'
               />
             </TabsContent>
           </Tabs>
         </div>
         {viewer === 'artist' && (
-          <div className='mt-12'>
+          <div className='mt-12 items-center'>
             <div>
               <h3 className='text-dashtext text-lg'>
                 Amplify your voice as an{' '}
                 <span className='text-white font-semibold'>Artist</span> 🎤{' '}
               </h3>
             </div>
-            <div className='space-y-4 mt-12'>
+            <div className='space-y-4 mt-12 flex flex-col items-center'>
               {ArtistCardDetails.map((details, id) => (
                 <HeroCard {...details} key={id} />
               ))}

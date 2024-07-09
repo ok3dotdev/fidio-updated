@@ -70,7 +70,7 @@ const EventUpdateModal = (props) => {
     setLineUpInfo(data?.detailmeta?.lineup);
     setLoading(false);
 
-    console.log('item00000', data?.detailmeta?.lineup);
+    // console.log('item00000', data?.detailmeta?.lineup);
   };
 
   const { pipelineDbItem } = surveyState;
@@ -169,7 +169,7 @@ const EventUpdateModal = (props) => {
           return new File([blob], `${useImgName}.${ext}`, { type: m.type });
         })[0]
     );
-    console.log('index', tempId, lineUpInfo);
+    // console.log('index', tempId, lineUpInfo);
     const useTempImgFor = imgFor;
     const imageObject = {
       name: `${useImgName}.${ext}`,
@@ -214,7 +214,7 @@ const EventUpdateModal = (props) => {
 
   const publishProduct = async (data) => {
     await trigger();
-    console.log('Run', data);
+    // console.log('Run', data);
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
       pipelineDbItem: surveyState.pipelineDbItem,
@@ -227,7 +227,7 @@ const EventUpdateModal = (props) => {
       setModalOpen(false);
       window.location.reload();
     }
-    console.log('Published!', res);
+    // console.log('Published!', res);
   };
 
   if (loading) {

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import MobileMenu from '@/components/menu/mobileMenu';
 
 const Menu = (props) => {
-  console.log('pssss', props);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

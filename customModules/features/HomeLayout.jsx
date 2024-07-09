@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from './Menu';
 import Footer from '../features/Footer';
+import BrowseFooter from '@/components/Layouts/browse/BrowseFooter';
 import HeadSEO from '../features/head-seo';
 import { siteData } from './seo-data';
 import AltMenu from './AltMenu';
@@ -17,6 +18,7 @@ const HomeLayout = ({
   const showMainMenu = ['Index', 'Privacy', 'Faq', 'Terms', 'Blog'].includes(
     pageName
   );
+  const showMainFooter = ['Index'].includes(pageName);
   const showFooter = [
     'Index',
     'Privacy',
@@ -30,7 +32,11 @@ const HomeLayout = ({
       <HeadSEO site={siteData} page={pageData} />
       {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
       {children}
-      {showFooter && <Footer pageName={pageName} />}
+      {showMainFooter ? (
+        <BrowseFooter />
+      ) : (
+        showFooter && <Footer pageName={pageName} />
+      )}
     </div>
   );
 };

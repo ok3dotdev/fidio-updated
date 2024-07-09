@@ -23,7 +23,7 @@ const Ticket = ({ ticket, cdn }) => {
               <p className='mt-0 leading-[1rem]'>{ticket?.meta?.host?.title}</p>
             </div>
           )}
-          <Button className='self-end ml-auto'>
+          <Button className='self-end ml-auto dark:hover:text-black'>
             ${ticket?.styles[0]?.price}
           </Button>
         </div>

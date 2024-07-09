@@ -39,9 +39,9 @@ const EventPreviewStep = ({ info, reset }) => {
   const router = useRouter();
 
   const createEvent = async () => {
-    console.log('Run', pipelineDbItem, eventDetails);
+    // console.log('Run', pipelineDbItem, eventDetails);
     for (let i = 0; i < imgFor.length; i++) {
-      console.log(imgFor[i]);
+      // console.log(imgFor[i]);
     }
     try {
       const res = await apiReq('/product/createProduct', {
@@ -53,7 +53,7 @@ const EventPreviewStep = ({ info, reset }) => {
         _loggedIn: info?._loggedIn,
       });
       if (res) {
-        console.log(res);
+        // console.log(res);
       }
     } catch (error) {
       console.error('Error creating product:', error);

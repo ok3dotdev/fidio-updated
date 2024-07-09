@@ -3,7 +3,6 @@ import { Chat, Player, Prompt } from '../modules/streaming/watch';
 import DonateButton from '/modules/ecommerce/donate/DonateButton';
 
 const Module = (props) => {
-  console.log('prrrr', props);
   const { WatchPageStyles = {}, watchMeta = {} } = props;
 
   const {

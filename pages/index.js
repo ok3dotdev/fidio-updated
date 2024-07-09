@@ -26,16 +26,16 @@ export const page = (props) => {
         props={props}
         className='bg-dashBg'
       >
-        <Hero {...props} />
-        {/* <LandingPageHero />
-        <ImageText
-          img={'https://d2ib7gxb0luc1i.cloudfront.net/img/imagetext1.png'}
+        {/* <Hero {...props} /> */}
+        <LandingPageHero />
+        {/* <ImageText
+          img={'https://d2ib7gxb0luc1i.cloudfront.net/img/desktop-bg.png'}
           heading={'The Future of African Music is Here'}
           description={
             'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
           }
         /> */}
-        <div className='max-w-7xl mx-auto py-24 font-Archivo'>
+        {/* <div className='max-w-7xl mx-auto py-24 font-Archivo'>
           <div className='flex flex-col lg:flex-row'>
             <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
               <h2 className='text-[24px] lg:text-[48px] font-Archivo'>
@@ -87,7 +87,7 @@ export const page = (props) => {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </HomeLayout>
     </React.Fragment>
   );

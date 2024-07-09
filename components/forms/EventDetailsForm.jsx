@@ -65,7 +65,7 @@ const EventDetailsForm = ({
 
   const isOnSubmit = async (data) => {
     // await trigger();
-    console.log('Form submitted:', data);
+    // console.log('Form submitted:', data);
     setEventDetails(data);
     setStep(2);
   };
