@@ -1,2 +1,0 @@
-pm2 delete $1
-pm2 start npm --name "$1" -- run start -- --port=$2 --hostname=0.0.0.0
