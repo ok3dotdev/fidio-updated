@@ -41,7 +41,6 @@ env.local
 credentials.js
 
 # Tycoon Systems - Script Ignore
-daemonclient
 pulls3buildpublic
 servebuild.bat
 app.config.js
