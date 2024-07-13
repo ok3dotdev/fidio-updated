@@ -32,13 +32,19 @@ export const page = (props) => {
           }
           direction='reverse'
         />
-        <div className='space-y-8 mt-12 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto'>
+        <div className='space-y-8 mt-12 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto px-4'>
           {featuresList.map((item, idx) => (
-            <BulletCard {...item} key={idx} />
+            <BulletCard
+              {...item}
+              key={idx}
+              isLast={idx === featuresList.length - 1}
+            />
           ))}
         </div>
         <ImageText
-          img={'https://d2ib7gxb0luc1i.cloudfront.net/img/Image1.png'}
+          img={
+            'https://d2ib7gxb0luc1i.cloudfront.net/img/Image_1__1_-removebg.png'
+          }
           heading={"Fidio is more than just a platform – it's a movement"}
           description={
             'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
