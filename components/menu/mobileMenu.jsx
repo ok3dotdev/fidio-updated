@@ -20,11 +20,14 @@ const MobileMenu = (props) => {
     router.push('/');
   };
   return (
-    <Sheet className='p-2'>
+    <Sheet className='p-2 dark:bg-transparent'>
       <SheetTrigger asChild>
-        <Button variant='outline'>
+        <Button
+          variant='outline'
+          className='dark:bg-transparent dark:border-none '
+        >
           <svg
-            width='15'
+            width='30'
             height='15'
             viewBox='0 0 15 15'
             fill='none'
@@ -61,12 +64,12 @@ const MobileMenu = (props) => {
           >
             Blog
           </Link>
-          <Link
+          {/* <Link
             className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
             href='/studio'
           >
             Studio
-          </Link>
+          </Link> */}
         </div>
 
         <div className='flex-grow'></div>

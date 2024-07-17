@@ -45,8 +45,8 @@ const AltMenu = (props) => {
         </div>
         <div className='lg:flex gap-4'>
           <div className='flex justify-center items-center gap-4 cursor-pointer'>
-            <UserMenu {...props} />
-            <MobileMenu />
+            {/* <UserMenu {...props} /> */}
+            <MobileMenu {...props} />
           </div>
         </div>
       </div>

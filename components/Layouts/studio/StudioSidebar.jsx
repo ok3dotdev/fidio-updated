@@ -21,23 +21,23 @@ const StudioSidebar = (props) => {
       label: 'Studio',
       icon: <Wave className='w-[20px] h-[20px]' />,
     },
-    {
-      path: '/studio/events',
-      label: 'Events',
-      icon: <VideocamOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
-    },
-    {
-      path: '/studio/revenue',
-      label: 'Revenue',
-      icon: (
-        <ConfirmationNumberOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />
-      ),
-    },
-    {
-      path: '/studio/settings',
-      label: 'Settings',
-      icon: <SettingsOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
-    },
+    // {
+    //   path: '/studio/events',
+    //   label: 'Events',
+    //   icon: <VideocamOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
+    // },
+    // {
+    //   path: '/studio/revenue',
+    //   label: 'Revenue',
+    //   icon: (
+    //     <ConfirmationNumberOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />
+    //   ),
+    // },
+    // {
+    //   path: '/studio/settings',
+    //   label: 'Settings',
+    //   icon: <SettingsOutlinedIcon className='w-[20px] h-[20px] bg-inherit' />,
+    // },
   ];
 
   return (

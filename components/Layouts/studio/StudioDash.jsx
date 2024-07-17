@@ -143,7 +143,7 @@ const StudioDash = (props) => {
 
   return (
     <div className='mt-[2rem] mb-12'>
-      <div className='mb-[2rem] md:mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
+      {/* <div className='mb-[2rem] md:mb-2 grid xl:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2'>
         <Card className='rounded-[8px] font-lexend font-normal text-dashtext dark:bg-dashSides'>
           <CardHeader>
             <CardTitle className='font-lexend font-normal text-dashtext'>
@@ -184,15 +184,15 @@ const StudioDash = (props) => {
             <p className='font-lexend text-3xl font-bold'>300K</p>
           </CardContent>
         </Card>
-      </div>
-      <div className='grid xl:grid-cols-2 gap-2'>
+      </div> */}
+      {/* <div className='grid xl:grid-cols-2 gap-2'>
         <div className='dark:bg-dashSides h-[200px] md:h-[300px] p-4 font-lexend rounded-[8px]'>
           Revenue growth
         </div>
         <div className='dark:bg-dashSides h-[200px] md:h-[300px] p-4 font-lexend rounded-[8px] '>
           Audience growth
         </div>
-      </div>
+      </div> */}
       <div className='mt-8 flex justify-between p-1 items-center'>
         <h3 className='font-lexend font-medium'>YOUR EVENTS</h3>
         <div className='flex items-center gap-2'>

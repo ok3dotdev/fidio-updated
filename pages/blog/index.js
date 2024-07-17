@@ -171,7 +171,7 @@ export const page = (props) => {
             <div className=''>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8'>
                 {data?.articleReq[0].map((articleReq, index) => (
-                  <a key={index} href={`/ar?p=${articleReq?.id}`}>
+                  <a key={index} href={`/a?p=${articleReq?.id}`}>
                     <div key={index} className='p-4 bg-dashSides rounded-[8px]'>
                       <div className='w-full h-[250px] rounded-[8px]'>
                         <img

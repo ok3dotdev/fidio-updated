@@ -13,7 +13,7 @@ const pageName = 'w';
 export const page = (props) => {
   return (
     <React.Fragment>
-      <WatchLayout>
+      <WatchLayout {...props}>
         <PageContainer {...props} pageName={pageName}>
           <WatchPage {...props} />
           <CartInternal {...props} />

@@ -6,6 +6,7 @@ import HeadSEO from '../features/head-seo';
 import { siteData } from './seo-data';
 import AltMenu from './AltMenu';
 import { cn } from '@/lib/utils';
+import BrowseHeader from '../../components/Layouts/browse/BrowseHeader';
 
 const HomeLayout = ({
   useProps,
@@ -30,7 +31,11 @@ const HomeLayout = ({
   return (
     <div className={cn('relative h-full', className)}>
       <HeadSEO site={siteData} page={pageData} />
-      {showMainMenu ? <Menu {...props} classname='' /> : <AltMenu {...props} />}
+      {showMainMenu ? (
+        <BrowseHeader {...props} classname='' />
+      ) : (
+        <AltMenu {...props} />
+      )}
       {children}
       {showMainFooter ? (
         <BrowseFooter />

@@ -112,22 +112,21 @@ const Events = (props) => {
         meta.status = sortValue;
       }
 
-      const res = await apiReq('/product/getProducts', {
+      const res = await apiReq('/m/getProducts', {
         apiUrl: props?.apiUrl,
         pagination: currentPage,
         extra: extraObject,
-        limit: 10,
         meta,
+        limit: 10,
+        sortField: 'created',
+        sort: 'desc',
       });
 
       if (res && res.products) {
-        const sortedTickets = res.products.sort((a, b) => {
-          const dateA = new Date(a.created);
-          const dateB = new Date(b.created);
-          return dateA - dateB;
-        });
+        const sortedTickets = res.products;
 
         if (searchTerm || sortValue) {
+          // console.log('sorted', sortedTickets);
           setTickets(sortedTickets);
         } else {
           setTickets((prevTickets) => [...prevTickets, ...sortedTickets]);
@@ -280,6 +279,24 @@ const Events = (props) => {
               <TicketLoadingSkeleton />
             </div>
           )}
+        </div>
+        {/* Pagination Controls */}
+        <div className='flex justify-between items-center mt-8'>
+          <button
+            onClick={handlePreviousPage}
+            disabled={currentPage === 0}
+            className='px-4 py-2 bg-black rounded-md disabled:opacity-50'
+          >
+            Previous/studio/events/0332b030-105b-4591-8c9a-7aa5f1bf49e9
+          </button>
+          {!currentPage ? '' : <span>Page {currentPage + 1}</span>}
+          <button
+            onClick={handleNextPage}
+            disabled={!hasMore}
+            className='px-4 py-2 bg-black rounded-md disabled:opacity-50'
+          >
+            Next
+          </button>
         </div>
       </div>
     </StudioLayout>

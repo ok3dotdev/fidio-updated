@@ -4,15 +4,37 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const SubscribeForm = () => {
   const [term, setTerm] = React.useState('');
-  function handleSubscribe() {}
+  async function handleSubscribe() {
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST', // Assuming you want to send a POST request
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          // Include any necessary data here
+          email: term,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('data', data);
+    } catch (error) {
+      console.error('Oh, something happened: ', error);
+    }
+  }
   return (
     <div className='relative max-w-screen-xl mx-auto px-4 mt-12'>
-      <div className='p-12 bg-dashSides rounded-[10px]'>
-        <h3 className='font-bold text-3xl flex flex-col'>
+      <div className='md:p-12 bg-dashSides rounded-[10px] p-8'>
+        <h3 className='font-bold text-3xl flex flex-col text-left'>
           <span>Subscribe to</span>
           <span>Fidio’s newsletter</span>
         </h3>
-        <div className='relative block mt-2 w-[300px]'>
+        <div className='relative block mt-4 max-w-[400px]'>
           <form
             action=''
             onSubmit={(e) => {
@@ -22,7 +44,7 @@ const SubscribeForm = () => {
           >
             <Input
               placeholder='Subscribe'
-              className='text-muted-foreground font-lexend p-1 border-b bg-transparent border-dashBorder '
+              className='text-muted-foreground font-lexend p-2 border-b bg-transparent dark:border-dashBorder '
               onChange={(e) => setTerm(e?.target?.value)}
               value={term}
               onSubmit={handleSubscribe}

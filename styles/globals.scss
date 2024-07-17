@@ -48,6 +48,7 @@ a {
   box-shadow: unset !important;
   gap: 3rem !important;
   font-family: lexend !important;
+  max-height: unset !important;
 
   @media (max-width: 768px) {
     padding: 1rem !important;
@@ -85,16 +86,16 @@ input[type='text'],
 }
 
 button {
-  // border-radius: 4px;
+  border-radius: 4px;
   // background-color: rgba(221, 104, 26, 1) !important;
-  // padding: 0.5rem 0.5rem !important;
+  padding: 0.5rem 0.5rem !important;
 }
 
 .Ecommerce_Layout_Data_Container {
   @media (max-width: 768px) {
     flex-direction: column-reverse !important;
     div {
-      width: 100% !important;
+      width: 100%;
     }
   }
 }

@@ -10,6 +10,7 @@ import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ImageText from '@/components/ImageText';
 import BulletCard from '@/components/cards/BulletCard';
 import { featuresList } from '@/lib/constants';
+import SubscribeForm from '../components/forms/SubscribeToNewsLetter';
 
 const pageName = 'Index';
 
@@ -21,18 +22,21 @@ export const page = (props) => {
         pageName={pageName}
         pageData={homePageData}
         props={props}
-        className='bg-dashBg text-center'
+        className='bg-dashBg text-center font-lexend'
       >
         <LandingPageHero />
         <ImageText
-          img={'https://d2ib7gxb0luc1i.cloudfront.net/img/desktop-bg.png'}
-          heading={'The Future of African Music is Here'}
+          img={
+            'https://fidiohero.s3.ca-central-1.amazonaws.com/OBJECT+MOCKUP+3+(3).png'
+          }
+          heading={
+            'The Future of <span class="text-accentY">African Music</span> is Here'
+          }
           description={
             'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
           }
-          direction='reverse'
         />
-        <div className='space-y-8 mt-12 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto px-4'>
+        <div className='gap-y-12 mt-12 grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto px-2'>
           {featuresList.map((item, idx) => (
             <BulletCard
               {...item}
@@ -43,66 +47,23 @@ export const page = (props) => {
         </div>
         <ImageText
           img={
-            'https://d2ib7gxb0luc1i.cloudfront.net/img/Image_1__1_-removebg.png'
+            'https://fidiohero.s3.ca-central-1.amazonaws.com/Image_1__1_-removebg.png'
           }
-          heading={"Fidio is more than just a platform – it's a movement"}
-          description={
-            'Fidio goes beyond traditional streaming platforms. We offer cutting-edge features designed to elevate the virtual concert experience for artists, promoters, and fans alike.'
+          heading={
+            "Fidio is more than just a platform – <span class='text-accentY'> it's a movement</span>"
           }
+          direction='reverse'
+          glow='true'
         />
-        {/* <div className='max-w-7xl mx-auto py-24 font-Archivo'>
-          <div className='flex flex-col lg:flex-row'>
-            <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
-              <h2 className='text-[24px] lg:text-[48px] font-Archivo'>
-                Concert-to-go
-              </h2>
-              <p className='leading-8 font-sans text-[16px] lg:text-[20px] pt-6'>
-                Never miss a live performance. <br /> Buy tickets and watch your
-                show, wherever you are, however you like.
-              </p>
-            </div>
-            <img
-              className='lg:max-w-[50%]'
-              src='/img/internal/concert-to-go.png'
-              alt='concert to go image'
-            />
-          </div>
-          <div className='flex flex-col-reverse lg:flex-row mt-6 lg:mt-0'>
-            <img
-              className='lg:max-w-[50%] max-w-[90%] mx-auto'
-              src='/img/internal/engage.png'
-              alt='concert to go image'
-            />
-            <div className='flex items-start flex-col px-4 lg:px-6 justify-center w-full'>
-              <h2 className='text-[24px] lg:text-[48px]'>
-                Engage with fellow fans
-              </h2>
-              <p className='leading-8 font-sans text-[16px] lg:text-[20px] pt-6'>
-                Chat with other concert-goers with our live chat feature.
-                <br /> You can finally say, “Where my people at?”
-              </p>
-            </div>
-          </div>
+        <div className='max-w-4xl mx-auto px-2'>
+          <p className='text-dashtext leading-6'>
+            {`We're passionate about empowering African artists, connecting fans
+            to their favorite music, and propelling the African music industry
+            to new heights. Join us on this journey and become a part of the
+            future of African entertainment.`}
+          </p>
         </div>
-        <ShowGrid />
-        <div className='max-w-7xl mx-auto py-24'>
-          <div className='flex gap-1 px-4 lg:px-6 items-center'>
-            <h3 className='text-sm font-sans'>Ready to stream?</h3>
-            <div className='relative'>
-              <img
-                className='absolute -top-[32px] z-0 w-[90%] h-[100px]'
-                src='/img/internal/swirls.png'
-                alt='swirls'
-              />
-              <Link
-                href='/signin'
-                className='relative py-3 px-6 rounded-[20px] bg-[#FDB000] font-sans text-black z-10 text-sm'
-              >
-                Sign up for free with Google
-              </Link>
-            </div>
-          </div>
-        </div> */}
+        <SubscribeForm />
       </HomeLayout>
     </React.Fragment>
   );

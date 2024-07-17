@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const Ticket = ({ ticket, cdn }) => {
+  console.log('price', ticket?.styles[0]?.price);
   return (
     <Link href={`/events/${ticket.id}`}>
       {ticket.images[0] ? (
@@ -24,7 +25,9 @@ const Ticket = ({ ticket, cdn }) => {
             </div>
           )}
           <Button className='self-end ml-auto dark:hover:text-black'>
-            ${ticket?.styles[0]?.price}
+            {ticket?.styles?.[0]?.price === '0'
+              ? 'FREE'
+              : `$${ticket?.styles?.[0]?.price ?? ''}`}
           </Button>
         </div>
       </div>

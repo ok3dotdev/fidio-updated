@@ -123,11 +123,11 @@ const EventDetailsForm = ({
             </div>
             <div className='space-y-2'>
               <label htmlFor='description'>Description</label>
-              <Input
+              <textarea
                 id='description'
                 name='description'
                 placeholder='A time to party!'
-                className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium w-full p-2 rounded-md text-sm'
                 {...register('description')}
               />
             </div>

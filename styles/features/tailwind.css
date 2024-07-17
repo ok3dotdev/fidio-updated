@@ -36,6 +36,12 @@ body {
   width: 100%;
 }
 
+@layer components {
+  .last-item {
+    @apply md:col-span-2 md:justify-self-center;
+  }
+}
+
 input {
   color: black;
 }

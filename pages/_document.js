@@ -18,6 +18,7 @@ class MyDocument extends Document {
               `,
             }}
           />
+
           <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
@@ -32,6 +33,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           ></link>
         </Head>
+        <meta name='robots' content='noindex, nofollow' />.
         <body>
           <Main />
           <NextScript />

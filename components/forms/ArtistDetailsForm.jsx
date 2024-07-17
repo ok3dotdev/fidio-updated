@@ -198,10 +198,10 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
               <div className='space-y-2 mt-4'>
                 <label htmlFor='title'>Bio</label>
                 <div className='flex items-center gap-x-2'>
-                  <Input
+                  <textarea
                     name='detailmeta.lineup[0].bio'
                     placeholder='Enter bio'
-                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                    className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium w-full p-2 rounded-md text-sm'
                     ref={register}
                     {...register('detailmeta.lineup[0].bio')}
                   />
@@ -297,10 +297,10 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
                 Bio
               </label>
               <div className='flex items-center gap-x-2 mt-2'>
-                <Input
+                <textarea
                   name='detailmeta.lineup[0].bio'
                   placeholder='Host with the most'
-                  className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                  className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium w-full p-2 rounded-md text-sm'
                   ref={register}
                   {...register('host.bio')}
                 />

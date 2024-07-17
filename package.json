@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@glidejs/glide": "^3.6.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@mui/icons-material": "^5.15.17",
     "@mui/material": "^5.14.0",
     "@radix-ui/react-dialog": "^1.0.5",

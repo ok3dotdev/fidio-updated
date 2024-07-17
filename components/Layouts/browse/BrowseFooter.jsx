@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 const BrowseFooter = () => {
   return (
     <div>
@@ -11,23 +12,33 @@ const BrowseFooter = () => {
               className='lg:w-[120px] w-[90px] h-auto'
             />
           </Link>
-          <div className='flex flex-col md:flex-row md:w-[50%] justify-between items-start gap-y-8'>
+          <div className='grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-3 lg:grid-cols-4 md:w-[75%] justify-between items-start'>
             <div>
-              <h3 className='font-semibold text-lg'>Contact</h3>
+              <h3 className='font-semibold text-lg'>Connect</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    About us
+                    LinkedIn
                   </Link>
                 </li>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    Spotify Playlist
+                    X
                   </Link>
                 </li>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    Contact us
+                    TikTok
+                  </Link>
+                </li>
+                <li>
+                  <Link href='#' className='hover:text-white'>
+                    Instagram
+                  </Link>
+                </li>
+                <li>
+                  <Link href='#' className='hover:text-white'>
+                    Facebook
                   </Link>
                 </li>
               </ul>
@@ -78,32 +89,22 @@ const BrowseFooter = () => {
                 </li>
               </ul>
             </div>
-            <div className=''>
-              <h3 className='font-semibold text-lg'>Connect</h3>
+            <div>
+              <h3 className='font-semibold text-lg'>Contact</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    LinkedIn
+                    About us
                   </Link>
                 </li>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    X
+                    Spotify Playlist
                   </Link>
                 </li>
                 <li>
                   <Link href='#' className='hover:text-white'>
-                    TikTok
-                  </Link>
-                </li>
-                <li>
-                  <Link href='#' className='hover:text-white'>
-                    Instagram
-                  </Link>
-                </li>
-                <li>
-                  <Link href='#' className='hover:text-white'>
-                    Facebook
+                    Contact us
                   </Link>
                 </li>
               </ul>
@@ -111,10 +112,10 @@ const BrowseFooter = () => {
           </div>
         </div>
       </div>
-      <div className='bg-[#262626] h-12 flex justify-center align-items'>
-        <div className=' max-w-screen-2xl mx-auto flex justify-between w-full item-center px-4 items-center'>
+      <div className='bg-[#262626] h-12 flex justify-center items-center'>
+        <div className='max-w-screen-2xl mx-auto flex justify-between w-full px-4'>
           <p className='text-[#737373] font-semibold text-sm'>
-            c 2024 All Rights Reserved
+            &copy; 2024 All Rights Reserved
           </p>
         </div>
       </div>

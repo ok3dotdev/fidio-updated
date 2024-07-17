@@ -43,9 +43,9 @@ const Page = (props) => {
   }, [props?.apiUrl, page]);
 
   useEffect(() => {
-    const dates = Object.keys(tickets)
-      .filter((date) => tickets[date]?.length > 0)
-      .sort((a, b) => new Date(b) - new Date(a));
+    const dates = Object.keys(tickets).filter(
+      (date) => tickets[date]?.length > 0
+    );
     setSortedDates(dates);
     console.log('sorted', sortedDates);
   }, [tickets]);
@@ -82,10 +82,10 @@ const Page = (props) => {
                   className='w-full'
                 >
                   <div className='w-full flex justify-between'>
-                    <div className='md:hidden'>
+                    <div className='md:invisible'>
                       <DateComponent date={date} />
                     </div>
-                    <div className='z-50 relative flex justify-end gap-2 mb-4 md:hidden'>
+                    <div className='z-50 relative flex justify-end gap-2 mb-4'>
                       <CarouselPrevious arrows='top' className='z-24' />
                       <CarouselNext arrows='top' className='z-24' />
                     </div>
@@ -94,7 +94,7 @@ const Page = (props) => {
                     {tickets[date]?.map((ticket, id) => (
                       <CarouselItem
                         key={id}
-                        className=' md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
+                        className='2xl:basis-1/4 md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
                       >
                         <div className='p-1 cursor-pointer'>
                           <Ticket key={id} ticket={ticket} cdn={props.cdn} />

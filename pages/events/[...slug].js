@@ -178,10 +178,9 @@ export const Page = (props) => {
                   <div className='flex justify-between items-center border-dashBorder'>
                     <p className='font-semibold'>Price</p>
                     <p className='font-bold text-xl'>
-                      $
-                      {ticket?.styles &&
-                        ticket?.styles[0] &&
-                        ticket?.styles[0]?.price}
+                      {ticket?.styles?.[0]?.price === '0'
+                        ? 'FREE'
+                        : `$${ticket?.styles?.[0]?.price ?? ''}`}
                     </p>
                   </div>
                   <button

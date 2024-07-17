@@ -320,10 +320,9 @@ const EventView = (props) => {
                     <div className='flex justify-between mt-8 items-center border-b-[1px] border-dashed py-4 mb-4 border-dashBorder'>
                       <p className='font-semibold'>Price</p>
                       <p className='font-bold text-xl'>
-                        $
-                        {ticket?.styles &&
-                          ticket?.styles[0] &&
-                          ticket?.styles[0]?.price}
+                        {ticket?.styles?.[0]?.price === '0'
+                          ? 'FREE'
+                          : `$${ticket?.styles?.[0]?.price ?? ''}`}
                       </p>
                     </div>
                   </div>

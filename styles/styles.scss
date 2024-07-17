@@ -17,12 +17,13 @@
 
 .Ecommerce_Cart_Container {
   background: var(--Color-Neutral-900, rgba(23, 23, 23, 1)) !important;
-  height: unset !important;
+  height: fit-content !important;
   top: 80px !important;
   position: static !important;
   box-shadow: unset !important;
   gap: 3rem !important;
   font-family: lexend !important;
+  max-width: 1000px;
 
   @media (max-width: 768px) {
     padding: 1rem !important;
@@ -34,6 +35,10 @@
 
 .Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
   border-radius: 8px !important;
+  max-width: 400px;
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
 }
 
 // .Ecommerce_Cart_Container button {
@@ -68,9 +73,13 @@ button {
 .Ecommerce_Layout_Data_Container {
   @media (max-width: 768px) {
     flex-direction: column-reverse !important;
-    div {
-      width: 100% !important;
-    }
+    width: fit-content !important;
+  }
+}
+
+.Ecommerce_Cart_Container_Visible {
+  @media (max-width: 768px) {
+    width: 90vw;
   }
 }
 
@@ -255,10 +264,14 @@ textarea {
 .Ecommerce_CreditCard_Container {
   background: none;
 }
+.Ecommerce_Cart_Quantity_Container {
+  max-width: fit-content !important;
+}
 
 .Ecommerce_Item_Image_Container {
   max-height: 40px !important;
   background-position: center !important;
+  width: fit-content !important;
 }
 .list-view {
   @apply space-y-4;
