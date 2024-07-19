@@ -49,6 +49,10 @@
     gap: .25rem;
 }
 
+.chatLogContainerReplies {
+    margin-top: 1.5rem;
+}
+
 .chatDonationItemContainer {
     position: relative;
 }
@@ -265,7 +269,7 @@
     border-radius: .25rem .25rem 0 0;
     border: 1px solid #2d2d2d;
     border-bottom: none;
-    padding: 0 .25rem;
+    padding: .25rem .25rem;
     background: black;
     font-size: .85rem;
     z-index: 3;
@@ -290,7 +294,7 @@
 .chatCancelReplyTo {
     position: absolute;
     right: .5rem;
-    top: .125rem;
+    top: .25rem;
     cursor: pointer;
 }
 
@@ -304,10 +308,12 @@
 }
 
 .threadLabel {
+    position: absolute;
+    z-index: 10;
     letter-spacing: .1rem;
     font-weight: 600;
     font-size: .75rem;
-    padding: .125rem 1rem;
+    padding: .075rem 1rem;
     border-radius: .25rem;
     max-width: fit-content;
     font-style: italic;
@@ -375,4 +381,8 @@
 
 .Close {
     cursor: pointer;
+}
+
+.chatLayoutContainer {
+    height: 100%;
 }
