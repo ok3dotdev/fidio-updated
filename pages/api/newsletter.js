@@ -1,13 +1,14 @@
 const mailchimp = require('@mailchimp/mailchimp_marketing');
 
 mailchimp.setConfig({
-  apiKey: '669f7e5d06a43c67f49990f594abe54f-us22',
+  apiKey: '4da9a44cc48f30f55467c6d7c48cd9a1-us22',
   server: 'us22',
 });
 
 export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
+      console.log('posted');
       const { email = '' } = req.body;
 
       if (!email) {
@@ -22,5 +23,6 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error('oh nooo!', error);
+    res.status(404).json({ message: error.message });
   }
 }

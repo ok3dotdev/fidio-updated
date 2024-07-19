@@ -6,6 +6,7 @@ import '../styles/features/tailwind.css';
 import Head from 'next/head';
 import { Internal } from '/modules/internal/';
 import { ThemeProvider } from '../components/provider';
+import { Toaster } from '@/components/ui/toaster';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider attribute='class' defaultTheme='dark'>
         <Internal {...pageProps} _MasterPageComponent={Component} />
+        <Toaster />
       </ThemeProvider>
     </div>
   );

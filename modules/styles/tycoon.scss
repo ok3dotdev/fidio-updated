@@ -480,6 +480,7 @@ button:not(:disabled):active {
     padding: .075rem .5rem;
     font-weight: 600;
     font-size: .8rem;
+    border: 1px solid transparent;
 }
 
 .tagContainer .tagItemSelected {

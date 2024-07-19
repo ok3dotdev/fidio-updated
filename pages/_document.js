@@ -33,7 +33,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           ></link>
         </Head>
-        <meta name='robots' content='noindex, nofollow' />.
+        <meta name='robots' content='noindex, nofollow' />
         <body>
           <Main />
           <NextScript />
