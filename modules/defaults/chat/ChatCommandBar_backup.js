@@ -1,6 +1,7 @@
 import React from 'react'
 import ChatStyles from '/modules/streaming/chat/Chat.module.scss'
 import { Reaction } from '/modules/streaming/chat'
+import { handleSqueezedInputFocus, handleSqueezedInputBlur } from '/modules/streaming/chat/utility'
 
 const Module = props => {
     const promptDonate = props.promptDonate
@@ -40,7 +41,7 @@ const Module = props => {
                                         ? <div className={`${ChatStyles.customDonationContainer} Chat_customDonationContainer flex gap-p2`} style={{ background: 'black', borderRadius: '.5rem' }}>
                                             <div className={`${ChatStyles.customDonation} Chat_customDonation flex gap-p2`} style={{ alignItems: 'center', paddingLeft: '.5rem' }}>
                                                 <span className={`material-icons`} style={{ fontSize: '1.25rem', color: '#fece30' }}>paid</span>
-                                                <input type='number' placeholder={'00..'} defaultValue={20} className={`${ChatStyles.squeezedInput} ${ChatStyles.customDonationInput} Chat_customDonationInput`} style={{ borderRadius: '.5rem', borderWidth: 0, fontSize: '1.125rem', fontWeight: '600' }} ref={customDonate} />
+                                                <input type='number' placeholder={'00..'} defaultValue={20} className={`${ChatStyles.squeezedInput} ${ChatStyles.customDonationInput} Chat_customDonationInput`} style={{ borderRadius: '.5rem', borderWidth: 0, fontSize: '1.125rem', fontWeight: '600' }} ref={customDonate} onFocus={handleSqueezedInputFocus} onBlur={handleSqueezedInputBlur} />
                                             </div>
                                             <button className={`material-icons`} style={{ fontSize: '1.25rem'}} onClick={promptDonate} modif='customDonate'>payment</button>
                                         </div>
