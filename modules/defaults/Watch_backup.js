@@ -1,9 +1,9 @@
 import React from 'react'
-import { Chat, Player, Prompt } from '/modules/streaming/watch'
+import { Player, Prompt } from '/modules/streaming/watch'
+import { Chat } from '/modules/streaming/chat'
 import DonateButton from '/modules/ecommerce/donate/DonateButton'
 
 const Module = props => {
-    console.log(props)
     return (
         <div className={`${props?.WatchPageStyles?.videoQuadrant} WatchPage_VideoQuadrant`} style={{ height: `calc(100vh - ${props?.menuHeight})` }}>
             <Prompt { ...props } />
