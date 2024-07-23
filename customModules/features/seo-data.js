@@ -14,6 +14,8 @@ const siteData = {
     shareGraphic: {
       asset: '/img/internal/group4.png', // Replace with the default share image URL
     },
+    shareCanonical: 'https://www.fidio.ca/',
+    shareUrl: 'https://www.fidio.ca/',
   },
 };
 
@@ -30,6 +32,8 @@ const homePageData = {
     shareGraphic: {
       asset: '/img/internal/group4.png', // Replace with the actual image URL
     },
+    shareCanonical: 'https://www.fidio.ca/',
+    shareUrl: 'https://www.fidio.ca/',
   },
 };
 

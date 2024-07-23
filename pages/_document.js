@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/* <link rel='canonical' href='https://www.fidio.ca/' /> */}
           <script
             id='google-analytics-script'
             dangerouslySetInnerHTML={{

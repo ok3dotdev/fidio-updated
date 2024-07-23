@@ -12,13 +12,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  assetPrefix: website,
+  // assetPrefix: website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
     domains: [
       'd2ib7gxb0luc1i.cloudfront.net',
       'another-domain.com',
       'googleusercontent.com',
+      'fidiohero.s3.ca-central-1.amazonaws.com',
     ],
   },
   webpack: (config, { isServer }) => {

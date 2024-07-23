@@ -34,6 +34,8 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
   const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc;
   const shareGraphic =
     page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
+  const shareCanonical = page.seo?.shareCanonical || site.seo?.shareCanonical;
+  const shareUrl = page.seo?.shareUrl || site.seo?.shareUrl;
 
   return (
     <Head>
@@ -45,6 +47,8 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
       <link rel='icon' href={siteFaviconLegacy} sizes='any' />
       <link preload='true' rel='icon' type='image/svg+xml' href={siteFavicon} />
       <link preload='true' rel='mask-icon' href={siteFavicon} color='#000000' />
+      <link rel='canonical' href={shareCanonical} />
+      <meta property='og:url' content={shareUrl} />
       {/* {siteTouchIcon && (
         <link
           rel='apple-touch-icon'

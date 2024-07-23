@@ -73,15 +73,15 @@ export default function LandingPageHero() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value='artist' className='max-w-[700px] mx-auto'>
-              <Image
-                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer.png'
+              <img
+                src='https://fidiohero.s3.ca-central-1.amazonaws.com/video+player+(2).png'
                 alt='artist'
                 width={500}
                 height={500}
                 className='md:hidden'
               />
-              <Image
-                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer.png'
+              <img
+                src='https://fidiohero.s3.ca-central-1.amazonaws.com/video+player+(2).png'
                 alt='artist'
                 width={700}
                 height={500}
@@ -89,16 +89,16 @@ export default function LandingPageHero() {
               />
             </TabsContent>
             <TabsContent value='host'>
-              <Image
-                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer(1).png'
-                alt='artist'
+              <img
+                src='https://fidiohero.s3.ca-central-1.amazonaws.com/video+player+(3).png'
+                alt='host'
                 width={500}
                 height={500}
                 className='md:hidden'
               />
-              <Image
-                src='https://d2ib7gxb0luc1i.cloudfront.net/img/videoplayer(1).png'
-                alt='artist'
+              <img
+                src='https://fidiohero.s3.ca-central-1.amazonaws.com/video+player+(3).png'
+                alt='host'
                 width={700}
                 height={500}
                 className='hidden md:block mx-auto'

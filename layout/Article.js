@@ -25,6 +25,8 @@ const Module = (props) => {
       shareGraphic: {
         asset: props?.articleData?.meta?.featuredImg,
       },
+      shareCanonical: `https://www.fidio.ca/ar?p=${props?.articleData?.id}`,
+      shareUrl: `https://www.fidio.ca/ar?p=${props?.articleData?.id}`,
     },
   };
   return (

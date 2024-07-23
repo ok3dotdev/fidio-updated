@@ -238,6 +238,15 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/chat/Chat.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/chat/Chat_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 useFile = 'layout/product'
 if (fs.existsSync(useFile)) {
     // Add your commands here

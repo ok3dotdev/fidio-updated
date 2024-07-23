@@ -4,15 +4,7 @@ import Reply from '@mui/icons-material/Reply'
 import ArrowUpward from '@mui/icons-material/ArrowUpward'
 
 const Module = props => {
-    const chatLog = props.chatLog
-    const scrollChatRef = props.scrollChatRef
-    const scrollChatInnerRef = props.scrollChatInnerRef
-    const mobileStyleConfigs = props.mobileStyleConfigs
-    const handleSetUserDisplay = props.handleSetUserDisplay
-    const highlightedChat = props.highlightedChat
-    const handleGoToPost = props.handleGoToPost
-    const handleReplyTo = props.handleReplyTo
-    const replyOff = props.replyOff
+    const { chatLog, scrollChatRef, scrollChatInnerRef, mobileStyleConfigs, handleSetUserDisplay, highlightedChat, handleGoToPost, handleReplyTo, replyOff } = props
 
     return (         
         <div className={`${ChatStyles.chatLogExternalContainer} ${mobileStyleConfigs ? `${ChatStyles.mobileChatLogExternalContainer}` : null} Chat_ChatLogExternalContainer`} ref={scrollChatRef}>

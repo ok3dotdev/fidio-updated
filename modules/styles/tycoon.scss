@@ -1315,3 +1315,56 @@ section.range-slider input::-moz-range-thumb {
 .option_currently_selected {
     background: #ebebeb;
 }
+
+.reaction_node {
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+    animation: reactionSway 3s cubic-bezier(0.25, 0.10, 0.35, 1) forwards;
+    transition: transform 400ms;
+}
+
+@keyframes reactionSway {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    10% {
+        rotate: var(--rotate1);
+    }
+    20% {
+        rotate: var(--rotate2);
+    }
+    30% {
+        rotate: var(--rotate3);
+    }
+    40% {
+        rotate: var(--rotate4);
+        opacity: 1;
+    }
+    50% {
+        rotate: var(--rotate5);
+    }
+    60% {
+        rotate: var(--rotate6);
+    }
+    70% {
+        rotate: var(--rotate7);
+        opacity: 0;
+    }
+    80% {
+        rotate: var(--rotate8);
+    }
+    90% {
+        rotate: var(--rotate9);
+    }
+    100% {
+        transform: translateY(-225px);
+        rotate: var(--rotate10);
+        opacity: 0;
+    }
+}
+
+input.squeezedInputWider {
+    width: 65px;
+}
