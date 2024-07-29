@@ -1,5 +1,6 @@
 import React from 'react';
-import { Chat, Player, Prompt } from '../modules/streaming/watch';
+import { Player, Prompt } from '/modules/streaming/watch';
+import { Chat } from '/modules/streaming/chat';
 import DonateButton from '/modules/ecommerce/donate/DonateButton';
 
 const Module = (props) => {

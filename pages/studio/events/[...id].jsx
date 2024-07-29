@@ -455,7 +455,7 @@ const EventView = (props) => {
                               <CardContent className='space-y-2'>
                                 <div className='space-y-1'>
                                   <CardContent></CardContent>
-                                  <CardFooter className='space-x-1'>
+                                  <CardFooter className='space-x-1 flex flex-wrap'>
                                     <Button
                                       className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black ml-5'
                                       onClick={endStream}
@@ -468,13 +468,13 @@ const EventView = (props) => {
                                       className='dark:bg-red-300'
                                     >
                                       <DialogTrigger asChild>
-                                        <button
+                                        <Button
                                           disabled={startEnabled}
                                           onClick={startStream}
-                                          className='bg-accentY py-2 rounded-[6px] w-full dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default '
+                                          className='dark:bg-accentY py-2 rounded-[6px] w-full dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default whitespace-nowrap'
                                         >
                                           Show Keys
-                                        </button>
+                                        </Button>
                                       </DialogTrigger>
                                       <DialogContent className='sm:max-w-[425px] font-lexend dark:bg-dashBg'>
                                         <DialogHeader>
