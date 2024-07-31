@@ -82,9 +82,10 @@
             .title {
                 margin-top: 0;
                 margin-bottom: .5rem;
+                font-size: 1.3rem;
             }
-            .socialContainer {
-
+            .socialContainer > div {
+                height: -webkit-fill-available;
             }
         }
     }
@@ -120,6 +121,9 @@
     .chatOpen {
         min-width: 300px;
     }
+}
+
+@media(min-width: 700px) and (max-width: 900px) {
     .commandPanelContainerOpen {
         max-width: calc(100vw - 300px);
     }
@@ -197,4 +201,21 @@
     .floodMediaContainer, .leadContentContainer {
         flex-direction: column;
     }
+}
+
+.watchIcon {
+    width: 35px;
+    height: 35px;
+}
+
+.metaContainerInner {
+    margin-bottom: 1rem;
+}
+
+.metaContainerInner, .metaAuthorMetaContainer, .metaSimpleContainer {
+    display: flex;
+}
+
+.username {
+    margin: 0;
 }

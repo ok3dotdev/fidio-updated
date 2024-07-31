@@ -3,6 +3,7 @@ import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { fetchTickets, groupByDate, getDisplayDate } from '@/lib/utils';
 import BrowseLayout from '../components/Layouts/browse/BrowseLayout';
+import apiReq from '/modules/utility/api/apiReq';
 import Ticket from '@/components/cards/PurchaseTicketCard';
 import { Loader2 } from 'lucide-react';
 import {
@@ -22,6 +23,21 @@ const Page = (props) => {
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [sortedDates, setSortedDates] = useState([]);
+
+  useEffect(() => {
+    const loadLiveEvents = async () => {
+      const res = await apiReq('/p/getfeaturedstreams', {
+        identifier: props._loggedIn.identifier,
+        hash: props._loggedIn.hash,
+        search: '',
+        limit: 20,
+      });
+      if (res && res.status === 'success') {
+        console.log('res', res);
+      }
+    };
+    loadLiveEvents();
+  }, []);
 
   useEffect(() => {
     const loadTickets = async (pageNumber) => {

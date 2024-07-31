@@ -305,3 +305,12 @@ button:hover {
   box-shadow: none;
   outline: none;
 }
+
+#article-content img {
+  max-width: 400px;
+  margin: 0.5rem auto;
+}
+
+#article-content h3 {
+  font-size: 1.5rem;
+}

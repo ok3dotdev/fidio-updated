@@ -1,9 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-// If you want to use this as a template for another page, copy entire file and rename "pageName". Use pageDefault variable in app.config.js appropriately.
-
 import React, { useRef } from 'react';
-
-// import { PageContainer } from '/modules/internal';
 import { pageDefaults } from '../../app.config';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -14,8 +9,7 @@ import apiReq from '/modules/utility/api/apiReq';
 import { homePageData } from '/customModules/features/seo-data';
 import { Input } from '@/components/ui/input';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
 
 const pageName = 'blog';
 
@@ -113,7 +107,7 @@ export const page = (props) => {
       if (res) {
         setData(res.data.fetchedData[0]);
         setLoading(false);
-        // //console.log('res', data);
+        console.log('res', res.data.fetchedData[0]);
       }
     } catch (error) {
       // //console.log('error', error);
@@ -171,8 +165,11 @@ export const page = (props) => {
             <div className=''>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8'>
                 {data?.articleReq[0].map((articleReq, index) => (
-                  <a key={index} href={`/a?p=${articleReq?.id}`}>
-                    <div key={index} className='p-4 bg-dashSides rounded-[8px]'>
+                  <a key={index} href={`/a?p=${articleReq?.id}`} className=''>
+                    <div
+                      key={index}
+                      className='p-4 bg-dashSides rounded-[8px] max-h-[398px] min-h-[398px]'
+                    >
                       <div className='w-full h-[250px] rounded-[8px]'>
                         <img
                           className='object-cover w-full rounded-[8px] h-full'
@@ -194,6 +191,8 @@ export const page = (props) => {
               </div>
             </div>
           )}
+
+          <SubscribeForm />
         </div>
       </div>
     </HomeLayout>

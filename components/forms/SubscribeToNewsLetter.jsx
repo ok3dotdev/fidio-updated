@@ -55,7 +55,7 @@ const SubscribeForm = () => {
     }
   }
   return (
-    <div className='relative max-w-screen-xl mx-auto px-4 mt-12'>
+    <div className='relative max-w-screen-xl mx-auto px-0 mt-12 font-lexend'>
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8'>
         <h3 className='font-bold text-3xl flex flex-col text-left'>
           <span>Subscribe to</span>

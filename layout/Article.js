@@ -2,6 +2,8 @@ import React from 'react';
 import { SingleArticle } from '../modules/article';
 import HomeLayout from '/customModules/features/HomeLayout';
 import { useEffect } from 'react';
+import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
+
 const pageName = 'ar';
 
 const Module = (props) => {
@@ -36,9 +38,9 @@ const Module = (props) => {
       props={props}
       className='bg-dashBg'
     >
-      <div>
+      <div id='Article' className='pb-12'>
         {props?.articleData?.meta?.featuredImg && (
-          <div className='w-full max-h-[400px] h-[400px] relative'>
+          <div className='w-full max-h-[500px] h-[500px] relative'>
             <img
               className='absolute inset-0 w-full h-full object-cover'
               src={`${props?.articleData?.meta?.featuredImg}`}
@@ -52,38 +54,6 @@ const Module = (props) => {
               <h1 className='text-4xl font-bold leading-12'>
                 {props?.articleData?.title}
               </h1>
-              {/* <div className='w-[34px] h-[34px]'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='inherit'
-                  height='inherit'
-                  viewBox='0 0 48 48'
-                  fill='none'
-                >
-                  <rect width='48' height='48' rx='24' fill='#404040' />
-                  <path
-                    d='M16 24V32C16 32.5304 16.2107 33.0391 16.5858 33.4142C16.9609 33.7893 17.4696 34 18 34H30C30.5304 34 31.0391 33.7893 31.4142 33.4142C31.7893 33.0391 32 32.5304 32 32V24'
-                    stroke='white'
-                    stroke-width='1.5'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                  />
-                  <path
-                    d='M28 18L24 14L20 18'
-                    stroke='white'
-                    stroke-width='1.5'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                  />
-                  <path
-                    d='M24 14V27'
-                    stroke='white'
-                    stroke-width='1.5'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                  />
-                </svg>
-              </div> */}
             </div>
             <div className='flex gap-4 text-sm items-center mt-2'>
               {props &&
@@ -126,7 +96,10 @@ const Module = (props) => {
             <hr className='my-8' />
             <div className='flex gap-x-8 w-full'>
               <div className='w-full'>
-                <div className='flex space-y-2 leading-8 article-container '>
+                <div
+                  id='article-content'
+                  className='flex space-y-2 leading-8 article-container '
+                >
                   <SingleArticle {...props} />
                 </div>
               </div>
@@ -134,7 +107,7 @@ const Module = (props) => {
             </div>
           </div>
         </div>
-        {/* <SubscribeForm /> */}
+        <SubscribeForm />
       </div>
     </HomeLayout>
   );

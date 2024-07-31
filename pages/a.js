@@ -14,7 +14,6 @@ export const page = (props) => {
     <React.Fragment>
       <PageContainer {...props} pageName={pageName}>
         {/* <Menu></Menu> */}
-        <h1>hello</h1>
         <AppConfigLayout></AppConfigLayout>
       </PageContainer>
     </React.Fragment>

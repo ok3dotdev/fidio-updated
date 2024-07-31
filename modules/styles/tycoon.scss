@@ -1320,7 +1320,7 @@ section.range-slider input::-moz-range-thumb {
     position: absolute;
     bottom: 25px;
     left: 5px;
-    animation: reactionSway 3s cubic-bezier(0.25, 0.10, 0.35, 1) forwards;
+    animation: reactionSway 4s cubic-bezier(0.25, 0.10, 0.35, 1) forwards;
     transition: transform 400ms;
 }
 
@@ -1359,7 +1359,7 @@ section.range-slider input::-moz-range-thumb {
         rotate: var(--rotate9);
     }
     100% {
-        transform: translateY(-225px);
+        transform: translateY(-275px);
         rotate: var(--rotate10);
         opacity: 0;
     }

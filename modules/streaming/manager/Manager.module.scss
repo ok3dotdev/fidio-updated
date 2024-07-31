@@ -139,6 +139,7 @@ button.streamingButton:not(:disabled):hover {
     border-radius: .5rem;
     border-width: 0;
     font-weight: 600;
+    height: -webkit-fill-available;
 }
 
 .moreSettingsButton {
