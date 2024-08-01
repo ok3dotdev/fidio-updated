@@ -6,6 +6,7 @@ import BrowseLayout from '../components/Layouts/browse/BrowseLayout';
 import apiReq from '/modules/utility/api/apiReq';
 import Ticket from '@/components/cards/PurchaseTicketCard';
 import { Loader2 } from 'lucide-react';
+import LiveEventCard from '@/components/cards/LiveEventCard';
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +23,7 @@ const Page = (props) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [liveEvents, setLiveEvents] = useState([]);
   const [sortedDates, setSortedDates] = useState([]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const Page = (props) => {
         limit: 20,
       });
       if (res && res.status === 'success') {
-        console.log('res', res);
+        setLiveEvents(res?.data?.currentLive?.data);
       }
     };
     loadLiveEvents();
@@ -73,6 +75,31 @@ const Page = (props) => {
   return (
     <div className='w-full h-screen'>
       <BrowseLayout {...props}>
+        {liveEvents && (
+          <div>
+            <h3 className='text-2xl font-semibold mb-12'>Live Events</h3>
+            <Carousel
+              opts={{
+                align: 'start',
+              }}
+              arrows='top'
+              className='w-full'
+            >
+              <CarouselContent className='z-2 cursor-pointer'>
+                {liveEvents.map((live, id) => (
+                  <CarouselItem
+                    key={id}
+                    className='2xl:basis-1/4 md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
+                  >
+                    <div className='p-1 cursor-pointer'>
+                      <LiveEventCard live={live} cdn={props?.cdn} />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        )}
         <div>
           <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           {loading && (

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const Ticket = ({ ticket, cdn }) => {
-  console.log('price', ticket?.styles[0]?.price);
   return (
     <Link href={`/events/${ticket.id}`}>
       {ticket.images[0] ? (
