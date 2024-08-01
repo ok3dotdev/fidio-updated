@@ -405,7 +405,7 @@ const EventView = (props) => {
                                     readOnly
                                   />
                                   <Button
-                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white dark:hover:text-black'
                                     onClick={() =>
                                       copy(currentlyStreaming?.streamTo || '')
                                     }

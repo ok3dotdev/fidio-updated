@@ -35,6 +35,20 @@ export default function LandingPageHero() {
                 />
               </svg>
             </span>
+            {/* <svg
+              className='absolute  top-[250px] right-[170px] w-[1119px] h-[519px]'
+              width='1121'
+              height='1194'
+              viewBox='0 0 1121 1194'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M921.526 12.1656C1028 -55.8438 1242.95 197.5 1028 482.289C841.978 728.754 419.57 570.259 210.706 647.215C23.4742 716.2 -187.893 1022.29 305.182 1193'
+                stroke='white'
+                stroke-width='1.46955'
+              />
+            </svg> */}
           </div>
           <p className='text-dashtext text-center mb-8 leading-6 px-4'>
             Fidio is revolutionizing the global African music scene with a

@@ -5,7 +5,6 @@ import useMediaQuery from '../../../hooks/use-media-query';
 import UserAvatar from '@/components/Avatar';
 
 const WatchHeader = (props) => {
-  console.log('props', props);
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });

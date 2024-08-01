@@ -29,7 +29,13 @@
     padding: 1rem !important;
   }
 }
+#watchPage .Ecommerce_Cart_Container {
+  position: absolute !important;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .Ecommerce_Layout_Data_Container {
+  justify-content: space-between;
   gap: 3rem !important;
 }
 

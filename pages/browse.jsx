@@ -75,9 +75,9 @@ const Page = (props) => {
   return (
     <div className='w-full h-screen'>
       <BrowseLayout {...props}>
-        {liveEvents && (
-          <div>
-            <h3 className='text-2xl font-semibold mb-12'>Live Events</h3>
+        {liveEvents && liveEvents?.length > 0 && (
+          <div className='mb-12'>
+            <h3 className='text-2xl font-semibold mb-8'>Live Events</h3>
             <Carousel
               opts={{
                 align: 'start',

@@ -19,7 +19,7 @@ const Module = (props) => {
   console.log('props', props);
   const close = React.useCallback((e) => {
     props._toggleSingleOpenMenu(e, 'cart');
-    // props.setCartOpen(false);
+    if (props && props?.setCartOpen) props?.setCartOpen(false);
   });
 
   // if (!loading && ticket) {
