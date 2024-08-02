@@ -283,6 +283,15 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/mail/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/mail/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 useFile = 'layout/mail/footer.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
@@ -301,12 +310,12 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-useFile = 'layout/mail/userRegistration.js'
+useFile = 'layout/mail/newUser.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/userRegistration_backup.js', useFile)
+    fs.copyFileSync('modules/defaults/mail/newUser_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
