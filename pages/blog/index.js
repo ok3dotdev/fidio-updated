@@ -13,7 +13,7 @@ import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
 
 const pageName = 'blog';
 
-export const page = (props) => {
+const Page = (props) => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [term, setTerm] = useState('');
@@ -207,4 +207,4 @@ export const getServerSideProps = async (context) => {
   return await getServerSidePropsFunc(currentProps, context);
 };
 
-export default page;
+export default Page;

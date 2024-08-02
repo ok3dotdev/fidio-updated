@@ -317,6 +317,12 @@ button:hover {
   margin: 0.5rem auto;
 }
 
+@media (max-width: 678px) {
+  #article-content img {
+    max-width: 350px;
+  }
+}
+
 #article-content h3 {
   font-size: 1.5rem;
 }
