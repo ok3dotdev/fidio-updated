@@ -274,6 +274,42 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/mail'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/mail/footer.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/mail/footer_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/mail/globalEmailStyles.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/mail/globalEmailStyles_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/mail/userRegistration.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/mail/userRegistration_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a' ] // Default pages
 
 for (let i = 0; i < pages.length; i++) {

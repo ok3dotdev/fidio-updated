@@ -6,9 +6,11 @@
 
 .featureContainer {
     border-radius: 1rem;
-    border: 3px solid #f75c54;
-    background: rgb(233,109,223);
-    background: linear-gradient(50deg, rgba(233,109,223,1) 0%, rgba(246,83,83,1) 50%, rgba(255,189,97,1) 100%);
+    border: 1px solid #a4a4a4;
+    background: rgba(53, 53, 53, 0.5);
+    font-size: 1.25rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     height: 30px;
     position: relative;
     max-width: 96vw;
@@ -20,7 +22,7 @@
 }
 
 .featureContainerLarge {
-    height: 246px;
+    height: 196px;
 }
 
 .itemContainer {
@@ -52,7 +54,7 @@
             gap: .125rem;
             justify-content: center;
             overflow: hidden;
-            max-height: 10px;
+            max-height: 15px;
             width: inherit;
             .itemMarqueeContainer {
                 width: inherit;
@@ -80,7 +82,7 @@
 }
 
 .featureContainerMedium {
-    height: 160px;
+    height: 135px;
     .itemMetaContainer {
         width: 225px;
         max-width: 225px;
@@ -97,6 +99,8 @@
 
 .thinMetaContainerSize {
     .itemMetaContainerPadding {
+        position: relative;
+        bottom: .125rem;
         .itemMetaText {
             width: 185px;
             justify-content: space-between;
@@ -113,7 +117,6 @@
     a  {
         border-radius: 0 0 .75rem .75rem;
         overflow: hidden;
-        height: 100%;
         display: grid;
         gap: .25rem;
         img {
@@ -204,8 +207,9 @@
         .item {
             width: 100%;
             img {
-                width: 100% !important;
-                max-height: 215px;
+                position: absolute;
+                width: 99% !important;
+                height: 158px !important;
             }
         }
         .itemMetaContainer {
