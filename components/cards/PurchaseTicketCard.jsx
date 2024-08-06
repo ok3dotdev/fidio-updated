@@ -1,19 +1,30 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Ticket } from 'lucide-react';
 
-const Ticket = ({ ticket, cdn }) => {
+const TicketCard = ({ ticket, cdn }) => {
   return (
     <Link href={`/events/${ticket.id}`}>
-      {ticket.images[0] ? (
-        <img
-          src={`${cdn?.static}/${ticket.images[0]?.name}`}
-          className='aspect-square object-cover w-full rounded-[8px]'
-          alt={ticket.name}
-        />
-      ) : (
-        <img src='/img/internal/althero.png' className='rounded-[8px]' />
-      )}
+      <div className='relative'>
+        {ticket.images[0] ? (
+          <img
+            src={`${cdn?.static}/${ticket.images[0]?.name}`}
+            className='aspect-square object-cover w-full rounded-[8px]'
+            alt={ticket.name}
+          />
+        ) : (
+          <img src='/img/internal/althero.png' className='rounded-[8px]' />
+        )}
+        {ticket?.meta?.startTime && (
+          <div className='absolute top-2 right-2 bg-white text-black text-xs font-bold px-2 py-1 rounded'>
+            {ticket.meta.startTime}
+          </div>
+        )}
+        <div className='absolute top-2 left-2 bg-white text-black text-xs font-bold px-2 py-1 rounded'>
+          <Ticket size={14} />
+        </div>
+      </div>
       <div className='mt-2'>
         <p className='font-semibold'>{ticket.name}</p>
         <div className='flex w-full justify-between mt-4'>
@@ -34,4 +45,4 @@ const Ticket = ({ ticket, cdn }) => {
   );
 };
 
-export default Ticket;
+export default TicketCard;

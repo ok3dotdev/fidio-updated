@@ -174,7 +174,7 @@ export const Page = (props) => {
                     )}
                   </div>
                 </div>
-                <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0  md:w-[300px] h-full mt-8'>
+                <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0  md:w-[300px] mt-8 sticky h-[max-content] bottom-0 w-full left-0 bg-dashBg'>
                   <div className='flex justify-between items-center border-dashBorder'>
                     <p className='font-semibold'>Price</p>
                     <p className='font-bold text-xl'>
