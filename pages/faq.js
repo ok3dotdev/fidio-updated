@@ -6,13 +6,19 @@ import { getServerSidePropsFunc } from '/appServer/serverProps';
 import ResourceStaticLayout from '@/components/Layouts/ResourceStaticLayout';
 import Link from 'next/link';
 import {
-  ArrowRight,
-  ArrowRightAltOutlined,
-  ArrowRightAltSharp,
-  ArrowRightTwoTone,
-  ChevronRight,
-} from '@mui/icons-material';
-import { ArrowRightIcon, ArrowRightToLine } from 'lucide-react';
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+// import {
+//   ArrowRight,
+//   ArrowRightAltOutlined,
+//   ArrowRightAltSharp,
+//   ArrowRightTwoTone,
+//   ChevronRight,
+// } from '@mui/icons-material';
+// import { ArrowRightIcon, ArrowRightToLine } from 'lucide-react';
 
 const pageName = 'faq';
 
@@ -61,15 +67,26 @@ const faq = (children) => {
             <Link href='/resources' className='cursor-pointer '>
               Resources
             </Link>
-            <ChevronRight />
             <p>FAQs</p>
           </div>
           <h2 className='text-4xl font-bold text-left  pb-8'>FAQs</h2>
           {faqs.map((faq, idx) => (
+            <Accordion type="single" collapsible>
+            
+            <AccordionItem value="item-1">
+              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionContent>
+                {faq.ans}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+          ))}
+          {/* {faqs.map((faq, idx) => (
             <ul key={idx} className=' divide-y'>
               <li className='border-b border-b-[#404040]'>
                 <details class='group'>
                   <summary class='flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer'>
+                    <div className='w-5 h-5 text-gray-500 transition group-open:rotate-90'>ico</div>
                     <svg
                       className='w-5 h-5 text-gray-500 transition group-open:rotate-90'
                       xmlns='http://www.w3.org/2000/svg'
@@ -92,7 +109,9 @@ const faq = (children) => {
                 </details>
               </li>
             </ul>
-          ))}
+          ))} */}
+          
+          
         </div>
       </ResourceStaticLayout>
     </ResourceLayout>
