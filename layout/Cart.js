@@ -40,21 +40,37 @@ const Module = (props) => {
   // Attempt anonymous sign in with input info here. You can run manually or pass as f to PurchaseButton
   const doFunc = async () => {
     props.setPageError(null);
-    if (!intendsToSignInAsGuest && !props._loggedIn) {
-      // If we detect no input and user clicks purchase give next action
-      props.setPageError({
-        message: 'Add email to sign in Anonymously or use one-click sign in',
-        placement: 'purchase',
-      });
-      return false;
+    console.log('here', props, intendsToSignInAsGuest);
+    if (!props._loggedIn) {
+      if (!intendsToSignInAsGuest) {
+        // If we detect no input and user clicks purchase give next action
+        props.setPageError({
+          message: 'Add email to sign in Anonymously or use one-click sign in',
+          placement: 'purchase',
+        });
+        return false;
+      } else {
+        await apiReq('/onboarding/signinunregistered', {
+          // If no logged in user this will attempt anonymous sign on. Can run this even if signed in it will not fire
+          email: email?.current?.value,
+          props: props,
+          firstName: firstName?.current?.value, // Optional
+          lastName: lastName?.current?.value, // Optional
+        });
+      }
+    } else {
+      return true;
     }
-    await apiReq('/onboarding/signinunregistered', {
-      // If no logged in user this will attempt anonymous sign on. Can run this even if signed in it will not fire
-      email: email?.current?.value,
-      props: props,
-      firstName: firstName?.current?.value, // Optional
-      lastName: lastName?.current?.value, // Optional
-    });
+  };
+
+  const getCartDisplayTotal = () => {
+    if (props?.cart?.items?.length === 0) {
+      return 'block';
+    }
+    const t = props?.cart?.items?.reduce((accumulator, currentValue) => {
+      return accumulator + (currentValue?.price ?? 0);
+    }, 0);
+    return t > 0 ? 'block' : 'none';
   };
 
   // This ensures that we will attempt checkout after save credit card
@@ -127,6 +143,8 @@ const Module = (props) => {
                       placeholder='First Name'
                       className='w-full p-2 py-3 rounded-[6px] dark:border-neutral600 border-[1px] bg-dashSides'
                       ref={firstName}
+                      defaultValue={props?._loggedIn?.meta?.firstName}
+                      disabled={props?._loggedIn?.meta?.firstName}
                     />
                   </div>
                   <div className='mb-4 '>
@@ -136,6 +154,8 @@ const Module = (props) => {
                       placeholder='Last Name'
                       className='w-full p-2 py-3 rounded-[6px] dark:border-neutral600 border-[1px] bg-dashSides'
                       ref={lastName}
+                      defaultValue={props?._loggedIn?.meta?.lastName}
+                      disabled={props?._loggedIn?.meta?.lastName}
                     />
                   </div>
                   <div className='mb-4'>
@@ -145,6 +165,8 @@ const Module = (props) => {
                       placeholder='Email'
                       className='w-full p-2 py-3 rounded-[6px] dark:border-neutral600 border-[1px] bg-dashSides'
                       ref={email}
+                      defaultValue={props?._loggedIn?.email}
+                      disabled={props?._loggedIn?.email}
                     />
                   </div>
                   {!props?._loggedIn ? <SignIn {...props} /> : null}
@@ -167,11 +189,18 @@ const Module = (props) => {
                   className='Ecommerce_Layout_CreditCardContainer'
                   style={{ marginTop: '2rem' }}
                 >
-                  <p className='mb-8 font-semibold'>Pay With</p>
-                  <div>
+                  <p
+                    style={{ display: `${getCartDisplayTotal()}` }}
+                    className='mb-8 font-semibold'
+                  >
+                    Pay With
+                  </p>
+                  <div style={{ display: `${getCartDisplayTotal()}` }}>
                     <label className='mb-2'>Credit/Debit card</label>
                   </div>
-                  <CartCc {...props} expressCheckout={true} />
+                  <div style={{ display: `${getCartDisplayTotal()}` }}>
+                    <CartCc {...props} expressCheckout={true} />
+                  </div>
                   <PurchaseButton
                     {...props}
                     f={doFunc}

@@ -7,7 +7,7 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import { Menu } from '/modules/menu/';
 
-const pageName = 'ar';
+const pageName = 'a';
 
 export const page = (props) => {
   return (
