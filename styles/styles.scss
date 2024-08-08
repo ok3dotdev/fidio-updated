@@ -42,6 +42,7 @@
 .Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
   border-radius: 8px !important;
   max-width: 400px;
+  min-width: 400px;
   @media (max-width: 768px) {
     width: 100% !important;
   }

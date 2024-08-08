@@ -90,11 +90,11 @@ export const Page = (props) => {
                   </p>
                   <div className='mb-8'>
                     <p className='mb-2 font-semibold'> Date, time and venue</p>
-                    <div className='text-dashtext flex gap-4 text-sm'>
-                      <div className='flex items-center gap-1'>
+                    <div className='text-dashtext flex gap-4 text-sm flex-wrap max-w-[320px]'>
+                      <div className='flex items-center gap-2'>
                         <CalendarTodayOutlinedIcon
-                          className='w-3'
-                          style={{ width: '0.75rem' }}
+                          className='w-'
+                          style={{ width: '1rem' }}
                         />
                         <p className='font-medium'>
                           {ticket?.meta?.date
@@ -102,20 +102,20 @@ export const Page = (props) => {
                             : ticket?.created?.split(' ')[0]}
                         </p>
                       </div>
-                      <div className='flex items-center gap-1'>
+                      <div className='flex items-center gap-2'>
                         <AccessTimeOutlinedIcon
                           className='w-3'
-                          style={{ width: '0.75rem' }}
+                          style={{ width: '1rem' }}
                         />
                         <p className='font-medium'>
                           {ticket?.meta?.startTime || '00'} -{' '}
                           {ticket?.meta?.endTime || '00'}
                         </p>
                       </div>
-                      <div className='flex items-center gap-1'>
+                      <div className='flex items-center gap-2'>
                         <FmdGoodOutlinedIcon
-                          className='w-3'
-                          style={{ width: '0.75rem' }}
+                          className='w-4'
+                          style={{ width: '1.2rem' }}
                         />
                         <p className='font-medium'>{ticket?.meta?.venue}</p>
                       </div>
@@ -125,7 +125,7 @@ export const Page = (props) => {
                     <p className='mb-2 font-semibold'>Performers</p>
                     <p className='text-dashtext mb-4'>HEADLINER</p>
                     {ticket?.detailmeta?.lineup?.length && (
-                      <div className='flex gap-4 items-center  mb-4'>
+                      <div className='flex gap-4 items-center  mb-4 max-w-sm-[300px] flex-wrap'>
                         <img
                           alt='headliner'
                           src={`${props?.cdn?.static}/${ticket?.detailmeta?.lineup[0].image}`}
