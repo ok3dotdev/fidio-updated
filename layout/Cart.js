@@ -40,7 +40,7 @@ const Module = (props) => {
   // Attempt anonymous sign in with input info here. You can run manually or pass as f to PurchaseButton
   const doFunc = async () => {
     props.setPageError(null);
-    console.log('here', props, intendsToSignInAsGuest)
+    console.log('here', props, intendsToSignInAsGuest);
     if (!props._loggedIn) {
       if (!intendsToSignInAsGuest) {
         // If we detect no input and user clicks purchase give next action
@@ -56,22 +56,22 @@ const Module = (props) => {
           props: props,
           firstName: firstName?.current?.value, // Optional
           lastName: lastName?.current?.value, // Optional
-        })
+        });
       }
     } else {
-      return true
+      return true;
     }
   };
 
   const getCartDisplayTotal = () => {
     if (props?.cart?.items?.length === 0) {
-      return 'block'
+      return 'block';
     }
     const t = props?.cart?.items?.reduce((accumulator, currentValue) => {
-      return accumulator + (currentValue?.price ?? 0)
-    }, 0)
-    return t > 0 ? 'block' : 'none'
-  }
+      return accumulator + (currentValue?.price ?? 0);
+    }, 0);
+    return t > 0 ? 'block' : 'none';
+  };
 
   // This ensures that we will attempt checkout after save credit card
   // const saveBillingInfoFunction = React.useCallback((e) => {
@@ -189,13 +189,18 @@ const Module = (props) => {
                   className='Ecommerce_Layout_CreditCardContainer'
                   style={{ marginTop: '2rem' }}
                 >
-                  <p className='mb-8 font-semibold'>Pay With</p>
-                  <div>
+                  <p
+                    style={{ display: `${getCartDisplayTotal()}` }}
+                    className='mb-8 font-semibold'
+                  >
+                    Pay With
+                  </p>
+                  <div style={{ display: `${getCartDisplayTotal()}` }}>
                     <label className='mb-2'>Credit/Debit card</label>
                   </div>
-                    <div style={{ display: `${getCartDisplayTotal()}` }}>
-                      <CartCc {...props} expressCheckout={true} />
-                    </div>
+                  <div style={{ display: `${getCartDisplayTotal()}` }}>
+                    <CartCc {...props} expressCheckout={true} />
+                  </div>
                   <PurchaseButton
                     {...props}
                     f={doFunc}
