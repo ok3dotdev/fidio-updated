@@ -74,7 +74,7 @@ const faq = (children) => {
             <Accordion type="single" collapsible>
             
             <AccordionItem value="item-1">
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
               <AccordionContent>
                 {faq.ans}
               </AccordionContent>
