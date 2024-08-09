@@ -10,15 +10,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-// import {
-//   ArrowRight,
-//   ArrowRightAltOutlined,
-//   ArrowRightAltSharp,
-//   ArrowRightTwoTone,
-//   ChevronRight,
-// } from '@mui/icons-material';
-// import { ArrowRightIcon, ArrowRightToLine } from 'lucide-react';
+} from '@/components/ui/accordion';
 
 const pageName = 'faq';
 
@@ -71,47 +63,13 @@ const faq = (children) => {
           </div>
           <h2 className='text-4xl font-bold text-left  pb-8'>FAQs</h2>
           {faqs.map((faq, idx) => (
-            <Accordion type="single" collapsible>
-            
-            <AccordionItem value="item-1">
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>
-                {faq.ans}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+            <Accordion key={idx} type='single' collapsible>
+              <AccordionItem value='item-1'>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.ans}</AccordionContent>
+              </AccordionItem>
+            </Accordion>
           ))}
-          {/* {faqs.map((faq, idx) => (
-            <ul key={idx} className=' divide-y'>
-              <li className='border-b border-b-[#404040]'>
-                <details class='group'>
-                  <summary class='flex items-center justify-between flex-row-reverse gap-3  py-3 font-medium marker:content-none hover:cursor-pointer'>
-                    <div className='w-5 h-5 text-gray-500 transition group-open:rotate-90'>ico</div>
-                    <svg
-                      className='w-5 h-5 text-gray-500 transition group-open:rotate-90'
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='16'
-                      height='16'
-                      fill='currentColor'
-                      viewBox='0 0 16 16'
-                    >
-                      <path
-                        fill-rule='evenodd'
-                        d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'
-                      ></path>
-                    </svg>
-                    <span className='font-medium'>{faq.question}</span>
-                  </summary>
-
-                  <article className=' pb-4 text-[#A3A3A3] font-[16px]'>
-                    <p className=''>{faq.ans}</p>
-                  </article>
-                </details>
-              </li>
-            </ul>
-          ))} */}
-          
-          
         </div>
       </ResourceStaticLayout>
     </ResourceLayout>

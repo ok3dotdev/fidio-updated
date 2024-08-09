@@ -25,7 +25,7 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
     page.seo?.metaTitle || site.seo?.metaTitle,
     templateTags
   );
-  console.log('title', page.seo?.metaTitle, site.seo?.metaTitle);
+  // console.log('title', page.seo?.metaTitle, site.seo?.metaTitle);
   const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc;
 
   const shareTitle = replaceTemplateTags(

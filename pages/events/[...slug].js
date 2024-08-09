@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import Cart from '/modules/ecommerce/cart/CartInternal';
+import { getServerSidePropsFunc } from '/appServer/serverProps';
 
 import HomeLayout from '/customModules/features/HomeLayout';
 import EventPageHero from '../../components/common/EventPageHero';
@@ -19,6 +20,7 @@ import { fetchTickets } from '@/lib/utils';
 const pageName = 'events';
 
 export const Page = (props) => {
+  console.log('props q', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -55,9 +57,26 @@ export const Page = (props) => {
     console.log('tix', ticket);
   }
 
+  const seoData = {
+    title: ticket?.name,
+    seo: {
+      metaTitle: ticket?.name,
+      metaDesc: ticket?.detailmeta?.description?.split('.')[0],
+      shareTitle: ticket?.name,
+      shareDesc: ticket?.detailmeta?.description?.split('.')[0],
+      shareGraphic: {
+        asset: `${props?.cdn?.static}/${
+          ticket?.images && ticket?.images[0] && ticket?.images[0]?.name
+        }`,
+      },
+      shareCanonical: `https://www.fidio.ca/events/${ticket?.id}`,
+      shareUrl: `https://www.fidio.ca/events/${ticket?.id}`,
+    },
+  };
+
   return (
     <div className='relative'>
-      <HomeLayout pageName={pageName} pageData={''} props={props}>
+      <HomeLayout pageName={pageName} pageData={seoData} props={props}>
         {cartOpen && (
           <div
             style={{
@@ -204,7 +223,13 @@ export const Page = (props) => {
 };
 
 export const getServerSideProps = async (context) => {
-  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
+  let currentProps = await getServerSidePropsDefault(
+    context,
+    pageDefaults[pageName]
+  );
+  const data = await await getServerSidePropsFunc(currentProps, context);
+  console.log('current 1', data);
+  return data;
 };
 
 export default Page;
