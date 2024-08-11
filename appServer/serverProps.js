@@ -14,24 +14,25 @@ const getServerSidePropsFunc = async (data, context) => {
     ['profile', 'event', 'watch', 'product', 'shopProfile', 'article']
     // { u: 'username' }
   );
-  console.log('resolved page', data);
+  console.log('resolved page', data, variables);
 
   if (resolvedPage && resolvedPage.url.includes('slug')) {
     const match = resolvedPage.url.match(/\/events\/([^/]+)/);
     const id = match ? match[1] : null;
 
-    // const ticketData = await fetch(
-    //   apiReq('/m/getProducts', {
-    //     apiUrl: props?.apiUrl,
-    //     pagination: 0, // Paginate by page with 150 record limits
-    //     limit: 1, // Set custom limit, default 35, max 150
-    //     sortField: 'created', // Use field to sort by
-    //     extra: {
-    //       // Specify exact where matches on top level record fields (optional)
-    //       id,
-    //     },
-    //   })
-    // );
+    const ticketData = await fetch(
+      apiReq('/m/getProducts', {
+        apiUrl: JSON.stringify(variables?.apiUrl),
+        pagination: 0, // Paginate by page with 150 record limits
+        limit: 1, // Set custom limit, default 35, max 150
+        sortField: 'created', // Use field to sort by
+        extra: {
+          // Specify exact where matches on top level record fields (optional)
+          id,
+        },
+      })
+    );
+    console.log('ticketdata', ticketData);
 
     // const loadTickets = async () => {
     //   setLoading(true);

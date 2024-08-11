@@ -1,1 +1,1 @@
-import{sendSurveyEmail}from"./mail";export{sendSurveyEmail};
+import{handleEventMail,sendSurveyEmail}from"./mail";export{handleEventMail,sendSurveyEmail};

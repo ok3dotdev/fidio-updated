@@ -228,7 +228,7 @@ export const getServerSideProps = async (context) => {
     pageDefaults[pageName]
   );
   const data = await await getServerSidePropsFunc(currentProps, context);
-  console.log('current 1', data);
+  console.log('current 1', currentProps);
   return data;
 };
 
