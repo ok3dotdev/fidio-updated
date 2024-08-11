@@ -326,3 +326,30 @@ button:hover {
 #article-content h3 {
   font-size: 1.5rem;
 }
+
+.SignIn_ManualContainer_Label_Container{
+  display: flex;
+  flex-direction: column !important;
+  width: full;
+}
+
+// .undefined{
+//   width: 600px;
+// }
+
+.SignIn_ManualButton{
+  // background-color: accentY !important;
+  @apply dark:bg-accentY;
+}
+
+.SignIn_ContainerOn{
+  width: full;
+  // width: 200px;
+  align-items: center;
+}
+
+.SignIn_ManualContainer.null{
+  width: full !important;
+
+}
+
