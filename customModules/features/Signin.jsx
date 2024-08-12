@@ -19,7 +19,7 @@ const Signin = (props) => {
             confirm={"Continue"}
           />
 
-          {/* <p className="text-dashtext m-4">Or</p> */}
+          
 
           <SignIn redirectOnAuth={"/browse"} {...props} />
         </div>
