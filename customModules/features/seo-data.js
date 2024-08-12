@@ -36,6 +36,38 @@ const homePageData = {
     shareUrl: 'https://www.fidio.ca/',
   },
 };
+const browsePageData = {
+  title: 'Fidio - Browse Live African Concerts and Events',
+  seo: {
+    metaTitle: 'Fidio - Browse Live African Concerts and Events',
+    metaDesc: 'Browse Live African Concerts and Events',
+    shareTitle: 'Fidio - Browse Live African Concerts and Events',
+    shareDesc: 'Browse Live African Concerts and Events',
+    shareGraphic: {
+      asset: '/img/internal/group4.png', // Replace with the actual image URL
+    },
+    shareCanonical: 'https://www.fidio.ca/browse',
+    shareUrl: 'https://www.fidio.ca/browse',
+  },
+};
+const blogPageData = {
+  title: 'Fidio Blog - Insights and Stories on African Concerts and Events',
+  seo: {
+    metaTitle:
+      'Fidio Blog - Insights and Stories on African Concerts and Events',
+    metaDesc:
+      'Read insights and stories on African concerts, events, and the music scene on the Fidio Blog.',
+    shareTitle:
+      'Fidio Blog - Insights and Stories on African Concerts and Events',
+    shareDesc:
+      'Explore the latest insights, stories, and updates on African concerts and events at the Fidio Blog.',
+    shareGraphic: {
+      asset: '/img/internal/blog-share.png', // Replace with the actual image URL
+    },
+    shareCanonical: 'https://www.fidio.ca/blog',
+    shareUrl: 'https://www.fidio.ca/blog',
+  },
+};
 
 // Sample data for Privacy Policy page
 const privacyPolicyPageData = {
@@ -74,4 +106,6 @@ export {
   homePageData,
   privacyPolicyPageData,
   termsOfServicePageData,
+  browsePageData,
+  blogPageData,
 };

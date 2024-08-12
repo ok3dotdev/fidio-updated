@@ -32,7 +32,9 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
     page.seo?.shareTitle || site.seo?.shareTitle,
     templateTags
   );
+  const shareBot = page?.seo?.shareBot || site?.seo?.shareBot;
   const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc;
+  const shareType = page.seo?.shareType || site.seo?.shareType || 'website';
   const shareGraphic =
     page.seo?.shareGraphic?.asset || site.seo?.shareGraphic?.asset;
   const shareCanonical = page.seo?.shareCanonical || site.seo?.shareCanonical;
@@ -48,8 +50,15 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
       <link rel='icon' href={siteFaviconLegacy} sizes='any' />
       <link preload='true' rel='icon' type='image/svg+xml' href={siteFavicon} />
       <link preload='true' rel='mask-icon' href={siteFavicon} color='#000000' />
-      <link rel='canonical' href={shareCanonical} />
+      {shareCanonical && <link rel='canonical' href={shareCanonical} />}
       <meta property='og:url' content={shareUrl} />
+      {shareBot && (
+        <meta
+          name='googlebot'
+          content='noindex, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
+        />
+      )}
+
       {/* {siteTouchIcon && (
         <link
           rel='apple-touch-icon'
@@ -83,7 +92,7 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
         </>
       )}
 
-      <meta property='og:type' content='website' />
+      <meta property='og:type' content={shareType} />
       <meta name='twitter:card' content='summary_large_image' />
 
       {siteTitle && <meta property='og:site_name' content={siteTitle} />}

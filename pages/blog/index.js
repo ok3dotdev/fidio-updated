@@ -6,7 +6,7 @@ import { getServerSidePropsDefault } from '/modules/utility';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
 import HomeLayout from '/customModules/features/HomeLayout';
 import apiReq from '/modules/utility/api/apiReq';
-import { homePageData } from '/customModules/features/seo-data';
+import { blogPageData } from '/customModules/features/seo-data';
 import { Input } from '@/components/ui/input';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
@@ -121,7 +121,7 @@ const Page = (props) => {
   return (
     <HomeLayout
       pageName={pageName}
-      pageData={homePageData}
+      pageData={blogPageData}
       props={props}
       className='bg-dashBg'
     >

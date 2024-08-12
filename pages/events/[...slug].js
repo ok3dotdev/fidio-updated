@@ -20,7 +20,7 @@ import { fetchTickets } from '@/lib/utils';
 const pageName = 'events';
 
 export const Page = (props) => {
-  console.log('props q', props);
+  // console.log('props q', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -57,26 +57,9 @@ export const Page = (props) => {
     console.log('tix', ticket);
   }
 
-  const seoData = {
-    title: ticket?.name,
-    seo: {
-      metaTitle: ticket?.name,
-      metaDesc: ticket?.detailmeta?.description?.split('.')[0],
-      shareTitle: ticket?.name,
-      shareDesc: ticket?.detailmeta?.description?.split('.')[0],
-      shareGraphic: {
-        asset: `${props?.cdn?.static}/${
-          ticket?.images && ticket?.images[0] && ticket?.images[0]?.name
-        }`,
-      },
-      shareCanonical: `https://www.fidio.ca/events/${ticket?.id}`,
-      shareUrl: `https://www.fidio.ca/events/${ticket?.id}`,
-    },
-  };
-
   return (
     <div className='relative'>
-      <HomeLayout pageName={pageName} pageData={seoData} props={props}>
+      <HomeLayout pageName={pageName} pageData={props.seoData} props={props}>
         {cartOpen && (
           <div
             style={{
@@ -228,7 +211,7 @@ export const getServerSideProps = async (context) => {
     pageDefaults[pageName]
   );
   const data = await await getServerSidePropsFunc(currentProps, context);
-  console.log('current 1', currentProps);
+  // console.log('current 1', currentProps);
   return data;
 };
 

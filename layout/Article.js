@@ -7,7 +7,6 @@ import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
 const pageName = 'ar';
 
 const Module = (props) => {
-  console.log('prrrrr', props);
   function calculateReadingTime(articleContent) {
     const averageReadingSpeed = 200;
 
@@ -17,24 +16,10 @@ const Module = (props) => {
 
     return readingTimeMinutes;
   }
-  const seoData = {
-    title: props?.articleData?.title,
-    seo: {
-      metaTitle: props?.articleData?.title,
-      metaDesc: props?.articleData?.contents.split('.')[0].replace('<p>', ''),
-      shareTitle: props?.articleData?.title,
-      shareDesc: props?.articleData?.contents.split('.')[0].replace('<p>', ''),
-      shareGraphic: {
-        asset: props?.articleData?.meta?.featuredImg,
-      },
-      shareCanonical: `https://www.fidio.ca/ar?p=${props?.articleData?.id}`,
-      shareUrl: `https://www.fidio.ca/ar?p=${props?.articleData?.id}`,
-    },
-  };
   return (
     <HomeLayout
       pageName={pageName}
-      pageData={seoData}
+      pageData={props.seoData}
       props={props}
       className='bg-dashBg'
     >
