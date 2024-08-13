@@ -7,7 +7,10 @@ const Signin = (props) => {
     <div className="font-lexend bg-dashBg">
       <div className="w-full h-[100vh] fixed flex justify-center flex-col items-center bg-dashBg">
         <p className="text-lg mb-8 font-bold">Log In or Sign Up</p>
-        <div className="p-2 w-2/6 max-w-[400px] min-w-[250px] max-h-[508px] bg-dashSides border border-opacity-5 border-white rounded ">
+        <div
+          className="p-2 w-2/6 max-w-[400px] min-w-[250px] max-h-[508px] bg-dashSides  signin-form-container rounded"
+          style={{ border: '0.5px solid rgba(255, 255, 255, 0.2)' }}
+        >
           <p className="text-left p-2 ">
             Sign in to access your tickets, viewed events and much more
           </p>
@@ -18,8 +21,6 @@ const Signin = (props) => {
             prompt={"Username"}
             confirm={"Continue"}
           />
-
-          
 
           <SignIn redirectOnAuth={"/browse"} {...props} />
         </div>
