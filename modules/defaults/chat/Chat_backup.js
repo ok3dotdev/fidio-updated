@@ -11,7 +11,7 @@ const Module = props => {
 
     return (
         <div className={`${props?.className ?? ''} ${WatchPageStyles.chatContainer} ${props?.chatState ? `${WatchPageStyles.chatOpen}` : `${WatchPageStyles.chatClosed}`} ${!props?.chatState && props?._isMobile ? `${WatchPageStyles.chatClosedMobile}` : null} WatchPage_ChatContainer`}>
-            <div className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`} style={{ height: `${!props.chatState ? 0 : windowWidth === null || windowWidth > 700 ? `calc(100vh - ${props?.menuHeight})` : '50vh'}` }} onClick={handleRunTasks}>
+            <div className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`} style={{ height: `${!props.chatState ? 0 : windowWidth === null || windowWidth > 700 ? `100%` : '50vh'}` }} onClick={handleRunTasks}>
                 <ModChatTools { ...props } />
                 {renderDonations}
                 <ChatLog { ...props } />

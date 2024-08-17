@@ -5,6 +5,13 @@
     border-radius: .5rem;
 }
 
+.textCommentInput {
+    width: 100% !important;
+    min-height: 25px;
+    max-height: 125px;
+    border-radius: .5rem;
+}
+
 .highlightBorder {
     border: 1px solid grey;
     outline: 2px solid transparent;
@@ -16,6 +23,7 @@
 }
 
 .chatContainer {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -363,13 +371,14 @@
 .promptCheckoutContainer {
     position: absolute;
     padding: .5rem;
-    bottom: -100px;
+    bottom: -200px;
     z-index: 15;
     background: #161616;
     width: 100%;
     height: 0px;
     left: 0;
     transition: 200ms;
+    opacity: 0;
     .promptChatMessage {
         text-align: center;
     }
@@ -378,6 +387,7 @@
 .promptCheckoutContainerVisible {
     height: 200px;
     bottom: 0;
+    opacity: 1;
 }
 
 .Close {
@@ -390,4 +400,13 @@
 
 .reactionExternalContainer {
     position: relative;
+}
+
+.commentInputContainer {
+    padding-top: 0;
+    display: flex;
+    gap: 1rem;
+    .chatInputSendContainer {
+        flex-grow: 1;
+    }
 }

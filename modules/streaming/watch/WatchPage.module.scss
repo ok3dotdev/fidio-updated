@@ -5,8 +5,8 @@
         width: 100%;
         .videoPlayer {
             width: 100%;
-            min-height: 70vh;
-            max-height: 70vh;
+            min-height: 80vh;
+            max-height: 80vh;
         }
         @media (max-width: 700px) {
             .videoPlayer {
@@ -96,7 +96,7 @@
 }
 
 @media (max-width: 700px) {
-    .videoExternalContainer {
+    .videoExternalContainer, .videoChatContainer {
         flex-direction: column;
         height: auto;
     }
@@ -110,22 +110,9 @@
     }
 }
 
-
-@media (min-width: 700px) {
-    .commandPanelContainerOpen {
-        max-width: calc(100vw - 350px);
-    }
-}
-
 @media(max-width: 900px) {
     .chatOpen {
         min-width: 300px;
-    }
-}
-
-@media(min-width: 700px) and (max-width: 900px) {
-    .commandPanelContainerOpen {
-        max-width: calc(100vw - 300px);
     }
 }
 
@@ -208,8 +195,14 @@
     height: 35px;
 }
 
+.videoChatContainer {
+    display: flex;
+}
+
+
+
 .metaContainerInner {
-    margin-bottom: 1rem;
+
 }
 
 .metaContainerInner, .metaAuthorMetaContainer, .metaSimpleContainer {
@@ -218,4 +211,75 @@
 
 .username {
     margin: 0;
+}
+
+.commentExternalContainer {
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.readCommentsListContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.readCommentsListContainerOp > div:last-child {
+    margin-bottom: 2rem;
+}
+
+.PostMarkupContainer {
+    margin-top: .25rem;
+    font-size: .85rem;
+    overflow: hidden;
+}
+
+.PostReadMore, .PostShowLess, .SimpleButton {
+    margin-top: .5rem;
+    font-size: .8rem;
+    background: none;
+    color: white;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: grey;
+}
+
+.PostReadMore:not(:disabled):hover, .PostShowLess:not(:disabled):hover, .SimpleButton:not(:disabled):hover {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+}
+
+.ReplyButton {
+    font-weight: 400;
+}
+
+.commentActionPalleteContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.commentReplyExternalContainer {
+    margin-top: .5rem;
+}
+
+.commentSubReplies {
+    margin-top: 1rem;
+}
+
+.LoadReplies {
+    background: none;
+    color: #67cfff;
+    border-radius: 1rem;
+}
+
+.LoadReplies:not(:disabled):hover {
+    background: rgba(100, 167, 255, 0.25);
+    outline: none;
+    color: #67cfff;
+    box-shadow: none;
 }

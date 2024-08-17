@@ -9,6 +9,7 @@ const Module = props => {
     
     let useSymbol
     const { m, selectDate, creation, currency, card, cardBilling } = props
+    console.log(props)
     return (
         <div>
             <div className={`Ecommerce_SingleOrderContainer`}>
@@ -70,6 +71,22 @@ const Module = props => {
                                     : null
                             }
                         </div>
+                        {
+                            m?.totals?.totalNoTax
+                                ? <div className='flex Price_ItemsTotal' style={{ fontSize: '.85rem' }}>
+                                    <div className='Ecommerce_Price_Label'>Before Tax:&nbsp;</div>
+                                    <div className='Ecommerce_Price_Price'>{useSymbol ?? null}{resolveMoneyFormat(m.totals.totalNoTax)}</div>
+                                </div>
+                                : null
+                        }
+                        {
+                            m?.totals?.tax
+                                ? <div className='flex Price_Tax' style={{ fontSize: '.85rem' }}>
+                                    <div className='Ecommerce_Price_Label'>Tax:&nbsp;</div>
+                                    <div className='Ecommerce_Price_Price'>{useSymbol ?? null}{resolveMoneyFormat(m.totals.tax)}</div>
+                                </div>
+                                : null
+                        }
                         <div className='flex Ecommerce_Price' style={{ justifyContent: 'space-between' }}>
                             <div style={{ lineHeight: '1.4rem' }}>Total:&nbsp;</div>
                             <div style={{ fontSize: '1.25rem' }}>{useSymbol}{westernMoneyFormat.format(m?.totals?.total) ?? ''} {currency.toUpperCase()}</div>
