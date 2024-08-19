@@ -43,14 +43,14 @@ const Module = (props) => {
                 {hasDetails && (
                   <div className='bg-dashSides p-4 md:px-8 rounded-sm flex flex-col md:flex-row gap-8'>
                     <div className='md:min-w-[60%]'>
-                      <div className='flex text-sm gap-4 mb-4'>
+                      {/* <div className='flex text-sm gap-4 mb-4'>
                         <p>
                           <span>2.5k Viewers</span>
                         </p>
                         <p className='text-dashtext text-sm font-normal'>
                           Streaming live 46 mins ago
                         </p>
-                      </div>
+                      </div> */}
                       {description && <p className='mb-8'>{description}</p>}
                       {host?.title && (
                         <div>

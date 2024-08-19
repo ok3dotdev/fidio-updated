@@ -15,8 +15,6 @@
   }
 }
 
-
-
 .Ecommerce_Cart_Container {
   background: var(--Color-Neutral-900, rgba(23, 23, 23, 1)) !important;
   height: fit-content !important;
@@ -332,13 +330,13 @@ button:hover {
   font-size: 1.5rem;
 }
 
-.SignIn_ManualContainer_Label_Container{
+.SignIn_ManualContainer_Label_Container {
   display: flex;
   flex-direction: column !important;
   width: full;
 }
 
-.SignIn_ManualButton{
+.SignIn_ManualButton {
   @apply bg-accentY;
 }
 
@@ -346,25 +344,25 @@ button:hover {
   max-width: 100%;
 }
 
-.SignIn_ManualContainer_Label_Container input[type="text"] {
-  color: white
+.SignIn_ManualContainer_Label_Container input[type='text'] {
+  color: white;
 }
 
-.SignIn_ManualContainer_Label_Container input[type="text"] {
+.SignIn_ManualContainer_Label_Container input[type='text'] {
   width: 100%;
-  padding: 12px 16px; 
+  padding: 12px 16px;
   margin-top: 8px;
   margin-bottom: 8px;
-  border: 0.3px solid white; 
+  border: 0.3px solid white;
   opacity: 0.3;
   border-color: black;
-  border-radius: 4px; 
+  border-radius: 4px;
   outline: none;
-  color: white !important; 
-  font-size: 16px; 
+  color: white !important;
+  font-size: 16px;
 }
 
-.signin-form-container{
+.signin-form-container {
   border: white;
 }
 
@@ -374,5 +372,21 @@ button:hover {
   margin-bottom: 16px;
 }
 
+.Chat_chatActionBar__E5cq7 {
+  background-color: rgba(38, 38, 38, 1) !important;
+  border: 1px solid rgba(82, 82, 82, 1) !important;
+}
 
+.Chat_chatContainer__MeuU_ {
+  align-items: center;
+}
 
+// .Chat_ChatInputInternalContainer {
+//   border: 1px solid rgba(82, 82, 82, 1) !important;
+//   border-bottom-right-radius: 20px;
+//   border-bottom-left-radius: 20px;
+// }
+
+.Chat_ReactionNodesContainer > div {
+  color: red !important;
+}

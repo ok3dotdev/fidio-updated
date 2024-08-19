@@ -19,15 +19,10 @@ const HomeLayout = ({
   const showMainMenu = ['Index', 'Privacy', 'Faq', 'Terms', 'Blog'].includes(
     pageName
   );
-  const showMainFooter = ['Index'].includes(pageName);
-  const showFooter = [
-    'Index',
-    'Privacy',
-    'Faq',
-    'Terms',
-    'blog',
-    'ar',
-  ].includes(pageName);
+  const showMainFooter = ['Index', 'blog'].includes(pageName);
+  const showFooter = ['Index', 'Privacy', 'Faq', 'Terms', 'ar'].includes(
+    pageName
+  );
   return (
     <div className={cn('relative h-full', className)}>
       <HeadSEO site={siteData} page={pageData} />

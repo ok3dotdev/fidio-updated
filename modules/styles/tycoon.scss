@@ -123,6 +123,30 @@ button {
     border: 1px solid transparent;
 }
 
+button.simpleButton {
+    margin-top: .5rem;
+    font-size: .8rem;
+    background: none;
+    color: white;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: grey;
+}
+
+button.simpleButtonBright {
+    color: #e3e3e3;
+}
+
+button.simpleButton:not(:disabled):hover {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    background: none;
+}
+
 textarea, button, input {
     color: black;
 }
@@ -170,6 +194,17 @@ button:not(:disabled):active {
 
 .error:hover {
     background: #ff5d5d;
+}
+
+.success {
+    cursor: pointer;
+    background: #62945b;
+    padding: 0 .125rem;
+    border: 2px solid #1cffbf;
+    border-radius: .5rem;
+    font-size: .85em;
+    font-weight: 600;
+    text-align: center;
 }
 
 .ButtonGlowing {
@@ -497,6 +532,7 @@ button:not(:disabled):active {
     height: 0%;
     transition: 200ms;
     display: none;
+    opacity: 0;
 }
 
 .fetchBusy {
@@ -506,7 +542,7 @@ button:not(:disabled):active {
     background: grey;
     width: -webkit-fill-available;
     position: fixed;
-    opacity: .5;
+    opacity: 0.25;
     top: 0;
 }
 
@@ -1367,4 +1403,15 @@ section.range-slider input::-moz-range-thumb {
 
 input.squeezedInputWider {
     width: 65px;
+}
+
+.Post_PostMarkupContainerInternalShowLess {
+    max-height: 50px;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }

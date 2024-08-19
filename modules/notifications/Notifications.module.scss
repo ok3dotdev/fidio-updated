@@ -16,7 +16,7 @@
 }
 
 .notifContainer {
-    padding-bottom: .075rem;
+    padding: .275rem;
     border-radius: .5rem;
 }
 
@@ -47,17 +47,28 @@
     border-radius: 1rem;
     padding: .5rem;
     margin: .5rem;
+    position: relative;
 }
 
 .notifImageContainer {
-    background-size: contain;
+    background-size: cover;
     width: 75px;
     height: 60px;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: .5rem;
 }
 
-.productName {
+.notifTimeAgo {
+    font-weight: 400;
+    font-size: .85rem;
+    margin: 0;
+    margin-left: 1rem;
+    margin-top: .25rem;
+    color: #e3e3e3;
+}
+
+.productName, .simpleClip {
     white-space: break-spaces;
     overflow: hidden;
     text-overflow: ellipsis;

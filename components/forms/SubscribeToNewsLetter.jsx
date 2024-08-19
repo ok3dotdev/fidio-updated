@@ -59,7 +59,7 @@ const SubscribeForm = () => {
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8'>
         <h3 className='font-bold text-3xl flex flex-col text-left'>
           <span>Subscribe to</span>
-          <span>Fidio’s newsletter</span>
+          <span>Fidio’s Newsletter</span>
         </h3>
         <div className='relative block mt-4 max-w-[400px]'>
           <form
