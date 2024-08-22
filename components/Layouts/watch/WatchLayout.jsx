@@ -1,10 +1,10 @@
 import WatchHeader from './WatchHeader';
 
-const WatchLayout = ({ id, children }) => {
+const WatchLayout = (props) => {
   return (
     <div id='watchPage' className='bg-dashBg font-lexend relative'>
-      <WatchHeader />
-      <div className='md:px-4 min-h-screen pb-12'>{children}</div>
+      <WatchHeader {...props} />
+      <div className='md:px-4 min-h-screen pb-12'>{props.children}</div>
     </div>
   );
 };

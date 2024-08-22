@@ -39,19 +39,43 @@
   gap: 3rem !important;
 }
 
+.Ecommerce_Item_InternalContainer {
+  justify-content: space-between;
+}
+
+.Ecommerce_Layout_Data_Container div {
+  width: auto !important;
+}
+
 .Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
   border-radius: 8px !important;
   max-width: 400px;
   min-width: 400px;
   @media (max-width: 768px) {
     width: 100% !important;
+    min-width: unset;
   }
 }
 
-// .Ecommerce_Cart_Container button {
-//   @apple
-// }
+.Chat_ChatLogMain {
+  align-items: flex-start !important;
+}
+.Chat_chatInputContainer__D3Ued {
+  width: 100%;
+}
+.Chat_chatMessageAvatarContainer___pZsU {
+  height: 24px !important;
+  min-width: 24px !important;
+  font-weight: 500 !important;
 
+  img {
+    height: 24px !important;
+    font-weight: 500 !important;
+  }
+}
+.Chat_userContentContainerFlex__GShml {
+  display: block !important;
+}
 input[type='text'],
 .InputElement,
 .Ecommerce_CreditCard_FullNameInput_Default {
@@ -300,7 +324,6 @@ textarea {
 
 .Chat_chatMessageAvatarContainer___pZsU img {
   border-radius: 50% !important;
-  margin-right: 0.5rem;
 }
 
 .dialog-btn {
@@ -402,10 +425,18 @@ button:hover {
   width: 100%;
 }
 .Chat_chatLogItemContainer___0vkZ {
-  padding: 0;
+  padding: 0 !important;
 }
 .Chat_donationsLedgerContainer {
   width: 100%;
+}
+
+.Chat_chatLogMain__jRBp6 {
+  gap: 1rem !important;
+}
+.Chat_username__AAf2j,
+.Chat_Content {
+  font-size: 14px !important;
 }
 
 .Chat_chatLogItemContainerDonation__7S2l5 {

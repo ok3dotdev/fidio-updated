@@ -448,7 +448,7 @@ const EventView = (props) => {
                                 <CardTitle className='text-center text-dashtext'>
                                   <div className='flex justify-center gap-x-2 items-center'>
                                     LIVE
-                                    <div className='w-2 h-2 bg-[#12CB12] rounded'></div>
+                                    <div className='w-2 h-2 bg-[#12CB12] rounded animate-pulse'></div>
                                   </div>
                                 </CardTitle>
                               </CardHeader>

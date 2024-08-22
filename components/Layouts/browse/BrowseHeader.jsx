@@ -18,7 +18,7 @@ const BrowseHeader = (props) => {
           className='lg:w-[120px] w-[90px] h-auto'
         />
       </Link>
-      <div className='flex items-center space-x-4'>
+      <div className='flex items-center space-x-4 '>
         {props._loggedIn ? (
           <div className='flex items-center space-x-4'>
             <UserAvatar {...props} />

@@ -50,11 +50,11 @@ const Module = (props) => {
                   replyusername={m.replyUsername}
                 >
                   <div
-                    className={`${ChatStyles.chatLogMain} ${
+                    className={` ${ChatStyles.chatLogMain} ${
                       highlightedChat === m.id
                         ? `${ChatStyles.highlightedChat}`
                         : ''
-                    } Chat_ChatLogMain`}
+                    } Chat_ChatLogMain flex-start`}
                   >
                     {m?.avatar ? (
                       <div
@@ -71,7 +71,7 @@ const Module = (props) => {
                       }`}
                     >
                       <div
-                        className={`${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername`}
+                        className={`${ChatStyles.username} ${ChatStyles.usernameChat} Chat_ChatUsername inline`}
                         username={m.username}
                         author={m.author}
                         onClick={handleSetUserDisplay}
@@ -96,7 +96,7 @@ const Module = (props) => {
                           )}
                         </React.Fragment>
                       )}
-                      <div className={`Chat_Content`}>{m.content}</div>
+                      <div className={`Chat_Content inline`}>{m.content}</div>
                     </div>
                     {/* Supports reply to functionality  */}
                     {replyOff ? null : (

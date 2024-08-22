@@ -54,7 +54,7 @@ const Module = (props) => {
         }}
         onClick={handleRunTasks}
       >
-        <div className='flex border-b-[1px] border-dashtext justify-between px-4 py-2 border-solid overflow-hidden w-full'>
+        <div className='flex border-b-[0.5px] border-dashBorder justify-between px-4 py-2 border-solid overflow-hidden w-full'>
           <div className='flex gap-2 items-center'>
             <div className='w-2 h-2 bg-[#12CB12] rounded'></div>
             <h2 className='font-bold text-lg'>Live chat</h2>

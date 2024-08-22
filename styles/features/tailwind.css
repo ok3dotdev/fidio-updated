@@ -49,13 +49,13 @@ input {
   font-family: Archivo Black;
 }
 .Chat_Content {
-  @apply font-sans text-[16px] font-semibold !important;
+  @apply font-sans text-[14px] font-semibold !important;
 }
 /* .Chat_ChatUsername::after {
   content: ':' !important;
 } */
 .Chat_ChatUsername {
-  @apply text-[16px] font-semibold text-dashtext mr-2 h-[fit-content] !important;
+  @apply text-[14px] font-semibold text-dashtext mr-2 h-[fit-content] !important;
 }
 .Chat_Content {
   color: white;
@@ -67,7 +67,7 @@ Chat_ChatLogItemInternalContainer {
   padding: 10px 0;
 }
 .Chat_ChatLogMain {
-  @apply py-1 items-center !important;
+  @apply py-1 items-start !important;
 }
 .Chat_send__9agSq {
   @apply bg-[#FDB000] !important;
