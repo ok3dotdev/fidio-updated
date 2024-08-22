@@ -333,7 +333,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/comment/Comment.js', useFile)
+    fs.copyFileSync('modules/defaults/comment/Comment_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
