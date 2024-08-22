@@ -201,11 +201,15 @@
         display: none;
         position: absolute;
         right: .5rem;
-        top: -.45rem;
+        top: 0;
         padding: 0 .125rem;
         background: grey;
         border-radius: .25rem;
         cursor: pointer;
+        svg {
+            height: 18.5px;
+            width: 18.5px;
+        }
     }
     .viewReplyTo {
         right: 2.25rem;
@@ -229,10 +233,6 @@
     background-color: #121212;
     .replyTo, .viewReplyTo {
         display: block;
-        svg {
-            height: 18.5px;
-            width: 18.5px;
-        }
     }
     .replyMeta {
         display: block;

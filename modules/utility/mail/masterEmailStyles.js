@@ -45,4 +45,27 @@ export default`<style>
     .Ecommerce_Cart_Side_Meta_Container_Subtotal {
         font-size: .7rem;
     }
+    .divider {
+        background-color: #fff;
+        height: 1px;
+        margin-top: 20px;
+    }
+    .social-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .social-links a {
+        margin: 0 10px 40px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+    }
+    .logo {
+        max-width: 100px;
+        margin: 0 auto;
+    }
+    .event-info {
+        text-align: center;
+        margin-top: 20px;
+    }
 </style>`;
