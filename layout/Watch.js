@@ -1,7 +1,8 @@
 import React from 'react';
 import { Player, Prompt } from '/modules/streaming/watch';
 import { Chat } from '/modules/streaming/chat';
-import DonateButton from '/modules/ecommerce/donate/DonateButton';
+import { CommentInternal } from '/modules/comment';
+import { LoadComments } from '/modules/comment/parts';
 
 const Module = (props) => {
   const { WatchPageStyles = {}, watchMeta = {} } = props;
@@ -110,6 +111,29 @@ const Module = (props) => {
               </div>
             </div>
           </div>
+          {hasDetails && (
+            <div className='mt-8'>
+              {props?.watchData?.id ? (
+                <div
+                  className={`${props?.WatchPageStyles?.commentExternalContainer}`}
+                >
+                  <CommentInternal
+                    {...props}
+                    addComment={true}
+                    commentUseParent={props.watchData.id}
+                    commentUseParentType={props?.watchData?.__typename}
+                    pipe={'watch_comment'}
+                  />
+                  <LoadComments
+                    {...props}
+                    pipe={'watch_comment'}
+                    commentUseParent={props.watchData.id}
+                    commentUseParentType={props?.watchData?.__typename}
+                  />
+                </div>
+              ) : null}
+            </div>
+          )}
         </div>
         <div className='px-4 md:px-0'>
           <Chat {...props} />

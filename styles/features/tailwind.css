@@ -60,14 +60,15 @@ input {
 .Chat_Content {
   color: white;
 }
+
 .Chat_chatLogExternalContainer__lxHAd {
-  @apply border p-4 pt-6 rounded-[20px]  mb-4 !important;
+  @apply border py-4 pt-6 rounded-[20px]  mb-4 !important;
 }
 Chat_ChatLogItemInternalContainer {
   padding: 10px 0;
 }
 .Chat_ChatLogMain {
-  @apply py-1 items-start !important;
+  @apply p-2 px-4 items-start !important;
 }
 .Chat_send__9agSq {
   @apply bg-[#FDB000] !important;

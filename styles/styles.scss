@@ -142,6 +142,12 @@ button {
   // border-radius: 20px;
 }
 
+@media (max-width: 700px) {
+  .WatchPage_videoPlayer__53LUC {
+    max-height: unset !important;
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   -webkit-scrollbar: hidden;
 }

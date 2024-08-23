@@ -42,7 +42,7 @@ const Module = (props) => {
       } WatchPage_ChatContainer`}
     >
       <div
-        className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer`}
+        className={`${props.className} ${ChatStyles.chatContainer} Chat_ChatContainer `}
         style={{
           height: `${
             !props.chatState
@@ -51,6 +51,7 @@ const Module = (props) => {
               ? `calc(100vh - ${props?.menuHeight})`
               : '50vh'
           }`,
+          maxHeight: '80vh',
         }}
         onClick={handleRunTasks}
       >

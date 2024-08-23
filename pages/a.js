@@ -12,8 +12,8 @@ const pageName = 'a';
 
 export const page = (props) => {
   // console.log('prrrrr', props);
-  const createdDate = new Date(props.articleData.created);
-  const publishDate = new Date(props.articleData.publish);
+  const createdDate = new Date(props?.articleData?.created);
+  const publishDate = new Date(props?.articleData?.publish);
 
   return (
     <React.Fragment>
