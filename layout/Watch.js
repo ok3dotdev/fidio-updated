@@ -32,7 +32,7 @@ const Module = (props) => {
       <Prompt {...props} />
       <div className={`${videoExternalContainer}`}>
         <div className={`${videoInternalContainer} `}>
-          <div className='md:pl-4'>
+          <div className=''>
             <Player {...props} />
           </div>
           <div className='pl-4'>

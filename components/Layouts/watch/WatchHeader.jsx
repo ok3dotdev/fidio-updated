@@ -9,7 +9,7 @@ const WatchHeader = (props) => {
     initializeWithValue: false,
   });
   return (
-    <div className='w-full flex justify-between p-4 py-2 max-w-screen-7xl mx-auto z-30 top-0 left-0 right-0 md:px-8 items-center'>
+    <div className='w-full flex justify-between p-4 py-2 max-w-screen-7xl mx-auto z-30 top-0 left-0 right-0 md:px-8 items-center sticky bg-dashBg'>
       <Link href='/'>
         <img
           src='/img/internal/frame2.png'

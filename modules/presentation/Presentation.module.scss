@@ -249,7 +249,7 @@
                 }
             }
         }
-        .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+        .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
             height: calc(11.25vw + 70px);
             min-height: 295px;
             max-height: 395px;
@@ -262,13 +262,20 @@
         .IndexItemsUpperContainerTall {
             max-height: 675px;
         }
+        .IndexItemsUpperContainerTight {
+            min-height: 215px;
+            max-height: 275px;
+        }
+        .BgContainerTight {
+            height: 125px;
+        }
         @media (max-height: 695px) {
             .IndexItemsUpperContainerTall {
                 max-height: 90vh;
             }
         }
         @media (max-width: 1920px) {
-            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
                 height: calc(12vw + 70px);
                 min-height: 295px;
                 .BgContainer {
@@ -278,7 +285,7 @@
             }
         }
         @media (max-width: 1680px) {
-            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
                 height: calc(13vw + 70px);
                 min-height: 275px;
                 .BgContainer {
@@ -288,7 +295,7 @@
             }
         }
         @media (max-width: 1280px) {
-            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
                 height: calc(23vw + 70px);
                 min-height: 295px;
                 max-height: 315px;
@@ -296,10 +303,14 @@
                     height: calc(18vw);
                     min-height: 205px;
                 }
+                .BgContainerTight {
+                    height: calc(14vw);
+                    min-height: 125px;
+                }
             }
         }
         @media (max-width: 900px) {
-            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
                 height: calc(30vw + 70px);
                 min-height: 295px;
                 .BgContainer {
@@ -308,13 +319,21 @@
                     max-height: 225px;
                 }
             }
+            .bgContainerTight {
+                height: calc(14vw);
+                min-height: 125px;
+            }
         }
         @media (max-width: 570px) {
-            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall) {
+            .IndexItemUpperContainer:not(.IndexItemsUpperContainerTall):not(.IndexItemsUpperContainerTight) {
                 min-height: 335px;
                 .BgContainer {
                     min-height: 245px;
                 }
+            }
+            .bgContainerTight {
+                height: calc(14vw);
+                min-height: 125px;
             }
         }
         .IndexItemUpperContainer:first-child {
@@ -470,7 +489,6 @@
 .BgContainer {
     background-position: center;
     background-size: cover;
-    
 }
 
 .BgUpperContainer {

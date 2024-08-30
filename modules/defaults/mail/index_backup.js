@@ -1,5 +1,5 @@
 import newUser from './newUser'
 
-export {
+export default {
     newUser
 }

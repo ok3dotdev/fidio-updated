@@ -425,7 +425,9 @@ button:hover {
 }
 
 .WatchPage_VideoPlayer {
-  border-radius: 20px !important;
+  @media (min-width: 700px) {
+    border-radius: 20px !important;
+  }
 }
 .Chat_chatLogExternalContainer__lxHAd {
   width: 100%;
@@ -465,4 +467,11 @@ button:hover {
   color: white !important;
   opacity: 1 !important;
   border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.WatchPage_Container {
+  @media (min-width: 700px) {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
 }
