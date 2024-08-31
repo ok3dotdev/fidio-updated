@@ -319,6 +319,15 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/mail/reset_password.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/mail/reset_password_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 useFile = 'layout/comment'
 if (fs.existsSync(useFile)) {
     // Add your commands here
@@ -334,6 +343,42 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File exists on', process.platform)
 } else {
     fs.copyFileSync('modules/defaults/comment/Comment_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/onboarding'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/onboarding/index.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/onboarding/index_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/onboarding/SignInOnboard.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/onboarding/SignInOnboard_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/onboarding/RegisterOnboard.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/onboarding/RegisterOnboard_backup.js', useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 

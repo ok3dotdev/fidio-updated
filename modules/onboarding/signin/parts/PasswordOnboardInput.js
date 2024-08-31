@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{passwordRef:e,placeholder:t}=e;return React.createElement(React.Fragment,null,React.createElement("input",{type:"password",ref:e,placeholder:t??"Password"}))};export default Module;

@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{handleSignInManual:e,label:t}=e;return React.createElement(React.Fragment,null,React.createElement("button",{className:"SignIn_ManualButton",onClick:e},t??"Sign In"))};export default Module;
