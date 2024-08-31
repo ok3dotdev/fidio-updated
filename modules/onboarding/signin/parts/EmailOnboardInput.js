@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{emailRef:e,placeholder:t}=e;return React.createElement(React.Fragment,null,React.createElement("input",{type:"text",ref:e,placeholder:t??"Email"}))};export default Module;

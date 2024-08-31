@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{usernameRef:e,placeholder:t,handleLookupUsername:a}=e;return React.createElement(React.Fragment,null,React.createElement("div",null,React.createElement("input",{type:"text",ref:e,placeholder:t??"Username",onChange:a})))};export default Module;

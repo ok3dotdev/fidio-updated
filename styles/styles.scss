@@ -43,10 +43,6 @@
   justify-content: space-between;
 }
 
-.Ecommerce_Layout_Data_Container div {
-  width: auto !important;
-}
-
 .Ecommerce_Layout_Data_Container .Ecommerce_Layout_OrderSummary {
   border-radius: 8px !important;
   max-width: 400px;
@@ -308,9 +304,9 @@ textarea {
 }
 
 .Ecommerce_Item_Image_Container {
-  max-height: 40px !important;
+  // max-height: 40px !important;
   background-position: center !important;
-  width: fit-content !important;
+  width: 120px !important;
 }
 .list-view {
   @apply space-y-4;

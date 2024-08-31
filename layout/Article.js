@@ -28,10 +28,8 @@ const Module = (props) => {
           <div className='w-full max-h-[500px]  relative pb-[40%]'>
             <img
               className='absolute inset-0 w-full h-full object-cover'
-              // src={`${props?.articleData?.meta?.featuredImg}`}
-              width={1700}
-              height={700}
-              src='https://d2ib7gxb0luc1i.cloudfront.net/img/1700by700.jpg'
+              src={`${props?.articleData?.meta?.featuredImg}`}
+              // src='https://d2ib7gxb0luc1i.cloudfront.net/img/1700by700.jpg'
               alt=''
             />
           </div>

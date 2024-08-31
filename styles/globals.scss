@@ -91,13 +91,5 @@ button {
   padding: 0.5rem 0.5rem !important;
 }
 
-.Ecommerce_Layout_Data_Container {
-  @media (max-width: 768px) {
-    flex-direction: column-reverse !important;
-    div {
-      width: 100%;
-    }
-  }
-}
 @import '/modules/styles/tycoon.scss';
 @import 'styles.scss'; // Customers customer stylesheet. Not included in repo.

@@ -1,0 +1,1 @@
+import React from"react";const Module=e=>{var{handleRegisterManual:e,label:t}=e;return React.createElement(React.Fragment,null,React.createElement("button",{className:"Register_ManualButton",onClick:e},t??"Register"))};export default Module;

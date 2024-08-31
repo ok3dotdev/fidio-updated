@@ -1,0 +1,1 @@
+import apiReq from"/modules/utility/api/apiReq";const handleLookupUsernameRequest=async e=>{if(0<e?.length)return apiReq("/p/checkvalidusername",{proposed:e})};export{handleLookupUsernameRequest};

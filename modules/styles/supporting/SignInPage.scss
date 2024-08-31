@@ -68,13 +68,15 @@
         display: flex;
         gap: .5rem;
         margin-bottom: .5rem;
+        align-items: center;
         input {
             width: 100%;
             border-radius: .25rem;
             border-width: 0;
+            padding: .35rem;
         }
     }
-    .SignIn_ManualButton {
+    .SignIn_ManualButton, .Register_ManualButton {
         width: 100%;
     }
 }

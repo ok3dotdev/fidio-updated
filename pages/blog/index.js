@@ -170,7 +170,7 @@ const Page = (props) => {
                       key={index}
                       className='p-4 bg-dashSides rounded-[8px] max-h-[398px] min-h-[398px]'
                     >
-                      <div className='w-full h-[250px] rounded-[8px]'>
+                      <div className='w-full aspect-[12/9] rounded-[8px]'>
                         <img
                           className='object-cover w-full rounded-[8px] h-full'
                           src={articleReq.meta.featuredImg}

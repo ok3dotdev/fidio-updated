@@ -6,7 +6,8 @@
     "dev": "next dev -p 3020",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -25,6 +26,8 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toast": "^1.1.5",
+    "@react-email/components": "^0.0.24",
+    "@react-email/render": "^1.0.1",
     "@sendgrid/mail": "^7.7.0",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.53.0",
@@ -54,6 +57,7 @@
     "react-day-picker": "^8.10.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-email": "^3.0.1",
     "react-fast-marquee": "^1.6.2",
     "react-hook-form": "^7.52.2",
     "react-icons": "^5.2.1",
