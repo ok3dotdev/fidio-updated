@@ -382,7 +382,7 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
-const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a' ] // Default pages
+const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset' ] // Default pages
 
 for (let i = 0; i < pages.length; i++) {
     useFile = `pages/${pages[i]}.js`
