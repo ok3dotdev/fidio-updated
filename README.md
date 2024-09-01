@@ -2,7 +2,7 @@
 npm init @tycoonsystems/tycoon-video
 
 # Documentation
-www.tv.tycoon.systems/documentation
+www.tycoon.systems/documentation
 
 # Notes
 Use Bash terminal
@@ -53,7 +53,7 @@ node init_app.js
 # Install npm packages
 npm install
 
-# For more information go to https://tv.tycoon.systems/documentation?q=initialize%20application
+# For more information go to https://tycoon.systems/documentation?q=initialize%20application
 
 ## Start developing
 

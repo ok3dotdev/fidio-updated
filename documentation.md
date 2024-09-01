@@ -256,7 +256,7 @@ useAppConfigLayout: false
 ## Handling Production Builds
 
 # Before you make a build you must update the next.config.js file. Ensure your Businesses website is under assetPrefix. Like so:
-const website = 'https://www.tv.tycoon.systems' // You must set this line to your own website
+const website = 'https://www.tycoon.systems' // You must set this line to your own website
 
 ## Article
 
