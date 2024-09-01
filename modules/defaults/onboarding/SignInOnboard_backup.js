@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { EmailOnboardInput, GoogleSignIn, SignInButton, PasswordOnboardInput } from '/modules/onboarding/signin/parts'
 
 const Module = props => {

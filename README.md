@@ -2,7 +2,7 @@
 npm init @tycoonsystems/tycoon-video
 
 # Documentation
-www.tv.tycoon.systems/documentation
+www.tycoon.systems/documentation
 
 # Notes
 Use Bash terminal
@@ -15,18 +15,18 @@ If you see a bunch of errors in VS Code while developing try:
 # video-streaming-client
 Video Streaming Client leveraged for Official Tycoon Network and B2B Customers
 
-# Start in order of command below
+# Start in order of command below. Must use Bash for following commands
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Use Node.js 16 
+# Use Node.js 16
 nvm use 16
 
 # Check node versions
 nvm ls
 
--------------
+------------
 ## Git Operations
 # You must fork this and create your own repo
 Go to https://github.com/Tycoon-Systems-Corp/video-streaming-client and click Fork
@@ -53,29 +53,19 @@ node init_app.js
 # Install npm packages
 npm install
 
-# For more information go to https://tv.tycoon.systems/documentation?q=initialize%20application
+# For more information go to https://tycoon.systems/documentation?q=initialize%20application
 
-## Start Developing
+## Start developing
 
-Run the development server:
+First, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-# To Analyze Dependency Sizes use the following
-
-ANALYZE=true npm run build
-
-# Open [http://localhost:3020](http://localhost:3020) with your browser to see the result.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-# Errors
+Open [http://localhost:3020](http://localhost:3020) with your browser to see the result.
 
 ## Packages
 
@@ -83,6 +73,18 @@ If you are missing dependencies check /modules/dependencies.txt
 Ensure all of these exist atleast once in package.json file
 
 You can make sure all required packages are installed on DEV or PROD by navigating to /admin in app and then going to build. Then you will want to click "Build" tab and upload a package.json. Then click "run npm install"
+
+# To Analyze Dependency Sizes use the following
+
+ANALYZE=true npm run build
+
+## How to Develop
+See the documentation.md folder for application tooling and functions
+See api.md for routes to public Platform API
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 
@@ -93,6 +95,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## How to Develop
-See the documentation.md folder for application tooling and functions
-See api.md for routes to public Platform API
