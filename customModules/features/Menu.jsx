@@ -96,7 +96,7 @@ const Menu = (props) => {
             </Link>
             <Link
               className=' bg-white text-black px-6 py-2 rounded-md flex justify-center items-center'
-              href='/signin'
+              href='/signup'
             >
               Sign Up
             </Link>

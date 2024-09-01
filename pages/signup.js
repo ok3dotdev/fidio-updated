@@ -7,10 +7,9 @@ import { getServerSidePropsDefault } from '/modules/utility.js';
 import { SignIn, Username } from '/modules/onboarding/signin';
 import Link from 'next/link';
 
-const pageName = 'Signin';
+const pageName = 'Signup';
 
 export const Page = (props) => {
-  console.log('props', props);
   return (
     <>
       {props._loggedIn ? ( // Check if user is logged in
@@ -31,12 +30,12 @@ export const Page = (props) => {
                   <img
                     src='/img/internal/frame2.png'
                     alt='Logo'
-                    className='lg:w-[70px] w-[80px] h-auto'
+                    className='lg:w-[70px] w-[90px] h-auto'
                   />
                 </Link>
               </div>
               <p className='text-xl mb-2 font-bold md:max-w-[400px] min-w-[250px] max-h-[508px] w-full pl-4'>
-                Sign In
+                Sign Up
               </p>
               <div className='p-2 md:max-w-[400px] min-w-[250px] max-h-[508px] signin-form-container rounded'>
                 <Username
@@ -45,7 +44,11 @@ export const Page = (props) => {
                   prompt={'Username'}
                   confirm={'Continue'}
                 />
-                <SignIn redirectOnAuth={'/browse'} {...props} />
+                <SignIn
+                  redirectOnAuth={'/browse'}
+                  {...props}
+                  loadRegister={true}
+                />
               </div>
             </div>
           </div>

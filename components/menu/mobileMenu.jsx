@@ -95,7 +95,7 @@ const MobileMenu = (props) => {
                 Sign In
               </Link>
               <Link
-                href='/signin'
+                href='/signup'
                 className=' dark:bg-white dark:text-black font-medium p-2 text-center rounded-md'
                 type='submit'
               >

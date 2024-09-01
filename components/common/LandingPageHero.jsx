@@ -11,15 +11,16 @@ export default function LandingPageHero() {
   const [viewer, setViewer] = useState('artist');
   return (
     <div className='font-lexend'>
-      <div className='pt-[200px] max-w-screen-xl mx-auto px-4 text-center '>
+      <div className=' pt-[150px] md:pt-[200px] max-w-screen-xl mx-auto px-4 text-center '>
         <div className='max-w-screen-sm mx-auto'>
           <div className='flex items-center'>
-            <h1 className='text-4xl font-semibold mb-8 px-4'>
-              <span className='text-accentY'>Fidio: </span>Where African Music
-              Takes Center Stage
+            <h1 className='text-4xl font-semibold mb-8 md:px-2 '>
+              <span className='text-accentY'>Fidio</span>
+              <p>Where African Music Takes Center Stage</p>
             </h1>
             <span>
               <svg
+                className='hidden md:block'
                 width='48'
                 height='48'
                 viewBox='0 0 64 64'
@@ -50,7 +51,7 @@ export default function LandingPageHero() {
               />
             </svg> */}
           </div>
-          <p className='text-dashtext text-center mb-8 leading-6 px-4'>
+          <p className='text-dashtext text-center mb-8 leading-7 px-4'>
             Fidio is revolutionizing the global African music scene with a
             dynamic platform for live music. More than virtual concerts, we’re a
             vibrant community energized by Afrobeats, Highlife, Soukous, and
@@ -62,7 +63,7 @@ export default function LandingPageHero() {
           href='/browse'
           className='w-[163px] dark:bg-red-600 dark:text-white py-[12.6px] h-auto space-x-1 dark:hover:bg-red-600 dark:hover:text-white dark:hover:outline-none dark:hover:bg-opacity-85 flex mx-auto justify-center rounded-sm items-center'
         >
-          <span>Browse Now</span>
+          <span>Find Events</span>
           <CirclePlay />
         </Link>
         <div>

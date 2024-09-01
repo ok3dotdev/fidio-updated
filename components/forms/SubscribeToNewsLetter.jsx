@@ -56,34 +56,38 @@ const SubscribeForm = () => {
   }
   return (
     <div className='relative max-w-screen-xl mx-auto mt-12 font-lexend px-4'>
-      <div className='md:p-12 bg-dashSides rounded-[10px] p-8'>
-        <h3 className='font-bold text-3xl flex flex-col text-left'>
-          <span>Subscribe to</span>
-          <span>Fidio’s Newsletter</span>
+      <div className='md:p-12 bg-dashSides rounded-[10px] p-8 flex flex-col items-center'>
+        <h3 className='font-bold text-3xl text-center'>
+          Stay Updated with Our Newsletter
         </h3>
-        <div className='relative block mt-4 max-w-[400px]'>
+        <p className='text-center mt-2'>
+          Get the latest live event updates straight to your inbox.
+        </p>
+        <div className='mt-4'>
           <form
             action=''
             onSubmit={(e) => {
               e.preventDefault();
               handleSubscribe();
             }}
+            className='flex w-full md:min-w-[500px]'
           >
             <Input
               placeholder='Subscribe'
-              className='text-muted-foreground font-lexend p-2 border-b bg-transparent dark:border-dashBorder text-white'
+              className='h-10 text-muted-foreground font-lexend p-2 border-b bg-transparent dark:border-dashBorder text-white flex-1'
               onChange={(e) => setTerm(e?.target?.value)}
               value={term}
-              onSubmit={handleSubscribe}
             />
+            <button
+              type='submit'
+              className='bg-accentY text-white p-2 rounded ml-2'
+            >
+              Subscribe
+            </button>
           </form>
           {error && (
             <p className='text-red-500 text-left text-xs mt-1'>{error}</p>
           )}
-          <ArrowForwardIcon
-            className='absolute right-2 top-2.5 h-4 w-4  cursor-pointer text-accentY'
-            onClick={handleSubscribe}
-          />
         </div>
       </div>
     </div>

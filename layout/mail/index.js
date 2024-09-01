@@ -6,5 +6,5 @@ import add_to_cart from './addToCart';
 export default {
   newUser,
   product_purchase,
-  add_to_cart,
+  // add_to_cart,
 };

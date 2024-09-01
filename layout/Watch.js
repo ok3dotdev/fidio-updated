@@ -111,7 +111,7 @@ const Module = (props) => {
               </div>
             </div>
           </div>
-          {hasDetails && (
+          {/* {hasDetails && (
             <div className='mt-8'>
               {props?.watchData?.id ? (
                 <div
@@ -133,9 +133,9 @@ const Module = (props) => {
                 </div>
               ) : null}
             </div>
-          )}
+          )} */}
         </div>
-        <div className='px-4 md:px-0'>
+        <div className='hidden md:block px-4 md:px-0'>
           <Chat {...props} />
         </div>
       </div>

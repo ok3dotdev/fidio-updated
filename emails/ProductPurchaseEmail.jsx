@@ -11,7 +11,12 @@ import {
 const logoUrl = 'https://fidiohero.s3.ca-central-1.amazonaws.com/group4.png';
 const domainUrl = 'https://www.fidio.ca/';
 
-const ProductPurchaseEmail = ({ siteTitle, loggedIn }) => {
+const ProductPurchaseEmail = ({ siteTitle, loggedIn, _cart }) => {
+  const totalPrice = _cart?.items?.reduce((total, item) => {
+    const price = parseFloat(item.product.styles[0].price);
+    return total + price * item.quantity;
+  }, 0);
+
   return (
     <Html>
       <Head>
@@ -60,24 +65,28 @@ const ProductPurchaseEmail = ({ siteTitle, loggedIn }) => {
           </a>
           <Heading>Your Purchase Confirmation</Heading>
           <Text style={text}>
-            Thank you for your purchase on {siteTitle}. We're excited to confirm
-            that your order has been received and is being processed.
+            Thank you for your purchase on Fidio. We're excited to confirm that
+            your ticket purchase for the event(s) below has been processed and
+            completed. You'll receive a reminder prior to the event start time.
+            On the event start date and time, please{' '}
+            <a href='/https://www.fidio.ca'>log in</a> and join the fun. If you
+            have any questions about the event, please don't hesitate to contact
+            our customer support team.
           </Text>
-          <Text style={text}>
-            You'll receive another email with your order details and tracking
-            information once your item(s) have been shipped.
-          </Text>
-          <Text style={text}>
-            If you have any questions about your order, please don't hesitate to
-            contact our customer support team.
-          </Text>
-          <Text style={text}>Thank you for shopping with us!</Text>
           <Text style={text}>
             Best regards,
             <br />
             The {siteTitle} Team
           </Text>
           <div className='divider'></div>
+          <Text style={text}>Here are the details of your purchase:</Text>
+          {_cart?.items?.map((item, index) => (
+            <Text key={index} style={text}>
+              {item.product.name} - Quantity: {item.quantity} - Price: $
+              {item.product.styles[0].price}
+            </Text>
+          ))}
+          <Text style={text}>Total: ${totalPrice.toFixed(2)}</Text>
         </Container>
       </Body>
     </Html>
