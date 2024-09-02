@@ -3,7 +3,8 @@ const path = require('path');
 // You must set this line to your own website for PRODUCTION builds
 
 // const website = 'http://localhost:3020'; // You must set this line to your own website for PRODUCTION builds
-const website = 'https://development.fidio.ca';
+// const website = 'https://development.fidio.ca';
+const website = 'https://www.fidio.ca';
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
