@@ -10,7 +10,7 @@ const LiveEventCard = ({ live, cdn }) => {
   return (
     <Link href={`/w?v=${live.id}`}>
       <div className='relative'>
-        {item[0]?.images && item[0]?.images[0] ? (
+        {item && item[0]?.images && item[0]?.images[0] ? (
           <img
             src={`${cdn?.static}/${item[0].images[0]?.name}`}
             className='aspect-square object-cover w-full rounded-[8px]'

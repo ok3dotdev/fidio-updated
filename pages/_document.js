@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+// import { resolveVariables } from '/app.config';
 
 class MyDocument extends Document {
   render() {
@@ -34,7 +35,9 @@ class MyDocument extends Document {
             rel='stylesheet'
           ></link>
         </Head>
-        <meta name='robots' content='noindex, nofollow' />
+        {/* {resolveVariables()?.dev && (
+          <meta name='robots' content='noindex, nofollow' />
+        )} */}
         <body>
           <Main />
           <NextScript />

@@ -1,9 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
+import { resolveVariables } from '/app.config';
 
 const HeadSEO = ({ site = {}, page = {}, schema }) => {
   // ({ site, page, schema });
   // set <head> variables
+  const config = resolveVariables();
   const siteTitle = site.title;
 
   const siteFavicon = site.seo?.favicon || '/favicon.svg';
@@ -52,7 +54,7 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
       <link preload='true' rel='mask-icon' href={siteFavicon} color='#000000' />
       {shareCanonical && <link rel='canonical' href={shareCanonical} />}
       <meta property='og:url' content={shareUrl} />
-      {shareBot && (
+      {config?.dev && shareBot && (
         <meta
           name='googlebot'
           content='noindex, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'
