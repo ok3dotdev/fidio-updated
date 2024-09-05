@@ -103,6 +103,12 @@
     button {
         border-radius: 1rem;
     }
+    section {
+        overflow-wrap: anywhere;
+    }
+    pre {
+        text-wrap: wrap;
+    }
 }
 
 .itemContainer {
