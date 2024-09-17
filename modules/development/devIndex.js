@@ -21,7 +21,7 @@ const Module = props => {
 }
 `,response:null,pinned:!0,meta:"menu dropdown layout initialize init"},{lead:"Turn Off Lead Menu",text:"Shut off the main menu by setting a property of useMenu to false on the page.props in the app.config.js file or commenting it out in the page file under pages",code:`const resolveConfig = (variables, props) => {
     return {
-        temporaryComponents: {
+        platform: {
             pages: [
                 {
                     url: '/p',
@@ -41,7 +41,7 @@ You can place your actual stylesheets in the appstyles folder under styles. Then
         
 This will disable all internal children under <AppConfigLayout /> so please be careful`,code:`const resolveConfig = (variables, props) => {
     return {
-        temporaryComponents: {
+        platform: {
             pages: [
                 {
                     url: '/p',
