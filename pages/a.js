@@ -5,13 +5,11 @@ import { AppConfigLayout, PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
-import { Menu } from '/modules/menu/';
 import Head from 'next/head';
 
 const pageName = 'a';
 
 export const page = (props) => {
-  // console.log('prrrrr', props);
   const createdDate = new Date(props?.articleData?.created);
   const publishDate = new Date(props?.articleData?.publish);
 
@@ -33,25 +31,24 @@ export const page = (props) => {
               url: `https://www.fidio.ca/ar?p=${props?.articleData?.id}`,
               author: {
                 '@type': 'Person',
-                name: props?.authorData?.username, // Replace with the actual author name if available
+                name: props?.authorData?.username,
               },
               publisher: {
                 '@type': 'Organization',
                 name: 'Fidio',
                 logo: {
                   '@type': 'ImageObject',
-                  url: '/img/internal/group4.png', // Replace with your logo URL
+                  url: '/img/internal/group4.png',
                 },
               },
-              datePublished: publishDate, // Replace with actual publication date if available
-              dateModified: createdDate, // Replace with actual modification date if available
+              datePublished: publishDate,
+              dateModified: createdDate,
             }),
           }}
         />
       </Head>
 
       <PageContainer {...props} pageName={pageName}>
-        {/* <Menu></Menu> */}
         <AppConfigLayout></AppConfigLayout>
       </PageContainer>
     </React.Fragment>

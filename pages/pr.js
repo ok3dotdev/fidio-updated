@@ -5,7 +5,6 @@ import { AppConfigLayout, PageContainer } from '/modules/internal';
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
 import { getServerSidePropsFunc } from '/appServer/serverProps';
-// import { Menu } from '/modules/menu/'
 
 const pageName = 'pr';
 
@@ -13,7 +12,6 @@ export const page = (props) => {
   return (
     <React.Fragment>
       <PageContainer {...props} pageName={pageName}>
-        {/* <Menu></Menu> */}
         <AppConfigLayout></AppConfigLayout>
       </PageContainer>
     </React.Fragment>

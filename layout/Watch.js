@@ -24,7 +24,6 @@ const Module = (props) => {
   const { description = '', lineup = [] } = detailmeta;
   const { host = {} } = meta;
   const headliner = lineup[0] || {};
-
   const hasDetails = name || description || host?.title || lineup.length > 0;
 
   return (
@@ -35,7 +34,7 @@ const Module = (props) => {
           <div className=''>
             <Player {...props} />
           </div>
-          <div className='pl-4'>
+          <div className='md:pl-4 px-4'>
             <div>
               <div>
                 <h3 className='text-3xl lg:text-4xl font-bold my-4'>

@@ -1,7 +1,8 @@
 const mailchimp = require('@mailchimp/mailchimp_marketing');
+import { resolveVariables } from '/app.config';
 
 mailchimp.setConfig({
-  apiKey: '4da9a44cc48f30f55467c6d7c48cd9a1-us22',
+  apiKey: resolveVariables().mailchimp,
   server: 'us22',
 });
 

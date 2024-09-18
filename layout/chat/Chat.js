@@ -29,6 +29,10 @@ const Module = (props) => {
     windowWidth,
   } = props;
 
+  const dispatchSetVideoSetChatState = () => {
+    props?._LocalEventEmitter?.dispatch('video_set_chat_state', {});
+  };
+
   return (
     <div
       className={`${props?.className ?? ''} ${WatchPageStyles.chatContainer} ${
@@ -60,7 +64,10 @@ const Module = (props) => {
             <div className='w-2 h-2 bg-[#12CB12] rounded'></div>
             <h2 className='font-bold text-lg'>Live chat</h2>
           </div>
-          <X className='text-dashtext cursor-pointer' />
+          <X
+            className='text-dashtext cursor-pointer'
+            onClick={dispatchSetVideoSetChatState}
+          />
         </div>
 
         <ModChatTools {...props} />

@@ -63,7 +63,7 @@ const SubscribeForm = () => {
         <p className='text-center mt-2'>
           Get the latest live event updates straight to your inbox.
         </p>
-        <div className='mt-4'>
+        <div className='mt-4 w-full md:w-auto'>
           <form
             action=''
             onSubmit={(e) => {

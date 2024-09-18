@@ -22,7 +22,7 @@ export async function getServerSideProps({ res }) {
   ];
 
   // Create a stream to write to
-  const stream = new SitemapStream({ hostname: 'https://www.fidio.ca' });
+  const stream = new SitemapStream({ hostname: 'https://fidio.ca' });
 
   // Create a sitemap from the stream
   const sitemap = await streamToPromise(Readable.from(links).pipe(stream)).then(

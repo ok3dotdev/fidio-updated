@@ -102,8 +102,9 @@ const EventView = (props) => {
     }
   };
 
-  // console.log('clicked', router.query.id);
   const startStream = async (e) => {
+    const streamFor = router?.query?.id && router?.query?.id[0];
+    // console.log('clicked', streamFor);
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -111,7 +112,7 @@ const EventView = (props) => {
         private: true,
         description: ticket?.description,
       },
-      streamingFor: router.query?.id[0],
+      streamingFor: streamFor,
     });
 
     if (res?.data?.stream) {

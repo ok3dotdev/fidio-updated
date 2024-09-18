@@ -20,7 +20,7 @@ import { fetchTickets } from '@/lib/utils';
 const pageName = 'events';
 
 export const Page = (props) => {
-  // console.log('props q', props);
+  console.log('props q', props);
   const [ticket, setTicket] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);

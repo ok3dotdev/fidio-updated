@@ -1,7 +1,6 @@
 import React from 'react';
 import { SingleArticle } from '../modules/article';
 import HomeLayout from '/customModules/features/HomeLayout';
-import { useEffect } from 'react';
 import SubscribeForm from '@/components/forms/SubscribeToNewsLetter';
 
 const pageName = 'ar';
@@ -21,7 +20,7 @@ const Module = (props) => {
       pageName={pageName}
       pageData={props.seoData}
       props={props}
-      className='bg-dashBg'
+      className='bg-dashBg font-lexend'
     >
       <div id='Article' className='pb-12'>
         {props?.articleData?.meta?.featuredImg && (
@@ -29,7 +28,6 @@ const Module = (props) => {
             <img
               className='absolute inset-0 w-full h-full object-cover'
               src={`${props?.articleData?.meta?.featuredImg}`}
-              // src='https://d2ib7gxb0luc1i.cloudfront.net/img/1700by700.jpg'
               alt=''
             />
           </div>
@@ -89,7 +87,6 @@ const Module = (props) => {
                   <SingleArticle {...props} />
                 </div>
               </div>
-              {/* <div className='hidden md:block w-[30%]'></div> */}
             </div>
           </div>
         </div>
