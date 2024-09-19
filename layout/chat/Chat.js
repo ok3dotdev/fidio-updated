@@ -157,14 +157,14 @@ function SendIcon(props) {
         d='M7.04536 3.36618L13.0459 6.36644C15.7377 7.71236 15.7377 9.91349 13.0459 11.2594L7.04536 14.2597C3.00762 16.2785 1.36028 14.6242 3.37915 10.5935L3.98902 9.38073C4.14324 9.07229 4.14324 8.56056 3.98902 8.25212L3.37915 7.03239C1.36028 3.00166 3.01463 1.34731 7.04536 3.36618Z'
         stroke='white'
         stroke-width='1.0515'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
       <path
         d='M4.19238 8.81348H7.97777'
         stroke='white'
         stroke-width='1.0515'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
     </svg>

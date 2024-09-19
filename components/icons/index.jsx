@@ -239,21 +239,21 @@ export const FaqFile = () => {
         d='M9.66675 1.33301H4.00008C3.64646 1.33301 3.30732 1.47348 3.05727 1.72353C2.80722 1.97358 2.66675 2.31272 2.66675 2.66634V13.333C2.66675 13.6866 2.80722 14.0258 3.05727 14.2758C3.30732 14.5259 3.64646 14.6663 4.00008 14.6663H12.0001C12.3537 14.6663 12.6928 14.5259 12.9429 14.2758C13.1929 14.0258 13.3334 13.6866 13.3334 13.333V4.99967L9.66675 1.33301Z'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
       <path
         d='M6.66675 6.86637C6.80008 6.5997 7.00008 6.33303 7.26675 6.1997C7.54284 6.04008 7.86514 5.97951 8.18034 6.028C8.49554 6.07649 8.78474 6.23114 9.00008 6.46636C9.20008 6.73303 9.33341 6.9997 9.33341 7.33303C9.33341 8.1997 8.00008 8.66637 8.00008 8.66637'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
       <path
         d='M8 11.333H8.00667'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
     </svg>
@@ -274,21 +274,21 @@ export const Target = () => {
           d='M7.99992 14.6663C11.6818 14.6663 14.6666 11.6816 14.6666 7.99967C14.6666 4.31778 11.6818 1.33301 7.99992 1.33301C4.31802 1.33301 1.33325 4.31778 1.33325 7.99967C1.33325 11.6816 4.31802 14.6663 7.99992 14.6663Z'
           stroke='#A3A3A3'
           stroke-width='1.5'
-          stroke-linecap='round'
+          strokeWidth='round'
           stroke-linejoin='round'
         />
         <path
           d='M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z'
           stroke='#A3A3A3'
           stroke-width='1.5'
-          stroke-linecap='round'
+          strokeWidth='round'
           stroke-linejoin='round'
         />
         <path
           d='M8.00008 9.33366C8.73646 9.33366 9.33341 8.73671 9.33341 8.00033C9.33341 7.26395 8.73646 6.66699 8.00008 6.66699C7.2637 6.66699 6.66675 7.26395 6.66675 8.00033C6.66675 8.73671 7.2637 9.33366 8.00008 9.33366Z'
           stroke='#A3A3A3'
           stroke-width='1.5'
-          stroke-linecap='round'
+          strokeWidth='round'
           stroke-linejoin='round'
         />
       </g>
@@ -314,21 +314,21 @@ export const Cursor = () => {
         d='M11.3333 14.6663H10.6667C9.95942 14.6663 9.28115 14.3854 8.78105 13.8853C8.28095 13.3852 8 12.7069 8 11.9997V3.99967C8 3.29243 8.28095 2.61415 8.78105 2.11406C9.28115 1.61396 9.95942 1.33301 10.6667 1.33301H11.3333'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
       <path
         d='M4.66675 14.6663H5.33341C6.04066 14.6663 6.71894 14.3854 7.21903 13.8853C7.71913 13.3852 8.00008 12.7069 8.00008 11.9997V11.333'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
       <path
         d='M4.66675 1.33301H5.33341C6.04066 1.33301 6.71894 1.61396 7.21903 2.11406C7.71913 2.61415 8.00008 3.29243 8.00008 3.99967V4.66634'
         stroke='#A3A3A3'
         stroke-width='1.5'
-        stroke-linecap='round'
+        strokeWidth='round'
         stroke-linejoin='round'
       />
     </svg>
