@@ -98,3 +98,6 @@ appServer/*
 !*tyles/appstyles/*
 
 # Project Ignore Files
+
+# Sentry Config File
+.env.sentry-build-plugin
