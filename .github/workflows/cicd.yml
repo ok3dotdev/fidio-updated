@@ -23,7 +23,7 @@ jobs:
 
       - name: SSH and Clone Repository
         run: |
-          ssh -o StrictHostKeyChecking=no undefined@3.23.52.140 '
+          ssh -o StrictHostKeyChecking=no fidio0aa5@3.23.52.140 '
           ENVIRONMENT="production" # Set development or production
           USE_KEY="A8J29AAJSD8239D0930FJSDJFISJOFRJ2098DJ2" # Set key for authentication
           USE_ACCESS_TOKEN="" # If working with a private github repository input your access token
@@ -33,39 +33,39 @@ jobs:
           echo "Authenticated into Server"
 
           # Check if the host is already in known_hosts before adding it
-          if ! grep -q github.com undefined/.ssh/known_hosts; then
-              ssh-keyscan -H github.com >> undefined/.ssh/known_hosts
-              echo "GitHub key added to known_hosts for undefined"
+          if ! grep -q github.com /home/fidio0aa5/.ssh/known_hosts; then
+              ssh-keyscan -H github.com >> /home/fidio0aa5/.ssh/known_hosts
+              echo "GitHub key added to known_hosts for fidio0aa5"
           else
-              echo "GitHub key already exists in known_hosts for undefined"
+              echo "GitHub key already exists in known_hosts for fidio0aa5"
           fi
 
-          # Add SSH configuration to undefined/.ssh/config
-          echo "Host github.com" >> undefined/.ssh/config
-          echo "  IdentityFile undefined/.ssh/id_rsa" >> ~/.ssh/config
-          echo "  User git" >> undefined/.ssh/config
-          echo "  StrictHostKeyChecking no" >> undefined/.ssh/config
-          chmod 600 undefined/.ssh/config
+          # Add SSH configuration to /home/fidio0aa5/.ssh/config
+          echo "Host github.com" >> /home/fidio0aa5/.ssh/config
+          echo "  IdentityFile /home/fidio0aa5/.ssh/id_rsa" >> ~/.ssh/config
+          echo "  User git" >> /home/fidio0aa5/.ssh/config
+          echo "  StrictHostKeyChecking no" >> /home/fidio0aa5/.ssh/config
+          chmod 600 /home/fidio0aa5/.ssh/config
 
           if [ "$ENVIRONMENT" = "production" ]; then
               BRANCH="master"
           fi
-          if [ ! -d "undefined/$ENVIRONMENT" ]; then
+          if [ ! -d "/home/fidio0aa5/$ENVIRONMENT" ]; then
               echo "Environment $ENVIRONMENT not created. Creating now"
               mkdir -p $ENVIRONMENT
           fi
-          if [ ! -d "undefined/$ENVIRONMENT/$REPO_NAME" ]; then
+          if [ ! -d "/home/fidio0aa5/$ENVIRONMENT/$REPO_NAME" ]; then
               echo "Repository not found. Cloning repository ${{ github.repository }}..."
               if [ -n "$USE_ACCESS_TOKEN" ]; then
                   echo "Using Access Token"
-                  git clone --branch $BRANCH https://$USE_ACCESS_TOKEN@github.com/${{ github.repository }}.git undefined/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
+                  git clone --branch $BRANCH https://$USE_ACCESS_TOKEN@github.com/${{ github.repository }}.git /home/fidio0aa5/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
               else
-                  git clone --branch $BRANCH https://github.com/${{ github.repository }}.git undefined/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
+                  git clone --branch $BRANCH https://github.com/${{ github.repository }}.git /home/fidio0aa5/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
               fi
-              cd undefined/$ENVIRONMENT/$REPO_NAME
+              cd /home/fidio0aa5/$ENVIRONMENT/$REPO_NAME
           else
               echo "Repository found. Pulling latest changes..."
-              cd undefined/$ENVIRONMENT/$REPO_NAME && git pull origin $BRANCH # Pull newest
+              cd /home/fidio0aa5/$ENVIRONMENT/$REPO_NAME && git pull origin $BRANCH # Pull newest
           fi
           echo "Starting deployment for $ENVIRONMENT..."
-          /home/tycoon_deployment_user/deploy_next_js.sh $ENVIRONMENT undefined/$ENVIRONMENT/$REPO_NAME $USE_KEY' # Run simplified deployment script
+          /home/tycoon_deployment_user/deploy_next_js.sh $ENVIRONMENT /home/fidio0aa5/$ENVIRONMENT/$REPO_NAME $USE_KEY' # Run simplified deployment script
