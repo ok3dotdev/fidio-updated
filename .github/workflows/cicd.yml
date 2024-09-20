@@ -24,7 +24,7 @@ jobs:
       - name: SSH and Clone Repository
         run: |
           ssh -o StrictHostKeyChecking=no fidio0aa5@3.23.52.140 '
-          ENVIRONMENT="production" # Set development or production
+          ENVIRONMENT="development" # Set development or production
           USE_KEY="A8J29AAJSD8239D0930FJSDJFISJOFRJ2098DJ2" # Set key for authentication
           USE_ACCESS_TOKEN="" # If working with a private github repository input your access token
           REPO_NAME="${{ github.event.repository.name }}"
