@@ -1,0 +1,71 @@
+# This workflow will run new deployments for applications to push to live or development environments.
+# Check out your RSA token at www.<your_website>.<tld>/admin/build and set secret as DEPLOY_SSH
+
+name: Deploy live application
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: SSH and Clone Repository
+        run: |
+          ssh -o StrictHostKeyChecking=no undefined@3.23.52.140 '
+          ENVIRONMENT="production" # Set development or production
+          USE_KEY="A8J29AAJSD8239D0930FJSDJFISJOFRJ2098DJ2" # Set key for authentication
+          USE_ACCESS_TOKEN="" # If working with a private github repository input your access token
+          REPO_NAME="${{ github.event.repository.name }}"
+          BRANCH="development"
+
+          echo "Authenticated into Server"
+
+          # Check if the host is already in known_hosts before adding it
+          if ! grep -q github.com undefined/.ssh/known_hosts; then
+              ssh-keyscan -H github.com >> undefined/.ssh/known_hosts
+              echo "GitHub key added to known_hosts for undefined"
+          else
+              echo "GitHub key already exists in known_hosts for undefined"
+          fi
+
+          # Add SSH configuration to undefined/.ssh/config
+          echo "Host github.com" >> undefined/.ssh/config
+          echo "  IdentityFile undefined/.ssh/id_rsa" >> ~/.ssh/config
+          echo "  User git" >> undefined/.ssh/config
+          echo "  StrictHostKeyChecking no" >> undefined/.ssh/config
+          chmod 600 undefined/.ssh/config
+
+          if [ "$ENVIRONMENT" = "production" ]; then
+              BRANCH="master"
+          fi
+          if [ ! -d "undefined/$ENVIRONMENT" ]; then
+              echo "Environment $ENVIRONMENT not created. Creating now"
+              mkdir -p $ENVIRONMENT
+          fi
+          if [ ! -d "undefined/$ENVIRONMENT/$REPO_NAME" ]; then
+              echo "Repository not found. Cloning repository ${{ github.repository }}..."
+              if [ -n "$USE_ACCESS_TOKEN" ]; then
+                  echo "Using Access Token"
+                  git clone --branch $BRANCH https://$USE_ACCESS_TOKEN@github.com/${{ github.repository }}.git undefined/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
+              else
+                  git clone --branch $BRANCH https://github.com/${{ github.repository }}.git undefined/$ENVIRONMENT/$REPO_NAME # Git clone if not existing
+              fi
+              cd undefined/$ENVIRONMENT/$REPO_NAME
+          else
+              echo "Repository found. Pulling latest changes..."
+              cd undefined/$ENVIRONMENT/$REPO_NAME && git pull origin $BRANCH # Pull newest
+          fi
+          echo "Starting deployment for $ENVIRONMENT..."
+          /home/tycoon_deployment_user/deploy_next_js.sh $ENVIRONMENT undefined/$ENVIRONMENT/$REPO_NAME $USE_KEY' # Run simplified deployment script
