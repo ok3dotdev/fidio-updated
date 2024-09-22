@@ -260,6 +260,7 @@ export default class Upload {
             temp.splice(f, 1)
         }
         this.timeline = temp
+        this.handleUsePayload(temp, 'timeline')
     }
 
     setPrice(price: string, currency: string, status: boolean) {
@@ -271,6 +272,9 @@ export default class Upload {
         } else {
             delete this._meta['price']['currency']
         }
+        let temp = this.updatedFields
+        temp['meta'] = true
+        this.updatedFields = temp
     }
 
     processIncoming(existing: any) {
