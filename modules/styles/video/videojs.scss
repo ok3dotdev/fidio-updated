@@ -220,6 +220,7 @@
     font-weight: normal;
     font-style: normal;
   }
+
   .vjs-icon-circle:before, .vjs-seek-to-live-control .vjs-icon-placeholder:before, .video-js .vjs-volume-level:before, .video-js .vjs-play-progress:before {
     content: "\f116";
   }
@@ -998,10 +999,12 @@
     padding: 0;
     width: 0;
   }
-  
+
   .video-js .vjs-play-progress {
-    background-color: #fff;
+    background-color: red;
+    color: red;
   }
+
   .video-js .vjs-play-progress:before {
     font-size: 0.9em;
     position: absolute;
@@ -1011,11 +1014,11 @@
   }
   
   .video-js .vjs-load-progress {
-    background: rgba(115, 133, 159, 0.5);
+    background: rgba(135, 135, 135, 0.05);
   }
   
   .video-js .vjs-load-progress div {
-    background: rgba(115, 133, 159, 0.75);
+    background: rgba(135, 135, 135, 0.25);
   }
   
   .video-js .vjs-time-tooltip {
@@ -1060,6 +1063,7 @@
   
   .video-js .vjs-progress-control:hover .vjs-mouse-display {
     display: block;
+    background: white;
   }
   
   .video-js.vjs-user-inactive .vjs-progress-control .vjs-mouse-display {
@@ -1090,7 +1094,7 @@
     /* Non-prefixed version, currently supported by Chrome and Opera */
     user-select: none;
     background-color: #73859f;
-    background-color: rgba(115, 133, 159, 0.5);
+    background-color: rgba(113, 113, 113, 0.5);
   }
   
   .video-js .vjs-slider.disabled {
