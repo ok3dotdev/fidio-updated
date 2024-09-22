@@ -401,6 +401,9 @@ export default class Upload {
     }
 
     set meta(value: string[]) {
+        let temp = this.updatedFields
+        temp['meta'] = true
+        this.updatedFields = temp
         this._meta = value
     }
 
