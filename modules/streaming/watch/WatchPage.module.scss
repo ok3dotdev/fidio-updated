@@ -167,13 +167,15 @@
     opacity: .2;
 }
 
+.uploadMetaPrimaryContainer {
+    flex-grow: 1;
+}
+
 .uploadMetaContainer {
+    display: flex;
+    gap: 1rem;
     margin-top: .5rem;
-    @media(min-width: 700px) {
-        .uploadMetaPrimaryContainer {
-            max-width: calc(100vw - 325px);
-        }
-    }
+    flex-flow: wrap;
 }
 
 .thumbnailTitle {
@@ -292,4 +294,48 @@
     outline: none;
     color: #67cfff;
     box-shadow: none;
+}
+
+.clipStart {
+    min-width: 75px;
+    max-width: 105px;
+}
+
+.clipStart,
+.clipDescriptiveTitle {
+    font-size: 1rem;
+    height: 25px;
+    border-radius: .5rem;
+    border-width: 0;
+}
+
+.clipViewContainer {
+    display: flex;
+    border-radius: 1rem;
+    width: fit-content;
+    .clipViewStart {
+        padding: .35rem 1rem;
+        background: rgb(61, 61, 61);
+        padding-right: .5rem;
+        border-radius: 1rem 0 0 1rem;
+    }
+    .clipViewNameContainer {
+        display: flex;
+        gap: .5rem;
+        padding: .35rem 1rem;
+        background:rgb(36, 36, 36);
+        border-radius: 0 1rem 1rem 0;
+    }
+}
+
+.UploadChangesWaiting, .currentSelected {
+    box-shadow: 0 0 .5rem .125rem rgb(179, 179, 255);
+    border: 1px solid #f371ff;
+}
+
+.clipsContainer {
+    display: flex;
+    gap: .5rem;
+    flex-flow: wrap;
+    margin-bottom: .5rem;
 }

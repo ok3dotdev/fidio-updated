@@ -32,10 +32,10 @@ export default class Upload {
     private busy: boolean
     updatedFields: object
     usePayload: any
-    constructor(author: string, existing?: any, id?: string, title?: string, description?: string, tags?: string[], meta?: object, production?: string, cast?: string[], directors?: string[], writers?: string[]) {
+    constructor(author: string, existing?: any, id?: string, title?: string, description?: string, tags?: string[], meta?: object, production?: string, cast?: string[], directors?: string[], writers?: string[], status?: string) {
         this.busy = false
         this.updatedFields = {}
-        this.depedencies()
+        this.usePayload = this.depedencies()
         if (existing?.id) {
             this._author = existing.author
             this._id = existing.id
@@ -58,8 +58,9 @@ export default class Upload {
             this._meta = existing.meta ?? {}
             this.metatags = existing.metatags ?? []
             this.updatedFields = existing.updatedFields && !Array.isArray(existing.updatedFields) ? existing.updatedFields : {}
+            this._status = existing.status ?? ''
         } else if (!existing) {
-            this._id = id ?? ''
+            this._id = id ?? '<database>'
             this._author = author
             this._title = title ?? ''
             this._description = description ?? ''
@@ -69,11 +70,12 @@ export default class Upload {
             this._cast = cast ?? []
             this._directors = directors ?? []
             this._writers = writers ?? []
+            this._status = status ?? ''
         }
     }
 
     depedencies() {
-        this.usePayload = {
+        return {
             title: {
                 type: 'string',
                 path: 'title'
@@ -98,6 +100,11 @@ export default class Upload {
                 type: 'date',
                 path: 'creation',
                 readonly: true
+            },
+            timeline: {
+                type: 'array',
+                item: 'object',
+                path: 'timeline'
             }
         }
     }
@@ -173,16 +180,54 @@ export default class Upload {
         if (!this._meta['associations']) {
             this._meta['associations'] = {}
         }
+        let temp = this.updatedFields
+        temp['meta'] = true
+        this.updatedFields = temp
         if (status) {
             if (!this._meta['associations'][ofType]) {
-                this._meta['associations'][ofType][id] = detail ?? 'associated'
+                this._meta['associations'][ofType] = {}
             }
-        } else if (this._meta['associations']?.[ofType]?.[id]) {
-            delete this._meta['associations'][ofType][id]
+            if (!this._meta['associations'][ofType][id]) {
+                this._meta['associations'][ofType][id] = {}
+            }
+            this._meta['associations'][ofType][id][detail ?? 'related'] = true
+        } else if (this._meta['associations']?.[ofType]?.[id][detail ?? 'related']) {
+            delete this._meta['associations'][ofType][id][detail ?? 'related']
+            if (Object.entries(this._meta['associations'][ofType][id]).length === 0) {
+                delete this._meta['associations'][ofType][id]
+            }
             if (Object.entries(this._meta['associations'][ofType]).length === 0) {
                 delete this._meta['associations'][ofType]
             }
         }
+        return this
+    }
+
+    setAuthorizedBy(id: string, ofType: string, status: boolean) {
+        if (!this._meta['authBy']) {
+            this._meta['authBy'] = {}
+        }
+        let temp = this.updatedFields
+        temp['meta'] = true
+        this.updatedFields = temp
+        if (status) {
+            if (!this._meta['authBy'][ofType]) {
+                this._meta['authBy'][ofType] = {}
+            }
+            if (!this._meta['authBy'][ofType][id]) {
+                this._meta['authBy'][ofType][id] = {}
+            }
+            this._meta['authBy'][ofType][id]['authorize'] = true
+        } else if (this._meta['authBy']?.[ofType]?.[id]) {
+            delete this._meta['authBy'][ofType][id]['authorize']
+            if (Object.entries(this._meta['authBy'][ofType][id]).length === 0) {
+                delete this._meta['authBy'][ofType][id]
+            }
+            if (Object.entries(this._meta['authBy'][ofType]).length === 0) {
+                delete this._meta['authBy'][ofType]
+            }
+        }
+        return this
     }
 
     getTimeline() {
@@ -205,6 +250,7 @@ export default class Upload {
         let temp = this.timeline
         temp.push(timeObject)
         this.timeline = temp
+        this.handleUsePayload(temp, 'timeline')
     }
 
     deleteClip(id: string) {
@@ -214,25 +260,6 @@ export default class Upload {
             temp.splice(f, 1)
         }
         this.timeline = temp
-    }
-
-    setAuthorizedBy(id: string, ofType: string, status: boolean) {
-        if (!this._meta['authBy']) {
-            this._meta['authBy'] = {}
-        }
-        if (status) {
-            if (!this._meta['authBy'][ofType]) {
-                this._meta['authBy'][ofType] = {}
-            }
-            if (!this._meta['authBy'][ofType][id]) {
-                this._meta['authBy'][ofType][id] = 'authorize'
-            }
-        } else if (this._meta['authBy']?.[ofType]?.[id]) {
-            delete this._meta['authBy'][ofType][id]
-            if (Object.entries(this._meta['authBy'][ofType]).length === 0) {
-                delete this._meta['authBy'][ofType]
-            }
-        }
     }
 
     setPrice(price: string, currency: string, status: boolean) {
@@ -270,66 +297,18 @@ export default class Upload {
     }
 
     async setPublish(props: any, value: boolean) {
-        let r: any
-        try {
-            if (!this.busy) {
-                this.busy = true
-                r = setTimeout(() => {
-                    this.busy = false
-                }, 35000)
-                const res = await apiReq('/p/publishvideo', {
-                    user: props?._loggedIn,
-                    videoDocument: this.getInstance(),
-                    modif: value ? 'publish' : 'unpublish',
-                    updatedFields: this.updatedFields
-                })
-                this.updatedFields = {}
-                if (res?.data?.updated?.id) {
-                    this.busy = false
-                    clearTimeout(r)
-                    return res.data.updated
-                }
-                this.busy = false
-                clearTimeout(r)
-            }
-        } catch (err) {
-            this.busy = false
-            clearTimeout(r)
-        }
-        return null
+        return this.runPublish(props, value ? 'publish' : 'unpublish')
     }
 
     async setPrivate(props: any, value: boolean) {
-        let r: any
-        try {
-            if (!this.busy) {
-                this.busy = true
-                r = setTimeout(() => {
-                    this.busy = false
-                }, 35000)
-                const res = await apiReq('/p/publishvideo', {
-                    user: props?._loggedIn,
-                    videoDocument: this.getInstance(),
-                    modif: value ? 'private' : 'unprivate',
-                    updatedFields: this.updatedFields
-                })
-                this.updatedFields = {}
-                if (res?.data?.updated?.id) {
-                    this.busy = false
-                    clearTimeout(r)
-                    return res.data.updated
-                }
-                this.busy = false
-                clearTimeout(r)
-            }
-        } catch (err) {
-            this.busy = false
-            clearTimeout(r)
-        }
-        return null
+        return this.runPublish(props, value ? 'private' : 'unprivate')
     }
 
     async setUpdate(props: any) {
+        return this.runPublish(props, 'update')
+    }
+
+    async runPublish(props: any, modif: string) {
         let r: any
         try {
             if (!this.busy) {
@@ -337,11 +316,17 @@ export default class Upload {
                 r = setTimeout(() => {
                     this.busy = false
                 }, 35000)
+                const instance = this.getInstance()
+                delete instance.player
+                delete instance.updatedFields
+                delete instance['usePayload']
+                delete instance['busy']
                 const res = await apiReq('/p/publishvideo', {
                     user: props?._loggedIn,
-                    videoDocument: this.getInstance(),
-                    modif: 'update',
-                    updatedFields: this.updatedFields
+                    videoDocument: instance,
+                    modif: modif,
+                    updatedFields: this.updatedFields,
+                    usePayload: this.usePayload
                 })
                 this.updatedFields = {}
                 if (res?.data?.updated?.id) {
@@ -376,6 +361,16 @@ export default class Upload {
             }
         }
         return this
+    }
+
+    /**
+     * Sets date for record to expire and be deleted. All references to record will be destroyed outside of associations
+     * @param date 
+     */
+    setExpire(date: Date) {
+        const temp = this._meta
+        temp['automateExpiryDate'] = date
+        this._meta = temp
     }
 
     set title(value: string) {
@@ -435,5 +430,9 @@ export default class Upload {
 
     get writers(): string[] {
         return this._writers
+    }
+
+    get id(): string {
+        return this._id
     }
 }

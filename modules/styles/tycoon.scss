@@ -207,6 +207,16 @@ button:not(:disabled):active {
     text-align: center;
 }
 
+.close {
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: .125rem;
+}
+
+.close:hover {
+    background: grey;
+}
+
 .ButtonGlowing {
     animation: glowing 3.5s infinite;
 }
@@ -1350,6 +1360,7 @@ section.range-slider input::-moz-range-thumb {
 
 .option_currently_selected {
     background: #ebebeb;
+    font-weight: 700;
 }
 
 .reaction_node {
@@ -1423,4 +1434,26 @@ input.squeezedInputWider {
 
 .Chat_Content {
     word-break: break-word;
+}
+
+.item_container {
+    flex: 0 0 22.5%;
+    max-width: 22.5%;
+    text-align: center;
+    text-align: -webkit-center;
+    padding: .25rem;
+    border-radius: .25rem;
+    border: 2px solid rgb(117, 117, 117);
+    margin-bottom: .5rem;
+    cursor: pointer;
+    .item_container_image {
+        border: 2px solid transparent;
+    }
+}
+
+.item_container:hover {
+    background: rgb(105, 105, 105);
+    .item_container_image {
+        border: 2px solid white;
+    }
 }
