@@ -1003,6 +1003,7 @@
   .video-js .vjs-play-progress {
     background-color: red;
     color: red;
+    z-index: 10;
   }
 
   .video-js .vjs-play-progress:before {
