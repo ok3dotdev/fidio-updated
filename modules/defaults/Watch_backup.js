@@ -8,7 +8,7 @@ import { LoadComments } from '/modules/comment/parts'
 
 const Module = props => {
     return (
-        <div className={`${props?.WatchPageStyles?.videoQuadrant} WatchPage_VideoQuadrant`} style={{ height: `calc(100vh - ${props?.menuHeight})` }}>
+        <div className={`${props?.WatchPageStyles?.videoQuadrant} WatchPage_VideoQuadrant`}>
             <Prompt { ...props } />
             <div className={`${props?.WatchPageStyles?.videoExternalContainer}`}>
                 <div className={`${props?.WatchPageStyles?.videoInternalContainer}`}>
@@ -44,6 +44,13 @@ const Module = props => {
                                                 ? <p style={{ marginTop: '1rem', fontSize: '.9rem' }}>{props.watchMeta.description}</p>
                                                 : ''
                                         }
+                                        <div className='tagContainer' style={{ marginTop: '.25rem' }}>
+                                            {
+                                                props?.watchMeta?.tags?.map((d, i) => {
+                                                    return (d !== '' ? <div className='tagItem' key={i}>{d}</div> : <div></div>)
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                     : null
                             }
