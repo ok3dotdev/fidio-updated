@@ -411,6 +411,15 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/upload'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 useFile = 'layout/upload/UploadVideoFile.js'
 if (fs.existsSync(useFile)) {
     // Add your commands here
