@@ -4,13 +4,15 @@ import MobileMenu from '@/components/menu/mobileMenu';
 import useMediaQuery from '../../../hooks/use-media-query';
 import UserAvatar from '@/components/Avatar';
 
-const BrowseHeader = (props) => {
+const BrowseHeader = ({ className, ...props }) => {
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });
 
   return (
-    <div className='w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 absolute top-0 left-0 right-0'>
+    <div
+      className={`w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0 ${className}`}
+    >
       <Link href='/'>
         <img
           src='/img/internal/frame2.png'

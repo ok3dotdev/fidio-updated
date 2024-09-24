@@ -124,6 +124,7 @@ const Page = (props) => {
       pageData={blogPageData}
       props={props}
       className='bg-dashBg'
+      headerAbsolute={false}
     >
       <div className=' max-w-7xl mx-auto font-lexend px-5 lg:px-8 pb-12'>
         <div className='mt-8'>
@@ -165,14 +166,18 @@ const Page = (props) => {
             <div className=''>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8'>
                 {data?.articleReq[0].map((articleReq, index) => (
-                  <a key={index} href={`/a?p=${articleReq?.id}`} className=''>
+                  <a
+                    key={index}
+                    href={`/a?p=${articleReq?.id}`}
+                    className='group'
+                  >
                     <div
                       key={index}
-                      className='p-4 bg-dashSides rounded-[8px] max-h-[398px] min-h-[398px]'
+                      className='p-4 bg-dashSides rounded-[8px]  lg:min-h-[412px]'
                     >
-                      <div className='w-full aspect-[12/9] rounded-[8px]'>
+                      <div className='w-full aspect-[12/9] rounded-[8px] overflow-hidden'>
                         <img
-                          className='object-cover w-full rounded-[8px] h-full'
+                          className='object-cover w-full rounded-[8px] h-full transition-transform duration-300 group-hover:scale-110'
                           src={articleReq.meta.featuredImg}
                           alt='main image'
                         />

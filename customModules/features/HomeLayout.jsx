@@ -5,11 +5,19 @@ import { siteData } from './seo-data';
 import { cn } from '@/lib/utils';
 import BrowseHeader from '../../components/Layouts/browse/BrowseHeader';
 
-const HomeLayout = ({ children, pageData, props, className }) => {
+const HomeLayout = ({
+  children,
+  pageData,
+  props,
+  className,
+  headerAbsolute = true,
+}) => {
+  const headerClassName = headerAbsolute ? 'absolute' : '';
+
   return (
     <div className={cn('relative h-full', className)}>
       <HeadSEO site={siteData} page={pageData} />
-      <BrowseHeader {...props} classname='' />
+      <BrowseHeader {...props} className={headerClassName} />
       {children}
       <BrowseFooter />
     </div>

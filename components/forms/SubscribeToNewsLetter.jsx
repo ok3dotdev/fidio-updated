@@ -55,7 +55,7 @@ const SubscribeForm = () => {
     }
   }
   return (
-    <div className='relative max-w-screen-xl mx-auto mt-12 font-lexend px-4'>
+    <div className='relative max-w-screen-xl mx-auto mt-12 font-lexend'>
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8 flex flex-col items-center'>
         <h3 className='font-bold text-3xl text-center'>
           Stay Updated with Our Newsletter
