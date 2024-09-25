@@ -37,8 +37,11 @@ git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-c
 # Create app.config.js file in root. See example file here: https://tycoon-public-share.s3.us-east-2.amazonaws.com/app.config.js
 vi app.config.js
 
-# To safely pull /modules folder changes run update_version script
-./update_version
+# To safely pull /modules folder changes run update script
+./update.sh
+
+# If update script is missing run
+git checkout -p upstream/master -- update.sh
 
 # If you get Permission denied run following
 chmod 722 update_version
