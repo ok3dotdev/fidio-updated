@@ -38,7 +38,7 @@ git remote add upstream https://github.com/Tycoon-Systems-Corp/video-streaming-c
 vi app.config.js
 
 # To safely pull /modules folder changes run update script
-./update.sh
+./update
 
 # If update script is missing run
 git checkout -p upstream/master -- update.sh
