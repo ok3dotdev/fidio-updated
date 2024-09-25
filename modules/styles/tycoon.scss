@@ -1457,3 +1457,19 @@ input.squeezedInputWider {
         border: 2px solid white;
     }
 }
+
+.ChatPage_Container {
+    width: 100%;
+    .ChatPage_InternalContainer {
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 300px;
+        .ChatPage_ChatContainer {
+            border: 1px solid grey;
+            border-radius: 1rem;
+            .Chat_ChatLogExternalContainer {
+                min-height: calc(60vh - 2rem);
+            }
+        }
+    }
+}
