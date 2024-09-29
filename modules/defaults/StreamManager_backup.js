@@ -5,7 +5,7 @@ import Preview from '/modules/streaming/watch/preview/Preview'
 import { Username } from '/modules/onboarding/signin'
 
 const Module = props => {
-    const { askEndStream, fetchBusy, currentlyStreaming, ManagerStyles, streamChecking, canStream, moreSettings, settingsHeight, moreSettingsContainerRef, handleAskEndStream } = props
+    const { askEndStream, fetchBusy, currentlyStreaming, ManagerStyles, streamChecking, canStream, moreSettings, settingsHeight, moreSettingsContainerRef, handleAskEndStream, recordStream, recordStreamRef, handleSetRecordingStream } = props
     return (
         <div className={`${ManagerStyles.container} ${props.className}`}>
             <PageErrorModule { ...props } />
@@ -37,7 +37,7 @@ const Module = props => {
                                                         </div>
                                                         <div className={`${ManagerStyles.moreSettingsContainer} Manager_MoreSettingsContainer ${ManagerStyles.moreSettingsClosed} Manager_MoreSettingsContainerClosed ${moreSettings ? `${ManagerStyles.moreSettingsOpen} Manager_MoreSettingsContainerOpen` : ``}`} ref={moreSettingsContainerRef} style={{ height: settingsHeight }}>
                                                             <div className={`${ManagerStyles.moreSettingsInternalContainer} Manager_MoreSettingsInternalContainer`} note='This controls height of open settings'>
-                                                                <StreamSettings { ...props } />
+                                                                <StreamSettings { ...props } currentlyStreaming={currentlyStreaming} recordStream={recordStream} recordStreamRef={recordStreamRef} handleSetRecordingStream={handleSetRecordingStream} />
                                                             </div>
                                                         </div>
                                                     </div>

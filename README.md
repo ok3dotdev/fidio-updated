@@ -43,6 +43,9 @@ vi app.config.js
 # If update script is missing run
 git checkout -p upstream/master -- update.sh
 
+# Or manually copy temporarily to root / using modules/defaults/scripts/update and then run
+./update
+
 # If you get Permission denied run following
 chmod 722 update_version
 

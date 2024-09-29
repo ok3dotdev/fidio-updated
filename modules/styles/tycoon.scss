@@ -1467,6 +1467,7 @@ input.squeezedInputWider {
         .ChatPage_ChatContainer {
             border: 1px solid grey;
             border-radius: 1rem;
+            min-height: fit-content;
             .Chat_ChatLogExternalContainer {
                 min-height: calc(60vh - 2rem);
             }
