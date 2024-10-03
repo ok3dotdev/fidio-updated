@@ -14,8 +14,6 @@ import Close from '@mui/icons-material/Close'
 const Module = props => {
     const { ASSOCIATE_RECORDS, ASSOCIATION_METHODS, handleClearError, setPageError, pageError, setProcessing, processing, handlingMeta, setHandlingMetaProxy, setVideoDocumentProxy, fetchBusy, useVideos, videosContainerRef, loadVideo, status, componentId, initialized, videoDocumentRasterized, clipStartRef, clipDescriptionRef, currentAssociation, currentAssociationMethod, associateRecords, setAssociateRecords, videoDocument, handlePublish, handleStartUpload, setVideoDocumentRasterized, setCurrentAssociationMethod, setCurrentAssociation, currentAssociationLimit, getAssociateAttributes, loadRecord, handleDisposePlayer } = props
 
-    const [ pl, setPl ] = React.useState(true)
-
     const updateInput = React.useCallback(e => {
         const modif = e?.target?.getAttribute('modif')
         let value = e?.target?.value
@@ -191,9 +189,8 @@ const Module = props => {
         return false
     }
 
-    // handleDisposePlayer(playerId: String optional) // Will dispose player after it is removed from DOM
-
-    // loadRecord(videoDocument: Video, playerId: String optional) // Will instantiate player using "Player". Run in setTimeout after painting player to DOM
+    // (props) handleDisposePlayer(playerId: String optional) // Will dispose player after it is removed from DOM 
+    // (props) loadRecord(videoDocument: Video, playerId: String optional) // Will instantiate player using "Player". Run in setTimeout after painting player to DOM
 
     return (
         <div className={`${styles.container} ${props.className} Upload_Container PagePadding`}>
@@ -227,12 +224,7 @@ const Module = props => {
                         <div style={{ display: handlingMeta ? 'block' : 'none' }}>
                             <div className={`${styles.videoContainer} Video_VideoUploadContainer`} style={{ marginBottom: '1rem' }}>
                                 <div className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`} style={{ height: `calc(100vh - ${props?.menuHeight})` }}>
-                                    {
-                                        pl
-                                            ? <Player { ...props } playerName={componentId ? `player-${componentId}` : null} playerInitialized={initialized} />
-                                            : null
-                                    }
-                                    <button onClick={handleInstantiatePlayer}>Player Instantiate</button>
+                                    <Player { ...props } playerName={componentId ? `player-${componentId}` : null} playerInitialized={initialized} />
                                 </div>
                             </div>
                             <div className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer`}>
