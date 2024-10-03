@@ -59,7 +59,12 @@ export const Page = (props) => {
 
   return (
     <div className='relative'>
-      <HomeLayout pageName={pageName} pageData={props.seoData} props={props}>
+      <HomeLayout
+        pageName={pageName}
+        pageData={props.seoData}
+        props={props}
+        className='bg-dashBg font-lexend'
+      >
         {cartOpen && (
           <div
             style={{

@@ -10,21 +10,21 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { logout } from 'modules/utility/onboarding/SignIn.js';
+// import { useRouter } from 'next/router';
+// import { logout } from 'modules/utility/onboarding/SignIn.js';
 
 const MobileMenu = (props) => {
-  const router = useRouter();
+  // const router = useRouter();
   const handleLogout = (e) => {
-    logout(props._setLoggedIn);
-    router.push('/');
+    // logout(props._setLoggedIn);
+    // router.push('/');
   };
   return (
-    <Sheet className='p-2 dark:bg-transparent'>
+    <Sheet className='p-2 bg-dashBg'>
       <SheetTrigger asChild>
         <Button
           variant='outline'
-          className='dark:bg-transparent dark:border-none '
+          className='dark:bg-dashBg bg-dashBg dark:border-none '
         >
           <svg
             width='30'
@@ -42,7 +42,7 @@ const MobileMenu = (props) => {
           </svg>
         </Button>
       </SheetTrigger>
-      <SheetContent className='flex flex-col h-full px-4'>
+      <SheetContent className='flex flex-col h-full px-4 bg-dashBg'>
         <SheetHeader>
           <SheetTitle>
             <Link href='/browse'>

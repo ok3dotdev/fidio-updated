@@ -55,7 +55,7 @@ const SubscribeForm = () => {
     }
   }
   return (
-    <div className='relative max-w-screen-xl mx-auto mt-12 font-lexend'>
+    <div className='relative max-w-screen-xl mx-auto mt-12'>
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8 flex flex-col items-center'>
         <h3 className='font-bold text-3xl text-center'>
           Stay Updated with Our Newsletter
@@ -74,7 +74,7 @@ const SubscribeForm = () => {
           >
             <Input
               placeholder='Subscribe'
-              className='h-10 text-muted-foreground font-lexend p-2 border-b bg-transparent dark:border-dashBorder text-white flex-1'
+              className='h-10 text-muted-foreground p-2 border-b bg-transparent dark:border-dashBorder text-white flex-1'
               onChange={(e) => setTerm(e?.target?.value)}
               value={term}
             />

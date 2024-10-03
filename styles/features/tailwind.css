@@ -2,107 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border-color: hsl(var(--border));
-}
-
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 240 5.9% 10%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 240 4.9% 83.9%;
-}
-
-html,
-body {
-  width: 100%;
-}
-
-@layer components {
-  .last-item {
-    @apply md:col-span-2 md:justify-self-center;
-  }
-}
-
-input {
-  color: black;
-}
-.amin-heading {
-  font-family: Archivo Black;
-}
-.Chat_Content {
-  @apply font-sans text-[14px] font-semibold !important;
-}
-/* .Chat_ChatUsername::after {
-  content: ':' !important;
-} */
-.Chat_ChatUsername {
-  @apply text-[14px] font-semibold text-dashtext mr-2 h-[fit-content] !important;
-}
-.Chat_Content {
-  color: white;
-}
-
-.Chat_chatLogExternalContainer__lxHAd {
-  @apply border py-4 pt-6 rounded-[20px]  mb-4 !important;
-}
-Chat_ChatLogItemInternalContainer {
-  padding: 10px 0;
-}
-.Chat_ChatLogMain {
-  @apply p-2 px-4 items-start !important;
-}
-.Chat_send__9agSq {
-  @apply bg-[#FDB000] !important;
-}
-
-.Username_ContainerBg {
-  background: none !important;
-}
-
-.Username_PromptContainer {
-  align-items: start;
-  gap: 20px;
-}
-.Chat_replyToRepliesContainer__I8kg {
-  top: -6.5 !important;
-}
-
-.Username_PromptContainer > h4 {
-  @apply pl-4;
-}
-.Username_PromptContainer > span {
-  @apply w-screen lg:w-full flex flex-col px-4 gap-5 mx-auto;
-}
-
-.Username_PromptContainer > span > button {
-  @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin w-full;
-}
-/* button:hover {
-  outline: unset !important;
-  background: unset !important;
-  outline-offset: unset !important;
-  box-shadow: unset !important;
-} */
-
 @layer base {
   .dark {
     --background: 240 10% 3.9%;
@@ -125,26 +24,33 @@ Chat_ChatLogItemInternalContainer {
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+}
+
+@layer components {
+  .last-item {
+    @apply md:col-span-2 md:justify-self-center;
   }
 }

@@ -1,4 +1,109 @@
 @import 'appstyles/cart.scss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html,
+body {
+  width: 100%;
+}
+input {
+  color: black;
+}
+
+.amin-heading {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.Chat_Content {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.Chat_ChatUsername {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(
+    --dashtext-color
+  ); /* Assuming dashtext is a custom color variable */
+  margin-right: 0.5rem;
+  height: fit-content;
+}
+
+.Chat_Content {
+  color: white;
+}
+
+.Chat_chatLogExternalContainer__lxHAd {
+  border: 1px solid; /* Assuming a default border color */
+  padding: 1.5rem 1rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.Chat_ChatLogItemInternalContainer {
+  padding: 10px 0;
+}
+
+.Chat_ChatLogMain {
+  padding: 0.5rem 1rem;
+  align-items: flex-start;
+}
+
+.Chat_send__9agSq {
+  background-color: #fdb000;
+}
+
+.Username_ContainerBg {
+  background: none !important;
+}
+
+.Username_PromptContainer {
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.Chat_replyToRepliesContainer__I8kg {
+  top: -6.5px !important;
+}
+
+.Username_PromptContainer > h4 {
+  padding-left: 1rem;
+}
+
+.Username_PromptContainer > span {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  gap: 1.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Username_PromptContainer > span > button {
+  background-color: #c45a00; /* Approximation of bg-orange-700 */
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 100;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .Username_PromptContainer > span {
+    width: 100%;
+  }
+}
 
 .Ecommerce_PurchaseButton {
   border-radius: 6px;
@@ -493,4 +598,72 @@ button:hover {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
+}
+
+.upload_fileUploadContainerExternal__VEMCC {
+  border: none !important;
+}
+
+.PagePadding {
+  padding: none !important;
+}
+
+#studioEdit {
+  .upload_fileUploadContainerExternal__VEMCC {
+    min-height: unset !important;
+    padding: 20px 0 30px 0px !important;
+  }
+  .WatchPage_clipStart__Avcmp {
+    background-color: white;
+    color: black;
+  }
+  .WatchPage_clipStart__Avcmp,
+  .WatchPage_clipDescriptiveTitle__O8peL {
+    height: 44px !important;
+  }
+  .step-2 {
+    .WatchPage_VideoPlayer {
+      border-radius: 0 !important;
+    }
+
+    .WatchPage_videoQuadrant__MgFxK
+      .WatchPage_videoContainer__o4x4O
+      .WatchPage_videoPlayer__53LUC {
+      height: 500px;
+    }
+  }
+
+  .WatchPage_videoQuadrant__MgFxK
+    .WatchPage_videoContainer__o4x4O
+    .WatchPage_videoPlayer__53LUC {
+    height: 350px;
+    min-height: unset;
+    max-height: upset;
+  }
+  .Video_VideoUploadContainer {
+    margin-left: auto;
+    width: 490px;
+  }
+  .WatchPage_VideoPlayer {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .modal-footer {
+    button {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+  }
+}
+.label_input .label_data input,
+.label_input .label_data textarea,
+.label_data .label_data_container textarea {
+  padding: 10px;
+  background-color: rgba(38, 38, 38, 1);
+  font-size: 14px;
+}
+
+.WatchPage_uploadMetaContainer__TRcOM {
+  flex-direction: column;
 }

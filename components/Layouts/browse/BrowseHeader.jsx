@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import MobileMenu from '@/components/menu/mobileMenu';
@@ -11,7 +12,7 @@ const BrowseHeader = ({ className, ...props }) => {
 
   return (
     <div
-      className={`w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0 ${className}`}
+      className={`w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0 absolute ${className}`}
     >
       <Link href='/'>
         <img
@@ -36,7 +37,7 @@ const BrowseHeader = ({ className, ...props }) => {
             </Link>
             <Link
               href='/signup'
-              className='dark:bg-accentY bg-opacity-60 font-semibold dark:text-white dark:hover:bg-accentY dark:hover:bg-opacity-100 flex p-2 rounded-sm items-center hover:opacity-[90%]'
+              className='bg-accentY bg-opacity-60 font-semibold dark:text-white dark:hover:bg-accentY dark:hover:bg-opacity-100 flex p-2 rounded-sm items-center hover:opacity-[90%]'
             >
               Sign Up
             </Link>

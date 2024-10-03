@@ -3,7 +3,7 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card';
 const BulletCard = ({ feature, description, isLast }) => {
   return (
     <Card
-      className={`dark:bg-transparent dark:border-none shadow-none flex items-start font-lexend max-w-[770px] mx-auto px-4 ${
+      className={`bg-dashBg border-dashBg text-white shadow-none flex items-start max-w-[770px] mx-auto px-4 ${
         isLast ? 'last-item' : ''
       }`}
     >

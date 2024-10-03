@@ -4,7 +4,7 @@ const ImageText = ({ img, heading, description, direction, glow }) => {
   const isReverse = direction === 'reverse';
 
   return (
-    <div className='my-20 font-lexend px-8 max-w-6xl mx-auto'>
+    <div className='my-20 px-8 max-w-6xl mx-auto'>
       <div
         className={`flex flex-col items-center md:flex-row justify-center gap-12 ${
           isReverse ? 'md:flex-row-reverse' : ''

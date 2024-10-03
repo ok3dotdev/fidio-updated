@@ -14,6 +14,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const StudioLayout = (props) => {
+  console.log('ll', props);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   useEffect(() => {
@@ -66,7 +67,10 @@ const StudioLayout = (props) => {
   ];
 
   return (
-    <div className='flex h-screen w-full font-lexend relative'>
+    <div
+      id={props.pageId}
+      className='flex h-screen w-full font-lexend relative'
+    >
       <StudioSidebar {...props} />
       <div className='flex flex-1 flex-col'>
         {(isMobileScreen || showNav) && (
