@@ -38,6 +38,13 @@
 			border-radius: .5rem;
 		}
 	}
+
+	&__relativeStyles {
+		height: 100% !important;
+		.item {
+			position: relative;
+		}
+	}
 	
 	.title {
 		font-size: 1rem;
@@ -50,8 +57,8 @@
 	}
 
 	&__optionButton {
-		background-color: #007bff;
-		color: #fff;
+		background-color: #dedede;
+		color: black;
 		padding: 10px 20px;
 		margin: 5px;
 		border: none;
@@ -62,6 +69,11 @@
 		&:hover {
 			background-color: #0056b3;
 		}
+	}
+
+	&__optionButtonSelected {
+		background-color: #007bff;
+		color: white;
 	}
 
 	.confirmButton {

@@ -24,7 +24,7 @@ const Module = props => {
                                         <h3 className={`${props?.WatchPageStyles?.title}`}>{props?.watchMeta?.title ?? ''}</h3>
                                         <div className={`${props?.WatchPageStyles?.metaContainerInner} gap-p10`}>
                                             <div className={`${props?.WatchPageStyles?.metaAuthorMetaContainer} gap-p10`}>
-                                                <Link href={`/p?u=${props?.watchmeta?.authorData?.id}`} style={{ display: 'block' }}>
+                                                <Link href={`/p?u=${props?.watchMeta?.authorData?.id}`} style={{ display: 'block' }}>
                                                     <img className={`${props?.WatchPageStyles?.watchIcon}`} src={`${props?.watchMeta?.authorData?.icon ?? 'img/default/greyIcon.png'}`} />
                                                 </Link>
                                                 <div>
