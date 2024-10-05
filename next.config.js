@@ -10,7 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  // assetPrefix: website,
+  assetPrefix: process?.env?.NEXT_PUBLIC_DEV === 'true' ? undefined : website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
   images: {
     domains: [
