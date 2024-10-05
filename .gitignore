@@ -88,7 +88,7 @@ appServer/*
 # !*customModules/admin/components/*
 # !*customModules/admin/components
 # !*customModules/admin/index.js
-# !*layout/*
+!*layout/*
 !*app.config.js
 !*app.schema.js
 
