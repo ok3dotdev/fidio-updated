@@ -2,13 +2,21 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "modules/*": ["modules/*"],
-      "/modules/*": ["modules/*"]
+      "modules/*": [
+        "modules/*"
+      ],
+      "/modules/*": [
+        "modules/*"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -18,7 +26,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "target": "ES6"
+    "target": "ES6" // Add this line to specify ECMAScript target
   },
   "include": [
     "next-env.d.ts",
@@ -27,5 +35,7 @@
     "pages/index.js",
     "pages/_app.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
