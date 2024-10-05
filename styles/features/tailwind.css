@@ -2,6 +2,221 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+input {
+  color: black;
+}
+.amin-heading {
+  font-family: Archivo Black;
+}
+.Chat_Content {
+  @apply font-sans text-sm font-light !important;
+}
+.Chat_ChatUsername::after {
+  content: ':' !important;
+}
+.Chat_Content {
+}
+.Chat_chatLogExternalContainer__lxHAd {
+  @apply border p-4 pt-6 rounded-[20px]  mb-4 !important;
+}
+.Chat_ChatLogMain {
+  @apply mb-2 !important;
+}
+.Chat_send__9agSq {
+  @apply bg-[#FDB000] !important;
+}
+
+.Username_ContainerBg {
+  background: none !important;
+}
+
+.Username_PromptContainer {
+  align-items: start;
+  gap: 20px;
+}
+
+.Username_PromptContainer > h4 {
+  @apply pl-4;
+}
+.Username_PromptContainer > span {
+  @apply w-screen lg:w-full flex flex-col px-4 gap-5 mx-auto;
+}
+
+.Username_PromptContainer > span > button {
+  @apply bg-orange-700 px-2 rounded-md py-6 flex justify-center items-center text-black font-thin w-full;
+}
+.simpleTextInput {
+  height: 48px;
+  padding: 20px;
+  color: black;
+  border-radius: 6px;
+  width: 100%;
+}
+.Internal_devContainer__OSO0m {
+  display: none !important;
+}
+
+@media (min-width: 900px) {
+  .simpleTextInput {
+    width: 400px;
+  }
+}
+
+.marquee1,
+.marquee2 {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    background-position: center;
+  }
+}
+
+.Ecommerce_Cart_Container > input {
+  color: black !important;
+}
+
+.Ecommerce_Cart_Container input {
+  color: black !important;
+}
+
+@media (max-width: 768px) {
+  .glider_heading {
+    margin-top: 0.25rem !important;
+    text-wrap: wrap !important;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.glow-text {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
+}
+.transparent-text {
+  color: transparent;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* .hover\:blur:hover {
+  filter: blur(1px);
+} */
+
+.glow-text span {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.menuContainer > ul {
+  height: 100% !important;
+}
+.glide__slides {
+  gap: 1rem !important;
+}
+.Index_Body,
+.Privacy_Body,
+.Terms_Body {
+  top: 0 !important;
+}
+@media (max-width: 678px) {
+  .WatchPage_videoQuadrant__MgFxK {
+    height: 177px !important;
+  }
+}
+
+.Feature_featureExternalContainer__HMUAB {
+  position: relative !important;
+  /* margin-bottom: 32px; */
+}
+.hero {
+  /* background-image: url('/img/internal/bg.jpeg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-bg {
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(37, 37, 43, 1) 81%,
+    rgba(50, 50, 50, 1) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(37, 37, 43, 1) 81%,
+      rgba(50, 50, 50, 1) 100%
+    );
+  }
+}
+
+.Ecommerce_Item_Container,
+.Ecommerce_CreditCard_Container {
+  background: none;
+}
+
+.Ecommerce_Item_Image_Container {
+  max-height: 40px !important;
+  background-position: center !important;
+}
+
+.ar_Body {
+  top: 0 !important;
+}
+.ar_Body p {
+}
+.ar_Body p > img {
+  max-height: 500px;
+  width: 400px;
+  object-fit: contain;
+  margin: auto;
+}
+.article-container > div {
+  width: 100%;
+  overflow: hidden;
+}
 @layer base {
   .dark {
     --background: 240 10% 3.9%;
@@ -24,33 +239,73 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
-}
-
-:root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 240 5.9% 10%;
-  --radius: 0.5rem;
-}
-
-@layer components {
-  .last-item {
-    @apply md:col-span-2 md:justify-self-center;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
   }
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  * {
+    @apply border-border m-0 p-0;
+  }
+  body {
+    @apply bg-black text-foreground;
+  }
+}
+
+/* SURVERY FORM */
+.Survey_currentItem__z2NUZ {
+  padding: 0 !important;
+}
+.Survey_currentItem__z2NUZ textarea {
+  @apply bg-dashFg text-black p-2 font-sans;
+}
+.Survey_title__I1MFz {
+  margin-bottom: 2rem;
+}
+.Survey_currentItem__z2NUZ input[type='datetime-local'] {
+  @apply bg-dashFg text-black w-full p-2 font-sans;
+}
+
+.Survey_currentItem__z2NUZ label {
+  @apply font-sans;
+}
+
+/* @layer components {
+  .zoom-image [data-rmiz-modal-overlay='visible'] {
+    @apply bg-background/10 backdrop-blur;
+  }
+
+  .zoom-image [data-rmiz-modal-img] {
+    @apply rounded-md lg:rounded-2xl;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+} */

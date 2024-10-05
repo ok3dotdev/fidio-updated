@@ -1,5 +1,5 @@
 import React from 'react'; // Add React import
-import NewUserEmail from '@/emails/NewUserEmail'; // Import the new EmailContent component
+// import NewUserEmail from '@/emails/NewUserEmail'; // Import the new EmailContent component
 
 /**
  * Fires on new user registration
@@ -7,7 +7,7 @@ import NewUserEmail from '@/emails/NewUserEmail'; // Import the new EmailContent
 export default (props) => {
   const payload = {
     subject: `Welcome to ${props?.siteTitle ?? 'Fidio'}`,
-    content: <NewUserEmail />,
+    // content: <NewUserEmail />,
   };
   return payload;
 };

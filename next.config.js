@@ -10,24 +10,29 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  assetPrefix: process?.env?.NEXT_PUBLIC_DEV === 'true' ? undefined : website,
+  // assetPrefix: website,
   reactStrictMode: false, // Helps with debugging, but should be off to ensure runtime does not fire twice
+  images: {
+    domains: [
+      'd2ib7gxb0luc1i.cloudfront.net',
+      'another-domain.com',
+      'googleusercontent.com',
+    ],
+  },
   webpack: (config, { isServer }) => {
-    // Add custom webpack configuration here
-    // You can modify the `config` object as needed
-
-    // Example: Add resolve alias for modules folder
     config.resolve.alias['/modules'] = path.join(__dirname, 'modules/');
     config.resolve.alias['/appServer'] = path.join(__dirname, 'appServer/');
     config.resolve.alias['/app.config'] = path.join(__dirname, 'app.config.js');
+    config.resolve.alias['@/lib'] = path.join(__dirname, 'lib/');
+    config.resolve.alias['@/components'] = path.join(__dirname, 'components/');
+    config.resolve.alias['@/emails'] = path.join(__dirname, 'emails/'); // Add this line
     config.resolve.alias['/customModules'] = path.join(
       __dirname,
       'customModules'
     );
-    config.resolve.alias['/styles'] = path.join(__dirname, 'styles/');
+    config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles');
     config.resolve.alias['/layout'] = path.join(__dirname, 'layout/');
 
-    // Example: Add Babel loader for JavaScript modules/functions
     if (!isServer) {
       config.module.rules.push({
         test: /\.(js|mjs|jsx|ts|tsx)$/,

@@ -1,5 +1,4 @@
-'use client';
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import MobileMenu from '@/components/menu/mobileMenu';
 import useMediaQuery from '../../../hooks/use-media-query';
