@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArtistCardDetails, hostCardDetails } from '@/lib/constants';
 import HeroCard from '@/components/cards/HeroCards';
 import { User, Mic } from 'lucide-react';
-// import Link from 'next/link';
+import Link from 'next/link';
 
 export default function LandingPageHero() {
   const [viewer, setViewer] = useState('artist');
@@ -59,13 +59,13 @@ export default function LandingPageHero() {
             exclusive artist content in one seamless digital space.
           </p>
         </div>
-        {/* <Link
+        <Link
           href='/browse'
           className='w-[163px] dark:bg-red-600 dark:text-white py-[12.6px] h-auto space-x-1 dark:hover:bg-red-600 dark:hover:text-white dark:hover:outline-none dark:hover:bg-opacity-85 flex mx-auto justify-center rounded-sm items-center'
         >
           <span>Find Events</span>
           <CirclePlay />
-        </Link> */}
+        </Link>
         <div>
           <Tabs defaultValue='artist' className='w-full mt-12'>
             <TabsList className='grid grid-cols-2 dark:bg-dashSides border-2  h-auto mb-12 p-0 w-[210px] max-w-[400px] mx-auto '>

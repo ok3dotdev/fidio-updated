@@ -89,7 +89,7 @@ appServer/*
 # !*customModules/admin/components
 # !*customModules/admin/index.js
 # !*layout/*
-# !*app.config.js
-# !*app.schema.js
+!*app.config.js
+!*app.schema.js
 
 # Project Ignore Files

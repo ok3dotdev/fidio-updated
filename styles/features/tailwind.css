@@ -107,11 +107,7 @@ input {
 }
 
 .Ecommerce_Cart_Container > input {
-  color: black !important;
-}
-
-.Ecommerce_Cart_Container input {
-  color: black !important;
+  /* color: black !important; */
 }
 
 @media (max-width: 768px) {
