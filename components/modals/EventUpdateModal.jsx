@@ -222,6 +222,7 @@ const EventUpdateModal = (props) => {
       imgCache: imgCache,
       imgFor: surveyState.imgFor,
       _loggedIn: props?._loggedIn, // Requires Authentication
+      // status: isDraft ? 'save' : 'publish' // Define isDraft somewhere
     });
     if (res && res.product) {
       setModalOpen(false);
