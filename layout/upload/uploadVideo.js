@@ -296,13 +296,28 @@ const Module = (props) => {
     }
   });
 
+  props._LocalEventEmitter.unsubscribe('reset_upload')
+  props._LocalEventEmitter.subscribe('reset_upload', e => {
+      if (e) {
+        loadRecord(videoDocument);
+      }
+  });
+
   const handleStepChange = (step) => {
+    handleDisposePlayer(); // This sets initialized = false
     setCurrentStep(step);
-    handleDisposePlayer();
     setTimeout(() => {
-      loadRecord(videoDocument);
+      props._LocalEventEmitter.dispatch('reset_upload', {});
     }, 150);
   };
+
+  /** Will set authorization by association to a product */
+  const handleSetAuthorize = () => {
+    const id = '' // The id of the product/ticket to authorize the video by
+    const association = 'product'
+    let r = videoDocument.setAuthorizedBy(id, association, true)
+    setVideoDocumentProxy(r)
+  }
 
   const handleSetCurrentAssociationOption = React.useCallback((e) => {
     if (e?.currentTarget?.value) {
@@ -324,7 +339,8 @@ const Module = (props) => {
       setCurrentAssociationMethod(modif);
     }
   });
-  console.log('stp', currentStep);
+  console.log('stp', currentStep, 'asdajsasdasdasdjkdja');
+  console.log('Video', videoDocument, componentId, initialized)
 
   const handleAssociateRecord = React.useCallback((e) => {
     if (e?.currentTarget?.id) {
@@ -371,7 +387,10 @@ const Module = (props) => {
     return false;
   };
 
+  console.log('Video', videoDocument, componentId, initialized)
+
   const renderStepContent = () => {
+    console.log('Render Step Content', videoDocument, componentId, initialized)
     switch (currentStep) {
       case 1:
         return (

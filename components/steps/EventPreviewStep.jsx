@@ -51,6 +51,7 @@ const EventPreviewStep = ({ info, reset }) => {
         imgCache: imgCache,
         imgFor,
         _loggedIn: info?._loggedIn,
+        // status: isDraft ? 'save' : 'publish' // Define isDraft somewhere
       });
       if (res) {
         // console.log(res);
