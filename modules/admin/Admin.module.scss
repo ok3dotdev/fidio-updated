@@ -309,6 +309,7 @@
 
 .containerTwoSmallRight > div:last-child {
     flex-grow: 1;
+    min-width: 310px;
 }
 
 @media(max-width: 980px) {
