@@ -109,8 +109,7 @@ const StudioDash = (props) => {
         meta,
         limit: 10,
         sortField: 'created',
-        sort: 'desc',
-        published: true
+        sort: 'desc'
       });
 
       if (res && res.products) {
