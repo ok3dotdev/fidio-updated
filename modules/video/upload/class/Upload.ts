@@ -1,6 +1,6 @@
-import apiReq from 'modules/utility/api/apiReq'
+import { apiReq } from '/modules/utility/api'
 import { v4 as uuidv4 } from 'uuid'
-import { setNestedProperty } from 'modules/util'
+import { setNestedProperty } from '/modules/util'
 
 /**
  * Creates a video or handles existing

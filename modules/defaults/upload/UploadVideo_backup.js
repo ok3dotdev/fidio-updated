@@ -12,7 +12,7 @@ import Close from '@mui/icons-material/Close'
 
 
 const Module = props => {
-    const { ASSOCIATE_RECORDS, ASSOCIATION_METHODS, handleClearError, setPageError, pageError, setProcessing, processing, handlingMeta, setHandlingMetaProxy, setVideoDocumentProxy, fetchBusy, useVideos, videosContainerRef, loadVideo, status, componentId, initialized, videoDocumentRasterized, clipStartRef, clipDescriptionRef, currentAssociation, currentAssociationMethod, associateRecords, setAssociateRecords, videoDocument, handlePublish, handleStartUpload, setVideoDocumentRasterized, setCurrentAssociationMethod, setCurrentAssociation, currentAssociationLimit, getAssociateAttributes } = props
+    const { ASSOCIATE_RECORDS, ASSOCIATION_METHODS, handleClearError, setPageError, pageError, setProcessing, processing, handlingMeta, setHandlingMetaProxy, setVideoDocumentProxy, fetchBusy, useVideos, videosContainerRef, loadVideo, status, componentId, initialized, videoDocumentRasterized, clipStartRef, clipDescriptionRef, currentAssociation, currentAssociationMethod, associateRecords, setAssociateRecords, videoDocument, handlePublish, handleStartUpload, setVideoDocumentRasterized, setCurrentAssociationMethod, setCurrentAssociation, currentAssociationLimit, getAssociateAttributes, loadRecord, handleDisposePlayer } = props
 
     const updateInput = React.useCallback(e => {
         const modif = e?.target?.getAttribute('modif')
@@ -189,6 +189,9 @@ const Module = props => {
         return false
     }
 
+    // (props) handleDisposePlayer(playerId: String optional) // Will dispose player after it is removed from DOM 
+    // (props) loadRecord(videoDocument: Video, playerId: String optional) // Will instantiate player using "Player". Run in setTimeout after painting player to DOM
+
     return (
         <div className={`${styles.container} ${props.className} Upload_Container PagePadding`}>
             <h3>Upload</h3>
@@ -330,7 +333,7 @@ const Module = props => {
                                         videoDocument?.status === 'published'
                                             ? <React.Fragment>
                                                 {
-                                                    videoDocument?.meta?.private
+                                                    videoDocumentRasterized?.meta?.private
                                                         ? <button className='Video_UnprivateButton' onClick={handlePublish} modif='unprivate'>Unprivate</button>
                                                         : <button className='Video_PrivateButton' onClick={handlePublish} modif='private'>Make Private</button>
                                                 }
