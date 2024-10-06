@@ -213,8 +213,8 @@ const StudioDash = (props) => {
               </SelectTrigger>
               <SelectContent className='bg-dashBg'>
                 <SelectGroup onChange={handleSearch}>
-                  <SelectItem value='pending'>Pending</SelectItem>
-                  <SelectItem value='approved'>Approved</SelectItem>
+                  <SelectItem value='draft'>Draft</SelectItem>
+                  <SelectItem value='published'>Published</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>

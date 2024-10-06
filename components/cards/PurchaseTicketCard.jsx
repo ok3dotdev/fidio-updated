@@ -4,18 +4,23 @@ import { Button } from '@/components/ui/button';
 import { Ticket } from 'lucide-react';
 
 const TicketCard = ({ ticket, cdn }) => {
+  // Base64 encoded SVG for a generic placeholder image
+  const placeholderImage = `data:image/svg+xml;base64,${btoa(
+    '<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#333"/><text x="50%" y="50%" font-family="Arial" font-size="24" fill="#666666" text-anchor="middle" dy=".3em">No Image</text></svg>'
+  )}`;
+
   return (
     <Link href={`/events/${ticket.id}`}>
       <div className='relative'>
-        {ticket.images[0] ? (
-          <img
-            src={`${cdn?.static}/${ticket.images[0]?.name}`}
-            className='aspect-square object-cover w-full rounded-[8px]'
-            alt={ticket.name}
-          />
-        ) : (
-          <img src='/img/internal/althero.png' className='rounded-[8px]' />
-        )}
+        <img
+          src={
+            ticket.images[0]
+              ? `${cdn?.static}/${ticket.images[0]?.name}`
+              : placeholderImage
+          }
+          className='aspect-square object-cover w-full rounded-[8px]'
+          alt={ticket.name || 'Event placeholder'}
+        />
         {ticket?.meta?.startTime && (
           <div className='absolute top-2 right-2 bg-white text-black text-xs font-bold px-2 py-1 rounded'>
             {ticket.meta.startTime}

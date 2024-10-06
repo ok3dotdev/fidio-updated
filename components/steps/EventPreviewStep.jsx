@@ -38,8 +38,8 @@ const EventPreviewStep = ({ info, reset }) => {
   const { toast } = useToast();
   const router = useRouter();
 
-  const createEvent = async () => {
-    // console.log('Run', pipelineDbItem, eventDetails);
+  const createEvent = async (draft) => {
+    console.log('draft', draft);
     for (let i = 0; i < imgFor.length; i++) {
       // console.log(imgFor[i]);
     }
@@ -51,6 +51,7 @@ const EventPreviewStep = ({ info, reset }) => {
         imgCache: imgCache,
         imgFor,
         _loggedIn: info?._loggedIn,
+        status: draft ? 'save' : 'publish', // Define isDraft somewhere
       });
       if (res) {
         // console.log(res);
@@ -66,8 +67,8 @@ const EventPreviewStep = ({ info, reset }) => {
     }
   };
 
-  const handleConfirmEvent = async () => {
-    await createEvent();
+  const handleConfirmEvent = async (draft = false) => {
+    await createEvent(draft);
     setSent(true);
     toast({
       title: 'Success!',
@@ -178,7 +179,7 @@ const EventPreviewStep = ({ info, reset }) => {
             </div>
           )}
           {!sent && (
-            <div className='mt-4 space-x-2 absolute right-0'>
+            <div className='mt-4 space-x-2 absolute right-0 flex justify-between w-full'>
               <Button
                 role=''
                 className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
@@ -189,12 +190,23 @@ const EventPreviewStep = ({ info, reset }) => {
               >
                 Go back safely
               </Button>
-              <Button
-                onClick={handleConfirmEvent}
-                className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
-              >
-                Confirm event
-              </Button>
+              <div className='space-x-2'>
+                <Button
+                  role=''
+                  className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
+                  onClick={() => {
+                    handleConfirmEvent(true);
+                  }}
+                >
+                  Save as draft
+                </Button>
+                <Button
+                  onClick={handleConfirmEvent}
+                  className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
+                >
+                  Confirm event
+                </Button>
+              </div>
             </div>
           )}
         </div>

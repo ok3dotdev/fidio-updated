@@ -22,10 +22,7 @@ const MobileMenu = (props) => {
   return (
     <Sheet className='p-2 bg-dashBg'>
       <SheetTrigger asChild>
-        <Button
-          variant='outline'
-          className='dark:bg-dashBg bg-dashBg dark:border-none '
-        >
+        <Button variant='outline' className=' dark:border-none '>
           <svg
             width='30'
             height='15'
@@ -79,7 +76,7 @@ const MobileMenu = (props) => {
             <div>
               <Button
                 onClick={handleLogout}
-                className='dark:bg-slate-700 dark:text-white font-medium p-2 text-center rounded-md w-full p-2'
+                className='dark:bg-slate-700 dark:text-white dark:hover:text-black font-medium p-2 text-center rounded-md w-full'
                 type='submit'
               >
                 Logout
@@ -89,7 +86,7 @@ const MobileMenu = (props) => {
             <>
               <Link
                 href='/signin'
-                className='dark:bg-slate-700 dark:text-white font-medium p-2 text-center rounded-md'
+                className='dark:bg-slate-700 dark:text-white dark:hover:text-black font-medium p-2 text-center rounded-md'
                 type='submit'
               >
                 Sign In

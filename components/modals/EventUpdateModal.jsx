@@ -233,7 +233,7 @@ const EventUpdateModal = (props) => {
   if (loading) {
     return (
       <div className='absolute w-full left-0 z-40 flex justify-center px-4 '>
-        <div className=' p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-hidden '>
+        <div className=' p-8 md:max-w-[600px] w-full mt-14 mb-4 overflow-y-hidden md:min-w'>
           <div className='max-w-screen-2xl mx-auto w-full pb-10 '>
             <div className='h-[500px] w-full flex items-center justify-center'>
               <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
@@ -303,7 +303,7 @@ const EventUpdateModal = (props) => {
                   <label htmlFor='stream start'>
                     When does your stream start and end?
                   </label>
-                  <div className='grid xl:grid-cols-3 grid-cols-1 gap-x-2 gap-y-2 '>
+                  <div className='flex flex-col gap-x-2 gap-y-2 '>
                     <div className='relative w-full'>
                       <Controller
                         control={control}
@@ -320,24 +320,26 @@ const EventUpdateModal = (props) => {
                         }}
                       />
                     </div>
-                    <div className='relative'>
-                      <Input
-                        placeholder='Start time'
-                        type='time'
-                        defaultValue={pipelineDbItem?.meta?.startTime}
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                        {...register('startTime')}
-                      />
-                    </div>
-                    <div className='relative'>
-                      <Input
-                        placeholder='End time'
-                        type='time'
-                        defaultValue={pipelineDbItem?.meta?.endTime}
-                        className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                        {...register('endTime')}
-                      />
-                      {/* <SearchOutlinedIcon className='absolute right-2 top-2.5 h-4 w-4 text-muted-foreground' /> */}
+                    <div className='flex w-full justify-between items-center space-x-2'>
+                      <div className='relative flex-1'>
+                        <Input
+                          placeholder='Start time'
+                          type='time'
+                          defaultValue={pipelineDbItem?.meta?.startTime}
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium w-full'
+                          {...register('startTime')}
+                        />
+                      </div>
+                      <div className='text-white font-bold'>-</div>
+                      <div className='relative flex-1'>
+                        <Input
+                          placeholder='End time'
+                          type='time'
+                          defaultValue={pipelineDbItem?.meta?.endTime}
+                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium w-full'
+                          {...register('endTime')}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

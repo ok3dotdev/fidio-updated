@@ -7,18 +7,24 @@ const LiveEventCard = ({ live, cdn }) => {
   const { relevant_products: item } = live;
   console.log('live', live, item);
   if (!live) return;
+
+  // Base64 encoded SVG for a generic live stream placeholder image
+  const placeholderImage = `data:image/svg+xml;base64,${btoa(
+    '<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#333333"/><text x="50%" y="50%" font-family="Arial" font-size="24" fill="#FFFFFF" text-anchor="middle" dy=".3em">Live Stream</text><circle cx="30" cy="30" r="10" fill="#FF0000"/></svg>'
+  )}`;
+
   return (
     <Link href={`/w?v=${live.id}`}>
       <div className='relative'>
-        {item && item[0]?.images && item[0]?.images[0] ? (
-          <img
-            src={`${cdn?.static}/${item[0].images[0]?.name}`}
-            className='aspect-square object-cover w-full rounded-[8px]'
-            alt={live.name}
-          />
-        ) : (
-          <img src='/img/internal/althero.png' className='rounded-[8px]' />
-        )}
+        <img
+          src={
+            item && item[0]?.images && item[0]?.images[0]
+              ? `${cdn?.static}/${item[0].images[0]?.name}`
+              : placeholderImage
+          }
+          className='aspect-square object-cover w-full rounded-[8px]'
+          alt={live.name || 'Live stream placeholder'}
+        />
         <div className='absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded animate-pulse'>
           LIVE
         </div>

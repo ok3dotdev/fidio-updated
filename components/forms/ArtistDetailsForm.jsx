@@ -169,7 +169,7 @@ const ArtistDetailsForm = ({ control, register, handleSubmit, reset }) => {
               <div className='flex items-center gap-x-2'>
                 <Input
                   name='detailmeta.lineup[0].title'
-                  placeholder='Asake'
+                  placeholder='Artist Name'
                   className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                   ref={register}
                   {...register('detailmeta.lineup[0].title')}

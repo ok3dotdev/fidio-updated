@@ -93,15 +93,25 @@ const EventDetailsForm = ({
               <Controller
                 control={control}
                 name='banner.image'
-                render={({ field: { onChange } }) => (
-                  <UploadZone
-                    handleImageUpload={(file) => {
-                      onChange(file);
-                    }}
-                    handleNewFile={handleNewFile}
-                    setbannerImage={setbannerImage}
-                    bannerImage={bannerImage}
-                  />
+                // rules={{
+                //   required: 'Banner image is required',
+                //   validate: (value) =>
+                //     (value && value.length > 0) || 'Banner image is required',
+                // }}
+                render={({ field: { onChange }, fieldState: { error } }) => (
+                  <>
+                    <UploadZone
+                      handleImageUpload={(file) => {
+                        onChange(file);
+                      }}
+                      handleNewFile={handleNewFile}
+                      setbannerImage={setbannerImage}
+                      bannerImage={bannerImage}
+                    />
+                    {error && (
+                      <p className='text-red-500 text-xs'>{error.message}</p>
+                    )}
+                  </>
                 )}
               />
             </div>
