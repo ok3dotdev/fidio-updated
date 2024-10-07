@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Close from '@mui/icons-material/Close';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
@@ -80,48 +80,33 @@ const EventUpdateModal = (props) => {
   const allowedTypes = ['image/jpeg', 'image/png'];
 
   // This will add the file to the FormData instance and append it to the appropriate array during API call
-  const handleNewFile = React.useCallback((e) => {
-    const useForm = imgCache;
-    const useImgName = uuidv4();
-    const modif = 'featureImg'; // Valid names are 'featureImg', 'leadImg', 'productImg', 'lineup'
-    const temp = surveyState;
-    let ext;
-    // Option 1: Use the method below to apply to shared imgCache and imgFor
-    useForm.append(
-      'image',
-      Array.from(e?.target?.files)
-        .filter((m) => allowedTypes.indexOf(m.type) > -1)
-        .map((m) => {
-          var blob = m.slice(0, m.size, m.type);
-          ext =
-            allowedTypes[allowedTypes.indexOf(m.type)].match(
-              /\/([a-zA-Z0-9].*)/
-            )[1];
-          return new File([blob], `${useImgName}.${ext}`, { type: m.type });
-        })[0]
-    );
-    const useTempImgFor = temp.imgFor;
-    const imageObject = {
-      name: `${useImgName}.${ext}`,
-      modif: modif,
-      id: uuidv4(),
-    };
-    if (modif === 'lineup') {
-      imageObject.title = 'Lineup Artist Title';
-      imageObject.description = 'Lineup Description';
-      imageObject.time = '14:30';
-    }
-    useTempImgFor.push(imageObject);
-    temp.imgFor = useTempImgFor;
+  const handleNewFile = useCallback(
+    (files) => {
+      console.log('updating', files);
+      if (files && files.length > 0) {
+        const file = files[0];
+        const useForm = new FormData();
+        const useImgName = uuidv4();
+        const modif = 'featureImg';
+        let ext = file.name.split('.').pop();
 
-    //// Option 2: If you want to merge the temporary file cache "imgCache" and image info "surveyState.imgFor" into surveyState.pipelineObject keys for simpler transformation during input you can do the following
-    // const ext = allowedTypes.indexOf(e.target.files[0].type) > -1 ? e.target.files[0].type : null
-    // temp.pipelineObject.lineup = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
-    //// The same works with product images
-    // temp.pipelineObject.images = [ { name: useImgName, modif: modif, id: uuidv4(), image: new File([e.target.files[0]], `${useImgName}.${ext}`, { type: e.target.files[0].type })) } ]
-    setSurveyState(temp);
-    setImgCache(useForm);
-  });
+        useForm.append('image', file, `${useImgName}.${ext}`);
+        setImgCache(useForm);
+
+        const useTempImgFor = imgFor;
+        const imageObject = {
+          name: `${useImgName}.${ext}`,
+          modif,
+          id: uuidv4(),
+        };
+        useTempImgFor.push(imageObject);
+        setImgFor(useTempImgFor);
+        setImgCache(useForm);
+        // setSurveyState(temp);
+      }
+    },
+    [imgCache, imgFor, setImgCache, setImgFor]
+  );
 
   const handleImageUpload = (e) => {
     const file = e?.target?.files[0];
@@ -273,7 +258,7 @@ const EventUpdateModal = (props) => {
                     name='banner.image'
                     defaultValue={pipelineDbItem?.images?.[0]?.name}
                     render={({
-                      field: { onChange },
+                      field: { onChange, value },
                       fieldState: { error },
                     }) => (
                       <>
@@ -281,9 +266,7 @@ const EventUpdateModal = (props) => {
                           handleImageUpload={(file) => {
                             onChange(file);
                           }}
-                          handleNewFile={(files) =>
-                            handleNewFile(files, 'featureImg')
-                          }
+                          handleNewFile={handleNewFile}
                           setbannerImage={setBannerImage}
                           bannerImage={bannerImage}
                           defaultImage={`${props?.cdn?.static}/${pipelineDbItem?.images?.[0]?.name}`}

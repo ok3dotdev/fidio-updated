@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { useDropzone } from 'react-dropzone';
 
-const UploadZone = ({ setbannerImage, bannerImage, handleNewFile }) => {
+const UploadZone = ({
+  setbannerImage,
+  bannerImage,
+  handleNewFile,
+  defaultImage,
+}) => {
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/png': ['.png'],
       'image/jpeg': ['.jpg', '.jpeg'],
     },
     onDrop: (acceptedFiles) => {
-      //console.log('Dropped files:', acceptedFiles);
+      console.log('Dropped files:', acceptedFiles);
       acceptedFiles.forEach((file) => {
         if (file.type && file.type.startsWith('image/')) {
           const reader = new FileReader();
@@ -30,7 +35,9 @@ const UploadZone = ({ setbannerImage, bannerImage, handleNewFile }) => {
       {...getRootProps()}
       className='w-full h-24 flex flex-col items-center justify-center border-dashed border-2 border-gray-400 rounded-lg cursor-pointer '
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) , url(${bannerImage})`,
+        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) , url(${
+          bannerImage || defaultImage
+        })`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
