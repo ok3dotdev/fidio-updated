@@ -296,11 +296,11 @@ const Module = (props) => {
     }
   });
 
-  props._LocalEventEmitter.unsubscribe('reset_upload')
-  props._LocalEventEmitter.subscribe('reset_upload', e => {
-      if (e) {
-        loadRecord(videoDocument);
-      }
+  props._LocalEventEmitter.unsubscribe('reset_upload');
+  props._LocalEventEmitter.subscribe('reset_upload', (e) => {
+    if (e) {
+      loadRecord(videoDocument);
+    }
   });
 
   const handleStepChange = (step) => {
@@ -313,11 +313,12 @@ const Module = (props) => {
 
   /** Will set authorization by association to a product */
   const handleSetAuthorize = () => {
-    const id = '' // The id of the product/ticket to authorize the video by
-    const association = 'product'
-    let r = videoDocument.setAuthorizedBy(id, association, true)
-    setVideoDocumentProxy(r)
-  }
+    console.log('setting association');
+    const id = ''; // The id of the product/ticket to authorize the video by
+    const association = 'product';
+    let r = videoDocument.setAuthorizedBy(id, association, true);
+    setVideoDocumentProxy(r);
+  };
 
   const handleSetCurrentAssociationOption = React.useCallback((e) => {
     if (e?.currentTarget?.value) {
@@ -340,7 +341,7 @@ const Module = (props) => {
     }
   });
   console.log('stp', currentStep, 'asdajsasdasdasdjkdja');
-  console.log('Video', videoDocument, componentId, initialized)
+  console.log('Video', videoDocument, componentId, initialized);
 
   const handleAssociateRecord = React.useCallback((e) => {
     if (e?.currentTarget?.id) {
@@ -387,10 +388,10 @@ const Module = (props) => {
     return false;
   };
 
-  console.log('Video', videoDocument, componentId, initialized)
+  console.log('Video', videoDocument, componentId, initialized);
 
   const renderStepContent = () => {
-    console.log('Render Step Content', videoDocument, componentId, initialized)
+    console.log('Render Step Content', videoDocument, componentId, initialized);
     switch (currentStep) {
       case 1:
         return (
