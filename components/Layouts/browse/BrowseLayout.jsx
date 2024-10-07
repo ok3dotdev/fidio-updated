@@ -19,7 +19,9 @@ const BrowseLayout = (props) => {
         <FeaturedEventSlider {...props} />
       </div>
       <div className='p-4 py-8 max-w-screen-xl mx-auto'>{children}</div>
-      <SubscribeForm />
+      <div className='px-2'>
+        <SubscribeForm />
+      </div>
       <BrowseFooter />
     </div>
   );

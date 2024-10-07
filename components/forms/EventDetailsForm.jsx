@@ -93,11 +93,6 @@ const EventDetailsForm = ({
               <Controller
                 control={control}
                 name='banner.image'
-                // rules={{
-                //   required: 'Banner image is required',
-                //   validate: (value) =>
-                //     (value && value.length > 0) || 'Banner image is required',
-                // }}
                 render={({ field: { onChange }, fieldState: { error } }) => (
                   <>
                     <UploadZone

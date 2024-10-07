@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useToast } from '@/components/ui/use-toast';
 
-const SubscribeForm = () => {
+const SubscribeForm = ({ classes }) => {
   const { toast } = useToast();
   const [term, setTerm] = React.useState('');
   const [error, setError] = React.useState('');
@@ -55,7 +55,7 @@ const SubscribeForm = () => {
     }
   }
   return (
-    <div className='relative max-w-screen-xl mx-auto mt-12'>
+    <div className={'relative max-w-screen-xl mx-auto mt-12 ' + classes}>
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8 flex flex-col items-center'>
         <h3 className='font-bold text-3xl text-center'>
           Stay Updated with Our Newsletter

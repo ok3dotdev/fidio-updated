@@ -10,14 +10,14 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
-// import { logout } from 'modules/utility/onboarding/SignIn.js';
+import { useRouter } from 'next/router';
+import { logout } from 'modules/utility/onboarding/SignIn.js';
 
 const MobileMenu = (props) => {
-  // const router = useRouter();
+  const router = useRouter();
   const handleLogout = (e) => {
-    // logout(props._setLoggedIn);
-    // router.push('/');
+    logout(props._setLoggedIn);
+    router.push('/');
   };
   return (
     <Sheet className='p-2 bg-dashBg'>

@@ -9,6 +9,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import apiReq from '/modules/utility/api/apiReq'; // Import API for making DB Requests
 import { v4 as uuidv4 } from 'uuid';
+import UploadZone from '@/components/inputs/UploadZone';
 
 const EventUpdateModal = (props) => {
   const { setModalOpen, ticket } = props;
@@ -35,6 +36,7 @@ const EventUpdateModal = (props) => {
     pipelineObject: {},
     imgFor: [],
   });
+  const [bannerImage, setBannerImage] = React.useState(null);
 
   React.useEffect(() => {
     if (!componentDidMount) {
@@ -264,6 +266,38 @@ const EventUpdateModal = (props) => {
           >
             <Card className=' dark:bg-transparent mt-8'>
               <CardContent className='space-y-4 mt-4'>
+                <div className='flex flex-col justify-center space-y-2'>
+                  <label htmlFor=''>Banner image</label>
+                  <Controller
+                    control={control}
+                    name='banner.image'
+                    defaultValue={pipelineDbItem?.images?.[0]?.name}
+                    render={({
+                      field: { onChange },
+                      fieldState: { error },
+                    }) => (
+                      <>
+                        <UploadZone
+                          handleImageUpload={(file) => {
+                            onChange(file);
+                          }}
+                          handleNewFile={(files) =>
+                            handleNewFile(files, 'featureImg')
+                          }
+                          setbannerImage={setBannerImage}
+                          bannerImage={bannerImage}
+                          defaultImage={`${props?.cdn?.static}/${pipelineDbItem?.images?.[0]?.name}`}
+                        />
+                        {error && (
+                          <p className='text-red-500 text-xs'>
+                            {error.message}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  />
+                </div>
+                <hr className='w-full mt-6' />
                 <div className='space-y-2 mt-8'>
                   <label htmlFor='title'>
                     {' '}
