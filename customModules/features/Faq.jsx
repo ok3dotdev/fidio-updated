@@ -53,8 +53,8 @@ const FaqContent = () => {
             <p className='font-sans'>
               If you're interested in uploading your content or streaming on
               Fidio, please contact{' '}
-              <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
-                support@fidio.ca
+              <a href='mailto:admin@fidio.ca' class='text-blue-500'>
+                admin@fidio.ca
               </a>
             </p>
           </section>
@@ -85,8 +85,8 @@ const FaqContent = () => {
             </h3>
             <p className='font-sans'>
               If you experience technical issues, please contact
-              <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
-                support@fidio.ca
+              <a href='mailto:admin@fidio.ca' class='text-blue-500'>
+                admin@fidio.ca
               </a>{' '}
               to report the issue.
             </p>

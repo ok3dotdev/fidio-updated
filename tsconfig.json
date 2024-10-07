@@ -2,10 +2,18 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "modules/*": ["modules/*"],
-      "/modules/*": ["modules/*"]
+      "modules/*": [
+        "modules/*"
+      ],
+      "/modules/*": [
+        "modules/*"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -27,5 +35,7 @@
     "pages/index.js",
     "pages/_app.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

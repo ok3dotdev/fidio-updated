@@ -34,7 +34,7 @@ const faq = (children) => {
     },
     {
       question: 'How can I upload my own content or stream on Fidio? ',
-      ans: `If you're interested in uploading your content or streaming on Fidio, please contact support@fidio.ca`,
+      ans: `If you're interested in uploading your content or streaming on Fidio, please contact admin@fidio.ca`,
     },
     {
       question: 'Do I need to download an app to use Fidio on my mobile device',

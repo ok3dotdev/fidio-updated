@@ -103,7 +103,10 @@ const BrowseFooter = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='mailto:admin@fidio.ca'
+                    className='hover:text-white'
+                  >
                     Contact us
                   </Link>
                 </li>
