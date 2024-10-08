@@ -25,7 +25,7 @@ const nextConfig = {
       __dirname,
       'customModules'
     );
-    config.resolve.alias['@'] = path.join(__dirname, './');
+    config.resolve.alias['@/emails'] = path.join(__dirname, 'emails/');
     config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles');
     config.resolve.alias['/layout'] = path.join(__dirname, 'layout/');
 

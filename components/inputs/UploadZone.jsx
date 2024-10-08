@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { useDropzone } from 'react-dropzone';
 
@@ -8,17 +8,20 @@ const UploadZone = ({
   handleNewFile,
   defaultImage,
 }) => {
+  console.log('UploadZone rendered'); // Add this line
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/png': ['.png'],
       'image/jpeg': ['.jpg', '.jpeg'],
     },
     onDrop: (acceptedFiles) => {
-      console.log('Dropped files:', acceptedFiles);
+      console.log('onDrop called with:', acceptedFiles); // Add this line
       acceptedFiles.forEach((file) => {
         if (file.type && file.type.startsWith('image/')) {
           const reader = new FileReader();
           reader.onload = (event) => {
+            console.log('Setting banner image'); // Add this line
             setbannerImage(event.target.result);
           };
           reader.readAsDataURL(file);
@@ -26,6 +29,7 @@ const UploadZone = ({
           console.warn('Invalid file:', file);
         }
       });
+      console.log('Calling handleNewFile'); // Add this line
       handleNewFile(acceptedFiles);
     },
   });

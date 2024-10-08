@@ -1,4 +1,4 @@
-import ProductPurchaseEmail from '@/emails/ProductPurchaseEmail';
+import ProductPurchaseEmail from '../../emails/ProductPurchaseEmail';
 import { render } from '@react-email/render';
 
 /**
