@@ -121,7 +121,7 @@ const EventUpdateModal = (props) => {
 
   const handleLineupUpload = useCallback(
     (e, index) => {
-      const tempId = uuidv4();
+      const tempId = lineUpInfo[index]?.id
       const file = e?.target?.files[0];
 
       if (file) {
@@ -216,7 +216,7 @@ const EventUpdateModal = (props) => {
   );
 
   const addPerformer = useCallback(() => {
-    setLineUpInfo([...lineUpInfo, { title: '', image: null, bio: '' }]);
+    setLineUpInfo([...lineUpInfo, { id: uuidv4(), title: '', image: null, bio: '' }]);
   }, [lineUpInfo, setLineUpInfo]);
 
   const onSubmit = async (data) => {
