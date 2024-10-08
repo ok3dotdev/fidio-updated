@@ -142,7 +142,7 @@ const EventUpdateModal = (props) => {
         reader.readAsDataURL(file);
       }
 
-      const useForm = new FormData(imgCache);
+      const useForm = imgCache
       const useImgName = uuidv4();
       const modif = 'lineup';
       let ext;
@@ -193,6 +193,12 @@ const EventUpdateModal = (props) => {
       const performerId = lineUpInfo[index].id;
       const updatedImgFor = imgFor.filter((img) => img.id !== performerId);
 
+      console.log(updatedLineUpInfo)
+      let p = { ...pipelineDbItem }
+      if (p?.detailmeta?.lineup) {
+        p.detailmeta.lineup = updatedLineUpInfo
+      }
+      setPipelineDbItem(p)
       setEventDetails(updatedEventDetails);
       setLineUpInfo(updatedLineUpInfo);
       setImgFor(updatedImgFor);
@@ -215,14 +221,21 @@ const EventUpdateModal = (props) => {
 
   const onSubmit = async (data) => {
     await trigger();
+    let usePipelineDbItem = { ...pipelineDbItem }
+    console.log(imgFor, data, usePipelineDbItem)
+    const totalProductImages = imgFor.filter(m => [ 'featureImg', 'leadImg', 'productImg' ].indexOf(m?.modif) > -1)
+    if (usePipelineDbItem?.images?.[0] && totalProductImages?.length > 0) { // We only want 1 single image so remove existing if present
+      usePipelineDbItem.images.splice(0, 1)
+    }
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
-      pipelineDbItem: pipelineDbItem,
+      pipelineDbItem: usePipelineDbItem,
       pipelineObject: data,
       imgCache: imgCache,
       imgFor: imgFor,
       _loggedIn: props?._loggedIn,
     });
+    setComponentDidMount(false)
 
     if (res && res.product) {
       setModalOpen(false);
@@ -243,6 +256,8 @@ const EventUpdateModal = (props) => {
       </div>
     );
   }
+
+  console.log(pipelineDbItem, imgCache, imgFor)
 
   return (
     <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
@@ -427,7 +442,7 @@ const EventUpdateModal = (props) => {
                       <Input
                         name='detailmeta.lineup[0].title'
                         placeholder='Asake'
-                        defaultValue={pipelineDbItem.detailmeta.lineup[0].title}
+                        defaultValue={pipelineDbItem.detailmeta.lineup[0]?.title}
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         ref={register}
                         {...register('detailmeta.lineup[0].title')}
@@ -460,7 +475,7 @@ const EventUpdateModal = (props) => {
                       <div className='flex items-center gap-x-2'>
                         <Input
                           name='detailmeta.lineup[0].bio'
-                          defaultValue={pipelineDbItem.detailmeta.lineup[0].bio}
+                          defaultValue={pipelineDbItem.detailmeta.lineup[0]?.bio}
                           placeholder='Enter bio'
                           className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                           ref={register}
@@ -477,7 +492,7 @@ const EventUpdateModal = (props) => {
                         />
                       </div>
                     )) ||
-                      (pipelineDbItem.detailmeta.lineup[0].image && (
+                      (pipelineDbItem.detailmeta.lineup[0]?.image && (
                         <div>
                           <img
                             src={`${props?.cdn?.static}/${pipelineDbItem.detailmeta.lineup[0].image}`}
