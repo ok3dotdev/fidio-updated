@@ -18,7 +18,6 @@ const EventUpdateModal = (props) => {
     handleSubmit,
     reset,
     control,
-    setValue,
     trigger,
     formState: { errors },
   } = useForm();
@@ -121,28 +120,24 @@ const EventUpdateModal = (props) => {
 
   const handleLineupUpload = useCallback(
     (e, index) => {
-      const tempId = lineUpInfo[index]?.id
+      const tempId = lineUpInfo[index]?.id;
       const file = e?.target?.files[0];
 
       if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
-          const updatedLineUp =
-            index === 0
-              ? [{ id: tempId, title: '', image: null, bio: '' }]
-              : [...lineUpInfo];
+          const updatedLineUp = [...lineUpInfo];
           updatedLineUp[index] = {
             ...updatedLineUp[index],
             image: file,
             file: event?.target?.result,
-            id: tempId,
           };
           setLineUpInfo(updatedLineUp);
         };
         reader.readAsDataURL(file);
       }
 
-      const useForm = imgCache
+      const useForm = imgCache;
       const useImgName = uuidv4();
       const modif = 'lineup';
       let ext;
@@ -167,10 +162,20 @@ const EventUpdateModal = (props) => {
         id: tempId,
       };
 
-      setImgFor([...imgFor, imageObject]);
+      const useTempImgFor = imgFor;
+      useTempImgFor.push(imageObject);
+      setImgFor(useTempImgFor);
       setImgCache(useForm);
     },
-    [imgCache, imgFor, lineUpInfo, setImgCache, setImgFor, setLineUpInfo]
+    [
+      imgCache,
+      imgFor,
+      lineUpInfo,
+      setImgCache,
+      setImgFor,
+      setLineUpInfo,
+      allowedTypes,
+    ]
   );
 
   const deletePerformer = useCallback(
@@ -193,12 +198,12 @@ const EventUpdateModal = (props) => {
       const performerId = lineUpInfo[index].id;
       const updatedImgFor = imgFor.filter((img) => img.id !== performerId);
 
-      console.log(updatedLineUpInfo)
-      let p = { ...pipelineDbItem }
+      console.log(updatedLineUpInfo);
+      let p = { ...pipelineDbItem };
       if (p?.detailmeta?.lineup) {
-        p.detailmeta.lineup = updatedLineUpInfo
+        p.detailmeta.lineup = updatedLineUpInfo;
       }
-      setPipelineDbItem(p)
+      setPipelineDbItem(p);
       setEventDetails(updatedEventDetails);
       setLineUpInfo(updatedLineUpInfo);
       setImgFor(updatedImgFor);
@@ -216,17 +221,39 @@ const EventUpdateModal = (props) => {
   );
 
   const addPerformer = useCallback(() => {
-    setLineUpInfo([...lineUpInfo, { id: uuidv4(), title: '', image: null, bio: '' }]);
-  }, [lineUpInfo, setLineUpInfo]);
+    setLineUpInfo((prevLineUpInfo) => [
+      ...prevLineUpInfo,
+      { id: uuidv4(), title: '', image: null, bio: '' },
+    ]);
+  }, [setLineUpInfo]);
 
   const onSubmit = async (data) => {
     await trigger();
-    let usePipelineDbItem = { ...pipelineDbItem }
-    console.log(imgFor, data, usePipelineDbItem)
-    const totalProductImages = imgFor.filter(m => [ 'featureImg', 'leadImg', 'productImg' ].indexOf(m?.modif) > -1)
-    if (usePipelineDbItem?.images?.[0] && totalProductImages?.length > 0) { // We only want 1 single image so remove existing if present
-      usePipelineDbItem.images.splice(0, 1)
+    let usePipelineDbItem = { ...pipelineDbItem };
+
+    // Update lineUpInfo with new titles from data.detailmeta.lineup
+    const updatedLineUpInfo = lineUpInfo.map((item, index) => ({
+      ...item,
+      title: data.detailmeta.lineup[index]?.title || item.title,
+      bio: data.detailmeta.lineup[index]?.bio || item.bio,
+    }));
+
+    // Update data.detailmeta.lineup with the updatedLineUpInfo
+    pipelineDbItem.detailmeta.lineup = updatedLineUpInfo;
+
+    // Update the lineUpInfo state
+    setLineUpInfo(updatedLineUpInfo);
+
+    console.log('lineupInfor', data, updatedLineUpInfo);
+
+    const totalProductImages = imgFor.filter(
+      (m) => ['featureImg', 'leadImg', 'productImg'].indexOf(m?.modif) > -1
+    );
+    if (usePipelineDbItem?.images?.[0] && totalProductImages?.length > 0) {
+      // We only want 1 single image so remove existing if present
+      usePipelineDbItem.images.splice(0, 1);
     }
+
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
       pipelineDbItem: usePipelineDbItem,
@@ -235,7 +262,7 @@ const EventUpdateModal = (props) => {
       imgFor: imgFor,
       _loggedIn: props?._loggedIn,
     });
-    setComponentDidMount(false)
+    setComponentDidMount(false);
 
     if (res && res.product) {
       setModalOpen(false);
@@ -257,7 +284,7 @@ const EventUpdateModal = (props) => {
     );
   }
 
-  console.log(pipelineDbItem, imgCache, imgFor)
+  console.log(imgCache, imgFor, lineUpInfo);
 
   return (
     <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
@@ -442,7 +469,9 @@ const EventUpdateModal = (props) => {
                       <Input
                         name='detailmeta.lineup[0].title'
                         placeholder='Asake'
-                        defaultValue={pipelineDbItem.detailmeta.lineup[0]?.title}
+                        defaultValue={
+                          pipelineDbItem.detailmeta.lineup[0]?.title
+                        }
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         ref={register}
                         {...register('detailmeta.lineup[0].title')}
@@ -475,7 +504,9 @@ const EventUpdateModal = (props) => {
                       <div className='flex items-center gap-x-2'>
                         <Input
                           name='detailmeta.lineup[0].bio'
-                          defaultValue={pipelineDbItem.detailmeta.lineup[0]?.bio}
+                          defaultValue={
+                            pipelineDbItem.detailmeta.lineup[0]?.bio
+                          }
                           placeholder='Enter bio'
                           className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                           ref={register}
@@ -540,10 +571,13 @@ const EventUpdateModal = (props) => {
                           )}
                         />
                       </div>
-                      {performer.image && (
+                      {(performer.file || performer.image) && (
                         <div className='flex gap-x-2'>
                           <img
-                            src={`${props?.cdn?.static}/${performer.image}`}
+                            src={
+                              performer.file ||
+                              `${props?.cdn?.static}/${performer.image}`
+                            }
                             alt='Performer'
                             className='w-10 h-10 rounded-full object-cover'
                           />
