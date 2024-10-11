@@ -210,10 +210,19 @@ const EventUpdateModal = (props) => {
   );
 
   const addPerformer = useCallback(() => {
-    setLineUpInfo([...lineUpInfo, { title: '', image: null, bio: '' }]);
-  }, [lineUpInfo, setLineUpInfo]);
+    const updatedLineUpInfo = lineUpInfo;
+    updatedLineUpInfo.push({ id: uuidv4(), title: '', image: null, bio: '' });
+    setLineUpInfo(updatedLineUpInfo);
+  }, [lineUpInfo]);
 
-  const onSubmit = async (data) => {
+  const saveDraft = (data) => {
+    console.log('here', data);
+    let draft = true;
+    onSubmit(data, draft);
+  };
+  const onSubmit = async (data, draft = false) => {
+    console.log('draft', draft);
+    setLoading(true);
     await trigger();
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
@@ -348,8 +357,8 @@ const EventUpdateModal = (props) => {
                         }}
                       />
                     </div>
-                    <div className='flex'>
-                      <div className='relative'>
+                    <div className='flex justify-between gap-4'>
+                      <div className='relative w-full'>
                         <Input
                           placeholder='Start time'
                           type='time'
@@ -358,7 +367,7 @@ const EventUpdateModal = (props) => {
                           {...register('startTime')}
                         />
                       </div>
-                      <div className='relative'>
+                      <div className='relative w-full'>
                         <Input
                           placeholder='End time'
                           type='time'
@@ -547,7 +556,7 @@ const EventUpdateModal = (props) => {
                     <Button
                       type='button'
                       onClick={addPerformer}
-                      className='w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white'
+                      className='w-full dark:bg-dashBorder rounded-[6px] py-1 mt-4 dark:text-white dark:hover:text-black'
                     >
                       Add another performer{' '}
                     </Button>
@@ -581,10 +590,19 @@ const EventUpdateModal = (props) => {
                     />
                   </div>
                 </div>
-                <button className='w-full bg-accentY rounded-[8px]'>
-                  Modify
-                </button>
-                <div className='mt-4 space-x-2 w-full'>
+                <hr />
+                <div className='space-y-4 mt-8'>
+                  <button
+                    onClick={saveDraft}
+                    className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent w-full mt-8'
+                  >
+                    Save as draft
+                  </button>
+                  <button className='w-full bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60'>
+                    Publish
+                  </button>
+                </div>
+                {/* <div className='mt-4 space-x-2 w-full'>
                   <hr />
                   <p className='text-sm mt-4'>Cancel this event</p>
                   <div className='flex gap-4 w-full justify-between my-4 align-top'>
@@ -601,7 +619,7 @@ const EventUpdateModal = (props) => {
                   >
                     Cancel event
                   </button>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
           </form>

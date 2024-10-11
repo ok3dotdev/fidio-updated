@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StudioLayout from '@/components/Layouts/studio/StudioLayout';
 import Countdown from 'react-countdown';
 import copy from 'copy-to-clipboard';
+import { Loader2 } from 'lucide-react';
 
 import { pageDefaults } from '/app.config';
 import { getServerSidePropsDefault } from '/modules/utility.js';
@@ -46,7 +47,7 @@ const pageName = 'create';
 
 const EventView = (props) => {
   const [ticket, setTicket] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [startEnabled, setStartEnabled] = useState(false);
   const [streamStatusCheck, setStreamStatusCheck] = React.useState(null);
@@ -59,10 +60,13 @@ const EventView = (props) => {
 
   useEffect(() => {
     fetchTickets();
-  }, [props._loggedIn.identifier]);
+  }, [props?._loggedIn?.identifier, router.query.id]);
 
   useEffect(() => {
-    checkStreamStatus();
+    if (ticket) {
+      checkEventStartTime();
+      checkStreamStatus();
+    }
   }, [ticket]);
 
   const fetchTickets = async () => {
@@ -78,10 +82,24 @@ const EventView = (props) => {
         limit: 1,
       });
       if (res && res.products) {
-        // console.log('product', res.products[0]);
         setTicket(res.products[0] || []);
+        setLoading(false);
       }
-      setLoading(false);
+    }
+  };
+
+  const checkEventStartTime = () => {
+    if (ticket?.meta?.date && ticket?.meta?.startTime) {
+      const datePart = ticket.meta.date.split('T')[0];
+      const eventDateTime = new Date(`${datePart}T${ticket.meta.startTime}`);
+      const now = new Date();
+      const timeDifference = eventDateTime - now;
+      const minutesDifference = timeDifference / (1000 * 60);
+
+      console.log('time diff', minutesDifference);
+      if (minutesDifference > 0 && minutesDifference <= 45) {
+        setStartEnabled(true);
+      }
     }
   };
 
@@ -97,7 +115,7 @@ const EventView = (props) => {
     }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.data);
-      setHasCopied(true);
+      // setHasCopied(true);
       // console.log('checking', res.currentlyStreaming);
     }
   };
@@ -140,12 +158,7 @@ const EventView = (props) => {
   };
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (hours < 45) {
-      setStartEnabled(true);
-    }
-    if (completed) {
-      setStartEnabled(!setStartEnabled);
-    } else {
+    if (!completed) {
       return (
         <p className='text-3xl font-semibold text-center'>
           {days > 0 && `${days}days `}
@@ -167,7 +180,7 @@ const EventView = (props) => {
       });
       if (res?.status === 'success') {
         setCurrentlyStreaming(false);
-        setHasCopied(false);
+        // setHasCopied(false);
         props._setCurrentlyStreaming(false);
       }
     };
@@ -184,6 +197,17 @@ const EventView = (props) => {
   return (
     <StudioLayout {...props}>
       <div className='px-2 md:px-8'>
+        {loading ?? (
+          <div className='absolute w-full left-0 z-40 flex justify-center px-4 bg-black/90'>
+            <div className=' p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-hidden '>
+              <div className='max-w-screen-2xl mx-auto w-full pb-10 '>
+                <div className='h-[500px] w-full flex items-center justify-center'>
+                  <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         {!loading && ticket && (
           <div>
             {modalOpen && (
@@ -360,7 +384,7 @@ const EventView = (props) => {
                         >
                           <DialogTrigger asChild>
                             <button
-                              disabled={startEnabled}
+                              disabled={!startEnabled}
                               onClick={startStream}
                               className='bg-accentY py-2 rounded-[6px] w-full dark:hover:opacity-[0.9] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default'
                             >
@@ -387,7 +411,7 @@ const EventView = (props) => {
                                     readOnly
                                   />
                                   <Button
-                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                    className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white dark:hover:text-black'
                                     onClick={() =>
                                       copy(currentlyStreaming?.key || '')
                                     }
@@ -416,6 +440,10 @@ const EventView = (props) => {
                                 </div>
                               </div>
                             </div>
+                            <p className='text-xs text-dashtext mt-2 italic'>
+                              Please wait a few minutes for the stream keys to
+                              load if they are not immediately visible.
+                            </p>
                           </DialogContent>
                         </Dialog>
                         <p className='text-dashtext text-sm'>
@@ -456,9 +484,9 @@ const EventView = (props) => {
                               <CardContent className='space-y-2'>
                                 <div className='space-y-1'>
                                   <CardContent></CardContent>
-                                  <CardFooter className='space-x-1 flex flex-wrap'>
+                                  <CardFooter className='space-y-4 flex flex-wrap justify-center'>
                                     <Button
-                                      className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black ml-5'
+                                      className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black '
                                       onClick={endStream}
                                     >
                                       End Stream
@@ -470,9 +498,9 @@ const EventView = (props) => {
                                     >
                                       <DialogTrigger asChild>
                                         <Button
-                                          disabled={startEnabled}
+                                          disabled={!startEnabled}
                                           onClick={startStream}
-                                          className='dark:bg-accentY py-2 rounded-[6px] w-full dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default whitespace-nowrap'
+                                          className='dark:bg-accentY py-2 rounded-[6px]  dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default whitespace-nowrap w-full'
                                         >
                                           Show Keys
                                         </Button>
@@ -502,7 +530,7 @@ const EventView = (props) => {
                                                 readOnly
                                               />
                                               <Button
-                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white dark:hover:text-black'
                                                 onClick={() =>
                                                   copy(
                                                     currentlyStreaming?.key ||
@@ -529,7 +557,7 @@ const EventView = (props) => {
                                                 readOnly
                                               />
                                               <Button
-                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                                className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white dark:hover:text-black'
                                                 onClick={() =>
                                                   copy(
                                                     currentlyStreaming?.streamTo ||
@@ -542,6 +570,11 @@ const EventView = (props) => {
                                             </div>
                                           </div>
                                         </div>
+                                        <p className='text-xs text-dashtext mt-2 italic'>
+                                          Please wait a few minutes for the
+                                          stream keys to load if they are not
+                                          immediately visible.
+                                        </p>
                                       </DialogContent>
                                     </Dialog>
                                   </CardFooter>

@@ -40,9 +40,9 @@ const EventPreviewStep = ({ info, reset }) => {
 
   const createEvent = async (draft) => {
     console.log('draft', draft);
-    for (let i = 0; i < imgFor.length; i++) {
-      // console.log(imgFor[i]);
-    }
+    // for (let i = 0; i < imgFor.length; i++) {
+    //   // console.log(imgFor[i]);
+    // }
     try {
       const res = await apiReq('/product/createProduct', {
         apiUrl: info?.apiUrl,

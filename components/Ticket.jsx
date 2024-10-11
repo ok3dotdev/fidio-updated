@@ -10,12 +10,7 @@ import Image from 'next/image';
 
 const Ticket = ({ info, ticketData, viewMode }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
-  console.log(
-    'images',
-    `${info?.cdn?.static}/${images[0]?.name}`,
-    images,
-    ticketData
-  );
+  console.log(ticketData);
   if (viewMode === 'list') {
     return (
       <div
@@ -68,7 +63,9 @@ const Ticket = ({ info, ticketData, viewMode }) => {
               </p>
             </div>
             <span className='border-r-[1px] border-white w-1 h-[50%]'></span>
-            <p className='text-sm'>{meta?.status || 'Not set'}</p>
+            <p className='text-sm'>
+              {ticketData.published ? 'Published' : 'Draft'}
+            </p>
           </div>
         </div>
       </div>
