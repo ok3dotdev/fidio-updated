@@ -128,7 +128,7 @@ const EventUpdateModal = (props) => {
           const updatedLineUp = [...lineUpInfo];
           updatedLineUp[index] = {
             ...updatedLineUp[index],
-            image: file,
+            // image: file,
             file: event?.target?.result,
           };
           setLineUpInfo(updatedLineUp);
@@ -225,7 +225,8 @@ const EventUpdateModal = (props) => {
     // Update the lineUpInfo state
     setLineUpInfo(updatedLineUpInfo);
 
-    console.log('lineupInfor', data, imgFor, imgCache, pipelineDbItem);
+    console.log('lineupInfor', lineUpInfo, updatedLineUpInfo, data, imgFor, imgCache, pipelineDbItem);
+    imgCache?.getAll ? imgCache.getAll('image').map(m => console.log(m)) : null
 
     const totalProductImages = imgFor.filter(
       (m) => ['featureImg', 'leadImg', 'productImg'].indexOf(m?.modif) > -1
