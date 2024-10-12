@@ -18,7 +18,6 @@ const EventUpdateModal = (props) => {
     handleSubmit,
     reset,
     control,
-    setValue,
     trigger,
     formState: { errors },
   } = useForm();
@@ -79,7 +78,6 @@ const EventUpdateModal = (props) => {
 
   const handleNewFile = useCallback(
     (files) => {
-      console.log('here');
       const useForm = imgCache;
       const useImgName = uuidv4();
       const modif = 'featureImg';
@@ -121,28 +119,24 @@ const EventUpdateModal = (props) => {
 
   const handleLineupUpload = useCallback(
     (e, index) => {
-      const tempId = uuidv4();
+      const tempId = lineUpInfo[index]?.id;
       const file = e?.target?.files[0];
 
       if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
-          const updatedLineUp =
-            index === 0
-              ? [{ id: tempId, title: '', image: null, bio: '' }]
-              : [...lineUpInfo];
+          const updatedLineUp = [...lineUpInfo];
           updatedLineUp[index] = {
             ...updatedLineUp[index],
-            image: file,
+            // image: file,
             file: event?.target?.result,
-            id: tempId,
           };
           setLineUpInfo(updatedLineUp);
         };
         reader.readAsDataURL(file);
       }
 
-      const useForm = new FormData(imgCache);
+      const useForm = imgCache;
       const useImgName = uuidv4();
       const modif = 'lineup';
       let ext;
@@ -167,46 +161,44 @@ const EventUpdateModal = (props) => {
         id: tempId,
       };
 
-      setImgFor([...imgFor, imageObject]);
+      const useTempImgFor = imgFor;
+      useTempImgFor.push(imageObject);
+      setImgFor(useTempImgFor);
       setImgCache(useForm);
     },
-    [imgCache, imgFor, lineUpInfo, setImgCache, setImgFor, setLineUpInfo]
-  );
-
-  const deletePerformer = useCallback(
-    (index) => {
-      const updatedLineUpInfo = [...lineUpInfo];
-      updatedLineUpInfo.splice(index, 1);
-
-      const updatedLineup = eventDetails?.detailmeta?.lineup?.filter(
-        (_, i) => i !== index
-      );
-
-      const updatedEventDetails = {
-        ...eventDetails,
-        detailmeta: {
-          ...eventDetails.detailmeta,
-          lineup: updatedLineup,
-        },
-      };
-
-      const performerId = lineUpInfo[index].id;
-      const updatedImgFor = imgFor.filter((img) => img.id !== performerId);
-
-      setEventDetails(updatedEventDetails);
-      setLineUpInfo(updatedLineUpInfo);
-      setImgFor(updatedImgFor);
-      reset(updatedEventDetails);
-    },
     [
-      eventDetails,
+      imgCache,
       imgFor,
       lineUpInfo,
-      reset,
-      setEventDetails,
+      setImgCache,
       setImgFor,
       setLineUpInfo,
+      allowedTypes,
     ]
+  );
+  // Add this useEffect to log changes to lineUpInfo
+  useEffect(() => {
+    console.log('lineUpInfo changed:', lineUpInfo);
+  }, [lineUpInfo]);
+
+  // this is not working yet. Just addPerformer
+  const deletePerformer = useCallback(
+    (index) => {
+      const updatedLineUpInfo = lineUpInfo;
+      updatedLineUpInfo.splice(index, 1);
+
+      const updatedPipelineDbItem = {
+        ...pipelineDbItem,
+        detailmeta: {
+          ...pipelineDbItem.detailmeta,
+          lineup: updatedLineUpInfo,
+        },
+      };
+      setPipelineDbItem(updatedPipelineDbItem);
+
+      setLineUpInfo(updatedLineUpInfo);
+    },
+    [lineUpInfo]
   );
 
   const addPerformer = useCallback(() => {
@@ -215,26 +207,58 @@ const EventUpdateModal = (props) => {
     setLineUpInfo(updatedLineUpInfo);
   }, [lineUpInfo]);
 
-  const saveDraft = (data) => {
-    console.log('here', data);
-    let draft = true;
-    onSubmit(data, draft);
-  };
-  const onSubmit = async (data, draft = false) => {
-    console.log('draft', draft);
+  const onSubmit = async (data) => {
     setLoading(true);
     await trigger();
+    let usePipelineDbItem = { ...pipelineDbItem };
+
+    // Update lineUpInfo with new titles from data.detailmeta.lineup
+    const updatedLineUpInfo = lineUpInfo.map((item, index) => ({
+      ...item,
+      title: data.detailmeta.lineup[index]?.title || item.title,
+      bio: data.detailmeta.lineup[index]?.bio || item.bio,
+    }));
+
+    // Update data.detailmeta.lineup with the updatedLineUpInfo
+    pipelineDbItem.detailmeta.lineup = updatedLineUpInfo;
+
+    // Update the lineUpInfo state
+    setLineUpInfo(updatedLineUpInfo);
+
+    console.log(
+      'lineupInfor',
+      lineUpInfo,
+      updatedLineUpInfo,
+      data,
+      imgFor,
+      imgCache,
+      pipelineDbItem
+    );
+    imgCache?.getAll
+      ? imgCache.getAll('image').map((m) => console.log(m))
+      : null;
+
+    const totalProductImages = imgFor.filter(
+      (m) => ['featureImg', 'leadImg', 'productImg'].indexOf(m?.modif) > -1
+    );
+    if (usePipelineDbItem?.images?.[0] && totalProductImages?.length > 0) {
+      // We only want 1 single image so remove existing if present
+      usePipelineDbItem.images.splice(0, 1);
+    }
+
     const res = await apiReq('/product/createProduct', {
       apiUrl: props?.apiUrl,
-      pipelineDbItem: pipelineDbItem,
+      pipelineDbItem: usePipelineDbItem,
       pipelineObject: data,
       imgCache: imgCache,
       imgFor: imgFor,
       _loggedIn: props?._loggedIn,
     });
+    // setComponentDidMount(false);
 
     if (res && res.product) {
       setModalOpen(false);
+      setLoading(false);
       window.location.reload();
     }
   };
@@ -252,6 +276,8 @@ const EventUpdateModal = (props) => {
       </div>
     );
   }
+
+  console.log(imgCache, imgFor, lineUpInfo);
 
   return (
     <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
@@ -436,7 +462,9 @@ const EventUpdateModal = (props) => {
                       <Input
                         name='detailmeta.lineup[0].title'
                         placeholder='Asake'
-                        defaultValue={pipelineDbItem.detailmeta.lineup[0].title}
+                        defaultValue={
+                          pipelineDbItem.detailmeta.lineup[0]?.title
+                        }
                         className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                         ref={register}
                         {...register('detailmeta.lineup[0].title')}
@@ -469,7 +497,9 @@ const EventUpdateModal = (props) => {
                       <div className='flex items-center gap-x-2'>
                         <Input
                           name='detailmeta.lineup[0].bio'
-                          defaultValue={pipelineDbItem.detailmeta.lineup[0].bio}
+                          defaultValue={
+                            pipelineDbItem.detailmeta.lineup[0]?.bio
+                          }
                           placeholder='Enter bio'
                           className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                           ref={register}
@@ -486,7 +516,7 @@ const EventUpdateModal = (props) => {
                         />
                       </div>
                     )) ||
-                      (pipelineDbItem.detailmeta.lineup[0].image && (
+                      (pipelineDbItem.detailmeta.lineup[0]?.image && (
                         <div>
                           <img
                             src={`${props?.cdn?.static}/${pipelineDbItem.detailmeta.lineup[0].image}`}
@@ -500,58 +530,64 @@ const EventUpdateModal = (props) => {
                 <hr className='w-full mt-6' />
                 <h3 className=''>OTHER PERFORMERS</h3>
                 <div className='space-y-4'>
-                  {lineUpInfo.slice(1).map((performer, index) => (
-                    <div key={performer.id} className='space-y-2'>
-                      <label htmlFor='title'>Performer name and photo</label>
-                      <div className='flex gap-2 mb-2'>
-                        <Input
-                          name={`detailmeta.lineup[${index + 1}].title`}
-                          defaultValue={performer.title}
-                          placeholder='Enter artist, performer or band name'
-                          className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
-                          {...register(`detailmeta.lineup[${index + 1}].title`)}
-                        />
-                        <Controller
-                          control={control}
-                          name={`detailmeta.lineup[${index + 1}].image`}
-                          render={({
-                            field: { onChange, value, ...field },
-                          }) => (
-                            <Input
-                              {...field}
-                              value={value?.fileName}
-                              name={`detailmeta.lineup[${index + 1}].image`}
-                              placeholder='Upload image'
-                              accept='image/*'
-                              className='w-36'
-                              onChange={(e) => {
-                                onChange(e.target.files[0]);
-                                handleLineupUpload(e, index + 1);
-                              }}
-                              type='file'
-                              id={`picture-${index}`}
-                            />
-                          )}
-                        />
-                      </div>
-                      {performer.image && (
-                        <div className='flex gap-x-2'>
-                          <img
-                            src={`${props?.cdn?.static}/${performer.image}`}
-                            alt='Performer'
-                            className='w-10 h-10 rounded-full object-cover'
+                  {Array.isArray(lineUpInfo) &&
+                    lineUpInfo.slice(1).map((performer, index) => (
+                      <div key={performer.id} className='space-y-2'>
+                        <label htmlFor='title'>Performer name and photo</label>
+                        <div className='flex gap-2 mb-2'>
+                          <Input
+                            name={`detailmeta.lineup[${index + 1}].title`}
+                            defaultValue={performer.title}
+                            placeholder='Enter artist, performer or band name'
+                            className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
+                            {...register(
+                              `detailmeta.lineup[${index + 1}].title`
+                            )}
                           />
-                          <Button
-                            className='text-red-500 ml-2'
-                            onClick={() => deletePerformer(index + 1)}
-                            type='button'
-                          >
-                            Delete
-                          </Button>
+                          <Controller
+                            control={control}
+                            name={`detailmeta.lineup[${index + 1}].image`}
+                            render={({
+                              field: { onChange, value, ...field },
+                            }) => (
+                              <Input
+                                {...field}
+                                value={value?.fileName}
+                                name={`detailmeta.lineup[${index + 1}].image`}
+                                placeholder='Upload image'
+                                accept='image/*'
+                                className='w-36'
+                                onChange={(e) => {
+                                  onChange(e.target.files[0]);
+                                  handleLineupUpload(e, index + 1);
+                                }}
+                                type='file'
+                                id={`picture-${index}`}
+                              />
+                            )}
+                          />
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {(performer.file || performer.image) && (
+                          <div className='flex gap-x-2'>
+                            <img
+                              src={
+                                performer.file ||
+                                `${props?.cdn?.static}/${performer.image}`
+                              }
+                              alt='Performer'
+                              className='w-10 h-10 rounded-full object-cover'
+                            />
+                            <Button
+                              className='text-red-500 ml-2'
+                              onClick={() => deletePerformer(index + 1)}
+                              type='button'
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   <div>
                     <Button
                       type='button'
