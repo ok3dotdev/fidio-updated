@@ -12,6 +12,7 @@ const HomeLayout = ({
   className,
   headerAbsolute = true,
 }) => {
+  console.log('header', headerAbsolute);
   const headerClassName = headerAbsolute ? 'absolute' : '';
 
   return (

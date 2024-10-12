@@ -226,11 +226,15 @@ const EventUpdateModal = (props) => {
     let usePipelineDbItem = { ...pipelineDbItem };
 
     // Update lineUpInfo with new titles from data.detailmeta.lineup
-    const updatedLineUpInfo = lineUpInfo.map((item, index) => ({
-      ...item,
-      title: data?.detailmeta?.lineup[index]?.title || item.title,
-      bio: data?.detailmeta?.lineup[index]?.bio || item.bio,
-    }));
+    const updatedLineUpInfo = lineUpInfo.map((item, index) => {
+      const temp = {
+        ...item,
+        title: data?.detailmeta?.lineup[index]?.title || item.title,
+        bio: data?.detailmeta?.lineup[index]?.bio || item.bio,
+      };
+      delete temp.file;
+      return temp;
+    });
 
     // Update data.detailmeta.lineup with the updatedLineUpInfo
     pipelineDbItem.detailmeta.lineup = updatedLineUpInfo;
@@ -273,10 +277,9 @@ const EventUpdateModal = (props) => {
     if (res && res.product) {
       setModalOpen(false);
       setLoading(false);
-      setImgCache(new FowmData());
+      setImgCache(new FormData());
       setImgFor([]);
       setLineUpInfo([]);
-      setPipelineObject({});
       setPipelineDbItem({});
       window.location.reload();
     }

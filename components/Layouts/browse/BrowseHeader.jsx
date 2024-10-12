@@ -1,18 +1,22 @@
-'use client';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import MobileMenu from '@/components/menu/mobileMenu';
 import useMediaQuery from '../../../hooks/use-media-query';
 import UserAvatar from '@/components/Avatar';
+import { cn } from '@/lib/utils';
 
 const BrowseHeader = ({ className, ...props }) => {
+  console.log('class', className);
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });
 
   return (
     <div
-      className={`w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0 absolute ${className}`}
+      className={cn(
+        'w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0',
+        className
+      )}
     >
       <Link href='/'>
         <img

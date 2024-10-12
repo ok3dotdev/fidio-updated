@@ -123,7 +123,7 @@ const Page = (props) => {
       pageName={pageName}
       pageData={blogPageData}
       props={props}
-      className='bg-dashBg'
+      className='bg-dashBg relative'
       headerAbsolute={false}
     >
       <div className=' max-w-7xl mx-auto font-lexend px-5 lg:px-8 pb-12'>
