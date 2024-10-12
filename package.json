@@ -29,6 +29,7 @@
     "@react-email/components": "^0.0.24",
     "@react-email/render": "^1.0.1",
     "@sendgrid/mail": "^7.7.0",
+    "@sentry/nextjs": "^8.30.0",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.53.0",
     "@talkjs/react": "^0.1.3",

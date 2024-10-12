@@ -93,3 +93,6 @@ appServer/*
 !*app.schema.js
 
 # Project Ignore Files
+
+# Sentry Config File
+.env.sentry-build-plugin
