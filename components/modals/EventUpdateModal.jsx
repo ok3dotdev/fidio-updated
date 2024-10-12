@@ -225,8 +225,18 @@ const EventUpdateModal = (props) => {
     // Update the lineUpInfo state
     setLineUpInfo(updatedLineUpInfo);
 
-    console.log('lineupInfor', lineUpInfo, updatedLineUpInfo, data, imgFor, imgCache, pipelineDbItem);
-    imgCache?.getAll ? imgCache.getAll('image').map(m => console.log(m)) : null
+    console.log(
+      'lineupInfor',
+      lineUpInfo,
+      updatedLineUpInfo,
+      data,
+      imgFor,
+      imgCache,
+      pipelineDbItem
+    );
+    imgCache?.getAll
+      ? imgCache.getAll('image').map((m) => console.log(m))
+      : null;
 
     const totalProductImages = imgFor.filter(
       (m) => ['featureImg', 'leadImg', 'productImg'].indexOf(m?.modif) > -1
@@ -248,6 +258,7 @@ const EventUpdateModal = (props) => {
 
     if (res && res.product) {
       setModalOpen(false);
+      setLoading(false);
       window.location.reload();
     }
   };
