@@ -67,7 +67,17 @@ const EventPreviewStep = ({ info, reset }) => {
     }
   };
 
-  const handleConfirmEvent = async (draft = false) => {
+  const handleSaveDraft = () => {
+    const draft = true;
+    handleConfirmEvent(draft);
+  };
+
+  const handlePublish = () => {
+    const draft = false;
+    handleConfirmEvent(draft);
+  };
+
+  const handleConfirmEvent = async (draft) => {
     await createEvent(draft);
     setSent(true);
     toast({
@@ -194,14 +204,12 @@ const EventPreviewStep = ({ info, reset }) => {
                 <Button
                   role=''
                   className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent'
-                  onClick={() => {
-                    handleConfirmEvent(true);
-                  }}
+                  onClick={handleSaveDraft}
                 >
                   Save as draft
                 </Button>
                 <Button
-                  onClick={handleConfirmEvent}
+                  onClick={handlePublish}
                   className='dark:bg-accentY dark:text-white dark:hover:bg-accentY hover:bg-opacity-[0.8] hover:border-accentY focus:border-accentY outline-none shadow-none'
                 >
                   Confirm event

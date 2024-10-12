@@ -207,7 +207,20 @@ const EventUpdateModal = (props) => {
     setLineUpInfo(updatedLineUpInfo);
   }, [lineUpInfo]);
 
-  const onSubmit = async (data) => {
+  const saveDraft = (data) => {
+    console.log('here', data);
+    let draft = true;
+    onSubmit(data, draft);
+  };
+
+  const publishNow = (data) => {
+    console.log('here', data);
+    let draft = false;
+    onSubmit(data, draft);
+  };
+
+  const onSubmit = async (data, draft) => {
+    console.log('draft', data, draft);
     setLoading(true);
     await trigger();
     let usePipelineDbItem = { ...pipelineDbItem };
@@ -215,8 +228,8 @@ const EventUpdateModal = (props) => {
     // Update lineUpInfo with new titles from data.detailmeta.lineup
     const updatedLineUpInfo = lineUpInfo.map((item, index) => ({
       ...item,
-      title: data.detailmeta.lineup[index]?.title || item.title,
-      bio: data.detailmeta.lineup[index]?.bio || item.bio,
+      title: data?.detailmeta?.lineup[index]?.title || item.title,
+      bio: data?.detailmeta?.lineup[index]?.bio || item.bio,
     }));
 
     // Update data.detailmeta.lineup with the updatedLineUpInfo
@@ -253,13 +266,14 @@ const EventUpdateModal = (props) => {
       imgCache: imgCache,
       imgFor: imgFor,
       _loggedIn: props?._loggedIn,
+      status: draft ? 'save' : 'publish',
     });
     // setComponentDidMount(false);
 
     if (res && res.product) {
       setModalOpen(false);
       setLoading(false);
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
@@ -292,11 +306,7 @@ const EventUpdateModal = (props) => {
           </div>
         </div>
         <div>
-          <form
-            className='relative mb-12'
-            action=''
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className='relative mb-12'>
             <Card className=' dark:bg-transparent mt-8'>
               <CardContent className='space-y-4 mt-4'>
                 <div className='flex flex-col justify-center space-y-2'>
@@ -629,13 +639,16 @@ const EventUpdateModal = (props) => {
                 <hr />
                 <div className='space-y-4 mt-8'>
                   <button
-                    onClick={saveDraft}
+                    onClick={handleSubmit(saveDraft)}
                     className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent w-full mt-8'
                   >
                     Save as draft
                   </button>
-                  <button className='w-full bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60'>
-                    Publish
+                  <button
+                    onClick={handleSubmit(publishNow)}
+                    className='w-full bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60'
+                  >
+                    Publish Now
                   </button>
                 </div>
                 {/* <div className='mt-4 space-x-2 w-full'>
