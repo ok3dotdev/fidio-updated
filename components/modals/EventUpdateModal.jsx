@@ -273,7 +273,12 @@ const EventUpdateModal = (props) => {
     if (res && res.product) {
       setModalOpen(false);
       setLoading(false);
-      // window.location.reload();
+      setImgCache(new FowmData());
+      setImgFor([]);
+      setLineUpInfo([]);
+      setPipelineObject({});
+      setPipelineDbItem({});
+      window.location.reload();
     }
   };
 
@@ -616,7 +621,7 @@ const EventUpdateModal = (props) => {
                     <Input
                       name='host.title'
                       placeholder='Mc Big Timer'
-                      defaultValue={pipelineDbItem.meta.host.title}
+                      defaultValue={pipelineDbItem?.meta?.host?.title}
                       className='bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium'
                       ref={register}
                       {...register('host.title')}
