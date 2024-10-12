@@ -235,7 +235,7 @@ const EventUpdateModal = (props) => {
 
     if (res && res.product) {
       setModalOpen(false);
-      // window.location.reload();
+      window.location.reload();
     }
   };
 

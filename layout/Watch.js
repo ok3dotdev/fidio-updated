@@ -5,9 +5,6 @@ import { CommentInternal } from '/modules/comment';
 import { LoadComments } from '/modules/comment/parts';
 
 const Module = (props) => {
-  useEffect(() => {
-    console.log('client');
-  });
   console.log('props video', props);
   const { WatchPageStyles = {}, watchMeta = {} } = props;
 
@@ -114,7 +111,7 @@ const Module = (props) => {
               </div>
             </div>
           </div>
-          {hasDetails && (
+          {/* {hasDetails && (
             <div className='mt-8'>
               {props?.watchData?.id ? (
                 <div
@@ -136,7 +133,7 @@ const Module = (props) => {
                 </div>
               ) : null}
             </div>
-          )}
+          )} */}
         </div>
         <div className='hidden md:block px-4 md:px-0'>
           <Chat {...props} />
