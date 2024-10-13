@@ -6,7 +6,7 @@ import UserAvatar from '@/components/Avatar';
 import { cn } from '@/lib/utils';
 
 const BrowseHeader = ({ className, ...props }) => {
-  console.log('class', className);
+  // console.log('class', className);
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });

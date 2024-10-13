@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import HomeLayout from '@/customModules/features/HomeLayout';
 import ImageText from '@/components/ImageText';
