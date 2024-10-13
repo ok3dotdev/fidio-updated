@@ -9,13 +9,13 @@ import {
 } from '../../../customModules/features/seo-data';
 
 const BrowseLayout = (props) => {
-  const { children } = props;
+  const { children, headerAbsolute = 'absolute' } = props;
 
   return (
     <div className='relative bg-[#171717] font-lexend'>
       <HeadSEO site={siteData} page={browsePageData} />
       <div className='min-h-[500px] '>
-        <BrowseHeader {...props} />
+        <BrowseHeader {...props} className={headerAbsolute} />
         <FeaturedEventSlider {...props} />
       </div>
       <div className='p-4 py-8 max-w-screen-xl mx-auto'>{children}</div>

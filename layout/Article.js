@@ -21,7 +21,7 @@ const Module = (props) => {
       pageData={props.seoData}
       props={props}
       className='bg-dashBg font-lexend'
-      headerAbsolute={false}
+      headerAbsolute={true}
     >
       <div id='Article' className='pb-12'>
         {props?.articleData?.meta?.featuredImg && (
