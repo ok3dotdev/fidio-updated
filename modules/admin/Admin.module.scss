@@ -377,7 +377,7 @@
     text-overflow: ellipsis;
 }
 
-.inputSearch {
+.inputSearch, .input {
     border-radius: 1rem;
     border-width: 0;
     font-size: 1rem;
@@ -426,4 +426,32 @@ button.buttonTool {
     color: white;
     border: 1px solid white;
     box-shadow: 0px 0px 7.5px .5px #ffffff;
+}
+
+.previewContainer {
+    max-width: 225px;
+    max-height: 150px;
+    border: 1px solid grey;
+}
+
+.crudContainer {
+    background: #1f1f1f;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.crudUpdateContainer {
+    position: fixed;
+    background: #373737;
+    padding: .5rem;
+    border-radius: 1rem;
+    top: 2rem;
+    border: 2px solid white;
+    z-index: 10;
+}
+
+.input {
+    border-radius: .25rem;
+    border-width: 0;
+    font-size: 1rem;
 }
