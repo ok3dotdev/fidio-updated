@@ -281,8 +281,8 @@ const predefined = {
     forceShowCc: true,
     keys: {
       paystack: '',
-      stripe:
-        'pk_live_51NspsBF8sWqWDDvYDfxn28nWhRfri4yLSool4nAcjRiYyBrJ7HtSJ0vRW8kFLlxFRWTN6SXeiPId7oP1nr0FR78d00N1YLB2PP',
+      // stripe: 'pk_live_51NspsBF8sWqWDDvYDfxn28nWhRfri4yLSool4nAcjRiYyBrJ7HtSJ0vRW8kFLlxFRWTN6SXeiPId7oP1nr0FR78d00N1YLB2PP',
+      stripe: 'pk_test_51IEf8CAu2LTYmPsqaLAWv0xdWnJVBU8HlsUnONWdDVsyNTjg8fij7HEVi7eA2PtLi92uhsz2f2iVafwQSh45TYlv0063hrV0Bi'
     },
     tax: {
       all: 0.13,

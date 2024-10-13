@@ -179,6 +179,14 @@
 
 .thumbnailTitle {
     margin: .5rem 0;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: .8rem;
 }
 
 .floodMediaContainer {
@@ -330,7 +338,7 @@
 
 .UploadChangesWaiting, .currentSelected {
     box-shadow: 0 0 .5rem .125rem rgb(179, 179, 255);
-    border: 1px solid #f371ff;
+    border: 2px solid #f371ff;
 }
 
 .clipsContainer {

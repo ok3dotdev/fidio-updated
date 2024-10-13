@@ -31,7 +31,7 @@
     flex-wrap: wrap;
     place-self: flex-start;
     .settingContainer {
-        max-width: 350px;
+        max-width: -webkit-fill-available;
     }
 }
 
