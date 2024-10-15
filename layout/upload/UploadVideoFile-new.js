@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '/modules/video/upload/upload.module.scss';
-import { FileVideo } from 'lucide-react';
 
 const Module = (props) => {
   const {
@@ -54,16 +53,13 @@ const Module = (props) => {
                   ref={fileInput}
                   onChange={doUpload}
                 />
-                <div className={`${styles.uploadPrompt} px-4`}>
-                  <div className='p-3 rounded-full bg-[#fff]/5 m-auto inline-block'>
-                    <FileVideo className='m-auto w-6' />
-                  </div>
-                  <p style={{ fontSize: '0.8rem', marginTop: '20px' }}>
-                    Get more people to enjoy your recent stream. Upload and
-                    publish a video to get started.
+                <div className={`${styles.uploadPrompt}`}>
+                  <h4>Drag and drop your video to upload</h4>
+                  <p style={{ fontSize: '1rem' }}>
+                    Your video will be private until you decide to publish it
                   </p>
                   <button
-                    className={`${styles.mainInteractionPurple} dark:bg-white text-black`}
+                    className={`${styles.mainInteractionPurple}`}
                     style={{
                       padding: 0.5 + 'rem ' + 6 + 'rem',
                       margin: 0 + ' auto',
@@ -77,6 +73,8 @@ const Module = (props) => {
                   <div
                     style={{
                       width: 100 + '%',
+                      paddingTop: 1 + 'rem',
+                      paddingBottom: 0.5 + 'rem',
                     }}
                   >
                     <div

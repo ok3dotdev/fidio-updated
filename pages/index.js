@@ -63,9 +63,7 @@ export const page = (props) => {
             future of African entertainment.`}
           </p>
         </div>
-        <div className='px-2'>
-          <SubscribeForm />
-        </div>
+        <SubscribeForm />
       </HomeLayout>
     </React.Fragment>
   );

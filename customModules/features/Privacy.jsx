@@ -29,8 +29,8 @@ const PrivacyContent = () => {
               personal data, and the choices you can make about the way your
               information is collected and used by Fidio. Please review our
               Privacy Policy as it may change in the future and contact us at{' '}
-              <a href='mailto:privacy@fidio.ca' class='text-blue-500'>
-                privacy@fidio.ca
+              <a href='mailto:admin@fidio.ca ' class='text-blue-500'>
+                admin@fidio.ca
               </a>{' '}
               or the correspondence address below if you have any questions or
               concerns or wish to exercise your privacy rights.

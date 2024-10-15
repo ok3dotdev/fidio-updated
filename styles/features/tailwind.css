@@ -148,3 +148,50 @@ Chat_ChatLogItemInternalContainer {
     --radius: 0.5rem;
   }
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  * {
+    @apply border-border m-0 p-0;
+  }
+  body {
+    @apply bg-black text-foreground;
+  }
+}
+
+/* SURVERY FORM */
+.Survey_currentItem__z2NUZ {
+  padding: 0 !important;
+}
+.Survey_currentItem__z2NUZ textarea {
+  @apply bg-dashFg text-black p-2 font-sans;
+}
+.Survey_title__I1MFz {
+  margin-bottom: 2rem;
+}
+.Survey_currentItem__z2NUZ input[type='datetime-local'] {
+  @apply bg-dashFg text-black w-full p-2 font-sans;
+}
+
+.Survey_currentItem__z2NUZ label {
+  @apply font-sans;
+}
+
+/* @layer components {
+  .zoom-image [data-rmiz-modal-overlay='visible'] {
+    @apply bg-background/10 backdrop-blur;
+  }
+
+  .zoom-image [data-rmiz-modal-img] {
+    @apply rounded-md lg:rounded-2xl;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+} */

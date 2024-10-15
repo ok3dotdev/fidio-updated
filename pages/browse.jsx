@@ -72,6 +72,8 @@ const Page = (props) => {
     setPage((prevPage) => prevPage + 1);
   };
 
+  console.log('Tickets', tickets)
+
   return (
     <div className='w-full h-screen'>
       <BrowseLayout {...props}>
