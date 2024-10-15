@@ -115,7 +115,7 @@ const EventView = (props) => {
     }
     if (res && res.currentlyStreaming) {
       setCurrentlyStreaming(res.data);
-      // setHasCopied(true);
+      setHasCopied(true);
       // console.log('checking', res.currentlyStreaming);
     }
   };
