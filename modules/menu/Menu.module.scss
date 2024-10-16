@@ -289,6 +289,7 @@
 
 .profileItemDataContainer > div {
     white-space: break-spaces;
+    overflow-wrap: anywhere;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

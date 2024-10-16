@@ -54,6 +54,7 @@ const Module = (props) => {
     (e) => {
       const modif = e?.target?.getAttribute('modif');
       let value = e?.target?.value;
+      console.log('value>>>>>', value, videoDocument, modif);
       if (modif && videoDocument) {
         const instance = videoDocument.handleUsePayload(value, modif);
         setVideoDocumentProxy(instance);
@@ -106,6 +107,7 @@ const Module = (props) => {
                       className={`p-8 mt-2 uploadPage_${m[0]} ${
                         m[1].readonly ? 'input_readonly' : null
                       }`}
+                      type='text'
                       selectelement={`${componentId}-${m[0]}`}
                       minRows={m[1]?.rows ?? 2}
                       disabled={m[1].readonly}
@@ -114,54 +116,17 @@ const Module = (props) => {
                       onChange={updateInput}
                     />
                   </div>
-                ) : m[1].type === 'array' &&
-                  m[1].item === 'string' /* // Comment out tags input
-                  <div className='flex flex-col w-full'>
-                    <label>
-                      {m[0].toUpperCase
-                        ? `${m[0].charAt(0).toUpperCase()}${
-                            m[0].length > 1
-                              ? m[0].substring(1, m[0].length)
-                              : ''
-                          }`
-                        : ''}
-                    </label>
-                    <div className='label_data_container'>
-                      <TextareaAutosize
-                        className={`uploadPage_${m[0]} ${
-                          m[1].readonly ? 'input_readonly' : null
-                        }`}
-                        selectelement={`${componentId}-${m[0]}`}
-                        minRows={m[1]?.rows ?? 2}
-                        disabled={m[1].readonly}
-                        modif={m[0]}
-                        onChange={updateInput}
-                      />
-                      {resolveNestedProperty(videoDocumentRasterized, m[1].path)
-                        ?.map ? (
-                        <div
-                          className='tagContainer'
-                          style={{ marginTop: '.25rem' }}
-                        >
-                          {resolveNestedProperty(
-                            videoDocumentRasterized,
-                            m[1].path
-                          ).map((d, i) => {
-                            return d !== '' ? (
-                              <div className='tagItem' key={i}>
-                                {d}
-                              </div>
-                            ) : (
-                              <div></div>
-                            );
-                          })}
-                        </div>
-                      ) : (
-                        <div></div>
-                      )}
+                ) : m[1].type === 'array' && m[1].item === 'string' ? (
+                  <div>
+                    <div className='w-full'>
+                      <label>Set a start and end date for your video</label>
+                      <div className='space-x-4 flex mt-2'>
+                        <input type='date' className='w-full' />
+                        <input type='date' className='w-full' />
+                      </div>
                     </div>
                   </div>
-                  */ ? null : m[1].type === 'date' /* // Comment out date input
+                ) : m[1].type === 'date' ? (
                   <React.Fragment>
                     <label>
                       {m[0].toUpperCase
@@ -183,7 +148,7 @@ const Module = (props) => {
                       onChange={updateInput}
                     />
                   </React.Fragment>
-                  */ ? null : null
+                ) : null
               ) : null}
             </div>
           </div>
@@ -299,7 +264,7 @@ const Module = (props) => {
   props._LocalEventEmitter.unsubscribe('reset_upload');
   props._LocalEventEmitter.subscribe('reset_upload', (e) => {
     if (e) {
-      loadRecord(videoDocument);
+      loadRecord(videoDocument, true);
     }
   });
 
@@ -391,7 +356,7 @@ const Module = (props) => {
   console.log('Video', videoDocument, componentId, initialized);
 
   const renderStepContent = () => {
-    console.log('Render Step Content', videoDocument, componentId, initialized);
+    // console.log('Render Step Content', videoDocument, componentId, initialized);
     switch (currentStep) {
       case 1:
         return (
@@ -462,9 +427,8 @@ const Module = (props) => {
                       Capture the start and end moments of each chapter
                     </h5>
                     <input
-                      className={`px-4 ${WatchPageStyles.clipStart} Upload_ClipStart`}
+                      className={`dark:text-white font-semibold text-lg px-2${WatchPageStyles.clipStart} Upload_ClipStart`}
                       defaultValue={'00:00'}
-                      type='time'
                       min='09:00'
                       max='18:00'
                       onKeyDown={handleSetClipTimeInput}
@@ -500,78 +464,46 @@ const Module = (props) => {
       case 3:
         return (
           <div>
-            {videoDocument?.status ? (
-              videoDocument.status === 'processing' ? (
-                <div>
-                  <h4>Your video is processing</h4>
+            <div className='flex flex-col lg:flex-row gap-8 rounded-[8px]'>
+              <div
+                className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer min-w-[50%]`}
+              >
+                <div
+                  className={`${WatchPageStyles.uploadMetaPrimaryContainer} Video_UploadMetaPrimaryContainer`}
+                >
+                  <p className='mb-4 font-semibold'>Details</p>
+                  {inputData}
                 </div>
-              ) : ['ready', 'good'].indexOf(videoDocument.status) > -1 ? (
-                <div>
-                  <h4>Your video is ready to be published</h4>
-                </div>
-              ) : videoDocument.status === 'published' ? (
-                <div>
-                  <h4>
-                    Your video was published{' '}
-                    {new Date(Number(videoDocument.publish))?.toDateString() ??
-                      ''}
-                  </h4>
-                </div>
-              ) : null
-            ) : null}
-            <div>
-              <div className='flex gap-p5' style={{ paddingBottom: '.5rem' }}>
-                {videoDocument?.status &&
-                ['ready', 'good'].indexOf(videoDocument.status) > -1 ? (
-                  <button
-                    className='Video_PublishButton'
-                    onClick={handlePublish}
-                    modif='publish'
+              </div>
+              <div
+                className={`${styles.videoContainer} Video_VideoUploadContainer`}
+              >
+                <div
+                  className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`}
+                  style={{ height: `calc(100vh - ${props?.menuHeight})` }}
+                >
+                  <div
+                    className={`${styles.videoMessageContainer} Video_MessageContainer`}
                   >
-                    Publish
-                  </button>
-                ) : null}
-                {videoDocument ? (
-                  <button
-                    className={`Video_UpdateButton ${
-                      Object.entries(videoDocument?.updatedFields).length > 0
-                        ? `${WatchPageStyles.UploadChangesWaiting} Upload_UploadChangesWaiting`
-                        : ''
-                    }`}
-                    onClick={handlePublish}
-                    modif='update'
-                  >
-                    Update
-                  </button>
-                ) : null}
-                {videoDocument?.status === 'published' ? (
-                  <React.Fragment>
-                    {videoDocument?.meta?.private ? (
-                      <button
-                        className='Video_UnprivateButton'
-                        onClick={handlePublish}
-                        modif='unprivate'
-                      >
-                        Unprivate
-                      </button>
-                    ) : (
-                      <button
-                        className='Video_PrivateButton'
-                        onClick={handlePublish}
-                        modif='private'
-                      >
-                        Make Private
-                      </button>
-                    )}
-                    <button
-                      className='Video_UnpublishButton'
-                      onClick={handlePublish}
-                      modif='unpublish'
+                    <p
+                      className={`${styles.videoMessage} ${
+                        status?.message ? styles.videoMessageVisible : null
+                      }`}
                     >
-                      Unpublish
-                    </button>
-                  </React.Fragment>
-                ) : null}
+                      {status.message}
+                    </p>
+                  </div>
+                  <Player
+                    {...props}
+                    playerName={componentId ? `player-${componentId}` : null}
+                    playerInitialized={initialized}
+                  />
+                  <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
+                    <p className='text-dashtext'>File Name</p>
+                    <p>Asake Concert.mp4</p>
+                  </div>
+                  <div className='mt-4'>{clipsRender}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -612,13 +544,13 @@ const Module = (props) => {
               />
             </div>
           ) : null}
-          {/* <VideoReel
+          <VideoReel
             {...props}
             fetchBusy={fetchBusy}
             useVideos={useVideos}
             videosContainerRef={videosContainerRef}
             loadVideo={loadVideo}
-          /> */}
+          />
           {/* //This section needs to be a modal */}
           <div
             class='Modal_container'
@@ -697,7 +629,8 @@ const Module = (props) => {
                 ) : (
                   <button
                     className='Video_UploadButton dark:bg-white text-black px-4 rounded-sm'
-                    onClick={handleStartUpload}
+                    onClick={handlePublish}
+                    modif='publish'
                   >
                     Finish Upload
                   </button>

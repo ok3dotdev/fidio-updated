@@ -66,7 +66,8 @@ const EventView = (props) => {
   useEffect(() => {
     if (ticket) {
       checkEventStartTime();
-      checkStreamStatus();
+      checkStreamEndTime();
+      // checkStreamStatus();
     }
   }, [ticket]);
 
@@ -216,7 +217,7 @@ const EventView = (props) => {
   };
 
   return (
-    <StudioLayout {...props}>
+    <StudioLayout pageId={'studioEdit'} {...props}>
       <div className='px-2 md:px-8'>
         {loading ?? (
           <div className='absolute w-full left-0 z-40 flex justify-center px-4 bg-black/90'>
