@@ -50,6 +50,23 @@ const Module = (props) => {
 
   const [currentStep, setCurrentStep] = useState(1);
 
+  const handleAddMeta = React.useCallback(
+    (e) => {
+      const modif = e?.target?.getAttribute('modif');
+      let value = e?.target?.value;
+      const temp = videoDocument.meta;
+      // console.log('valuesss', modif, value, temp);
+      if (modif === 'startDate') {
+        temp.startDate = value;
+      }
+      if (modif === 'endDate') {
+        temp.endDate = value;
+      }
+      videoDocument.meta = temp;
+    },
+    [videoDocument]
+  );
+
   const updateInput = React.useCallback(
     (e) => {
       const modif = e?.target?.getAttribute('modif');
@@ -121,8 +138,20 @@ const Module = (props) => {
                     <div className='w-full'>
                       <label>Set a start and end date for your video</label>
                       <div className='space-x-4 flex mt-2'>
-                        <input type='date' className='w-full' />
-                        <input type='date' className='w-full' />
+                        <input
+                          type='date'
+                          modif={'startDate'}
+                          className='w-full'
+                          onChange={handleAddMeta}
+                          defaultValue={videoDocument?.meta?.startDate}
+                        />
+                        <input
+                          type='date'
+                          modif={'endDate'}
+                          className='w-full'
+                          onChange={handleAddMeta}
+                          defaultValue={videoDocument?.meta?.endDate}
+                        />
                       </div>
                     </div>
                   </div>
@@ -512,6 +541,17 @@ const Module = (props) => {
         return null;
     }
   };
+  const handleFinalUpload = React.useCallback(
+    (e) => {
+      e?.preventDefault();
+      console.log('closing', e);
+      handlePublish(e);
+      setTimeout(() => {
+        setHandlingMetaProxy(false);
+      }, 10000);
+    },
+    [handlePublish]
+  );
 
   return (
     <div className={`${styles.container} ${props.className} Upload_Container`}>
@@ -629,7 +669,7 @@ const Module = (props) => {
                 ) : (
                   <button
                     className='Video_UploadButton dark:bg-white text-black px-4 rounded-sm'
-                    onClick={handlePublish}
+                    onClick={handleFinalUpload}
                     modif='publish'
                   >
                     Finish Upload
