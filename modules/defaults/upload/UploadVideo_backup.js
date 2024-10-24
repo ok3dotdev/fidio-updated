@@ -224,7 +224,7 @@ const Module = props => {
                         <div style={{ display: handlingMeta ? 'block' : 'none' }}>
                             <div className={`${styles.videoContainer} Video_VideoUploadContainer`} style={{ marginBottom: '1rem' }}>
                                 <div className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`} style={{ height: `calc(100vh - ${props?.menuHeight})` }}>
-                                    <Player { ...props } playerName={componentId ? `player-${componentId}` : null} playerInitialized={initialized} />
+                                    <Player { ...props } playerName={componentId ? `player-${componentId}` : null} playerInitialized={initialized} playerVisible={true} />
                                 </div>
                             </div>
                             <div className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer`}>

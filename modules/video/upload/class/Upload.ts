@@ -183,23 +183,13 @@ export default class Upload {
         let temp = this.updatedFields
         temp['meta'] = true
         this.updatedFields = temp
-        if (status) {
-            if (!this._meta['associations'][ofType]) {
-                this._meta['associations'][ofType] = {}
-            }
-            if (!this._meta['associations'][ofType][id]) {
-                this._meta['associations'][ofType][id] = {}
-            }
-            this._meta['associations'][ofType][id][detail ?? 'related'] = true
-        } else if (this._meta['associations']?.[ofType]?.[id][detail ?? 'related']) {
-            delete this._meta['associations'][ofType][id][detail ?? 'related']
-            if (Object.entries(this._meta['associations'][ofType][id]).length === 0) {
-                delete this._meta['associations'][ofType][id]
-            }
-            if (Object.entries(this._meta['associations'][ofType]).length === 0) {
-                delete this._meta['associations'][ofType]
-            }
+        if (!this._meta['associations'][ofType]) {
+            this._meta['associations'][ofType] = {}
         }
+        if (!this._meta['associations'][ofType][id]) {
+            this._meta['associations'][ofType][id] = {}
+        }
+        this._meta['associations'][ofType][id][detail ?? 'related'] = status
         return this
     }
 
@@ -210,23 +200,13 @@ export default class Upload {
         let temp = this.updatedFields
         temp['meta'] = true
         this.updatedFields = temp
-        if (status) {
-            if (!this._meta['authBy'][ofType]) {
-                this._meta['authBy'][ofType] = {}
-            }
-            if (!this._meta['authBy'][ofType][id]) {
-                this._meta['authBy'][ofType][id] = {}
-            }
-            this._meta['authBy'][ofType][id]['authorize'] = true
-        } else if (this._meta['authBy']?.[ofType]?.[id]) {
-            delete this._meta['authBy'][ofType][id]['authorize']
-            if (Object.entries(this._meta['authBy'][ofType][id]).length === 0) {
-                delete this._meta['authBy'][ofType][id]
-            }
-            if (Object.entries(this._meta['authBy'][ofType]).length === 0) {
-                delete this._meta['authBy'][ofType]
-            }
+        if (!this._meta['authBy'][ofType]) {
+            this._meta['authBy'][ofType] = {}
         }
+        if (!this._meta['authBy'][ofType][id]) {
+            this._meta['authBy'][ofType][id] = {}
+        }
+        this._meta['authBy'][ofType][id]['authorize'] = status
         return this
     }
 

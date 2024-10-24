@@ -546,11 +546,6 @@ button:hover {
   background: transparent !important;
 }
 
-.WatchPage_VideoPlayer {
-  @media (min-width: 700px) {
-    border-radius: 20px !important;
-  }
-}
 .Chat_chatLogExternalContainer__lxHAd {
   width: 100%;
 }
@@ -620,6 +615,11 @@ button:hover {
   .WatchPage_clipDescriptiveTitle__O8peL {
     height: 44px !important;
   }
+  .WatchPage_clipDescriptiveTitle__O8peL {
+    min-width: 400px;
+    padding-left: 10px;
+  }
+
   .step-2 {
     .WatchPage_VideoPlayer {
       border-radius: 0 !important;
@@ -629,6 +629,11 @@ button:hover {
       .WatchPage_videoContainer__o4x4O
       .WatchPage_videoPlayer__53LUC {
       height: 500px;
+    }
+  }
+  .WatchPage_VideoPlayer {
+    @media (min-width: 700px) {
+      border-radius: 8px !important;
     }
   }
 
@@ -655,14 +660,43 @@ button:hover {
     }
   }
 }
-.label_input .label_data input,
-.label_input .label_data textarea,
+.label_input input,
+.label_input textarea,
 .label_data .label_data_container textarea {
-  padding: 10px;
+  padding: 13px !important;
   background-color: rgba(38, 38, 38, 1);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .WatchPage_uploadMetaContainer__TRcOM {
   flex-direction: column;
+}
+
+@media (min-width: 525px) {
+  .label_input .label_data input {
+    min-width: unset !important;
+  }
+}
+
+@media (min-width: 925px) {
+  .label_input .label_data input {
+    min-width: 100% !important;
+  }
+}
+
+.upload_fileUploadContainerExternal__VEMCC {
+  border-radius: 0.5rem !important;
+}
+
+.label_input input,
+.label_input textarea,
+.label_input .label_data_container textarea,
+.WatchPage_clipDescriptiveTitle__O8peL {
+  border-radius: 6px !important;
+  color: white !important;
+  font-size: 0.8rem !important;
+  border: 2px solid rgb(64, 64, 64, 1);
+  font-weight: 500;
+  padding: 13px;
+  background-color: rgb(38, 38, 38);
 }

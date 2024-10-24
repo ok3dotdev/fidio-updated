@@ -18,6 +18,8 @@ import EventUpdateModal from '@/components/modals/EventUpdateModal';
 import Preview from '/modules/streaming/watch/preview/Preview';
 import UploadPage from '/modules/video/upload/UploadPage.js';
 
+import VideoReel from '/modules/video/upload/VideoReel';
+
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -239,7 +241,7 @@ const EventView = (props) => {
                 {...props}
               />
             )}
-            <div className='relative  mb-[12rem]'>
+            <div className='  mb-[12rem]'>
               <div className='relative'>
                 <div
                   className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 md:h-[250px] 2xl:h-[350px] items-center justify-center'
@@ -640,6 +642,9 @@ const EventView = (props) => {
                 ) : (
                   <div>
                     <UploadPage {...props} />
+                    <div className='mt-4'>
+                      <p>Videos</p>
+                    </div>
                   </div>
                 )}
               </div>

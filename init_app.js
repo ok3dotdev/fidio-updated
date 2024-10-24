@@ -438,6 +438,24 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'layout/video'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/video/Overlay.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync('modules/defaults/video/Overlay_backup.js', useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
 const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset' ] // Default pages
 
 for (let i = 0; i < pages.length; i++) {

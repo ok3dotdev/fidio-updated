@@ -1487,3 +1487,13 @@ input.squeezedInputWider {
     border-radius: 1rem;
     padding: .5rem;
 }
+
+.overlay_button {
+    background: rgba(0, 0, 0, .35);
+    color: white;
+}
+
+.overlay_button:not(:disabled):hover {
+    border: 1px solid transparent;
+    outline: 1px solid transparent;
+}

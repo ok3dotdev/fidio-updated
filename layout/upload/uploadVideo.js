@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '/modules/video/upload/upload.module.scss';
 import WatchPageStyles from '/modules/streaming/watch/WatchPage.module.scss';
 import { SignIn, Username } from '/modules/onboarding/signin';
@@ -9,7 +9,8 @@ import { HMSDurationToSeconds } from '/modules/utility/utility/date';
 import { resolveNestedProperty } from '/modules/util';
 import TextareaAutosize from 'react-textarea-autosize';
 import Close from '@mui/icons-material/Close';
-
+import { useRouter } from 'next/router';
+import { X } from 'lucide-react';
 const Module = (props) => {
   const {
     ASSOCIATE_RECORDS,
@@ -46,9 +47,13 @@ const Module = (props) => {
     getAssociateAttributes,
     loadRecord,
     handleDisposePlayer,
+    publish,
   } = props;
 
   const [currentStep, setCurrentStep] = useState(1);
+
+  console.log('videos', videoDocument?.status);
+  const router = useRouter();
 
   const handleAddMeta = React.useCallback(
     (e) => {
@@ -67,6 +72,19 @@ const Module = (props) => {
     [videoDocument]
   );
 
+  useEffect(() => {
+    if (currentStep === 3) {
+      const clipsButton = document?.querySelectorAll(
+        '.WatchPage_clipViewNameContainer__Kg6g8 .close'
+      );
+      if (clipsButton) {
+        clipsButton.forEach((button) => {
+          button.style.visibility = 'hidden';
+        });
+      }
+    }
+  }, [currentStep]);
+
   const updateInput = React.useCallback(
     (e) => {
       const modif = e?.target?.getAttribute('modif');
@@ -84,7 +102,7 @@ const Module = (props) => {
     return videoDocumentRasterized && videoDocument?.usePayload
       ? Object.entries(videoDocument.usePayload).map((m, i) => (
           <div className='label_input' key={i}>
-            <div className='label_data'>
+            <div className=''>
               {m[1]?.type ? (
                 m[1].type === 'string' && m[0] !== 'author' ? (
                   <div className='flex flex-col w-full'>
@@ -103,7 +121,7 @@ const Module = (props) => {
                       }`}
                       type='text'
                       selectelement={`${componentId}-${m[0]}`}
-                      disabled={m[1].readonly}
+                      disabled={m[1].readonly || currentStep === 3}
                       modif={m[0]}
                       placeholder='Title (required)'
                       onChange={updateInput}
@@ -127,14 +145,14 @@ const Module = (props) => {
                       type='text'
                       selectelement={`${componentId}-${m[0]}`}
                       minRows={m[1]?.rows ?? 2}
-                      disabled={m[1].readonly}
+                      disabled={m[1].readonly || currentStep === 3}
                       modif={m[0]}
                       placeholder='Tell viewers about your video content'
                       onChange={updateInput}
                     />
                   </div>
                 ) : m[1].type === 'array' && m[1].item === 'string' ? (
-                  <div>
+                  <div className='mt-8'>
                     <div className='w-full'>
                       <label>Set a start and end date for your video</label>
                       <div className='space-x-4 flex mt-2'>
@@ -144,6 +162,7 @@ const Module = (props) => {
                           className='w-full'
                           onChange={handleAddMeta}
                           defaultValue={videoDocument?.meta?.startDate}
+                          disabled={currentStep === 3}
                         />
                         <input
                           type='date'
@@ -151,32 +170,11 @@ const Module = (props) => {
                           className='w-full'
                           onChange={handleAddMeta}
                           defaultValue={videoDocument?.meta?.endDate}
+                          disabled={currentStep === 3}
                         />
                       </div>
                     </div>
                   </div>
-                ) : m[1].type === 'date' ? (
-                  <React.Fragment>
-                    <label>
-                      {m[0].toUpperCase
-                        ? `${m[0].charAt(0).toUpperCase()}${
-                            m[0].length > 1
-                              ? m[0].substring(1, m[0].length)
-                              : ''
-                          }`
-                        : ''}
-                    </label>
-                    <input
-                      type='date'
-                      className={`uploadPage_${m[0]} ${
-                        m[1].readonly ? 'input_readonly' : null
-                      }`}
-                      selectelement={`${componentId}-${m[0]}`}
-                      disabled={m[1].readonly}
-                      modif={m[0]}
-                      onChange={updateInput}
-                    />
-                  </React.Fragment>
                 ) : null
               ) : null}
             </div>
@@ -308,9 +306,11 @@ const Module = (props) => {
   /** Will set authorization by association to a product */
   const handleSetAuthorize = () => {
     console.log('setting association');
-    const id = ''; // The id of the product/ticket to authorize the video by
+    const id = router?.query?.id[0]; // The id of the product/ticket to authorize the video by
     const association = 'product';
     let r = videoDocument.setAuthorizedBy(id, association, true);
+    r = r.setAssociation(id, association, true);
+
     setVideoDocumentProxy(r);
   };
 
@@ -450,13 +450,19 @@ const Module = (props) => {
             </div>
             {videoDocumentRasterized?.timeline?.map ? (
               <div>
-                <div className='flex gap-p5' style={{ marginBottom: '.5rem' }}>
+                <div className='flex gap-5' style={{ marginBottom: '1rem' }}>
                   <div>
-                    <h5 style={{ width: '100%', marginBottom: '.5rem' }}>
-                      Capture the start and end moments of each chapter
+                    <h5
+                      style={{
+                        width: '100%',
+                        marginBottom: '.5rem',
+                        fontWeight: '800',
+                      }}
+                    >
+                      Start time
                     </h5>
                     <input
-                      className={`dark:text-white font-semibold text-lg px-2${WatchPageStyles.clipStart} Upload_ClipStart`}
+                      className={`dark:text-white font-semibold text-lg px-2 py-2 text-white ${WatchPageStyles.clipStart} Upload_ClipStart`}
                       defaultValue={'00:00'}
                       min='09:00'
                       max='18:00'
@@ -465,12 +471,18 @@ const Module = (props) => {
                     />
                   </div>
                   <div>
-                    <h5 style={{ width: '100%', marginBottom: '.5rem' }}>
-                      Give this chapter a recognizable title
+                    <h5
+                      style={{
+                        width: '100%',
+                        marginBottom: '.5rem',
+                        fontWeight: '800',
+                      }}
+                    >
+                      Chapter title
                     </h5>
                     <div className='flex gap-p5'>
                       <input
-                        className={`${WatchPageStyles.clipDescriptiveTitle} Upload_ClipDescriptiveTitle`}
+                        className={`${WatchPageStyles.clipDescriptiveTitle} text-lg px-2 py-2 text-white font-semibold Upload_ClipDescriptiveTitle`}
                         placeholder='Clip Description'
                         type='text'
                         ref={clipDescriptionRef}
@@ -480,7 +492,7 @@ const Module = (props) => {
                         className='bg-accentY px-4'
                         style={{ textWrap: 'nowrap' }}
                       >
-                        Add Caption
+                        Add Chapter
                       </button>
                     </div>
                   </div>
@@ -542,13 +554,11 @@ const Module = (props) => {
     }
   };
   const handleFinalUpload = React.useCallback(
-    (e) => {
+    async (e) => {
       e?.preventDefault();
-      console.log('closing', e);
-      handlePublish(e);
-      setTimeout(() => {
-        setHandlingMetaProxy(false);
-      }, 10000);
+      await publish('publish');
+      handleSetAuthorize();
+      setHandlingMetaProxy(false);
     },
     [handlePublish]
   );
@@ -584,100 +594,119 @@ const Module = (props) => {
               />
             </div>
           ) : null}
-          <VideoReel
-            {...props}
-            fetchBusy={fetchBusy}
-            useVideos={useVideos}
-            videosContainerRef={videosContainerRef}
-            loadVideo={loadVideo}
-          />
+          <div className=''>
+            <VideoReel
+              {...props}
+              fetchBusy={fetchBusy}
+              useVideos={useVideos}
+              videosContainerRef={videosContainerRef}
+              loadVideo={loadVideo}
+            />
+          </div>
           {/* //This section needs to be a modal */}
-          <div
-            class='Modal_container'
-            className='absolute top-0 left-0 w-full bg-dashBg border-2 rounded-[10px] p-8 min-h-[600px]'
-            style={{ display: handlingMeta ? 'block' : 'none' }}
-          >
-            <div>
-              <div className='relative flex justify-center items-center mb-8'>
-                <p className='absolute left-0 font-bold text-lg'>
-                  Upload Video
-                </p>
-                <div className='flex items-center gap-4'>
-                  <div className='flex items-center gap-2 sm:gap-4'>
-                    <div
-                      className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
+          {handlingMeta ? (
+            <div className='absolute bg-black/80 right-0 top-0  w-full h-full p-8'>
+              <div
+                class='Modal_container'
+                className=' left-2 w-full bg-dashBg border-none rounded-[8px] p-8 min-h-[600px] max-w-[1199px] m-auto'
+                style={{ display: handlingMeta ? 'block' : 'none' }}
+              >
+                <div>
+                  <div className='relative flex justify-between items-center mb-8'>
+                    <p className=' left-0 font-bold text-lg'>
+                      {videoDocument?.status === 'published'
+                        ? 'Edit Video'
+                        : 'Upload Video'}
+                    </p>
+                    <div className='flex items-center gap-4'>
+                      <div className='flex items-center gap-2 sm:gap-4'>
+                        <div
+                          className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
                       ${
                         currentStep >= 1
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted text-muted-foreground'
                       }`}
-                    >
-                      1
-                    </div>
-                    <div
-                      className={`h-1 w-8 sm:w-12 ${
-                        currentStep > 1 ? 'bg-primary' : 'bg-muted'
-                      }`}
-                    />
-                    <div
-                      className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
+                        >
+                          1
+                        </div>
+                        <div
+                          className={`h-1 w-8 sm:w-12 ${
+                            currentStep > 1 ? 'bg-primary' : 'bg-muted'
+                          }`}
+                        />
+                        <div
+                          className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
                       ${
                         currentStep >= 2
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted text-muted-foreground'
                       }`}
-                    >
-                      2
-                    </div>
-                    <div
-                      className={`h-1 w-8 sm:w-12 ${
-                        currentStep > 2 ? 'bg-primary' : 'bg-muted'
-                      }`}
-                    />
-                    <div
-                      className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
+                        >
+                          2
+                        </div>
+                        <div
+                          className={`h-1 w-8 sm:w-12 ${
+                            currentStep > 2 ? 'bg-primary' : 'bg-muted'
+                          }`}
+                        />
+                        <div
+                          className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
                       ${
                         currentStep === 3
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted text-muted-foreground'
                       }`}
-                    >
-                      3
+                        >
+                          3
+                        </div>
+                      </div>
                     </div>
+                    <div
+                      className='flex items-center justify-center bg-dashSides rounded-full p-2 cursor-pointer z-40'
+                      onClick={() => setHandlingMetaProxy(false)}
+                    >
+                      <X
+                        className='text-white cursor-pointer'
+                        onClick={() => setHandlingMetaProxy(false)}
+                      />
+                    </div>
+                  </div>
+
+                  {renderStepContent()}
+
+                  <div className='modal-footer flex justify-end mt-12 gap-4'>
+                    {currentStep > 1 && (
+                      <button
+                        className='bg-dashSides text-white'
+                        onClick={() => handleStepChange(currentStep - 1)}
+                      >
+                        Previous
+                      </button>
+                    )}
+                    {currentStep < 3 ? (
+                      <button
+                        className='dark:bg-white text-black px-4'
+                        onClick={() => handleStepChange(currentStep + 1)}
+                      >
+                        Next
+                      </button>
+                    ) : (
+                      <button
+                        className='Video_UploadButton dark:bg-white text-black px-4 rounded-sm'
+                        onClick={handleFinalUpload}
+                        modif='publish'
+                      >
+                        {videoDocument?.status === 'published'
+                          ? ' Update Video'
+                          : 'Finish Upload'}
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
-
-              {renderStepContent()}
-
-              <div className='modal-footer flex justify-end mt-12 gap-4'>
-                {currentStep > 1 && (
-                  <button
-                    className='bg-dashSides text-white'
-                    onClick={() => handleStepChange(currentStep - 1)}
-                  >
-                    Previous
-                  </button>
-                )}
-                {currentStep < 3 ? (
-                  <button
-                    className='dark:bg-white text-black px-4'
-                    onClick={() => handleStepChange(currentStep + 1)}
-                  >
-                    Next
-                  </button>
-                ) : (
-                  <button
-                    className='Video_UploadButton dark:bg-white text-black px-4 rounded-sm'
-                    onClick={handleFinalUpload}
-                    modif='publish'
-                  >
-                    Finish Upload
-                  </button>
-                )}
-              </div>
             </div>
-          </div>
+          ) : null}
           {/* //Modal ends here */}
         </div>
       ) : null}

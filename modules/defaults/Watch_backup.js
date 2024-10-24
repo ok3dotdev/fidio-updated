@@ -9,7 +9,6 @@ import { LoadComments } from '/modules/comment/parts'
 const Module = props => {
     return (
         <div className={`${props?.WatchPageStyles?.videoQuadrant} WatchPage_VideoQuadrant`}>
-            <Prompt { ...props } />
             <div className={`${props?.WatchPageStyles?.videoExternalContainer}`}>
                 <div className={`${props?.WatchPageStyles?.videoInternalContainer}`}>
                     <div className={`${props?.WatchPageStyles?.videoChatContainer}`}>

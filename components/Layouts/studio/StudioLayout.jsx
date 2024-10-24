@@ -80,7 +80,7 @@ const StudioLayout = (props) => {
             showButtons={showButtons}
           />
         )}
-        <div className='flex-1 bg-dashBg overflow-y-scroll h-full scroll-smooth relative'>
+        <div className='flex-1 bg-dashBg overflow-y-scroll h-full scroll-smooth overflow-x-hidden'>
           <div style={{ margin: '2rem 1rem', height: 'auto' }}>
             {props.children}
             <Toaster />
