@@ -6,6 +6,7 @@ import Article from './Article'
 import DropMenu from './DropMenu'
 import Menu from './Menu'
 import Help from './Help'
+import Search from './Search'
 
 export {
     Article,
@@ -15,5 +16,6 @@ export {
     Watch,
     DropMenu,
     Menu,
-    Help
+    Help,
+    Search
 }

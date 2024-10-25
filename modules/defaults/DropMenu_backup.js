@@ -1,5 +1,5 @@
 import React from 'react'
-import { Account, Admin, Bug, Feedback, GoLive, Location, Login, OffersAndGifts, OnboardLogin, Orders, Payment, Settings, SignOut, User, Help, Invite, SimpleDropMenuLink } from '../modules/menu/parts'
+import { Account, Admin, Bug, Feedback, GoLive, Location, Login, OffersAndGifts, OnboardLogin, Orders, Payment, Settings, SignOut, User, Help, Invite, SimpleDropMenuLink, Upload } from '../modules/menu/parts'
 import { Username } from '../modules/onboarding/signin'
 
 
@@ -8,7 +8,7 @@ const Module = props => {
         <React.Fragment>
             {
                 props._loggedIn
-                    ? <div className={`menuLinkSelector`} style={{ position: 'relative', alignSelf: 'center' }}>
+                    ? <div className={`menuLinkSelector`} style={{ alignSelf: 'center', top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : '' }}>
                         <User { ...props } />
                         {
                             props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings'
@@ -17,6 +17,7 @@ const Module = props => {
                                         <Account { ...props } />
                                         <Username { ...props } />
                                         <GoLive { ...props } />
+                                        <Upload { ...props } />
                                         <Invite { ...props } />
                                         <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
                                         <Settings { ...props } />
@@ -37,7 +38,7 @@ const Module = props => {
                                 : null
                         }
                     </div>
-                : <div className={`menuLinkSelector`} style={{ position: 'relative', alignSelf: 'center' }}>
+                : <div className={`menuLinkSelector`} style={{ alignSelf: 'center', top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : '' }}>
                     <Login { ...props } />
                     {
                         props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings'
@@ -46,6 +47,7 @@ const Module = props => {
                                     <OnboardLogin { ...props } />
                                     <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
                                     <GoLive { ...props } />
+                                    <Upload { ...props } />
                                     <Invite { ...props } />
                                     <div style={{ borderTop: '1px solid grey', margin: '.25rem 0' }}></div>
                                     <Help { ...props } />

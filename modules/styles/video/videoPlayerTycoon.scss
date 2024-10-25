@@ -294,6 +294,23 @@ button.vjs-button:hover {
     width: 2px;
 }
 
+.vjs-loading-spinner {
+    width: 75px;
+    height: 75px;
+    border-radius: 4rem;
+    border: .75rem solid rgba(43, 51, 63, 0.7);
+    left: calc(50% - 37.5px);
+    display: none;
+}
+
+.video-react-loading-spinner::before, .video-react-loading-spinner::after {
+    display: none !important;
+}
+
+.vjs-loading-spinner:before, .vjs-loading-spinner:after {
+    margin: -12px;
+}
+
 @keyframes attentionplay {
     0% {
         border-radius: 1rem;
@@ -315,10 +332,15 @@ button.vjs-button:hover {
     animation-duration: 2s;
     animation-fill-mode: forwards;
     line-height: 1.325em;
-    border-radius: 1rem;
-    border: 4px solid white;
+    border-radius: 3rem !important;
+    border: 6px solid white;
 }
 
 .video-js .vjs-play-progress:before {
     z-index: 5;
+}
+
+.vjs-loading-spinner:before {
+    display: none;
+    visibility: hidden;
 }

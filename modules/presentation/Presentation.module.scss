@@ -343,6 +343,23 @@
             margin-right: 0px;
         }
     }
+    .IndexItemsContainerVertical {
+        flex-direction: column;
+        gap: 1rem;
+        .IndexItemUpperContainer {
+            display: flex;
+            gap: 1rem;
+            max-width: 100%;
+            background: #262626;
+            padding: 1rem;
+            border-radius: 1rem;
+            width: 100%;
+            .BgContainer {
+                width: 350px;
+                height: 225px;
+            }
+        }
+    }
 }
 
 .IndexBgContainerMedium {
@@ -868,4 +885,45 @@
 
 .sliderContainer {
     margin: 0 1.5rem;
+}
+
+.IndexItemsContainerSimple {
+    display: flex;
+    flex: 1 1 calc(100% - 20px); /* Each item takes roughly 1/3 of the row */
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    .IndexItemUpperContainer {
+        width: calc(100% - 10px);
+        max-width: 100%;
+    }
+}
+
+@media(min-width: 640px) {
+    .IndexItemsContainerSimple {
+        flex: 1 1 calc(50% - 20px); /* Each item takes roughly 1/3 of the row */
+        .IndexItemUpperContainer {
+            width: calc(50% - 10px);
+            max-width: 50%;
+        }
+    }
+}
+
+@media(min-width: 1120px) {
+    .IndexItemsContainerSimple {
+        flex: 1 1 calc(33.33% - 20px); /* Each item takes roughly 1/3 of the row */
+        .IndexItemUpperContainer {
+            width: calc(33.33% - 10px);
+            max-width: 33.33%;
+        }
+    }
+}
+
+@media(min-width: 1300px) {
+    .IndexItemsContainerSimple {
+        flex: 1 1 calc(25% - 20px); /* Each item takes roughly 1/3 of the row */
+        .IndexItemUpperContainer {
+            width: calc(25% - 10px);
+            max-width: 25%;
+        }
+    }
 }

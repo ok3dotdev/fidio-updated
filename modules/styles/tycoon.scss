@@ -367,8 +367,8 @@ button:not(:disabled):active {
 
 .dropMenu {
     position: absolute;
-    right: 0;
-    top: 33px;
+    right: .5rem;
+    top: 55px;
     width: 275px;
     max-width: 90vw;
 }
@@ -1496,4 +1496,8 @@ input.squeezedInputWider {
 .overlay_button:not(:disabled):hover {
     border: 1px solid transparent;
     outline: 1px solid transparent;
+}
+
+.searchBarActive {
+    outline: 3px solid grey;
 }
