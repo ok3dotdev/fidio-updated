@@ -67,10 +67,7 @@ const StudioLayout = (props) => {
   ];
 
   return (
-    <div
-      id={props.pageId}
-      className='flex h-screen w-full font-lexend relative'
-    >
+    <div id={props.pageId} className='flex h-screen font-lexend relative'>
       <StudioSidebar {...props} />
       <div className='flex flex-1 flex-col'>
         {(isMobileScreen || showNav) && (
@@ -80,8 +77,8 @@ const StudioLayout = (props) => {
             showButtons={showButtons}
           />
         )}
-        <div className='flex-1 bg-dashBg overflow-y-scroll h-full scroll-smooth overflow-x-hidden'>
-          <div style={{ margin: '2rem 1rem', height: 'auto' }}>
+        <div className='flex-1 bg-dashBg overflow-y-scroll h-auto scroll-smooth overflow-x-hidden'>
+          <div className='m-4 md:m-5 h-auto'>
             {props.children}
             <Toaster />
           </div>
@@ -153,7 +150,6 @@ const StudioLayout = (props) => {
               Create new event
             </Link>
           </div>
-
           <div className='absolute bottom-0 left-0 w-full mb-8 '>
             <div className='px-'>
               <div className='mt-8 flex gap-2 items-center border-t border-divide pt-4 px-4'>

@@ -302,7 +302,7 @@ const EventUpdateModal = (props) => {
   console.log(imgCache, imgFor, lineUpInfo);
 
   return (
-    <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4'>
+    <div className='absolute w-full left-0 z-40 bg-black/80 flex justify-center overflow-y-scroll px-4 top-0'>
       <div className='bg-dashBg p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-scroll'>
         <div className='flex w-full justify-between items-center'>
           <h3>Modify Event</h3>

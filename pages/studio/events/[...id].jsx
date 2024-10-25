@@ -69,6 +69,7 @@ const EventView = (props) => {
     if (ticket) {
       checkEventStartTime();
       checkStreamEndTime();
+      handleRequest();
       // checkStreamStatus();
     }
   }, [ticket]);
@@ -82,7 +83,7 @@ const EventView = (props) => {
         extra: {
           owner: props?._loggedIn?.identifier,
         },
-        id: router.query.id[0],
+        id: router?.query?.id[0],
         limit: 1,
       });
       if (res && res.products) {
@@ -218,9 +219,36 @@ const EventView = (props) => {
     }
   };
 
+  const handleRequest = async () => {
+    const res = await apiReq('/p/getrelationshipchildrenof', {
+      // Get all related products in column b of record a where verb is "related"
+      a: router?.query?.id[0],
+      atype: 'product',
+      btype: 'video',
+      verb: 'related',
+      offset: 0,
+      limit: 20,
+    });
+    if (res && res.status === 'success') {
+      console.log('videos 11', res);
+    }
+    const res2 = await apiReq('/p/getrelationshipchildrenof', {
+      // Get all related videos in column a of record b where verb is "related"
+      a: router?.query?.id[0],
+      atype: 'video',
+      btype: 'product',
+      verb: 'related',
+      offset: 0,
+      limit: 20,
+    });
+    if (res2 && res2.status === 'success') {
+      console.log('videos 22', res2);
+    }
+  };
+
   return (
     <StudioLayout pageId={'studioEdit'} {...props}>
-      <div className='px-2 md:px-8'>
+      <div className='px-2'>
         {loading ?? (
           <div className='absolute w-full left-0 z-40 flex justify-center px-4 bg-black/90'>
             <div className=' p-8 md:max-w-[500px] w-full mt-14 mb-4 overflow-y-hidden '>
@@ -241,10 +269,10 @@ const EventView = (props) => {
                 {...props}
               />
             )}
-            <div className='  mb-[12rem]'>
-              <div className='relative'>
+            <div className='mb-[12rem]'>
+              <div className=''>
                 <div
-                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 md:h-[250px] 2xl:h-[350px] items-center justify-center'
+                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[180px] md:h-[200px] 2xl:h-[280px] items-center justify-center '
                   style={{
                     backgroundImage: `url(${props?.cdn?.static}/${
                       ticket?.images &&
@@ -255,17 +283,16 @@ const EventView = (props) => {
                     backgroundRepeat: 'no-repeat',
                   }}
                 ></div>
-                <div className='absolute bg-gradient-to-t from-gradientLight to-gradientDark right-0 top-0  w-full h-full'></div>
               </div>
 
-              <div className='grid grid-cols-1 xl:grid-cols-3 w-full  xl:gap-x-12 xl:space-y-8 mt-8 gap-y-4 md:items-start'>
+              <div className='grid grid-cols-1 xl:grid-cols-3 w-full  2xl:gap-x-12 lg:mt-8 gap-y-4 md:items-start mt-8'>
                 <div className='col-span-2'>
-                  <div className='mb-4 flex justify-between xl:w-[80%]'>
-                    <h1 className='text-3xl md:text-4xl font-bold '>
+                  <div className='mb-4 flex justify-between xl:w-[80%] items-start'>
+                    <h1 className='text-3xl md:text-4xl font-bold leading-[0.5px]'>
                       {ticket.name}
                     </h1>
                     <div>
-                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer'>
+                      <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer z-20'>
                         <DriveFileRenameOutlineIcon
                           className='w-8 h-8 p-1'
                           onClick={handleEventUpdate}
@@ -379,7 +406,7 @@ const EventView = (props) => {
                   )}
                 </div>
                 {!showUpload ? (
-                  <div className=''>
+                  <div className='max-w-[400px]'>
                     <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0 mt-8 md:h-[50%]'>
                       <p className='text-dashtext font-medium'>
                         TICKET INFORMATION

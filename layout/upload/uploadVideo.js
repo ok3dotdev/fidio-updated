@@ -52,7 +52,6 @@ const Module = (props) => {
 
   const [currentStep, setCurrentStep] = useState(1);
 
-  console.log('videos', videoDocument?.status);
   const router = useRouter();
 
   const handleAddMeta = React.useCallback(
@@ -89,7 +88,6 @@ const Module = (props) => {
     (e) => {
       const modif = e?.target?.getAttribute('modif');
       let value = e?.target?.value;
-      console.log('value>>>>>', value, videoDocument, modif);
       if (modif && videoDocument) {
         const instance = videoDocument.handleUsePayload(value, modif);
         setVideoDocumentProxy(instance);
@@ -305,7 +303,7 @@ const Module = (props) => {
 
   /** Will set authorization by association to a product */
   const handleSetAuthorize = () => {
-    console.log('setting association');
+    console.log('setting associations');
     const id = router?.query?.id[0]; // The id of the product/ticket to authorize the video by
     const association = 'product';
     let r = videoDocument.setAuthorizedBy(id, association, true);
@@ -334,8 +332,6 @@ const Module = (props) => {
       setCurrentAssociationMethod(modif);
     }
   });
-  console.log('stp', currentStep, 'asdajsasdasdasdjkdja');
-  console.log('Video', videoDocument, componentId, initialized);
 
   const handleAssociateRecord = React.useCallback((e) => {
     if (e?.currentTarget?.id) {
@@ -381,8 +377,6 @@ const Module = (props) => {
     }
     return false;
   };
-
-  console.log('Video', videoDocument, componentId, initialized);
 
   const renderStepContent = () => {
     // console.log('Render Step Content', videoDocument, componentId, initialized);
