@@ -18,7 +18,7 @@ import EventUpdateModal from '@/components/modals/EventUpdateModal';
 import Preview from '/modules/streaming/watch/preview/Preview';
 import UploadPage from '/modules/video/upload/UploadPage.js';
 
-import VideoReel from '/modules/video/upload/VideoReel';
+// import VideoReel from '/modules/video/upload/VideoReel';
 
 import Link from 'next/link';
 
@@ -58,6 +58,7 @@ const EventView = (props) => {
   const [hasCopied, setHasCopied] = useState(false);
   const [showKeys, setShowKeys] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
+  const [isCurrentEvent, setIsCurrentEvent] = useState(false);
 
   const router = useRouter();
 
@@ -68,11 +69,25 @@ const EventView = (props) => {
   useEffect(() => {
     if (ticket) {
       checkEventStartTime();
-      checkStreamEndTime();
       handleRequest();
-      // checkStreamStatus();
+      checkStreamEndTime();
+      checkStreamStatus();
+      isCurrentEventStream();
     }
   }, [ticket]);
+
+  useEffect(() => {
+    checkStreamEndTime();
+  }, []);
+
+  useEffect(() => {
+    if (currentlyStreaming) {
+      console.log('checking event start time ');
+      isCurrentEventStream();
+      checkStreamEndTime();
+      console.log('checking event start time');
+    }
+  }, [currentlyStreaming, isCurrentEvent]);
 
   const fetchTickets = async () => {
     setLoading(true);
@@ -93,6 +108,17 @@ const EventView = (props) => {
     }
   };
 
+  const isCurrentEventStream = React.useCallback(() => {
+    const eventId = router?.query?.id[0];
+    const streamEventId = currentlyStreaming?.streamForProduct?.id;
+    if (streamEventId && eventId) {
+      eventId === streamEventId
+        ? setIsCurrentEvent(true)
+        : setIsCurrentEvent(false);
+      console.log('setting to show the thing', streamEventId === eventId);
+    }
+  }, [currentlyStreaming]);
+
   const checkEventStartTime = () => {
     if (ticket?.meta?.date && ticket?.meta?.startTime) {
       const datePart = ticket.meta.date.split('T')[0];
@@ -103,6 +129,7 @@ const EventView = (props) => {
 
       console.log('time diff', minutesDifference);
       if (minutesDifference > 0 && minutesDifference <= 45) {
+        console.log();
         setStartEnabled(true);
       }
     }
@@ -114,11 +141,12 @@ const EventView = (props) => {
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    // console.log('res', res);
+    console.log('res', res);
     if (res?.data?.stream) {
       props._setCurrentlyStreaming(res.data.stream);
     }
     if (res && res.currentlyStreaming) {
+      console.log('res', res);
       setCurrentlyStreaming(res.data);
       setHasCopied(true);
       // console.log('checking', res.currentlyStreaming);
@@ -159,12 +187,19 @@ const EventView = (props) => {
       const currentTime = new Date();
       console.log('times', currentTime, endDateTime);
 
-      if (currentTime > endDateTime) {
-        console.log('setting true');
+      if (!currentlyStreaming && !isCurrentEvent && currentTime > endDateTime) {
+        console.log('setting true', isCurrentEvent);
         setShowUpload(true);
       } else {
-        console.log('setting false');
+        console.log('setting false', isCurrentEvent);
         setShowUpload(false);
+      }
+
+      // New logic to enable start stream button
+      if (currentTime < endDateTime) {
+        setStartEnabled(true); // Enable start stream if current time is before end time
+      } else {
+        setStartEnabled(false); // Disable start stream if current time is after end time
       }
     }
   };
@@ -272,7 +307,7 @@ const EventView = (props) => {
             <div className='mb-[12rem]'>
               <div className=''>
                 <div
-                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[180px] md:h-[200px] 2xl:h-[280px] items-center justify-center '
+                  className='flex flex-col rounded-[8px] py-4 px-8 shadow-Txl gap-2 h-[180px] md:h-[200px] 2xl:h-[200px] items-center justify-center '
                   style={{
                     backgroundImage: `url(${props?.cdn?.static}/${
                       ticket?.images &&
@@ -293,10 +328,17 @@ const EventView = (props) => {
                     </h1>
                     <div>
                       <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer z-20'>
-                        <DriveFileRenameOutlineIcon
-                          className='w-8 h-8 p-1'
-                          onClick={handleEventUpdate}
-                        />
+                        <button
+                          disabled={false}
+                          className='hover:bg-transparent event-edit--button'
+                          style={{ background: 'transparent !important' }}
+                        >
+                          <DriveFileRenameOutlineIcon
+                            className='p-1'
+                            onClick={handleEventUpdate}
+                            style={{ width: '2rem', height: '2rem' }}
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -336,10 +378,10 @@ const EventView = (props) => {
                   {!showUpload ? (
                     <div className='mb-8'>
                       <p className='mb-4 font-semibold'>Performers</p>
-                      <p className='text-dashtext mb-4'>HEADLINER</p>
+                      <p className='text-dashtext mb-4 text-sm'>HEADLINER</p>
                       {ticket?.detailmeta?.lineup?.length && (
                         <div className='flex gap-8 items-center mb-4'>
-                          <div className='w-full rounded-full max-w-[12rem]'>
+                          <div className='w-full rounded-full max-w-[9rem]'>
                             <img
                               alt='headliner'
                               src={`${props?.cdn?.static}/${ticket?.detailmeta?.lineup[0].image}`}
@@ -356,7 +398,7 @@ const EventView = (props) => {
                           </div>
                         </div>
                       )}
-                      <p className='text-dashtext mt-8 mb-4'>
+                      <p className='text-dashtext mt-8 mb-4 text-sm'>
                         OTHER PERFORMERS
                       </p>
                       <div className='text-white text-sm flex items-start flex-wrap gap-12'>
@@ -370,7 +412,7 @@ const EventView = (props) => {
                               <img
                                 alt=''
                                 src={`${props?.cdn?.static}/${art?.image}`}
-                                className='w-[150px] h-[150px] rounded-full object-cover'
+                                className='w-[140px] h-[140px] rounded-full object-cover'
                               />
                               <p className='text-lg'>
                                 {art?.title || 'No name'}
@@ -406,7 +448,7 @@ const EventView = (props) => {
                   )}
                 </div>
                 {!showUpload ? (
-                  <div className='max-w-[400px]'>
+                  <div className='2xl:px]'>
                     <div className='border-dashed border-[1px] border-dashBorder border-opacity-[0.3] rounded-lg p-4 md:mt-0 mt-8 md:h-[50%]'>
                       <p className='text-dashtext font-medium'>
                         TICKET INFORMATION
@@ -521,7 +563,8 @@ const EventView = (props) => {
                         </div>
                       ) : (
                         !loading &&
-                        currentlyStreaming && (
+                        currentlyStreaming &&
+                        isCurrentEvent && (
                           <Tabs defaultValue='summary' className='w-full mt-12'>
                             <TabsList className='grid w-full grid-cols-2 p-1 dark:bg-transparent border-2 border-dashBorder h-auto mb-4'>
                               <TabsTrigger
@@ -550,9 +593,9 @@ const EventView = (props) => {
                                 <CardContent className='space-y-2'>
                                   <div className='space-y-1'>
                                     <CardContent></CardContent>
-                                    <CardFooter className='space-x-1 flex flex-wrap'>
+                                    <CardContent className=' flex flex-wrap space-y-2'>
                                       <Button
-                                        className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black ml-5'
+                                        className='w-full border-[0.5px] dark:bg-transparent border-neutral600 dark:text-white dark:hover:text-black'
                                         onClick={endStream}
                                       >
                                         End Stream
@@ -639,7 +682,7 @@ const EventView = (props) => {
                                           </div>
                                         </DialogContent>
                                       </Dialog>
-                                    </CardFooter>
+                                    </CardContent>
                                   </div>
                                 </CardContent>
                               </Card>

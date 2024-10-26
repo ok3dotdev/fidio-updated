@@ -27,6 +27,18 @@ const Module = (props) => {
   const headliner = lineup[0] || {};
   const hasDetails = name || description || host?.title || lineup.length > 0;
 
+  React.useEffect(() => {
+    let isFree = false;
+    if (props?.watchMeta?.relevantTicket?.products?.map) {
+      isFree = props.watchMeta.relevantTicket.products.find((m) =>
+        m.styles.find((n) => n.price === 0)
+      );
+    }
+    if (isFree && !props.isAuthorized) {
+      props.setEnforceAuth(true);
+    }
+  }, [props?.watchMeta?.relevantTicket?.products, props?.isAuthorized]);
+
   return (
     <div id='watch-quad' className={`${videoQuadrant} WatchPage_VideoQuadrant`}>
       <Prompt {...props} />

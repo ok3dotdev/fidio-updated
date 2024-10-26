@@ -603,6 +603,9 @@ button:hover {
 }
 
 #studioEdit {
+  .Watch_PreviewExternalContainer {
+    margin-top: 0 !important;
+  }
   .upload_fileUploadContainerExternal__VEMCC {
     min-height: unset !important;
     padding: 20px 0 30px 0px !important;
@@ -615,9 +618,19 @@ button:hover {
   .WatchPage_clipDescriptiveTitle__O8peL {
     height: 44px !important;
   }
+  .event-edit--button {
+    outline: none !important;
+  }
+  .event-edit--button:hover {
+    background: transparent !important;
+    outline: none !important;
+  }
   .WatchPage_clipDescriptiveTitle__O8peL {
     min-width: 400px;
     padding-left: 10px;
+  }
+  .Watch_PreviewContainer div video.vjs-tech {
+    border-radius: 0 !important;
   }
 
   .step-2 {
