@@ -359,6 +359,19 @@
                 height: 225px;
             }
         }
+        @media (max-width: 640px) {
+            .IndexItemUpperContainer {
+                flex-direction: column;
+                max-height: -webkit-fill-available;
+                height: -webkit-fill-available;
+                a {
+                    width: -webkit-fill-available;
+                    .BgContainer {
+                        width: 100%;
+                    }
+                }
+            }
+        }
     }
 }
 

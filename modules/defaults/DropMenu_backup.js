@@ -8,7 +8,7 @@ const Module = props => {
         <React.Fragment>
             {
                 props._loggedIn
-                    ? <div className={`menuLinkSelector`} style={{ alignSelf: 'center', top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : '' }}>
+                    ? <div className={`menuLinkSelector`} style={{ alignSelf: 'center' }}>
                         <User { ...props } />
                         {
                             props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings'
@@ -38,7 +38,7 @@ const Module = props => {
                                 : null
                         }
                     </div>
-                : <div className={`menuLinkSelector`} style={{ alignSelf: 'center', top: props?.menuConfig?.height && !isNaN(Number(props.menuConfig.height)) ? Number(props.menuConfig.height) + 'px' : '' }}>
+                : <div className={`menuLinkSelector`} style={{ alignSelf: 'center' }}>
                     <Login { ...props } />
                     {
                         props._openMenu && props._openMenu.currentMenu && props._openMenu.currentMenu == 'main_settings'

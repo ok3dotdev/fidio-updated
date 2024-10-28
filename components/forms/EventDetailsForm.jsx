@@ -102,6 +102,7 @@ const EventDetailsForm = ({
                       handleNewFile={handleNewFile}
                       setbannerImage={setbannerImage}
                       bannerImage={bannerImage}
+                      error={error}
                     />
                     {error && (
                       <p className='text-red-500 text-xs'>{error.message}</p>

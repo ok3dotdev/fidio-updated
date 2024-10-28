@@ -59,6 +59,7 @@ const EventView = (props) => {
   const [showKeys, setShowKeys] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [isCurrentEvent, setIsCurrentEvent] = useState(false);
+  const [videos, setVideos] = useState([]);
 
   const router = useRouter();
 
@@ -187,11 +188,11 @@ const EventView = (props) => {
       const currentTime = new Date();
       console.log('times', currentTime, endDateTime);
 
-      if (!currentlyStreaming && !isCurrentEvent && currentTime > endDateTime) {
+      if (!isCurrentEvent && currentTime > endDateTime) {
         console.log('setting true', isCurrentEvent);
         setShowUpload(true);
       } else {
-        console.log('setting false', isCurrentEvent);
+        console.log('setting false', !currentlyStreaming);
         setShowUpload(false);
       }
 
@@ -331,7 +332,10 @@ const EventView = (props) => {
                         <button
                           disabled={false}
                           className='hover:bg-transparent event-edit--button'
-                          style={{ background: 'transparent !important' }}
+                          style={{
+                            background: 'transparent !important',
+                            padding: '0 !important',
+                          }}
                         >
                           <DriveFileRenameOutlineIcon
                             className='p-1'
@@ -607,7 +611,10 @@ const EventView = (props) => {
                                       >
                                         <DialogTrigger asChild>
                                           <Button
-                                            disabled={startEnabled}
+                                            disabled={
+                                              currentlyStreaming &&
+                                              !isCurrentEvent
+                                            }
                                             onClick={startStream}
                                             className='dark:bg-accentY py-2 rounded-[6px] w-full dark:hover:bg-opacity-[0.7] dark:hover:bg-accentY dark:hover:outline-[0] dark:hover:shadow-none font-semibold disabled:bg-[#404040] dark:disabled:hover:bg-[#404040] dark:disabled:text-[#525252] disabled:cursor-default whitespace-nowrap'
                                           >

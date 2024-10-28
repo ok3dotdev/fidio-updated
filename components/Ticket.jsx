@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 const Ticket = ({ info, ticketData, viewMode }) => {
   const { name, created, time, meta, detailmeta, images, id } = ticketData;
-  console.log(ticketData);
+  // console.log(ticketData);
   if (viewMode === 'list') {
     return (
       <div

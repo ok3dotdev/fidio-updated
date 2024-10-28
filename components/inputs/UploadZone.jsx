@@ -7,6 +7,7 @@ const UploadZone = ({
   bannerImage,
   handleNewFile,
   defaultImage,
+  error,
 }) => {
   console.log('UploadZone rendered'); // Add this line
 
@@ -47,8 +48,8 @@ const UploadZone = ({
         backgroundPosition: 'center',
       }}
     >
-      <input {...getInputProps()} />
-      <AddPhotoAlternateOutlinedIcon className='text-white mb-4' />
+      <input {...getInputProps()} required='true' />
+      <AddPhotoAlternateOutlinedIcon />
       <div className='flex items-center space-x-1 text-sm xl:text-md'>
         <p className='text-gray-600'>Drag an image here</p>
         <p className='text-gray-600'>or</p>
@@ -56,6 +57,7 @@ const UploadZone = ({
           Upload from Device
         </p>
       </div>
+      {error && <p className='text-red-500 text-xs'>{error.message}</p>}
     </div>
   );
 };

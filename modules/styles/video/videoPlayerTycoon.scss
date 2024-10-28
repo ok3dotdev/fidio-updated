@@ -249,10 +249,6 @@ button.vjs-button:hover {
     align-content: center;
 }
 
-.video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
-    bottom: 0.25rem;
-}
-
 .video-js .vjs-volume-panel.vjs-hover .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-horizontal, .video-js .vjs-volume-panel.vjs-hover .vjs-mute-control ~ .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-horizontal {
     width: 10em;
 }
@@ -327,6 +323,7 @@ button.vjs-button:hover {
 }
 
 .video-js .vjs-big-play-button {
+    left: calc(50% + 40px);
     transition: 200ms;
     animation-name: attentionplay;
     animation-duration: 2s;

@@ -14,7 +14,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const StudioLayout = (props) => {
-  console.log('ll', props);
+  // console.log('ll', props);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   useEffect(() => {
