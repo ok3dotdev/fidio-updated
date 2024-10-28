@@ -331,7 +331,7 @@ const EventView = (props) => {
                       <div className='bg-dashSides rounded-full p-1 flex justify-center items-center cursor-pointer z-20'>
                         <button
                           disabled={false}
-                          className='hover:bg-transparent event-edit--button'
+                          className='hover:bg-transparent event-edit--button edit-event--button'
                           style={{
                             background: 'transparent !important',
                             padding: '0 !important',
