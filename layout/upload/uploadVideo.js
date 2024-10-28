@@ -303,13 +303,13 @@ const Module = (props) => {
 
   /** Will set authorization by association to a product */
   const handleSetAuthorize = () => {
-    console.log('setting associations');
+    console.log('setting associations!');
     const id = router?.query?.id[0]; // The id of the product/ticket to authorize the video by
     const association = 'product';
     let r = videoDocument.setAuthorizedBy(id, association, true);
     r = r.setAssociation(id, association, true);
-
-    setVideoDocumentProxy(r);
+    setVideoDocumentProxy(r)
+    return r
   };
 
   const handleSetCurrentAssociationOption = React.useCallback((e) => {
@@ -550,8 +550,8 @@ const Module = (props) => {
   const handleFinalUpload = React.useCallback(
     async (e) => {
       e?.preventDefault();
-      await publish('publish');
-      handleSetAuthorize();
+      const r = handleSetAuthorize();
+      await publish('publish', r);
       setHandlingMetaProxy(false);
     },
     [handlePublish]
