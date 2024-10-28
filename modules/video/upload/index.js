@@ -1,1 +1,1 @@
-import UploadPage from"./UploadPage";import VideoReel from"./VideoReel";export{UploadPage,VideoReel};
+import UploadPage from"./UploadPage";export{UploadPage};

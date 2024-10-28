@@ -258,9 +258,9 @@ const EventView = (props) => {
   const handleRequest = async () => {
     const res = await apiReq('/p/getrelationshipchildrenof', {
       // Get all related products in column b of record a where verb is "related"
-      a: router?.query?.id[0],
-      atype: 'product',
-      btype: 'video',
+      a: '9fe97692-393c-4a26-89e1-3ac401f632cb',
+      atype: 'video',
+      btype: 'product',
       verb: 'related',
       offset: 0,
       limit: 20,
@@ -270,7 +270,7 @@ const EventView = (props) => {
     }
     const res2 = await apiReq('/p/getrelationshipchildrenof', {
       // Get all related videos in column a of record b where verb is "related"
-      a: router?.query?.id[0],
+      b: '7c7a9f46-4aae-4743-977f-c3ddec1c0132',
       atype: 'video',
       btype: 'product',
       verb: 'related',
