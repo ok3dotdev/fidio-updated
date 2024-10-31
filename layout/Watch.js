@@ -129,23 +129,23 @@ const Module = (props) => {
                 <div
                   className={`${props?.WatchPageStyles?.commentExternalContainer}`}
                 >
-                  <CommentInternal
-                    {...props}
-                    addComment={true}
-                    commentUseParent={props.watchData.id}
-                    commentUseParentType={props?.watchData?.__typename}
-                    pipe={'watch_comment'}
-                  />
-                  <LoadComments
-                    {...props}
-                    pipe={'watch_comment'}
-                    commentUseParent={props.watchData.id}
-                    commentUseParentType={props?.watchData?.__typename}
-                  />
                 </div>
-              ) : null}
-            </div>
-          )} */}
+                ) : null}
+                </div>
+                )} */}
+          <CommentInternal
+            {...props}
+            addComment={true}
+            commentUseParent={props.watchData.id}
+            commentUseParentType={props?.watchData?.__typename}
+            pipe={'watch_comment'}
+          />
+          <LoadComments
+            {...props}
+            pipe={'watch_comment'}
+            commentUseParent={props.watchData.id}
+            commentUseParentType={props?.watchData?.__typename}
+          />
         </div>
         <div className='hidden md:block px-4 md:px-0'>
           <Chat {...props} />

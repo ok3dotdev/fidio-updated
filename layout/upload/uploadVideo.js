@@ -4,7 +4,7 @@ import WatchPageStyles from '/modules/streaming/watch/WatchPage.module.scss';
 import { SignIn, Username } from '/modules/onboarding/signin';
 import { Player } from '/modules/streaming/watch';
 import UploadVideoFileInternal from '/modules/video/upload/UploadVideoFileInternal';
-import VideoReel from '/modules/video/upload/VideoReel';
+import VideoReel from '../../layout/upload/VideoReel';
 import { HMSDurationToSeconds } from '/modules/utility/utility/date';
 import { resolveNestedProperty } from '/modules/util';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -308,8 +308,8 @@ const Module = (props) => {
     const association = 'product';
     let r = videoDocument.setAuthorizedBy(id, association, true);
     r = r.setAssociation(id, association, true);
-    setVideoDocumentProxy(r)
-    return r
+    setVideoDocumentProxy(r);
+    return r;
   };
 
   const handleSetCurrentAssociationOption = React.useCallback((e) => {
@@ -588,15 +588,17 @@ const Module = (props) => {
               />
             </div>
           ) : null}
-          <div className=''>
-            <VideoReel
-              {...props}
-              fetchBusy={fetchBusy}
-              useVideos={useVideos}
-              videosContainerRef={videosContainerRef}
-              loadVideo={loadVideo}
-            />
-          </div>
+          {!handlingMeta && (
+            <div className=''>
+              <VideoReel
+                {...props}
+                fetchBusy={fetchBusy}
+                useVideos={useVideos}
+                videosContainerRef={videosContainerRef}
+                loadVideo={loadVideo}
+              />
+            </div>
+          )}
           {/* //This section needs to be a modal */}
           {handlingMeta ? (
             <div className='absolute bg-black/80 right-0 top-0  w-full h-full p-8'>

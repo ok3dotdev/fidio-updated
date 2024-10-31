@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '/modules/video/upload/upload.module.scss';
 import { FileVideo } from 'lucide-react';
 
 const Module = (props) => {
+  console.log('props vidoe file', props);
+  const [hasVideos, setHasVideos] = React.useState(false);
   const {
     dropHandler,
     dropHandlerOver,
@@ -19,6 +21,14 @@ const Module = (props) => {
     fileProgress,
     fetchBusy,
   } = props;
+
+  useEffect(() => {
+    const videos = props?.useVideos;
+    if (videos && videos?.length) {
+      console.log('has videos');
+      setHasVideos(true);
+    }
+  }, []);
   return (
     <div
       onDrop={dropHandler}

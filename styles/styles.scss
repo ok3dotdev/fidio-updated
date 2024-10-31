@@ -609,13 +609,36 @@ button:hover {
   .edit-event--button {
     padding: 0 !important;
   }
+  .WatchPage_thumbnailTitle__nNCja {
+    font-size: 16px !important;
+  }
   .upload_fileUploadContainerExternal__VEMCC {
     min-height: unset !important;
     padding: 20px 0 30px 0px !important;
+    background: rgb(38, 38, 38, 1) !important;
+  }
+  .Thumbnail_Thumbnail {
+    max-width: 90px;
+    border-radius: 4px !important;
+  }
+  .WatchPage_thumbnailContainer__MKyZl {
+    // display: none;
+    background: rgb(38, 38, 38);
+    padding: 9px;
+    border-radius: 4px;
+  }
+
+  .WatchPage_thumbnailContainer__MKyZl {
+    width: 100%;
   }
   .WatchPage_clipStart__Avcmp {
     background-color: white;
     color: black;
+  }
+  .Thumbnails_Container {
+    margin-left: 0 !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
   .WatchPage_clipStart__Avcmp,
   .WatchPage_clipDescriptiveTitle__O8peL {

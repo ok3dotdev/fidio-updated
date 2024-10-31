@@ -18,8 +18,6 @@ import EventUpdateModal from '@/components/modals/EventUpdateModal';
 import Preview from '/modules/streaming/watch/preview/Preview';
 import UploadPage from '/modules/video/upload/UploadPage.js';
 
-// import VideoReel from '/modules/video/upload/VideoReel';
-
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -70,7 +68,6 @@ const EventView = (props) => {
   useEffect(() => {
     if (ticket) {
       checkEventStartTime();
-      handleRequest();
       checkStreamEndTime();
       checkStreamStatus();
       isCurrentEventStream();
@@ -79,6 +76,10 @@ const EventView = (props) => {
 
   useEffect(() => {
     checkStreamEndTime();
+  }, []);
+
+  useEffect(async () => {
+    await handleGetVideos();
   }, []);
 
   useEffect(() => {
@@ -255,22 +256,23 @@ const EventView = (props) => {
     }
   };
 
-  const handleRequest = async () => {
-    const res = await apiReq('/p/getrelationshipchildrenof', {
-      // Get all related products in column b of record a where verb is "related"
-      a: '9fe97692-393c-4a26-89e1-3ac401f632cb',
-      atype: 'video',
-      btype: 'product',
-      verb: 'related',
-      offset: 0,
-      limit: 20,
-    });
-    if (res && res.status === 'success') {
-      console.log('videos 11', res);
-    }
+  const handleGetVideos = async () => {
+    // const res = await apiReq('/p/getrelationshipchildrenof', {
+    //   // Get all related products in column b of record a where verb is "related"
+    //   a: '9fe97692-393c-4a26-89e1-3ac401f632cb',
+    //   atype: 'video',
+    //   btype: 'product',
+    //   verb: 'related',
+    //   offset: 0,
+    //   limit: 20,
+    // });
+    // if (res && res.status === 'success') {
+    //   console.log('videos 11', res);
+    // }
+    console.log('id', router?.query?.id);
     const res2 = await apiReq('/p/getrelationshipchildrenof', {
       // Get all related videos in column a of record b where verb is "related"
-      b: '7c7a9f46-4aae-4743-977f-c3ddec1c0132',
+      b: router?.query?.id[0],
       atype: 'video',
       btype: 'product',
       verb: 'related',
@@ -279,6 +281,7 @@ const EventView = (props) => {
     });
     if (res2 && res2.status === 'success') {
       console.log('videos 22', res2);
+      setVideos(res2.data);
     }
   };
 
@@ -720,7 +723,8 @@ const EventView = (props) => {
                   <div>
                     <UploadPage {...props} />
                     <div className='mt-4'>
-                      <p>Videos</p>
+                      {/* <p>Videos</p> */}
+                      <div>{/* <VideoReel {...props} /> */}</div>
                     </div>
                   </div>
                 )}
