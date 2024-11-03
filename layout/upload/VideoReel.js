@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import apiReq from '/modules/utility/api/apiReq';
 import WatchPageStyles from '/modules/streaming/watch/WatchPage.module.scss';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Module = (props) => {
   const [productVideos, setProductVideos] = React.useState([]);
@@ -59,8 +60,10 @@ const Module = (props) => {
             key={i}
             className={`${WatchPageStyles.thumbnailContainer} flex gap-4 z-20 `}
             onClick={loadVideo}
+            item={m?.id}
           >
-            <div
+            <a
+              href={`/w?v=${m.id}`}
               className={`${WatchPageStyles.thumbnail} ${
                 ['processing', 'queued'].indexOf(m?.status) > -1
                   ? WatchPageStyles.thumbnailProcessing
@@ -73,9 +76,8 @@ const Module = (props) => {
                     : 'img/default/greythumb.jpg'
                 }`,
               }}
-              onClick={loadVideo}
-              item={m?.id}
-            ></div>
+              onClick={(e) => e.stopPropagation()}
+            ></a>
             <div className='m-0 space-y-0 flex flex-col justify-center w-[50%]'>
               <h2 className={`text-dashtext text-sm font-normal`}>Title</h2>
               <h4

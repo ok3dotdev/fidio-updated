@@ -7,6 +7,8 @@ import apiReq from '/modules/utility/api/apiReq';
 import Ticket from '@/components/cards/PurchaseTicketCard';
 import { Loader2 } from 'lucide-react';
 import LiveEventCard from '@/components/cards/LiveEventCard';
+import PastEventCard from '@/components/cards/PastEventCards';
+
 import {
   Carousel,
   CarouselContent,
@@ -25,6 +27,7 @@ const Page = (props) => {
   const [hasMore, setHasMore] = useState(true);
   const [liveEvents, setLiveEvents] = useState([]);
   const [sortedDates, setSortedDates] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
 
   useEffect(() => {
     const loadLiveEvents = async () => {
@@ -61,6 +64,27 @@ const Page = (props) => {
   }, [props?.apiUrl, page]);
 
   useEffect(() => {
+    const loadVideos = async () => {
+      const res = await apiReq('/p/getrecordsandrelationshipchildren', {
+        record: 'video',
+        rel: { btype: 'product', verb: 'authorize' },
+        offset: 0,
+        limit: 20,
+        orderBy: 'creation',
+        orderDir: 'desc',
+        // where: { author: 'id '} // optional
+      });
+      if (res && res.data) {
+        console.log('setting videos', res.data);
+        setPastEvents(res.data);
+        // setLoading(false);
+      }
+    };
+
+    loadVideos();
+  }, []);
+
+  useEffect(() => {
     const dates = Object.keys(tickets).filter(
       (date) => tickets[date]?.length > 0
     );
@@ -72,7 +96,7 @@ const Page = (props) => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  console.log('Tickets', tickets)
+  console.log('Tickets', tickets);
 
   return (
     <div className='w-full h-screen'>
@@ -161,6 +185,35 @@ const Page = (props) => {
             </div>
           )}
         </div>
+        {pastEvents && pastEvents?.length && (
+          <div className='mb-12'>
+            <h3 className='text-2xl font-semibold mb-8'>Past Events</h3>
+            <Carousel
+              opts={{
+                align: 'start',
+              }}
+              arrows='top'
+              className='w-full'
+            >
+              <CarouselContent className='z-2 cursor-pointer'>
+                {pastEvents.map((video, id) => (
+                  <CarouselItem
+                    key={id}
+                    className='2xl:basis-1/4 md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
+                  >
+                    <div className='p-1 cursor-pointer'>
+                      <PastEventCard
+                        video={video}
+                        product={video.relationships[0]}
+                        cdn={props?.cdn}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        )}
       </BrowseLayout>
     </div>
   );

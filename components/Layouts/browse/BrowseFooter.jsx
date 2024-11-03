@@ -17,27 +17,42 @@ const BrowseFooter = () => {
               <h3 className='font-semibold text-lg'>Connect</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href=' https://www.linkedin.com/company/fidio-inc'
+                    className='hover:text-white'
+                  >
                     LinkedIn
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='https://x.com/fidioofficial?s=11&t=RJI0_u1ybg7iN40hIftYvw'
+                    className='hover:text-white'
+                  >
                     X
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='https://www.tiktok.com/@fidio_official'
+                    className='hover:text-white'
+                  >
                     TikTok
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='https://www.instagram.com/fidio_official/'
+                    className='hover:text-white'
+                  >
                     Instagram
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='https://www.facebook.com/Fidioafrica'
+                    className='hover:text-white'
+                  >
                     Facebook
                   </Link>
                 </li>
@@ -46,11 +61,11 @@ const BrowseFooter = () => {
             <div>
               <h3 className='font-semibold text-lg'>Resources</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
-                <li>
+                {/* <li>
                   <Link href='#' className='hover:text-white'>
                     Guides
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     target='_blank'
@@ -93,18 +108,21 @@ const BrowseFooter = () => {
               <h3 className='font-semibold text-lg'>Contact</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link href='/' className='hover:text-white'>
                     About us
                   </Link>
                 </li>
                 <li>
-                  <Link href='#' className='hover:text-white'>
+                  <Link
+                    href='https://open.spotify.com/playlist/3jNKreDRNVGVke33O7CWsF?si=mgyHqcHMQcCJgxcs1OnHPQ'
+                    className='hover:text-white'
+                  >
                     Spotify Playlist
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href='mailto:admin@fidio.ca'
+                    href=' https://cal.com/fidio-admin-vuj8dq/30min'
                     className='hover:text-white'
                   >
                     Contact us
