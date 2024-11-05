@@ -11,7 +11,7 @@ const PastEventCard = ({ video, cdn, product }) => {
   )}`;
 
   return (
-    <Link href={`/w?v=${video.id}`}>
+    <Link href={`/w?v=${video?.id}`}>
       <div className='relative'>
         <img
           src={

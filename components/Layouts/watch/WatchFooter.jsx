@@ -17,44 +17,44 @@ const WatchFooter = () => {
               <h3 className='font-semibold text-lg'>Connect</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
-                  <Link
+                  <a
                     href=' https://www.linkedin.com/company/fidio-inc'
                     className='hover:text-white'
                   >
                     LinkedIn
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href='https://x.com/fidioofficial?s=11&t=RJI0_u1ybg7iN40hIftYvw'
                     className='hover:text-white'
                   >
                     X
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href='https://www.tiktok.com/@fidio_official'
                     className='hover:text-white'
                   >
                     TikTok
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href='https://www.instagram.com/fidio_official/'
                     className='hover:text-white'
                   >
                     Instagram
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href='https://www.facebook.com/Fidioafrica'
                     className='hover:text-white'
                   >
                     Facebook
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
