@@ -739,3 +739,36 @@ button:hover {
   padding: 13px;
   background-color: rgb(38, 38, 38);
 }
+
+.comments-section {
+  .WatchPage_watchIcon__HVoIj {
+    border-radius: 50% !important;
+  }
+
+  .WatchPage_metaAuthorMetaContainer__OdoKA > a {
+    width: 50px;
+  }
+
+  .Chat_chatInputSendContainer__NYfht {
+    border-top-width: 0;
+    padding: 0px !important;
+  }
+  .Chat_highlightBorder__kl51O {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+  }
+  .Chat_highlightBorder__kl51O:hover {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+  }
+  .Chat_textCommentInput__P1q1t {
+    font-size: 14px;
+    border-radius: 0 !important;
+    padding: 5px;
+  }
+  .AddComment_Container {
+    margin: 1rem 0 2rem;
+  }
+}

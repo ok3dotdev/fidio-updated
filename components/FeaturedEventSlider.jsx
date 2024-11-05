@@ -40,26 +40,6 @@ const FeaturedEventSlider = (props) => {
     };
     loadFeaturedEvets();
   }, []);
-  console.log('feat', featured);
-
-  const carouselItems = [
-    {
-      backgroundImageDesktop: '/img/internal/home-banner.png',
-      backgroundImageMobile: 'url(/img/internal/home-banner-mobile1.png)',
-      artist: 'TINY’S CONDO SESSION',
-      event: 'Live from Lagos',
-      date: ' January 14, 2024 4:00PM WAT',
-      id: 'tinys-condo-session',
-    },
-    {
-      backgroundImageDesktop: '/img/internal/home-banner.png',
-      backgroundImageMobile: 'url(/img/internal/home-banner-mobile1.png)',
-      artist: 'TINY’S CONDO SESSION',
-      event: 'Live from Lagos',
-      date: ' January 14, 2024 4:00PM WAT',
-      id: 'tinys-condo-session',
-    },
-  ];
 
   return (
     <Carousel

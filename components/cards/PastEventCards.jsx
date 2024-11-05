@@ -32,11 +32,11 @@ const PastEventCard = ({ video, cdn, product }) => {
         </div>
       </div>
       <div className='mt-2'>
-        <p className='font-semibold'>{product?.title}</p>
+        <p className='font-semibold'>{product?.name}</p>
         <div className='flex w-full justify-between mt-4'>
           {product?.meta?.host?.title && (
-            <div className='space-y-0 self-start'>
-              <p className='text-xs text-dashtext'>HOST</p>
+            <div className='space-y-2 self-start'>
+              <p className='text-[10px] text-dashtext'>HOST</p>
               <p className='mt-0 leading-[1rem]'>
                 {product?.meta?.host?.title}
               </p>

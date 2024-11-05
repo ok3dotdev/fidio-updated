@@ -65,6 +65,7 @@ const Page = (props) => {
 
   useEffect(() => {
     const loadVideos = async () => {
+      const today = new Date();
       const res = await apiReq('/p/getrecordsandrelationshipchildren', {
         record: 'video',
         rel: { btype: 'product', verb: 'authorize' },
@@ -72,6 +73,9 @@ const Page = (props) => {
         limit: 20,
         orderBy: 'creation',
         orderDir: 'desc',
+        lt: {
+          creation: today.toISOString(), // Use today's date in ISO format
+        },
         // where: { author: 'id '} // optional
       });
       if (res && res.data) {
@@ -155,8 +159,14 @@ const Page = (props) => {
                       <DateComponent date={date} />
                     </div>
                     <div className='z-50 relative flex justify-end gap-2 mb-4'>
-                      <CarouselPrevious arrows='top' className='z-24' />
-                      <CarouselNext arrows='top' className='z-24' />
+                      <CarouselPrevious
+                        arrows='top'
+                        className='z-24 dark:bg-white dark:bg-opacity-[8%]'
+                      />
+                      <CarouselNext
+                        arrows='top'
+                        className='z-24 dark:bg-white dark:bg-opacity-[8%]'
+                      />
                     </div>
                   </div>
                   <CarouselContent className='z-2 cursor-pointer'>
@@ -186,7 +196,7 @@ const Page = (props) => {
           )}
         </div>
         {pastEvents && pastEvents?.length && (
-          <div className='mb-12'>
+          <div className='mb-12 mt-8'>
             <h3 className='text-2xl font-semibold mb-8'>Past Events</h3>
             <Carousel
               opts={{
@@ -196,20 +206,22 @@ const Page = (props) => {
               className='w-full'
             >
               <CarouselContent className='z-2 cursor-pointer'>
-                {pastEvents.map((video, id) => (
-                  <CarouselItem
-                    key={id}
-                    className='2xl:basis-1/4 md:basis-2/3 rounded-lg lg:basis-1/3 aspect-square '
-                  >
-                    <div className='p-1 cursor-pointer'>
-                      <PastEventCard
-                        video={video}
-                        product={video.relationships[0]}
-                        cdn={props?.cdn}
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
+                {pastEvents
+                  .filter((video) => video?.relationships[0])
+                  .map((video, id) => (
+                    <CarouselItem
+                      key={id}
+                      className='2xl:basis-1/5 md:basis-1/3 rounded-lg lg:basis-1/4 aspect-square '
+                    >
+                      <div className='p-1 cursor-pointer'>
+                        <PastEventCard
+                          video={video}
+                          product={video.relationships[0]}
+                          cdn={props?.cdn}
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
               </CarouselContent>
             </Carousel>
           </div>
