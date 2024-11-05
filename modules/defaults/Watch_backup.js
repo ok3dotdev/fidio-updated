@@ -92,7 +92,7 @@ const Module = props => {
                                     props?.watchData?.id
                                         ? <div className={`${props?.WatchPageStyles?.commentExternalContainer}`}>
                                             <CommentInternal { ...props } addComment={true} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} pipe={'watch_comment'} />
-                                            <LoadComments { ...props } pipe={'watch_comment'} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} />
+                                            <LoadComments { ...props } pipe={'watch_comment'} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} useId={props.watchData.id} />
                                         </div>
                                         : null
                                 }

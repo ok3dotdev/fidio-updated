@@ -1,6 +1,6 @@
 import React from 'react'
-import { IndexHello } from '/modules/presentation/hello/IndexHello'
 import { AdminPanel, BeginStream, UsernameContainer, UserFeed, UserIcon, UserShop } from '/modules/profile'
+import { IndexHello } from '/modules/presentation/hello/IndexHello'
 
 const Module = props => {
     return (
@@ -17,8 +17,9 @@ const Module = props => {
                             </div>
                         </div>
                         <UserFeed { ...props } />
+                        <h3 style={{ padding: '0 1rem' }}>Videos</h3>
                         <div className='ProfilePage_Feed'>
-                            <IndexHello { ...props } groupLabel={'Most Recent'} items={props?.videoData?.videos ?? []} tight={true} />
+                            <IndexHello { ...props } groupLabel={'Most Recent'} items={props?.videoData?.videos ?? []} />
                         </div>
                         <UserShop { ...props } />
                     </div>

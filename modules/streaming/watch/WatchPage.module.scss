@@ -294,6 +294,25 @@
     margin-top: 1rem;
 }
 
+.commentDataAuthorContainer {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    .commentDataAuthorContainerTime {
+        color: grey;
+        font-size: .85rem;
+    }
+}
+
+.opDataAuthorContainer {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    .commentDataAuthorContainerTime {
+        color: grey;
+    }
+}
+
 .LoadReplies {
     background: none;
     color: #67cfff;

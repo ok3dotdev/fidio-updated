@@ -341,3 +341,20 @@ button.vjs-button:hover {
     display: none;
     visibility: hidden;
 }
+
+.vjs-modal-dialog-content {
+    position: absolute;
+    background: white;
+    color: black;
+    width: 100%;
+    height: fit-content;
+    display: none;
+}
+
+.vjs-live-display {
+    align-self: center;
+}
+
+.vjs-error-display {
+    display: none;
+}

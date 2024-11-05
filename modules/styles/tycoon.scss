@@ -78,6 +78,7 @@
 @import "./supporting/Article.scss";
 @import "./supporting/Invoice.scss";
 @import "./supporting/Menu.scss";
+@import "./supporting/Ads.scss";
   
 body .opacity1 {
     opacity: 1;
@@ -159,7 +160,7 @@ button:not(:disabled):hover {
     color: lightgrey;
     background: rgb(35, 35, 35, 1);
     // border: 1px solid white;
-    outline-offset: -1.5px;
+    outline-offset: -.5px;
     outline: 1px solid white;
 }
 
@@ -1500,4 +1501,16 @@ input.squeezedInputWider {
 
 .searchBarActive {
     outline: 3px solid grey;
+}
+
+.no_pointer_events {
+    pointer-events: none;
+}
+
+.action_button {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .25rem 1rem;
+    border-radius: 1rem;
 }

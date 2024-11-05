@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Miller Text';
+    src: local('Miller Text'), url(https://d2zsu4v7czjhvo.cloudfront.net/font/miller/MillerTextBoldItalic.otf) format('truetype') font-weight-bold,
+}
+
+.millerText, pre.millerText {
+    font-family: 'Miller Text';
+}
+
 .textChatInput {
     width: 100% !important;
     min-height: 25px;
@@ -10,6 +19,15 @@
     min-height: 25px;
     max-height: 125px;
     border-radius: .5rem;
+}
+
+.textCommentInputBig {
+    min-height: 215px !important;
+}
+
+.textCommentInputBigActive {
+    min-height: 325px !important;
+    max-height: 70vh;
 }
 
 .highlightBorder {
@@ -408,5 +426,16 @@
     gap: 1rem;
     .chatInputSendContainer {
         flex-grow: 1;
+    }
+}
+
+.commentInputTitleContainer {
+    margin-bottom: 1rem;
+    .commentInputTitle {
+        font-weight: 600;
+        font-size: 2rem;
+        width: 100%;
+        border-radius: .5rem;
+        border-width: 0;
     }
 }

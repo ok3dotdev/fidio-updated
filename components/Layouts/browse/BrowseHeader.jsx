@@ -14,7 +14,7 @@ const BrowseHeader = ({ className, ...props }) => {
   return (
     <div
       className={cn(
-        'w-full flex justify-between p-4 py-8 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0',
+        'w-full flex justify-between p-4 py-4 max-w-screen-xl mx-auto z-30 top-0 left-0 right-0',
         className
       )}
     >

@@ -474,8 +474,17 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'pages/c'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
 
-const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset', 's', 'settings', 'a', 'r' ] // Default pages
+
+const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset', 's', 'settings', 'a', 'r', 'c/index', 'c/[...id]' ] // Default pages
 
 for (let i = 0; i < pages.length; i++) {
     useFile = `pages/${pages[i]}.js`
