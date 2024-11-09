@@ -18,7 +18,7 @@ const BrowseFooter = () => {
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <Link
-                    href=' https://www.linkedin.com/company/fidio-inc'
+                    href='https://www.linkedin.com/company/fidio-inc'
                     className='hover:text-white'
                   >
                     LinkedIn
@@ -122,7 +122,7 @@ const BrowseFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href=' https://cal.com/fidio-admin-vuj8dq/30min'
+                    href='https://cal.com/fidio-admin-vuj8dq/30min'
                     className='hover:text-white'
                   >
                     Contact us

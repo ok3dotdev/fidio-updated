@@ -18,7 +18,7 @@ const WatchFooter = () => {
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <a
-                    href=' https://www.linkedin.com/company/fidio-inc'
+                    href='https://www.linkedin.com/company/fidio-inc'
                     className='hover:text-white'
                   >
                     LinkedIn
@@ -122,7 +122,7 @@ const WatchFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href=' https://cal.com/fidio-admin-vuj8dq/30min'
+                    href='https://cal.com/fidio-admin-vuj8dq/30min'
                     className='hover:text-white'
                   >
                     Contact us

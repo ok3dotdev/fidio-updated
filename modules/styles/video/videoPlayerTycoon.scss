@@ -272,9 +272,10 @@ button.vjs-button:hover {
 .video-js .vjs-time-control {
     width: 75px;
     align-content: center;
-    .vjs-remaining-time-display {
-        font-weight: 600;
-    }
+}
+
+.vjs-remaining-time-display {
+    font-weight: 600;
 }
 
 .vjs-time-tooltip {
@@ -357,4 +358,8 @@ button.vjs-button:hover {
 
 .vjs-error-display {
     display: none;
+}
+
+button.vjs-control {
+    cursor: pointer;
 }
