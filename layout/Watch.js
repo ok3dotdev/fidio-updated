@@ -21,7 +21,7 @@ const Module = (props) => {
   const [hasMore, setHasMore] = useState(true);
 
   const { WatchPageStyles = {}, watchMeta = {}, watchData = {} } = props;
-
+  console.log('props>>>>>>>>>>>>>', props);
   useEffect(() => {
     const loadTickets = async () => {
       setLoading(true);
@@ -224,10 +224,10 @@ const Module = (props) => {
               </div>
             </div>
           ) : (
-            watchData?.__typename === 'Product' && (
+            watchData?.__typename === 'Live' && (
               <div className='md:pl-4 px-4 mt-8'>
                 <div className='flex gap-8'>
-                  <div className='min-w-[70%]'>
+                  <div className='w-full'>
                     <h3 className='text-3xl lg:text-4xl font-bold my-4'>
                       {name ?? ''}
                     </h3>
