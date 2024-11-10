@@ -271,7 +271,7 @@ button {
   @apply dark:bg-accentY;
 }
 textarea {
-  height: 100% !important;
+  height: unset !important;
 }
 .Chat_chatInputSendContainer__NYfht {
   padding: 10px 10px 3px !important;
@@ -770,5 +770,15 @@ button:hover {
   }
   .AddComment_Container {
     margin: 1rem 0 2rem;
+  }
+}
+
+.hideChatBtn VideoPlayer_ChatBtn {
+  display: none;
+}
+
+#player-main-player {
+  @media (min-width: 900px) {
+    border-radius: 20px;
   }
 }

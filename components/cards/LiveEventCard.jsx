@@ -5,7 +5,7 @@ import { Timer } from 'lucide-react';
 
 const LiveEventCard = ({ live, cdn }) => {
   const { relevant_products: item } = live;
-  console.log('live', live, item);
+  // console.log('live', live, item);
   if (!live) return;
 
   // Base64 encoded SVG for a generic live stream placeholder image

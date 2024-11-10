@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from '/modules/video/upload/upload.module.scss';
 import WatchPageStyles from '/modules/streaming/watch/WatchPage.module.scss';
 import { SignIn, Username } from '/modules/onboarding/signin';
@@ -48,9 +48,11 @@ const Module = (props) => {
     loadRecord,
     handleDisposePlayer,
     publish,
+    product,
   } = props;
-
+  console.log('product>>>>>>>>>>>', product);
   const [currentStep, setCurrentStep] = useState(1);
+  const titleRef = useRef();
 
   const router = useRouter();
 
@@ -84,6 +86,12 @@ const Module = (props) => {
     }
   }, [currentStep]);
 
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.value = product.title;
+    }
+  }, [product.title]);
+
   const updateInput = React.useCallback(
     (e) => {
       const modif = e?.target?.getAttribute('modif');
@@ -114,14 +122,11 @@ const Module = (props) => {
                         : ''}
                     </label>
                     <input
-                      className={`p-8 mt-2 uploadPage_${m[0]} ${
-                        m[1].readonly ? 'input_readonly' : null
-                      }`}
+                      className={`video-title p-8 mt-2 uploadPage_${m[0]}`}
                       type='text'
                       selectelement={`${componentId}-${m[0]}`}
-                      disabled={m[1].readonly || currentStep === 3}
+                      disabled={m[1].readonly}
                       modif={m[0]}
-                      placeholder='Title (required)'
                       onChange={updateInput}
                     />
                   </div>
@@ -380,9 +385,10 @@ const Module = (props) => {
 
   const renderStepContent = () => {
     // console.log('Render Step Content', videoDocument, componentId, initialized);
-    switch (currentStep) {
-      case 1:
-        return (
+    if (videoDocument?.status === 'published') {
+      console.log('rrrrrrrrrrrrr');
+      return (
+        <div>
           <div className='flex flex-col lg:flex-row gap-8 rounded-[8px]'>
             <div
               className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer min-w-[50%]`}
@@ -421,84 +427,16 @@ const Module = (props) => {
                   <p className='text-dashtext'>File Name</p>
                   <p>Asake Concert.mp4</p>
                 </div>
+                <div className='mt-4'>{clipsRender}</div>
               </div>
             </div>
           </div>
-        );
-      case 2:
-        return (
-          <div className='step-2'>
-            <div className={''}>
-              <div
-                className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`}
-                style={{ height: `calc(100vh - ${props?.menuHeight})` }}
-              >
-                <div className='my-8'>
-                  <Player
-                    {...props}
-                    playerName={componentId ? `player-${componentId}` : null}
-                    playerInitialized={initialized}
-                  />
-                </div>
-              </div>
-            </div>
-            {videoDocumentRasterized?.timeline?.map ? (
-              <div>
-                <div className='flex gap-5' style={{ marginBottom: '1rem' }}>
-                  <div>
-                    <h5
-                      style={{
-                        width: '100%',
-                        marginBottom: '.5rem',
-                        fontWeight: '800',
-                      }}
-                    >
-                      Start time
-                    </h5>
-                    <input
-                      className={`dark:text-white font-semibold text-lg px-2 py-2 text-white ${WatchPageStyles.clipStart} Upload_ClipStart`}
-                      defaultValue={'00:00'}
-                      min='09:00'
-                      max='18:00'
-                      onKeyDown={handleSetClipTimeInput}
-                      ref={clipStartRef}
-                    />
-                  </div>
-                  <div>
-                    <h5
-                      style={{
-                        width: '100%',
-                        marginBottom: '.5rem',
-                        fontWeight: '800',
-                      }}
-                    >
-                      Chapter title
-                    </h5>
-                    <div className='flex gap-p5'>
-                      <input
-                        className={`${WatchPageStyles.clipDescriptiveTitle} text-lg px-2 py-2 text-white font-semibold Upload_ClipDescriptiveTitle`}
-                        placeholder='Clip Description'
-                        type='text'
-                        ref={clipDescriptionRef}
-                      />
-                      <button
-                        onClick={handleAddClip}
-                        className='bg-accentY px-4'
-                        style={{ textWrap: 'nowrap' }}
-                      >
-                        Add Chapter
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {clipsRender}
-              </div>
-            ) : null}
-          </div>
-        );
-      case 3:
-        return (
-          <div>
+        </div>
+      );
+    } else {
+      switch (currentStep) {
+        case 1:
+          return (
             <div className='flex flex-col lg:flex-row gap-8 rounded-[8px]'>
               <div
                 className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer min-w-[50%]`}
@@ -537,14 +475,131 @@ const Module = (props) => {
                     <p className='text-dashtext'>File Name</p>
                     <p>Asake Concert.mp4</p>
                   </div>
-                  <div className='mt-4'>{clipsRender}</div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      default:
-        return null;
+          );
+        case 2:
+          return (
+            <div className='step-2'>
+              <div className={''}>
+                <div
+                  className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`}
+                  style={{ height: `calc(100vh - ${props?.menuHeight})` }}
+                >
+                  <div className='my-8'>
+                    <Player
+                      {...props}
+                      playerName={componentId ? `player-${componentId}` : null}
+                      playerInitialized={initialized}
+                    />
+                  </div>
+                </div>
+              </div>
+              {videoDocumentRasterized?.timeline?.map ? (
+                <div>
+                  <div className='flex gap-5' style={{ marginBottom: '1rem' }}>
+                    <div>
+                      <h5
+                        style={{
+                          width: '100%',
+                          marginBottom: '.5rem',
+                          fontWeight: '800',
+                        }}
+                      >
+                        Start time
+                      </h5>
+                      <input
+                        className={`dark:text-white font-semibold text-lg px-2 py-2 text-white ${WatchPageStyles.clipStart} Upload_ClipStart`}
+                        defaultValue={'00:00'}
+                        min='09:00'
+                        max='18:00'
+                        onKeyDown={handleSetClipTimeInput}
+                        ref={clipStartRef}
+                      />
+                    </div>
+                    <div>
+                      <h5
+                        style={{
+                          width: '100%',
+                          marginBottom: '.5rem',
+                          fontWeight: '800',
+                        }}
+                      >
+                        Chapter title
+                      </h5>
+                      <div className='flex gap-p5'>
+                        <input
+                          className={`${WatchPageStyles.clipDescriptiveTitle} text-lg px-2 py-2 text-white font-semibold Upload_ClipDescriptiveTitle`}
+                          placeholder='Clip Description'
+                          type='text'
+                          ref={clipDescriptionRef}
+                        />
+                        <button
+                          onClick={handleAddClip}
+                          className='bg-accentY px-4'
+                          style={{ textWrap: 'nowrap' }}
+                        >
+                          Add Chapter
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  {clipsRender}
+                </div>
+              ) : null}
+            </div>
+          );
+        case 3:
+          return (
+            <div>
+              <div className='flex flex-col lg:flex-row gap-8 rounded-[8px]'>
+                <div
+                  className={`${WatchPageStyles.uploadMetaContainer} Video_UploadMetaContainer min-w-[50%]`}
+                >
+                  <div
+                    className={`${WatchPageStyles.uploadMetaPrimaryContainer} Video_UploadMetaPrimaryContainer`}
+                  >
+                    <p className='mb-4 font-semibold'>Details</p>
+                    {inputData}
+                  </div>
+                </div>
+                <div
+                  className={`${styles.videoContainer} Video_VideoUploadContainer`}
+                >
+                  <div
+                    className={`${WatchPageStyles.videoQuadrant} ${WatchPageStyles.videoQuadrantSimple} WatchPage_VideoQuadrant`}
+                    style={{ height: `calc(100vh - ${props?.menuHeight})` }}
+                  >
+                    <div
+                      className={`${styles.videoMessageContainer} Video_MessageContainer`}
+                    >
+                      <p
+                        className={`${styles.videoMessage} ${
+                          status?.message ? styles.videoMessageVisible : null
+                        }`}
+                      >
+                        {status.message}
+                      </p>
+                    </div>
+                    <Player
+                      {...props}
+                      playerName={componentId ? `player-${componentId}` : null}
+                      playerInitialized={initialized}
+                    />
+                    <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
+                      <p className='text-dashtext'>File Name</p>
+                      <p>Asake Concert.mp4</p>
+                    </div>
+                    <div className='mt-4'>{clipsRender}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        default:
+          return null;
+      }
     }
   };
   const handleFinalUpload = React.useCallback(
@@ -556,6 +611,18 @@ const Module = (props) => {
     },
     [handlePublish]
   );
+
+  const handleDelete = async () => {
+    console.log('removing associations!');
+    const id = router?.query?.id[0]; // The id of the product/ticket to authorize the video by
+    const association = 'product';
+    let r = videoDocument.setAuthorizedBy(id, association, false);
+    r = r.setAssociation(id, association, false);
+    setVideoDocumentProxy(r);
+    await publish('publish', r);
+    setHandlingMetaProxy(false);
+    return r;
+  };
 
   return (
     <div className={`${styles.container} ${props.className} Upload_Container`}>
@@ -596,6 +663,7 @@ const Module = (props) => {
                 useVideos={useVideos}
                 videosContainerRef={videosContainerRef}
                 loadVideo={loadVideo}
+                product={product}
               />
             </div>
           )}
@@ -614,7 +682,15 @@ const Module = (props) => {
                         ? 'Edit Video'
                         : 'Upload Video'}
                     </p>
-                    <div className='flex items-center gap-4'>
+                    <div
+                      style={{
+                        display:
+                          videoDocument?.status === 'published'
+                            ? 'none'
+                            : 'block',
+                      }}
+                      className='flex items-center gap-4'
+                    >
                       <div className='flex items-center gap-2 sm:gap-4'>
                         <div
                           className={`rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-medium text-sm sm:text-base
@@ -672,15 +748,24 @@ const Module = (props) => {
                   {renderStepContent()}
 
                   <div className='modal-footer flex justify-end mt-12 gap-4'>
-                    {currentStep > 1 && (
+                    {videoDocument?.status != 'published' &&
+                      currentStep > 1 && (
+                        <button
+                          className='bg-dashSides text-white'
+                          onClick={() => handleStepChange(currentStep - 1)}
+                        >
+                          Previous
+                        </button>
+                      )}
+                    {videoDocument?.status == 'published' && (
                       <button
                         className='bg-dashSides text-white'
-                        onClick={() => handleStepChange(currentStep - 1)}
+                        onClick={() => handleDelete()}
                       >
-                        Previous
+                        Delete
                       </button>
                     )}
-                    {currentStep < 3 ? (
+                    {videoDocument?.status != 'published' && currentStep < 3 ? (
                       <button
                         className='dark:bg-white text-black px-4'
                         onClick={() => handleStepChange(currentStep + 1)}

@@ -78,8 +78,8 @@ const EventView = (props) => {
     checkStreamEndTime();
   }, []);
 
-  useEffect(async () => {
-    await handleGetVideos();
+  useEffect(() => {
+    handleGetVideos();
   }, []);
 
   useEffect(() => {
@@ -721,7 +721,7 @@ const EventView = (props) => {
                   </div>
                 ) : (
                   <div>
-                    <UploadPage {...props} />
+                    <UploadPage {...props} product={ticket} />
                     <div className='mt-4'>
                       {/* <p>Videos</p> */}
                       <div>{/* <VideoReel {...props} /> */}</div>

@@ -58,7 +58,7 @@ const SubscribeForm = ({ classes }) => {
     <div className={'relative max-w-screen-xl mx-auto mt-12 ' + classes}>
       <div className='md:p-12 bg-dashSides rounded-[10px] p-8 flex flex-col items-center'>
         <h3 className='font-bold text-3xl text-center'>
-          Stay Updated with Our Newsletter
+          Never miss upcoming shows
         </h3>
         <p className='text-center mt-2'>
           Get the latest live event updates straight to your inbox.
@@ -73,7 +73,7 @@ const SubscribeForm = ({ classes }) => {
             className='flex w-full md:min-w-[500px]'
           >
             <Input
-              placeholder='Subscribe'
+              placeholder='Enter your email address'
               className='h-10 text-muted-foreground p-2 border-b bg-transparent dark:border-dashBorder text-white flex-1'
               onChange={(e) => setTerm(e?.target?.value)}
               value={term}

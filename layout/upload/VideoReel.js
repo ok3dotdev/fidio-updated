@@ -83,7 +83,7 @@ const Module = (props) => {
               <h4
                 className={`${WatchPageStyles.thumbnailTitle} font-semibold text-[22px]`}
               >
-                {m?.title ?? ''}
+                {m?.title || props?.product?.name}
               </h4>
             </div>
             <div className='m-0 space-y-0 flex flex-col justify-center '>

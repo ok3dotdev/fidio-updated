@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Ticket } from 'lucide-react';
 
 const PastEventCard = ({ video, cdn, product }) => {
-  console.log('video meta', video, product);
+  // console.log('video meta', video, product);
   // Base64 encoded SVG for a generic placeholder image
   const placeholderImage = `data:image/svg+xml;base64,${btoa(
     '<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#333"/><text x="50%" y="50%" font-family="Arial" font-size="24" fill="#666666" text-anchor="middle" dy=".3em">No Image</text></svg>'

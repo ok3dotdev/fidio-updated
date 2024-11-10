@@ -3,7 +3,6 @@ import styles from '/modules/video/upload/upload.module.scss';
 import { FileVideo } from 'lucide-react';
 
 const Module = (props) => {
-  console.log('props vidoe file', props);
   const [hasVideos, setHasVideos] = React.useState(false);
   const {
     dropHandler,

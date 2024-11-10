@@ -178,7 +178,7 @@ const EventUpdateModal = (props) => {
   );
   // Add this useEffect to log changes to lineUpInfo
   useEffect(() => {
-    console.log('lineUpInfo changed:', lineUpInfo);
+    // console.log('lineUpInfo changed:', lineUpInfo);
   }, [lineUpInfo]);
 
   // this is not working yet. Just addPerformer
@@ -208,7 +208,7 @@ const EventUpdateModal = (props) => {
   }, [lineUpInfo]);
 
   const saveDraft = (data) => {
-    console.log('here', data);
+    // console.log('here', data);
     let draft = true;
     onSubmit(data, draft);
   };
@@ -281,7 +281,7 @@ const EventUpdateModal = (props) => {
       setImgFor([]);
       setLineUpInfo([]);
       setPipelineDbItem({});
-      window.location.reload();
+      window?.location?.reload();
     }
   };
 
