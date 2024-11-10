@@ -170,14 +170,14 @@ const CirclePlay = () => {
         stroke='white'
         stroke-width='3'
         strokeWidth='round'
-        stroke-linejoin='round'
+        strokeLineJoin='round'
       />
       <path
         d='M16.875 13L27.75 20.25L16.875 27.5V13Z'
         stroke='white'
         stroke-width='3'
         strokeWidth='round'
-        stroke-linejoin='round'
+        strokeLineJoin='round'
       />
     </svg>
   );

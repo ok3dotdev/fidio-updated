@@ -131,7 +131,6 @@ const Page = (props) => {
           </div>
         )}
         <div>
-          <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           {loading && (
             <div className='h-[500px] w-full flex items-center justify-center'>
               <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
@@ -144,6 +143,7 @@ const Page = (props) => {
                 key={i}
                 className='flex w-full gap-4 md:gap-12 overflow-hidden mb-12 min-h-[250px] flex-col md:flex-row items-start '
               >
+                <h3 className='text-2xl font-semibold mb-8'>Upcoming</h3>
                 <div className='hidden md:block'>
                   <DateComponent date={date} />
                 </div>

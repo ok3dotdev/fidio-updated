@@ -1,4 +1,5 @@
 import Link from 'next/link';
+const year = new Date().getFullYear();
 
 const BrowseFooter = () => {
   return (
@@ -134,9 +135,9 @@ const BrowseFooter = () => {
         </div>
       </div>
       <div className='bg-[#262626] h-12 flex justify-center items-center'>
-        <div className='max-w-screen-2xl mx-auto flex justify-between w-full px-4'>
-          <p className='text-[#737373] font-semibold text-sm'>
-            &copy; 2024 All Rights Reserved
+        <div className='max-w-screen-xl mx-auto flex justify-between w-full px-4'>
+          <p className='text-[#737373] font-medium text-sm'>
+            &copy; {year} All Rights Reserved
           </p>
         </div>
       </div>
