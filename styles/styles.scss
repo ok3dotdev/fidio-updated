@@ -591,6 +591,8 @@ button:hover {
   @media (min-width: 700px) {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
+    max-width: 1700px;
+    margin: auto;
   }
 }
 
@@ -782,3 +784,54 @@ button:hover {
     border-radius: 20px;
   }
 }
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  25% {
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 10px 10px 15px rgba(255, 255, 255, 0.5);
+  }
+  75% {
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pattern-text::before {
+  content: url('/img/internal/marketing/3-pattern.svg.png');
+  position: absolute;
+  top: -2.5rem;
+  left: -1.5rem;
+  z-index: 4;
+}
+
+.WatchPage_videoExternalContainer__YRQWM
+  .WatchPage_videoInternalContainer__Xc3bY {
+  background: unset !important;
+}
+
+// Video controls
+
+.vjs-icon-volume-high:before,
+.video-js .vjs-mute-control .vjs-icon-placeholder:before {
+  // content: url('/img/internal/watch-control/speaker.png') !important;
+}
+
+.vjs-icon-pause:before,
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder:before {
+  content: url('/img/internal/watch-control/pause.png') !important;
+}
+
+// video contorls end

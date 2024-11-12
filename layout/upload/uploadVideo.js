@@ -11,6 +11,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Close from '@mui/icons-material/Close';
 import { useRouter } from 'next/router';
 import { X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
 const Module = (props) => {
   const {
     ASSOCIATE_RECORDS,
@@ -423,10 +425,10 @@ const Module = (props) => {
                   playerName={componentId ? `player-${componentId}` : null}
                   playerInitialized={initialized}
                 />
-                <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
+                {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
                   <p className='text-dashtext'>File Name</p>
                   <p>Asake Concert.mp4</p>
-                </div>
+                </div> */}
                 <div className='mt-4'>{clipsRender}</div>
               </div>
             </div>
@@ -471,10 +473,10 @@ const Module = (props) => {
                     playerName={componentId ? `player-${componentId}` : null}
                     playerInitialized={initialized}
                   />
-                  <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
+                  {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
                     <p className='text-dashtext'>File Name</p>
                     <p>Asake Concert.mp4</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -587,10 +589,10 @@ const Module = (props) => {
                       playerName={componentId ? `player-${componentId}` : null}
                       playerInitialized={initialized}
                     />
-                    <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
+                    {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
                       <p className='text-dashtext'>File Name</p>
                       <p>Asake Concert.mp4</p>
-                    </div>
+                    </div> */}
                     <div className='mt-4'>{clipsRender}</div>
                   </div>
                 </div>
@@ -750,38 +752,38 @@ const Module = (props) => {
                   <div className='modal-footer flex justify-end mt-12 gap-4'>
                     {videoDocument?.status != 'published' &&
                       currentStep > 1 && (
-                        <button
-                          className='bg-dashSides text-white'
+                        <Button
+                          className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white'
                           onClick={() => handleStepChange(currentStep - 1)}
                         >
                           Previous
-                        </button>
+                        </Button>
                       )}
                     {videoDocument?.status == 'published' && (
-                      <button
-                        className='bg-dashSides text-white'
+                      <Button
+                        className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white'
                         onClick={() => handleDelete()}
                       >
                         Delete
-                      </button>
+                      </Button>
                     )}
                     {videoDocument?.status != 'published' && currentStep < 3 ? (
-                      <button
-                        className='dark:bg-white text-black px-4'
+                      <Button
+                        className='dark:bg-white dark:hover:bg-white dark:text-black px-4'
                         onClick={() => handleStepChange(currentStep + 1)}
                       >
                         Next
-                      </button>
+                      </Button>
                     ) : (
-                      <button
-                        className='Video_UploadButton dark:bg-white text-black px-4 rounded-sm'
+                      <Button
+                        className='Video_Uploadbutton dark:bg-white dark:hover:bg-white dark:text-black rounded-sm'
                         onClick={handleFinalUpload}
                         modif='publish'
                       >
                         {videoDocument?.status === 'published'
                           ? ' Update Video'
                           : 'Finish Upload'}
-                      </button>
+                      </Button>
                     )}
                   </div>
                 </div>

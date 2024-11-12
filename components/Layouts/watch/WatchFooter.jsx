@@ -72,7 +72,7 @@ const WatchFooter = () => {
                     href='/policies/terms'
                     className='hover:text-white'
                   >
-                    Terms of use
+                    Terms of Use
                   </Link>
                 </li>
                 <li>
@@ -109,7 +109,7 @@ const WatchFooter = () => {
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <Link href='/' className='hover:text-white'>
-                    About us
+                    About Us
                   </Link>
                 </li>
                 <li>
@@ -125,7 +125,17 @@ const WatchFooter = () => {
                     href='https://cal.com/fidio-admin-vuj8dq/30min'
                     className='hover:text-white'
                   >
-                    Contact us
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/media-production'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='hover:text-white'
+                  >
+                    Media Production
                   </Link>
                 </li>
               </ul>

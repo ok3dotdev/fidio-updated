@@ -1,16 +1,17 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-// import { resolveVariables } from '/app.config';
+import { resolveVariables } from '/app.config';
+const { dev } = resolveVariables();
 
 class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          {/* <link rel='canonical' href='https://www.fidio.ca/' /> */}
-          <script
-            id='google-analytics-script'
-            dangerouslySetInnerHTML={{
-              __html: `
+          {!dev && (
+            <script
+              id='google-analytics-script'
+              dangerouslySetInnerHTML={{
+                __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -18,13 +19,15 @@ class MyDocument extends Document {
                   page_path: window.location.pathname
                 });
               `,
-            }}
-          />
-
-          <script
-            async
-            src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
-          ></script>
+              }}
+            />
+          )}
+          {!dev && (
+            <script
+              async
+              src='https://www.googletagmanager.com/gtag/js?id=G-B57K7JWE6J'
+            ></script>
+          )}
           <script src='https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js'></script>
           <link
             href='https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap'
@@ -40,9 +43,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           ></link>
         </Head>
-        {/* {resolveVariables()?.dev && (
-          <meta name='robots' content='noindex, nofollow' />
-        )} */}
+        {dev && <meta name='robots' content='noindex, nofollow' />}
         <body>
           <Main />
           <NextScript />

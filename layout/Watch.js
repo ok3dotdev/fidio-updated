@@ -72,9 +72,11 @@ const Module = (props) => {
       <Prompt {...props} />
       <div className={`${videoExternalContainer}`}>
         <div className={`${videoInternalContainer} `}>
-          <div className={hideButton ? 'hideChatBtn' : null}>
-            <Player {...props} />
-          </div>
+          {props && hasDetails && (
+            <div className={hideButton ? 'hideChatBtn' : null}>
+              <Player {...props} />
+            </div>
+          )}
           <div>
             {watchData?.__typename === 'Video' ? (
               <div className='md:pl-4 px-4 mt-8'>
@@ -152,22 +154,24 @@ const Module = (props) => {
                       </div>
                     )}
                   </div>
-                  <div className='w-full comments-section'>
-                    <p className='mb-4'>Comments</p>
-                    <CommentInternal
-                      {...props}
-                      addComment={true}
-                      commentUseParent={props.watchData.id}
-                      commentUseParentType={props?.watchData?.__typename}
-                      pipe={'watch_comment'}
-                    />
-                    <LoadComments
-                      {...props}
-                      pipe={'watch_comment'}
-                      commentUseParent={props.watchData.id}
-                      commentUseParentType={props?.watchData?.__typename}
-                    />
-                  </div>
+                  {hasDetails && (
+                    <div className='w-full comments-section'>
+                      <p className='mb-4'>Comments</p>
+                      <CommentInternal
+                        {...props}
+                        addComment={true}
+                        commentUseParent={props.watchData.id}
+                        commentUseParentType={props?.watchData?.__typename}
+                        pipe={'watch_comment'}
+                      />
+                      <LoadComments
+                        {...props}
+                        pipe={'watch_comment'}
+                        commentUseParent={props.watchData.id}
+                        commentUseParentType={props?.watchData?.__typename}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className='mt-8'>
                   {loading && (
@@ -175,7 +179,7 @@ const Module = (props) => {
                       <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
                     </div>
                   )}
-                  {!loading && tickets && (
+                  {!loading && tickets.length > 0 && (
                     <div className='w-full gap-4 md:gap-12 overflow-hidden mb-12 min-h-[250px] flex-col md:flex-row items-start '>
                       <h3 className='text-2xl font-semibold mb-12 mt-8'>
                         Upcoming Events

@@ -20,6 +20,8 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://www.linkedin.com/company/fidio-inc'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     LinkedIn
@@ -28,6 +30,8 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://x.com/fidioofficial?s=11&t=RJI0_u1ybg7iN40hIftYvw'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     X
@@ -36,6 +40,8 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://www.tiktok.com/@fidio_official'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     TikTok
@@ -44,6 +50,8 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://www.instagram.com/fidio_official/'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     Instagram
@@ -52,6 +60,8 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://www.facebook.com/Fidioafrica'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     Facebook
@@ -62,18 +72,13 @@ const BrowseFooter = () => {
             <div>
               <h3 className='font-semibold text-lg'>Resources</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
-                {/* <li>
-                  <Link href='#' className='hover:text-white'>
-                    Guides
-                  </Link>
-                </li> */}
                 <li>
                   <Link
                     target='_blank'
                     href='/policies/terms'
                     className='hover:text-white'
                   >
-                    Terms of use
+                    Terms of Use
                   </Link>
                 </li>
                 <li>
@@ -106,16 +111,18 @@ const BrowseFooter = () => {
               </ul>
             </div>
             <div>
-              <h3 className='font-semibold text-lg'>Contact</h3>
+              <h3 className='font-semibold text-lg'>Company</h3>
               <ul className='flex flex-col mt-8 space-y-4 text-dashtext'>
                 <li>
                   <Link href='/' className='hover:text-white'>
-                    About us
+                    About Us
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='https://open.spotify.com/playlist/3jNKreDRNVGVke33O7CWsF?si=mgyHqcHMQcCJgxcs1OnHPQ'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
                     Spotify Playlist
@@ -124,9 +131,21 @@ const BrowseFooter = () => {
                 <li>
                   <Link
                     href='https://cal.com/fidio-admin-vuj8dq/30min'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className='hover:text-white'
                   >
-                    Contact us
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/media-production'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='hover:text-white'
+                  >
+                    Media Production
                   </Link>
                 </li>
               </ul>
