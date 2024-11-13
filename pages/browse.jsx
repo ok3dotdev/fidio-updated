@@ -195,16 +195,11 @@ const Page = (props) => {
             </div>
           )}
         </div>
+
         {pastEvents && pastEvents?.length && (
           <div className='mb-12 mt-8'>
             <div className='flex justify-between mb-4'>
               <h3 className='text-2xl font-semibold'>Past Events</h3>
-              {/* <a
-                href='/history'
-                className='text-sm text-dashtext underline p-1 font-semibold items-end'
-              >
-                See all
-              </a> */}
             </div>
             <Carousel
               opts={{

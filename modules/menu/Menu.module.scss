@@ -32,9 +32,7 @@
 
     .menuLink {
         border-radius: .25rem;
-        background: rgba(0,0,0,0) !important;
-        // box-shadow: inset 0 0 7.5px #5c5c5c;
-        // border: 1px solid grey;
+        background: rgba(0,0,0,0);
         box-shadow: none;
         border: 1px solid transparent;
         width: 100%;
@@ -146,8 +144,11 @@
     }
 
     .menuLink:hover {
-        background: rgb(35, 35, 35, 1) !important;
+        background: rgb(35, 35, 35, 1);
         border: 1px solid white;
+        .itemName, .menuLinkText, .subMenuItem, .menuLinkIconPair {
+            color: $background-darker-grey;
+        }
     }
 }
 
@@ -174,10 +175,6 @@
 .menuLinkIconNoText {
     padding-left: 0 !important;
     margin-right: 0 !important;
-}
-
-.menuLinkText:hover .menuLinkIconPair {
-    color: lightgrey;
 }
 
 .menuClosed {
@@ -230,17 +227,6 @@
 
     .subMenuItem:hover {
         color: lightgrey;
-    }
-}
-
-.subMenuItemContainer:hover {
-    background: rgb(35, 35, 35, 1) !important;
-
-    .itemName {
-        color: $background-darker-grey4;
-    }
-    .subMenuItem {
-        color: $background-darker-grey4;
     }
 }
 

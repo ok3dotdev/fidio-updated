@@ -1,1 +1,1 @@
-import React from"react";const Module=e=>{var{fetchBusy:e,ManagerStyles:t,openMoreSettings:n,moreSettings:r}=e;return React.createElement(React.Fragment,null,e?null:React.createElement("button",{className:t.moreSettingsButton+" Manager_MoreSettingsButton",onClick:n},r?"Less":"More"))};export default Module;
+import React from"react";const Module=e=>{var{}=e;return React.createElement(React.Fragment,null)};export default Module;

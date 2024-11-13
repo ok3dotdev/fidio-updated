@@ -3,6 +3,7 @@
     .videoContainer {
         display: block;
         width: 100%;
+        position: relative;
         .videoPlayer {
             width: 100%;
             min-height: 80vh;
@@ -130,7 +131,15 @@
 }
 
 .playerNotInitialized {
-    opacity: 0;
+    opacity: 1;
+}
+
+.playerBlackScreenUninitialized {
+    background: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
 }
 
 .playerInitialized {

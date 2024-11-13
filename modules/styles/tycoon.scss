@@ -1208,7 +1208,7 @@ code[class*=language-], pre[class*=language-] {
     div {
         width: 100%;
         height: auto;
-        border-radius: 1rem;
+        border-radius: .5rem;
         video.vjs-tech {
             height: auto;
             position: relative;
@@ -1513,4 +1513,98 @@ input.squeezedInputWider {
     gap: .5rem;
     padding: .25rem 1rem;
     border-radius: 1rem;
+}
+
+.selectThisText {
+    position: relative;
+    .copied {
+        position: absolute;
+        transition: 200ms;
+        width: max-content;
+        background: rgba(35, 35, 35, 1);
+        padding: .5rem;
+        border-radius: .25rem;
+        color: white;
+    }
+}
+
+.Manager_NowStreamingButton {
+    border-radius: .5rem;
+}
+
+.embed_livestream_links {
+    border: 1px solid grey;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.darkInput {
+    background: black;
+    border: none;
+    font-weight: 600;
+    color: white;
+    border: 1px solid #383838;
+    border-radius: .25rem;
+}
+
+.Manager_UpcomingStreamsContainer {
+    display: flex;
+    gap: .25rem;
+    overflow: auto;
+    .Manager_UpcomingStreamContainer {
+        display: flex;
+        gap: .25rem;
+        flex-direction: column;
+        cursor: pointer;
+        border: 1px solid transparent;
+        padding: .25rem;
+        .Manager_UpcomingStreamLabel {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            cursor: pointer;
+        }
+    }
+    .Manager_UpcomingStreamContainer:hover {
+        border: 1px solid grey;
+    }
+}
+
+.Manager_OngoingStreamForImage {
+    max-width: 100px;
+}
+
+@media(max-width: 640px) {
+    .Manager_UpcomingStreamsContainer {
+        max-width: 92vw;
+    }
+}
+
+.Manager_UpcomingStream {
+    height: 75px;
+    width: 75px;
+}
+
+.modal_container {
+    position: relative;
+}
+
+.simple_modal {
+    position: fixed;
+    top: 10vh;
+    height: 80vh;
+    left: 10vw;
+    width: 80vw;
+    z-index: 100;
+    opacity: 0;
+    display: none;
+    transition: 200ms;
+}
+
+.simple_modal_visible {
+    opacity: 1;
+    display: block;
 }
