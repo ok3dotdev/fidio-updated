@@ -196,7 +196,7 @@ const Page = (props) => {
           )}
         </div>
 
-        {pastEvents && pastEvents?.length && (
+        {pastEvents && pastEvents?.length > 0 && (
           <div className='mb-12 mt-8'>
             <div className='flex justify-between mb-4'>
               <h3 className='text-2xl font-semibold'>Past Events</h3>

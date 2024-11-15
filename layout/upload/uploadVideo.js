@@ -76,6 +76,14 @@ const Module = (props) => {
   );
 
   useEffect(() => {
+    if (videoDocument) {
+      console.log('effect', videoDocument, product);
+      videoDocument.title = product?.name;
+      setVideoDocumentProxy(videoDocument);
+    }
+  }, [videoDocument, product]);
+
+  useEffect(() => {
     if (currentStep === 3) {
       const clipsButton = document?.querySelectorAll(
         '.WatchPage_clipViewNameContainer__Kg6g8 .close'
@@ -776,13 +784,13 @@ const Module = (props) => {
                       </Button>
                     ) : (
                       <Button
-                        className='Video_Uploadbutton dark:bg-white dark:hover:bg-white dark:text-black rounded-sm'
+                        className='Video_Uploadbutton dark:bg-white dark:hover:bg-white dark:text-black dark:hover:text-black rounded-sm'
                         onClick={handleFinalUpload}
                         modif='publish'
                       >
                         {videoDocument?.status === 'published'
-                          ? ' Update Video'
-                          : 'Finish Upload'}
+                          ? ' Save'
+                          : 'Publish'}
                       </Button>
                     )}
                   </div>

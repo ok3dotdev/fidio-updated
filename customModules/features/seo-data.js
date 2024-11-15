@@ -50,6 +50,23 @@ const browsePageData = {
     shareUrl: 'https://www.fidio.ca/browse',
   },
 };
+const MediaProductionPageData = {
+  title: 'Fidio - Elevate Your Brand with Professional Video Production.',
+  seo: {
+    metaTitle: 'Fidio - Elevate Your Brand with Professional Video Production.',
+    metaDesc:
+      'Fidio offers comprehensive video production services designed to elevate your brand and engage your audience.',
+    shareTitle:
+      'Fidio - Elevate Your Brand with Professional Video Production.',
+    shareDesc:
+      'Fidio offers comprehensive video production services designed to elevate your brand and engage your audience.',
+    shareGraphic: {
+      asset: '/img/internal/group4.png', // Replace with the actual image URL
+    },
+    shareCanonical: 'https://www.fidio.ca/media-production',
+    shareUrl: 'https://www.fidio.ca/media-production',
+  },
+};
 const blogPageData = {
   title: 'Fidio Blog - Insights and Stories on African Concerts and Events',
   seo: {
@@ -108,4 +125,5 @@ export {
   termsOfServicePageData,
   browsePageData,
   blogPageData,
+  MediaProductionPageData,
 };

@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/button';
 import { MoveUpRight, Medal, ArrowRight } from 'lucide-react';
 import MarketingHeader from '../components/Layouts/marketing/MarketingHeader';
 import MarketingFooter from '../components/Layouts/marketing/MarketingFooter';
+import MarketingLayout from '../components/Layouts/marketing/MarketingLayout';
 
 const pageName = 'marketing';
 
 export default function Page() {
   return (
-    <div className='font-lexend scroll-smooth w-full overflow-x-hidden'>
-      <MarketingHeader />
+    <MarketingLayout>
       <div className='bg-[url("/img/internal/marketing/marketing-header-bg.png")] min-h-screen md:bg-cover bg-[#0C0C0C] bg-no-repeat bg-fixed dark:border-[#D0D5DD] border-[0.5px] dark:border-opacity-[20%] pt-12 relative'>
         <div className='text-center z-40 flex  max-w-3xl md:max-w-7xl mx-auto items-center flex-col'>
           <div className='flex gap-2 items-center p-1 rounded-[20px] dark:border-dashtext border-[1px] bg-gradient-to-r from-[#191919] to-[#323130] w-fit px-2 relative'>
@@ -27,7 +27,7 @@ export default function Page() {
             <br />
             {'with Professional Video Production.'}
           </h1>
-          <p className='mt-4 mx-4 md:text-2xl'>
+          <p className='mt-4 mx-4 md:text-[18px]'>
             Fidio offers comprehensive video production services designed to
             elevate your <br className='hidden md:block' /> brand and engage
             your audience.{' '}
@@ -37,7 +37,7 @@ export default function Page() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <div className='rounded-[36px] bg-white flex p-2 px-[6px] items-center gap-2 mt-8'>
+            <div className='rounded-[36px] bg-white flex p-2 px-[6px] items-center gap-2 mt-8 mb-0 md:mb-[550px]'>
               <p className='text-black md:text-[20px] font-medium ml-2'>
                 Schedule a call
               </p>
@@ -145,8 +145,8 @@ export default function Page() {
               </h3>
               <p className='text-lg font-normal'>
                 Our creative experts will collaborate with you to develop a
-                compelling storyline that aligns with your brand's messaging and
-                objectives.
+                compelling storyline that aligns with your brand&apos;s
+                messaging and objectives.
               </p>
             </div>
             <div className='col-span-1 space-y-4 my-8 px-6'>
@@ -301,7 +301,6 @@ export default function Page() {
           </div>
         </section>
       </div>
-      <MarketingFooter />
-    </div>
+    </MarketingLayout>
   );
 }

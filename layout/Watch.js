@@ -72,14 +72,12 @@ const Module = (props) => {
       <Prompt {...props} />
       <div className={`${videoExternalContainer}`}>
         <div className={`${videoInternalContainer} `}>
-          {props && hasDetails && (
-            <div className={hideButton ? 'hideChatBtn' : null}>
-              <Player {...props} />
-            </div>
-          )}
+          <div className={hideButton ? 'hideChatBtn' : null}>
+            <Player {...props} />
+          </div>
           <div>
             {watchData?.__typename === 'Video' ? (
-              <div className='md:pl-4 px-4 mt-8'>
+              <div className='md:pl-4 px-4 mt-8 max-w-[1700px] mx-auto'>
                 <div className='flex gap-8 flex-col md:flex-row'>
                   <div className='min-w-[70%]'>
                     <h3 className='text-3xl lg:text-4xl font-bold my-4'>
