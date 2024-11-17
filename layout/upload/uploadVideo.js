@@ -52,9 +52,7 @@ const Module = (props) => {
     publish,
     product,
   } = props;
-  console.log('product>>>>>>>>>>>', product);
   const [currentStep, setCurrentStep] = useState(1);
-  const titleRef = useRef();
 
   const router = useRouter();
 
@@ -76,14 +74,6 @@ const Module = (props) => {
   );
 
   useEffect(() => {
-    if (videoDocument) {
-      console.log('effect', videoDocument, product);
-      videoDocument.title = product?.name;
-      setVideoDocumentProxy(videoDocument);
-    }
-  }, [videoDocument, product]);
-
-  useEffect(() => {
     if (currentStep === 3) {
       const clipsButton = document?.querySelectorAll(
         '.WatchPage_clipViewNameContainer__Kg6g8 .close'
@@ -97,10 +87,11 @@ const Module = (props) => {
   }, [currentStep]);
 
   useEffect(() => {
-    if (titleRef.current) {
-      titleRef.current.value = product.title;
+    if (videoDocument) {
+      videoDocument.title = product?.name;
+      setVideoDocumentProxy(videoDocument);
     }
-  }, [product.title]);
+  }, [videoDocument, product]);
 
   const updateInput = React.useCallback(
     (e) => {
@@ -769,7 +760,7 @@ const Module = (props) => {
                       )}
                     {videoDocument?.status == 'published' && (
                       <Button
-                        className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white'
+                        className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white dark:hover:text-black'
                         onClick={() => handleDelete()}
                       >
                         Delete
@@ -777,20 +768,20 @@ const Module = (props) => {
                     )}
                     {videoDocument?.status != 'published' && currentStep < 3 ? (
                       <Button
-                        className='dark:bg-white dark:hover:bg-white dark:text-black px-4'
+                        className='dark:bg-white dark:hover:bg-white dark:text-black px-4 dark:hover:text-black'
                         onClick={() => handleStepChange(currentStep + 1)}
                       >
                         Next
                       </Button>
                     ) : (
                       <Button
-                        className='Video_Uploadbutton dark:bg-white dark:hover:bg-white dark:text-black dark:hover:text-black rounded-sm'
+                        className='Video_Uploadbutton dark:bg-white dark:hover:bg-white dark:text-black rounded-sm dark:hover:text-black'
                         onClick={handleFinalUpload}
                         modif='publish'
                       >
                         {videoDocument?.status === 'published'
-                          ? ' Save'
-                          : 'Publish'}
+                          ? ' Update Video'
+                          : 'Finish Upload'}
                       </Button>
                     )}
                   </div>

@@ -646,18 +646,18 @@ const EventUpdateModal = (props) => {
                 </div>
                 <hr />
                 <div className='space-y-4 mt-8'>
-                  <button
+                  <Button
                     onClick={handleSubmit(saveDraft)}
                     className='dark:bg-transparent dark:text-white border-1 border-dashBorder dark:hover:bg-transparent w-full mt-8'
                   >
                     Save as draft
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={handleSubmit(publishNow)}
-                    className='w-full bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60'
+                    className='w-full dark:bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60 border-none dark:text-white'
                   >
                     Publish Now
-                  </button>
+                  </Button>
                 </div>
                 {/* <div className='mt-4 space-x-2 w-full'>
                   <hr />
