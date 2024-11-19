@@ -392,10 +392,11 @@ const EventUpdateModal = (props) => {
                         defaultValue={pipelineDbItem?.meta?.date}
                         render={({ field: { value, onChange, ...field } }) => {
                           return (
-                            <DatePickerDemo
-                              className='dark:text-white'
+                            <input
+                              className='dark:text-white w-full justify-start text-left p-2 dark:bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium rounded-md'
                               value={value} // Pass value from the form control to the DatePickerDemo
                               onChange={onChange}
+                              type='date'
                             />
                           );
                         }}
@@ -654,7 +655,7 @@ const EventUpdateModal = (props) => {
                   </Button>
                   <Button
                     onClick={handleSubmit(publishNow)}
-                    className='w-full dark:bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60 border-none dark:text-white'
+                    className='w-full dark:bg-accentY rounded-[8px] dark:hover:bg-accentY dark:hover:bg-opacity-60 dark:border-none dark:text-white'
                   >
                     Publish Now
                   </Button>
