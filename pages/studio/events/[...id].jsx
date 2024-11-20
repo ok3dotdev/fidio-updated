@@ -84,10 +84,8 @@ const EventView = (props) => {
 
   useEffect(() => {
     if (currentlyStreaming) {
-      console.log('checking event start time ');
       isCurrentEventStream();
       checkStreamEndTime();
-      console.log('checking event start time');
     }
   }, [currentlyStreaming, isCurrentEvent]);
 
@@ -117,7 +115,6 @@ const EventView = (props) => {
       eventId === streamEventId
         ? setIsCurrentEvent(true)
         : setIsCurrentEvent(false);
-      console.log('setting to show the thing', streamEventId === eventId);
     }
   }, [currentlyStreaming]);
 
@@ -129,35 +126,28 @@ const EventView = (props) => {
       const timeDifference = eventDateTime - now;
       const minutesDifference = timeDifference / (1000 * 60);
 
-      console.log('time diff', minutesDifference);
       if (minutesDifference > 0 && minutesDifference <= 45) {
-        console.log();
         setStartEnabled(true);
       }
     }
   };
 
   const checkStreamStatus = async () => {
-    // console.log('checking');
     setStreamStatusCheck(true);
     const res = await apiReq('/stream/checkuserstreamingstatus', {
       user: props?._loggedIn,
     });
-    console.log('res', res);
     if (res?.data?.stream) {
       props._setCurrentlyStreaming(res.data.stream);
     }
     if (res && res.currentlyStreaming) {
-      console.log('res', res);
       setCurrentlyStreaming(res.data);
       setHasCopied(true);
-      // console.log('checking', res.currentlyStreaming);
     }
   };
 
   const startStream = async (e) => {
     const streamFor = router?.query?.id && router?.query?.id[0];
-    // console.log('clicked', streamFor);
     const res = await apiReq('/stream/startstream', {
       user: props?._loggedIn,
       streamSettings: {
@@ -180,20 +170,16 @@ const EventView = (props) => {
   };
 
   const checkStreamEndTime = () => {
-    console.log('checking stream end');
     if (ticket?.meta?.date && ticket?.meta?.endTime) {
       // Extract the date portion from ticket.meta.date
       const datePortion = ticket.meta.date.split('T')[0];
 
       const endDateTime = new Date(`${datePortion}T${ticket.meta.endTime}`);
       const currentTime = new Date();
-      console.log('times', currentTime, endDateTime);
 
       if (!isCurrentEvent && currentTime > endDateTime) {
-        console.log('setting true', isCurrentEvent);
         setShowUpload(true);
       } else {
-        console.log('setting false', !currentlyStreaming);
         setShowUpload(false);
       }
 
@@ -216,10 +202,13 @@ const EventView = (props) => {
     date.setHours(parseInt(startTimeParts[0], 10));
     date.setMinutes(parseInt(startTimeParts[1], 10));
     const res = date - Date.now();
+    console.log('ressss', date, value);
     return res;
   };
 
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  const renderer = (args) => {
+    const { days, hours, minutes, seconds, completed } = args;
+    console.log('all', ticket.meta.date, ticket.meta.startTime);
     if (!completed) {
       return (
         <p className='text-3xl font-semibold text-center'>
@@ -257,19 +246,6 @@ const EventView = (props) => {
   };
 
   const handleGetVideos = async () => {
-    // const res = await apiReq('/p/getrelationshipchildrenof', {
-    //   // Get all related products in column b of record a where verb is "related"
-    //   a: '9fe97692-393c-4a26-89e1-3ac401f632cb',
-    //   atype: 'video',
-    //   btype: 'product',
-    //   verb: 'related',
-    //   offset: 0,
-    //   limit: 20,
-    // });
-    // if (res && res.status === 'success') {
-    //   console.log('videos 11', res);
-    // }
-    console.log('id', router?.query?.id);
     const res2 = await apiReq('/p/getrelationshipchildrenof', {
       // Get all related videos in column a of record b where verb is "related"
       b: router?.query?.id[0],
@@ -280,7 +256,6 @@ const EventView = (props) => {
       limit: 20,
     });
     if (res2 && res2.status === 'success') {
-      console.log('videos 22', res2);
       setVideos(res2.data);
     }
   };
@@ -529,7 +504,7 @@ const EventView = (props) => {
                                       readOnly
                                     />
                                     <Button
-                                      className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-white'
+                                      className='border-dashBorder border-[0.5px] rounded-md dark:bg-transparent dark:text-whit dark:text-black'
                                       onClick={() =>
                                         copy(currentlyStreaming?.key || '')
                                       }
@@ -722,10 +697,6 @@ const EventView = (props) => {
                 ) : (
                   <div>
                     <UploadPage {...props} product={ticket} />
-                    <div className='mt-4'>
-                      {/* <p>Videos</p> */}
-                      <div>{/* <VideoReel {...props} /> */}</div>
-                    </div>
                   </div>
                 )}
               </div>

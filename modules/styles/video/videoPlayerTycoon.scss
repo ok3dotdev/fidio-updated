@@ -1,236 +1,238 @@
 .shaka-range-container {
-    margin: 0;
-    border-radius: 0;
-    height: 3px;
-    transition: 200ms;
+  margin: 0;
+  border-radius: 0;
+  height: 3px;
+  transition: 200ms;
 }
 
 .shaka-bottom-controls {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .shaka-video-container:fullscreen .shaka-bottom-controls {
-    max-height: 25px;
+  max-height: 25px;
 }
 
 .shaka-overflow-menu {
-    bottom: 60px;
-    border-radius: 5px;
-    background: rgb(27, 27, 27);
+  bottom: 60px;
+  border-radius: 5px;
+  background: rgb(27, 27, 27);
 }
 
 .shaka-video-container:fullscreen .shaka-overflow-menu {
-    bottom: 70px;
+  bottom: 70px;
 }
 
 .shaka-overflow-menu button {
-    color: white;
+  color: white;
 }
 
 .shaka-overflow-menu button:hover {
-    background: grey !important;
+  background: grey !important;
 }
 
 .shaka-overflow-menu button .shaka-overflow-button-label span:first-child {
-    color: white;
+  color: white;
 }
 
 .shaka-overflow-menu button .shaka-overflow-button-label span:nth-child(2) {
-    color: #ff7171;
-    font-weight: 600;
+  color: #ff7171;
+  font-weight: 600;
 }
 
 .shaka-overflow-menu .shaka-overflow-button-label {
-    padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.shaka-controls-button-panel>* {
-    color: rgb(180, 180, 180);
+.shaka-controls-button-panel > * {
+  color: rgb(180, 180, 180);
 }
 
 .shaka-volume-bar-container {
-    opacity: .7
+  opacity: 0.7;
 }
 
-.shaka-controls-button-panel>*:hover {
-    color: rgb(255, 255, 255);
+.shaka-controls-button-panel > *:hover {
+  color: rgb(255, 255, 255);
 }
 
 .shaka-volume-bar-container:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
-@media(min-width: 540px) and (max-width: 860px) {
-    .shaka-controls-button-panel .shaka-range-container {
-        max-width: 50px;
-    }
+@media (min-width: 540px) and (max-width: 860px) {
+  .shaka-controls-button-panel .shaka-range-container {
+    max-width: 50px;
+  }
 }
 
 .shaka-spinner-path {
-    stroke-width: 3;
-    r: 7;
-    stroke: white;
+  strokewidth: 3;
+  r: 7;
+  stroke: white;
 }
 
 .shaka-spinner-svg {
-    animation: rotate 8s linear infinite;
+  animation: rotate 8s linear infinite;
 }
 
 .moveableVideoContainer {
-    background: black;
+  background: black;
 }
 
 .ghostVideoItem {
-    z-index: 4;
+  z-index: 4;
 }
 
 .ghostVideoContainerItemActive:hover {
-    box-shadow: 0rem 0rem 3rem black;
+  box-shadow: 0rem 0rem 3rem black;
 }
 
 .ghostVideoContainerItemActive .ghostVideoItem {
-    outline: 2.5px solid transparent;
-    height: -webkit-fill-available;
-    overflow: hidden;
+  outline: 2.5px solid transparent;
+  height: -webkit-fill-available;
+  overflow: hidden;
 }
 
 .ghostVideoContainerItemActive:hover .ghostVideoItem {
-    outline: 2.5px solid grey;
+  outline: 2.5px solid grey;
 }
 
 .ghostVideoMeta {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: -1.95px;
-    width: calc(100% + 4px);
-    height: 100%;
-    z-index: 3;
-    background: black;
-    border: 2.5px solid grey;
-    border-top: none;
-    padding: .5rem;
-    cursor: default;
-    box-shadow: 0rem 2.5rem 3rem black;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -1.95px;
+  width: calc(100% + 4px);
+  height: 100%;
+  z-index: 3;
+  background: black;
+  border: 2.5px solid grey;
+  border-top: none;
+  padding: 0.5rem;
+  cursor: default;
+  box-shadow: 0rem 2.5rem 3rem black;
 }
 
 .activeVideoItemContainer:hover .ghostVideoMeta,
 .ghostVideoMeta:hover {
-    display: block;
+  display: block;
 }
 
 #lead-video-container {
-    height: 95.55566677vh;
+  height: 95.55566677vh;
 }
 
 #lead-video-container .shaka-scrim-container,
 #splashvideocontainer .shaka-scrim-container {
-    top: 1px;
+  top: 1px;
 }
 
 #lead-video-container .shaka-bottom-controls {
-    padding-bottom: 1.25%;
+  padding-bottom: 1.25%;
 }
 
 #lead-video-container:fullscreen .shaka-bottom-controls {
-    padding-bottom: 3%;
+  padding-bottom: 3%;
 }
 
 #lead-video-container .shaka-controls-button-panel .material-icons-round {
-    font-size: 38px;
+  font-size: 38px;
 }
 
 #lead-video-container .shaka-controls-button-panel {
-    padding-bottom: .75rem;
-    padding-left: .375rem;
-    padding-right: .375rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
 
 #lead-video-container .shaka-current-time {
-    font-weight: 600;
-    line-height: 2.55rem;
-    opacity: .7;
+  font-weight: 600;
+  line-height: 2.55rem;
+  opacity: 0.7;
 }
 
 #lead-video-container .shaka-current-time:hover {
-    font-weight: 600;
-    line-height: 2.5rem;
-    opacity: 1;
+  font-weight: 600;
+  line-height: 2.5rem;
+  opacity: 1;
 }
 
 #lead-video-container .shaka-volume-bar-container {
-    top: 0.175rem;
+  top: 0.175rem;
 }
 
 #lead-video-container .shaka-overflow-menu {
-    bottom: 95px;
+  bottom: 95px;
 }
 
 #lead-video-container:fullscreen .shaka-overflow-menu {
-    bottom: 80px;
+  bottom: 80px;
 }
 
 .max-height-viewport {
-    max-height: 95.55566677vh;
+  max-height: 95.55566677vh;
 }
 
 .shaka-ad-controls {
-    position: absolute;
-    top: 7px;
-    left: 57px;
+  position: absolute;
+  top: 7px;
+  left: 57px;
 }
 
-div[ad-active="true"] .shaka-current-time {
-    opacity: 0 !important;
+div[ad-active='true'] .shaka-current-time {
+  opacity: 0 !important;
 }
 
 .shaka-ad-controls {
-    transition: 350ms;
-    opacity: 0 !important;
+  transition: 350ms;
+  opacity: 0 !important;
 }
 
-div[shown="true"] .shaka-ad-controls {
-    opacity: 1 !important;
+div[shown='true'] .shaka-ad-controls {
+  opacity: 1 !important;
 }
 
-div[ad-active="true"] .shaka-small-play-button {
-    line-height: .5;
+div[ad-active='true'] .shaka-small-play-button {
+  line-height: 0.5;
 }
 
 .shaka-ad-counter-span {
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: .7;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.7;
 }
 
 /* Video.js */
 
 .video-js .vjs-control-bar {
-    background-color: rgba(0,0,0,0);
-    height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  height: 2.5rem;
 }
 
 .video-js .vjs-control {
-    font-size: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: .5rem;
-    color: rgb(198, 198, 198);
+  font-size: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  color: rgb(198, 198, 198);
 }
 
 .video-js .vjs-control:hover {
-    color: white;
+  color: white;
 }
 
-.video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal:active, .video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active {
-    width: 9em;
+.video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover,
+.video-js .vjs-volume-panel.vjs-volume-panel-horizontal:active,
+.video-js .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active {
+  width: 9em;
 }
 
 .video-js .vjs-control:focus:before,
 .video-js .vjs-control:hover:before,
 .video-js .vjs-control:focus {
-    text-shadow: none !important;
+  text-shadow: none !important;
 }
 
 // .vjs-icon-placeholder:hover {
@@ -238,128 +240,141 @@ div[ad-active="true"] .shaka-small-play-button {
 // }
 
 button.vjs-button:hover {
-    outline: none;
-    box-shadow: none;
-    background: transparent;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 .vjs-button > .vjs-icon-placeholder:before {
-    font-size: 1.6rem;
-    line-height: normal;
-    align-content: center;
+  font-size: 1.6rem;
+  line-height: normal;
+  align-content: center;
 }
 
-.video-js .vjs-volume-panel.vjs-hover .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-horizontal, .video-js .vjs-volume-panel.vjs-hover .vjs-mute-control ~ .vjs-volume-control.vjs-volume-horizontal, .video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-horizontal {
-    width: 10em;
+.video-js .vjs-volume-panel.vjs-hover .vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-horizontal,
+.video-js
+  .vjs-volume-panel.vjs-hover
+  .vjs-mute-control
+  ~ .vjs-volume-control.vjs-volume-horizontal,
+.video-js
+  .vjs-volume-panel
+  .vjs-volume-control.vjs-slider-active.vjs-volume-horizontal {
+  width: 10em;
 }
 
 .video-js .vjs-live-control {
-    line-height: 2.5em;
-    cursor: default;
-    font-weight: 600;
+  line-height: 2.5em;
+  cursor: default;
+  font-weight: 600;
 }
 
-.vjs-has-started .vjs-control-bar, .vjs-audio-only-mode .vjs-control-bar {
-    gap: .25rem;
+.vjs-has-started .vjs-control-bar,
+.vjs-audio-only-mode .vjs-control-bar {
+  gap: 0.25rem;
 }
 
 .vjs-fullscreen,
 .vjs-fullscreen .vjs-tech {
-    height: 100%;
-    max-height: 100% !important;
+  height: 100%;
+  max-height: 100% !important;
 }
 
 .video-js .vjs-time-control {
-    width: 75px;
-    align-content: center;
+  width: 75px;
+  align-content: center;
 }
 
 .vjs-remaining-time-display {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .vjs-time-tooltip {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .vjs-mouse-display .vjs-time-tooltip {
-    outline: rgba(128, 128, 128, 0.5) solid 2px;
+  outline: rgba(128, 128, 128, 0.5) solid 2px;
 }
 
 .video-js .vjs-progress-control .vjs-mouse-display {
-    z-index: 3;
-    width: 2px;
+  z-index: 3;
+  width: 2px;
 }
 
 .vjs-loading-spinner {
-    width: 75px;
-    height: 75px;
-    border-radius: 4rem;
-    border: .75rem solid rgba(43, 51, 63, 0.7);
-    left: calc(50% - 37.5px);
-    display: none;
+  width: 75px;
+  height: 75px;
+  border-radius: 4rem;
+  border: 0.75rem solid rgba(43, 51, 63, 0.7);
+  left: calc(50% - 37.5px);
+  display: none;
 }
 
-.video-react-loading-spinner::before, .video-react-loading-spinner::after {
-    display: none !important;
+.video-react-loading-spinner::before,
+.video-react-loading-spinner::after {
+  display: none !important;
 }
 
-.vjs-loading-spinner:before, .vjs-loading-spinner:after {
-    margin: -12px;
+.vjs-loading-spinner:before,
+.vjs-loading-spinner:after {
+  margin: -12px;
 }
 
 @keyframes attentionplay {
-    0% {
-        border-radius: 1rem;
-    }
-    15% {
-        border-radius: 1rem;
-    }
-    50% {
-        border-radius: .75rem;
-    }
-    100% {
-        border-radius: 3rem;
-    }
+  0% {
+    border-radius: 1rem;
+  }
+  15% {
+    border-radius: 1rem;
+  }
+  50% {
+    border-radius: 0.75rem;
+  }
+  100% {
+    border-radius: 3rem;
+  }
 }
 
 .video-js .vjs-big-play-button {
-    left: calc(50% + 40px);
-    transition: 200ms;
-    animation-name: attentionplay;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    line-height: 1.325em;
-    border-radius: 3rem !important;
-    border: 6px solid white;
+  left: calc(50% + 40px);
+  transition: 200ms;
+  animation-name: attentionplay;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  line-height: 1.325em;
+  border-radius: 3rem !important;
+  border: 6px solid white;
 }
 
 .video-js .vjs-play-progress:before {
-    z-index: 5;
+  z-index: 5;
 }
 
 .vjs-loading-spinner:before {
-    display: none;
-    visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 
 .vjs-modal-dialog-content {
-    position: absolute;
-    background: white;
-    color: black;
-    width: 100%;
-    height: fit-content;
-    display: none;
+  position: absolute;
+  background: white;
+  color: black;
+  width: 100%;
+  height: fit-content;
+  display: none;
 }
 
 .vjs-live-display {
-    align-self: center;
+  align-self: center;
 }
 
 .vjs-error-display {
-    display: none;
+  display: none;
 }
 
 button.vjs-control {
-    cursor: pointer;
+  cursor: pointer;
 }

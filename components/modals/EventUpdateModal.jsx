@@ -392,11 +392,16 @@ const EventUpdateModal = (props) => {
                         defaultValue={pipelineDbItem?.meta?.date}
                         render={({ field: { value, onChange, ...field } }) => {
                           return (
-                            <input
-                              className='dark:text-white w-full justify-start text-left p-2 dark:bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium rounded-md'
+                            // <input
+                            //   className='dark:text-white w-full justify-start text-left p-2 dark:bg-dashSides border-[1px] dark:border-dashBorder text-white font-medium rounded-md'
+                            //   value={value} // Pass value from the form control to the DatePickerDemo
+                            //   onChange={onChange}
+                            //   type='date'
+                            // />
+                            <DatePickerDemo
+                              className='dark:text-white'
                               value={value} // Pass value from the form control to the DatePickerDemo
                               onChange={onChange}
-                              type='date'
                             />
                           );
                         }}
@@ -546,7 +551,7 @@ const EventUpdateModal = (props) => {
                       ))}
                   </div>
                 </div>
-                <hr className='w-full mt-6' />
+                <hr className='w-full mt-6 border-dashBorder' />
                 <h3 className=''>OTHER PERFORMERS</h3>
                 <div className='space-y-4'>
                   {Array.isArray(lineUpInfo) &&
@@ -617,7 +622,7 @@ const EventUpdateModal = (props) => {
                     </Button>
                   </div>
                 </div>
-                <hr className='w-full' />
+                <hr className='w-full border-dashBorder' />
                 <div className=''>
                   <p className='mb-8'>HOST</p>
                   <label htmlFor='host.title'>Name</label>
@@ -645,7 +650,7 @@ const EventUpdateModal = (props) => {
                     />
                   </div>
                 </div>
-                <hr />
+                <hr className='border-dashBorder' />
                 <div className='space-y-4 mt-8'>
                   <Button
                     onClick={handleSubmit(saveDraft)}

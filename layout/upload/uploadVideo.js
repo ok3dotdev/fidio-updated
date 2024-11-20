@@ -760,7 +760,7 @@ const Module = (props) => {
                       )}
                     {videoDocument?.status == 'published' && (
                       <Button
-                        className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white dark:hover:text-black'
+                        className='dark:bg-dashSides dark:hover:bg-dashSides dark:text-white dark:hover:text-black dark:hover:text-white'
                         onClick={() => handleDelete()}
                       >
                         Delete

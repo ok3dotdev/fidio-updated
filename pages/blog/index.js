@@ -161,7 +161,7 @@ const Page = (props) => {
               </div>
             </div>
           </div>
-          <hr className='mt-8 mb-12' />
+          <hr className='mt-8 mb-12 border-dashBorder' />
           {!isLoading && data && (
             <div className=''>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8'>

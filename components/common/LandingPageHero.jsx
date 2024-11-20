@@ -47,7 +47,7 @@ export default function LandingPageHero() {
               <path
                 d='M921.526 12.1656C1028 -55.8438 1242.95 197.5 1028 482.289C841.978 728.754 419.57 570.259 210.706 647.215C23.4742 716.2 -187.893 1022.29 305.182 1193'
                 stroke='white'
-                stroke-width='1.46955'
+                strokeWidth='1.46955'
               />
             </svg> */}
           </div>
@@ -168,16 +168,16 @@ const CirclePlay = () => {
       <path
         d='M20.5 38.375C30.5102 38.375 38.625 30.2602 38.625 20.25C38.625 10.2398 30.5102 2.125 20.5 2.125C10.4898 2.125 2.375 10.2398 2.375 20.25C2.375 30.2602 10.4898 38.375 20.5 38.375Z'
         stroke='white'
-        stroke-width='3'
+        strokeWidth='3'
         strokeWidth='round'
-        strokeLineJoin='round'
+        strokeLinejoin='round'
       />
       <path
         d='M16.875 13L27.75 20.25L16.875 27.5V13Z'
         stroke='white'
-        stroke-width='3'
+        strokeWidth='3'
         strokeWidth='round'
-        strokeLineJoin='round'
+        strokeLinejoin='round'
       />
     </svg>
   );
