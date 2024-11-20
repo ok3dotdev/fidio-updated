@@ -12,9 +12,9 @@ export default function LandingPageHero() {
   return (
     <div className='font-lexend'>
       <div className=' pt-[150px] md:pt-[200px] max-w-screen-xl mx-auto px-4 text-center '>
-        <div className='max-w-screen-sm mx-auto'>
-          <div className='flex items-center'>
-            <h1 className='text-4xl font-semibold mb-8 md:px-2 '>
+        <div className='max-w-[700px] mx-auto'>
+          <div className='flex items-center justify-center'>
+            <h1 className='text-4xl xl:text-6xl font-semibold mb-8 md:px-2 '>
               <span className='text-accentY'>Fidio</span>
               <p>Where African Music Takes Center Stage</p>
             </h1>
