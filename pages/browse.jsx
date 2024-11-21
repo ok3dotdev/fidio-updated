@@ -136,7 +136,7 @@ const Page = (props) => {
               <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
             </div>
           )}
-          {!loading && tickets.length && (
+          {!loading && tickets.length > 0 && (
             <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           )}
           {!loading &&
@@ -192,39 +192,40 @@ const Page = (props) => {
           )}
         </div>
 
-        {pastEvents && pastEvents?.length > 0 && (
-          <div className='mb-12 mt-8'>
-            <div className='flex justify-between mb-4'>
-              <h3 className='text-2xl font-semibold'>Past Events</h3>
+        {pastEvents &&
+          pastEvents.filter((video) => video?.relationships[0]).length > 0 && (
+            <div className='mb-12 mt-8'>
+              <div className='flex justify-between mb-4'>
+                <h3 className='text-2xl font-semibold'>Past Events</h3>
+              </div>
+              <Carousel
+                opts={{
+                  align: 'start',
+                }}
+                arrows='top'
+                className='w-full'
+              >
+                <CarouselContent className='z-2 cursor-pointer'>
+                  {pastEvents
+                    .filter((video) => video?.relationships[0])
+                    .map((video, id) => (
+                      <CarouselItem
+                        key={id}
+                        className='2xl:basis-1/5 md:basis-1/3 rounded-lg lg:basis-1/4 aspect-square '
+                      >
+                        <div className='p-1 cursor-pointer'>
+                          <PastEventCard
+                            video={video}
+                            product={video.relationships[0]}
+                            cdn={props?.cdn}
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                </CarouselContent>
+              </Carousel>
             </div>
-            <Carousel
-              opts={{
-                align: 'start',
-              }}
-              arrows='top'
-              className='w-full'
-            >
-              <CarouselContent className='z-2 cursor-pointer'>
-                {pastEvents
-                  .filter((video) => video?.relationships[0])
-                  .map((video, id) => (
-                    <CarouselItem
-                      key={id}
-                      className='2xl:basis-1/5 md:basis-1/3 rounded-lg lg:basis-1/4 aspect-square '
-                    >
-                      <div className='p-1 cursor-pointer'>
-                        <PastEventCard
-                          video={video}
-                          product={video.relationships[0]}
-                          cdn={props?.cdn}
-                        />
-                      </div>
-                    </CarouselItem>
-                  ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-        )}
+          )}
       </BrowseLayout>
     </div>
   );

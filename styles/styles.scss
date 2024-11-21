@@ -360,7 +360,7 @@ textarea {
 }
 @media (max-width: 678px) {
   .WatchPage_VideoQuadrant {
-    height: 177px !important;
+    height: auto !important;
   }
 }
 
@@ -661,7 +661,7 @@ button:hover {
   }
   .Video_VideoUploadContainer {
     margin-left: auto;
-    width: 490px;
+    width: 100%;
   }
   .WatchPage_VideoPlayer {
     height: 400px !important;
@@ -763,8 +763,8 @@ button:hover {
   }
 }
 
-.hideChatBtn VideoPlayer_ChatBtn {
-  display: none;
+.hideChatBtn .VideoPlayer_ChatBtn {
+  display: none !important;
 }
 
 #player-main-player {
