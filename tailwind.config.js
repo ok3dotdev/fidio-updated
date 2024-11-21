@@ -87,6 +87,9 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      borderColor: {
+        DEFAULT: 'rgba(64, 64, 64, 1)',
+      },
       boxShadow: {
         Txl: 'rgba(153, 152, 150, 0.33)',
       },
