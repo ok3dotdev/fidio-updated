@@ -131,11 +131,13 @@ const Page = (props) => {
           </div>
         )}
         <div>
-          <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           {loading && (
             <div className='h-[500px] w-full flex items-center justify-center'>
               <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
             </div>
+          )}
+          {!loading && tickets.length && (
+            <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           )}
           {!loading &&
             tickets &&
