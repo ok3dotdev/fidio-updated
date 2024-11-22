@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import { pageDefaults } from '/app.config';
+import { getServerSidePropsDefault } from '/modules/utility.js';
 import { Button } from '@/components/ui/button';
 import { MoveUpRight } from 'lucide-react';
 import MarketingLayout from '../components/Layouts/marketing/MarketingLayout';
@@ -302,3 +304,7 @@ export default function Page() {
     </MarketingLayout>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  return await getServerSidePropsDefault(context, pageDefaults[pageName]);
+};
