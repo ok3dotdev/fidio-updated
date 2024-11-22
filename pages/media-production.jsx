@@ -1,12 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { MoveUpRight, Medal, ArrowRight } from 'lucide-react';
-import MarketingHeader from '../components/Layouts/marketing/MarketingHeader';
-import MarketingFooter from '../components/Layouts/marketing/MarketingFooter';
+import { MoveUpRight } from 'lucide-react';
 import MarketingLayout from '../components/Layouts/marketing/MarketingLayout';
 
-const pageName = 'marketing';
+const pageName = 'media-production';
 
 export default function Page() {
   return (
