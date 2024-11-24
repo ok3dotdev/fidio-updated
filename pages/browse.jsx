@@ -136,7 +136,7 @@ const Page = (props) => {
               <Loader2 className='h-6 w-6 text-slate-300 animate-spin' />
             </div>
           )}
-          {!loading && tickets.length > 0 && (
+          {!loading && Object.keys(tickets)?.length > 0 && (
             <h3 className='text-2xl font-semibold mb-12'>Upcoming</h3>
           )}
           {!loading &&
