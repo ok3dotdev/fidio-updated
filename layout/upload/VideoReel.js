@@ -74,7 +74,7 @@ const Module = (props) => {
                   props?.cdn?.static && m?.thumbtrack[0]
                     ? `${props.cdn.static}/thumbtrack/${m.thumbtrack[0]}`
                     : 'img/default/greythumb.jpg'
-                }`,
+                } no-repeat center/cover`,
               }}
               onClick={(e) => e.stopPropagation()}
             ></a>
