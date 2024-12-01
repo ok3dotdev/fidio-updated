@@ -24,6 +24,7 @@ const Module = props => {
                     : null
             }
             <Prompt { ...props } />
+            <div className='shadowOverlay'></div>
         </div>
     )
 }

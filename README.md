@@ -73,6 +73,9 @@ yarn dev
 
 Open [http://localhost:3020](http://localhost:3020) with your browser to see the result.
 
+## Run application locally on https
+npm run https
+
 ## Packages
 
 If you are missing dependencies check /modules/dependencies.txt
@@ -91,6 +94,24 @@ See api.md for routes to public Platform API
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Deployment
+
+# Favicons
+Generate Favicons here https://favicon.io/favicon-converter/
+Place in public folder
+In customModules\middleware\Middleware.js add following code:
+
+import Head from 'next/head'
+...
+return (
+    ...
+    <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+    </Head>
 
 ## Learn More
 

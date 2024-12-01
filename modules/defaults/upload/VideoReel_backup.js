@@ -17,7 +17,7 @@ const Module = props => {
                 {
                     useVideos.map((m, i) => (
                         <div key={i} className={`${WatchPageStyles.thumbnailContainer} Thumbnail_Container`}>
-                            <div className={`${WatchPageStyles.thumbnail} ${[ 'processing', 'queued' ].indexOf(m?.status) > -1 ? WatchPageStyles.thumbnailProcessing : ''} Thumbnail_Thumbnail`} style={{ background: `url(${props?.cdn?.static && m?.thumbtrack[0] ? `${props.cdn.static}/thumbtrack/${m.thumbtrack[0]}` : 'img/default/greythumb.jpg'}` }} onClick={loadVideo} item={m?.id}>
+                            <div className={`${WatchPageStyles.thumbnail} ${[ 'processing', 'queued' ].indexOf(m?.status) > -1 ? WatchPageStyles.thumbnailProcessing : ''} Thumbnail_Thumbnail`} style={{ background: `url(${props?.cdn?.static && m?.thumbtrack[0] ? `${props.cdn.static}/thumbtrack/${m.thumbtrack[0]}` : 'img/default/greythumb.jpg'}) no-repeat center/cover` }} onClick={loadVideo} item={m?.id}>
                             </div>
                             <h4 className={`${WatchPageStyles.thumbnailTitle}`}>{m?.title ?? ''}</h4>
                         </div>

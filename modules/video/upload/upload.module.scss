@@ -31,12 +31,29 @@
     text-align: center;
 }
 
+.transcodeProgressContainer {
+    height: 0px;
+}
+
+.showingTranscodeProgress {
+    width: 100%;
+    height: 10px;
+    transition: 300ms;
+    padding: 0 .5rem;
+    .transcodeProgress {
+        height: 100%;
+        background: red;
+        background: linear-gradient(50deg, #f26dfd 0%, #e15364 100%);
+        border-radius: 1rem;
+    }
+}
+
 .loadingMetaContainer {
     width: 100%;
     margin: 0 auto;
     .loadingBarContainer {
         .loadingBar {
-            height: 25px;
+            height: 10px;
             background: linear-gradient(50deg, #f26dfd 0%, #e15364 100%);
             border-radius: 1rem;
             .loadingBarText {
@@ -58,7 +75,8 @@
 
 .videoMessageContainer {
     .videoMessage {
-        font-size: .9rem;
+        font-weight: 600;
+        font-size: .85rem;
         padding: 0;
         padding-left: 0;
         margin: 0;
