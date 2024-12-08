@@ -5,7 +5,7 @@ import { SignIn, Username } from '/modules/onboarding/signin'
 import { Player } from '/modules/streaming/watch'
 import UploadVideoFileInternal from '/modules/video/upload/UploadVideoFileInternal'
 import VideoReel from '/layout/upload/VideoReel'
-import { HMSDurationToSeconds } from '/modules/utility/utility/date'
+import { HMSDurationToSeconds, secondsToHMSString } from '/modules/utility/utility/date'
 import { resolveNestedProperty } from '/modules/util'
 import TextareaAutosize from 'react-textarea-autosize'
 import Close from '@mui/icons-material/Close'
@@ -23,6 +23,7 @@ const Module = props => {
         }
     }, [ videoDocument, props?._loggedIn?.identifier ])
 
+    console.log(videoDocument)
     const inputData = React.useMemo(() => {
         return videoDocumentRasterized && videoDocument?.usePayload
             ? Object.entries(videoDocument.usePayload).map((m, i) => (
@@ -79,18 +80,6 @@ const Module = props => {
             setVideoDocumentRasterized(videoDocument.getInstance())
         }
     })
-
-    const secondsToHMSString = time => {
-        const HMS = {
-            hours: Math.floor(time / 3600),
-            minutes: Math.floor((time % 3600) / 60),
-            seconds: time % 60
-        }
-        if (HMS) {
-            return `${HMS.hours > 0 ? `${String(HMS.hours).padStart(2, '0')}:` : ''}${String(HMS.minutes).padStart(2, '0')}:${String(HMS.seconds).padStart(2, '0')}`
-        }
-        return ''
-    }
 
     const clipsRender = React.useMemo(() => {
         return (
@@ -190,7 +179,7 @@ const Module = props => {
     }
 
     // (props) handleDisposePlayer(playerId: String optional) // Will dispose player after it is removed from DOM 
-    // (props) loadRecord(videoDocument: Video, playerId: String optional) // Will instantiate player using "Player". Run in setTimeout after painting player to DOM
+    // (props) loadRecord(videoDocument: Video, useFields: Boolean, playerId: String optional) // Will instantiate player using "Player". Run in setTimeout after painting player to DOM
 
     return (
         <div className={`${styles.container} ${props.className} Upload_Container PagePadding`}>

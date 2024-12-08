@@ -467,6 +467,26 @@ const Module = (props) => {
                       {status.message}
                     </p>
                   </div>
+                  <div
+                    className={`${
+                      styles.transcodeProgressContainer
+                    } Video_TranscodeProgressContainer ${
+                      props?.showingTranscodeProgress
+                        ? `${styles.showingTranscodeProgress} Video_ShowingTranscodeProgress`
+                        : ''
+                    }`}
+                  >
+                    <div
+                      style={{
+                        width: `${
+                          props.uploadTranscodeProgress
+                            ? props.uploadTranscodeProgress * 100
+                            : 0
+                        }%`,
+                      }}
+                      className={`${styles.transcodeProgress} Video_TranscodeProgress`}
+                    ></div>
+                  </div>
                   <Player
                     {...props}
                     playerName={componentId ? `player-${componentId}` : null}

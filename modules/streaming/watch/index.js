@@ -1,1 +1,1 @@
-import WatchPage from"./WatchPage.js";import Prompt from"./Prompt.js";import Player from"./Player.js";export{Player,Prompt,WatchPage};
+import WatchPage from"./WatchPage.js";import Prompt from"./Prompt.js";import Player from"./Player.js";import ChaptersContainer from"./ChaptersContainer";export{ChaptersContainer,Player,Prompt,WatchPage};

@@ -69,6 +69,7 @@
     transition: 200ms;
     border-left: .5px solid #2d2d2d;
     transition: 200ms;
+    max-height: 80vh;
 }
 
 .chatClosed {
@@ -138,7 +139,7 @@
     overflow-x: auto;
     display: flex;
     gap: 1rem;
-    margin: .5rem;
+    margin: .5rem 0;
 }
 
 .thumbnailContainer {
@@ -317,11 +318,54 @@
     border-radius: 1rem;
 }
 
-.LoadReplies:not(:disabled):hover {
+.ChaptersExternalContainer {
+    max-width: calc(100vw - 2.5rem);
+}
+
+.ChaptersListContainer {
+    gap: .5rem;
+}
+
+.ChapterContainer {
+    padding: .25rem;
+    border-radius: 1.25rem;
+    width: auto;
+    cursor: pointer;
+    margin-bottom: .25rem;
+}
+
+.ChapterTimeContainer {
+    position: relative;
+}
+
+.LoadReplies:not(:disabled):hover, .ChapterContainer:hover {
     background: rgba(100, 167, 255, 0.25);
     outline: none;
     color: #67cfff;
     box-shadow: none;
+}
+
+.ChapterTime {
+    font-size: .8rem;
+    margin-top: 0.25rem;
+    background: rgba(64, 64, 64, 1);
+    width: max-content;
+    padding: .125rem .25rem;
+    border-radius: .25rem;
+    position: relative;
+    z-index: 10;
+}
+
+.ChapterLineThrough {
+    width: 125%;
+    height: 1px;
+    background: rgba(64, 64, 64, 1);
+    position: absolute;
+    top: 10px;
+}
+
+.ChapterLineThroughLast {
+    width: 0%;
 }
 
 .clipStart {
