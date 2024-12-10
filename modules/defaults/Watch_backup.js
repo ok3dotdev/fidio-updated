@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Player, Prompt } from '/modules/streaming/watch'
+import { Player, Prompt, ChaptersContainer } from '/modules/streaming/watch'
 import { Chat } from '/modules/streaming/chat'
 import DonateButton from '/modules/ecommerce/donate/DonateButton'
 import { CommentInternal } from '/modules/comment'
@@ -75,6 +75,7 @@ const Module = props => {
                                                         ? <p style={{ marginTop: '1rem', fontSize: '.9rem' }}>{props.watchMeta.description}</p>
                                                         : ''
                                                 }
+                                                <ChaptersContainer { ...props } />
                                                 <div className='tagContainer' style={{ marginTop: '.25rem' }}>
                                                     {
                                                         props?.watchMeta?.tags?.map((d, i) => {
@@ -92,7 +93,7 @@ const Module = props => {
                                     props?.watchData?.id
                                         ? <div className={`${props?.WatchPageStyles?.commentExternalContainer}`}>
                                             <CommentInternal { ...props } addComment={true} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} pipe={'watch_comment'} />
-                                            <LoadComments { ...props } pipe={'watch_comment'} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} useId={props.watchData.id} />
+                                            <LoadComments { ...props } pipe={'watch_comment'} commentUseParent={props.watchData.id} commentUseParentType={props?.watchData?.__typename} />
                                         </div>
                                         : null
                                 }

@@ -295,7 +295,7 @@ const Module = (props) => {
   props._LocalEventEmitter.unsubscribe('reset_upload');
   props._LocalEventEmitter.subscribe('reset_upload', (e) => {
     if (e) {
-      loadRecord(videoDocument, true);
+      loadRecord(videoDocument, true, `player-${componentId}`, true);
     }
   });
 
@@ -424,10 +424,6 @@ const Module = (props) => {
                   playerName={componentId ? `player-${componentId}` : null}
                   playerInitialized={initialized}
                 />
-                {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
-                  <p className='text-dashtext'>File Name</p>
-                  <p>Asake Concert.mp4</p>
-                </div> */}
                 <div className='mt-4'>{clipsRender}</div>
               </div>
             </div>
@@ -492,10 +488,6 @@ const Module = (props) => {
                     playerName={componentId ? `player-${componentId}` : null}
                     playerInitialized={initialized}
                   />
-                  {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
-                    <p className='text-dashtext'>File Name</p>
-                    <p>Asake Concert.mp4</p>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -608,10 +600,6 @@ const Module = (props) => {
                       playerName={componentId ? `player-${componentId}` : null}
                       playerInitialized={initialized}
                     />
-                    {/* <div className='px-4 py-4 bg-dashSides rounded-b-lg'>
-                      <p className='text-dashtext'>File Name</p>
-                      <p>Asake Concert.mp4</p>
-                    </div> */}
                     <div className='mt-4'>{clipsRender}</div>
                   </div>
                 </div>
@@ -644,6 +632,13 @@ const Module = (props) => {
     setHandlingMetaProxy(false);
     return r;
   };
+
+  const loadVideoProxy = React.useCallback(e => {
+    loadVideo(e)
+    setTimeout(() => {
+      props._LocalEventEmitter.dispatch('reset_upload', {})
+    }, 150);
+  })
 
   return (
     <div className={`${styles.container} ${props.className} Upload_Container`}>
@@ -683,7 +678,7 @@ const Module = (props) => {
                 fetchBusy={fetchBusy}
                 useVideos={useVideos}
                 videosContainerRef={videosContainerRef}
-                loadVideo={loadVideo}
+                loadVideo={loadVideoProxy}
                 product={product}
               />
             </div>
