@@ -297,7 +297,6 @@ const Module = (props) => {
 
   props._LocalEventEmitter.unsubscribe('reset_upload');
   props._LocalEventEmitter.subscribe('reset_upload', e => {
-    console.log(e)
     loadRecord(videoDocument, true);
     setTimeout(() => {
       if (e) {
