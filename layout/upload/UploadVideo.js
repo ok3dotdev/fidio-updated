@@ -105,8 +105,9 @@ const Module = (props) => {
     [videoDocument, props?._loggedIn?.identifier]
   );
 
-  const inputData = React.useMemo(() => {
-    return videoDocumentRasterized && videoDocument?.usePayload
+  const inputData = (
+    <div>{
+      videoDocumentRasterized && videoDocument?.usePayload
       ? Object.entries(videoDocument.usePayload).map((m, i) => (
           <div className='label_input' key={i}>
             <div className=''>
@@ -184,8 +185,10 @@ const Module = (props) => {
             </div>
           </div>
         ))
-      : null;
-  }, [videoDocumentRasterized, videoDocument]);
+      : null
+    }
+    </div>
+  )
 
   const handleDeleteClip = React.useCallback((e) => {
     if (e?.currentTarget?.getAttribute('identifier')) {
@@ -293,10 +296,14 @@ const Module = (props) => {
   });
 
   props._LocalEventEmitter.unsubscribe('reset_upload');
-  props._LocalEventEmitter.subscribe('reset_upload', (e) => {
-    if (e) {
-      loadRecord(videoDocument, true, `player-${componentId}`, true);
-    }
+  props._LocalEventEmitter.subscribe('reset_upload', e => {
+    console.log(e)
+    loadRecord(videoDocument, true);
+    setTimeout(() => {
+      if (e) {
+        loadVideo(e)
+      }
+    }, 150)
   });
 
   const handleStepChange = (step) => {
@@ -386,7 +393,7 @@ const Module = (props) => {
 
   const renderStepContent = () => {
     // console.log('Render Step Content', videoDocument, componentId, initialized);
-    if (videoDocument?.status === 'published') {
+    if (videoDocument?.status === 'published' || currentStep === 0) {
       console.log('rrrrrrrrrrrrr');
       return (
         <div>
@@ -634,10 +641,12 @@ const Module = (props) => {
   };
 
   const loadVideoProxy = React.useCallback(e => {
+    setCurrentStep(0)
+    handleDisposePlayer(`player-${componentId}`)
     loadVideo(e)
     setTimeout(() => {
-      props._LocalEventEmitter.dispatch('reset_upload', {})
-    }, 150);
+      props._LocalEventEmitter.dispatch('reset_upload', e)
+    }, 150)
   })
 
   return (
