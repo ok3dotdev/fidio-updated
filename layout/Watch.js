@@ -69,7 +69,6 @@ const Module = (props) => {
 
   return (
     <div id='watch-quad' className={`${videoQuadrant} WatchPage_VideoQuadrant`}>
-      <Prompt {...props} />
       <div className={`${videoExternalContainer}`}>
         <div className={`${videoInternalContainer} `}>
           <div className={hideButton ? 'hideChatBtn' : null}>
