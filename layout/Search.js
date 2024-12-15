@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { useRouter } from 'next/router'
 import Tooltip from '@mui/material/Tooltip'
 import menuStyle from '/modules/menu/Menu.module.scss'
@@ -6,22 +7,41 @@ import Close from '@mui/icons-material/Close'
 
 const Module = props => {
     const router = useRouter()
+    const [ componentDidMount, setComponentDidMount ] = React.useState(false)
+    const [ componentId, setComponentId ] = React.useState(null)
     const searchRef = React.useRef()
     const searchOverlayRef = React.useRef()
     const searchBarRef = React.useRef()
     const [ overlaySearch, setOverlaySearch ] = React.useState(false)
+
     const handleOnFocus = React.useCallback(e => {
         if (!searchBarRef?.current?.classList?.contains('searchBarActive')) {
             searchBarRef.current.classList.add('searchBarActive')
             searchBarRef.current.classList.add(menuStyle.searchBarActive)
         }
     })
+
     const handleOnBlur = React.useCallback(e => {
         if (searchBarRef?.current?.classList?.contains('searchBarActive')) {
             searchBarRef.current.classList.remove('searchBarActive')
             searchBarRef.current.classList.remove(menuStyle.searchBarActive)
         }
     })
+
+    React.useEffect(() => {
+        if (!componentDidMount) {
+            const id = uuidv4()
+            setComponentId(id)
+            loadDefault()
+            setComponentDidMount(true)
+        }
+    }, [ componentDidMount ])
+
+    const loadDefault = () => {
+        props._LocalEventEmitter.dispatch('refetchDefaults', {
+            dispatch: 'simple'
+        })
+    }
 
     const handleToggleSearch = React.useCallback(e => {
         if (!overlaySearch) {

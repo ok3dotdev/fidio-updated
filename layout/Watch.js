@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Player, Prompt } from '/modules/streaming/watch';
+import { Player } from '/modules/streaming/watch';
 import { Chat } from '/modules/streaming/chat';
 import { CommentInternal } from '/modules/comment';
 import { LoadComments } from '/modules/comment/parts';
@@ -69,7 +69,6 @@ const Module = (props) => {
 
   return (
     <div id='watch-quad' className={`${videoQuadrant} WatchPage_VideoQuadrant`}>
-      <Prompt {...props} />
       <div className={`${videoExternalContainer}`}>
         <div className={`${videoInternalContainer} `}>
           <div className={hideButton ? 'hideChatBtn' : null}>
