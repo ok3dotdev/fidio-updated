@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Player, Prompt, ChaptersContainer } from '/modules/streaming/watch'
+import { Player, ChaptersContainer } from '/modules/streaming/watch'
 import { Chat } from '/modules/streaming/chat'
 import DonateButton from '/modules/ecommerce/donate/DonateButton'
 import { CommentInternal } from '/modules/comment'
@@ -9,7 +9,6 @@ import { LoadComments } from '/modules/comment/parts'
 const Module = props => {
     return (
         <div className={`${props?.WatchPageStyles?.videoQuadrant} WatchPage_VideoQuadrant ${props?.simplifiedPlayer ? 'Watch_SimplifiedPlayerContainerQuadrant' : ''}`} style={{ height: `calc(100vh - ${props?.menuHeight})` }}>
-            <Prompt { ...props } />
             {
                 props?.simplifiedPlayer
                     ? <div className={`${props?.WatchPageStyles?.videoExternalContainer} Watch_SimplifiedPlayerContainer`}>

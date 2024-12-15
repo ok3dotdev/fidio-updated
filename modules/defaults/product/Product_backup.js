@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Tooltip from '@mui/material/Tooltip'
-import { resolveStyles } from '/modules/utility/ecommerce'
+import { resolveStyles, westernMoneyFormat } from '/modules/utility/ecommerce'
 import { getFormattedDate } from '/modules/util'
 import AllInclusive from '@mui/icons-material/AllInclusive'
 import ConfirmationNumber from '@mui/icons-material/ConfirmationNumber'
@@ -50,7 +50,7 @@ const Module = props => {
                                         {
                                             validStyleObject && (currentDefinePriceCurrency?.currency === 'USD' && validStyleObject?.price != props?.priceInput?.current?.value)
                                                 || (currentDefinePriceCurrency?.currency !== 'USD'
-                                                    && (!validStyleObject.priceTable || (validStyleObject.priceTable && !validStyleObject.priceTable[currentDefinePriceCurrency.currency]) || (props?.currentDefinePriceCurrency?.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, currentDefinePriceCurrency.currency) && validStyleObject.priceTable[currentDefinePriceCurrency.currency] != props.priceInput.current.value)))
+                                                    && (!validStyleObject?.priceTable || (validStyleObject.priceTable && !validStyleObject.priceTable[currentDefinePriceCurrency.currency]) || (props?.currentDefinePriceCurrency?.currency && validStyleObject.priceTable && Object.prototype.hasOwnProperty.call(validStyleObject.priceTable, currentDefinePriceCurrency.currency) && validStyleObject.priceTable[currentDefinePriceCurrency.currency] != props.priceInput.current.value)))
                                                 ? <Tooltip title="The price displayed is currently not set for this product style. Click here to set it">
                                                     <button onClick={setCurrentPrice} value={props.priceInput?.current?.value} style={{ whiteSpace: 'nowrap', lineHeight: '.5rem', fontSize: '.75rem' }}>Set Price</button>
                                                 </Tooltip>
@@ -63,7 +63,7 @@ const Module = props => {
                                             isSettingCurrency
                                                 ? <div className={`${PIMStyles.setCurrencyExternalContainer}`}>
                                                     <div className={`${PIMStyles.setCurrencyContainer}`}>
-                                                        <select id={props.editing.id + '_setCurrency'} name={props.editing.id + '_setCurrency'} style={{ width: '100%' }} onChange={handleChangeCurrentCurrency} ref={setCurrencySelect} defaultValue={currentDefinePriceCurrency?.currency ?? 'USD'}>
+                                                        <select id={props.editing.id + '_setCurrency'} name={props.editing.id + '_setCurrency'} style={{ width: '100%' }} onChange={handleChangeCurrentCurrency} ref={props?.setCurrencySelect} defaultValue={currentDefinePriceCurrency?.currency ?? 'USD'}>
                                                             {
                                                                 props?.regionsData
                                                                     ? Object.entries(props.regionsData).map(m => (
@@ -311,7 +311,7 @@ const Module = props => {
                             }
                             <div className='flex gap-p2' style={{ alignItems: 'center'}}>
                                 <div className='flex gap-p2' style={{ margin: '.125rem 0' }}>
-                                    <div style={{ fontSize: '1rem', fontWeight: 600 }}><span>{currentPrice?.symbol ?? null}</span><span>{currentPrice?.price ?? null}</span></div>
+                                    <div style={{ fontSize: '1rem', fontWeight: 600 }}><span>{currentPrice?.symbol ?? null}</span><span>{westernMoneyFormat.format(currentPrice?.price) ?? '0'}</span></div>
                                     <div className='Product_CurrencyLabel' style={{ fontSize: '.8rem', fontWeight: 600, background: 'rgba(150, 150, 150, .5)', padding: '.075rem', borderRadius: '.25rem' }}>{currentPrice?.currency ?? 'USD'}</div>
                                 </div>
                                 <div style={{ display: 'none', fontSize: '.8rem', fontWeight: 600 }}>{validOptionObject && validOptionObject.quantity ? validOptionObject.quantity : ''}</div>
