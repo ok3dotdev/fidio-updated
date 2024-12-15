@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Player, Prompt } from '/modules/streaming/watch';
+import { Player, Prompt, ChaptersContainer } from '/modules/streaming/watch';
 import { Chat } from '/modules/streaming/chat';
 import { CommentInternal } from '/modules/comment';
 import { LoadComments } from '/modules/comment/parts';
@@ -80,6 +80,7 @@ const Module = (props) => {
               <div className='md:pl-4 px-4 mt-8 max-w-[1700px] mx-auto'>
                 <div className='flex gap-8 flex-col md:flex-row'>
                   <div className='min-w-[70%]'>
+                    <ChaptersContainer {...props} />
                     <h3 className='text-3xl lg:text-4xl font-bold my-4'>
                       {name ?? ''}
                     </h3>

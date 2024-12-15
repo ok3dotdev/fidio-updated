@@ -62,6 +62,7 @@ const Module = (props) => {
             onClick={loadVideo}
             item={m?.id}
           >
+            {console.log('idddddddd', m?.id)}
             <a
               href={`/w?v=${m.id}`}
               className={`${WatchPageStyles.thumbnail} ${
@@ -74,9 +75,10 @@ const Module = (props) => {
                   props?.cdn?.static && m?.thumbtrack[0]
                     ? `${props.cdn.static}/thumbtrack/${m.thumbtrack[0]}`
                     : 'img/default/greythumb.jpg'
-                } no-repeat center/cover`,
+                }) no-repeat center/cover`,
               }}
               onClick={(e) => e.stopPropagation()}
+              item={m?.id}
             ></a>
             <div className='m-0 space-y-0 flex flex-col justify-center w-[50%]'>
               <h2 className={`text-dashtext text-sm font-normal`}>Title</h2>
