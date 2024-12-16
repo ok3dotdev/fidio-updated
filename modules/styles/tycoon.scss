@@ -1742,6 +1742,10 @@ input.squeezedInputWider {
     pointer-events: none;
 }
 
+.WatchPage_IsNotAuthorizedVideoPlayer .vjs-control-bar, .WatchPage_IsNotAuthorizedVideoPlayer .vjs-big-play-button {
+    display: none;
+}
+
 .Watch_PlayerNoAuthorization:after {
     content: '';
     position: absolute;

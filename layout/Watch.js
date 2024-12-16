@@ -69,7 +69,7 @@ const Module = (props) => {
       console.log('Enforcing auth false')
       props.setEnforceAuth(false);
     }
-  }, [props?.watchMeta?.relevantTicket?.products, props?.isAuthorized]);
+  }, [props?.watchMeta?.relevantTicket?.products, props?.isAuthorized, props.enforceAuth ]);
 
   console.log('Is Auth Check', props.isAuthorized)
 
