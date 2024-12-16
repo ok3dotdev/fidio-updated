@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Player, Prompt, ChaptersContainer } from '/modules/streaming/watch';
+import { Player, ChaptersContainer } from '/modules/streaming/watch';
 import { Chat } from '/modules/streaming/chat';
 import { CommentInternal } from '/modules/comment';
 import { LoadComments } from '/modules/comment/parts';
 import { Loader2 } from 'lucide-react';
 import Ticket from '@/components/cards/PurchaseTicketCard';
 import { fetchTickets } from '@/lib/utils';
+import { isObjectEmpty } from '/modules/util'
 
 import {
   Carousel,
@@ -54,16 +55,23 @@ const Module = (props) => {
   const hasDetails = name || description || host?.title || lineup.length > 0;
 
   React.useEffect(() => {
-    let isFree = false;
+    let isFree = props?.watchMeta?.relevantTicket && isObjectEmpty(props.watchMeta.relevantTicket) ? true : false;
     if (props?.watchMeta?.relevantTicket?.products?.map) {
       isFree = props.watchMeta.relevantTicket.products.find((m) =>
-        m.styles.find((n) => n.price === 0)
+        m.styles.find((n) => n.price == 0)
       );
     }
-    if (isFree && !props.isAuthorized) {
+    console.log('isFree', isFree, 'WatchMeta', props.watchMeta, 'isAuthorized', props.isAuthorized, 'WatchData', props.watchData, 'Identifier', props?._loggedIn?.identifier)
+    if ((isFree && !props.isAuthorized) || props.watchData?.author === props?._loggedIn?.identifier) {
+      console.log('Enforcing auth true')
       props.setEnforceAuth(true);
+    } else if (!isFree && props.isAuthorized) {
+      console.log('Enforcing auth false')
+      props.setEnforceAuth(false);
     }
   }, [props?.watchMeta?.relevantTicket?.products, props?.isAuthorized]);
+
+  console.log('Is Auth Check', props.isAuthorized)
 
   const hideButton = props?.watchData?.__typename === 'Video';
 

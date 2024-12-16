@@ -20,9 +20,9 @@ const Module = props => {
 
     props._LocalEventEmitter.unsubscribe(`overlay-${props?.playerName}`)
     props._LocalEventEmitter.subscribe(`overlay-${props?.playerName}`, e => {
-        if (e?.dispatch === 'update') {
+        if (e?.dispatch === 'update' && e.data) {
             setIteration(iteration + 1)
-            setUseOverlayMatrix(e.data)
+            setUseOverlayMatrix(structuredClone(e.data))
         }
     })
 
@@ -40,6 +40,7 @@ const Module = props => {
                     : null
             }
             <div className='MatrixOverlay_Container'>
+                <div style={{ display: 'none' }}>Matrix Overlay Data</div>
                 {
                     Object.entries(useOverlayMatrix).map((m, i) => {
                         const item = m?.[1][(props?.overlayMatrixState?.offset ?? 0) % m[1].length]
