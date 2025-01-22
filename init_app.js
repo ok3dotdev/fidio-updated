@@ -2,13 +2,14 @@ const fs = require('fs')
 const path = require('path')
 
 let useFile
+const usePath = 'modules'
 
 useFile = '.env'
 if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/initialization/.env.example', useFile)
+    fs.copyFileSync(`${usePath}/defaults/initialization/.env.example`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -17,7 +18,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/initialization/app.config.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/initialization/app.config.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -26,7 +27,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/initialization/app.schema.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/initialization/app.schema.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -138,7 +139,7 @@ if (fs.existsSync(useFile)) {
 }
 
 useFile = 'layout/index.js'
-fs.copyFileSync('modules/defaults/index_backup.js', useFile)
+fs.copyFileSync(`${usePath}/defaults/index_backup.js`, useFile)
 console.log(useFile, 'Copied file on', process.platform)
 
 useFile = 'layout/Cart.js'
@@ -146,7 +147,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Cart_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Cart_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -155,7 +156,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Profile_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Profile_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -164,7 +165,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Watch_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Watch_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -173,7 +174,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Article_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Article_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -182,7 +183,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/DropMenu_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/DropMenu_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -191,7 +192,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Menu_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Menu_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -200,7 +201,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Help_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Help_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -209,7 +210,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Order_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Order_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -218,7 +219,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/StreamManager_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/StreamManager_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -236,7 +237,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/chat/index_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/chat/index_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -245,7 +246,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/chat/ChatLog_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/chat/ChatLog_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -254,7 +255,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/chat/DonationsLedger_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/chat/DonationsLedger_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -263,7 +264,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/chat/ChatCommandBar_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/chat/ChatCommandBar_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -272,7 +273,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/chat/Chat_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/chat/Chat_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -290,7 +291,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/product/index_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/product/index_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -299,7 +300,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/product/Product_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/product/Product_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -317,7 +318,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/index_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/mail/index_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -326,7 +327,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/footer_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/mail/footer_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -335,7 +336,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/globalEmailStyles_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/mail/globalEmailStyles_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -344,7 +345,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/newUser_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/mail/newUser_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -353,7 +354,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/mail/reset_password_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/mail/reset_password_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -371,7 +372,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/comment/Comment_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/comment/Comment_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -389,7 +390,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/onboarding/index_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/onboarding/index_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -398,7 +399,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/onboarding/SignInOnboard_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/onboarding/SignInOnboard_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -407,7 +408,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/onboarding/RegisterOnboard_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/onboarding/RegisterOnboard_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -425,7 +426,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/upload/UploadVideoFile_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/upload/UploadVideoFile_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -434,7 +435,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/upload/UploadVideo_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/upload/UploadVideo_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -452,7 +453,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/video/Overlay_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/video/Overlay_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -461,7 +462,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/Search_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/Search_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -470,7 +471,7 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/upload/VideoReel_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/upload/VideoReel_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
@@ -488,12 +489,30 @@ if (fs.existsSync(useFile)) {
     // Add your commands here
     console.log(useFile, 'File exists on', process.platform)
 } else {
-    fs.copyFileSync('modules/defaults/video/Chapters_backup.js', useFile)
+    fs.copyFileSync(`${usePath}/defaults/video/Chapters_backup.js`, useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/messaging'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.mkdirSync(useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
+
+useFile = 'layout/messaging/Messaging.js'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync(`${usePath}/defaults/messaging/Messaging_backup.js`, useFile)
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
 
-const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset', 's', 'settings', 'a', 'r', 'c/index', 'c/[...id]' ] // Default pages
+const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset', 's', 'settings', 'a', 'r', 'c/index', 'c/[...id]', 'terms', 'test', 'privacy' ] // Default pages
 
 for (let i = 0; i < pages.length; i++) {
     useFile = `pages/${pages[i]}.js`
@@ -504,11 +523,11 @@ for (let i = 0; i < pages.length; i++) {
         const page = `/* eslint-disable react-hooks/rules-of-hooks */
 
 import React from 'react'
-import { AppConfigLayout, PageContainer } from '/modules/internal'
+import { AppConfigLayout, PageContainer } from '@tycoonsystems/tycoon-modules/internal'
 import { pageDefaults } from '/app.config'
-import { getServerSidePropsDefault } from '/modules/utility.js'
+import { getServerSidePropsDefault } from '@tycoonsystems/tycoon-modules/utility.js'
 import { getServerSidePropsFunc } from '/appServer/serverProps'
-import { Menu } from '/modules/menu/'
+import { Menu } from '@tycoonsystems/tycoon-modules/menu/'
 
 const pageName = '${pages[i]}'
 

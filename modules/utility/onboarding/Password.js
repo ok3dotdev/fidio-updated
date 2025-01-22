@@ -1,1 +1,0 @@
-import apiReq from"/modules/utility/api/apiReq";const submitNewPassword=async(s,e,a,i)=>{return await apiReq("/p/resetpassword",{newPassword:s,token:e,email:a})};export{submitNewPassword};

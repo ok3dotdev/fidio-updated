@@ -1,1 +1,0 @@
-import React from"react";const Module=e=>{var{}=e;return React.createElement(React.Fragment,null)};export default Module;

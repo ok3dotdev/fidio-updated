@@ -7,6 +7,9 @@
       ],
       "/modules/*": [
         "modules/*"
+      ],
+      "@tycoonsystems/tycoon-modules": [
+        "modules/*"
       ]
     },
     "lib": [
@@ -31,9 +34,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "pages/index.js",
-    "pages/_app.js"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -1,1 +1,0 @@
-import React from"react";const Module=e=>React.createElement(React.Fragment,null,React.createElement("img",{className:"ProfilePage_Icon",src:e.profileData&&e.profileData.user&&e.profileData.user.icon?e.profileData.user.icon:""}));export default Module;

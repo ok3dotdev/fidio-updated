@@ -1,1 +1,0 @@
-const normalizeText=(e,t=!0)=>{let r=e;return r=t&&"string"==typeof r?r.replace(/:nbsp;/g," "):r};export{normalizeText};

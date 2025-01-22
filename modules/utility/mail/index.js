@@ -1,1 +1,0 @@
-import{handleEventMail,sendSurveyEmail}from"./mail";export{handleEventMail,sendSurveyEmail};

@@ -1,5 +1,5 @@
 import resolveConfig, { resolveVariables } from "/app.config"
-import { getPropDefaults, resolvePage } from "/modules/utility"
+import { getPropDefaults, resolvePage } from "@tycoonsystems/tycoon-modules/utility"
 
 // Valid Server Prop Bundles
 // shopProfile, watch, profile, article, event, product
@@ -11,9 +11,9 @@ import { getPropDefaults, resolvePage } from "/modules/utility"
  * @returns 
  */
 const getServerSidePropsFunc = async (data, context) => {
-    const variables = resolveVariables()
-    const config = resolveConfig(variables)
-    const resolvedPage = resolvePage(config, context.req.url)
+    // const variables = resolveVariables() // App variables set in app.config environment
+    // const config = resolveConfig(variables) // Configuration for page components
+    // const resolvedPage = resolvePage(config, context.req.url)
     // You can see the path path in the url at resolvedPage.url to match requests based on url user is on
     // if (resolvedPage && resolvedPage.url === '/shopPage') { // Match for specific page
 
