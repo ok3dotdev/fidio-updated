@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Sheet,
   SheetClose,
@@ -12,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { logout } from 'modules/utility/onboarding/SignIn.js';
+import { fireGlobalEvent } from 'modules/utility/utility'
 
 const MobileMenu = (props) => {
   const router = useRouter();
@@ -19,6 +21,15 @@ const MobileMenu = (props) => {
     logout(props._setLoggedIn);
     router.push('/');
   };
+
+  const handleOpen = React.useCallback(e => {
+    if (e?.currentTarget?.getAttribute('modif')) {
+      const modif = e.currentTarget.getAttribute('modif')
+      fireGlobalEvent(e, props._LocalEventEmitter) // Dependent on {...props} in this component use
+      props._toggleSingleOpenMenu(e, modif)
+    }
+  })
+
   return (
     <Sheet className='p-2 bg-dashBg'>
       <SheetTrigger asChild>
@@ -39,7 +50,7 @@ const MobileMenu = (props) => {
           </svg>
         </Button>
       </SheetTrigger>
-      <SheetContent className='flex flex-col h-full px-4 bg-dashBg'>
+      <SheetContent className='flex flex-col h-full px-4 bg-dashBg z-100'>
         <SheetHeader>
           <SheetTitle>
             <Link href='/browse'>
@@ -48,25 +59,51 @@ const MobileMenu = (props) => {
           </SheetTitle>
         </SheetHeader>
 
-        <div className='mt-8 w-full'>
-          <Link
-            className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/browse'
-          >
-            Browse
-          </Link>
-          <Link
-            className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/blog'
-          >
-            Blog
-          </Link>
-          {/* <Link
-            className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
-            href='/studio'
-          >
-            Studio
-          </Link> */}
+        <div className='mt-8 w-full justify-between flex flex-col h-full'>
+          <div>
+            <Link
+              className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
+              href='/browse'
+            >
+              Browse
+            </Link>
+            <Link
+              className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
+              href='/settings?t=orders'
+            >
+              Orders
+            </Link>
+            <Link
+              className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
+              href='/blog'
+            >
+              Blog
+            </Link>
+            <SheetTrigger asChild>
+              <a onClick={handleOpen} modif='cart' className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center pointer'>
+                Cart
+              </a>
+            </SheetTrigger>
+            <SheetTrigger asChild>
+              <a onClick={handleOpen} modif='notifications' className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center pointer'>
+                Notifications
+              </a>
+            </SheetTrigger>
+             {/* <Link
+              className='hover:bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
+              href='/studio'
+              >
+                Studio
+              </Link> */}
+          </div>
+          <div>
+            <Link
+              className='duration-200 bg-opacity-0 hover:bg-opacity-100 bg-slate-700 mb-4 px-2 py-2 rounded-md flex items-center'
+              href='/settings'
+            >
+              Settings
+            </Link>
+          </div>
         </div>
 
         <div className='flex-grow'></div>
