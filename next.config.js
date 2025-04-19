@@ -27,7 +27,7 @@ const nextConfig = {
       'customModules'
     );
     config.resolve.alias['@/emails'] = path.join(__dirname, 'emails/');
-    config.resolve.alias['/styles'] = path.join(__dirname, 'src/styles');
+    config.resolve.alias['/styles'] = path.join(__dirname, 'styles/');
     config.resolve.alias['/layout'] = path.join(__dirname, 'layout/');
 
     // Example: Add Babel loader for JavaScript modules/functions
