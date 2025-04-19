@@ -78,6 +78,9 @@ styles/appstyles/*
 .next.tar.gz
 public.tar.gz
 
+# Deliver ignore
+/modules
+
 # Tycoon Systems - Layout defaults ignore
 layout/*
 appServer/*
