@@ -520,6 +520,14 @@ if (fs.existsSync(useFile)) {
     console.log(useFile, 'File does not exist on', process.platform)
 }
 
+useFile = 'styles/theme.scss'
+if (fs.existsSync(useFile)) {
+    // Add your commands here
+    console.log(useFile, 'File exists on', process.platform)
+} else {
+    fs.copyFileSync(`${usePath}/defaults/styles/theme_backup.scss`, useFile)
+    console.log(useFile, 'File does not exist on', process.platform)
+}
 
 const pages = [ 'upload', 'w', 'p', 'pr', 'e', 'a', 'reset', 's', 'settings', 'a', 'r', 'c/index', 'c/[...id]', 'terms', 'test', 'privacy' ] // Default pages
 
