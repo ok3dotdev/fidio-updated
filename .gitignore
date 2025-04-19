@@ -78,14 +78,14 @@ styles/appstyles/*
 .next.tar.gz
 public.tar.gz
 
-# Deliver ignore
-/modules
-
 # Tycoon Systems - Layout defaults ignore
 layout/*
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
+
+# Deliver ignore
+/modules
 
 # Extra Ignore Files Here. Uncomment after initialization (node init_app.js)
 !*customModules/middleware/*
