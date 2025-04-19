@@ -210,7 +210,7 @@ const resolveConfig = (variables, props) => {
           url: '/r',
           data: {
             type: 'div',
-            props: { className: 'lead-background' },
+            props: { className: 'lead-background pt-[150px] md:pt-[100px] max-w-screen-xl mx-auto px-4' },
             children: [
               {
                 type: 'ReceiptPage',
