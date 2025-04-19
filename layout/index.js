@@ -7,6 +7,7 @@ import DropMenu from './DropMenu'
 import Menu from './Menu'
 import Help from './Help'
 import Search from './Search'
+import Settings from './Settings'
 
 export {
     Article,
@@ -17,5 +18,6 @@ export {
     DropMenu,
     Menu,
     Help,
-    Search
+    Search,
+    Settings
 }

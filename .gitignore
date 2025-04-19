@@ -41,6 +41,7 @@ servebuild.bat
 /app.schema.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
+tycoon-client-modules-dist.tar.gz
 
 # Tycoon Systems - Custom Modules
 !*/customModules/features/FeatureModule1.js
@@ -71,20 +72,21 @@ public/font/internal
 styles/custom
 styles/custom/*
 styles/styles.scss
+styles/theme.scss
 styles/appstyles/*
 
 # Tycoon Systems - Build ignore
 .next.tar.gz
 public.tar.gz
 
-# Deliver ignore
-/modules
-
 # Tycoon Systems - Layout defaults ignore
 layout/*
 appServer/*
 !*/appServer/defaults/*
 !*appServer/defaults/
+
+# Deliver ignore
+/modules
 
 # Extra Ignore Files Here. Uncomment after initialization (node init_app.js)
 !*customModules/middleware/*
@@ -94,6 +96,7 @@ appServer/*
 !*layout/*
 !*app.config.js
 !*app.schema.js
+!*styles/theme.scss
 
 # Project Ignore Files
 

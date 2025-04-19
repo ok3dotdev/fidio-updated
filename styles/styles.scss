@@ -65,8 +65,8 @@ input {
   justify-self: center;
 }
 
-.Chat_send__9agSq {
-  background-color: #fdb000;
+.Chat_Send {
+  background-color: rgb(221, 104, 26) !important;
 }
 
 .Username_ContainerBg {
@@ -138,8 +138,8 @@ input {
 .Ecommerce_Cart_Container {
   background: var(--Color-Neutral-900, rgba(23, 23, 23, 1)) !important;
   height: fit-content !important;
-  top: 80px !important;
-  position: static !important;
+  top: 5rem !important;
+  position: fixed !important;
   box-shadow: unset !important;
   gap: 3rem !important;
   font-family: lexend !important;
@@ -147,8 +147,14 @@ input {
 
   @media (max-width: 768px) {
     padding: 1rem !important;
+    max-width: 80%;
   }
 }
+
+.Misc_Container {
+  top: 2rem;
+}
+
 #watchPage .Ecommerce_Cart_Container {
   position: absolute !important;
   left: 50%;
@@ -820,4 +826,8 @@ button:hover {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.z-100 {
+  z-index: 100;
 }

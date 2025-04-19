@@ -210,7 +210,7 @@ const resolveConfig = (variables, props) => {
           url: '/r',
           data: {
             type: 'div',
-            props: { className: 'lead-background' },
+            props: { className: 'lead-background pt-[150px] md:pt-[100px] max-w-screen-xl mx-auto px-4' },
             children: [
               {
                 type: 'ReceiptPage',
@@ -381,56 +381,59 @@ const predefined = {
   SettingsConfig: {
     title: 'Settings',
     tabs: [
-      {
-        label: 'Profile',
-        avatar: true,
-        items: [
-          {
-            type: 'firstNameLastName',
-            className: 'my_custom_className', // Allows for className to be added to firstNameLastName container
-          },
-          {
-            type: 'username',
-          },
-        ],
-      },
-      {
-        label: 'Payment',
-        items: [
-          {
-            type: 'handleCreditCard',
-          },
-        ],
-      },
-      {
-        label: 'Orders',
-        items: [
-          {
-            type: 'orders',
-          },
-        ],
-      },
-      {
-        label: 'Privacy',
-        items: [
-          {
-            type: 'keepSubscriptionsPrivate', // Checkbox boolean
-          },
-          {
-            type: 'closeAccount', // Button
-          },
-        ],
-      },
-      {
-        label: 'Location',
-        items: [
-          {
-            type: 'location', // label
-          },
-        ],
-      },
+        {
+            label: 'Profile',
+            avatar: true,
+            items: [
+                {
+                    type: 'firstNameLastName',
+                    className: 'my_custom_className' // Allows for className to be added to firstNameLastName container
+                },
+                {
+                    type: 'username'
+                }
+            ]
+        },
+        {
+            label: 'Payment',
+            items: [
+                {
+                    type: 'handleCreditCard'
+                },
+                {
+                    type: 'vendor'
+                }
+            ]
+        },
+        {
+            label: 'Orders',
+            items: [
+                {
+                    type: 'orders'
+                }
+            ]
+        },
+        {
+            label: 'Privacy',
+            items: [
+                {
+                    type: 'keepSubscriptionsPrivate', // Checkbox boolean
+                },
+                {
+                    type: 'closeAccount', // Button
+                },
+            ]
+        },
+        {
+            label: 'Location',
+            items: [
+                {
+                    type: 'location', // label
+                }
+            ]
+        },
     ],
-  },
+},
   MenuConfig: {
     height: 0,
     padding: '0',

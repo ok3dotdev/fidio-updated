@@ -12,7 +12,7 @@ const Module = (props) => {
     const handleSetVideos = async () => {
       const res2 = await apiReq('/p/getrelationshipchildrenof', {
         // Get all related videos in column a of record b where verb is "related"
-        b: router?.query?.id[0],
+        b: router?.query?.id?.[0],
         atype: 'video',
         btype: 'product',
         verb: 'related',
