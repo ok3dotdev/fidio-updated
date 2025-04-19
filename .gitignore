@@ -41,6 +41,7 @@ servebuild.bat
 /app.schema.js
 tycoon-client-modules-dist
 tycoon-client-modules-dist/*
+tycoon-client-modules-dist.tar.gz
 
 # Tycoon Systems - Custom Modules
 !*/customModules/features/FeatureModule1.js
